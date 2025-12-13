@@ -1,0 +1,91 @@
+/* Form text color - Matte Black */
+:root {
+  --form-text-color: #242124;
+}
+
+.p-icon-field {
+  width: 100%;
+}
+
+/* Form labels */
+label {
+  color: #242124;
+  font-weight: 500;
+}
+
+/* Form inputs text color */
+.p-inputtext,
+.p-password-input,
+.p-dropdown,
+.p-dropdown-label,
+.p-inputnumber-input,
+.p-inputtextarea,
+.p-calendar-input,
+input,
+textarea,
+select {
+  color: #242124;
+}
+
+/* Placeholder color - slightly lighter */
+.p-inputtext::placeholder,
+.p-password-input::placeholder,
+.p-inputtextarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+}
+
+/* Password toggle icon alignment */
+.p-password {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.p-password .p-icon-field {
+  width: 100%;
+  position: relative;
+}
+
+.p-password .p-password-input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+/* Center the toggle mask icon vertically */
+.p-password .p-password-toggle-mask-icon,
+.p-password .p-icon-field > svg,
+.p-password .p-icon-field > i,
+.p-password [data-pc-section="showicon"],
+.p-password [data-pc-section="hideicon"] {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-secondary, #6b7280);
+}
+
+/* Form required indicator */
+.form-required {
+  color: var(--color-error, #ef4444);
+  margin-left: 4px;
+}
+
+/* Input container */
+.input-container {
+  width: 100%;
+}
+
+/* Disabled state */
+.disable {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Full width utility */
+.w-100 {
+  width: 100%;
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useId } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Controller, useFormContext } from 'react-hook-form';
 import FormError from './FormError';
@@ -146,7 +146,8 @@ export const FormInput: React.FC<FormInputProps> = ({
   };
 
   const error = getNestedError(errors, name);
-  const uniqueId = `${name}-` + Math.random().toString(36).substr(2, 9);
+  const reactId = useId();
+  const uniqueId = `${name}-${reactId}`;
 
   const handlePaste = (
     e: React.ClipboardEvent<HTMLInputElement>,
@@ -171,15 +172,15 @@ export const FormInput: React.FC<FormInputProps> = ({
   };
 
   return (
-    <div className="grid grid-nogutter">
+    <div className="grid grid-cols-12 gap-0">
       {showLabel && label && (
-        <label htmlFor={uniqueId} className="col-12">
+        <label htmlFor={uniqueId} className="col-span-12">
           {label}
           {showRequired && <span className="form-required">*</span>}
         </label>
       )}
 
-      <div className="col-12 input-container">
+      <div className="col-span-12 input-container">
         <Controller
           name={name}
           control={control}
@@ -205,7 +206,6 @@ export const FormInput: React.FC<FormInputProps> = ({
                   });
 
                   if (processedValue !== null) {
-                    console.log("process", processedValue)
                     field.onChange(processedValue);
                   }
                 }}

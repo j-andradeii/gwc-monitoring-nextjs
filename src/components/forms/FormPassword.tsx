@@ -50,20 +50,20 @@ export const FormPassword: React.FC<FormPasswordProps> = ({
   const uniqueId = `${name}-${reactId}`;
 
   return (
-    <div className="grid grid-nogutter w-100">
+    <div className="grid grid-cols-12 gap-0">
       {showLabel && label && (
-        <label htmlFor={uniqueId} className="col-12">
+        <label htmlFor={uniqueId} className="col-span-12">
           {label}
           {showRequired && <span className="form-required">*</span>}
         </label>
       )}
 
-      <div className="col-12 input-container w-100">
+      <div className="col-span-12 input-container">
         <Controller
           name={name}
           control={control}
           render={({ field, fieldState }) => (
-            <span className="p-input-icon-right w-100 flex">
+            <span className="p-input-icon-right flex">
               {showRightIcon && (
                 <span className="p-inputgroup-addon">
                   <i className="pi pi-user"></i>
