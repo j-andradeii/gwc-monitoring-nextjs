@@ -1,0 +1,187 @@
+/**
+ * Form Input Styles
+ *
+ * Styles for form components
+ */
+
+/* Form field container */
+.form-field {
+  margin-bottom: 1rem;
+}
+
+/* Form label */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Form required indicator */
+.form-required {
+  color: var(--red-500);
+  margin-left: 0.25rem;
+}
+
+/* Form helper text */
+.form-helper {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--text-color-secondary);
+}
+
+/* Form error message */
+.form-error {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--red-500);
+}
+
+/* Input container */
+.input-container {
+  position: relative;
+}
+
+/* Full width utility */
+.w-100 {
+  width: 100%;
+}
+
+/* Disabled state */
+.disable {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Grid utilities */
+.grid-nogutter {
+  margin: 0;
+}
+
+.grid-nogutter > [class*="col"] {
+  padding: 0;
+}
+
+/* Column utilities */
+.col-12 {
+  width: 100%;
+}
+
+.col-fixed {
+  flex: 0 0 auto;
+}
+
+/* Flexbox utilities */
+.flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+/* PrimeReact input icon styles */
+.p-input-icon-right {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+}
+
+.p-input-icon-right > i {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color-secondary);
+}
+
+.p-input-icon-left {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+}
+
+.p-input-icon-left > i {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color-secondary);
+}
+
+/* Input group addon */
+.p-inputgroup-addon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface-100);
+  border: 1px solid var(--surface-border);
+  border-right: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.p-inputgroup-addon:last-child {
+  border-right: 1px solid var(--surface-border);
+  border-left: none;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+/* ACPS Dropdown custom styles */
+.acps-dropdown {
+  width: 100%;
+}
+
+.acps-dropdown .p-dropdown-label {
+  padding: 0.5rem 0.75rem;
+}
+
+/* ============================================
+   FULL WIDTH FORM FIELD OVERRIDES
+   ============================================ */
+
+/* Ensure all form containers are full width */
+.grid.grid-nogutter,
+.grid-nogutter {
+  width: 100%;
+}
+
+/* PrimeReact Password component full width */
+.p-password {
+  width: 100% !important;
+  display: block !important;
+}
+
+.p-password .p-inputtext {
+  width: 100% !important;
+}
+
+/* PrimeReact InputText full width */
+.p-inputtext.w-100,
+.w-100 .p-inputtext {
+  width: 100% !important;
+}
+
+/* Input wrapper containers */
+.input-container {
+  width: 100%;
+}
+
+.input-container .p-input-icon-right,
+.input-container .p-input-icon-left {
+  width: 100%;
+}
+
+/* Ensure flex containers stretch */
+.input-container .flex {
+  width: 100%;
+}
+
+.input-container span.p-input-icon-right,
+.input-container span.p-input-icon-left {
+  width: 100%;
+  display: flex;
+}

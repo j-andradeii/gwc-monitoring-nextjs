@@ -1,26 +1,555 @@
 @import "tailwindcss";
 
+/* ===========================================
+   CSS VARIABLES - GWC Church Theme (Gold Accent)
+   =========================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors - Primary (Gold accent theme from Angular) */
+  --color-primary: #c0a067;
+  --color-primary-light: #d4bc8e;
+  --color-primary-dark: #a8894f;
+
+  /* Secondary */
+  --color-secondary: #64748B;
+  --color-secondary-light: #94A3B8;
+  --color-secondary-dark: #475569;
+
+  /* Accent */
+  --color-accent: #c0a067;
+  --color-accent-light: #d4bc8e;
+  --color-accent-dark: #a8894f;
+
+  /* Semantic Colors */
+  --color-success: #22C55E;
+  --color-success-light: #4ADE80;
+  --color-success-dark: #16A34A;
+
+  --color-warning: #F59E0B;
+  --color-warning-light: #FBBF24;
+  --color-warning-dark: #D97706;
+
+  --color-error: #EF4444;
+  --color-error-light: #F87171;
+  --color-error-dark: #DC2626;
+
+  --color-info: #3B82F6;
+  --color-info-light: #60A5FA;
+  --color-info-dark: #2563EB;
+
+  /* Neutrals - Warm tones */
+  --color-background: #fdfcf8;
+  --color-foreground: #4a4a4a;
+  --color-muted: #7a7a7a;
+  --color-border: #f0ede8;
+  --color-surface: #ffffff;
+
+  /* Landing/Public page theme */
+  --primary-gold-accent: #c0a067;
+  --background-main: #fdfcf8;
+  --background-section: #ffffff;
+  --text-primary: #4a4a4a;
+  --text-secondary: #7a7a7a;
+  --border-color: #f0ede8;
+  --border-color-light: #f5f3ef;
+  --button-text-on-gold: #ffffff;
+  --button-text-on-light: #c0a067;
+  --header-background: rgba(253, 252, 248, 0.92);
+  --footer-background: #f8f5f0;
+  --shadow-color-soft: rgba(0, 0, 0, 0.04);
+  --shadow-color-medium: rgba(0, 0, 0, 0.07);
+  --gold-shadow-hover: rgba(192, 160, 103, 0.15);
+
+  /* Sidebar */
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 80px;
+  --header-height: 64px;
+
+  /* Typography */
+  --font-sans: 'Lato', var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: 'Lato', var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-family-sans-serif: 'Lato', 'Arial', sans-serif;
+  --font-family-headings: 'Lato', 'Arial', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background: #1A1A2E;
+    --color-foreground: #F5F5F5;
+    --color-muted: #9CA3AF;
+    --color-border: #374151;
+    --color-surface: #1F2937;
   }
 }
 
+/* ===========================================
+   TAILWIND THEME (v4 inline)
+   =========================================== */
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-secondary-dark: var(--color-secondary-dark);
+
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+
+  --color-success: var(--color-success);
+  --color-success-light: var(--color-success-light);
+  --color-success-dark: var(--color-success-dark);
+
+  --color-warning: var(--color-warning);
+  --color-warning-light: var(--color-warning-light);
+  --color-warning-dark: var(--color-warning-dark);
+
+  --color-error: var(--color-error);
+  --color-error-light: var(--color-error-light);
+  --color-error-dark: var(--color-error-dark);
+
+  --color-info: var(--color-info);
+
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-surface: var(--color-surface);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+/* ===========================================
+   BASE STYLES
+   =========================================== */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  line-height: 1.6;
+}
+
+/* ===========================================
+   PRIMEREACT OVERRIDES
+   =========================================== */
+/* Calendar */
+.p-calendar .p-inputtext {
+  @apply w-full rounded-lg border border-gray-300 px-4 py-3;
+}
+
+.p-calendar .p-inputtext:focus {
+  @apply border-primary ring-2 ring-primary/20;
+}
+
+/* Dropdown */
+.p-dropdown {
+  @apply w-full rounded-lg border border-gray-300;
+}
+
+.p-dropdown:not(.p-disabled):hover {
+  @apply border-primary;
+}
+
+.p-dropdown-panel {
+  @apply rounded-lg shadow-lg;
+}
+
+/* Button */
+.p-button {
+  @apply rounded-lg font-medium transition-all;
+}
+
+.p-button:focus {
+  @apply ring-2 ring-primary/20;
+}
+
+.p-button.p-button-primary {
+  @apply bg-primary hover:bg-primary-dark;
+}
+
+.p-button.p-button-secondary {
+  @apply bg-secondary hover:bg-secondary-dark;
+}
+
+.p-button.p-button-success {
+  @apply bg-success hover:bg-success-dark;
+}
+
+.p-button.p-button-danger {
+  @apply bg-error hover:bg-error-dark;
+}
+
+.p-button.p-button-outlined {
+  @apply bg-transparent border-2;
+}
+
+/* Input Text */
+.p-inputtext {
+  @apply w-full rounded-lg border border-gray-300 px-4 py-3 transition-all;
+}
+
+.p-inputtext:focus {
+  @apply border-primary outline-none ring-2 ring-primary/20;
+}
+
+.p-inputtext:disabled {
+  @apply cursor-not-allowed bg-gray-100;
+}
+
+/* Password */
+.p-password-input {
+  @apply w-full;
+}
+
+/* Invalid State */
+.p-invalid,
+.p-invalid.p-inputtext,
+.p-invalid .p-inputtext {
+  @apply border-error;
+}
+
+/* Data Table */
+.p-datatable .p-datatable-thead > tr > th {
+  @apply bg-surface font-semibold text-foreground;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  @apply border-b border-border;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  @apply bg-surface;
+}
+
+/* Paginator */
+.p-paginator {
+  @apply border-t border-border bg-transparent;
+}
+
+/* Toast */
+.p-toast {
+  opacity: 1;
+}
+
+.p-toast-message-success {
+  background-color: var(--color-success-light);
+  border-left: 4px solid var(--color-success);
+}
+
+.p-toast-message-error {
+  background-color: var(--color-error-light);
+  border-left: 4px solid var(--color-error);
+}
+
+.p-toast-message-warn {
+  background-color: var(--color-warning-light);
+  border-left: 4px solid var(--color-warning);
+}
+
+.p-toast-message-info {
+  background-color: var(--color-info-light);
+  border-left: 4px solid var(--color-info);
+}
+
+/* Dialog */
+.p-dialog {
+  @apply rounded-xl shadow-2xl;
+}
+
+.p-dialog .p-dialog-header {
+  @apply border-b border-border;
+}
+
+.p-dialog .p-dialog-footer {
+  @apply border-t border-border;
+}
+
+/* Breadcrumb */
+.p-breadcrumb {
+  @apply bg-transparent border-none;
+}
+
+/* Steps */
+.p-steps .p-steps-item.p-highlight .p-steps-number {
+  @apply bg-primary text-white;
+}
+
+/* Card */
+.p-card {
+  @apply rounded-xl border border-border shadow-sm;
+}
+
+/* Menu */
+.p-menu {
+  @apply rounded-lg border border-border shadow-lg;
+}
+
+.p-panelmenu .p-panelmenu-header-link {
+  @apply rounded-lg;
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+.container-custom {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-12 md:py-16 lg:py-20;
+}
+
+.card {
+  @apply rounded-xl border border-border bg-white p-6 shadow-sm;
+}
+
+.card-hover {
+  @apply rounded-xl border border-border bg-white p-6 shadow-sm transition-all hover:shadow-md;
+}
+
+.input-base {
+  @apply w-full rounded-lg border border-gray-300 px-4 py-3 transition-all;
+  @apply focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+  @apply disabled:cursor-not-allowed disabled:bg-gray-100;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5;
+  @apply font-medium text-white transition-all;
+  @apply hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary/20;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2.5;
+  @apply font-medium text-white transition-all;
+  @apply hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secondary/20;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-4 py-2.5;
+  @apply font-medium text-primary transition-all;
+  @apply hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/20;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5;
+  @apply font-medium text-primary transition-all;
+  @apply hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/20;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.link {
+  @apply text-primary hover:text-primary-dark hover:underline transition-colors;
+}
+
+.page-title {
+  @apply text-2xl font-bold text-foreground md:text-3xl;
+}
+
+.section-title {
+  @apply text-xl font-semibold text-foreground;
+}
+
+.label {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.error-text {
+  @apply text-sm text-error;
+}
+
+.muted-text {
+  @apply text-sm text-muted;
+}
+
+/* ===========================================
+   LAYOUT UTILITIES
+   =========================================== */
+.sidebar {
+  @apply fixed left-0 top-0 h-screen bg-white border-r border-border shadow-sm;
+  width: var(--sidebar-width);
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.expanded {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+.header {
+  @apply fixed top-0 right-0 bg-white border-b border-border shadow-sm z-40;
+  height: var(--header-height);
+  left: var(--sidebar-width);
+  transition: left 0.3s ease;
+}
+
+.header.expanded {
+  left: var(--sidebar-collapsed-width);
+}
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ===========================================
+   RESPONSIVE UTILITIES
+   =========================================== */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 50;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content,
+  .main-content.expanded {
+    margin-left: 0;
+  }
+
+  .header,
+  .header.expanded {
+    left: 0;
+  }
+}
+
+/* ===========================================
+   SCROLLBAR STYLING
+   =========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
 }

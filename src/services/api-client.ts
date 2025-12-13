@@ -1,0 +1,304 @@
+/**
+ * API Client Service
+ *
+ * Fetch API wrapper with interceptors, token management, and error handling
+ * Matches the Angular interceptor pattern for backend compatibility
+ */
+
+import { useLoadingStore } from '@/stores/loading.store';
+import { useUserStore } from '@/stores/user.store';
+import { config } from '@/core/config';
+import { encrypt } from '@/core/crypto';
+import { getUtcMillis, getBrowserTimezone } from '@/core/date-utils';
+import { CONST } from '@/core/constants';
+import { storage } from '@/core/local-storage';
+
+// --- Types ---
+
+export interface ApiResponse<T = unknown> {
+  data: T;
+  statusCode: number;
+}
+
+export interface ApiError {
+  message: string;
+  status?: number;
+  statusText?: string;
+  errors?: Record<string, string[]>;
+}
+
+export interface FetchOptions extends Omit<RequestInit, 'body'> {
+  skipAuth?: boolean;
+  skipEncryption?: boolean;
+  body?: unknown;
+}
+
+interface RetryConfig {
+  endpoint: string;
+  options?: FetchOptions;
+}
+
+// --- Auth URL detection ---
+
+const AUTH_URLS = ['auth', 'token'];
+
+const isAuthUrl = (url: string): boolean => {
+  return AUTH_URLS.some((authUrl) => url.includes(authUrl));
+};
+
+// --- Store Actions ---
+
+const { incrementRequests, decrementRequests } = useLoadingStore.getState();
+
+// --- Request Interceptor ---
+
+const buildUrl = (endpoint: string): string => {
+  const baseUrl = config.api.url;
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+  return `${baseUrl}/${cleanEndpoint}`;
+};
+
+const buildHeaders = async (
+  endpoint: string,
+  options?: FetchOptions
+): Promise<HeadersInit> => {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Accept-Language': 'en',
+    locale_timezone: getBrowserTimezone(),
+    ...(options?.headers as Record<string, string>),
+  };
+
+  // Add auth token if available and not an auth URL
+  if (!options?.skipAuth && !isAuthUrl(endpoint)) {
+    const token = useUserStore.getState().token || storage.get(CONST.ACCESS_TOKEN);
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+  }
+
+  // Add encrypted access headers (for all requests)
+  if (!options?.skipEncryption) {
+    try {
+      const xAccessToken = await encrypt(config.security.xAccessTokenKey);
+      const utcMillis = getUtcMillis();
+      const xAccess = await encrypt(`${utcMillis}`);
+
+      headers[config.security.xAccessTokenKeyHeader] = xAccessToken;
+      headers[config.security.xAccessHeader] = xAccess;
+    } catch (error) {
+      console.warn('Failed to encrypt access headers:', error);
+    }
+  }
+
+  return headers;
+};
+
+// --- Response Interceptor ---
+
+const handleSuccessResponse = (response: Response): Response => {
+  return response;
+};
+
+const handleErrorResponse = async (response: Response): Promise<ApiError> => {
+  let errorData: unknown;
+
+  try {
+    errorData = await response.json();
+  } catch {
+    errorData = { message: response.statusText };
+  }
+
+  const error: ApiError = {
+    message:
+      (errorData as { message?: string })?.message || 'An error occurred',
+    status: response.status,
+    statusText: response.statusText,
+    errors: (errorData as { errors?: Record<string, string[]> })?.errors,
+  };
+
+  return error;
+};
+
+// --- Token Refresh ---
+
+const refreshToken = async (): Promise<{
+  access_token: string;
+  refresh_token: string;
+} | null> => {
+  const userStore = useUserStore.getState();
+  const currentRefreshToken = userStore.refreshToken || storage.get(CONST.REFRESH_TOKEN);
+
+  if (!currentRefreshToken) return null;
+
+  try {
+    const headers = await buildHeaders('token/refresh', { skipAuth: true });
+    const response = await fetch(buildUrl('token/refresh'), {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ refresh_token: currentRefreshToken }),
+    });
+
+    if (!response.ok) return null;
+
+    const data = await response.json();
+    return data?.data;
+  } catch {
+    return null;
+  }
+};
+
+const handleTokenRefresh = async (
+  retryConfig: RetryConfig
+): Promise<Response> => {
+  const userStore = useUserStore.getState();
+  const tokens = await refreshToken();
+
+  if (!tokens?.access_token) {
+    userStore.logout();
+    if (typeof window !== 'undefined') {
+      window.location.href = '/signin';
+    }
+    throw {
+      message: 'Session expired. Please login again.',
+      status: 401,
+    } as ApiError;
+  }
+
+  // Update tokens in store and localStorage
+  userStore.setTokens(tokens.access_token, tokens.refresh_token);
+  storage.set(CONST.ACCESS_TOKEN, tokens.access_token);
+  storage.set(CONST.REFRESH_TOKEN, tokens.refresh_token);
+
+  // Retry the original request with new token
+  return makeRequest(retryConfig.endpoint, retryConfig.options);
+};
+
+// --- Core Request Function ---
+
+const makeRequest = async (
+  endpoint: string,
+  options?: FetchOptions
+): Promise<Response> => {
+  incrementRequests();
+
+  try {
+    const url = buildUrl(endpoint);
+    const headers = await buildHeaders(endpoint, options);
+    const body = options?.body ? JSON.stringify(options.body) : undefined;
+
+    const response = await fetch(url, {
+      ...options,
+      headers,
+      body,
+    });
+
+    // Handle 401 with token refresh
+    if (response.status === 401) {
+      const clonedResponse = response.clone();
+      let errorData: { message?: string; error?: string } = {};
+
+      try {
+        errorData = await clonedResponse.json();
+      } catch {
+        // Ignore parse error
+      }
+
+      // Check for expired JWT token
+      if (
+        errorData.message === 'Expired JWT Token' ||
+        errorData.error === 'Unauthorized'
+      ) {
+        decrementRequests();
+        return handleTokenRefresh({ endpoint, options });
+      }
+
+      // Clear user on other 401 errors
+      const userStore = useUserStore.getState();
+      userStore.logout();
+      if (typeof window !== 'undefined') {
+        window.location.href = '/signin';
+      }
+    }
+
+    decrementRequests();
+
+    if (!response.ok) {
+      const error = await handleErrorResponse(response);
+      throw error;
+    }
+
+    return handleSuccessResponse(response);
+  } catch (error) {
+    decrementRequests();
+    throw error;
+  }
+};
+
+// --- API Client Class ---
+
+class ApiClient {
+  async get<T = unknown>(endpoint: string, options?: FetchOptions): Promise<T> {
+    const response = await makeRequest(endpoint, { ...options, method: 'GET' });
+    return response.json();
+  }
+
+  async post<T = unknown>(
+    endpoint: string,
+    body?: unknown,
+    options?: FetchOptions
+  ): Promise<T> {
+    const response = await makeRequest(endpoint, {
+      ...options,
+      method: 'POST',
+      body,
+    });
+    return response.json();
+  }
+
+  async put<T = unknown>(
+    endpoint: string,
+    body?: unknown,
+    options?: FetchOptions
+  ): Promise<T> {
+    const response = await makeRequest(endpoint, {
+      ...options,
+      method: 'PUT',
+      body,
+    });
+    return response.json();
+  }
+
+  async patch<T = unknown>(
+    endpoint: string,
+    body?: unknown,
+    options?: FetchOptions
+  ): Promise<T> {
+    const response = await makeRequest(endpoint, {
+      ...options,
+      method: 'PATCH',
+      body,
+    });
+    return response.json();
+  }
+
+  async delete<T = unknown>(
+    endpoint: string,
+    options?: FetchOptions
+  ): Promise<T> {
+    const response = await makeRequest(endpoint, {
+      ...options,
+      method: 'DELETE',
+    });
+    return response.json();
+  }
+
+  // Raw response method (for cases where you need the raw Response object)
+  async raw(endpoint: string, options?: FetchOptions): Promise<Response> {
+    return makeRequest(endpoint, options);
+  }
+}
+
+// Export singleton
+export const apiClient = new ApiClient();

@@ -19,7 +19,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/stores/*": ["./src/stores/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/models/*": ["./src/models/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/core/*": ["./src/core/*"],
+      "@/guards/*": ["./src/guards/*"],
+      "@/layouts/*": ["./src/layouts/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/data/*": ["./src/data/*"]
     }
   },
   "include": [
