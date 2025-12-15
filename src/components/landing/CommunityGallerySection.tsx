@@ -1,46 +1,65 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import Image from 'next/image';
+import { Carousel } from 'primereact/carousel';
 
 interface GalleryImage {
   src: string;
   alt: string;
-  span?: 'wide' | 'tall' | 'normal';
+  category: string;
 }
 
 const galleryImages: GalleryImage[] = [
-  { src: 'https://placehold.co/800x400/1a2744/d4a84b?text=Worship+Gathering', alt: 'Worship gathering', span: 'wide' },
-  { src: 'https://placehold.co/400x400/4a3c6e/f5f0e6?text=Small+Group', alt: 'Small group fellowship', span: 'normal' },
-  { src: 'https://placehold.co/400x800/6b2c3a/f5f0e6?text=Youth+Ministry', alt: 'Youth ministry', span: 'tall' },
-  { src: 'https://placehold.co/400x400/1a2744/d4a84b?text=Outreach', alt: 'Community outreach', span: 'normal' },
-  { src: 'https://placehold.co/400x400/4a3c6e/f5f0e6?text=Family+Event', alt: 'Family event', span: 'normal' },
-  { src: 'https://placehold.co/800x400/d4a84b/1a2744?text=Volunteer+Team', alt: 'Volunteer team', span: 'wide' },
+  { src: 'https://placehold.co/600x400/1a2744/d4a84b?text=Worship', alt: 'Sunday Worship', category: 'Worship' },
+  { src: 'https://placehold.co/600x400/d4a84b/1a2744?text=Fellowship', alt: 'Fellowship Lunch', category: 'Fellowship' },
+  { src: 'https://placehold.co/600x400/1a2744/f5f0e6?text=Youth', alt: 'Youth Night', category: 'Youth' },
+  { src: 'https://placehold.co/600x400/d4a84b/1a2744?text=Outreach', alt: 'Community Outreach', category: 'Outreach' },
+  { src: 'https://placehold.co/600x400/1a2744/d4a84b?text=Kids', alt: 'Kids Ministry', category: 'Kids' },
+  { src: 'https://placehold.co/600x400/d4a84b/1a2744?text=Serve', alt: 'Volunteer Team', category: 'Serve' },
+];
+
+const responsiveOptions = [
+  {
+    breakpoint: '1400px',
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '1024px',
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '767px',
+    numVisible: 1,
+    numScroll: 1,
+  },
 ];
 
 export const CommunityGallerySection: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-  }, []);
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-  }, []);
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-    setIsAutoPlaying(false);
+  const imageTemplate = (image: GalleryImage) => {
+    return (
+      <div className="gallery-slide">
+        <div className="gallery-slide-inner">
+          <div className="gallery-slide-image">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="(max-width: 767px) 90vw, (max-width: 1024px) 45vw, 30vw"
+              className="gallery-image"
+              unoptimized
+            />
+          </div>
+          <div className="gallery-slide-content">
+            <span className="gallery-slide-category">{image.category}</span>
+            <h3 className="gallery-slide-title">{image.alt}</h3>
+          </div>
+        </div>
+      </div>
+    );
   };
-
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, nextSlide]);
 
   return (
     <section className="community-gallery-section" id="community">
@@ -48,93 +67,25 @@ export const CommunityGallerySection: React.FC = () => {
         <div className="section-header-center">
           <span className="section-label">Our Community</span>
           <h2>Life Together</h2>
-          <p>
-            Real moments from our vibrant church family. We laugh, serve, worship,
-            and grow together.
-          </p>
+          <p>Real moments from our vibrant church family</p>
         </div>
 
-        {/* Masonry Grid for Desktop */}
-        <div className="gallery-masonry">
-          {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              className={`gallery-item gallery-item-${image.span || 'normal'} animate-on-scroll`}
-            >
-              <div className="gallery-image-wrapper">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="gallery-image"
-                  unoptimized
-                />
-                <div className="gallery-overlay">
-                  <span className="gallery-caption">{image.alt}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Carousel for Mobile */}
-        <div className="gallery-carousel">
-          <div className="carousel-container">
-            <div
-              className="carousel-track"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {galleryImages.map((image, index) => (
-                <div key={index} className="carousel-slide">
-                  <div className="carousel-image-wrapper">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="100vw"
-                      className="carousel-image"
-                      priority={index === 0}
-                      unoptimized
-                    />
-                  </div>
-                  <p className="carousel-caption">{image.alt}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <button
-            className="carousel-btn carousel-btn-prev"
-            onClick={prevSlide}
-            aria-label="Previous image"
-          >
-            <i className="pi pi-chevron-left"></i>
-          </button>
-          <button
-            className="carousel-btn carousel-btn-next"
-            onClick={nextSlide}
-            aria-label="Next image"
-          >
-            <i className="pi pi-chevron-right"></i>
-          </button>
-
-          <div className="carousel-dots">
-            {galleryImages.map((_, index) => (
-              <button
-                key={index}
-                className={`carousel-dot ${index === currentSlide ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+        <div className="gallery-carousel-wrapper">
+          <Carousel
+            value={galleryImages}
+            numVisible={2}
+            numScroll={1}
+            responsiveOptions={responsiveOptions}
+            itemTemplate={imageTemplate}
+            circular
+            autoplayInterval={4000}
+            className="community-carousel"
+          />
         </div>
 
         <div className="gallery-cta">
-          <p>Want to be part of our story?</p>
-          <a href="#contact" className="landing-btn landing-btn-outline">
-            <i className="pi pi-heart"></i>
+          <a href="#contact" className="landing-btn landing-btn-primary">
+            <i className="pi pi-users"></i>
             Join Our Family
           </a>
         </div>
