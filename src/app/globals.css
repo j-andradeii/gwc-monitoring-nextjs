@@ -1,63 +1,76 @@
 @import "tailwindcss";
 
 /* ===========================================
-   CSS VARIABLES - GWC Church Theme (Gold Accent)
+   CSS VARIABLES - GWC Church Theme (Worship Sanctuary Palette)
+   Color palette inspired by church sanctuary ambiance:
+   - Deep Navy (#1a2744) - backgrounds, depth
+   - Royal Purple (#4a3c6e) - accent lighting
+   - Warm Gold/Amber (#d4a84b) - stage lighting, primary accent
+   - Soft Cream (#f5f0e6) - light areas
+   - Rich Burgundy (#6b2c3a) - accent color
    =========================================== */
 :root {
-  /* Brand Colors - Primary (Gold accent theme from Angular) */
-  --color-primary: #c0a067;
-  --color-primary-light: #d4bc8e;
-  --color-primary-dark: #a8894f;
+  /* Brand Colors - Primary (Warm Gold from sanctuary lighting) */
+  --color-primary: #d4a84b;
+  --color-primary-light: #e5c47a;
+  --color-primary-dark: #b8923f;
 
-  /* Secondary */
-  --color-secondary: #64748B;
-  --color-secondary-light: #94A3B8;
-  --color-secondary-dark: #475569;
+  /* Secondary (Royal Purple from accent lighting) */
+  --color-secondary: #4a3c6e;
+  --color-secondary-light: #6b5a8e;
+  --color-secondary-dark: #352a52;
 
-  /* Accent */
-  --color-accent: #c0a067;
-  --color-accent-light: #d4bc8e;
-  --color-accent-dark: #a8894f;
+  /* Accent (Rich Burgundy) */
+  --color-accent: #6b2c3a;
+  --color-accent-light: #8e4a5a;
+  --color-accent-dark: #4d1f2a;
 
   /* Semantic Colors */
   --color-success: #22C55E;
   --color-success-light: #4ADE80;
   --color-success-dark: #16A34A;
 
-  --color-warning: #F59E0B;
-  --color-warning-light: #FBBF24;
-  --color-warning-dark: #D97706;
+  --color-warning: #d4a84b;
+  --color-warning-light: #e5c47a;
+  --color-warning-dark: #b8923f;
 
-  --color-error: #EF4444;
-  --color-error-light: #F87171;
-  --color-error-dark: #DC2626;
+  --color-error: #6b2c3a;
+  --color-error-light: #8e4a5a;
+  --color-error-dark: #4d1f2a;
 
-  --color-info: #3B82F6;
-  --color-info-light: #60A5FA;
-  --color-info-dark: #2563EB;
+  --color-info: #4a3c6e;
+  --color-info-light: #6b5a8e;
+  --color-info-dark: #352a52;
 
-  /* Neutrals - Warm tones */
-  --color-background: #fdfcf8;
-  --color-foreground: #4a4a4a;
-  --color-muted: #7a7a7a;
-  --color-border: #f0ede8;
+  /* Neutrals - Warm sanctuary tones */
+  --color-background: #f5f0e6;
+  --color-foreground: #1a2744;
+  --color-muted: #4a5568;
+  --color-border: #e8e3d9;
   --color-surface: #ffffff;
 
   /* Landing/Public page theme */
-  --primary-gold-accent: #c0a067;
-  --background-main: #fdfcf8;
+  --primary-gold-accent: #d4a84b;
+  --background-main: #f5f0e6;
   --background-section: #ffffff;
-  --text-primary: #4a4a4a;
-  --text-secondary: #7a7a7a;
-  --border-color: #f0ede8;
-  --border-color-light: #f5f3ef;
+  --text-primary: #1a2744;
+  --text-secondary: #4a5568;
+  --border-color: #e8e3d9;
+  --border-color-light: #f0ebe1;
   --button-text-on-gold: #ffffff;
-  --button-text-on-light: #c0a067;
-  --header-background: rgba(253, 252, 248, 0.92);
-  --footer-background: #f8f5f0;
-  --shadow-color-soft: rgba(0, 0, 0, 0.04);
-  --shadow-color-medium: rgba(0, 0, 0, 0.07);
-  --gold-shadow-hover: rgba(192, 160, 103, 0.15);
+  --button-text-on-light: #d4a84b;
+  --header-background: rgba(245, 240, 230, 0.95);
+  --footer-background: #1a2744;
+  --shadow-color-soft: rgba(26, 39, 68, 0.06);
+  --shadow-color-medium: rgba(26, 39, 68, 0.1);
+  --gold-shadow-hover: rgba(212, 168, 75, 0.25);
+
+  /* New sanctuary-inspired colors */
+  --color-navy: #1a2744;
+  --color-purple: #4a3c6e;
+  --color-burgundy: #6b2c3a;
+  --color-cream: #f5f0e6;
+  --color-ivory: #faf8f3;
 
   /* Sidebar */
   --sidebar-width: 280px;
