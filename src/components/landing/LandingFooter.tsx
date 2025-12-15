@@ -61,7 +61,7 @@ export const LandingFooter: React.FC = () => {
             <div className="footer-contact">
               <h4>Service Times</h4>
               <p><i className="pi pi-calendar"></i> Sundays at 9:30 AM</p>
-              <p><i className="pi pi-map-marker"></i> Lex Hotel, Capitol Cebu</p>
+              <p><i className="pi pi-map-marker"></i> 8th Floor, Golden Peak, Gorordo Avenue</p>
               <p><i className="pi pi-envelope"></i> connect@gatewaychurch.com</p>
             </div>
           </div>

@@ -38,7 +38,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="service-info-divider"></div>
           <div className="service-info-item">
             <i className="pi pi-map-marker"></i>
-            <span>Lex Hotel, Capitol Cebu</span>
+            <span>8th Floor, Golden Peak, Gorordo Avenue</span>
           </div>
         </div>
       </div>
