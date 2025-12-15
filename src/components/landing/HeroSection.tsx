@@ -8,7 +8,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  backgroundImage = '/images/fam-picture.jpg',
+  backgroundImage = '/assets/images/fam-picture.jpg',
 }) => {
   return (
     <section

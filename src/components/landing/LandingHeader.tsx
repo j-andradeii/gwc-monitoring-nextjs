@@ -36,7 +36,7 @@ export const LandingHeader: React.FC = () => {
         <div className={`nav-menu-wrapper ${isMobileMenuOpen ? 'mobile-nav-active' : ''}`}>
           <ul className="nav-links">
             <li>
-              <Link href="#home" className="active" onClick={closeMobileMenu}>
+              <Link href="/" className="active" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
@@ -46,7 +46,7 @@ export const LandingHeader: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="#sermons" onClick={closeMobileMenu}>
+              <Link href="/sermon-notes" onClick={closeMobileMenu}>
                 Sermons
               </Link>
             </li>

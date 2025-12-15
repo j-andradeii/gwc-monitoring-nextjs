@@ -34,7 +34,7 @@ const events: Event[] = [
     title: 'Christmas Service',
     date: 'Dec 25',
     time: '9:30 AM',
-    location: 'Lex Hotel',
+    location: '8th Floor, Golden Peak, Gorordo Avenue',
     type: 'Worship',
   },
 ];

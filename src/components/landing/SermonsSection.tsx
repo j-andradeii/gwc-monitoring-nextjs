@@ -80,6 +80,7 @@ export const SermonsSection: React.FC = () => {
             </article>
           ))}
         </div>
+
       </div>
     </section>
   );

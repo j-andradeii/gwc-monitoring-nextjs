@@ -47,7 +47,7 @@ export const ContactSection: React.FC = () => {
                 </a>
                 <div className="contact-detail-item">
                   <i className="pi pi-map-marker"></i>
-                  <span>Lex Hotel, Ortigas Center</span>
+                  <span>8th Floor, Golden Peak, Gorordo Avenue</span>
                 </div>
               </div>
 

@@ -34,8 +34,8 @@ export const ChurchServiceSection: React.FC = () => {
             <div className="service-detail-item">
               <i className="pi pi-map-marker"></i>
               <div>
-                <strong>Lex Hotel</strong>
-                <span>2nd Floor, Capitol Cebu</span>
+                <strong>8th Floor, Golden Peak</strong>
+                <span>Gorordo Avenue</span>
               </div>
             </div>
           </div>

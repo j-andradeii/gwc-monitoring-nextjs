@@ -745,7 +745,7 @@
 /* Hover States */
 .collage-item:hover .collage-image,
 .collage-item.active .collage-image {
-  transform: scale(1.08);
+  transform: scale(1.3);
 }
 
 /* Dim effect for non-hovered items */
