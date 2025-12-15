@@ -661,125 +661,119 @@
   margin: 0 auto;
 }
 
-/* PrimeReact Carousel Overrides */
-.gallery-carousel-wrapper {
-  margin: 0 -10px;
+/* Interactive Collage Grid - 10 images */
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 180px);
+  gap: 12px;
 }
 
-.community-carousel .p-carousel-content {
-  padding: 10px 0;
-}
-
-.community-carousel .p-carousel-prev,
-.community-carousel .p-carousel-next {
-  width: 48px;
-  height: 48px;
-  background: #ffffff;
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  color: var(--text-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.community-carousel .p-carousel-prev:hover,
-.community-carousel .p-carousel-next:hover {
-  background: var(--primary-gold-accent);
-  border-color: var(--primary-gold-accent);
-  color: #ffffff;
-}
-
-.community-carousel .p-carousel-prev:focus,
-.community-carousel .p-carousel-next:focus {
-  box-shadow: 0 0 0 2px rgba(212, 168, 75, 0.2);
-}
-
-.community-carousel .p-carousel-indicators {
-  padding: 16px 0 0;
-}
-
-.community-carousel .p-carousel-indicator button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--border-color);
-  transition: all 0.3s ease;
-}
-
-.community-carousel .p-carousel-indicator.p-highlight button {
-  background: var(--primary-gold-accent);
-  width: 24px;
-  border-radius: 5px;
-}
-
-/* Gallery Slide */
-.gallery-slide {
-  padding: 12px;
-}
-
-.gallery-slide-inner {
+.collage-item {
   position: relative;
-  border-radius: 20px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s ease;
-  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-slide-inner:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+/* Row 1: Large left (2x2), medium center, small right stacked */
+.collage-item-1 {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
-.gallery-slide-image {
+.collage-item-2 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.collage-item-3 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Row 2 continuation */
+.collage-item-4 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.collage-item-5 {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.collage-item-6 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Row 3 */
+.collage-item-7 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.collage-item-8 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.collage-item-9 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.collage-item-10 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.collage-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/10;
-  min-height: 280px;
+  height: 100%;
 }
 
-.gallery-slide-image .gallery-image {
+.collage-image {
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-slide-inner:hover .gallery-image {
-  transform: scale(1.05);
+/* Hover States */
+.collage-item:hover .collage-image,
+.collage-item.active .collage-image {
+  transform: scale(1.08);
 }
 
-.gallery-slide-content {
+/* Dim effect for non-hovered items */
+.collage-item.dimmed {
+  opacity: 0.5;
+  transform: scale(0.97);
+}
+
+/* Shadow on hover */
+.collage-item::after {
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 28px;
-  background: linear-gradient(to top, rgba(26, 39, 68, 0.95) 0%, rgba(26, 39, 68, 0.6) 60%, transparent 100%);
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(26, 39, 68, 0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
-.gallery-slide-category {
-  display: inline-block;
-  padding: 6px 14px;
-  background: var(--primary-gold-accent);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.gallery-slide-title {
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 600;
-  margin: 0;
+.collage-item:hover::after,
+.collage-item.active::after {
+  opacity: 1;
 }
 
 /* Gallery CTA */
 .gallery-cta {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 48px;
 }
 
 /* ===========================================
@@ -1211,11 +1205,61 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Gallery tablet */
-  .community-carousel .p-carousel-prev,
-  .community-carousel .p-carousel-next {
-    width: 40px;
-    height: 40px;
+  /* Collage tablet - 10 images */
+  .collage-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 150px);
+    gap: 10px;
+  }
+
+  .collage-item-1 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .collage-item-2 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .collage-item-3 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .collage-item-4 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .collage-item-5 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .collage-item-6 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .collage-item-7 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .collage-item-8 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .collage-item-9 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .collage-item-10 {
+    grid-column: span 2;
+    grid-row: span 1;
   }
 
   .footer-main {
@@ -1364,23 +1408,33 @@
     opacity: 1;
   }
 
-  /* Gallery mobile */
+  /* Collage mobile - 10 images */
   .community-gallery-section {
     padding: 60px 0 !important;
   }
 
-  .gallery-slide-title {
-    font-size: 16px;
+  .collage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 140px);
+    gap: 8px;
   }
 
-  .gallery-slide-content {
-    padding: 16px;
+  .collage-item-1,
+  .collage-item-2,
+  .collage-item-3,
+  .collage-item-4,
+  .collage-item-5,
+  .collage-item-6,
+  .collage-item-7,
+  .collage-item-8,
+  .collage-item-9,
+  .collage-item-10 {
+    grid-column: span 1;
+    grid-row: span 1;
   }
 
-  .community-carousel .p-carousel-prev,
-  .community-carousel .p-carousel-next {
-    width: 36px;
-    height: 36px;
+  .collage-item {
+    border-radius: 8px;
   }
 
   .event-card {

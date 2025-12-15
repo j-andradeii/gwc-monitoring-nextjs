@@ -6,7 +6,7 @@
 
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import '@/styles/landing.css';
@@ -106,18 +106,9 @@ const sermonNotes: SermonNote[] = [
 const seriesOptions = ['All Series', 'Faith Foundations', 'Better Together', 'Destiny', 'Generosity'];
 
 export default function SermonNotesPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedSeries, setSelectedSeries] = useState('All Series');
   const [searchQuery, setSearchQuery] = useState('');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
 
   const filteredSermons = useMemo(() => {
     return sermonNotes.filter((sermon) => {
@@ -145,11 +136,7 @@ export default function SermonNotesPage() {
 
   return (
     <div className="landing-page">
-      <LandingHeader
-        isMobileMenuOpen={isMobileMenuOpen}
-        toggleMobileMenu={toggleMobileMenu}
-        closeMobileMenu={closeMobileMenu}
-      />
+      <LandingHeader />
 
       {/* Hero Banner */}
       <section

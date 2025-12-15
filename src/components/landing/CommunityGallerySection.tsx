@@ -1,65 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { Carousel } from 'primereact/carousel';
 
 interface GalleryImage {
+  id: number;
   src: string;
   alt: string;
-  category: string;
 }
 
 const galleryImages: GalleryImage[] = [
-  { src: 'https://placehold.co/600x400/1a2744/d4a84b?text=Worship', alt: 'Sunday Worship', category: 'Worship' },
-  { src: 'https://placehold.co/600x400/d4a84b/1a2744?text=Fellowship', alt: 'Fellowship Lunch', category: 'Fellowship' },
-  { src: 'https://placehold.co/600x400/1a2744/f5f0e6?text=Youth', alt: 'Youth Night', category: 'Youth' },
-  { src: 'https://placehold.co/600x400/d4a84b/1a2744?text=Outreach', alt: 'Community Outreach', category: 'Outreach' },
-  { src: 'https://placehold.co/600x400/1a2744/d4a84b?text=Kids', alt: 'Kids Ministry', category: 'Kids' },
-  { src: 'https://placehold.co/600x400/d4a84b/1a2744?text=Serve', alt: 'Volunteer Team', category: 'Serve' },
-];
-
-const responsiveOptions = [
-  {
-    breakpoint: '1400px',
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: '1024px',
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: '767px',
-    numVisible: 1,
-    numScroll: 1,
-  },
+  { id: 1, src: 'https://placehold.co/800x600/1a2744/d4a84b?text=1', alt: 'Sunday Worship' },
+  { id: 2, src: 'https://placehold.co/600x600/d4a84b/1a2744?text=2', alt: 'Fellowship Lunch' },
+  { id: 3, src: 'https://placehold.co/600x400/1a2744/f5f0e6?text=3', alt: 'Youth Night' },
+  { id: 4, src: 'https://placehold.co/600x400/d4a84b/1a2744?text=4', alt: 'Community Outreach' },
+  { id: 5, src: 'https://placehold.co/800x600/1a2744/d4a84b?text=5', alt: 'Kids Ministry' },
+  { id: 6, src: 'https://placehold.co/600x600/d4a84b/1a2744?text=6', alt: 'Volunteer Team' },
+  { id: 7, src: 'https://placehold.co/600x400/1a2744/f5f0e6?text=7', alt: 'Prayer Meeting' },
+  { id: 8, src: 'https://placehold.co/800x600/d4a84b/1a2744?text=8', alt: 'Baptism Service' },
+  { id: 9, src: 'https://placehold.co/600x600/1a2744/d4a84b?text=9', alt: 'Small Groups' },
+  { id: 10, src: 'https://placehold.co/600x400/d4a84b/1a2744?text=10', alt: 'Mission Trip' },
 ];
 
 export const CommunityGallerySection: React.FC = () => {
-  const imageTemplate = (image: GalleryImage) => {
-    return (
-      <div className="gallery-slide">
-        <div className="gallery-slide-inner">
-          <div className="gallery-slide-image">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes="(max-width: 767px) 90vw, (max-width: 1024px) 45vw, 30vw"
-              className="gallery-image"
-              unoptimized
-            />
-          </div>
-          <div className="gallery-slide-content">
-            <span className="gallery-slide-category">{image.category}</span>
-            <h3 className="gallery-slide-title">{image.alt}</h3>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
     <section className="community-gallery-section" id="community">
@@ -70,17 +34,26 @@ export const CommunityGallerySection: React.FC = () => {
           <p>Real moments from our vibrant church family</p>
         </div>
 
-        <div className="gallery-carousel-wrapper">
-          <Carousel
-            value={galleryImages}
-            numVisible={2}
-            numScroll={1}
-            responsiveOptions={responsiveOptions}
-            itemTemplate={imageTemplate}
-            circular
-            autoplayInterval={4000}
-            className="community-carousel"
-          />
+        <div className="collage-grid">
+          {galleryImages.map((image, index) => (
+            <div
+              key={image.id}
+              className={`collage-item collage-item-${index + 1} ${hoveredId === image.id ? 'active' : ''} ${hoveredId && hoveredId !== image.id ? 'dimmed' : ''}`}
+              onMouseEnter={() => setHoveredId(image.id)}
+              onMouseLeave={() => setHoveredId(null)}
+            >
+              <div className="collage-image-wrapper">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="collage-image"
+                  unoptimized
+                />
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="gallery-cta">
