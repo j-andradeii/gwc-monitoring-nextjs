@@ -19,18 +19,14 @@ import { useLoadingStore } from '@/stores/loading.store';
 import { useResponsive } from '@/hooks/useResponsive';
 
 export interface AdminLayoutProps {
-  /** Page content */
   children: React.ReactNode;
-  /** Show footer */
   showFooter?: boolean;
-  /** Show breadcrumbs */
   showBreadcrumbs?: boolean;
-  /** Additional CSS classes for main content */
   className?: string;
 }
 
 const SIDEBAR_WIDTH = 280;
-const SIDEBAR_COLLAPSED_WIDTH = 0;
+const HEADER_HEIGHT = 72;
 
 export function AdminLayout({
   children,
@@ -42,7 +38,6 @@ export function AdminLayout({
   const { isOpen, setIsOpen, close } = useSidebarStore();
   const { isLoading } = useLoadingStore();
 
-  // Auto-close sidebar on mobile (< 768px), auto-open on desktop
   useEffect(() => {
     if (isMobile) {
       setIsOpen(false);
@@ -51,199 +46,139 @@ export function AdminLayout({
     }
   }, [isMobile, setIsOpen]);
 
-  // Close sidebar when clicking overlay on mobile
   const handleOverlayClick = useCallback(() => {
     if (isMobile && isOpen) {
       close();
     }
   }, [isMobile, isOpen, close]);
 
-  // Get sidebar width based on state
-  const sidebarWidth = isOpen ? SIDEBAR_WIDTH : SIDEBAR_COLLAPSED_WIDTH;
+  // Dynamic styles
+  const layoutStyle: React.CSSProperties = {
+    minHeight: '100vh',
+    background: 'linear-gradient(160deg, #f9f8f6 0%, #f5f4f2 50%, #f1f0ed 100%)',
+    position: 'relative',
+  };
+
+  const headerStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: HEADER_HEIGHT,
+    zIndex: 100,
+  };
+
+  const overlayStyle: React.CSSProperties = {
+    position: 'fixed',
+    inset: 0,
+    background: 'rgba(26, 26, 26, 0.6)',
+    backdropFilter: 'blur(6px)',
+    WebkitBackdropFilter: 'blur(6px)',
+    zIndex: 90,
+    opacity: isMobile && isOpen ? 1 : 0,
+    visibility: isMobile && isOpen ? 'visible' : 'hidden',
+    transition: 'opacity 0.3s ease, visibility 0.3s ease',
+  };
+
+  const sidebarStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: isMobile ? 0 : HEADER_HEIGHT,
+    left: 0,
+    bottom: 0,
+    width: SIDEBAR_WIDTH,
+    zIndex: isMobile ? 110 : 95,
+    transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+    transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease',
+    boxShadow: isMobile ? '6px 0 24px rgba(0, 0, 0, 0.12)' : 'none',
+  };
+
+  const sidebarInnerStyle: React.CSSProperties = {
+    height: '100%',
+    background: '#ffffff',
+    borderRight: '1px solid rgba(0, 0, 0, 0.05)',
+    boxShadow: '2px 0 16px rgba(0, 0, 0, 0.03)',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    paddingTop: isMobile ? HEADER_HEIGHT : 0,
+  };
+
+  const mainStyle: React.CSSProperties = {
+    minHeight: '100vh',
+    paddingTop: HEADER_HEIGHT,
+    marginLeft: isOpen && !isMobile ? SIDEBAR_WIDTH : 0,
+    transition: 'margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  };
+
+  const contentStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
+  };
+
+  const breadcrumbsStyle: React.CSSProperties = {
+    padding: '14px 24px',
+    background: 'rgba(255, 255, 255, 0.95)',
+    backdropFilter: 'blur(10px)',
+    WebkitBackdropFilter: 'blur(10px)',
+    borderBottom: '1px solid rgba(0, 0, 0, 0.04)',
+    position: 'sticky',
+    top: HEADER_HEIGHT,
+    zIndex: 50,
+  };
+
+  const pageContentStyle: React.CSSProperties = {
+    flex: 1,
+    padding: '24px',
+  };
+
+  const footerContainerStyle: React.CSSProperties = {
+    marginTop: 'auto',
+  };
 
   return (
     <ToastProvider>
-      <div className="admin-layout">
+      <div style={layoutStyle}>
         {/* Fixed Header */}
-        <Header />
+        <header style={headerStyle}>
+          <Header />
+        </header>
 
-        {/* Mobile overlay when sidebar is open */}
-        {isMobile && isOpen && (
-          <div
-            className="sidebar-overlay"
-            onClick={handleOverlayClick}
-            aria-hidden="true"
-          />
-        )}
+        {/* Mobile overlay */}
+        <div
+          style={overlayStyle}
+          onClick={handleOverlayClick}
+          aria-hidden="true"
+        />
 
         {/* Sidebar */}
-        <aside
-          className={`admin-sidebar ${isOpen ? 'sidebar-open' : 'sidebar-closed'} ${
-            isMobile ? 'sidebar-mobile' : 'sidebar-desktop'
-          }`}
-        >
-          <Sidebar />
+        <aside style={sidebarStyle}>
+          <div style={sidebarInnerStyle}>
+            <Sidebar />
+          </div>
         </aside>
 
-        {/* Main content area */}
-        <div
-          className="admin-main"
-          style={{
-            marginLeft: isMobile ? 0 : sidebarWidth,
-          }}
-        >
-          <div className="admin-content">
-            {/* Breadcrumbs */}
+        {/* Main content */}
+        <main style={mainStyle}>
+          <div style={contentStyle}>
             {showBreadcrumbs && (
-              <div className="breadcrumbs-container">
+              <div style={breadcrumbsStyle}>
                 <Breadcrumbs />
               </div>
             )}
 
-            {/* Page content */}
-            <main className={`page-content ${className}`}>{children}</main>
+            <div style={pageContentStyle} className={className}>
+              {children}
+            </div>
 
-            {/* Footer */}
             {showFooter && (
-              <Footer isAdmin />
+              <div style={footerContainerStyle}>
+                <Footer isAdmin />
+              </div>
             )}
           </div>
-        </div>
+        </main>
 
-        {/* Global Loading Spinner */}
         {isLoading && <PageSpinner />}
-
-        <style jsx>{`
-          .admin-layout {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-          }
-
-          /* Sidebar overlay for mobile */
-          .sidebar-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 40;
-            transition: opacity 0.3s ease;
-          }
-
-          /* Sidebar styles */
-          .admin-sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: ${SIDEBAR_WIDTH}px;
-            padding-top: 100px; /* Account for header height */
-            background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
-            border-right: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 45;
-            overflow-y: auto;
-            overflow-x: hidden;
-          }
-
-          .admin-sidebar::-webkit-scrollbar {
-            width: 6px;
-          }
-
-          .admin-sidebar::-webkit-scrollbar-track {
-            background: transparent;
-          }
-
-          .admin-sidebar::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 3px;
-          }
-
-          .admin-sidebar::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.2);
-          }
-
-          /* Desktop sidebar states */
-          .sidebar-desktop.sidebar-open {
-            transform: translateX(0);
-          }
-
-          .sidebar-desktop.sidebar-closed {
-            transform: translateX(-100%);
-          }
-
-          /* Mobile sidebar states */
-          .sidebar-mobile {
-            z-index: 50;
-          }
-
-          .sidebar-mobile.sidebar-open {
-            transform: translateX(0);
-          }
-
-          .sidebar-mobile.sidebar-closed {
-            transform: translateX(-100%);
-          }
-
-          /* Main content area */
-          .admin-main {
-            min-height: 100vh;
-            padding-top: 100px; /* Account for header height */
-            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-
-          .admin-content {
-            display: flex;
-            flex-direction: column;
-            min-height: calc(100vh - 100px);
-            padding: 0;
-          }
-
-          /* Breadcrumbs container */
-          .breadcrumbs-container {
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-          }
-
-          /* Page content */
-          .page-content {
-            flex: 1;
-            padding: 1.5rem;
-          }
-
-          /* Responsive adjustments */
-          @media (max-width: 767px) {
-            .admin-main {
-              margin-left: 0 !important;
-            }
-
-            .page-content {
-              padding: 1rem;
-            }
-
-            .breadcrumbs-container {
-              padding: 0.75rem 1rem;
-            }
-          }
-
-          @media (min-width: 768px) {
-            .page-content {
-              padding: 2rem;
-            }
-
-            .breadcrumbs-container {
-              padding: 1rem 2rem;
-            }
-          }
-
-          @media (min-width: 1024px) {
-            .page-content {
-              padding: 2rem 2.5rem;
-            }
-          }
-        `}</style>
       </div>
     </ToastProvider>
   );

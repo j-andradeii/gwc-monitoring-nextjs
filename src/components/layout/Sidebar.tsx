@@ -1,13 +1,12 @@
 /**
  * Sidebar Component
  *
- * Main navigation sidebar
- * Follows the Angular church-campus-admin sidebar layout
+ * Modern, minimalist navigation sidebar
  */
 
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSidebarStore } from '@/stores/sidebar.store';
@@ -25,7 +24,7 @@ export interface SidebarMenuItem {
   isHeader?: boolean;
 }
 
-// Menu structure matching Angular SidebarMenuComponent
+// Menu structure
 const menuItems: SidebarMenuItem[] = [
   // HOME Section
   {
@@ -35,7 +34,7 @@ const menuItems: SidebarMenuItem[] = [
   },
   {
     label: 'Dashboard',
-    icon: 'pi pi-home',
+    icon: 'pi pi-th-large',
     path: ROUTES.DASHBOARD,
   },
   {
@@ -133,15 +132,15 @@ const menuItems: SidebarMenuItem[] = [
 ];
 
 export interface SidebarProps {
-  /** Additional CSS classes */
   className?: string;
 }
 
 export function Sidebar({ className = '' }: SidebarProps) {
   const pathname = usePathname();
-  const { isOpen, close, expandedItems, toggleExpand } = useSidebarStore();
+  const { close, expandedItems, toggleExpand } = useSidebarStore();
   const { hasRole } = useAuth();
   const { isMobile } = useResponsive();
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const isActive = (path?: string) => {
     if (!path) return false;
@@ -164,10 +163,8 @@ export function Sidebar({ className = '' }: SidebarProps) {
     // Render header items (section dividers)
     if (item.isHeader) {
       return (
-        <li key={item.label} className="pt-4 pb-2 first:pt-0">
-          <span className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-            {item.label}
-          </span>
+        <li key={item.label} style={styles.sectionHeader}>
+          <span style={styles.sectionLabel}>{item.label}</span>
         </li>
       );
     }
@@ -175,14 +172,42 @@ export function Sidebar({ className = '' }: SidebarProps) {
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.includes(item.label);
     const active = isParentActive(item);
+    const isSubmenuItem = depth > 0;
+    const isHovered = hoveredItem === item.label;
+
+    const menuItemStyle: React.CSSProperties = {
+      ...styles.menuItem,
+      ...(isHovered && !active && styles.menuItemHover),
+      ...(active && styles.menuItemActive),
+      ...(isSubmenuItem && styles.submenuItem),
+    };
+
+    const iconContainerStyle: React.CSSProperties = {
+      ...styles.iconContainer,
+      ...(isHovered && !active && styles.iconContainerHover),
+      ...(active && styles.iconContainerActive),
+      ...(isSubmenuItem && styles.submenuIconContainer),
+    };
+
+    const labelStyle: React.CSSProperties = {
+      ...styles.menuLabel,
+      ...(isHovered && styles.menuLabelHover),
+      ...(active && styles.menuLabelActive),
+      ...(isSubmenuItem && styles.submenuLabel),
+      ...(isSubmenuItem && active && styles.submenuLabelActive),
+    };
+
+    const iconStyle: React.CSSProperties = isSubmenuItem
+      ? { ...styles.submenuIcon, ...(active && styles.submenuIconActive) }
+      : active
+        ? styles.iconActive
+        : isHovered
+          ? styles.iconHover
+          : styles.icon;
 
     const itemContent = (
       <div
-        className={`flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors ${
-          active
-            ? 'bg-primary/10 text-primary'
-            : 'text-gray-600 hover:bg-gray-100'
-        } ${depth > 0 ? 'ml-6' : ''}`}
+        style={menuItemStyle}
         onClick={() => {
           if (hasChildren) {
             toggleExpand(item.label);
@@ -190,28 +215,32 @@ export function Sidebar({ className = '' }: SidebarProps) {
             close();
           }
         }}
+        onMouseEnter={() => setHoveredItem(item.label)}
+        onMouseLeave={() => setHoveredItem(null)}
       >
-        <i className={`${item.icon} text-lg`} />
-        <span className="flex-1 font-medium">{item.label}</span>
-        {item.badge && (
-          <span className="px-2 py-0.5 text-xs bg-primary text-white rounded-full">
-            {item.badge}
-          </span>
-        )}
+        {active && !isSubmenuItem && <span style={styles.activeIndicator} />}
+        <span style={iconContainerStyle}>
+          <i className={item.icon} style={iconStyle} />
+        </span>
+        <span style={labelStyle}>{item.label}</span>
+        {item.badge && <span style={styles.badge}>{item.badge}</span>}
         {hasChildren && (
           <i
-            className={`pi ${
-              isExpanded ? 'pi-chevron-down' : 'pi-chevron-right'
-            } text-sm transition-transform`}
+            className={`pi ${isExpanded ? 'pi-chevron-down' : 'pi-chevron-right'}`}
+            style={{ ...styles.expandIcon, ...(isExpanded && styles.expandIconOpen) }}
           />
         )}
       </div>
     );
 
     return (
-      <li key={item.label}>
+      <li key={item.label} style={styles.menuItemWrapper}>
         {item.path && !hasChildren ? (
-          <Link href={item.path} onClick={() => isMobile && close()}>
+          <Link
+            href={item.path}
+            onClick={() => isMobile && close()}
+            style={styles.link}
+          >
             {itemContent}
           </Link>
         ) : (
@@ -219,8 +248,8 @@ export function Sidebar({ className = '' }: SidebarProps) {
         )}
 
         {/* Children */}
-        {hasChildren && isExpanded && (
-          <ul className="mt-1 space-y-1">
+        {hasChildren && (
+          <ul style={{ ...styles.submenu, ...(isExpanded && styles.submenuExpanded) }}>
             {item.children!.map((child) => renderMenuItem(child, depth + 1))}
           </ul>
         )}
@@ -228,52 +257,236 @@ export function Sidebar({ className = '' }: SidebarProps) {
     );
   };
 
-  // Backdrop for mobile (overlay sidebar)
-  const backdrop = isMobile && isOpen && (
-    <div
-      className="fixed inset-0 bg-black/50 z-40"
-      onClick={close}
-      aria-hidden="true"
-    />
-  );
-
   return (
-    <>
-      {backdrop}
-      <aside className={`sidebar-container ${className}`}>
-        {/* Sidebar body with menu */}
-        <div className="sidebar-body pt-2 pb-2">
-          <nav className="p-2">
-            <ul className="space-y-1">
-              {menuItems.map((item) => renderMenuItem(item))}
-            </ul>
-          </nav>
+    <aside style={{ ...styles.container, ...(className ? {} : {}) }} className={className}>
+      <div style={styles.body}>
+        <nav>
+          <ul style={styles.menuList}>
+            {menuItems.map((item) => renderMenuItem(item))}
+          </ul>
+        </nav>
+      </div>
+
+      <div style={styles.footer}>
+        <div style={styles.footerContent}>
+          <span style={styles.footerIcon}>
+            <i className="pi pi-shield" style={{ fontSize: '16px', color: '#fff' }} />
+          </span>
+          <div style={styles.footerText}>
+            <span style={styles.footerTitle}>Need Help?</span>
+            <span style={styles.footerLink}>Contact Support</span>
+          </div>
         </div>
-
-        {/* Sidebar footer (placeholder for future use) */}
-        <div className="sidebar-footer" />
-
-        {/* Sidebar styles matching Angular SCSS */}
-        <style jsx>{`
-          .sidebar-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .sidebar-body {
-            flex: 1;
-            overflow-y: auto;
-          }
-
-          .sidebar-footer {
-            /* Reserved for future footer content */
-          }
-        `}</style>
-      </aside>
-    </>
+      </div>
+    </aside>
   );
 }
+
+const styles: Record<string, React.CSSProperties> = {
+  container: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#ffffff',
+  },
+  body: {
+    flex: 1,
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    padding: '16px 12px',
+  },
+  menuList: {
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  sectionHeader: {
+    padding: '24px 12px 10px',
+  },
+  sectionLabel: {
+    fontSize: '10px',
+    fontWeight: 700,
+    textTransform: 'uppercase' as const,
+    letterSpacing: '1.2px',
+    color: '#9ca3af',
+  },
+  menuItemWrapper: {
+    marginBottom: '4px',
+  },
+  link: {
+    textDecoration: 'none',
+    display: 'block',
+  },
+  menuItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '10px 12px',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    backgroundColor: 'transparent',
+    position: 'relative' as const,
+  },
+  menuItemHover: {
+    backgroundColor: '#f9fafb',
+  },
+  menuItemActive: {
+    backgroundColor: 'rgba(192, 160, 103, 0.08)',
+  },
+  activeIndicator: {
+    position: 'absolute' as const,
+    left: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: '3px',
+    height: '20px',
+    backgroundColor: '#c0a067',
+    borderRadius: '0 4px 4px 0',
+  },
+  iconContainer: {
+    width: '34px',
+    height: '34px',
+    borderRadius: '8px',
+    backgroundColor: '#f3f4f6',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    transition: 'all 0.2s ease',
+  },
+  iconContainerHover: {
+    backgroundColor: '#e5e7eb',
+  },
+  iconContainerActive: {
+    backgroundColor: '#c0a067',
+    boxShadow: '0 2px 8px rgba(192, 160, 103, 0.3)',
+  },
+  icon: {
+    fontSize: '14px',
+    color: '#6b7280',
+  },
+  iconHover: {
+    fontSize: '14px',
+    color: '#4b5563',
+  },
+  iconActive: {
+    fontSize: '14px',
+    color: '#ffffff',
+  },
+  menuLabel: {
+    flex: 1,
+    fontSize: '14px',
+    fontWeight: 500,
+    color: '#374151',
+    whiteSpace: 'nowrap' as const,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    transition: 'color 0.2s ease',
+  },
+  menuLabelHover: {
+    color: '#1f2937',
+  },
+  menuLabelActive: {
+    fontWeight: 600,
+    color: '#1f2937',
+  },
+  badge: {
+    padding: '3px 8px',
+    borderRadius: '12px',
+    fontSize: '10px',
+    fontWeight: 600,
+    backgroundColor: '#c0a067',
+    color: '#ffffff',
+  },
+  expandIcon: {
+    fontSize: '10px',
+    color: '#9ca3af',
+    transition: 'transform 0.2s ease',
+  },
+  expandIconOpen: {
+    color: '#c0a067',
+  },
+  submenu: {
+    listStyle: 'none',
+    margin: 0,
+    padding: '4px 0 0 0',
+    maxHeight: 0,
+    overflow: 'hidden',
+    transition: 'max-height 0.25s ease',
+  },
+  submenuExpanded: {
+    maxHeight: '500px',
+  },
+  submenuItem: {
+    paddingLeft: '44px',
+    paddingTop: '8px',
+    paddingBottom: '8px',
+    borderRadius: '8px',
+  },
+  submenuIconContainer: {
+    width: '28px',
+    height: '28px',
+    backgroundColor: 'transparent',
+  },
+  submenuIcon: {
+    fontSize: '13px',
+    color: '#9ca3af',
+  },
+  submenuIconActive: {
+    color: '#c0a067',
+  },
+  submenuLabel: {
+    fontSize: '13px',
+    fontWeight: 400,
+    color: '#6b7280',
+  },
+  submenuLabelActive: {
+    fontWeight: 500,
+    color: '#c0a067',
+  },
+  footer: {
+    padding: '16px 12px',
+    borderTop: '1px solid #f3f4f6',
+  },
+  footerContent: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '14px',
+    backgroundColor: '#fafaf9',
+    borderRadius: '12px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    border: '1px solid #f3f4f6',
+  },
+  footerIcon: {
+    width: '38px',
+    height: '38px',
+    borderRadius: '10px',
+    backgroundColor: '#c0a067',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    boxShadow: '0 2px 8px rgba(192, 160, 103, 0.25)',
+  },
+  footerText: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: '2px',
+  },
+  footerTitle: {
+    fontSize: '13px',
+    fontWeight: 600,
+    color: '#1f2937',
+  },
+  footerLink: {
+    fontSize: '11px',
+    color: '#c0a067',
+    fontWeight: 600,
+  },
+};
 
 export default Sidebar;

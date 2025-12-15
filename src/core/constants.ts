@@ -57,7 +57,7 @@ export const HTTP_STATUS = {
 export const ROUTES = {
   HOME: '/',
   SIGNIN: '/signin',
-  DASHBOARD: '/church-campus-admin/dashboard',
+  DASHBOARD: '/church-campus-admin',
   CHURCH_DETAIL: '/church-campus-admin/church-detail',
   CHURCH_INFO: '/church-campus-admin/church-detail/church-info',
   PASTORAL_STAFFS: '/church-campus-admin/church-detail/pastoral-staffs',

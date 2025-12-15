@@ -553,3 +553,38 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400;
 }
+
+/* ===========================================
+   SIDEBAR MENU STYLES
+   =========================================== */
+.sidebar-container .section-label {
+  color: #4b5563 !important;
+}
+
+.sidebar-container .menu-item {
+  color: #111827 !important;
+}
+
+.sidebar-container .menu-item-label {
+  color: #111827 !important;
+}
+
+.sidebar-container .menu-item-icon i {
+  color: #374151 !important;
+}
+
+.sidebar-container .menu-item.active .menu-item-label {
+  color: #1f2937 !important;
+}
+
+.sidebar-container .submenu-item .menu-item-label {
+  color: #1f2937 !important;
+}
+
+.sidebar-container .submenu-item .menu-item-icon i {
+  color: #4b5563 !important;
+}
+
+.sidebar-container .expand-icon {
+  color: #6b7280 !important;
+}
