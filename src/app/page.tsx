@@ -11,6 +11,7 @@ import {
   HeroSection,
   AboutSection,
   MissionSection,
+  CommunityGallerySection,
   ChurchServiceSection,
   SermonsSection,
   MinistriesSection,
@@ -29,6 +30,7 @@ export default function LandingPage() {
           <HeroSection />
           <AboutSection />
           <MissionSection />
+          <CommunityGallerySection />
           <ChurchServiceSection />
           <SermonsSection />
           <MinistriesSection />
