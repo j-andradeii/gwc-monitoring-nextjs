@@ -39,6 +39,9 @@ export const getMembers = async (
       sortBy: params.sortBy,
       sortDirection: params.sortDirection,
       search: params.search,
+      gender: params.gender,
+      affiliation: params.affiliation,
+      civil_status: params.civil_status,
     });
 
     const endpoint = `members${queryParams ? `?${queryParams}` : ''}`;

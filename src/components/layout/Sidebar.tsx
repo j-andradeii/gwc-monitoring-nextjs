@@ -2,6 +2,7 @@
  * Sidebar Component
  *
  * Main navigation sidebar
+ * Follows the Angular church-campus-admin sidebar layout
  */
 
 'use client';
@@ -21,20 +22,28 @@ export interface SidebarMenuItem {
   children?: SidebarMenuItem[];
   roles?: string[];
   badge?: string | number;
+  isHeader?: boolean;
 }
 
+// Menu structure matching Angular SidebarMenuComponent
 const menuItems: SidebarMenuItem[] = [
+  // HOME Section
+  {
+    label: 'HOME',
+    icon: '',
+    isHeader: true,
+  },
   {
     label: 'Dashboard',
     icon: 'pi pi-home',
     path: ROUTES.DASHBOARD,
   },
   {
-    label: 'Church Detail',
+    label: 'Church Information',
     icon: 'pi pi-building',
     children: [
       {
-        label: 'Church Info',
+        label: 'Church Detail',
         icon: 'pi pi-info-circle',
         path: ROUTES.CHURCH_INFO,
       },
@@ -44,7 +53,7 @@ const menuItems: SidebarMenuItem[] = [
         path: ROUTES.PASTORAL_STAFFS,
       },
       {
-        label: 'Church Config',
+        label: 'Configuration',
         icon: 'pi pi-cog',
         path: ROUTES.CHURCH_CONFIG,
         roles: ['SENIOR_PASTOR'],
@@ -52,7 +61,18 @@ const menuItems: SidebarMenuItem[] = [
     ],
   },
   {
-    label: 'Church Members',
+    label: 'Campaigns',
+    icon: 'pi pi-megaphone',
+    path: ROUTES.CHURCH_CAMPAIGNS,
+  },
+  // MEMBERS Section
+  {
+    label: 'MEMBERS',
+    icon: '',
+    isHeader: true,
+  },
+  {
+    label: 'Gateway Church Members',
     icon: 'pi pi-users',
     children: [
       {
@@ -72,10 +92,43 @@ const menuItems: SidebarMenuItem[] = [
       },
     ],
   },
+  // WINNING Section
   {
-    label: 'Campaigns',
-    icon: 'pi pi-megaphone',
-    path: ROUTES.CHURCH_CAMPAIGNS,
+    label: 'WINNING',
+    icon: '',
+    isHeader: true,
+  },
+  {
+    label: 'Prayer of 3',
+    icon: 'pi pi-heart',
+    path: '/church-campus-admin/prayer-of-three',
+  },
+  {
+    label: 'Evangelize',
+    icon: 'pi pi-send',
+    path: '/church-campus-admin/evangelize',
+  },
+  // CONSOLIDATION Section
+  {
+    label: 'CONSOLIDATION',
+    icon: '',
+    isHeader: true,
+  },
+  {
+    label: 'SUYNIL',
+    icon: 'pi pi-book',
+    path: '/church-campus-admin/suynil',
+  },
+  // GATEWAY EVENTS Section
+  {
+    label: 'GATEWAY EVENTS',
+    icon: '',
+    isHeader: true,
+  },
+  {
+    label: 'Events',
+    icon: 'pi pi-calendar',
+    path: '/church-campus-admin/events',
   },
 ];
 
@@ -107,6 +160,17 @@ export function Sidebar({ className = '' }: SidebarProps) {
 
   const renderMenuItem = (item: SidebarMenuItem, depth = 0) => {
     if (!canAccess(item)) return null;
+
+    // Render header items (section dividers)
+    if (item.isHeader) {
+      return (
+        <li key={item.label} className="pt-4 pb-2 first:pt-0">
+          <span className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+            {item.label}
+          </span>
+        </li>
+      );
+    }
 
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.includes(item.label);
@@ -164,7 +228,7 @@ export function Sidebar({ className = '' }: SidebarProps) {
     );
   };
 
-  // Backdrop for mobile
+  // Backdrop for mobile (overlay sidebar)
   const backdrop = isMobile && isOpen && (
     <div
       className="fixed inset-0 bg-black/50 z-40"
@@ -176,25 +240,37 @@ export function Sidebar({ className = '' }: SidebarProps) {
   return (
     <>
       {backdrop}
-      <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-200 z-50 transform transition-transform duration-300 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 ${className}`}
-      >
-        {/* Logo */}
-        <div className="h-16 flex items-center justify-center border-b border-gray-200">
-          <Link href={ROUTES.DASHBOARD} className="flex items-center gap-2">
-            <span className="text-xl font-bold text-primary">GWC</span>
-            <span className="text-xl font-light text-gray-600">Monitoring</span>
-          </Link>
+      <aside className={`sidebar-container ${className}`}>
+        {/* Sidebar body with menu */}
+        <div className="sidebar-body pt-2 pb-2">
+          <nav className="p-2">
+            <ul className="space-y-1">
+              {menuItems.map((item) => renderMenuItem(item))}
+            </ul>
+          </nav>
         </div>
 
-        {/* Navigation */}
-        <nav className="p-4 overflow-y-auto" style={{ height: 'calc(100% - 4rem)' }}>
-          <ul className="space-y-1">
-            {menuItems.map((item) => renderMenuItem(item))}
-          </ul>
-        </nav>
+        {/* Sidebar footer (placeholder for future use) */}
+        <div className="sidebar-footer" />
+
+        {/* Sidebar styles matching Angular SCSS */}
+        <style jsx>{`
+          .sidebar-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .sidebar-body {
+            flex: 1;
+            overflow-y: auto;
+          }
+
+          .sidebar-footer {
+            /* Reserved for future footer content */
+          }
+        `}</style>
       </aside>
     </>
   );

@@ -44,6 +44,9 @@ export interface MemberDto {
   company?: string;
   notes?: string;
   cell_group?: CellGroupDto;
+  // Relationships (matches Angular DTOs)
+  invited_by?: MemberDto;
+  cell_leader?: MemberDto;
   created_at?: string;
   updated_at?: string;
 }
@@ -144,11 +147,14 @@ export interface MemberFilterOptions {
   civil_status?: CivilStatus;
 }
 
-// Pagination params
+// Pagination params (matches Angular member service)
 export interface MemberPaginationParams {
   page: number;
   pageSize: number;
   sortBy?: string;
   sortDirection?: 'ASC' | 'DESC';
   search?: string;
+  gender?: Gender | string; // Filter by gender (for men/women network pages)
+  affiliation?: Affiliation | string;
+  civil_status?: CivilStatus | string;
 }
