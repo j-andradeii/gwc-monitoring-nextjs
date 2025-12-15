@@ -52,14 +52,15 @@ export function middleware(request: NextRequest) {
   const isAuthenticated = !!token;
 
   // Check if it's a protected route
-  if (matchesRoute(pathname, PROTECTED_ROUTES)) {
-    if (!isAuthenticated) {
-      // Redirect to signin with return URL
-      const signinUrl = new URL(ROUTES.SIGNIN, request.url);
-      signinUrl.searchParams.set('returnUrl', pathname);
-      return NextResponse.redirect(signinUrl);
-    }
-  }
+  // if (matchesRoute(pathname, PROTECTED_ROUTES)) {
+  //   if (!isAuthenticated) {
+  //     // Redirect to signin with return URL
+  //     const signinUrl = new URL(ROUTES.SIGNIN, request.url);
+  //     signinUrl.searchParams.set('returnUrl', pathname);
+  //     return NextResponse.redirect(signinUrl);
+  //   }
+  // }
+  
 
   // Check if it's an auth route and user is already authenticated
   if (matchesRoute(pathname, AUTH_ROUTES)) {

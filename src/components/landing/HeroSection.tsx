@@ -17,15 +17,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
       <div className="hero-content">
-        <h1>Welcome to Gateway</h1>
-        <p>A community growing in faith, hope, and love. Join us this Sunday!</p>
-        <div>
-          <Link href="#sermons" className="landing-btn landing-btn-primary">
-            Our Sermons
+        <span className="hero-badge">Welcome to Gateway Church</span>
+        <h1>A Place to Belong, Believe & Become</h1>
+        <p>Join our community of faith as we grow together in God&apos;s love</p>
+        <div className="hero-actions">
+          <Link href="#services" className="landing-btn landing-btn-primary">
+            <i className="pi pi-calendar"></i>
+            Join This Sunday
           </Link>
-          <Link href="#about" className="landing-btn landing-btn-light-outline">
-            About Us
+          <Link href="#sermons" className="landing-btn landing-btn-light-outline">
+            <i className="pi pi-play-circle"></i>
+            Watch Sermons
           </Link>
+        </div>
+        <div className="hero-service-info">
+          <div className="service-info-item">
+            <i className="pi pi-clock"></i>
+            <span>Sundays 9:30 AM</span>
+          </div>
+          <div className="service-info-divider"></div>
+          <div className="service-info-item">
+            <i className="pi pi-map-marker"></i>
+            <span>Lex Hotel, Capitol Cebu</span>
+          </div>
         </div>
       </div>
     </section>

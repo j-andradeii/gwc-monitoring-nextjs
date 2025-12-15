@@ -9,7 +9,7 @@ interface Sermon {
   title: string;
   speaker: string;
   date: string;
-  excerpt: string;
+  duration: string;
   image: string;
 }
 
@@ -17,26 +17,26 @@ const sermons: Sermon[] = [
   {
     id: '1',
     title: 'The Power of Forgiveness',
-    speaker: 'Pastor John Doe',
-    date: 'July 14, 2025',
-    excerpt: 'Discover the liberating power of forgiveness in your life and relationships.',
-    image: 'https://placehold.co/400x250/D1D1D1/232323?text=Sermon+Series',
+    speaker: 'Pastor John',
+    date: 'Dec 8, 2024',
+    duration: '45 min',
+    image: 'https://placehold.co/400x225/D1D1D1/232323?text=Sermon',
   },
   {
     id: '2',
     title: 'Living a Life of Purpose',
-    speaker: 'Pastor Jane Smith',
-    date: 'July 7, 2025',
-    excerpt: "Exploring how to find and live out God's purpose for your life.",
-    image: 'https://placehold.co/400x250/D1D1D1/232323?text=Faith+Journey',
+    speaker: 'Pastor Jane',
+    date: 'Dec 1, 2024',
+    duration: '38 min',
+    image: 'https://placehold.co/400x225/D1D1D1/232323?text=Sermon',
   },
   {
     id: '3',
     title: 'Finding Hope in Hard Times',
     speaker: 'Guest Speaker',
-    date: 'June 30, 2025',
-    excerpt: 'A message of encouragement and resilience through faith.',
-    image: 'https://placehold.co/400x250/D1D1D1/232323?text=Hope+Restored',
+    date: 'Nov 24, 2024',
+    duration: '42 min',
+    image: 'https://placehold.co/400x225/D1D1D1/232323?text=Sermon',
   },
 ];
 
@@ -44,33 +44,40 @@ export const SermonsSection: React.FC = () => {
   return (
     <section id="sermons" className="sermons-section animate-on-scroll">
       <div className="landing-container">
-        <h2>Latest Sermons</h2>
+        <div className="section-header-inline">
+          <div>
+            <span className="section-label">Messages</span>
+            <h2>Latest Sermons</h2>
+          </div>
+          <Link href="/sermon-notes" className="view-all-link">
+            View All <i className="pi pi-arrow-right"></i>
+          </Link>
+        </div>
 
-        <div className="sermon-list">
+        <div className="sermon-grid">
           {sermons.map((sermon) => (
-            <div key={sermon.id} className="sermon-item animate-on-scroll">
-              <div className="item-image">
+            <article key={sermon.id} className="sermon-card animate-on-scroll">
+              <div className="sermon-card-image">
                 <Image
                   src={sermon.image}
                   alt={sermon.title}
                   width={400}
-                  height={250}
+                  height={225}
                   unoptimized
                 />
+                <div className="sermon-play-overlay">
+                  <i className="pi pi-play-circle"></i>
+                </div>
+                <span className="sermon-duration">{sermon.duration}</span>
               </div>
-              <div className="item-content">
-                <p className="item-meta">
-                  Speaker: {sermon.speaker} | {sermon.date}
-                </p>
-                <h3>
-                  <Link href="#">{sermon.title}</Link>
-                </h3>
-                <p>{sermon.excerpt}</p>
-                <Link href="#" className="read-more">
-                  Watch Now
-                </Link>
+              <div className="sermon-card-content">
+                <h3>{sermon.title}</h3>
+                <div className="sermon-meta">
+                  <span><i className="pi pi-user"></i> {sermon.speaker}</span>
+                  <span><i className="pi pi-calendar"></i> {sermon.date}</span>
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

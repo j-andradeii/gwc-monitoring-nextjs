@@ -2,51 +2,47 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-
-interface ServiceDetail {
-  emoji: string;
-  text: string;
-  highlight?: string;
-}
-
-const serviceDetails: ServiceDetail[] = [
-  { emoji: '🗓️', text: '', highlight: 'Every Sunday' },
-  { emoji: '🚪', text: 'Gates open at 9:00am' },
-  { emoji: '⏰', text: 'Starts at 9:30am' },
-  { emoji: '📍', text: 'Address: Lex Hotel 2nd Floor, Capitol Cebu City' },
-];
 
 export const ChurchServiceSection: React.FC = () => {
   return (
-    <section id="services" className="church-service-section animate-on-scroll">
+    <section id="services" className="service-cta-section animate-on-scroll">
       <div className="landing-container">
-        <h2>Church Service</h2>
+        <div className="service-cta-content">
+          <span className="section-label-light">Join Us</span>
+          <h2>Experience Worship With Us</h2>
+          <p>
+            Every Sunday, we gather to worship, learn, and grow together.
+            Whether you&apos;re new to faith or have been walking with God for years,
+            there&apos;s a place for you here.
+          </p>
 
-        <div className="flex flex-wrap items-center gap-8">
-          <div className="w-full md:w-5/12 church-service-image">
-            <Image
-              src="https://placehold.co/600x400/F0EAD6/333333?text=Sunday+Service"
-              alt="Church Service"
-              width={600}
-              height={400}
-              unoptimized
-            />
-          </div>
-
-          <div className="w-full md:w-7/12 service-details-wrapper">
-            <div className="service-details">
-              {serviceDetails.map((detail, index) => (
-                <p key={index}>
-                  <span className="emoji-icon">{detail.emoji}</span>
-                  {detail.highlight ? <strong>{detail.highlight}</strong> : detail.text}
-                </p>
-              ))}
+          <div className="service-details-compact">
+            <div className="service-detail-item">
+              <i className="pi pi-calendar"></i>
+              <div>
+                <strong>Every Sunday</strong>
+                <span>Weekly Worship Service</span>
+              </div>
             </div>
-            <Link href="#" className="landing-btn landing-btn-primary">
-              More Details
-            </Link>
+            <div className="service-detail-item">
+              <i className="pi pi-clock"></i>
+              <div>
+                <strong>9:30 AM</strong>
+                <span>Gates open at 9:00 AM</span>
+              </div>
+            </div>
+            <div className="service-detail-item">
+              <i className="pi pi-map-marker"></i>
+              <div>
+                <strong>Lex Hotel</strong>
+                <span>2nd Floor, Capitol Cebu</span>
+              </div>
+            </div>
           </div>
+
+          <Link href="#" className="landing-btn landing-btn-light">
+            Plan Your Visit
+          </Link>
         </div>
       </div>
     </section>

@@ -2,33 +2,38 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 interface Ministry {
   id: string;
   title: string;
   description: string;
-  image: string;
+  icon: string;
 }
 
 const ministries: Ministry[] = [
   {
     id: '1',
     title: 'Youth Ministry',
-    description: 'Engaging and empowering the next generation in their faith journey.',
-    image: 'https://placehold.co/400x250/C7C7C7/232323?text=Youth+Ministry',
+    description: 'Empowering the next generation in their faith journey.',
+    icon: 'pi pi-users',
   },
   {
     id: '2',
-    title: 'Marketplace Ministry',
-    description: 'Connecting faith and work, equipping professionals to make an impact.',
-    image: 'https://placehold.co/400x250/C7C7C7/232323?text=Marketplace+Ministry',
+    title: 'Marketplace',
+    description: 'Connecting faith and work for professionals.',
+    icon: 'pi pi-briefcase',
   },
   {
     id: '3',
-    title: 'Couples Ministry',
-    description: 'Strengthening marriages and relationships through biblical guidance.',
-    image: 'https://placehold.co/400x250/C7C7C7/232323?text=Couples+Ministry',
+    title: 'Couples',
+    description: 'Strengthening marriages through biblical guidance.',
+    icon: 'pi pi-heart',
+  },
+  {
+    id: '4',
+    title: 'Kids Church',
+    description: 'Fun and faith-filled programs for children.',
+    icon: 'pi pi-star',
   },
 ];
 
@@ -36,37 +41,25 @@ export const MinistriesSection: React.FC = () => {
   return (
     <section id="ministries" className="ministries-section animate-on-scroll">
       <div className="landing-container">
-        <h2>Our Ministries</h2>
-
-        <div className="ministry-list">
-          {ministries.map((ministry) => (
-            <div key={ministry.id} className="ministry-item animate-on-scroll">
-              <div className="item-image">
-                <Image
-                  src={ministry.image}
-                  alt={ministry.title}
-                  width={400}
-                  height={250}
-                  unoptimized
-                />
-              </div>
-              <div className="item-content">
-                <h3>
-                  <Link href="#">{ministry.title}</Link>
-                </h3>
-                <p>{ministry.description}</p>
-                <Link href="#" className="read-more">
-                  Learn More
-                </Link>
-              </div>
-            </div>
-          ))}
+        <div className="section-header-center">
+          <span className="section-label">Get Involved</span>
+          <h2>Our Ministries</h2>
+          <p>Find your place to serve and grow</p>
         </div>
 
-        <div className="text-center mt-8">
-          <Link href="#" className="landing-btn landing-btn-outline">
-            View More Ministries
-          </Link>
+        <div className="ministry-grid">
+          {ministries.map((ministry) => (
+            <Link key={ministry.id} href="#" className="ministry-card animate-on-scroll">
+              <div className="ministry-icon">
+                <i className={ministry.icon}></i>
+              </div>
+              <h3>{ministry.title}</h3>
+              <p>{ministry.description}</p>
+              <span className="ministry-link">
+                Learn More <i className="pi pi-arrow-right"></i>
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

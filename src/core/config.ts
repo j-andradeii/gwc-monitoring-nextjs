@@ -49,6 +49,10 @@ export interface AppConfig {
   };
 }
 
+// Debug: Check if env vars are loaded (remove after testing)
+console.log('[Config] NEXT_PUBLIC_API_URL from env:', process.env.NEXT_PUBLIC_API_URL);
+console.log('[Config] NEXT_PUBLIC_API_AUTH_URL from env:', process.env.NEXT_PUBLIC_API_AUTH_URL);
+
 // Export configuration
 export const config: AppConfig = {
   app: {
@@ -56,8 +60,8 @@ export const config: AppConfig = {
     url: getEnvVar('NEXT_PUBLIC_APP_URL', 'http://localhost:3000'),
   },
   api: {
-    url: getEnvVar('NEXT_PUBLIC_API_URL', 'https://api-gateway-production-87e4.up.railway.app/api/v1'),
-    authUrl: getEnvVar('NEXT_PUBLIC_API_AUTH_URL', 'https://api-gateway-production-87e4.up.railway.app/api/v1/auth'),
+    url: getEnvVar('NEXT_PUBLIC_API_URL', 'http://localhost:3000/api/v1'),
+    authUrl: getEnvVar('NEXT_PUBLIC_API_AUTH_URL', 'http://localhost:3000/api/v1/auth'),
     timeout: getNumberEnvVar('NEXT_PUBLIC_API_TIMEOUT', 30000),
   },
   auth: {

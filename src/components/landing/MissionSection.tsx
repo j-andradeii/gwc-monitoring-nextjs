@@ -1,64 +1,51 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 
-interface MissionItem {
+interface QuickInfoItem {
   icon: string;
   title: string;
   description: string;
 }
 
-const missionItems: MissionItem[] = [
+const quickInfoItems: QuickInfoItem[] = [
+  {
+    icon: 'pi pi-heart',
+    title: 'Worship',
+    description: 'Experience God through authentic worship and praise.',
+  },
   {
     icon: 'pi pi-users',
-    title: 'Our Community',
-    description: 'Building a family of believers who support and encourage one another.',
+    title: 'Community',
+    description: 'Find your place in our church family.',
   },
   {
     icon: 'pi pi-book',
-    title: 'Church Mission',
-    description: 'Building a family of believers who support and encourage one another.',
+    title: 'Grow',
+    description: 'Deepen your faith through biblical teaching.',
   },
   {
-    icon: 'pi pi-calendar',
-    title: 'Weekly Events',
-    description: 'Building a family of believers who support and encourage one another.',
-  },
-  {
-    icon: 'pi pi-heart',
-    title: 'Charity Causes',
-    description: 'Building a family of believers who support and encourage one another.',
+    icon: 'pi pi-globe',
+    title: 'Serve',
+    description: 'Make an impact in our community and beyond.',
   },
 ];
 
 export const MissionSection: React.FC = () => {
   return (
-    <section className="our-mission-section animate-on-scroll">
+    <section className="quick-info-section animate-on-scroll">
       <div className="landing-container">
-        <h2>Our Mission</h2>
-        <h2 className="mission-title">
-          Together with Faith to Overcome <br />
-          Life Challenges
-        </h2>
-
-        <div className="mission-items-wrapper">
-          {missionItems.map((item, index) => (
-            <div key={index} className="mission-item">
-              <div className="mission-icon">
-                <div className="icon-placeholder">
-                  <i className={item.icon}></i>
-                </div>
+        <div className="quick-info-grid">
+          {quickInfoItems.map((item, index) => (
+            <div key={index} className="quick-info-card">
+              <div className="quick-info-icon">
+                <i className={item.icon}></i>
               </div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </div>
           ))}
         </div>
-
-        <Link href="#" className="landing-btn landing-btn-primary landing-btn-mission-learn-more">
-          Learn More
-        </Link>
       </div>
     </section>
   );
