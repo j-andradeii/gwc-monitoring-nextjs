@@ -18,17 +18,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     >
       <div className="hero-content">
         <span className="hero-badge">Welcome to Gateway Church</span>
-        <h1>A Place to Belong, Believe & Become</h1>
+        <h1>HIS PRESENCE, OUR HOME</h1>
         <p>Join our community of faith as we grow together in God&apos;s love</p>
         <div className="hero-actions">
           <Link href="#services" className="landing-btn landing-btn-primary">
             <i className="pi pi-calendar"></i>
             Join This Sunday
           </Link>
-          <Link href="#sermons" className="landing-btn landing-btn-light-outline">
+          {/* <Link href="#sermons" className="landing-btn landing-btn-light-outline">
             <i className="pi pi-play-circle"></i>
             Watch Sermons
-          </Link>
+          </Link> */}
         </div>
         <div className="hero-service-info">
           <div className="service-info-item">
