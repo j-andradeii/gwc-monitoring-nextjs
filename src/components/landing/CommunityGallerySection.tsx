@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface GalleryImage {
@@ -22,8 +22,24 @@ const galleryImages: GalleryImage[] = [
   { id: 10, src: 'https://placehold.co/600x400/d4a84b/1a2744?text=10', alt: 'Mission Trip' },
 ];
 
+// Fisher-Yates shuffle algorithm
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 export const CommunityGallerySection: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [images, setImages] = useState<GalleryImage[]>(galleryImages);
+
+  // Shuffle only on client after hydration to avoid mismatch
+  useEffect(() => {
+    setImages(shuffleArray(galleryImages));
+  }, []);
 
   return (
     <section className="community-gallery-section" id="community">
@@ -35,7 +51,7 @@ export const CommunityGallerySection: React.FC = () => {
         </div>
 
         <div className="collage-grid">
-          {galleryImages.map((image, index) => (
+          {images.map((image, index) => (
             <div
               key={image.id}
               className={`collage-item collage-item-${index + 1} ${hoveredId === image.id ? 'active' : ''} ${hoveredId && hoveredId !== image.id ? 'dimmed' : ''}`}
