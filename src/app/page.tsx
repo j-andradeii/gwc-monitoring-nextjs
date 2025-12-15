@@ -16,6 +16,7 @@ import {
   SermonsSection,
   MinistriesSection,
   EventsSection,
+  ContactSection,
   LandingFooter,
   ScrollAnimationProvider,
 } from '@/components/landing';
@@ -35,6 +36,7 @@ export default function LandingPage() {
           <SermonsSection />
           <MinistriesSection />
           <EventsSection />
+          <ContactSection />
         </ScrollAnimationProvider>
       </main>
 

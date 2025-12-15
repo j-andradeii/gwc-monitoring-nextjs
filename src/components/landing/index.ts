@@ -11,5 +11,6 @@ export { ChurchServiceSection } from './ChurchServiceSection';
 export { SermonsSection } from './SermonsSection';
 export { MinistriesSection } from './MinistriesSection';
 export { EventsSection } from './EventsSection';
+export { ContactSection } from './ContactSection';
 export { LandingFooter } from './LandingFooter';
 export { ScrollAnimationProvider } from './ScrollAnimationProvider';
