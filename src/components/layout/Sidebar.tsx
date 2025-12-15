@@ -23,7 +23,6 @@ export interface SidebarMenuItem {
   isHeader?: boolean;
 }
 
-
 // Menu structure
 const menuItems: SidebarMenuItem[] = [
   // HOME Section
