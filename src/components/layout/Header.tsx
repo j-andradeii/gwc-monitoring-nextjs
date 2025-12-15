@@ -16,6 +16,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useSidebarStore } from '@/stores/sidebar.store';
 import { useResponsive } from '@/hooks/useResponsive';
 import { ROUTES } from '@/core/constants';
+import '@/styles/admin.css';
 
 export interface HeaderProps {
   className?: string;
