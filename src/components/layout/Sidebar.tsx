@@ -144,7 +144,7 @@ export function Sidebar({ className = '' }: SidebarProps) {
 
   const isActive = (path?: string) => {
     if (!path) return false;
-    return pathname === path || pathname.startsWith(path + '/');
+    return pathname === path;
   };
 
   const isParentActive = (item: SidebarMenuItem) => {

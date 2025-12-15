@@ -1,92 +1,89 @@
 /**
  * Breadcrumbs Component
  *
- * Modern, elegant breadcrumb navigation with unified design
- * Features gold accent colors matching landing page theme
+ * Modern breadcrumb navigation
  */
 
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useBreadcrumbsStore, type BreadcrumbItem } from '@/stores/breadcrumbs.store';
 
 export interface BreadcrumbsProps {
-  /** Override items from store */
   items?: BreadcrumbItem[];
-  /** Additional CSS classes */
   className?: string;
-  /** Separator character/icon */
-  separator?: string;
-  /** Max items to show before collapsing */
   maxItems?: number;
 }
 
 export function Breadcrumbs({
   items: propItems,
   className = '',
-  separator = 'pi pi-chevron-right',
   maxItems = 5,
 }: BreadcrumbsProps) {
   const { items: storeItems } = useBreadcrumbsStore();
   const items = propItems || storeItems;
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   if (!items || items.length === 0) {
     return null;
   }
 
-  // Handle collapsing if too many items
   let displayItems = items;
   let showEllipsis = false;
 
   if (items.length > maxItems) {
-    displayItems = [
-      items[0],
-      ...items.slice(items.length - (maxItems - 1)),
-    ];
+    displayItems = [items[0], ...items.slice(items.length - (maxItems - 1))];
     showEllipsis = true;
   }
 
   return (
-    <nav className={`breadcrumbs-nav ${className}`} aria-label="Breadcrumb">
-      <ol className="breadcrumbs-list">
+    <nav style={styles.nav} className={className} aria-label="Breadcrumb">
+      <ol style={styles.list}>
         {displayItems.map((item, index) => {
           const isLast = index === displayItems.length - 1;
           const isFirst = index === 0;
           const showEllipsisHere = showEllipsis && isFirst;
+          const isHovered = hoveredIndex === index;
 
           return (
             <React.Fragment key={item.url || item.label}>
-              <li className={`breadcrumb-item ${isLast ? 'current' : ''}`}>
+              <li style={styles.item}>
                 {item.url && !isLast ? (
-                  <Link href={item.url} className="breadcrumb-link">
-                    {isFirst && <i className="pi pi-home home-icon" />}
-                    {item.icon && !isFirst && <i className={`${item.icon} item-icon`} />}
-                    <span className="breadcrumb-text">{item.label}</span>
+                  <Link
+                    href={item.url}
+                    style={{
+                      ...styles.link,
+                      ...(isHovered && styles.linkHover),
+                    }}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    {isFirst && <i className="pi pi-home" style={styles.homeIcon} />}
+                    {item.icon && !isFirst && <i className={item.icon} style={styles.itemIcon} />}
+                    <span>{item.label}</span>
                   </Link>
                 ) : (
-                  <span className="breadcrumb-current">
-                    {item.icon && <i className={`${item.icon} item-icon`} />}
-                    <span className="breadcrumb-text">{item.label}</span>
+                  <span style={styles.current}>
+                    {item.icon && <i className={item.icon} style={styles.itemIcon} />}
+                    <span>{item.label}</span>
                   </span>
                 )}
               </li>
 
-              {/* Separator */}
               {!isLast && (
-                <li className="breadcrumb-separator" aria-hidden="true">
-                  <i className={separator} />
+                <li style={styles.separator} aria-hidden="true">
+                  <i className="pi pi-chevron-right" style={styles.separatorIcon} />
                 </li>
               )}
 
-              {/* Ellipsis */}
               {showEllipsisHere && (
                 <>
-                  <li className="breadcrumb-ellipsis">
+                  <li style={styles.ellipsis}>
                     <span>...</span>
                   </li>
-                  <li className="breadcrumb-separator" aria-hidden="true">
-                    <i className={separator} />
+                  <li style={styles.separator} aria-hidden="true">
+                    <i className="pi pi-chevron-right" style={styles.separatorIcon} />
                   </li>
                 </>
               )}
@@ -94,111 +91,81 @@ export function Breadcrumbs({
           );
         })}
       </ol>
-
-      <style jsx>{`
-        .breadcrumbs-nav {
-          display: flex;
-          align-items: center;
-        }
-
-        .breadcrumbs-list {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 0;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        .breadcrumb-item {
-          display: flex;
-          align-items: center;
-        }
-
-        .breadcrumb-item :global(.breadcrumb-link) {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 6px 10px;
-          border-radius: 6px;
-          text-decoration: none;
-          font-size: 13px;
-          font-weight: 500;
-          color: #6b7280;
-          transition: all 0.2s ease;
-        }
-
-        .breadcrumb-item :global(.breadcrumb-link:hover) {
-          background: rgba(192, 160, 103, 0.1);
-          color: var(--primary-gold-accent, #c0a067);
-        }
-
-        .breadcrumb-item :global(.home-icon) {
-          font-size: 14px;
-        }
-
-        .breadcrumb-item :global(.item-icon) {
-          font-size: 12px;
-        }
-
-        .breadcrumb-current {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 6px 10px;
-          font-size: 13px;
-          font-weight: 600;
-          color: #1a1a1a;
-        }
-
-        .breadcrumb-separator {
-          display: flex;
-          align-items: center;
-          padding: 0 4px;
-          color: #d1d5db;
-        }
-
-        .breadcrumb-separator i {
-          font-size: 10px;
-        }
-
-        .breadcrumb-ellipsis {
-          display: flex;
-          align-items: center;
-          padding: 6px 8px;
-          font-size: 13px;
-          color: #9ca3af;
-        }
-
-        .breadcrumb-text {
-          white-space: nowrap;
-        }
-
-        @media (max-width: 767px) {
-          .breadcrumb-item :global(.breadcrumb-link),
-          .breadcrumb-current {
-            padding: 4px 8px;
-            font-size: 12px;
-          }
-
-          .breadcrumb-item :global(.home-icon) {
-            font-size: 12px;
-          }
-
-          .breadcrumb-separator i {
-            font-size: 8px;
-          }
-        }
-      `}</style>
     </nav>
   );
 }
 
+const styles: Record<string, React.CSSProperties> = {
+  nav: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  list: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 0,
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  item: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  link: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    padding: '6px 10px',
+    borderRadius: '6px',
+    textDecoration: 'none',
+    fontSize: '13px',
+    fontWeight: 500,
+    color: '#4b5563',
+    transition: 'all 0.2s ease',
+  },
+  linkHover: {
+    background: 'rgba(192, 160, 103, 0.1)',
+    color: '#c0a067',
+  },
+  homeIcon: {
+    fontSize: '14px',
+    color: '#6b7280',
+  },
+  itemIcon: {
+    fontSize: '12px',
+    color: '#6b7280',
+  },
+  current: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    padding: '6px 10px',
+    fontSize: '13px',
+    fontWeight: 600,
+    color: '#111827',
+  },
+  separator: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 4px',
+  },
+  separatorIcon: {
+    fontSize: '10px',
+    color: '#9ca3af',
+  },
+  ellipsis: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '6px 8px',
+    fontSize: '13px',
+    color: '#6b7280',
+  },
+};
+
 /**
  * Page Header with Breadcrumbs
- *
- * Modern page header component with breadcrumbs, title, subtitle and action area
  */
 export function PageHeader({
   title,
@@ -214,80 +181,59 @@ export function PageHeader({
   className?: string;
 }) {
   return (
-    <div className={`page-header ${className}`}>
+    <div style={pageHeaderStyles.container} className={className}>
       {breadcrumbItems && breadcrumbItems.length > 0 && (
-        <Breadcrumbs items={breadcrumbItems} className="header-breadcrumbs" />
-      )}
-      <div className="header-content">
-        <div className="header-text">
-          <h1 className="page-title">{title}</h1>
-          {subtitle && <p className="page-subtitle">{subtitle}</p>}
+        <div style={pageHeaderStyles.breadcrumbs}>
+          <Breadcrumbs items={breadcrumbItems} />
         </div>
-        {action && <div className="header-actions">{action}</div>}
+      )}
+      <div style={pageHeaderStyles.content}>
+        <div style={pageHeaderStyles.text}>
+          <h1 style={pageHeaderStyles.title}>{title}</h1>
+          {subtitle && <p style={pageHeaderStyles.subtitle}>{subtitle}</p>}
+        </div>
+        {action && <div style={pageHeaderStyles.actions}>{action}</div>}
       </div>
-
-      <style jsx>{`
-        .page-header {
-          margin-bottom: 24px;
-        }
-
-        .page-header :global(.header-breadcrumbs) {
-          margin-bottom: 16px;
-        }
-
-        .header-content {
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
-          gap: 16px;
-        }
-
-        .header-text {
-          flex: 1;
-        }
-
-        .page-title {
-          font-size: 28px;
-          font-weight: 700;
-          color: #1a1a1a;
-          margin: 0 0 4px;
-          line-height: 1.3;
-        }
-
-        .page-subtitle {
-          font-size: 15px;
-          color: #6b7280;
-          margin: 0;
-          line-height: 1.5;
-        }
-
-        .header-actions {
-          flex-shrink: 0;
-        }
-
-        @media (max-width: 767px) {
-          .header-content {
-            flex-direction: column;
-            gap: 12px;
-          }
-
-          .page-title {
-            font-size: 24px;
-          }
-
-          .header-actions {
-            width: 100%;
-          }
-        }
-      `}</style>
     </div>
   );
 }
 
+const pageHeaderStyles: Record<string, React.CSSProperties> = {
+  container: {
+    marginBottom: '24px',
+  },
+  breadcrumbs: {
+    marginBottom: '16px',
+  },
+  content: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: '16px',
+  },
+  text: {
+    flex: 1,
+  },
+  title: {
+    fontSize: '28px',
+    fontWeight: 700,
+    color: '#111827',
+    margin: '0 0 4px',
+    lineHeight: 1.3,
+  },
+  subtitle: {
+    fontSize: '15px',
+    color: '#6b7280',
+    margin: 0,
+    lineHeight: 1.5,
+  },
+  actions: {
+    flexShrink: 0,
+  },
+};
+
 /**
  * Quick Stats Component
- *
- * Display key metrics in a horizontal card layout
  */
 export function QuickStats({
   stats,
@@ -303,123 +249,107 @@ export function QuickStats({
   className?: string;
 }) {
   return (
-    <div className={`quick-stats ${className}`}>
+    <div style={statsStyles.container} className={className}>
       {stats.map((stat, index) => (
-        <div key={index} className="stat-card">
+        <div key={index} style={statsStyles.card}>
           {stat.icon && (
-            <div className="stat-icon">
-              <i className={stat.icon} />
+            <div style={statsStyles.icon}>
+              <i className={stat.icon} style={{ fontSize: '20px', color: '#c0a067' }} />
             </div>
           )}
-          <div className="stat-content">
-            <span className="stat-value">{stat.value}</span>
-            <span className="stat-label">{stat.label}</span>
+          <div style={statsStyles.content}>
+            <span style={statsStyles.value}>{stat.value}</span>
+            <span style={statsStyles.label}>{stat.label}</span>
           </div>
           {stat.change && (
-            <div className={`stat-change ${stat.changeType || 'neutral'}`}>
-              <i className={`pi ${stat.changeType === 'positive' ? 'pi-arrow-up' : stat.changeType === 'negative' ? 'pi-arrow-down' : 'pi-minus'}`} />
+            <div
+              style={{
+                ...statsStyles.change,
+                ...(stat.changeType === 'positive' && statsStyles.changePositive),
+                ...(stat.changeType === 'negative' && statsStyles.changeNegative),
+              }}
+            >
+              <i
+                className={`pi ${
+                  stat.changeType === 'positive'
+                    ? 'pi-arrow-up'
+                    : stat.changeType === 'negative'
+                      ? 'pi-arrow-down'
+                      : 'pi-minus'
+                }`}
+                style={{ fontSize: '10px' }}
+              />
               <span>{stat.change}</span>
             </div>
           )}
         </div>
       ))}
-
-      <style jsx>{`
-        .quick-stats {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 16px;
-          margin-bottom: 24px;
-        }
-
-        .stat-card {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          padding: 20px;
-          background: #ffffff;
-          border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-          border: 1px solid rgba(0, 0, 0, 0.04);
-          transition: all 0.2s ease;
-        }
-
-        .stat-card:hover {
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .stat-icon {
-          width: 48px;
-          height: 48px;
-          border-radius: 10px;
-          background: linear-gradient(135deg, rgba(192, 160, 103, 0.12) 0%, rgba(212, 188, 142, 0.08) 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .stat-icon i {
-          font-size: 20px;
-          color: var(--primary-gold-accent, #c0a067);
-        }
-
-        .stat-content {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .stat-value {
-          font-size: 24px;
-          font-weight: 700;
-          color: #1a1a1a;
-          line-height: 1.2;
-        }
-
-        .stat-label {
-          font-size: 13px;
-          color: #6b7280;
-          margin-top: 2px;
-        }
-
-        .stat-change {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          padding: 4px 8px;
-          border-radius: 6px;
-          font-size: 12px;
-          font-weight: 600;
-        }
-
-        .stat-change.positive {
-          background: rgba(34, 197, 94, 0.1);
-          color: #16a34a;
-        }
-
-        .stat-change.negative {
-          background: rgba(239, 68, 68, 0.1);
-          color: #dc2626;
-        }
-
-        .stat-change.neutral {
-          background: rgba(107, 114, 128, 0.1);
-          color: #6b7280;
-        }
-
-        .stat-change i {
-          font-size: 10px;
-        }
-
-        @media (max-width: 767px) {
-          .quick-stats {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </div>
   );
 }
+
+const statsStyles: Record<string, React.CSSProperties> = {
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+    gap: '16px',
+    marginBottom: '24px',
+  },
+  card: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px',
+    padding: '20px',
+    background: '#ffffff',
+    borderRadius: '12px',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+    border: '1px solid #e9ecef',
+  },
+  icon: {
+    width: '48px',
+    height: '48px',
+    borderRadius: '10px',
+    background: 'rgba(192, 160, 103, 0.1)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  content: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  value: {
+    fontSize: '24px',
+    fontWeight: 700,
+    color: '#111827',
+    lineHeight: 1.2,
+  },
+  label: {
+    fontSize: '13px',
+    color: '#6b7280',
+    marginTop: '2px',
+  },
+  change: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+    padding: '4px 8px',
+    borderRadius: '6px',
+    fontSize: '12px',
+    fontWeight: 600,
+    background: 'rgba(107, 114, 128, 0.1)',
+    color: '#6b7280',
+  },
+  changePositive: {
+    background: 'rgba(34, 197, 94, 0.1)',
+    color: '#16a34a',
+  },
+  changeNegative: {
+    background: 'rgba(239, 68, 68, 0.1)',
+    color: '#dc2626',
+  },
+};
 
 export default Breadcrumbs;
