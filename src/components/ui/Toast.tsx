@@ -148,7 +148,7 @@ export function ToastProvider({
     return () => {
       unsubscribe();
     };
-  }, [subscribe, handleApiEvent]);
+  }, [subscribe,  ]);
 
   return (
     <>
