@@ -1,20 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-interface LandingHeaderProps {
-  isMobileMenuOpen: boolean;
-  toggleMobileMenu: () => void;
-  closeMobileMenu: () => void;
-}
+export const LandingHeader: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-export const LandingHeader: React.FC<LandingHeaderProps> = ({
-  isMobileMenuOpen,
-  toggleMobileMenu,
-  closeMobileMenu,
-}) => {
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
   return (
     <header className="landing-header">
       <nav className="landing-navbar">
