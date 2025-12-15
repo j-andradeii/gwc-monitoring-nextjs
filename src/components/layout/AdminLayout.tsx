@@ -1,13 +1,13 @@
 /**
  * AdminLayout Component
  *
- * Main layout wrapper for admin pages
- * Follows the Angular church-campus-admin-portal layout structure
+ * Modern, elegant admin portal layout with Header, Sidebar, Footer and main content.
+ * Sidebar automatically hides on screens less than 768px width.
  */
 
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { Footer } from './Footer';
@@ -29,161 +29,222 @@ export interface AdminLayoutProps {
   className?: string;
 }
 
+const SIDEBAR_WIDTH = 280;
+const SIDEBAR_COLLAPSED_WIDTH = 0;
+
 export function AdminLayout({
   children,
   showFooter = true,
   showBreadcrumbs = true,
   className = '',
 }: AdminLayoutProps) {
-  const { isDesktop } = useResponsive();
-  const { isOpen, setIsOpen } = useSidebarStore();
+  const { isMobile } = useResponsive();
+  const { isOpen, setIsOpen, close } = useSidebarStore();
   const { isLoading } = useLoadingStore();
 
-  // Auto-open sidebar on desktop, close on mobile
+  // Auto-close sidebar on mobile (< 768px), auto-open on desktop
   useEffect(() => {
-    if (isDesktop && !isOpen) {
-      setIsOpen(true);
-    } else if (!isDesktop && isOpen) {
+    if (isMobile) {
       setIsOpen(false);
+    } else {
+      setIsOpen(true);
     }
-  }, [isDesktop, isOpen, setIsOpen]);
+  }, [isMobile, setIsOpen]);
+
+  // Close sidebar when clicking overlay on mobile
+  const handleOverlayClick = useCallback(() => {
+    if (isMobile && isOpen) {
+      close();
+    }
+  }, [isMobile, isOpen, close]);
+
+  // Get sidebar width based on state
+  const sidebarWidth = isOpen ? SIDEBAR_WIDTH : SIDEBAR_COLLAPSED_WIDTH;
 
   return (
     <ToastProvider>
-      {/* Main container matching Angular main-container */}
-      <main className="overflow-x-hidden">
-        <div className="main-container w-full min-h-screen">
-          {/* Header - Full width at top */}
-          <div className="grid-header w-full">
-            <Header />
-          </div>
+      <div className="admin-layout">
+        {/* Fixed Header */}
+        <Header />
 
-          {/* Layout body with sidebar and content */}
+        {/* Mobile overlay when sidebar is open */}
+        {isMobile && isOpen && (
           <div
-            className={`layout-body ${
-              isOpen ? 'layout-static' : 'layout-static-inactive'
-            }`}
-          >
-            {/* Sidebar - Fixed position */}
-            <div className="sidebar-wrapper">
-              <Sidebar />
-            </div>
+            className="sidebar-overlay"
+            onClick={handleOverlayClick}
+            aria-hidden="true"
+          />
+        )}
 
-            {/* Router/Content area */}
-            <div className="router-div">
-              {/* Breadcrumbs */}
-              {showBreadcrumbs && (
-                <div className="w-full">
-                  <Breadcrumbs className="mb-4" />
-                </div>
-              )}
+        {/* Sidebar */}
+        <aside
+          className={`admin-sidebar ${isOpen ? 'sidebar-open' : 'sidebar-closed'} ${
+            isMobile ? 'sidebar-mobile' : 'sidebar-desktop'
+          }`}
+        >
+          <Sidebar />
+        </aside>
 
-              {/* Main Content */}
-              <div className={`w-full flex-1 ${className}`}>{children}</div>
+        {/* Main content area */}
+        <div
+          className="admin-main"
+          style={{
+            marginLeft: isMobile ? 0 : sidebarWidth,
+          }}
+        >
+          <div className="admin-content">
+            {/* Breadcrumbs */}
+            {showBreadcrumbs && (
+              <div className="breadcrumbs-container">
+                <Breadcrumbs />
+              </div>
+            )}
 
-              {/* Footer */}
-              {showFooter && (
-                <div className="w-full mt-auto">
-                  <Footer isAdmin />
-                </div>
-              )}
-            </div>
+            {/* Page content */}
+            <main className={`page-content ${className}`}>{children}</main>
+
+            {/* Footer */}
+            {showFooter && (
+              <Footer isAdmin />
+            )}
           </div>
         </div>
 
         {/* Global Loading Spinner */}
         {isLoading && <PageSpinner />}
-      </main>
 
-      {/* Layout styles matching Angular SCSS */}
-      <style jsx>{`
-        .main-container {
-          overflow: hidden;
-          background-color: var(--surface-ground, #f8fafc);
-        }
-
-        .grid-header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-        }
-
-        .layout-body {
-          display: flex;
-          min-height: 100vh;
-        }
-
-        .sidebar-wrapper {
-          position: fixed;
-          width: 18rem;
-          height: calc(100vh - 10rem);
-          z-index: 999;
-          overflow-y: auto;
-          user-select: none;
-          top: 8rem;
-          left: 2rem;
-          transition: transform 0.3s ease, left 0.3s ease;
-          background-color: var(--surface-overlay, #ffffff);
-          border-radius: var(--curved-radius, 0.75rem);
-          padding: 0.5rem;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .router-div {
-          padding: 2.3rem 2rem 1rem 2rem;
-          transition: margin-left 0.3s ease;
-          width: 100%;
-          min-height: calc(100vh - 5.7rem);
-          margin-top: 5.7rem;
-          display: flex;
-          flex-direction: column;
-          overflow-y: auto;
-        }
-
-        /* Desktop - Sidebar visible */
-        @media (min-width: 1200px) {
-          .layout-static .router-div {
-            margin-left: 20rem;
+        <style jsx>{`
+          .admin-layout {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
           }
 
-          .layout-static-inactive .router-div {
-            margin-left: 0;
-            padding-left: 2rem;
+          /* Sidebar overlay for mobile */
+          .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 40;
+            transition: opacity 0.3s ease;
           }
 
-          .layout-static-inactive .sidebar-wrapper {
-            transform: translateX(-100%);
-            left: 0;
-          }
-        }
-
-        /* Mobile - Sidebar hidden by default */
-        @media (max-width: 1199px) {
-          .sidebar-wrapper {
-            transform: translateX(-100%);
-            left: 0;
+          /* Sidebar styles */
+          .admin-sidebar {
+            position: fixed;
             top: 0;
+            left: 0;
             height: 100vh;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            transition: transform 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99),
-              left 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+            width: ${SIDEBAR_WIDTH}px;
+            padding-top: 100px; /* Account for header height */
+            background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 45;
+            overflow-y: auto;
+            overflow-x: hidden;
           }
 
-          .router-div {
-            padding: 1rem;
-            margin-left: 0;
+          .admin-sidebar::-webkit-scrollbar {
+            width: 6px;
           }
-        }
 
-        @media (max-width: 720px) {
-          .router-div {
-            padding: 1rem;
+          .admin-sidebar::-webkit-scrollbar-track {
+            background: transparent;
           }
-        }
-      `}</style>
+
+          .admin-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+          }
+
+          .admin-sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.2);
+          }
+
+          /* Desktop sidebar states */
+          .sidebar-desktop.sidebar-open {
+            transform: translateX(0);
+          }
+
+          .sidebar-desktop.sidebar-closed {
+            transform: translateX(-100%);
+          }
+
+          /* Mobile sidebar states */
+          .sidebar-mobile {
+            z-index: 50;
+          }
+
+          .sidebar-mobile.sidebar-open {
+            transform: translateX(0);
+          }
+
+          .sidebar-mobile.sidebar-closed {
+            transform: translateX(-100%);
+          }
+
+          /* Main content area */
+          .admin-main {
+            min-height: 100vh;
+            padding-top: 100px; /* Account for header height */
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          .admin-content {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 100px);
+            padding: 0;
+          }
+
+          /* Breadcrumbs container */
+          .breadcrumbs-container {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+          }
+
+          /* Page content */
+          .page-content {
+            flex: 1;
+            padding: 1.5rem;
+          }
+
+          /* Responsive adjustments */
+          @media (max-width: 767px) {
+            .admin-main {
+              margin-left: 0 !important;
+            }
+
+            .page-content {
+              padding: 1rem;
+            }
+
+            .breadcrumbs-container {
+              padding: 0.75rem 1rem;
+            }
+          }
+
+          @media (min-width: 768px) {
+            .page-content {
+              padding: 2rem;
+            }
+
+            .breadcrumbs-container {
+              padding: 1rem 2rem;
+            }
+          }
+
+          @media (min-width: 1024px) {
+            .page-content {
+              padding: 2rem 2.5rem;
+            }
+          }
+        `}</style>
+      </div>
     </ToastProvider>
   );
 }
