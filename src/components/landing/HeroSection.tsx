@@ -18,7 +18,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     >
       <div className="hero-content">
         <span className="hero-badge">Welcome to Gateway Church</span>
-        <h1>HIS PRESENCE, OUR HOME</h1>
+        <h1>HIS PRESENCE, OUR HOME - JESUS</h1>
         <p>Join our community of faith as we grow together in God&apos;s love</p>
         <div className="hero-actions">
           <Link href="#services" className="landing-btn landing-btn-primary">
