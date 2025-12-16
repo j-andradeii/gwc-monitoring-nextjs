@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     'Gateway Church is a welcoming community of faith. Join us for worship services, ministries, and events. Experience love, hope, and belonging.',
   keywords: [
     'Gateway Church',
+    'Gateway Church Cebu',
     'church',
     'worship',
     'community',
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     'ministries',
     'sermons',
     'events',
+    'Cebu'
   ],
   alternates: {
     canonical: '/',
