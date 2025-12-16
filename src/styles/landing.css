@@ -855,6 +855,64 @@
   margin-top: 40px;
 }
 
+/* Mobile Carousel Styles */
+.gallery-carousel-wrapper {
+  padding: 0 16px;
+}
+
+.gallery-carousel-item {
+  padding: 0 4px;
+}
+
+.carousel-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.carousel-image {
+  object-fit: cover;
+}
+
+.carousel-image-caption {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* PrimeReact Carousel Overrides for Gallery */
+.gallery-carousel .p-carousel-content {
+  overflow: visible;
+}
+
+.gallery-carousel .p-carousel-items-container {
+  padding: 8px 0;
+}
+
+.gallery-carousel-indicators {
+  padding: 16px 0 0 !important;
+  gap: 8px !important;
+}
+
+.gallery-carousel-indicators .p-carousel-indicator button {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background-color: var(--border-color) !important;
+  transition: all 0.25s ease !important;
+}
+
+.gallery-carousel-indicators .p-carousel-indicator.p-highlight button {
+  width: 24px !important;
+  border-radius: 4px !important;
+  background-color: var(--primary-gold-accent) !important;
+}
+
 /* ===========================================
    MINISTRIES SECTION - Professional Cards
    =========================================== */
@@ -1856,19 +1914,13 @@
     font-size: 24px;
   }
 
-  /* Collage mobile - 2 columns uniform */
+  /* Collage mobile - hidden, use carousel instead */
   .collage-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    padding: 0 16px;
-  }
-
-  .collage-item {
-    border-radius: 8px;
-  }
-
-  .collage-item-9 {
     display: none;
+  }
+
+  .gallery-carousel-wrapper {
+    display: block;
   }
 
   .ministries-section {
