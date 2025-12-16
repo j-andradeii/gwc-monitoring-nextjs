@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Carousel } from 'primereact/carousel';
 
 interface GalleryImage {
   id: number;
@@ -18,7 +19,10 @@ const galleryImages: GalleryImage[] = [
   { id: 6, src: 'https://scontent.fceb3-1.fna.fbcdn.net/v/t39.30808-6/600246917_122181101246766700_5544020493032707358_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEI1HLnQZOtQ6HjxFlq_MvCXTbUob2H7S5dNtShvYftLm4-jfZN89cgMKA1TkCRMDM&_nc_ohc=Ubp6nz6ORdoQ7kNvwHS7A_A&_nc_oc=AdnzIS5eLjXBmRf0X8U6noE7UDvUX4pv9-Hl35-y-0vk9s8HYrYR9tm1ZAm4xxhCotE&_nc_zt=23&_nc_ht=scontent.fceb3-1.fna&_nc_gid=mwpI8MYIkTF_sLqMVEvKVw&oh=00_AflG2nVk3LS3v3apMWhLu5PlEKG4OTQYk9hdvHq_QhVl3g&oe=6945CB7D', alt: 'Volunteer Team' },
   { id: 7, src: 'https://scontent.fceb9-1.fna.fbcdn.net/v/t39.30808-6/598354889_122181101306766700_7166132187056166846_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEgIGF8p2DO9ns8uRNSRhD84Fpw7RCA0wDgWnDtEIDTAJrS-l-RakhdT7OoxT2F8L8&_nc_ohc=0xg0DWBSclwQ7kNvwEdqIwb&_nc_oc=AdkeeMYF9u_-gLOMpi8y2GKMPTdB0K1q6YHfuHrXhVtpCMeZI4PWM03PlIjah8HiFUQ&_nc_zt=23&_nc_ht=scontent.fceb9-1.fna&_nc_gid=cryoRjJBdvpNuuiewfeNbw&oh=00_Afmoe49zPq_7HcN9hJ-EM6zgpomHR5jcHA6KHVF1W2gLbQ&oe=6945E5F3', alt: 'Prayer Meeting' },
   { id: 8, src: 'https://scontent.fceb9-1.fna.fbcdn.net/v/t39.30808-6/600267226_122181102296766700_4095360869145085288_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeGzXzuySbCuRnsZloenNaGIVNVcyRmc5vFU1VzJGZzm8ZfRPP_j_jFKsyDyD8IWEjQ&_nc_ohc=aFJ-vH1A-h0Q7kNvwFwvXoV&_nc_oc=AdkLPi1NrT_0iqs4IK2NymQoRJ4CkJl57-Vf8klOBooILpyRJ0yZH5EDb-t313x1ztI&_nc_zt=23&_nc_ht=scontent.fceb9-1.fna&_nc_gid=hHR7aaza3NWO6Z4co_HXkQ&oh=00_AfnLM83StEkNG-j2i5nKYOzZfilfXGkvBgGMhR1KLmoVDA&oe=6945F3A0', alt: 'Baptism Service' },
-  { id: 9, src: 'https://scontent.fceb3-1.fna.fbcdn.net/v/t39.30808-6/598714870_122181102446766700_1099840975765605389_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFoxn-ozgyxS5_2f8iZXF5puAwv2S4TbXu4DC_ZLhNte4-ZCCHoE4nUDZuofBSn3vM&_nc_ohc=Dg26fE8SNZQQ7kNvwF7ssEb&_nc_oc=Adkh0auyXQPV620pZE43zDWtteucfZfQNOEOcOJjEcsK2HKj0qsPUbwDnWfKUV-u7Es&_nc_zt=23&_nc_ht=scontent.fceb3-1.fna&_nc_gid=zMwMejQebGpeLa1fdn3I-A&oh=00_Aflm3HjsrH8WS-jAKfpJWq4BDyY1plk56ibg14tklcjOkQ&oe=6945C13E', alt: 'Small Groups' },
+  { id: 9, src: 'https://scontent.fceb9-1.fna.fbcdn.net/v/t39.30808-6/599091342_122181201380766700_3421192293662917158_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeGcBWRqG7okP6xqTOrARBkZXlQv24qC615eVC_bioLrXupxrOuZsHsB8LhSrV3zjx8&_nc_ohc=MEim0rBv0qwQ7kNvwHfuuDC&_nc_oc=AdlKZLAMG91hohTaSCWp7pRiTnY3ZcJKjo-a5PhDAN6UHCXI7x04c1MIp3KlXgA5NVM&_nc_zt=23&_nc_ht=scontent.fceb9-1.fna&_nc_gid=basUb0KxqfBx4aCAhx_KYA&oh=00_AflO6FDvJ3iklsNhQNaY9OvgkptXcfdfSyWXRwjnKS38Uw&oe=6946ED9C', alt: 'Baptism Service' },
+  { id: 10, src: 'https://scontent.fceb3-1.fna.fbcdn.net/v/t39.30808-6/598561519_122181201650766700_8103495493032007801_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeHkJzHVuuQZWGk0ouNhFokl58IV1rF5eKznwhXWsXl4rDhqxdNHyAFS2d2Laj3tzt4&_nc_ohc=llPIvxq1eSEQ7kNvwFqSGBK&_nc_oc=AdmXr3AkIufiftD4gy3Py5Ln8pBlG8jBmZBmKvJ_elbSiRCNhCg1guSGiHt-Dc2qF8A&_nc_zt=23&_nc_ht=scontent.fceb3-1.fna&_nc_gid=zYygU9PGsi3tcfcPaxOdnA&oh=00_AfniS5bpXi5s9cZda3sDZYY-9GrJIQwGMRzqDp-2wdTKAg&oe=6947040F', alt: 'Baptism Service' },
+  { id: 11, src: 'https://scontent.fceb9-1.fna.fbcdn.net/v/t39.30808-6/598691167_122181202298766700_3747857486846455162_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFlOFgyuEdduO5efREl_e1clIisDtATqCyUiKwO0BOoLK6hCUbagQLe694g6YROWAE&_nc_ohc=fkt8ate1-egQ7kNvwEnRnl2&_nc_oc=Adn0264AbtDZhSr25iGv9w4fBjH0tw5oJj1tjprnskJ6U9gPKoXZnK5JTnBDbvcuiHI&_nc_zt=23&_nc_ht=scontent.fceb9-1.fna&_nc_gid=qJOBaKZ_hRWRYM2SqxV-6Q&oh=00_AfnHBG7LuuAzCv-VQNHYqAEMQIhquUm_plt8fNKyJO-j0g&oe=6946DAC4', alt: 'Baptism Service' },
+  { id: 12, src: 'https://scontent.fceb3-1.fna.fbcdn.net/v/t39.30808-6/598984843_122181203120766700_7722484179656849784_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeGjd69Xeg5FVeAEjZxo8jvC_9PM1L8PPBz_08zUvw88HJgrpaHoue3g900pACL6oQ0&_nc_ohc=lUZ72Y2rBO0Q7kNvwGvUavf&_nc_oc=Adnjb5XhUhggqhP0TcjflbxEjwOc5E02jyL7kE5pVbelaNt7KLGGmig67CWmQPLPXqQ&_nc_zt=23&_nc_ht=scontent.fceb3-1.fna&_nc_gid=4XWjqAZOI7E6pvN1ZauNmw&oh=00_AfmkmQGniR-paBcD5sXwxzIb3P1GhCQbskDfCIfF8xtZ1A&oe=694700C4', alt: 'Baptism Service' },
 ];
 
 // Fisher-Yates shuffle algorithm
@@ -34,44 +38,91 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 export const CommunityGallerySection: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [images, setImages] = useState<GalleryImage[]>(galleryImages);
-  const [layoutOrder, setLayoutOrder] = useState<number[]>([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Shuffle images and layout only on client after hydration to avoid mismatch
+  // Shuffle images and detect mobile on client
   useEffect(() => {
     setImages(shuffleArray(galleryImages));
-    setLayoutOrder(shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Carousel item template
+  const carouselItemTemplate = (image: GalleryImage) => {
+    return (
+      <div className="gallery-carousel-item">
+        <div className="carousel-image-wrapper">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="90vw"
+            className="carousel-image"
+            unoptimized
+          />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section className="community-gallery-section" id="community">
-      <div className="landing-container">
+      <div className="landing-container landing-full-width">
         <div className="section-header-center">
           <span className="section-label">Our Community</span>
           <h2>Life Together</h2>
           <p>Real moments from our vibrant church family</p>
         </div>
 
-        <div className="collage-grid">
-          {images.map((image, index) => (
-            <div
-              key={image.id}
-              className={`collage-item collage-item-${layoutOrder[index]} ${hoveredId === image.id ? 'active' : ''} ${hoveredId && hoveredId !== image.id ? 'dimmed' : ''}`}
-              onMouseEnter={() => setHoveredId(image.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              <div className="collage-image-wrapper">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                  className="collage-image"
-                  unoptimized
-                />
+        {/* Desktop/Tablet: Grid Layout */}
+        {!isMobile && (
+          <div className="collage-grid">
+            {images.map((image) => (
+              <div
+                key={image.id}
+                className={`collage-item ${hoveredId === image.id ? 'active' : ''} ${hoveredId && hoveredId !== image.id ? 'dimmed' : ''}`}
+                onMouseEnter={() => setHoveredId(image.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
+                <div className="collage-image-wrapper">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 1024px) 33vw, 25vw"
+                    className="collage-image"
+                    unoptimized
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
+
+        {/* Mobile: Carousel Layout */}
+        {isMobile && (
+          <div className="gallery-carousel-wrapper">
+            <Carousel
+              value={images}
+              itemTemplate={carouselItemTemplate}
+              numVisible={1}
+              numScroll={1}
+              circular
+              autoplayInterval={2800}
+              showIndicators
+              showNavigators={false}
+              pt={{
+                root: { className: 'gallery-carousel' },
+              }}
+            />
+          </div>
+        )}
 
         <div className="gallery-cta">
           <a href="#contact" className="landing-btn landing-btn-primary">

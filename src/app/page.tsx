@@ -25,7 +25,14 @@ export const metadata: Metadata = {
     'ministries',
     'sermons',
     'events',
-    'Cebu'
+    'Cebu',
+    'gateway church cebu',
+    'cebu churches',
+    'community',
+    'gateway community',
+    'gateway hope',
+    'gateway donation drive',
+    'love God, love people'
   ],
   alternates: {
     canonical: '/',
