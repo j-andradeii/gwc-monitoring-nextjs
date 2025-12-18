@@ -1,7 +1,9 @@
 /**
  * User Store
  *
- * Manages authentication state with localStorage persistence
+ * Manages user state with localStorage persistence
+ * Note: Tokens are managed via httpOnly cookies (set by backend)
+ * Only user data is stored in localStorage for quick hydration
  */
 
 import { create } from 'zustand';
@@ -44,15 +46,13 @@ export interface SelfInformationDto {
 
 interface UserState {
   user: SelfInformationDto | null;
-  token: string | null;
-  refreshToken: string | null;
   isAuthenticated: boolean;
+  // Note: tokens are now managed via httpOnly cookies, not stored in state
 }
 
 interface UserActions {
-  setUser: (user: SelfInformationDto, token: string, refreshToken: string) => void;
+  setUser: (user: SelfInformationDto) => void;
   setUserInfo: (user: SelfInformationDto) => void;
-  setTokens: (token: string, refreshToken: string) => void;
   updateUser: (updates: Partial<SelfInformationDto>) => void;
   clearUser: () => void;
   logout: () => void;
@@ -63,8 +63,6 @@ type UserStore = UserState & UserActions;
 // Initial state
 const initialState: UserState = {
   user: null,
-  token: null,
-  refreshToken: null,
   isAuthenticated: false,
 };
 
@@ -74,11 +72,9 @@ export const useUserStore = create<UserStore>()(
     (set) => ({
       ...initialState,
 
-      setUser: (user, token, refreshToken) =>
+      setUser: (user) =>
         set({
           user,
-          token,
-          refreshToken,
           isAuthenticated: true,
         }),
 
@@ -88,9 +84,6 @@ export const useUserStore = create<UserStore>()(
           isAuthenticated: true,
         }),
 
-      setTokens: (token, refreshToken) =>
-        set({ token, refreshToken }),
-
       updateUser: (updates) =>
         set((state) => ({
           user: state.user ? { ...state.user, ...updates } : null,
@@ -99,10 +92,8 @@ export const useUserStore = create<UserStore>()(
       clearUser: () => set(initialState),
 
       logout: () => {
-        // Clear localStorage manually as well
+        // Clear localStorage (tokens are cleared via backend cookies)
         if (typeof window !== 'undefined') {
-          localStorage.removeItem(CONST.ACCESS_TOKEN);
-          localStorage.removeItem(CONST.REFRESH_TOKEN);
           localStorage.removeItem(CONST.AUTHENTICATED_USER);
         }
         set(initialState);
@@ -113,8 +104,6 @@ export const useUserStore = create<UserStore>()(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         user: state.user,
-        token: state.token,
-        refreshToken: state.refreshToken,
         isAuthenticated: state.isAuthenticated,
       }),
     }
@@ -123,7 +112,6 @@ export const useUserStore = create<UserStore>()(
 
 // Selectors
 export const selectUser = (state: UserStore) => state.user;
-export const selectToken = (state: UserStore) => state.token;
 export const selectIsAuthenticated = (state: UserStore) => state.isAuthenticated;
 export const selectUserRole = (state: UserStore) => state.user?.church_campus_staff?.role;
 export const selectMember = (state: UserStore) => state.user?.member;

@@ -48,18 +48,18 @@ function SigninForm() {
   } = methods;
 
   const onSubmit = async (data: LoginFormData) => {
-    setLoginError(null);
+    const success = await login(data);
+    // setLoginError(null);
 
-    try {
-      const success = await login(data);
-      if (success) {
-        router.push(returnUrl);
-      } else {
-        setLoginError('Invalid email or password. Please try again.');
-      }
-    } catch {
-      setLoginError('An error occurred. Please try again later.');
-    }
+    // try {
+    //   if (success) {
+    //     router.push(returnUrl);
+    //   } else {
+    //     setLoginError('Invalid email or password. Please try again.');
+    //   }
+    // } catch {
+    //   setLoginError('An error occurred. Please try again later.');
+    // }
   };
 
   return (

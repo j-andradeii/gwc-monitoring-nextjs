@@ -2,6 +2,7 @@
  * useAuth Hook
  *
  * Custom hook for authentication state and actions
+ * Note: Tokens are managed via httpOnly cookies (set by backend)
  */
 
 'use client';
@@ -21,8 +22,6 @@ export const useAuth = () => {
   const router = useRouter();
   const {
     user,
-    token,
-    refreshToken,
     isAuthenticated,
   } = useUserStore();
   const { isLoading, setLoading } = useLoadingStore();
@@ -35,9 +34,9 @@ export const useAuth = () => {
       setLoading(true);
       try {
         const success = await authService.authenticate(credentials);
-        if (success) {
-          router.push(ROUTES.DASHBOARD);
-        }
+        // if (success) {
+        //   router.push(ROUTES.DASHBOARD);
+        // }
         return success;
       } finally {
         setLoading(false);
@@ -113,10 +112,8 @@ export const useAuth = () => {
   }, [hasRole]);
 
   return {
-    // State
+    // State (tokens are in httpOnly cookies, not exposed to JS)
     user,
-    token,
-    refreshToken,
     isAuthenticated,
     isLoading,
     // Actions

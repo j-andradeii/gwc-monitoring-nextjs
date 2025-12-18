@@ -20,10 +20,10 @@ export const LandingHeader: React.FC = () => {
         <div className="landing-logo">
           <Link href="/">
             <Image
-              src="/images/church-logo-transparent.png"
+              src="/assets/images/gwc-logo-gold.png"
               alt="Gateway Church Logo"
-              width={50}
-              height={50}
+              width={70}
+              height={70}
               priority
             />
           </Link>

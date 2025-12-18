@@ -24,14 +24,14 @@ export const LandingFooter: React.FC = () => {
           <div className="footer-brand">
             <Link href="/" className="footer-logo">
               <Image
-                src="/images/church-logo-transparent.png"
+                src="/assets/images/gwc-logo-gold.png"
                 alt="Gateway Church"
                 width={50}
                 height={50}
               />
               <span>Gateway Church</span>
             </Link>
-            <p>A community growing in faith, hope, and love.</p>
+            <p>HIS PRESENCE, OUR HOME</p>
             <div className="footer-social">
               {socialLinks.map((social) => (
                 <Link key={social.label} href={social.href} aria-label={social.label}>
