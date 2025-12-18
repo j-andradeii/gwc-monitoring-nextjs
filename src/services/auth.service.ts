@@ -2,6 +2,7 @@
  * Auth Service
  *
  * Handles authentication operations
+ * Uses httpOnly cookies for token management (set by backend)
  */
 
 import { apiClient } from './api-client';
@@ -43,20 +44,15 @@ export const authenticate = async (
     });
 
     if (response.data) {
-      // Store tokens
-      storage.set(CONST.ACCESS_TOKEN, response.data.access_token);
-      storage.set(CONST.REFRESH_TOKEN, response.data.refresh_token);
-
-      // Update user store with tokens
-      const userStore = useUserStore.getState();
-      userStore.setTokens(response.data.access_token, response.data.refresh_token);
+      // Note: Tokens are stored as httpOnly cookies by the backend
+      // No need to store in localStorage or Zustand store
 
       sendEvent({
         type: eventType,
         status: ApiEventStatus.COMPLETED,
       });
 
-      // Fetch user info
+      // Fetch user info (user data still stored in localStorage for quick hydration)
       await getSelf(false);
 
       return true;
@@ -128,8 +124,17 @@ export const getSelf = async (showToast: boolean = true): Promise<boolean> => {
 
 /**
  * Logout user
+ * Calls backend to clear httpOnly cookies
  */
-export const logout = (): void => {
+export const logout = async (): Promise<void> => {
+  try {
+    // Call backend to clear httpOnly cookies
+    await apiClient.post('auth/logout', {});
+  } catch {
+    // Continue with logout even if API call fails
+  }
+
+  // Clear local user data
   const userStore = useUserStore.getState();
   userStore.logout();
 
@@ -141,10 +146,11 @@ export const logout = (): void => {
 
 /**
  * Check if user is authenticated
+ * Note: Actual token validation happens on the server via httpOnly cookies
  */
 export const isAuthenticated = (): boolean => {
   const userStore = useUserStore.getState();
-  return userStore.isAuthenticated && !!userStore.token;
+  return userStore.isAuthenticated;
 };
 
 /**

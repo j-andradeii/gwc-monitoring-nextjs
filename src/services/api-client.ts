@@ -2,6 +2,7 @@
  * API Client Service
  *
  * Fetch API wrapper with interceptors, token management, and error handling
+ * Uses httpOnly cookies for authentication (set by backend)
  * Matches the Angular interceptor pattern for backend compatibility
  */
 
@@ -10,8 +11,6 @@ import { useUserStore } from '@/stores/user.store';
 import { config } from '@/core/config';
 import { encrypt } from '@/core/crypto';
 import { getUtcMillis, getBrowserTimezone } from '@/core/date-utils';
-import { CONST } from '@/core/constants';
-import { storage } from '@/core/local-storage';
 
 // --- Types ---
 
@@ -70,13 +69,9 @@ const buildHeaders = async (
     ...(options?.headers as Record<string, string>),
   };
 
-  // Add auth token if available and not an auth URL
-  if (!options?.skipAuth && !isAuthUrl(endpoint)) {
-    const token = useUserStore.getState().token || storage.get(CONST.ACCESS_TOKEN);
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
-    }
-  }
+  // Note: Authentication is handled via httpOnly cookies set by the backend
+  // The browser automatically sends cookies with credentials: 'include'
+  // No need to manually attach Bearer token headers
 
   // Add encrypted access headers (for all requests)
   if (!options?.skipEncryption) {
@@ -123,29 +118,23 @@ const handleErrorResponse = async (response: Response): Promise<ApiError> => {
 
 // --- Token Refresh ---
 
-const refreshToken = async (): Promise<{
-  access_token: string;
-  refresh_token: string;
-} | null> => {
-  const userStore = useUserStore.getState();
-  const currentRefreshToken = userStore.refreshToken || storage.get(CONST.REFRESH_TOKEN);
-
-  if (!currentRefreshToken) return null;
-
+/**
+ * Refresh tokens using httpOnly cookie
+ * Backend reads refresh_token from cookie automatically and sets new cookies
+ */
+const refreshToken = async (): Promise<boolean> => {
   try {
-    const headers = await buildHeaders('token/refresh', { skipAuth: true });
-    const response = await fetch(buildUrl('token/refresh'), {
+    const headers = await buildHeaders('auth/refresh', { skipAuth: true });
+    const response = await fetch(buildUrl('auth/refresh'), {
       method: 'POST',
       headers,
-      body: JSON.stringify({ refresh_token: currentRefreshToken }),
+      credentials: 'include', // Send cookies with request
     });
 
-    if (!response.ok) return null;
-
-    const data = await response.json();
-    return data?.data;
+    // Backend sets new cookies automatically on success
+    return response.ok;
   } catch {
-    return null;
+    return false;
   }
 };
 
@@ -153,9 +142,9 @@ const handleTokenRefresh = async (
   retryConfig: RetryConfig
 ): Promise<Response> => {
   const userStore = useUserStore.getState();
-  const tokens = await refreshToken();
+  const success = await refreshToken();
 
-  if (!tokens?.access_token) {
+  if (!success) {
     userStore.logout();
     if (typeof window !== 'undefined') {
       window.location.href = '/signin';
@@ -166,12 +155,7 @@ const handleTokenRefresh = async (
     } as ApiError;
   }
 
-  // Update tokens in store and localStorage
-  userStore.setTokens(tokens.access_token, tokens.refresh_token);
-  storage.set(CONST.ACCESS_TOKEN, tokens.access_token);
-  storage.set(CONST.REFRESH_TOKEN, tokens.refresh_token);
-
-  // Retry the original request with new token
+  // Cookies are updated by backend, retry the original request
   return makeRequest(retryConfig.endpoint, retryConfig.options);
 };
 
@@ -192,6 +176,7 @@ const makeRequest = async (
       ...options,
       headers,
       body,
+      credentials: 'include', // Send/receive httpOnly cookies
     });
 
     // Handle 401 with token refresh

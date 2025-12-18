@@ -2,6 +2,8 @@
  * AuthGuard Component
  *
  * Client-side route protection component
+ * Note: Primary route protection is handled by middleware via httpOnly cookies
+ * This component provides additional client-side checks and user data hydration
  */
 
 'use client';
@@ -45,34 +47,30 @@ export function AuthGuard({
     const checkAuth = async () => {
       setIsChecking(true);
 
-      // Check if we have tokens in storage
-      const token = storage.get(CONST.ACCESS_TOKEN);
+      // Note: Route protection is primarily handled by middleware via httpOnly cookies
+      // This guard provides user data hydration and role-based access control
+
+      // Check if we have stored user data for quick hydration
       const storedUser = storage.get(CONST.AUTHENTICATED_USER);
 
-      if (!token) {
-        // No token, redirect to signin
-        router.push(redirectTo);
-        return;
-      }
-
-      // If we have stored user data, restore it
       if (storedUser && !user) {
         try {
           const userData = JSON.parse(storedUser);
           useUserStore.getState().setUserInfo(userData);
         } catch {
-          // Invalid stored data, try to fetch
+          // Invalid stored data, will fetch from API
         }
       }
 
-      // If not authenticated, try to get user info
+      // If not authenticated in store, try to get user info from API
+      // This validates the httpOnly cookie on the server side
       if (!isAuthenticated) {
         setLoading(true);
         const success = await authService.getSelf(false);
         setLoading(false);
 
         if (!success) {
-          // Failed to get user info, redirect
+          // Failed to get user info (cookie invalid/expired), redirect
           router.push(redirectTo);
           return;
         }

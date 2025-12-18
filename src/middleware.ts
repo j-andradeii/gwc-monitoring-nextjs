@@ -2,6 +2,7 @@
  * Next.js Middleware
  *
  * Handles route protection and authentication checks
+ * Reads ACCESS_TOKEN from httpOnly cookies (set by backend)
  */
 
 import { NextResponse } from 'next/server';
@@ -47,20 +48,19 @@ const matchesRoute = (path: string, routes: string[]): boolean => {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Get token from cookies
+  // Get token from httpOnly cookies (set by backend)
   const token = request.cookies.get(CONST.ACCESS_TOKEN)?.value;
   const isAuthenticated = !!token;
 
   // Check if it's a protected route
-  // if (matchesRoute(pathname, PROTECTED_ROUTES)) {
-  //   if (!isAuthenticated) {
-  //     // Redirect to signin with return URL
-  //     const signinUrl = new URL(ROUTES.SIGNIN, request.url);
-  //     signinUrl.searchParams.set('returnUrl', pathname);
-  //     return NextResponse.redirect(signinUrl);
-  //   }
-  // }
-  
+  if (matchesRoute(pathname, PROTECTED_ROUTES)) {
+    if (!isAuthenticated) {
+      // Redirect to signin with return URL
+      const signinUrl = new URL(ROUTES.SIGNIN, request.url);
+      signinUrl.searchParams.set('returnUrl', pathname);
+      return NextResponse.redirect(signinUrl);
+    }
+  }
 
   // Check if it's an auth route and user is already authenticated
   if (matchesRoute(pathname, AUTH_ROUTES)) {
