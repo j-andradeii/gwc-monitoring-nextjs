@@ -191,6 +191,8 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 14px 24px;
+  height: 80px;
+  box-sizing: border-box;
 }
 
 .landing-logo {
@@ -200,7 +202,7 @@
 }
 
 .landing-logo img {
-  height: 36px;
+  height: 50px;
 }
 
 .landing-logo span {
@@ -221,7 +223,7 @@
 
 .nav-links li a {
   font-weight: 500;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text-secondary);
   transition: color 0.25s ease;
   position: relative;
@@ -276,7 +278,7 @@
 .hero-section {
   background-size: cover;
   background-position: center;
-  padding: 100px 0 70px !important;
+  padding: 116px 0 70px !important;
   text-align: center;
   position: relative;
   border-bottom: none !important;
@@ -1811,7 +1813,7 @@
   }
 
   .hero-section {
-    padding: 90px 0 50px !important;
+    padding: 106px 0 50px !important;
     min-height: auto;
   }
 
