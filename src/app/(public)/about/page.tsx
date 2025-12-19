@@ -66,6 +66,7 @@ import {
   OurStory,
   VisionMission,
   OurValues,
+  OurPastors,
   AboutSideNav,
 } from '@/components/landing/about';
 
@@ -81,6 +82,7 @@ export default function AboutPage() {
           <OurStory />
           <VisionMission />
           <OurValues />
+          <OurPastors />
           <ContactSection />
         </ScrollAnimationProvider>
       </main>

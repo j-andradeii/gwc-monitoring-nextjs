@@ -13,6 +13,7 @@ const navItems: NavItem[] = [
   { id: 'vision-mission', label: 'Vision & Mission' },
   { id: 'our-values', label: 'Our Values' },
   { id: 'what-we-believe', label: 'What We Believe' },
+  { id: 'our-pastors', label: 'Our Pastors' },
   { id: 'contact', label: 'Contact' },
 ];
 
