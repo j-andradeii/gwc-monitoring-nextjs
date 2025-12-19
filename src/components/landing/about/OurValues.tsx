@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Accordion, AccordionTab } from 'primereact/accordion';
 
 interface ValueItem {
   icon: string;
@@ -57,7 +58,7 @@ const coreValues: ValueItem[] = [
   {
     icon: 'pi pi-flag',
     title: 'Accomplishing Church Goals',
-    description: 'I support, help, and fulfill our church\'s goals.',
+    description: "I support, help, and fulfill our church's goals.",
   },
   {
     icon: 'pi pi-chart-line',
@@ -73,73 +74,106 @@ const coreValues: ValueItem[] = [
 
 interface BeliefItem {
   title: string;
+  summary: string;
   description: string;
 }
 
 const beliefs: BeliefItem[] = [
   {
     title: 'The Scriptures Inspired',
-    description: 'The Scriptures are inspired by God and declare His design and plan for mankind.',
+    summary: 'The Bible is God\'s infallible Word to us.',
+    description:
+      'The Scriptures, both the Old and New Testaments, are verbally inspired of God and are the revelation of God to man, the infallible, authoritative rule of faith and conduct.',
   },
   {
     title: 'The One True God',
-    description: 'There is only One True God revealed in three persons: Father, Son, and Holy Spirit.',
+    summary: 'One God revealed in three persons.',
+    description:
+      'The one true God has revealed Himself as the eternally self-existent "I AM," the Creator of heaven and earth and the Redeemer of mankind. He has further revealed Himself as embodying the principles of relationship and association as Father, Son, and Holy Spirit.',
   },
   {
     title: 'The Deity of the Lord Jesus Christ',
-    description: 'As God\'s Son, Jesus was both fully human and fully divine.',
+    summary: 'Jesus Christ is fully God and fully man.',
+    description:
+      'The Lord Jesus Christ is the eternal Son of God. The Scriptures declare: His virgin birth, His sinless life, His miracles, His substitutionary work on the cross, His bodily resurrection from the dead, and His exaltation to the right hand of God.',
   },
   {
     title: 'The Fall of Man',
-    description: 'Though originally good, man willingly fell to sin, ushering evil and death into the world.',
+    summary: 'Humanity fell through disobedience.',
+    description:
+      'Man was created good and upright; for God said, "Let us make man in our own image, after our likeness." However, man by voluntary transgression fell and thereby incurred not only physical death but also spiritual death, which is separation from God.',
   },
   {
     title: 'The Salvation of Man',
-    description: 'Every person can have restored fellowship with God through salvation in Jesus Christ.',
+    summary: 'Salvation through faith in Jesus Christ.',
+    description:
+      "Man's only hope of redemption is through the shed blood of Jesus Christ the Son of God. Salvation is received through repentance toward God and faith toward the Lord Jesus Christ. By the washing of regeneration and renewing of the Holy Spirit, being justified by grace through faith, man becomes an heir of God.",
   },
   {
     title: 'The Ordinances of the Church',
-    description: 'Water baptism by immersion and Holy Communion as commanded by our Lord.',
+    summary: 'Baptism and Communion commanded by Christ.',
+    description:
+      'Baptism in Water: The ordinance of baptism by immersion is commanded by the Scriptures. All who repent and believe on Christ as Savior and Lord are to be baptized. Holy Communion: The Lord\'s Supper, consisting of the elements—bread and the fruit of the vine—is the symbol expressing our sharing the divine nature of our Lord Jesus Christ.',
   },
   {
     title: 'The Baptism in the Holy Spirit',
-    description: 'All believers are entitled to and should earnestly seek the baptism in the Holy Spirit.',
+    summary: 'A distinct experience for all believers.',
+    description:
+      'All believers are entitled to and should ardently expect and earnestly seek the promise of the Father, the baptism in the Holy Spirit and fire, according to the command of our Lord Jesus Christ. This was the normal experience of all in the early Christian Church. With it comes the enduement of power for life and service.',
   },
   {
     title: 'The Initial Physical Evidence',
-    description: 'The baptism in the Holy Spirit is witnessed by speaking in other tongues.',
+    summary: 'Speaking in tongues as initial evidence.',
+    description:
+      'The baptism of believers in the Holy Spirit is witnessed by the initial physical sign of speaking with other tongues as the Spirit of God gives them utterance. The speaking in tongues in this instance is the same in essence as the gift of tongues, but is different in purpose and use.',
   },
   {
     title: 'Sanctification',
-    description: 'A progressive lifelong process of separating from evil and becoming more Christlike.',
+    summary: 'Living a holy and separated life.',
+    description:
+      'Sanctification is an act of separation from that which is evil, and of dedication unto God. Scriptures teach a life of "holiness without which no man shall see the Lord." By the power of the Holy Spirit we are able to obey the command: "Be ye holy, for I am holy."',
   },
   {
     title: 'The Church and Its Mission',
-    description: 'The Church is the Body of Christ with a mission to seek and save all who are lost.',
+    summary: 'The Body of Christ with a divine mission.',
+    description:
+      'The Church is the Body of Christ, the habitation of God through the Spirit, with divine appointments for the fulfillment of her great commission. Each believer, born of the Spirit, is an integral part of the General Assembly and Church of the Firstborn, which are written in heaven.',
   },
   {
     title: 'The Ministry',
-    description: 'A divinely called and scripturally ordained leadership ministry serves the Church.',
+    summary: 'God-called leaders to equip the saints.',
+    description:
+      'A divinely called and scripturally ordained ministry has been provided by our Lord for the fourfold purpose of leading the Church in: (1) Evangelization of the world, (2) Worship of God, (3) Building a body of saints being perfected in the image of His Son, (4) Meeting human need with ministries of love and compassion.',
   },
   {
     title: 'Divine Healing',
-    description: 'Divine healing is an integral part of the gospel and the privilege of all believers.',
+    summary: 'Healing provided in the atonement.',
+    description:
+      'Divine healing is an integral part of the gospel. Deliverance from sickness is provided for in the atonement, and is the privilege of all believers. "He Himself took our infirmities and bore our sicknesses."',
   },
   {
     title: 'The Blessed Hope',
-    description: 'The resurrection and translation of believers at the coming of the Lord.',
+    summary: 'The rapture of the Church.',
+    description:
+      'The resurrection of those who have fallen asleep in Christ and their translation together with those who are alive and remain unto the coming of the Lord is the imminent and blessed hope of the Church.',
   },
   {
     title: 'The Millennial Reign of Christ',
-    description: 'The visible return of Christ with His saints to reign on earth for 1,000 years.',
+    summary: 'Christ will reign on earth for 1,000 years.',
+    description:
+      'The second coming of Christ includes the rapture of the saints, which is our blessed hope, followed by the visible return of Christ with His saints to reign on earth for one thousand years. This millennial reign will bring the salvation of national Israel and the establishment of universal peace.',
   },
   {
     title: 'The Final Judgment',
-    description: 'There will be a final judgment in which the wicked dead will be raised and judged.',
+    summary: 'All will stand before God.',
+    description:
+      'There will be a final judgment in which the wicked dead will be raised and judged according to their works. Whosoever is not found written in the Book of Life, together with the devil and his angels, the beast and the false prophet, will be consigned to the everlasting punishment in the lake which burneth with fire and brimstone.',
   },
   {
     title: 'The New Heavens and New Earth',
-    description: 'We look for new heavens and a new earth wherein righteousness dwells.',
+    summary: 'God will create all things new.',
+    description:
+      '"We, according to His promise, look for new heavens and a new earth, wherein dwelleth righteousness." This is the ultimate fulfillment of God\'s redemptive plan, where believers will dwell with God for eternity.',
   },
 ];
 
@@ -171,18 +205,32 @@ export const OurValues: React.FC = () => {
           <div className="beliefs-header">
             <span className="section-label">What We Believe</span>
             <h2>16 Fundamental Truths</h2>
+            <p className="beliefs-subtitle">
+              Based on the Assemblies of God Statement of Fundamental Truths
+            </p>
           </div>
 
-          <div className="beliefs-grid">
-            {beliefs.map((belief, index) => (
-              <div key={index} className="belief-item">
-                <div className="belief-number">{index + 1}</div>
-                <div className="belief-content">
-                  <h4>{belief.title}</h4>
-                  <p>{belief.description}</p>
-                </div>
-              </div>
-            ))}
+          <div className="beliefs-accordion">
+            <Accordion multiple>
+              {beliefs.map((belief, index) => (
+                <AccordionTab
+                  key={index}
+                  header={
+                    <div className="belief-accordion-header">
+                      <span className="belief-number">{index + 1}</span>
+                      <div className="belief-header-content">
+                        <span className="belief-title">{belief.title}</span>
+                        <span className="belief-summary">{belief.summary}</span>
+                      </div>
+                    </div>
+                  }
+                >
+                  <div className="belief-accordion-content">
+                    <p>{belief.description}</p>
+                  </div>
+                </AccordionTab>
+              ))}
+            </Accordion>
           </div>
         </div>
       </div>

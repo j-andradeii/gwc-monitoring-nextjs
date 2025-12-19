@@ -45,7 +45,7 @@ export const AboutSection: React.FC = () => {
               ))}
             </div>
 
-            <Link href="#" className="landing-btn landing-btn-outline">
+            <Link href="/about" className="landing-btn landing-btn-outline">
               Learn More
             </Link>
           </div>
