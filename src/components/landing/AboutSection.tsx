@@ -17,10 +17,10 @@ export const AboutSection: React.FC = () => {
         <div className="about-grid">
           <div className="about-image-wrapper">
             <Image
-              src="https://placehold.co/500x400/E8E8E8/232323?text=Our+Community"
+              src="/assets/images/community.jpg"
               alt="Gateway Church Community"
               width={500}
-              height={400}
+              height={500}
               className="about-image"
               unoptimized
             />
