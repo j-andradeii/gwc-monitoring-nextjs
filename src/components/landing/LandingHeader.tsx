@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export const LandingHeader: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -14,6 +16,14 @@ export const LandingHeader: React.FC = () => {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
+
   return (
     <header className="landing-header">
       <nav className="landing-navbar">
@@ -36,17 +46,17 @@ export const LandingHeader: React.FC = () => {
         <div className={`nav-menu-wrapper ${isMobileMenuOpen ? 'mobile-nav-active' : ''}`}>
           <ul className="nav-links">
             <li>
-              <Link href="/" className="active" onClick={closeMobileMenu}>
+              <Link href="/" className={isActive('/') ? 'active' : ''} onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
             <li>
-              <Link href="#about" onClick={closeMobileMenu}>
+              <Link href="/about" className={isActive('/about') ? 'active' : ''} onClick={closeMobileMenu}>
                 About Us
               </Link>
             </li>
             <li>
-              <Link href="/sermon-notes" onClick={closeMobileMenu}>
+              <Link href="/sermon-notes" className={isActive('/sermon-notes') ? 'active' : ''} onClick={closeMobileMenu}>
                 Sermons
               </Link>
             </li>
