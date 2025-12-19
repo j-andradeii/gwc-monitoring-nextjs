@@ -41,7 +41,7 @@ export const LandingHeader: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="#about" onClick={closeMobileMenu}>
+              <Link href="/about" onClick={closeMobileMenu}>
                 About Us
               </Link>
             </li>
