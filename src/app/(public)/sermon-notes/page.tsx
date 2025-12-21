@@ -158,9 +158,13 @@ export default function SermonNotesPage() {
 
       {/* Main Content */}
       <main className="landing-main" style={{ paddingTop: 0 }}>
-        {/* Featured Sermon */}
+        {/* Featured Sermon - White with subtle gold accent */}
         {featuredSermon && selectedSeries === 'All Series' && searchQuery === '' && (
-          <section style={{ padding: '60px 0', backgroundColor: 'var(--background-main)' }}>
+          <section style={{
+            padding: '60px 0',
+            background: '#ffffff',
+            position: 'relative',
+          }}>
             <div className="landing-container">
               <div style={{ marginBottom: '24px' }}>
                 <span className="section-label">Latest Message</span>
@@ -289,12 +293,12 @@ export default function SermonNotesPage() {
           </section>
         )}
 
-        {/* Search and Filter Section */}
+        {/* Search and Filter Section - Soft Gold */}
         <section
           style={{
             padding: '40px 0',
-            backgroundColor: '#f9f8f6',
-            borderBottom: '1px solid var(--border-color)',
+            background: 'linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%)',
+            borderBottom: '1px solid rgba(240, 180, 41, 0.15)',
             position: 'sticky',
             top: '64px',
             zIndex: 100,
@@ -470,8 +474,11 @@ export default function SermonNotesPage() {
           </div>
         </section>
 
-        {/* Sermon Notes Grid */}
-        <section style={{ padding: '60px 0', backgroundColor: 'var(--background-section)' }}>
+        {/* Sermon Notes Grid - Warm Cream Background */}
+        <section style={{
+          padding: '60px 0',
+          background: 'linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%)',
+        }}>
           <div className="landing-container">
             {regularSermons.length > 0 ? (
               <div
@@ -642,8 +649,8 @@ export default function SermonNotesPage() {
                               padding: '4px 10px',
                               fontSize: '11px',
                               fontWeight: '500',
-                              backgroundColor: '#f5f4f0',
-                              color: 'var(--text-secondary)',
+                              backgroundColor: 'rgba(240, 180, 41, 0.12)',
+                              color: '#b8860b',
                               borderRadius: '4px',
                             }}
                           >
@@ -736,7 +743,7 @@ export default function SermonNotesPage() {
                     width: '80px',
                     height: '80px',
                     margin: '0 auto 24px',
-                    backgroundColor: '#f5f4f0',
+                    background: 'linear-gradient(135deg, rgba(240, 180, 41, 0.15) 0%, rgba(8, 145, 178, 0.1) 100%)',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -785,12 +792,14 @@ export default function SermonNotesPage() {
           </div>
         </section>
 
-        {/* Subscribe CTA */}
+        {/* Subscribe CTA - Vibrant Navy with Colorful Accents */}
         <section
           style={{
             padding: '80px 0',
-            background: 'linear-gradient(135deg, var(--primary-gold-accent) 0%, #a8894f 100%)',
+            background: 'linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #3d5a7f 100%)',
             textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
           <div className="landing-container">
