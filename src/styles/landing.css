@@ -273,7 +273,143 @@
 }
 
 /* ===========================================
-   HERO SECTION - Impactful & Compact
+   HERO CAROUSEL SECTION - Custom Implementation
+   =========================================== */
+.hero-carousel-section {
+  position: relative;
+  min-height: 85vh;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+/* Background Slides */
+.hero-slide-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 0;
+}
+
+.hero-slide-bg.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slide-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(240, 180, 41, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Content Wrapper */
+.hero-carousel-content-wrapper {
+  position: relative;
+  z-index: 5;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 80px;
+}
+
+.hero-content.transitioning {
+  opacity: 0.7;
+  transform: translateY(5px);
+}
+
+/* Navigation Buttons */
+.hero-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-nav-btn i {
+  font-size: 18px;
+}
+
+.hero-nav-prev {
+  left: 24px;
+}
+
+.hero-nav-next {
+  right: 24px;
+}
+
+.hero-nav-btn:hover {
+  background: var(--primary-gold-accent);
+  border-color: var(--primary-gold-accent);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-nav-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 180, 41, 0.4);
+}
+
+/* Indicators */
+.hero-indicators {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+  padding: 12px 24px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+}
+
+.hero-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.hero-indicator:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-indicator.active {
+  width: 32px;
+  border-radius: 6px;
+  background: var(--primary-gold-accent);
+}
+
+/* ===========================================
+   HERO SECTION - Impactful & Compact (Legacy support)
    =========================================== */
 .hero-section {
   background-size: cover;
@@ -293,10 +429,20 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(26, 39, 68, 0.55) 0%,
-    rgba(26, 39, 68, 0.7) 50%,
-    rgba(26, 39, 68, 0.8) 100%
+    rgba(30, 58, 95, 0.6) 0%,
+    rgba(30, 58, 95, 0.75) 50%,
+    rgba(30, 58, 95, 0.85) 100%
   );
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(240, 180, 41, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(8, 145, 178, 0.1) 0%, transparent 40%);
+  pointer-events: none;
 }
 
 .hero-content {
@@ -312,16 +458,30 @@
   align-items: center;
   gap: 8px;
   padding: 8px 18px;
-  background: rgba(212, 168, 75, 0.2);
+  background: rgba(240, 180, 41, 0.25);
   backdrop-filter: blur(10px);
   border-radius: 50px;
   font-size: 11px;
   font-weight: 700;
-  color: var(--primary-gold-accent);
+  color: #fcd34d;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 20px;
-  border: 1px solid rgba(212, 168, 75, 0.3);
+  border: 1px solid rgba(240, 180, 41, 0.4);
+}
+
+.hero-badge-campaign {
+  background: rgba(124, 58, 237, 0.3);
+  border-color: rgba(124, 58, 237, 0.5);
+  color: #c4b5fd;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  color: var(--primary-gold-accent) !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+  letter-spacing: 0.5px;
 }
 
 .hero-content h1 {
@@ -382,12 +542,68 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
+/* Hero Carousel Responsive */
+@media (max-width: 768px) {
+  .hero-carousel .p-carousel-prev,
+  .hero-carousel .p-carousel-next,
+  .hero-carousel-prev,
+  .hero-carousel-next {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .hero-carousel .p-carousel-prev,
+  .hero-carousel-prev {
+    left: 12px !important;
+  }
+
+  .hero-carousel .p-carousel-next,
+  .hero-carousel-next {
+    right: 12px !important;
+  }
+
+  .hero-slide {
+    min-height: 80vh;
+    padding: 100px 16px 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px !important;
+  }
+
+  .hero-service-info {
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px 20px;
+  }
+
+  .service-info-divider {
+    display: none;
+  }
+}
+
 /* ===========================================
-   ABOUT SECTION - Tighter Layout
+   ABOUT SECTION - White with Subtle Gold Accent
    =========================================== */
 .about-section {
   padding: 70px 0 !important;
   background: #ffffff !important;
+  position: relative;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 30%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .about-grid {
@@ -478,17 +694,31 @@
 }
 
 /* ===========================================
-   QUICK INFO SECTION (Mission) - Engaging Cards
+   QUICK INFO SECTION (Mission) - Soft Gold Background
    =========================================== */
 .quick-info-section {
   padding: 50px 0 !important;
-  background: linear-gradient(180deg, #faf8f5 0%, #f5f0e6 100%) !important;
+  background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important;
+  position: relative;
+}
+
+.quick-info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .quick-info-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .quick-info-card {
@@ -496,27 +726,27 @@
   padding: 28px 22px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.08);
   transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(8, 145, 178, 0.1);
 }
 
 .quick-info-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-  border-color: rgba(212, 168, 75, 0.2);
+  box-shadow: 0 12px 32px rgba(30, 58, 95, 0.12);
+  border-color: rgba(240, 180, 41, 0.3);
 }
 
 .quick-info-icon {
   width: 52px;
   height: 52px;
   margin: 0 auto 14px;
-  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  background: linear-gradient(135deg, #f0b429 0%, #d97706 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(212, 168, 75, 0.25);
+  box-shadow: 0 4px 14px rgba(240, 180, 41, 0.35);
 }
 
 .quick-info-icon i {
@@ -539,11 +769,11 @@
 }
 
 /* ===========================================
-   SERVICE CTA SECTION - Bold & Inviting
+   SERVICE CTA SECTION - Bold Navy with Vibrant Accents
    =========================================== */
 .service-cta-section {
   padding: 60px 0 !important;
-  background: linear-gradient(135deg, var(--color-navy) 0%, #243554 100%) !important;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #3d5a7f 100%) !important;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -557,8 +787,9 @@
   right: 0;
   height: 100%;
   background:
-    radial-gradient(circle at 20% 50%, rgba(212, 168, 75, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(212, 168, 75, 0.08) 0%, transparent 30%);
+    radial-gradient(circle at 20% 50%, rgba(240, 180, 41, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(8, 145, 178, 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -623,11 +854,24 @@
 }
 
 /* ===========================================
-   SERMONS SECTION - Clean Grid
+   SERMONS SECTION - Warm Cream Background
    =========================================== */
 .sermons-section {
   padding: 70px 0 !important;
-  background: #ffffff !important;
+  /* background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important; */
+  background: var(--background-main);
+  position: relative;
+}
+
+.sermons-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 100%;
+  background: radial-gradient(circle at 85% 40%, rgba(240, 180, 41, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .section-header-inline {
@@ -763,12 +1007,24 @@
 }
 
 /* ===========================================
-   COMMUNITY GALLERY SECTION
+   COMMUNITY GALLERY SECTION - White with Teal Accent
    =========================================== */
 .community-gallery-section {
   padding: 70px 0 !important;
-  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%) !important;
+  background: #ffffff !important;
   overflow: hidden;
+  position: relative;
+}
+
+.community-gallery-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(circle at 20% 80%, rgba(8, 145, 178, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .community-gallery-section .landing-full-width {
@@ -925,11 +1181,24 @@
 }
 
 /* ===========================================
-   MINISTRIES SECTION - Professional Cards
+   MINISTRIES SECTION - Soft Gold with Warm Accent
    =========================================== */
 .ministries-section {
   padding: 70px 0 !important;
-  background: var(--color-cream) !important;
+  /* background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important; */
+  background: #ffffff !important;
+  position: relative;
+}
+
+.ministries-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at 15% 50%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .section-header-center {
@@ -1036,11 +1305,24 @@
 }
 
 /* ===========================================
-   EVENTS SECTION - Clean List
+   EVENTS SECTION - Warm Cream with Coral Accent
    =========================================== */
 .events-section {
   padding: 70px 0 !important;
-  background: #ffffff !important;
+  /* background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important; */
+  background: var(--background-main);
+  position: relative;
+}
+
+.events-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 40%, rgba(244, 63, 94, 0.06) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .events-list {
@@ -1163,11 +1445,13 @@
 }
 
 /* ===========================================
-   CONTACT SECTION - Modern Card Design
+   CONTACT SECTION - Soft Gold with Warm Accent
    =========================================== */
 .contact-section {
   padding: 80px 0 !important;
-  background: linear-gradient(180deg, #f5f0e6 0%, #ebe4d8 100%) !important;
+  /* background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important; */
+  background: #ffffff !important;
+
   position: relative;
   overflow: hidden;
 }
@@ -1176,8 +1460,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 15% 50%, rgba(212, 168, 75, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 85% 25%, rgba(26, 39, 68, 0.04) 0%, transparent 35%);
+    radial-gradient(circle at 15% 50%, rgba(240, 180, 41, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(30, 58, 95, 0.04) 0%, transparent 35%);
   pointer-events: none;
 }
 
@@ -2022,7 +2306,7 @@
    ABOUT PAGE STYLES
    =========================================== */
 
-/* About Hero Section */
+/* About Hero Section - Vibrant Navy with Accents */
 .about-hero-section {
   position: relative;
   min-height: 50vh;
@@ -2030,7 +2314,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, var(--navy-background) 0%, #0f1a2e 100%);
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #1a2f4a 100%);
   padding: 120px 24px 80px;
   overflow: hidden;
 }
@@ -2049,8 +2333,8 @@
 .about-hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(212, 168, 75, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 70% 50%, rgba(74, 60, 110, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 30% 50%, rgba(240, 180, 41, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(8, 145, 178, 0.1) 0%, transparent 50%);
 }
 
 .about-hero-content {
@@ -2073,10 +2357,22 @@
   font-weight: 500;
 }
 
-/* Our Story Section */
+/* Our Story Section - White with Gold Accent */
 .our-story-section {
   padding: 80px 0;
-  background: #ffffff;
+  background: #ffffff !important;
+  position: relative;
+}
+
+.our-story-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 30%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .our-story-grid {
@@ -2149,10 +2445,22 @@
   letter-spacing: 1px;
 }
 
-/* Vision & Mission Section */
+/* Vision & Mission Section - Soft Gold with Warm Accent */
 .vision-mission-section {
   padding: 80px 0;
-  background: linear-gradient(180deg, #faf8f5 0%, #f5f0e6 100%);
+  background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important;
+  position: relative;
+}
+
+.vision-mission-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .vision-mission-header {
@@ -2280,10 +2588,10 @@
   line-height: 1.6;
 }
 
-/* Our Values Section */
+/* Our Values Section - Warm Cream with Gold Accent */
 .our-values-section {
   padding: 80px 0;
-  background: linear-gradient(180deg, #f9f8f6 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important;
   position: relative;
 }
 
@@ -2291,10 +2599,11 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212, 168, 75, 0.3) 50%, transparent 100%);
+  width: 45%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 40%, rgba(240, 180, 41, 0.08) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .values-header {
@@ -2400,11 +2709,11 @@
   margin: 0;
 }
 
-/* Beliefs Section */
+/* Beliefs Section - White with Purple Accent */
 .beliefs-section {
   padding: 80px 0 0;
   margin-top: 0;
-  background: #ffffff;
+  background: #ffffff !important;
   position: relative;
 }
 
@@ -2412,11 +2721,22 @@
   content: '';
   position: absolute;
   top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at 15% 50%, rgba(124, 58, 237, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.beliefs-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary-gold-accent) 0%, #e8c068 100%);
+  background: linear-gradient(90deg, #f0b429 0%, #d97706 100%);
   border-radius: 2px;
 }
 
@@ -2576,10 +2896,10 @@
   box-shadow: 0 10px 35px rgba(26, 39, 68, 0.12);
 }
 
-/* Our Pastors Section */
+/* Our Pastors Section - Soft Gold with Warm Accent */
 .our-pastors-section {
   padding: 80px 0;
-  background: linear-gradient(180deg, #ffffff 0%, #f9f8f6 100%);
+  background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important;
   position: relative;
 }
 
@@ -2587,10 +2907,11 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212, 168, 75, 0.3) 50%, transparent 100%);
+  width: 45%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 50%, rgba(240, 180, 41, 0.06) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .pastors-header {
@@ -2674,10 +2995,10 @@
   letter-spacing: 1px;
 }
 
-/* About CTA Section */
+/* About CTA Section - Navy with Vibrant Accents */
 .about-cta-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, var(--navy-background) 0%, #0f1a2e 100%);
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #3d5a7f 100%) !important;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -2690,8 +3011,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(212, 168, 75, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(74, 60, 110, 0.15) 0%, transparent 40%);
+  background: radial-gradient(circle at 20% 80%, rgba(240, 180, 41, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
 }
 
 .about-cta-content {
