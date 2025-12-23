@@ -19,10 +19,6 @@ const galleryImages: GalleryImage[] = [
   { id: 6, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598714870_122181102446766700_1099840975765605389_n.jpg', alt: 'Volunteer Team' },
   { id: 7, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598718079_122181100730766700_1031415504206357468_n.jpg', alt: 'Prayer Meeting' },
   { id: 8, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598721854_122181101078766700_9143129039121658822_n.jpg', alt: 'Baptism Service' },
-  { id: 9, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/599091342_122181201380766700_3421192293662917158_n.jpg', alt: 'Baptism Service' },
-  { id: 10, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/600146957_122181101264766700_1441013425288215129_n.jpg', alt: 'Baptism Service' },
-  { id: 11, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/600224903_122181100880766700_1204906234095728137_n.jpg', alt: 'Baptism Service' },
-  { id: 12, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/600246917_122181101246766700_5544020493032707358_n.jpg', alt: 'Baptism Service' },
 ];
 
 // Fisher-Yates shuffle algorithm
@@ -36,7 +32,6 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 };
 
 export const CommunityGallerySection: React.FC = () => {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [images, setImages] = useState<GalleryImage[]>(galleryImages);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -77,29 +72,24 @@ export const CommunityGallerySection: React.FC = () => {
         <div className="section-header-center">
           <span className="section-label">Our Community</span>
           <h2>Life Together</h2>
-          <p>Real moments from our vibrant church family</p>
         </div>
 
-        {/* Desktop/Tablet: Grid Layout */}
+        {/* Desktop/Tablet: Bento Grid Layout */}
         {!isMobile && (
-          <div className="collage-grid">
-            {images.map((image) => (
+          <div className="bento-grid">
+            {images.slice(0, 8).map((image, index) => (
               <div
                 key={image.id}
-                className={`collage-item ${hoveredId === image.id ? 'active' : ''} ${hoveredId && hoveredId !== image.id ? 'dimmed' : ''}`}
-                onMouseEnter={() => setHoveredId(image.id)}
-                onMouseLeave={() => setHoveredId(null)}
+                className={`bento-item bento-item-${index + 1}`}
               >
-                <div className="collage-image-wrapper">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(max-width: 1024px) 33vw, 25vw"
-                    className="collage-image"
-                    unoptimized
-                  />
-                </div>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                  className="bento-image"
+                  unoptimized
+                />
               </div>
             ))}
           </div>
@@ -123,13 +113,6 @@ export const CommunityGallerySection: React.FC = () => {
             />
           </div>
         )}
-
-        <div className="gallery-cta">
-          <a href="#contact" className="landing-btn landing-btn-primary">
-            <i className="pi pi-users"></i>
-            Join Our Family
-          </a>
-        </div>
       </div>
     </section>
   );

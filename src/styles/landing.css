@@ -1272,6 +1272,103 @@
   margin-top: 40px;
 }
 
+/* Bento Grid Layout - Bethel Inspired */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: 8px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.bento-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.bento-image {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-item:hover .bento-image {
+  transform: scale(1.05);
+}
+
+/* Bento Grid Positions - Asymmetric Layout */
+.bento-item-1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-item-2 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-item-3 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-item-4 {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.bento-item-5 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-item-6 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-item-7 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-item-8 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 180px);
+  }
+
+  .bento-item-1 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .bento-item-4 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 150px);
+    gap: 6px;
+  }
+
+  .bento-item-1 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
 /* Mobile Carousel Styles */
 .gallery-carousel-wrapper {
   padding: 0 16px;
