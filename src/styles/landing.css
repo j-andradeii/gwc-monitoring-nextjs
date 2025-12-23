@@ -1692,6 +1692,297 @@
 }
 
 /* ===========================================
+   BETHEL-STYLE EVENTS SECTION
+   =========================================== */
+.bethel-events-section {
+  background: var(--background-main);
+}
+
+/* Featured Event - Bethel Style */
+.featured-event-bethel {
+  position: relative;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.featured-event-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  transform: scale(1.1);
+  opacity: 0.3;
+}
+
+.featured-event-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
+}
+
+.featured-event-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.featured-event-image-side {
+  position: relative;
+}
+
+.featured-event-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.featured-event-content-side {
+  color: #ffffff;
+}
+
+.featured-event-date-label {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-gold-accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.featured-event-heading {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.featured-event-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 30px;
+  max-width: 450px;
+}
+
+/* Upcoming Events List Section */
+.upcoming-events-section {
+  padding: 70px 0;
+  background: var(--background-main);
+}
+
+.upcoming-events-section h2 {
+  color: var(--text-primary);
+}
+
+/* Encounter Jesus Section */
+.encounter-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.encounter-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.encounter-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+
+.encounter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.encounter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.encounter-card:hover {
+  background: var(--color-navy);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(30, 58, 95, 0.2);
+}
+
+.encounter-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-gold-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.encounter-icon i {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.encounter-card:hover .encounter-icon {
+  background: #ffffff;
+}
+
+.encounter-card:hover .encounter-icon i {
+  color: var(--color-navy);
+}
+
+.encounter-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.encounter-card:hover h3 {
+  color: #ffffff;
+}
+
+.encounter-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
+
+.encounter-card:hover p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.encounter-link {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 2px solid var(--primary-gold-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.encounter-link i {
+  font-size: 14px;
+  color: var(--primary-gold-accent);
+  transition: all 0.3s ease;
+}
+
+.encounter-card:hover .encounter-link {
+  background: var(--primary-gold-accent);
+  border-color: var(--primary-gold-accent);
+}
+
+.encounter-card:hover .encounter-link i {
+  color: #ffffff;
+}
+
+/* Responsive - Featured Event */
+@media (max-width: 991px) {
+  .featured-event-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .featured-event-heading {
+    font-size: 32px;
+  }
+
+  .encounter-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .featured-event-bethel {
+    padding: 60px 0;
+  }
+
+  .featured-event-heading {
+    font-size: 28px;
+  }
+
+  .featured-event-desc {
+    font-size: 15px;
+  }
+
+  .encounter-section {
+    padding: 60px 0;
+  }
+
+  .encounter-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .encounter-card {
+    flex-direction: row;
+    text-align: left;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .encounter-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .encounter-icon i {
+    font-size: 20px;
+  }
+
+  .encounter-card h3 {
+    font-size: 16px;
+  }
+
+  .encounter-card p {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  .encounter-link {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ===========================================
    CONTACT SECTION - Soft Gold with Warm Accent
    =========================================== */
 .contact-section {
