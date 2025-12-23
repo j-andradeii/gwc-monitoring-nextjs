@@ -11,9 +11,23 @@ export function ScrollAnimationProvider({ children }: ScrollAnimationProviderPro
   const observerRef = useRef<IntersectionObserver | null>(null);
   const pathname = usePathname();
 
-  // Scroll to top on route change
+  // Scroll to top on route change (with iOS Safari fix)
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Use setTimeout to ensure scroll happens after route change completes
+    const scrollToTop = () => {
+      // Multiple approaches for iOS Safari compatibility
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    // Immediate scroll
+    scrollToTop();
+
+    // Delayed scroll for iOS Safari which sometimes needs a tick
+    const timeoutId = setTimeout(scrollToTop, 0);
+
+    return () => clearTimeout(timeoutId);
   }, [pathname]);
 
   useEffect(() => {
