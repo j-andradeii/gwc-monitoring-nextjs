@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
-type TabType = 'ways-to-give' | 'build-and-rise';
+type TabType = 'ways-to-give' | 'gateway-projects';
 
 // Scripture data
 const scriptures = [
@@ -70,8 +71,8 @@ const givingChannels = [
   },
 ];
 
-// Build & Rise project data
-const buildAndRiseData = {
+// Gateway Projects data
+const gatewayProjectsData = {
   title: 'Arise & Build',
   subtitle: 'Worship Center Improvement Project',
   description:
@@ -84,6 +85,44 @@ const buildAndRiseData = {
     { label: 'Phase 3: Lighting & Stage', amount: 2000000, completed: false },
     { label: 'Phase 4: Seating & Finishing', amount: 1000000, completed: false },
   ],
+  gallery: [
+    {
+      id: 1,
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/597992661_122181102518766700_6759379141760359149_n.jpg',
+      alt: 'Worship Center - Main Hall',
+      caption: 'Main Worship Hall',
+    },
+    {
+      id: 2,
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598001057_122181102470766700_7721753414270859091_n.jpg',
+      alt: 'Worship Center - Stage Area',
+      caption: 'Stage & Platform',
+    },
+    {
+      id: 3,
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598354889_122181101306766700_7166132187056166846_n.jpg',
+      alt: 'Worship Center - Congregation',
+      caption: 'Congregation Area',
+    },
+    {
+      id: 4,
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598691167_122181202298766700_3747857486846455162_n.jpg',
+      alt: 'Worship Center - Sound System',
+      caption: 'Sound & Media Setup',
+    },
+    {
+      id: 5,
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598696417_122181101384766700_414950063467040030_n.jpg',
+      alt: 'Worship Center - Lighting',
+      caption: 'Lighting System',
+    },
+    {
+      id: 6,
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598714870_122181102446766700_1099840975765605389_n.jpg',
+      alt: 'Worship Center - Fellowship Area',
+      caption: 'Fellowship Space',
+    },
+  ],
 };
 
 export const GiveTabs: React.FC = () => {
@@ -94,7 +133,7 @@ export const GiveTabs: React.FC = () => {
   // Read tab from URL on mount and when searchParams change
   useEffect(() => {
     const tab = searchParams.get('tab') as TabType;
-    if (tab === 'ways-to-give' || tab === 'build-and-rise') {
+    if (tab === 'ways-to-give' || tab === 'gateway-projects') {
       setActiveTab(tab);
     }
   }, [searchParams]);
@@ -105,7 +144,7 @@ export const GiveTabs: React.FC = () => {
     router.push(`/give?tab=${tab}`, { scroll: false });
   };
 
-  const progressPercentage = (buildAndRiseData.currentAmount / buildAndRiseData.goalAmount) * 100;
+  const progressPercentage = (gatewayProjectsData.currentAmount / gatewayProjectsData.goalAmount) * 100;
 
   return (
     <section id="give-content" className="give-tabs-section">
@@ -120,11 +159,11 @@ export const GiveTabs: React.FC = () => {
             Ways to Give
           </button>
           <button
-            className={`give-tab-btn ${activeTab === 'build-and-rise' ? 'active' : ''}`}
-            onClick={() => handleTabChange('build-and-rise')}
+            className={`give-tab-btn ${activeTab === 'gateway-projects' ? 'active' : ''}`}
+            onClick={() => handleTabChange('gateway-projects')}
           >
             <i className="pi pi-building"></i>
-            Arise & Build
+            Gateway Projects
           </button>
         </div>
 
@@ -212,15 +251,37 @@ export const GiveTabs: React.FC = () => {
             </div>
           )}
 
-          {/* Build & Rise Tab */}
-          {activeTab === 'build-and-rise' && (
-            <div className="give-tab-panel build-and-rise-panel">
+          {/* Gateway Projects Tab */}
+          {activeTab === 'gateway-projects' && (
+            <div className="give-tab-panel gateway-projects-panel">
               {/* Project Overview */}
               <div className="project-overview">
                 <div className="project-header">
-                  <span className="section-label">{buildAndRiseData.subtitle}</span>
-                  <h2>{buildAndRiseData.title}</h2>
-                  <p className="project-description">{buildAndRiseData.description}</p>
+                  <span className="section-label">{gatewayProjectsData.subtitle}</span>
+                  <h2>{gatewayProjectsData.title}</h2>
+                  <p className="project-description">{gatewayProjectsData.description}</p>
+                </div>
+
+                {/* Project Gallery */}
+                <div className="project-gallery">
+                  <h3>Our Worship Center</h3>
+                  <div className="gallery-grid">
+                    {gatewayProjectsData.gallery.map((image) => (
+                      <div key={image.id} className="gallery-item">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="gallery-image"
+                          unoptimized
+                        />
+                        <div className="gallery-caption">
+                          <span>{image.caption}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Progress Section */}
@@ -229,13 +290,13 @@ export const GiveTabs: React.FC = () => {
                     <div className="progress-stat">
                       <span className="stat-label">Current</span>
                       <span className="stat-value current">
-                        &#8369;{buildAndRiseData.currentAmount.toLocaleString()}
+                        &#8369;{gatewayProjectsData.currentAmount.toLocaleString()}
                       </span>
                     </div>
                     <div className="progress-stat">
                       <span className="stat-label">Goal</span>
                       <span className="stat-value goal">
-                        &#8369;{buildAndRiseData.goalAmount.toLocaleString()}
+                        &#8369;{gatewayProjectsData.goalAmount.toLocaleString()}
                       </span>
                     </div>
                   </div>
@@ -255,7 +316,7 @@ export const GiveTabs: React.FC = () => {
                 <div className="milestones-section">
                   <h3>Project Milestones</h3>
                   <div className="milestones-stepper">
-                    {buildAndRiseData.milestones.map((milestone, index) => (
+                    {gatewayProjectsData.milestones.map((milestone, index) => (
                       <div
                         key={index}
                         className={`milestone-step ${milestone.completed ? 'completed' : ''}`}
@@ -273,7 +334,7 @@ export const GiveTabs: React.FC = () => {
                             &#8369;{milestone.amount.toLocaleString()}
                           </span>
                         </div>
-                        {index < buildAndRiseData.milestones.length - 1 && (
+                        {index < gatewayProjectsData.milestones.length - 1 && (
                           <div className={`milestone-connector ${milestone.completed ? 'completed' : ''}`}></div>
                         )}
                       </div>
