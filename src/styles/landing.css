@@ -3916,3 +3916,602 @@
     padding: 70px 0 !important;
   }
 }
+
+/* ===========================================
+   GIVE PAGE STYLES
+   =========================================== */
+.give-page .landing-main {
+  position: relative;
+}
+
+/* Give Hero */
+.give-hero {
+  min-height: 65vh;
+}
+
+/* Give Tabs Section */
+.give-tabs-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+/* Tab Navigation */
+.give-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 50px;
+}
+
+.give-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid var(--color-navy);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--color-navy);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.give-tab-btn:hover {
+  background: rgba(30, 58, 95, 0.1);
+}
+
+.give-tab-btn.active {
+  background: var(--color-navy);
+  color: #ffffff;
+}
+
+.give-tab-btn i {
+  font-size: 18px;
+}
+
+/* Tab Content */
+.give-tabs-content {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Why We Give Section */
+.why-we-give {
+  margin-bottom: 60px;
+}
+
+.why-we-give-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.why-we-give-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+
+.why-we-give-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+/* Scriptures Grid */
+.scriptures-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.scripture-card {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.scripture-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.scripture-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-gold-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.scripture-icon i {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.scripture-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.scripture-verse {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+/* Giving Channels */
+.giving-channels {
+  margin-top: 60px;
+}
+
+.giving-channels-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.giving-channels-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 10px 0;
+}
+
+.giving-channels-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.giving-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.giving-channel-card {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 30px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.giving-channel-card:hover {
+  border-color: var(--primary-gold-accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.channel-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.channel-logo-placeholder {
+  width: 60px;
+  height: 60px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.channel-logo-placeholder i {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.channel-logo {
+  object-fit: contain;
+}
+
+.channel-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.channel-details {
+  margin-bottom: 20px;
+}
+
+.channel-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.channel-info-row:last-child {
+  border-bottom: none;
+}
+
+.channel-info-row.highlight {
+  background: rgba(240, 180, 41, 0.1);
+  margin: 10px -10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border-bottom: none;
+}
+
+.channel-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.channel-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.channel-value.account-number {
+  font-family: monospace;
+  font-size: 15px;
+  color: var(--color-navy);
+}
+
+.channel-instructions {
+  margin-bottom: 20px;
+}
+
+.channel-instructions h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.channel-instructions ol {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.channel-instructions li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.channel-instructions li.highlight-instruction {
+  background: rgba(240, 180, 41, 0.15);
+  padding: 8px 12px;
+  margin: 10px -12px 0;
+  border-radius: 6px;
+  list-style: none;
+  margin-left: -20px;
+}
+
+.channel-qr-placeholder {
+  margin-top: 20px;
+}
+
+.qr-placeholder-box {
+  width: 100%;
+  height: 120px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #9ca3af;
+}
+
+.qr-placeholder-box i {
+  font-size: 32px;
+}
+
+.qr-placeholder-box span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Build & Rise Panel */
+.project-overview {
+  margin-bottom: 60px;
+}
+
+.project-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.project-header h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 10px 0;
+}
+
+.project-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Progress Section */
+.project-progress {
+  background: var(--color-navy);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.progress-stat {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.stat-value.current {
+  color: var(--primary-gold-accent);
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.progress-percentage {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  min-width: 60px;
+}
+
+/* Milestones Stepper */
+.milestones-section {
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.milestones-section h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.milestones-stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.milestone-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.milestone-step:last-child {
+  padding-bottom: 0;
+}
+
+.milestone-indicator {
+  width: 44px;
+  height: 44px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.milestone-step.completed .milestone-indicator {
+  background: var(--primary-gold-accent);
+  color: #ffffff;
+}
+
+.milestone-step.completed .milestone-indicator i {
+  font-size: 18px;
+}
+
+.milestone-content {
+  flex: 1;
+  padding-top: 8px;
+}
+
+.milestone-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.milestone-step.completed .milestone-content h4 {
+  color: var(--color-navy);
+}
+
+.milestone-amount {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.milestone-connector {
+  position: absolute;
+  left: 21px;
+  top: 44px;
+  width: 2px;
+  height: calc(100% - 44px);
+  background: #e5e7eb;
+}
+
+.milestone-connector.completed {
+  background: var(--primary-gold-accent);
+}
+
+/* Build Rise Channels specific */
+.build-rise-channels {
+  background: #f0f4f8;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+/* Loading state */
+.loading-tabs {
+  text-align: center;
+  padding: 60px;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+/* Scroll margin for give anchors */
+#give-top,
+#give-content {
+  scroll-margin-top: 100px;
+}
+
+/* Give page responsive */
+@media (max-width: 1024px) {
+  .scriptures-grid,
+  .giving-channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .give-hero {
+    min-height: 55vh;
+  }
+
+  .give-tabs-section {
+    padding: 60px 0;
+  }
+
+  .give-tabs-nav {
+    flex-direction: column;
+  }
+
+  .give-tab-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .give-tabs-content {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+
+  .why-we-give-header h2,
+  .giving-channels-header h2,
+  .project-header h2 {
+    font-size: 28px;
+  }
+
+  .why-we-give-intro,
+  .project-description {
+    font-size: 16px;
+  }
+
+  .scriptures-grid,
+  .giving-channels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+  }
+
+  .progress-bar-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .milestone-step {
+    gap: 16px;
+  }
+
+  .milestone-indicator {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .milestone-connector {
+    left: 17px;
+    top: 36px;
+    height: calc(100% - 36px);
+  }
+
+  .build-rise-channels {
+    padding: 30px 20px;
+  }
+}
