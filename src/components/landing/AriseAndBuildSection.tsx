@@ -20,7 +20,12 @@ export const AriseAndBuildSection: React.FC = () => {
             Join us in improving 8th Floor Golden Peak as our House of Worship.
             Help bring heaven to earth and invest in the future of our community.
           </p>
-          <Link href="/give?tab=gateway-projects" className="btn-arrow btn-arrow-white">
+          <Link
+            href="/give?tab=gateway-projects"
+            className="btn-arrow btn-arrow-white"
+            scroll={true}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             Learn More
             <i className="pi pi-arrow-right arrow-icon"></i>
           </Link>
