@@ -92,7 +92,7 @@ const gatewayProjectsChannel = {
 
 // Gateway Projects data
 const gatewayProjectsData = {
-  title: 'Arise & Build',
+  title: 'Gateway Projects',
   subtitle: 'Worship Center Improvement Project',
   description:
     'Join us in improving the 8th Floor Golden Peak as our House of Worship. This project will enhance our facilities to better serve our growing congregation and community outreach programs.',
@@ -362,11 +362,11 @@ export const GiveTabs: React.FC = () => {
                 </div>
               </div>
 
-              {/* Giving Channel for Arise & Build - Gotyme Bank Only */}
+              {/* Giving Channel for Gateway Projects - Gotyme Bank Only */}
               <div className="giving-channels build-rise-channels">
                 <div className="giving-channels-header">
                   <span className="section-label">Contribute</span>
-                  <h2>Give to Arise & Build</h2>
+                  <h2>Give to Gateway Projects</h2>
                   <p>Support the worship center improvement project</p>
                 </div>
 
@@ -394,7 +394,7 @@ export const GiveTabs: React.FC = () => {
                       </div>
                       <div className="channel-info-row highlight">
                         <span className="channel-label">Reference:</span>
-                        <span className="channel-value">Arise & Build</span>
+                        <span className="channel-value">Gateway Projects</span>
                       </div>
                     </div>
 
@@ -405,7 +405,7 @@ export const GiveTabs: React.FC = () => {
                           <li key={idx}>{instruction}</li>
                         ))}
                         <li className="highlight-instruction">
-                          <strong>Important:</strong> Add &ldquo;Arise & Build&rdquo; as reference/message
+                          <strong>Important:</strong> Add &ldquo;Gateway Projects&rdquo; as reference/message
                         </li>
                       </ol>
                     </div>

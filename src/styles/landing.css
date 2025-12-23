@@ -4575,17 +4575,36 @@
     grid-row: span 1;
   }
 
+  .project-progress {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
   .progress-stats {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .progress-stat:first-child {
+    text-align: left;
+  }
+
+  .progress-stat:last-child {
+    text-align: right;
   }
 
   .stat-value {
+    font-size: 24px;
+  }
+
+  .stat-value.current {
     font-size: 28px;
   }
 
   .progress-bar-container {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     gap: 12px;
   }
 
