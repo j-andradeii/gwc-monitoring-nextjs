@@ -2591,7 +2591,8 @@
 /* Our Values Section - Warm Cream with Gold Accent */
 .our-values-section {
   padding: 80px 0;
-  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important;
+  /* background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important; */
+  background: #fff!important;
   position: relative;
 }
 
@@ -2633,13 +2634,16 @@
 }
 
 .value-card {
-  background: #ffffff;
+  background: linear-gradient(145deg, #ffffff 0%, #f9f8f6 100%);
   padding: 28px 22px;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(26, 39, 68, 0.06);
+  box-shadow:
+    0 2px 4px rgba(26, 39, 68, 0.04),
+    0 8px 24px rgba(26, 39, 68, 0.08),
+    0 16px 40px rgba(26, 39, 68, 0.04);
   text-align: center;
-  border: 1px solid rgba(26, 39, 68, 0.04);
+  border: 1px solid rgba(26, 39, 68, 0.08);
   position: relative;
   overflow: hidden;
 }
@@ -2658,8 +2662,12 @@
 
 .value-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 35px rgba(26, 39, 68, 0.12);
-  border-color: rgba(212, 168, 75, 0.2);
+  box-shadow:
+    0 4px 8px rgba(26, 39, 68, 0.06),
+    0 16px 40px rgba(26, 39, 68, 0.12),
+    0 24px 56px rgba(26, 39, 68, 0.06);
+  border-color: rgba(212, 168, 75, 0.25);
+  background: linear-gradient(145deg, #ffffff 0%, #fdfcfa 100%);
 }
 
 .value-card:hover::before {
@@ -2771,18 +2779,24 @@
 }
 
 .beliefs-accordion .p-accordion-tab {
-  border: 1px solid rgba(26, 39, 68, 0.06);
-  border-radius: 12px;
+  border: 1px solid rgba(26, 39, 68, 0.08);
+  border-radius: 14px;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 4px 20px rgba(26, 39, 68, 0.06);
+  background: linear-gradient(145deg, #ffffff 0%, #faf9f7 100%);
+  box-shadow:
+    0 2px 4px rgba(26, 39, 68, 0.03),
+    0 6px 20px rgba(26, 39, 68, 0.06),
+    0 12px 32px rgba(26, 39, 68, 0.03);
   transition: all 0.3s ease;
 }
 
 .beliefs-accordion .p-accordion-tab:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(26, 39, 68, 0.1);
-  border-color: rgba(212, 168, 75, 0.15);
+  box-shadow:
+    0 4px 8px rgba(26, 39, 68, 0.04),
+    0 12px 32px rgba(26, 39, 68, 0.1),
+    0 20px 48px rgba(26, 39, 68, 0.04);
+  border-color: rgba(212, 168, 75, 0.2);
 }
 
 .beliefs-accordion .p-accordion-header {
@@ -2791,11 +2805,12 @@
 }
 
 .beliefs-accordion .p-accordion-header-link {
-  padding: 20px 24px !important;
+  padding: 22px 28px !important;
   background: transparent !important;
   border: none !important;
   border-radius: 0 !important;
   transition: background 0.2s ease !important;
+  gap: 16px !important;
 }
 
 .beliefs-accordion .p-accordion-header-link:hover {
@@ -2813,8 +2828,9 @@
 .belief-accordion-header {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   width: 100%;
+  flex: 1;
 }
 
 .belief-accordion-header .belief-number {
@@ -2839,7 +2855,7 @@
 }
 
 .p-accordion-tab-active .belief-accordion-header .belief-number {
-  background: linear-gradient(135deg, var(--navy-background) 0%, #2a3a5c 100%);
+  /* background: linear-gradient(135deg, var(--navy-background) 0%, #2a3a5c 100%); */
   box-shadow: 0 4px 12px rgba(26, 39, 68, 0.25);
 }
 
@@ -2864,11 +2880,11 @@
 }
 
 .beliefs-accordion .p-accordion-content {
-  padding: 0 24px 24px 88px !important;
+  padding: 4px 28px 28px 92px !important;
   border: none !important;
-  background: linear-gradient(180deg, rgba(249, 248, 246, 0.5) 0%, transparent 100%) !important;
-  border-top: 1px solid rgba(212, 168, 75, 0.1) !important;
-  margin-top: -4px;
+  background: linear-gradient(180deg, rgba(249, 248, 246, 0.6) 0%, rgba(255, 255, 255, 0) 100%) !important;
+  border-top: 1px solid rgba(212, 168, 75, 0.12) !important;
+  margin-top: 0;
 }
 
 .belief-accordion-content p {
@@ -2881,8 +2897,10 @@
 
 .beliefs-accordion .p-accordion-toggle-icon {
   color: var(--primary-gold-accent) !important;
-  font-size: 0.9rem !important;
-  transition: transform 0.3s ease !important;
+  font-size: 1.1rem !important;
+  transition: all 0.3s ease !important;
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
 }
 
 .beliefs-accordion .p-accordion-tab:hover .p-accordion-toggle-icon {
@@ -2891,9 +2909,16 @@
 
 /* Active state */
 .beliefs-accordion .p-accordion-tab-active {
-  background: #ffffff;
-  border-color: rgba(212, 168, 75, 0.2);
-  box-shadow: 0 10px 35px rgba(26, 39, 68, 0.12);
+  background: linear-gradient(145deg, #ffffff 0%, #fdfcfa 100%);
+  border-color: rgba(212, 168, 75, 0.25);
+  box-shadow:
+    0 4px 8px rgba(26, 39, 68, 0.04),
+    0 12px 32px rgba(26, 39, 68, 0.1),
+    0 20px 48px rgba(26, 39, 68, 0.05);
+}
+
+.beliefs-accordion .p-accordion-tab-active .p-accordion-toggle-icon {
+  color: var(--navy-background) !important;
 }
 
 /* Our Pastors Section - Soft Gold with Warm Accent */
@@ -3207,7 +3232,12 @@
   }
 
   .beliefs-accordion .p-accordion-content {
-    padding: 0 20px 20px 70px !important;
+    padding: 4px 20px 24px 72px !important;
+  }
+
+  .beliefs-accordion .p-accordion-header-link {
+    padding: 18px 20px !important;
+    gap: 12px !important;
   }
 
   .belief-accordion-header .belief-number {
@@ -3405,7 +3435,7 @@
 }
 
 .about-page .contact-section {
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
 /* Scroll margin for anchors */
