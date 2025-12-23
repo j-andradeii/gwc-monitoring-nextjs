@@ -75,6 +75,11 @@ export const LandingHeader: React.FC = () => {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="#give" onClick={closeMobileMenu}>
+                Give
+              </Link>
+            </li>
           </ul>
 
           <div className="header-actions">
