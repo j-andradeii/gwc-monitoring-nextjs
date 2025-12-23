@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-
+import { useRouter } from 'next/navigation'
 export const AriseAndBuildSection: React.FC = () => {
+   const router = useRouter()
   return (
     <section
       className="arise-build-section animate-on-scroll"
@@ -24,7 +25,9 @@ export const AriseAndBuildSection: React.FC = () => {
             href="/give?tab=gateway-projects"
             className="btn-arrow btn-arrow-white"
             scroll={true}
-            onClick={() => window.scrollTo(0, 0)}
+            onClick={() => {
+              router.push('/give?tab=gateway-projects')
+            }}
           >
             Learn More
             <i className="pi pi-arrow-right arrow-icon"></i>
