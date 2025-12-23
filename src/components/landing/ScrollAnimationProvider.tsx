@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface ScrollAnimationProviderProps {
   children: ReactNode;
@@ -8,6 +9,12 @@ interface ScrollAnimationProviderProps {
 
 export function ScrollAnimationProvider({ children }: ScrollAnimationProviderProps) {
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const pathname = usePathname();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
