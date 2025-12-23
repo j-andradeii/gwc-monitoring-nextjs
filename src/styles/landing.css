@@ -4083,6 +4083,29 @@
   gap: 24px;
 }
 
+.giving-channels-single {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.giving-channel-card.featured {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 2px solid var(--primary-gold-accent);
+  box-shadow: 0 10px 40px rgba(240, 180, 41, 0.15);
+}
+
+.giving-channel-card.featured .channel-logo-placeholder {
+  width: 70px;
+  height: 70px;
+  font-size: 32px;
+}
+
+.giving-channel-card.featured .channel-header h3 {
+  font-size: 1.5rem;
+}
+
 .giving-channel-card {
   background: #f8f9fa;
   border-radius: 16px;

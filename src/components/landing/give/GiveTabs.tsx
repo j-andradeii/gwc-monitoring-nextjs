@@ -71,6 +71,25 @@ const givingChannels = [
   },
 ];
 
+// Gateway Projects giving channel (Gotyme Bank only)
+const gatewayProjectsChannel = {
+  id: 'gotyme',
+  name: 'Gotyme Bank',
+  accountName: 'Justin Marc Tariman',
+  accountNumber: '016765188731',
+  swiftCode: 'GOTYPHM2XXX',
+  icon: 'pi pi-wallet',
+  color: '#00A651',
+  instructions: [
+    'Log in to your Gotyme Bank app or any banking app',
+    'Select "Transfer" or "Send Money"',
+    'Choose "Transfer to Other Banks" if using another bank',
+    'Enter the account number above',
+    'Use Swift Code for international transfers',
+    'Enter amount and confirm',
+  ],
+};
+
 // Gateway Projects data
 const gatewayProjectsData = {
   title: 'Arise & Build',
@@ -343,7 +362,7 @@ export const GiveTabs: React.FC = () => {
                 </div>
               </div>
 
-              {/* Giving Channels for Build & Rise */}
+              {/* Giving Channel for Arise & Build - Gotyme Bank Only */}
               <div className="giving-channels build-rise-channels">
                 <div className="giving-channels-header">
                   <span className="section-label">Contribute</span>
@@ -351,44 +370,46 @@ export const GiveTabs: React.FC = () => {
                   <p>Support the worship center improvement project</p>
                 </div>
 
-                <div className="giving-channels-grid">
-                  {givingChannels.map((channel) => (
-                    <div key={channel.id} className="giving-channel-card">
-                      <div className="channel-header">
-                        <div className="channel-logo-placeholder" style={{ backgroundColor: channel.color }}>
-                          <i className={channel.icon}></i>
-                        </div>
-                        <h3>{channel.name}</h3>
+                <div className="giving-channels-single">
+                  <div className="giving-channel-card featured">
+                    <div className="channel-header">
+                      <div className="channel-logo-placeholder" style={{ backgroundColor: gatewayProjectsChannel.color }}>
+                        <i className={gatewayProjectsChannel.icon}></i>
                       </div>
+                      <h3>{gatewayProjectsChannel.name}</h3>
+                    </div>
 
-                      <div className="channel-details">
-                        <div className="channel-info-row">
-                          <span className="channel-label">Account Name:</span>
-                          <span className="channel-value">{channel.accountName}</span>
-                        </div>
-                        <div className="channel-info-row">
-                          <span className="channel-label">Account Number:</span>
-                          <span className="channel-value account-number">{channel.accountNumber}</span>
-                        </div>
-                        <div className="channel-info-row highlight">
-                          <span className="channel-label">Reference:</span>
-                          <span className="channel-value">Arise & Build</span>
-                        </div>
+                    <div className="channel-details">
+                      <div className="channel-info-row">
+                        <span className="channel-label">Account Name:</span>
+                        <span className="channel-value">{gatewayProjectsChannel.accountName}</span>
                       </div>
-
-                      <div className="channel-instructions">
-                        <h4>Instructions:</h4>
-                        <ol>
-                          {channel.instructions.map((instruction, idx) => (
-                            <li key={idx}>{instruction}</li>
-                          ))}
-                          <li className="highlight-instruction">
-                            <strong>Important:</strong> Add &ldquo;Arise & Build&rdquo; as reference/message
-                          </li>
-                        </ol>
+                      <div className="channel-info-row">
+                        <span className="channel-label">Account Number:</span>
+                        <span className="channel-value account-number">{gatewayProjectsChannel.accountNumber}</span>
+                      </div>
+                      <div className="channel-info-row">
+                        <span className="channel-label">Swift Code:</span>
+                        <span className="channel-value">{gatewayProjectsChannel.swiftCode}</span>
+                      </div>
+                      <div className="channel-info-row highlight">
+                        <span className="channel-label">Reference:</span>
+                        <span className="channel-value">Arise & Build</span>
                       </div>
                     </div>
-                  ))}
+
+                    <div className="channel-instructions">
+                      <h4>Instructions:</h4>
+                      <ol>
+                        {gatewayProjectsChannel.instructions.map((instruction, idx) => (
+                          <li key={idx}>{instruction}</li>
+                        ))}
+                        <li className="highlight-instruction">
+                          <strong>Important:</strong> Add &ldquo;Arise & Build&rdquo; as reference/message
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
