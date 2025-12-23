@@ -4252,6 +4252,31 @@
   font-weight: 500;
 }
 
+/* QR Code Section */
+.channel-qr {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.channel-qr h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.qr-image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.qr-image {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 /* Build & Rise Panel */
 .project-overview {
   margin-bottom: 60px;
@@ -4575,17 +4600,36 @@
     grid-row: span 1;
   }
 
+  .project-progress {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
   .progress-stats {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .progress-stat:first-child {
+    text-align: left;
+  }
+
+  .progress-stat:last-child {
+    text-align: right;
   }
 
   .stat-value {
+    font-size: 24px;
+  }
+
+  .stat-value.current {
     font-size: 28px;
   }
 
   .progress-bar-container {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     gap: 12px;
   }
 

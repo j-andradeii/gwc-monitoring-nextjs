@@ -15,12 +15,12 @@ export const AriseAndBuildSection: React.FC = () => {
       <div className="landing-container">
         <div className="arise-build-container">
           <span className="arise-build-label">Worship Center</span>
-          <h2 className="arise-build-title">Arise & Build</h2>
+          <h2 className="arise-build-title">Gateway Projects</h2>
           <p className="arise-build-description">
             Join us in improving 8th Floor Golden Peak as our House of Worship.
             Help bring heaven to earth and invest in the future of our community.
           </p>
-          <Link href="#" className="btn-arrow btn-arrow-white">
+          <Link href="/give?tab=gateway-projects" className="btn-arrow btn-arrow-white">
             Learn More
             <i className="pi pi-arrow-right arrow-icon"></i>
           </Link>

@@ -80,6 +80,7 @@ const gatewayProjectsChannel = {
   swiftCode: 'GOTYPHM2XXX',
   icon: 'pi pi-wallet',
   color: '#00A651',
+  qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/cc5dbe5a-cc42-495c-b17c-c77e7a73686f.jpeg',
   instructions: [
     'Log in to your Gotyme Bank app or any banking app',
     'Select "Transfer" or "Send Money"',
@@ -92,17 +93,17 @@ const gatewayProjectsChannel = {
 
 // Gateway Projects data
 const gatewayProjectsData = {
-  title: 'Arise & Build',
+  title: 'Gateway Projects',
   subtitle: 'Worship Center Improvement Project',
   description:
     'Join us in improving the 8th Floor Golden Peak as our House of Worship. This project will enhance our facilities to better serve our growing congregation and community outreach programs.',
-  goalAmount: 5000000,
-  currentAmount: 2750000,
+  goalAmount: 1000000,
+  currentAmount: 195000,
   milestones: [
-    { label: 'Phase 1: Planning & Design', amount: 500000, completed: true },
-    { label: 'Phase 2: Sound System Upgrade', amount: 1500000, completed: true },
-    { label: 'Phase 3: Lighting & Stage', amount: 2000000, completed: false },
-    { label: 'Phase 4: Seating & Finishing', amount: 1000000, completed: false },
+    { label: 'Phase 1: Planning & Design', amount: 150000, completed: true },
+    { label: 'Phase 2: Initial Setup', amount: 250000, completed: false },
+    { label: 'Phase 3: Equipment & Materials', amount: 350000, completed: false },
+    { label: 'Phase 4: Completion', amount: 250000, completed: false },
   ],
   gallery: [
     {
@@ -362,11 +363,11 @@ export const GiveTabs: React.FC = () => {
                 </div>
               </div>
 
-              {/* Giving Channel for Arise & Build - Gotyme Bank Only */}
+              {/* Giving Channel for Gateway Projects - Gotyme Bank Only */}
               <div className="giving-channels build-rise-channels">
                 <div className="giving-channels-header">
                   <span className="section-label">Contribute</span>
-                  <h2>Give to Arise & Build</h2>
+                  <h2>Give to Gateway Projects</h2>
                   <p>Support the worship center improvement project</p>
                 </div>
 
@@ -394,7 +395,7 @@ export const GiveTabs: React.FC = () => {
                       </div>
                       <div className="channel-info-row highlight">
                         <span className="channel-label">Reference:</span>
-                        <span className="channel-value">Arise & Build</span>
+                        <span className="channel-value">Gateway Projects</span>
                       </div>
                     </div>
 
@@ -405,9 +406,23 @@ export const GiveTabs: React.FC = () => {
                           <li key={idx}>{instruction}</li>
                         ))}
                         <li className="highlight-instruction">
-                          <strong>Important:</strong> Add &ldquo;Arise & Build&rdquo; as reference/message
+                          <strong>Important:</strong> Add &ldquo;Gateway Projects&rdquo; as reference/message
                         </li>
                       </ol>
+                    </div>
+
+                    <div className="channel-qr">
+                      <h4>Scan QR Code</h4>
+                      <div className="qr-image-wrapper">
+                        <Image
+                          src={gatewayProjectsChannel.qrCode}
+                          alt="Gotyme Bank QR Code"
+                          width={200}
+                          height={200}
+                          className="qr-image"
+                          unoptimized
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
