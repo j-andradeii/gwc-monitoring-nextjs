@@ -26,6 +26,7 @@ export const AriseAndBuildSection: React.FC = () => {
             className="btn-arrow btn-arrow-white"
             scroll={true}
             onClick={() => {
+              window.scrollTo({top: 0});
               router.push('/give?tab=gateway-projects')
             }}
           >
