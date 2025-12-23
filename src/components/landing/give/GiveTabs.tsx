@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
-type TabType = 'ways-to-give' | 'build-and-rise';
+type TabType = 'ways-to-give' | 'gateway-projects';
 
 // Scripture data
 const scriptures = [
@@ -71,8 +71,8 @@ const givingChannels = [
   },
 ];
 
-// Build & Rise project data
-const buildAndRiseData = {
+// Gateway Projects data
+const gatewayProjectsData = {
   title: 'Arise & Build',
   subtitle: 'Worship Center Improvement Project',
   description:
@@ -133,7 +133,7 @@ export const GiveTabs: React.FC = () => {
   // Read tab from URL on mount and when searchParams change
   useEffect(() => {
     const tab = searchParams.get('tab') as TabType;
-    if (tab === 'ways-to-give' || tab === 'build-and-rise') {
+    if (tab === 'ways-to-give' || tab === 'gateway-projects') {
       setActiveTab(tab);
     }
   }, [searchParams]);
@@ -144,7 +144,7 @@ export const GiveTabs: React.FC = () => {
     router.push(`/give?tab=${tab}`, { scroll: false });
   };
 
-  const progressPercentage = (buildAndRiseData.currentAmount / buildAndRiseData.goalAmount) * 100;
+  const progressPercentage = (gatewayProjectsData.currentAmount / gatewayProjectsData.goalAmount) * 100;
 
   return (
     <section id="give-content" className="give-tabs-section">
@@ -159,11 +159,11 @@ export const GiveTabs: React.FC = () => {
             Ways to Give
           </button>
           <button
-            className={`give-tab-btn ${activeTab === 'build-and-rise' ? 'active' : ''}`}
-            onClick={() => handleTabChange('build-and-rise')}
+            className={`give-tab-btn ${activeTab === 'gateway-projects' ? 'active' : ''}`}
+            onClick={() => handleTabChange('gateway-projects')}
           >
             <i className="pi pi-building"></i>
-            Arise & Build
+            Gateway Projects
           </button>
         </div>
 
@@ -251,22 +251,22 @@ export const GiveTabs: React.FC = () => {
             </div>
           )}
 
-          {/* Build & Rise Tab */}
-          {activeTab === 'build-and-rise' && (
-            <div className="give-tab-panel build-and-rise-panel">
+          {/* Gateway Projects Tab */}
+          {activeTab === 'gateway-projects' && (
+            <div className="give-tab-panel gateway-projects-panel">
               {/* Project Overview */}
               <div className="project-overview">
                 <div className="project-header">
-                  <span className="section-label">{buildAndRiseData.subtitle}</span>
-                  <h2>{buildAndRiseData.title}</h2>
-                  <p className="project-description">{buildAndRiseData.description}</p>
+                  <span className="section-label">{gatewayProjectsData.subtitle}</span>
+                  <h2>{gatewayProjectsData.title}</h2>
+                  <p className="project-description">{gatewayProjectsData.description}</p>
                 </div>
 
                 {/* Project Gallery */}
                 <div className="project-gallery">
                   <h3>Our Worship Center</h3>
                   <div className="gallery-grid">
-                    {buildAndRiseData.gallery.map((image) => (
+                    {gatewayProjectsData.gallery.map((image) => (
                       <div key={image.id} className="gallery-item">
                         <Image
                           src={image.src}
@@ -290,13 +290,13 @@ export const GiveTabs: React.FC = () => {
                     <div className="progress-stat">
                       <span className="stat-label">Current</span>
                       <span className="stat-value current">
-                        &#8369;{buildAndRiseData.currentAmount.toLocaleString()}
+                        &#8369;{gatewayProjectsData.currentAmount.toLocaleString()}
                       </span>
                     </div>
                     <div className="progress-stat">
                       <span className="stat-label">Goal</span>
                       <span className="stat-value goal">
-                        &#8369;{buildAndRiseData.goalAmount.toLocaleString()}
+                        &#8369;{gatewayProjectsData.goalAmount.toLocaleString()}
                       </span>
                     </div>
                   </div>
@@ -316,7 +316,7 @@ export const GiveTabs: React.FC = () => {
                 <div className="milestones-section">
                   <h3>Project Milestones</h3>
                   <div className="milestones-stepper">
-                    {buildAndRiseData.milestones.map((milestone, index) => (
+                    {gatewayProjectsData.milestones.map((milestone, index) => (
                       <div
                         key={index}
                         className={`milestone-step ${milestone.completed ? 'completed' : ''}`}
@@ -334,7 +334,7 @@ export const GiveTabs: React.FC = () => {
                             &#8369;{milestone.amount.toLocaleString()}
                           </span>
                         </div>
-                        {index < buildAndRiseData.milestones.length - 1 && (
+                        {index < gatewayProjectsData.milestones.length - 1 && (
                           <div className={`milestone-connector ${milestone.completed ? 'completed' : ''}`}></div>
                         )}
                       </div>
