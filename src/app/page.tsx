@@ -84,6 +84,7 @@ import {
   SermonsSection,
   MinistriesSection,
   EventsSection,
+  AriseAndBuildSection,
   ContactSection,
   LandingFooter,
   ScrollAnimationProvider,
@@ -136,6 +137,7 @@ export default function LandingPage() {
           <SermonsSection />
           <MinistriesSection />
           <EventsSection />
+          <AriseAndBuildSection />
           <ContactSection />
         </ScrollAnimationProvider>
       </main>

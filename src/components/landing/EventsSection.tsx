@@ -7,69 +7,108 @@ interface Event {
   id: string;
   title: string;
   date: string;
+  day: string;
   time: string;
   location: string;
-  type: string;
+  image: string;
 }
 
-const events: Event[] = [
+// Upcoming events list
+const upcomingEvents: Event[] = [
   {
     id: '1',
     title: 'Marketplace Gathering',
     date: 'Dec 18',
+    day: 'Wednesday',
     time: '7:00 PM',
     location: 'Main Hall',
-    type: 'Fellowship',
+    image: '/assets/images/community.jpg',
   },
   {
     id: '2',
     title: 'Youth Night',
     date: 'Dec 22',
+    day: 'Sunday',
     time: '6:00 PM',
     location: 'Youth Center',
-    type: 'Youth',
+    image: '/assets/images/community.jpg',
   },
   {
     id: '3',
-    title: 'Christmas Service',
+    title: 'Christmas Eve Service',
+    date: 'Dec 24',
+    day: 'Tuesday',
+    time: '6:00 PM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/community.jpg',
+  },
+  {
+    id: '4',
+    title: 'Christmas Day Celebration',
     date: 'Dec 25',
+    day: 'Wednesday',
     time: '9:30 AM',
-    location: '8th Floor, Golden Peak, Gorordo Avenue',
-    type: 'Worship',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/community.jpg',
+  },
+  {
+    id: '5',
+    title: 'New Year Prayer & Worship',
+    date: 'Dec 31',
+    day: 'Tuesday',
+    time: '10:00 PM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/community.jpg',
   },
 ];
 
 export const EventsSection: React.FC = () => {
   return (
-    <section id="events" className="events-section animate-on-scroll">
+    <section id="events" className="events-grid-section animate-on-scroll">
       <div className="landing-container">
-        <div className="section-header-inline">
+        <div className="events-grid-header">
           <div>
             <span className="section-label">Upcoming</span>
             <h2>Events</h2>
           </div>
-          <Link href="#" className="view-all-link">
-            View Calendar <i className="pi pi-arrow-right"></i>
+          <Link href="#" className="btn-arrow btn-arrow-outline-navy">
+            View All Events
+            <i className="pi pi-arrow-right arrow-icon"></i>
           </Link>
         </div>
 
-        <div className="events-list">
-          {events.map((event) => (
-            <Link key={event.id} href="#" className="event-card animate-on-scroll">
-              <div className="event-date-badge">
-                <span className="event-date-day">{event.date.split(' ')[1]}</span>
-                <span className="event-date-month">{event.date.split(' ')[0]}</span>
-              </div>
-              <div className="event-info">
-                <span className="event-type">{event.type}</span>
-                <h3>{event.title}</h3>
-                <div className="event-details">
-                  <span><i className="pi pi-clock"></i> {event.time}</span>
-                  <span><i className="pi pi-map-marker"></i> {event.location}</span>
+        <div className="events-card-grid">
+          {upcomingEvents.map((event) => (
+            <Link key={event.id} href="#" className="event-grid-card">
+              <div
+                className="event-grid-card-image"
+                style={{ backgroundImage: `url('${event.image}')` }}
+              >
+                <div className="event-grid-card-date-badge">
+                  <span className="event-grid-day-num">{event.date.split(' ')[1]}</span>
+                  <span className="event-grid-month">{event.date.split(' ')[0]}</span>
                 </div>
               </div>
-              <div className="event-action">
-                <i className="pi pi-chevron-right"></i>
+              <div className="event-grid-card-body">
+                <h3 className="event-grid-card-title">{event.title}</h3>
+                <div className="event-grid-card-info">
+                  <div className="event-grid-info-row">
+                    <i className="pi pi-calendar"></i>
+                    <span>{event.day}, {event.date}</span>
+                  </div>
+                  <div className="event-grid-info-row">
+                    <i className="pi pi-clock"></i>
+                    <span>{event.time}</span>
+                  </div>
+                  <div className="event-grid-info-row">
+                    <i className="pi pi-map-marker"></i>
+                    <span>{event.location}</span>
+                  </div>
+                </div>
+                <div className="event-grid-card-cta">
+                  <span>Learn More</span>
+                  <i className="pi pi-arrow-right"></i>
+                </div>
               </div>
             </Link>
           ))}
