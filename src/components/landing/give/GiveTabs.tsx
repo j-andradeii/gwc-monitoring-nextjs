@@ -1,10 +1,24 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
 type TabType = 'ways-to-give' | 'gateway-projects';
+
+// Copy to clipboard hook
+const useCopyToClipboard = () => {
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const copy = useCallback((text: string, id: string) => {
+    navigator.clipboard.writeText(text.replace(/-/g, '')).then(() => {
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
+    });
+  }, []);
+
+  return { copiedId, copy };
+};
 
 // Scripture data
 const scriptures = [
@@ -101,9 +115,9 @@ const gatewayProjectsData = {
   currentAmount: 195000,
   milestones: [
     { label: 'Phase 1: Planning & Design', amount: 150000, completed: true },
-    { label: 'Phase 2: Initial Setup', amount: 250000, completed: false },
-    { label: 'Phase 3: Equipment & Materials', amount: 350000, completed: false },
-    { label: 'Phase 4: Completion', amount: 250000, completed: false },
+    { label: 'Phase 2: Airconditioning and Flooring', amount: 400000, completed: false },
+    { label: 'Phase 3: Interior and Reception', amount: 300000, completed: false },
+    { label: 'Phase 4: Completion', amount: 150000, completed: false },
   ],
   gallery: [
     {
@@ -149,6 +163,7 @@ export const GiveTabs: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<TabType>('ways-to-give');
+  const { copiedId, copy } = useCopyToClipboard();
 
   // Read tab from URL on mount and when searchParams change
   useEffect(() => {
@@ -165,6 +180,7 @@ export const GiveTabs: React.FC = () => {
   };
 
   const progressPercentage = (gatewayProjectsData.currentAmount / gatewayProjectsData.goalAmount) * 100;
+  const remainingAmount = gatewayProjectsData.goalAmount - gatewayProjectsData.currentAmount;
 
   return (
     <section id="give-content" className="give-tabs-section">
@@ -242,9 +258,24 @@ export const GiveTabs: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="compact-account-box">
+                      <div
+                        className={`compact-account-box copyable ${copiedId === channel.id ? 'copied' : ''}`}
+                        onClick={() => copy(channel.accountNumber, channel.id)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => e.key === 'Enter' && copy(channel.accountNumber, channel.id)}
+                      >
                         <span className="account-label">Account Number</span>
-                        <span className="account-value">{channel.accountNumber}</span>
+                        <div className="account-value-row">
+                          <span className="account-value">{channel.accountNumber}</span>
+                          <span className="copy-indicator">
+                            {copiedId === channel.id ? (
+                              <><i className="pi pi-check"></i> Copied!</>
+                            ) : (
+                              <><i className="pi pi-copy"></i> Tap to copy</>
+                            )}
+                          </span>
+                        </div>
                       </div>
 
                       <div className="compact-instructions">
@@ -306,38 +337,75 @@ export const GiveTabs: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Progress Section */}
-                <div className="project-progress">
-                  <div className="progress-stats">
-                    <div className="progress-stat">
-                      <span className="stat-label">Current</span>
-                      <span className="stat-value current">
-                        &#8369;{gatewayProjectsData.currentAmount.toLocaleString()}
-                      </span>
+                {/* Progress Section - Enhanced */}
+                <div className="project-progress enhanced-progress">
+                  <div className="progress-header">
+                    <div className="progress-percentage-circle">
+                      <span className="percentage-value">{progressPercentage.toFixed(0)}%</span>
+                      <span className="percentage-label">Raised</span>
                     </div>
-                    <div className="progress-stat">
-                      <span className="stat-label">Goal</span>
-                      <span className="stat-value goal">
-                        &#8369;{gatewayProjectsData.goalAmount.toLocaleString()}
-                      </span>
+                    <div className="progress-headline">
+                      <h4>Together We&apos;re Building</h4>
+                      <p>Your generosity is making a difference</p>
                     </div>
                   </div>
 
-                  <div className="progress-bar-container">
-                    <div className="progress-bar">
+                  <div className="progress-bar-wrapper">
+                    <div className="progress-bar enhanced">
                       <div
                         className="progress-bar-fill"
                         style={{ width: `${progressPercentage}%` }}
-                      ></div>
+                      >
+                        <div className="progress-bar-glow"></div>
+                      </div>
                     </div>
-                    <span className="progress-percentage">{progressPercentage.toFixed(0)}%</span>
+                  </div>
+
+                  <div className="progress-stats enhanced-stats">
+                    <div className="progress-stat-card current-card">
+                      <div className="stat-icon">
+                        <i className="pi pi-heart-fill"></i>
+                      </div>
+                      <div className="stat-info">
+                        <span className="stat-label">Raised So Far</span>
+                        <span className="stat-value current">
+                          &#8369;{gatewayProjectsData.currentAmount.toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="progress-stat-card remaining-card">
+                      <div className="stat-icon">
+                        <i className="pi pi-flag"></i>
+                      </div>
+                      <div className="stat-info">
+                        <span className="stat-label">Still Needed</span>
+                        <span className="stat-value remaining">
+                          &#8369;{remainingAmount.toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="progress-stat-card goal-card">
+                      <div className="stat-icon">
+                        <i className="pi pi-star-fill"></i>
+                      </div>
+                      <div className="stat-info">
+                        <span className="stat-label">Goal Amount</span>
+                        <span className="stat-value goal">
+                          &#8369;{gatewayProjectsData.goalAmount.toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Milestones Stepper */}
-                <div className="milestones-section">
-                  <h3>Project Milestones</h3>
-                  <div className="milestones-stepper">
+                {/* Milestones Stepper - Enhanced Vertical */}
+                <div className="milestones-section enhanced-milestones vertical-milestones">
+                  <div className="milestones-header">
+                    <span className="section-label">Roadmap</span>
+                    <h3>Project Milestones</h3>
+                    <p>Track our journey to completing the worship center</p>
+                  </div>
+                  <div className="milestones-stepper vertical">
                     {gatewayProjectsData.milestones.map((milestone, index) => (
                       <div
                         key={index}
@@ -350,14 +418,22 @@ export const GiveTabs: React.FC = () => {
                             <span>{index + 1}</span>
                           )}
                         </div>
-                        <div className="milestone-content">
-                          <h4>{milestone.label}</h4>
-                          <span className="milestone-amount">
-                            &#8369;{milestone.amount.toLocaleString()}
-                          </span>
+                        <div className="milestone-content-card">
+                          <div className="milestone-content-inner">
+                            <span className="milestone-phase">Phase {index + 1}</span>
+                            <h4>{milestone.label.replace(/Phase \d+: /, '')}</h4>
+                            <span className="milestone-amount">
+                              &#8369;{milestone.amount.toLocaleString()}
+                            </span>
+                          </div>
+                          {milestone.completed && (
+                            <span className="milestone-badge completed-badge">
+                              <i className="pi pi-check-circle"></i> Complete
+                            </span>
+                          )}
                         </div>
                         {index < gatewayProjectsData.milestones.length - 1 && (
-                          <div className={`milestone-connector ${milestone.completed ? 'completed' : ''}`}></div>
+                          <div className={`milestone-connector-vertical ${milestone.completed ? 'completed' : ''}`}></div>
                         )}
                       </div>
                     ))}
@@ -391,13 +467,43 @@ export const GiveTabs: React.FC = () => {
                         </div>
 
                         <div className="featured-account-details">
-                          <div className="compact-account-box">
+                          <div
+                            className={`compact-account-box copyable ${copiedId === 'gotyme-account' ? 'copied' : ''}`}
+                            onClick={() => copy(gatewayProjectsChannel.accountNumber, 'gotyme-account')}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => e.key === 'Enter' && copy(gatewayProjectsChannel.accountNumber, 'gotyme-account')}
+                          >
                             <span className="account-label">Account Number</span>
-                            <span className="account-value">{gatewayProjectsChannel.accountNumber}</span>
+                            <div className="account-value-row">
+                              <span className="account-value">{gatewayProjectsChannel.accountNumber}</span>
+                              <span className="copy-indicator">
+                                {copiedId === 'gotyme-account' ? (
+                                  <><i className="pi pi-check"></i> Copied!</>
+                                ) : (
+                                  <><i className="pi pi-copy"></i></>
+                                )}
+                              </span>
+                            </div>
                           </div>
-                          <div className="compact-account-box">
+                          <div
+                            className={`compact-account-box copyable ${copiedId === 'gotyme-swift' ? 'copied' : ''}`}
+                            onClick={() => copy(gatewayProjectsChannel.swiftCode, 'gotyme-swift')}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => e.key === 'Enter' && copy(gatewayProjectsChannel.swiftCode, 'gotyme-swift')}
+                          >
                             <span className="account-label">Swift Code</span>
-                            <span className="account-value">{gatewayProjectsChannel.swiftCode}</span>
+                            <div className="account-value-row">
+                              <span className="account-value">{gatewayProjectsChannel.swiftCode}</span>
+                              <span className="copy-indicator">
+                                {copiedId === 'gotyme-swift' ? (
+                                  <><i className="pi pi-check"></i> Copied!</>
+                                ) : (
+                                  <><i className="pi pi-copy"></i></>
+                                )}
+                              </span>
+                            </div>
                           </div>
                         </div>
 

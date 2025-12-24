@@ -4885,6 +4885,424 @@
   font-size: 14px;
 }
 
+/* ============================================
+   COPYABLE ACCOUNT BOXES
+   ============================================ */
+
+.compact-account-box.copyable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.compact-account-box.copyable:hover {
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.08) 0%, rgba(30, 58, 95, 0.12) 100%);
+  transform: scale(1.02);
+}
+
+.compact-account-box.copyable:active {
+  transform: scale(0.98);
+}
+
+.compact-account-box.copied {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.18) 100%) !important;
+}
+
+.account-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.copy-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.compact-account-box.copyable:hover .copy-indicator {
+  opacity: 1;
+  color: var(--color-navy);
+}
+
+.compact-account-box.copied .copy-indicator {
+  color: #22c55e !important;
+  opacity: 1;
+}
+
+.copy-indicator i {
+  font-size: 12px;
+}
+
+/* ============================================
+   ENHANCED PROGRESS SECTION
+   ============================================ */
+
+.enhanced-progress {
+  background: linear-gradient(145deg, var(--color-navy) 0%, #0a1929 100%) !important;
+  border-radius: 28px !important;
+  padding: 40px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.enhanced-progress::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(240, 180, 41, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.progress-percentage-circle {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 32px rgba(240, 180, 41, 0.4);
+}
+
+.percentage-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.percentage-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.progress-headline h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.progress-headline p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.progress-bar-wrapper {
+  margin-bottom: 32px;
+}
+
+.progress-bar.enhanced {
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: visible;
+  position: relative;
+}
+
+.progress-bar.enhanced .progress-bar-fill {
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 4px 20px rgba(240, 180, 41, 0.5);
+}
+
+.progress-bar-glow {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(240, 180, 41, 0.6);
+}
+
+.enhanced-stats {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex-direction: unset !important;
+}
+
+.progress-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.progress-stat-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.current-card .stat-icon {
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+}
+
+.remaining-card .stat-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.goal-card .stat-icon {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
+
+.stat-icon i {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.stat-info {
+  min-width: 0;
+}
+
+.enhanced-stats .stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.enhanced-stats .stat-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.enhanced-stats .stat-value.current {
+  color: var(--primary-gold-accent);
+}
+
+.enhanced-stats .stat-value.remaining {
+  color: #60a5fa;
+}
+
+.enhanced-stats .stat-value.goal {
+  color: #a78bfa;
+}
+
+/* ============================================
+   ENHANCED MILESTONES - VERTICAL
+   ============================================ */
+
+.enhanced-milestones {
+  background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border-radius: 28px !important;
+  padding: 48px !important;
+}
+
+.milestones-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.milestones-header .section-label {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.milestones-header h3 {
+  font-size: 28px !important;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 10px 0 !important;
+}
+
+.milestones-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Vertical Milestones Stepper */
+.milestones-stepper.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.milestones-stepper.vertical .milestone-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.milestones-stepper.vertical .milestone-step:last-child {
+  padding-bottom: 0;
+}
+
+.milestones-stepper.vertical .milestone-indicator {
+  width: 52px;
+  height: 52px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.milestones-stepper.vertical .milestone-step.completed .milestone-indicator {
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(240, 180, 41, 0.4);
+}
+
+.milestones-stepper.vertical .milestone-step.completed .milestone-indicator i {
+  font-size: 20px;
+}
+
+/* Milestone Content Card */
+.milestone-content-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.milestone-content-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.milestone-step.completed .milestone-content-card {
+  border-left: 3px solid var(--primary-gold-accent);
+}
+
+.milestone-content-inner {
+  flex: 1;
+}
+
+.milestone-phase {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-gold-accent);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.milestone-content-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.milestone-content-card .milestone-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.milestone-step.completed .milestone-content-card .milestone-amount {
+  color: var(--color-navy);
+}
+
+/* Vertical Connector Line */
+.milestone-connector-vertical {
+  position: absolute;
+  left: 25px;
+  top: 52px;
+  width: 3px;
+  height: calc(100% - 52px);
+  background: #e2e8f0;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.milestone-connector-vertical.completed {
+  background: linear-gradient(180deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+}
+
+/* Milestone Badge */
+.milestone-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.completed-badge {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.06) 100%);
+  color: #16a34a;
+}
+
+.completed-badge i {
+  font-size: 12px;
+}
+
 /* Loading state */
 .loading-tabs {
   text-align: center;
@@ -5075,5 +5493,126 @@
 
   .notice-email {
     font-size: 14px;
+  }
+
+  /* Enhanced Progress Responsive */
+  .enhanced-progress {
+    padding: 24px !important;
+    border-radius: 20px !important;
+  }
+
+  .progress-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .progress-percentage-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .percentage-value {
+    font-size: 22px;
+  }
+
+  .progress-headline h4 {
+    font-size: 20px;
+  }
+
+  .progress-headline p {
+    font-size: 14px;
+  }
+
+  .progress-bar-wrapper {
+    margin-bottom: 24px;
+  }
+
+  .enhanced-stats {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .progress-stat-card {
+    padding: 16px;
+  }
+
+  .stat-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .stat-icon i {
+    font-size: 18px;
+  }
+
+  .enhanced-stats .stat-value {
+    font-size: 18px;
+  }
+
+  /* Enhanced Milestones Responsive */
+  .enhanced-milestones {
+    padding: 32px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .milestones-header {
+    margin-bottom: 32px;
+  }
+
+  .milestones-header h3 {
+    font-size: 22px !important;
+  }
+
+  .milestones-header p {
+    font-size: 14px;
+  }
+
+  .milestones-stepper.vertical .milestone-step {
+    gap: 14px;
+    padding-bottom: 20px;
+  }
+
+  .milestones-stepper.vertical .milestone-indicator {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .milestone-content-card {
+    padding: 16px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .milestone-content-card h4 {
+    font-size: 15px;
+  }
+
+  .milestone-content-card .milestone-amount {
+    font-size: 16px;
+  }
+
+  .milestone-connector-vertical {
+    left: 21px;
+    top: 44px;
+    height: calc(100% - 44px);
+  }
+
+  .milestone-badge {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  /* Copyable boxes responsive */
+  .account-value-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .copy-indicator {
+    font-size: 10px;
   }
 }
