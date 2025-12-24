@@ -168,7 +168,7 @@ export const GiveTabs: React.FC = () => {
 
   return (
     <section id="give-content" className="give-tabs-section">
-      <div className="landing-container">
+      <div className="landing-container givetabs-container">
         {/* Tab Navigation */}
         <div className="give-tabs-nav">
           <button
@@ -228,41 +228,43 @@ export const GiveTabs: React.FC = () => {
                   <p>Choose your preferred method to give your tithes and offerings</p>
                 </div>
 
-                <div className="giving-channels-grid">
+                <div className="giving-channels-grid compact-grid">
                   {givingChannels.map((channel) => (
-                    <div key={channel.id} className="giving-channel-card">
-                      <div className="channel-header">
-                        <div className="channel-logo-placeholder" style={{ backgroundColor: channel.color }}>
+                    <div key={channel.id} className="giving-channel-card compact-card">
+                      <div className="card-accent" style={{ backgroundColor: channel.color }}></div>
+                      <div className="compact-card-header">
+                        <div className="channel-logo-compact" style={{ backgroundColor: channel.color }}>
                           <i className={channel.icon}></i>
                         </div>
-                        <h3>{channel.name}</h3>
-                      </div>
-
-                      <div className="channel-details">
-                        <div className="channel-info-row">
-                          <span className="channel-label">Account Name:</span>
-                          <span className="channel-value">{channel.accountName}</span>
-                        </div>
-                        <div className="channel-info-row">
-                          <span className="channel-label">Account Number:</span>
-                          <span className="channel-value account-number">{channel.accountNumber}</span>
+                        <div className="channel-title-wrap">
+                          <h3>{channel.name}</h3>
+                          <span className="channel-subtitle">{channel.accountName}</span>
                         </div>
                       </div>
 
-                      <div className="channel-instructions">
-                        <h4>Instructions:</h4>
-                        <ol>
-                          {channel.instructions.map((instruction, idx) => (
-                            <li key={idx}>{instruction}</li>
-                          ))}
-                        </ol>
+                      <div className="compact-account-box">
+                        <span className="account-label">Account Number</span>
+                        <span className="account-value">{channel.accountNumber}</span>
                       </div>
 
-                      <div className="channel-qr-placeholder">
-                        <div className="qr-placeholder-box">
-                          <i className="pi pi-qrcode"></i>
-                          <span>QR Code</span>
-                        </div>
+                      <div className="compact-instructions">
+                        <details>
+                          <summary>
+                            <i className="pi pi-info-circle"></i>
+                            <span>How to Send</span>
+                            <i className="pi pi-chevron-down chevron"></i>
+                          </summary>
+                          <ol>
+                            {channel.instructions.map((instruction, idx) => (
+                              <li key={idx}>{instruction}</li>
+                            ))}
+                          </ol>
+                        </details>
+                      </div>
+
+                      <div className="compact-qr">
+                        <i className="pi pi-qrcode"></i>
+                        <span>QR Coming Soon</span>
                       </div>
                     </div>
                   ))}
@@ -371,57 +373,84 @@ export const GiveTabs: React.FC = () => {
                   <p>Support the worship center improvement project</p>
                 </div>
 
-                <div className="giving-channels-single">
-                  <div className="giving-channel-card featured">
-                    <div className="channel-header">
-                      <div className="channel-logo-placeholder" style={{ backgroundColor: gatewayProjectsChannel.color }}>
-                        <i className={gatewayProjectsChannel.icon}></i>
+                <div className="gateway-project-card-wrapper">
+                  <div className="giving-channel-card compact-card featured-compact">
+                    <div className="card-accent featured-accent"></div>
+
+                    <div className="featured-card-layout">
+                      {/* Left Side - Account Info */}
+                      <div className="featured-card-info">
+                        <div className="compact-card-header">
+                          <div className="channel-logo-compact featured-logo" style={{ backgroundColor: gatewayProjectsChannel.color }}>
+                            <i className={gatewayProjectsChannel.icon}></i>
+                          </div>
+                          <div className="channel-title-wrap">
+                            <h3>{gatewayProjectsChannel.name}</h3>
+                            <span className="channel-subtitle">{gatewayProjectsChannel.accountName}</span>
+                          </div>
+                        </div>
+
+                        <div className="featured-account-details">
+                          <div className="compact-account-box">
+                            <span className="account-label">Account Number</span>
+                            <span className="account-value">{gatewayProjectsChannel.accountNumber}</span>
+                          </div>
+                          <div className="compact-account-box">
+                            <span className="account-label">Swift Code</span>
+                            <span className="account-value">{gatewayProjectsChannel.swiftCode}</span>
+                          </div>
+                        </div>
+
+                        <div className="reference-badge">
+                          <i className="pi pi-tag"></i>
+                          <span>Reference: <strong>Gateway Projects</strong></span>
+                        </div>
+
+                        <div className="compact-instructions">
+                          <details>
+                            <summary>
+                              <i className="pi pi-info-circle"></i>
+                              <span>How to Send</span>
+                              <i className="pi pi-chevron-down chevron"></i>
+                            </summary>
+                            <ol>
+                              {gatewayProjectsChannel.instructions.map((instruction, idx) => (
+                                <li key={idx}>{instruction}</li>
+                              ))}
+                            </ol>
+                          </details>
+                        </div>
                       </div>
-                      <h3>{gatewayProjectsChannel.name}</h3>
+
+                      {/* Right Side - QR Code */}
+                      <div className="featured-card-qr">
+                        <div className="qr-container">
+                          <span className="qr-label">Scan to Give</span>
+                          <div className="qr-image-wrapper">
+                            <Image
+                              src={gatewayProjectsChannel.qrCode}
+                              alt="Gotyme Bank QR Code"
+                              width={180}
+                              height={180}
+                              className="qr-image"
+                              unoptimized
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="channel-details">
-                      <div className="channel-info-row">
-                        <span className="channel-label">Account Name:</span>
-                        <span className="channel-value">{gatewayProjectsChannel.accountName}</span>
+                    {/* Screenshot Email Notice */}
+                    <div className="screenshot-notice">
+                      <div className="notice-icon">
+                        <i className="pi pi-camera"></i>
                       </div>
-                      <div className="channel-info-row">
-                        <span className="channel-label">Account Number:</span>
-                        <span className="channel-value account-number">{gatewayProjectsChannel.accountNumber}</span>
-                      </div>
-                      <div className="channel-info-row">
-                        <span className="channel-label">Swift Code:</span>
-                        <span className="channel-value">{gatewayProjectsChannel.swiftCode}</span>
-                      </div>
-                      <div className="channel-info-row highlight">
-                        <span className="channel-label">Reference:</span>
-                        <span className="channel-value">Gateway Projects</span>
-                      </div>
-                    </div>
-
-                    <div className="channel-instructions">
-                      <h4>Instructions:</h4>
-                      <ol>
-                        {gatewayProjectsChannel.instructions.map((instruction, idx) => (
-                          <li key={idx}>{instruction}</li>
-                        ))}
-                        <li className="highlight-instruction">
-                          <strong>Important:</strong> Add &ldquo;Gateway Projects&rdquo; as reference/message
-                        </li>
-                      </ol>
-                    </div>
-
-                    <div className="channel-qr">
-                      <h4>Scan QR Code</h4>
-                      <div className="qr-image-wrapper">
-                        <Image
-                          src={gatewayProjectsChannel.qrCode}
-                          alt="Gotyme Bank QR Code"
-                          width={200}
-                          height={200}
-                          className="qr-image"
-                          unoptimized
-                        />
+                      <div className="notice-content">
+                        <span className="notice-title">After giving, please send your screenshot to:</span>
+                        <a href="mailto:justinmarctariman@yahoo.com" className="notice-email">
+                          <i className="pi pi-envelope"></i>
+                          justinmarctariman@yahoo.com
+                        </a>
                       </div>
                     </div>
                   </div>
