@@ -38,6 +38,8 @@
   padding: 0 24px;
 }
 
+
+
 .landing-full-width {
   width: 100% !important;
   max-width: none !important;
@@ -3920,6 +3922,13 @@
 /* ===========================================
    GIVE PAGE STYLES
    =========================================== */
+
+.givetabs-container {
+  @media (min-width: 767px) {
+    max-width: 80% !important;  
+  }
+}
+
 .give-page .landing-main {
   position: relative;
 }
@@ -4525,9 +4534,773 @@
 
 /* Build Rise Channels specific */
 .build-rise-channels {
-  background: #f0f4f8;
+  background: linear-gradient(145deg, #f0f4f8 0%, #e8eef4 100%);
+  border-radius: 24px;
+  padding: 48px;
+}
+
+/* ============================================
+   COMPACT GIVING CARDS - Engaging Design
+   ============================================ */
+
+/* Compact Grid */
+.compact-grid {
+  gap: 24px !important;
+}
+
+/* Compact Card Base */
+.compact-card {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  position: relative;
+}
+
+.compact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Card Top Accent Bar */
+.card-accent {
+  height: 4px;
+  width: 100%;
+}
+
+.featured-accent {
+  background: linear-gradient(90deg, var(--primary-gold-accent) 0%, #d4a332 100%) !important;
+  height: 5px;
+}
+
+/* Compact Card Header */
+.compact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px 16px;
+}
+
+.channel-logo-compact {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.channel-logo-compact i {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.channel-logo-compact.featured-logo {
+  width: 52px;
+  height: 52px;
+}
+
+.channel-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.channel-title-wrap h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 2px 0;
+}
+
+.channel-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Compact Account Box */
+.compact-account-box {
+  margin: 0 24px 16px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.04) 0%, rgba(30, 58, 95, 0.08) 100%);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.account-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.account-value {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-navy);
+  letter-spacing: 0.03em;
+}
+
+/* Compact Instructions (Collapsible) */
+.compact-instructions {
+  padding: 0 24px 16px;
+}
+
+.compact-instructions details {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.compact-instructions summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  list-style: none;
+  transition: all 0.2s ease;
+}
+
+.compact-instructions summary::-webkit-details-marker {
+  display: none;
+}
+
+.compact-instructions summary:hover {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--color-navy);
+}
+
+.compact-instructions summary i {
+  font-size: 14px;
+}
+
+.compact-instructions summary .chevron {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.compact-instructions details[open] summary .chevron {
+  transform: rotate(180deg);
+}
+
+.compact-instructions ol {
+  margin: 0;
+  padding: 12px 16px 16px 32px;
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.compact-instructions li {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding: 3px 0;
+}
+
+/* Compact QR Placeholder */
+.compact-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.compact-qr i {
+  font-size: 16px;
+}
+
+/* Featured Compact Card (Gateway Projects) */
+.gateway-project-card-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.featured-compact {
+  border: 2px solid var(--primary-gold-accent) !important;
+  box-shadow: 0 12px 40px rgba(240, 180, 41, 0.15) !important;
+}
+
+.featured-card-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  padding: 24px;
+}
+
+.featured-card-info {
+  min-width: 0;
+}
+
+.featured-card-info .compact-card-header {
+  padding: 0 0 16px 0;
+}
+
+.featured-account-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.featured-account-details .compact-account-box {
+  margin: 0;
+}
+
+/* Reference Badge */
+.reference-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, rgba(240, 180, 41, 0.12) 0%, rgba(240, 180, 41, 0.06) 100%);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border-left: 3px solid var(--primary-gold-accent);
+}
+
+.reference-badge i {
+  color: var(--primary-gold-accent);
+  font-size: 14px;
+}
+
+.reference-badge span {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.reference-badge strong {
+  color: var(--color-navy);
+}
+
+.featured-card-info .compact-instructions {
+  padding: 0;
+}
+
+/* Featured QR Section */
+.featured-card-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 24px;
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.qr-container {
+  text-align: center;
+}
+
+.qr-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.qr-container .qr-image-wrapper {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.qr-container .qr-image {
+  border-radius: 12px;
+}
+
+/* Screenshot Notice */
+.screenshot-notice {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, var(--color-navy) 0%, #0f2847 100%);
+  margin-top: 0;
+}
+
+.notice-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notice-icon i {
+  font-size: 20px;
+  color: var(--primary-gold-accent);
+}
+
+.notice-content {
+  flex: 1;
+}
+
+.notice-title {
+  display: block;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 6px;
+}
+
+.notice-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary-gold-accent);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.notice-email:hover {
+  color: #ffffff;
+}
+
+.notice-email i {
+  font-size: 14px;
+}
+
+/* ============================================
+   COPYABLE ACCOUNT BOXES
+   ============================================ */
+
+.compact-account-box.copyable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.compact-account-box.copyable:hover {
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.08) 0%, rgba(30, 58, 95, 0.12) 100%);
+  transform: scale(1.02);
+}
+
+.compact-account-box.copyable:active {
+  transform: scale(0.98);
+}
+
+.compact-account-box.copied {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.18) 100%) !important;
+}
+
+.account-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.copy-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.compact-account-box.copyable:hover .copy-indicator {
+  opacity: 1;
+  color: var(--color-navy);
+}
+
+.compact-account-box.copied .copy-indicator {
+  color: #22c55e !important;
+  opacity: 1;
+}
+
+.copy-indicator i {
+  font-size: 12px;
+}
+
+/* ============================================
+   ENHANCED PROGRESS SECTION
+   ============================================ */
+
+.enhanced-progress {
+  background: linear-gradient(145deg, var(--color-navy) 0%, #0a1929 100%) !important;
+  border-radius: 28px !important;
+  padding: 40px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.enhanced-progress::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(240, 180, 41, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.progress-percentage-circle {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 32px rgba(240, 180, 41, 0.4);
+}
+
+.percentage-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.percentage-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.progress-headline h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.progress-headline p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.progress-bar-wrapper {
+  margin-bottom: 32px;
+}
+
+.progress-bar.enhanced {
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: visible;
+  position: relative;
+}
+
+.progress-bar.enhanced .progress-bar-fill {
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 4px 20px rgba(240, 180, 41, 0.5);
+}
+
+.progress-bar-glow {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(240, 180, 41, 0.6);
+}
+
+.enhanced-stats {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex-direction: unset !important;
+}
+
+.progress-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.progress-stat-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.current-card .stat-icon {
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+}
+
+.remaining-card .stat-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.goal-card .stat-icon {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
+
+.stat-icon i {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.stat-info {
+  min-width: 0;
+}
+
+.enhanced-stats .stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.enhanced-stats .stat-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.enhanced-stats .stat-value.current {
+  color: var(--primary-gold-accent);
+}
+
+.enhanced-stats .stat-value.remaining {
+  color: #60a5fa;
+}
+
+.enhanced-stats .stat-value.goal {
+  color: #a78bfa;
+}
+
+/* ============================================
+   ENHANCED MILESTONES - VERTICAL
+   ============================================ */
+
+.enhanced-milestones {
+  background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border-radius: 28px !important;
+  padding: 48px !important;
+}
+
+.milestones-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.milestones-header .section-label {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 16px;
   border-radius: 20px;
-  padding: 40px;
+  margin-bottom: 16px;
+}
+
+.milestones-header h3 {
+  font-size: 28px !important;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 10px 0 !important;
+}
+
+.milestones-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Vertical Milestones Stepper */
+.milestones-stepper.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.milestones-stepper.vertical .milestone-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.milestones-stepper.vertical .milestone-step:last-child {
+  padding-bottom: 0;
+}
+
+.milestones-stepper.vertical .milestone-indicator {
+  width: 52px;
+  height: 52px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.milestones-stepper.vertical .milestone-step.completed .milestone-indicator {
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(240, 180, 41, 0.4);
+}
+
+.milestones-stepper.vertical .milestone-step.completed .milestone-indicator i {
+  font-size: 20px;
+}
+
+/* Milestone Content Card */
+.milestone-content-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.milestone-content-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.milestone-step.completed .milestone-content-card {
+  border-left: 3px solid var(--primary-gold-accent);
+}
+
+.milestone-content-inner {
+  flex: 1;
+}
+
+.milestone-phase {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-gold-accent);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.milestone-content-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.milestone-content-card .milestone-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.milestone-step.completed .milestone-content-card .milestone-amount {
+  color: var(--color-navy);
+}
+
+/* Vertical Connector Line */
+.milestone-connector-vertical {
+  position: absolute;
+  left: 25px;
+  top: 52px;
+  width: 3px;
+  height: calc(100% - 52px);
+  background: #e2e8f0;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.milestone-connector-vertical.completed {
+  background: linear-gradient(180deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+}
+
+/* Milestone Badge */
+.milestone-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.completed-badge {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.06) 100%);
+  color: #16a34a;
+}
+
+.completed-badge i {
+  font-size: 12px;
 }
 
 /* Loading state */
@@ -4651,5 +5424,195 @@
 
   .build-rise-channels {
     padding: 30px 20px;
+  }
+
+  /* Compact Cards Responsive */
+  .compact-card-header {
+    padding: 16px 20px 14px;
+  }
+
+  .channel-logo-compact {
+    width: 44px;
+    height: 44px;
+  }
+
+  .channel-logo-compact i {
+    font-size: 20px;
+  }
+
+  .channel-title-wrap h3 {
+    font-size: 16px;
+  }
+
+  .compact-account-box {
+    margin: 0 20px 14px;
+    padding: 12px 14px;
+  }
+
+  .account-value {
+    font-size: 15px;
+  }
+
+  .compact-instructions {
+    padding: 0 20px 14px;
+  }
+
+  /* Featured Card Responsive */
+  .featured-card-layout {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .featured-card-qr {
+    padding-left: 0;
+    padding-top: 20px;
+    border-left: none;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  }
+
+  .featured-account-details {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .qr-container .qr-image-wrapper {
+    padding: 10px;
+  }
+
+  /* Screenshot Notice Responsive */
+  .screenshot-notice {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .notice-content {
+    text-align: center;
+  }
+
+  .notice-email {
+    font-size: 14px;
+  }
+
+  /* Enhanced Progress Responsive */
+  .enhanced-progress {
+    padding: 24px !important;
+    border-radius: 20px !important;
+  }
+
+  .progress-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .progress-percentage-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .percentage-value {
+    font-size: 22px;
+  }
+
+  .progress-headline h4 {
+    font-size: 20px;
+  }
+
+  .progress-headline p {
+    font-size: 14px;
+  }
+
+  .progress-bar-wrapper {
+    margin-bottom: 24px;
+  }
+
+  .enhanced-stats {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .progress-stat-card {
+    padding: 16px;
+  }
+
+  .stat-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .stat-icon i {
+    font-size: 18px;
+  }
+
+  .enhanced-stats .stat-value {
+    font-size: 18px;
+  }
+
+  /* Enhanced Milestones Responsive */
+  .enhanced-milestones {
+    padding: 32px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .milestones-header {
+    margin-bottom: 32px;
+  }
+
+  .milestones-header h3 {
+    font-size: 22px !important;
+  }
+
+  .milestones-header p {
+    font-size: 14px;
+  }
+
+  .milestones-stepper.vertical .milestone-step {
+    gap: 14px;
+    padding-bottom: 20px;
+  }
+
+  .milestones-stepper.vertical .milestone-indicator {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .milestone-content-card {
+    padding: 16px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .milestone-content-card h4 {
+    font-size: 15px;
+  }
+
+  .milestone-content-card .milestone-amount {
+    font-size: 16px;
+  }
+
+  .milestone-connector-vertical {
+    left: 21px;
+    top: 44px;
+    height: calc(100% - 44px);
+  }
+
+  .milestone-badge {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  /* Copyable boxes responsive */
+  .account-value-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .copy-indicator {
+    font-size: 10px;
   }
 }
