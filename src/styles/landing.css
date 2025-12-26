@@ -4022,27 +4022,43 @@
 }
 
 .scripture-card {
-  background: #f8f9fa;
-  border-radius: 16px;
-  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  padding: 32px 28px;
   text-align: center;
   transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.scripture-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  font-size: 50px;
+  font-family: Georgia, serif;
+  color: var(--primary-gold-accent);
+  opacity: 0.15;
+  line-height: 1;
 }
 
 .scripture-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
 }
 
 .scripture-icon {
   width: 60px;
   height: 60px;
-  background: var(--primary-gold-accent);
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #d4a84b 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
+  box-shadow: 0 4px 12px rgba(212, 168, 75, 0.25);
 }
 
 .scripture-icon i {
@@ -4052,16 +4068,21 @@
 
 .scripture-text {
   font-size: 15px;
-  line-height: 1.7;
-  color: var(--text-secondary);
+  line-height: 1.8;
+  color: var(--text-primary);
   font-style: italic;
   margin-bottom: 16px;
+  font-weight: 400;
 }
 
 .scripture-verse {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-navy);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-gold-accent);
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(212, 168, 75, 0.1);
+  border-radius: 20px;
 }
 
 /* Giving Channels */
@@ -4309,6 +4330,44 @@
   color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto;
+}
+
+/* Project Scripture - Featured Single Scripture (size enhancements only) */
+.project-scripture {
+  margin: 50px auto;
+  max-width: 700px;
+}
+
+.project-scripture .featured-scripture {
+  padding: 40px 50px;
+}
+
+.project-scripture .featured-scripture::before {
+  top: 20px;
+  left: 30px;
+  font-size: 70px;
+  opacity: 0.2;
+}
+
+.project-scripture .featured-scripture .scripture-icon {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 24px;
+}
+
+.project-scripture .featured-scripture .scripture-icon i {
+  font-size: 28px;
+}
+
+.project-scripture .featured-scripture .scripture-text {
+  font-size: 18px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.project-scripture .featured-scripture .scripture-verse {
+  font-size: 15px;
+  padding: 8px 20px;
 }
 
 /* Project Gallery */
@@ -5357,6 +5416,75 @@
   .why-we-give-intro,
   .project-description {
     font-size: 16px;
+  }
+
+  /* Scripture Cards Mobile */
+  .scripture-card {
+    padding: 28px 22px;
+    border-radius: 16px;
+  }
+
+  .scripture-card::before {
+    font-size: 40px;
+    top: 10px;
+    left: 14px;
+  }
+
+  .scripture-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 16px;
+  }
+
+  .scripture-icon i {
+    font-size: 20px;
+  }
+
+  .scripture-text {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .scripture-verse {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  /* Featured Scripture Mobile */
+  .project-scripture {
+    margin: 40px auto;
+  }
+
+  .project-scripture .featured-scripture {
+    padding: 30px 24px;
+  }
+
+  .project-scripture .featured-scripture::before {
+    font-size: 50px;
+    top: 12px;
+    left: 16px;
+  }
+
+  .project-scripture .featured-scripture .scripture-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  .project-scripture .featured-scripture .scripture-icon i {
+    font-size: 24px;
+  }
+
+  .project-scripture .featured-scripture .scripture-text {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .project-scripture .featured-scripture .scripture-verse {
+    font-size: 14px;
+    padding: 6px 16px;
   }
 
   .scriptures-grid,

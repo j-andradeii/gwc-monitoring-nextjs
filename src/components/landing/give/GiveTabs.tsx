@@ -315,6 +315,19 @@ export const GiveTabs: React.FC = () => {
                   <p className="project-description">{gatewayProjectsData.description}</p>
                 </div>
 
+                {/* Project Scripture */}
+                <div className="project-scripture">
+                  <div className="scripture-card featured-scripture">
+                    <div className="scripture-icon">
+                      <i className="pi pi-book"></i>
+                    </div>
+                    <p className="scripture-text">
+                      &ldquo;Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord.
+                    </p>
+                    <span className="scripture-verse">Haggai 1:8</span>
+                  </div>
+                </div>
+
                 {/* Project Gallery */}
                 <div className="project-gallery">
                   <h3>Our Worship Center</h3>
