@@ -82,7 +82,7 @@ export const events: Event[] = [
   {
     id: '5',
     title: 'PLAN 40: LESSON 2',
-    date: 'Jan 4',
+    date: 'Jan 11',
     day: 'Sunday',
     time: '2:00 PM',
     location: '8th Floor, Golden Peak',
@@ -95,7 +95,7 @@ export const events: Event[] = [
   {
     id: '6',
     title: 'SONday Service',
-    date: 'Jan 11',
+    date: 'Jan 18',
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
@@ -108,7 +108,7 @@ export const events: Event[] = [
   {
     id: '7',
     title: 'PLAN 40: LESSON 3',
-    date: 'Jan 4',
+    date: 'Jan 18',
     day: 'Sunday',
     time: '2:00 PM',
     location: '8th Floor, Golden Peak',
