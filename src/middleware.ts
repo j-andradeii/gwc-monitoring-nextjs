@@ -87,6 +87,6 @@ export const config = {
      * - public folder
      * - api routes
      */
-    '/((?!_next/static|_next/image|favicon.ico|images|api).*)',
+    '/((?!_next/static|_next/image|favicon.ico|assets|images|api).*)',
   ],
 };
