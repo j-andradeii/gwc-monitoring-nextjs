@@ -69,7 +69,9 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   const featuredEvent = getFeaturedEvent();
-  const regularEvents = events.filter((e) => !e.isFeatured);
+  const regularEvents = events
+    .filter((e) => !e.isFeatured)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
     <div className="landing-page">

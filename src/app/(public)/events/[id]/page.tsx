@@ -15,13 +15,14 @@ interface Props {
 
 export async function generateStaticParams() {
   return events.map((event) => ({
-    id: event.id,
+    id: String(event.id),
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const event = getEventById(id);
+  const eventId = parseInt(id, 10);
+  const event = getEventById(eventId);
 
   if (!event) {
     return {
@@ -43,13 +44,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function EventDetailPage({ params }: Props) {
   const { id } = await params;
-  const event = getEventById(id);
+  const eventId = parseInt(id, 10);
+  const event = getEventById(eventId);
 
   if (!event) {
     notFound();
   }
 
-  const otherEvents = events.filter(e => e.id !== id).slice(0, 3);
+  const otherEvents = events.filter(e => e.id !== eventId).slice(0, 3);
 
   return (
     <EventDetailClient

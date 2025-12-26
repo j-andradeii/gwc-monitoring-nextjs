@@ -1,11 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { events } from '@/data/events';
 import { EventsCardGrid } from './EventsCardGrid';
 
 export const EventsSection: React.FC = () => {
+  const sortedEvents = useMemo(() => {
+    return [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  }, []);
+
   return (
     <section id="events" className="events-grid-section animate-on-scroll">
       <div className="landing-container">
@@ -20,7 +24,7 @@ export const EventsSection: React.FC = () => {
           </Link>
         </div>
 
-        <EventsCardGrid events={events} showDescription={false} />
+        <EventsCardGrid events={sortedEvents} showDescription={false} />
       </div>
     </section>
   );
