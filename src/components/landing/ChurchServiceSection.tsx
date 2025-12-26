@@ -2,8 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { getNearestSondayService } from '@/data/events';
 
 export const ChurchServiceSection: React.FC = () => {
+  const nearestService = getNearestSondayService();
+  const serviceLink = nearestService ? `/events/${nearestService.id}` : '/events';
+
   return (
     <section id="services" className="service-cta-section animate-on-scroll">
       <div className="landing-container">
@@ -40,7 +44,7 @@ export const ChurchServiceSection: React.FC = () => {
             </div>
           </div>
 
-          <Link href="#" className="landing-btn landing-btn-light">
+          <Link href={serviceLink} className="landing-btn landing-btn-light">
             Plan Your Visit
           </Link>
         </div>
