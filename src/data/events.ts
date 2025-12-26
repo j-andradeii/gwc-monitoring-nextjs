@@ -16,6 +16,7 @@ export interface Event {
   id: string;
   title: string;
   date: string;
+  displayDate?: string; // Optional display date for date ranges (e.g., "Jan 24-25")
   day: string;
   time: string;
   location: string;
@@ -31,6 +32,7 @@ export const events: Event[] = [
     id: '1',
     title: 'SONday Service',
     date: 'Dec 28',
+    displayDate: 'Dec 28',
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
@@ -44,6 +46,7 @@ export const events: Event[] = [
     id: '2',
     title: 'WELCOME HOME SUNDAY',
     date: 'Jan 4',
+    displayDate: 'Jan 4',
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
@@ -57,6 +60,7 @@ export const events: Event[] = [
     id: '3',
     title: 'PLAN 40: LESSON 1',
     date: 'Jan 4',
+    displayDate: 'Jan 4',
     day: 'Sunday',
     time: '2:00 PM',
     location: '8th Floor, Golden Peak',
@@ -70,6 +74,7 @@ export const events: Event[] = [
     id: '4',
     title: 'SONday Service',
     date: 'Jan 11',
+    displayDate: 'Jan 11',
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
@@ -83,6 +88,7 @@ export const events: Event[] = [
     id: '5',
     title: 'PLAN 40: LESSON 2',
     date: 'Jan 11',
+    displayDate: 'Jan 11',
     day: 'Sunday',
     time: '2:00 PM',
     location: '8th Floor, Golden Peak',
@@ -96,6 +102,7 @@ export const events: Event[] = [
     id: '6',
     title: 'SONday Service',
     date: 'Jan 18',
+    displayDate: 'Jan 18',
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
@@ -109,6 +116,7 @@ export const events: Event[] = [
     id: '7',
     title: 'PLAN 40: LESSON 3',
     date: 'Jan 18',
+    displayDate: 'Jan 18',
     day: 'Sunday',
     time: '2:00 PM',
     location: '8th Floor, Golden Peak',
@@ -120,8 +128,23 @@ export const events: Event[] = [
   },
   {
     id: '8',
+    title: 'Consecration Nights',
+    date: 'Jan 24',
+    displayDate: 'Jan 24-25',
+    day: 'Friday',
+    time: '2:00 PM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Traning and Equipping is our Happy Hour!',
+    category: 'Training',
+    isFeatured: false,
+    type: GatewayEventType.TRAINING
+  },
+  {
+    id: '9',
     title: 'GATEWAY CHURCH 1st Anniversarry',
     date: 'Feb 01',
+    displayDate: 'Feb 01',
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',

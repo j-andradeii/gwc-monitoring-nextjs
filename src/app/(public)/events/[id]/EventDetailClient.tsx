@@ -87,10 +87,10 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
               }}
             >
               <span style={{ display: 'block', fontSize: '32px', fontWeight: '700', lineHeight: '1' }}>
-                {event.date.split(' ')[1]}
+                {(event.displayDate || event.date).split(' ')[1]}
               </span>
               <span style={{ display: 'block', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase' }}>
-                {event.date.split(' ')[0]}
+                {(event.displayDate || event.date).split(' ')[0]}
               </span>
             </div>
 
@@ -143,7 +143,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.8)', fontSize: '16px' }}>
                 <i className="pi pi-calendar" style={{ color: 'var(--primary-gold-accent)' }} />
-                {event.day}, {event.date}
+                {event.day}, {event.displayDate || event.date}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.8)', fontSize: '16px' }}>
                 <i className="pi pi-clock" style={{ color: 'var(--primary-gold-accent)' }} />
@@ -225,7 +225,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                     <div>
                       <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Date</div>
                       <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
-                        {event.day}, {event.date}
+                        {event.day}, {event.displayDate || event.date}
                       </div>
                     </div>
                   </div>
@@ -371,10 +371,10 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                           }}
                         >
                           <span style={{ display: 'block', fontSize: '16px', fontWeight: '700', lineHeight: '1' }}>
-                            {e.date.split(' ')[1]}
+                            {(e.displayDate || e.date).split(' ')[1]}
                           </span>
                           <span style={{ display: 'block', fontSize: '10px', fontWeight: '600', textTransform: 'uppercase' }}>
-                            {e.date.split(' ')[0]}
+                            {(e.displayDate || e.date).split(' ')[0]}
                           </span>
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>

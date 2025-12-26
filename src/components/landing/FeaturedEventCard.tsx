@@ -72,10 +72,10 @@ export const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({ event }) =
                 }}
               >
                 <span style={{ display: 'block', fontSize: '24px', fontWeight: '700', lineHeight: '1' }}>
-                  {event.date.split(' ')[1]}
+                  {(event.displayDate || event.date).split(' ')[1]}
                 </span>
                 <span style={{ display: 'block', fontSize: '12px', fontWeight: '600', textTransform: 'uppercase' }}>
-                  {event.date.split(' ')[0]}
+                  {(event.displayDate || event.date).split(' ')[0]}
                 </span>
               </div>
             </div>
@@ -137,7 +137,7 @@ export const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({ event }) =
                   }}
                 >
                   <i className="pi pi-calendar" style={{ color: 'var(--primary-gold-accent)' }} />
-                  {event.day}, {event.date}
+                  {event.day}, {event.displayDate || event.date}
                 </span>
                 <span
                   style={{

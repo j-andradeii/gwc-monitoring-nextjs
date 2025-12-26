@@ -84,11 +84,29 @@ export const EventsCardGrid: React.FC<EventsCardGridProps> = ({
             style={{ backgroundImage: `url('${event.image}')` }}
           >
             <div className="event-grid-card-date-badge">
-              <span className="event-grid-day-num">{event.date.split(' ')[1]}</span>
-              <span className="event-grid-month">{event.date.split(' ')[0]}</span>
+              <span className="event-grid-day-num">{(event.displayDate || event.date).split(' ')[1]}</span>
+              <span className="event-grid-month">{(event.displayDate || event.date).split(' ')[0]}</span>
             </div>
           </div>
           <div className="event-grid-card-body">
+            {event.category && (
+              <div
+                style={{
+                  display: 'inline-block',
+                  padding: '4px 12px',
+                  backgroundColor: 'var(--primary-gold-accent)',
+                  color: 'white',
+                  borderRadius: '16px',
+                  fontSize: '11px',
+                  fontWeight: '600',
+                  marginBottom: '8px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                }}
+              >
+                {event.category}
+              </div>
+            )}
             <h3 className="event-grid-card-title">{event.title}</h3>
             {showDescription && event.description && (
               <p style={{
@@ -107,7 +125,7 @@ export const EventsCardGrid: React.FC<EventsCardGridProps> = ({
             <div className="event-grid-card-info">
               <div className="event-grid-info-row">
                 <i className="pi pi-calendar"></i>
-                <span>{event.day}, {event.date}</span>
+                <span>{event.day}, {event.displayDate || event.date}</span>
               </div>
               <div className="event-grid-info-row">
                 <i className="pi pi-clock"></i>
