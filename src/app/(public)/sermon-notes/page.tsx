@@ -10,7 +10,7 @@ import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import '@/styles/landing.css';
-import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider } from '@/components/landing';
+import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider, PageHero } from '@/components/landing';
 import { sermons, getAllSeries, getFeaturedSermon } from '@/data/sermons';
 
 export default function SermonNotesPage() {
@@ -48,23 +48,14 @@ export default function SermonNotesPage() {
     <div className="landing-page">
       <LandingHeader />
 
-      {/* Hero Banner */}
-      <section
-        className="hero-section"
-        style={{
-          backgroundImage: "url('https://placehold.co/1920x600/1a1a1a/ffffff?text=Sermon+Notes')",
-          minHeight: '50vh',
-        }}
-      >
-        <div className="hero-content">
-          <span className="hero-badge">Study Resources</span>
-          <h1>Sermon Notes</h1>
-          <p>
-            Dive deeper into God&apos;s Word with notes from our recent sermons. Use these resources
-            for personal study, small group discussions, and spiritual growth.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        id="sermons-top"
+        badge="Study Resources"
+        title="Sermon Notes"
+        subtitle="Dive deeper into God's Word with notes from our recent sermons. Use these resources for personal study, small group discussions, and spiritual growth."
+        backgroundImage="/assets/images/community.jpg"
+        className="sermons-hero"
+      />
 
       {/* Main Content */}
       <main className="landing-main" style={{ paddingTop: 0 }}>
