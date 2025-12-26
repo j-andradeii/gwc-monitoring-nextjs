@@ -14,8 +14,12 @@ export const metadata: Metadata = {
   title: 'GATEWAY CHURCH',
   description: 'Church management and monitoring platform for Gateway Church',
   keywords: ['church', 'management', 'monitoring', 'members', 'portal'],
-  authors: [{ name: 'GWC Team' }],
-  metadataBase: new URL('https://your-domain.com'),
+  authors: [{ name: 'GATEWAY CHURCH FAMILY' }],
+  metadataBase: new URL('https://gwc-monitoring-nextjs.vercel.app/'),
+  icons: {
+    icon: '/assets/images/gwc-logo-gold.png',
+    apple: '/assets/images/gwc-logo-gold.png',
+  },
   openGraph: {
     title: 'GWC Monitoring - Church Management Portal',
     description: 'Church management and monitoring platform for Gateway Church',
