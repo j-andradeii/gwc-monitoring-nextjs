@@ -4,6 +4,14 @@
  * Shared events data used across the application
  */
 
+export enum GatewayEventType {
+  SONDAY_SERVICE = 'SONDAY_SERVICE',
+  TRAINING = 'TRAINING',
+  FELLOWSHIP = 'FELLOWSHIP',
+  CONFERENCE = 'CONFERENCE',
+  RETREAT = 'RETREAT'
+}
+
 export interface Event {
   id: string;
   title: string;
@@ -15,65 +23,113 @@ export interface Event {
   description?: string;
   category?: string;
   isFeatured?: boolean;
+  type: GatewayEventType;
 }
 
 export const events: Event[] = [
   {
     id: '1',
-    title: 'Marketplace Gathering',
-    date: 'Dec 18',
-    day: 'Wednesday',
-    time: '7:00 PM',
-    location: 'Main Hall',
-    image: '/assets/images/community.jpg',
-    description: 'Join us for a special gathering where professionals and entrepreneurs come together for fellowship, networking, and inspiration.',
+    title: 'SONday Service',
+    date: 'Dec 28',
+    day: 'Sunday',
+    time: '9:00 AM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Join us to praise and worship our Lord as a family.',
     category: 'Fellowship',
+    isFeatured: false,
+    type: GatewayEventType.SONDAY_SERVICE
   },
   {
     id: '2',
-    title: 'Youth Night',
-    date: 'Dec 22',
+    title: 'WELCOME HOME SUNDAY',
+    date: 'Jan 4',
     day: 'Sunday',
-    time: '6:00 PM',
-    location: 'Youth Center',
-    image: '/assets/images/community.jpg',
-    description: 'An exciting night for our youth with games, worship, and a powerful message. Bring your friends!',
-    category: 'Youth',
+    time: '9:00 AM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Join us to praise and worship our Lord as a family.',
+    category: 'Fellowship',
+    isFeatured: false,
+    type: GatewayEventType.SONDAY_SERVICE
   },
   {
     id: '3',
-    title: 'Christmas Eve Service',
-    date: 'Dec 24',
-    day: 'Tuesday',
-    time: '6:00 PM',
+    title: 'PLAN 40: LESSON 1',
+    date: 'Jan 4',
+    day: 'Sunday',
+    time: '2:00 PM',
     location: '8th Floor, Golden Peak',
-    image: '/assets/images/community.jpg',
-    description: 'Celebrate the birth of our Savior with a beautiful candlelight service featuring worship, carols, and a special message of hope.',
-    category: 'Worship',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Traning and Equipping is our Happy Hour!',
+    category: 'Training',
     isFeatured: false,
+    type: GatewayEventType.TRAINING
   },
   {
     id: '4',
-    title: 'Christmas Day Celebration',
-    date: 'Dec 25',
-    day: 'Wednesday',
-    time: '9:30 AM',
+    title: 'SONday Service',
+    date: 'Jan 11',
+    day: 'Sunday',
+    time: '9:00 AM',
     location: '8th Floor, Golden Peak',
-    image: '/assets/images/community.jpg',
-    description: 'Join us on Christmas morning as we celebrate together with joyful worship and fellowship.',
-    category: 'Worship',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Join us to praise and worship our Lord as a family.',
+    category: 'Fellowship',
+    isFeatured: false,
+    type: GatewayEventType.SONDAY_SERVICE
   },
   {
     id: '5',
-    title: 'New Year Prayer & Worship',
-    date: 'Dec 31',
-    day: 'Tuesday',
-    time: '10:00 PM',
+    title: 'PLAN 40: LESSON 2',
+    date: 'Jan 4',
+    day: 'Sunday',
+    time: '2:00 PM',
     location: '8th Floor, Golden Peak',
-    image: '/assets/images/community.jpg',
-    description: 'End the year in God\'s presence! Join us for a powerful night of prayer, worship, and thanksgiving as we usher in the New Year together.',
-    category: 'Prayer',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Traning and Equipping is our Happy Hour!',
+    category: 'Training',
     isFeatured: false,
+    type: GatewayEventType.TRAINING
+  },
+  {
+    id: '6',
+    title: 'SONday Service',
+    date: 'Jan 11',
+    day: 'Sunday',
+    time: '9:00 AM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Join us to praise and worship our Lord as a family.',
+    category: 'Fellowship',
+    isFeatured: false,
+    type: GatewayEventType.SONDAY_SERVICE
+  },
+  {
+    id: '7',
+    title: 'PLAN 40: LESSON 3',
+    date: 'Jan 4',
+    day: 'Sunday',
+    time: '2:00 PM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Traning and Equipping is our Happy Hour!',
+    category: 'Training',
+    isFeatured: false,
+    type: GatewayEventType.TRAINING
+  },
+  {
+    id: '8',
+    title: 'GATEWAY CHURCH 1st Anniversarry',
+    date: 'Feb 01',
+    day: 'Sunday',
+    time: '9:00 AM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Join us to praise and worship our Lord as a family.',
+    category: 'Fellowship',
+    isFeatured: true,
+    type: GatewayEventType.SONDAY_SERVICE
   },
 ];
 
@@ -91,4 +147,14 @@ export const getEventsByCategory = (category: string): Event[] => {
 
 export const getAllCategories = (): string[] => {
   return [...new Set(events.map(event => event.category).filter((c): c is string => c !== undefined))];
+};
+
+export const getEventsByType = (type: GatewayEventType): Event[] => {
+  return events.filter(event => event.type === type);
+};
+
+export const getNearestSondayService = (): Event | undefined => {
+  const sondayServices = events.filter(event => event.type === GatewayEventType.SONDAY_SERVICE);
+  // Return the first one (assuming events are ordered by date)
+  return sondayServices[0];
 };

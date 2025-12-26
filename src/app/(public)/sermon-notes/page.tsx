@@ -10,7 +10,7 @@ import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import '@/styles/landing.css';
-import { LandingHeader, LandingFooter } from '@/components/landing';
+import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider } from '@/components/landing';
 import { sermons, getAllSeries, getFeaturedSermon } from '@/data/sermons';
 
 export default function SermonNotesPage() {
@@ -735,6 +735,10 @@ export default function SermonNotesPage() {
             </div>
           </div>
         </section>
+
+        <ScrollAnimationProvider>
+          <ContactSection />
+        </ScrollAnimationProvider>
       </main>
 
       <LandingFooter />

@@ -13,6 +13,7 @@ export { MinistriesSection } from './MinistriesSection';
 export { EventsSection } from './EventsSection';
 export { EventsCardGrid } from './EventsCardGrid';
 export { EventsFilter } from './EventsFilter';
+export { FeaturedEventCard } from './FeaturedEventCard';
 export { AriseAndBuildSection } from './AriseAndBuildSection';
 export { ContactSection } from './ContactSection';
 export { LandingFooter } from './LandingFooter';

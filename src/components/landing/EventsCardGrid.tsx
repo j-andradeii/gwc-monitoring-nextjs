@@ -1,12 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
-import { Event } from '@/data/events';
+import { Event, GatewayEventType } from '@/data/events';
 
 interface EventsCardGridProps {
   events: Event[];
   showDescription?: boolean;
+  showAll?: boolean;
+  limit?: number;
 }
 
 /**
@@ -18,8 +20,19 @@ interface EventsCardGridProps {
 export const EventsCardGrid: React.FC<EventsCardGridProps> = ({
   events,
   showDescription = true,
+  showAll = false,
+  limit = 3,
 }) => {
-  if (events.length === 0) {
+  // Filter out SONDAY_SERVICE events unless showAll is true
+  const displayEvents = useMemo(() => {
+    let filtered = showAll
+      ? events
+      : events.filter(event => event.type !== GatewayEventType.SONDAY_SERVICE);
+
+    return limit > 0 ? filtered.slice(0, limit) : filtered;
+  }, [events, showAll, limit]);
+
+  if (displayEvents.length === 0) {
     return (
       <div
         style={{
@@ -64,7 +77,7 @@ export const EventsCardGrid: React.FC<EventsCardGridProps> = ({
 
   return (
     <div className="events-card-grid">
-      {events.map((event) => (
+      {displayEvents.map((event) => (
         <Link key={event.id} href={`/events/${event.id}`} className="event-grid-card">
           <div
             className="event-grid-card-image"

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { LandingHeader, LandingFooter } from '@/components/landing';
+import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider } from '@/components/landing';
 import { Event } from '@/data/events';
 import '@/styles/landing.css';
 
@@ -393,6 +393,10 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
             </aside>
           </div>
         </div>
+
+        <ScrollAnimationProvider>
+          <ContactSection />
+        </ScrollAnimationProvider>
 
         {/* Back to All Events */}
         <section
