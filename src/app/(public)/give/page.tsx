@@ -39,12 +39,12 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Gateway Church',
     url: `${siteUrl}/give`,
-    images: [
+   images: [
       {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Gateway Church - Give',
+        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
+        width: 2048,
+        height: 715,
+        alt: 'Gateway Church Family',
       },
     ],
   },
