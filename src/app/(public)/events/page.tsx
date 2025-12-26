@@ -7,7 +7,7 @@
 import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
-import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard } from '@/components/landing';
+import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero } from '@/components/landing';
 import { events, getFeaturedEvent } from '@/data/events';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com';
@@ -69,29 +69,22 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   const featuredEvent = getFeaturedEvent();
-  const regularEvents = events.filter((e) => !e.isFeatured);
+  const regularEvents = events
+    .filter((e) => !e.isFeatured)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
     <div className="landing-page">
       <LandingHeader />
 
-      {/* Hero Banner */}
-      <section
-        className="hero-section"
-        style={{
-          backgroundImage: "url('/assets/images/community.jpg')",
-          minHeight: '50vh',
-        }}
-      >
-        <div className="hero-content">
-          <span className="hero-badge">Join Us</span>
-          <h1>Upcoming Events</h1>
-          <p>
-            Connect, grow, and celebrate with our church community. Find an event that&apos;s
-            right for you and experience the joy of fellowship.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        id="events-top"
+        badge="Join Us"
+        title="Upcoming Events"
+        subtitle="Connect, grow, and celebrate with our church community. Find an event that's right for you and experience the joy of fellowship."
+        backgroundImage="/assets/images/community.jpg"
+        className="events-hero"
+      />
 
       {/* Main Content */}
       <main className="landing-main" style={{ paddingTop: 0 }}>

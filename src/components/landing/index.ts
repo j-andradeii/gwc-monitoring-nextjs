@@ -4,6 +4,7 @@
 
 export { LandingHeader } from './LandingHeader';
 export { HeroSection } from './HeroSection';
+export { PageHero } from './PageHero';
 export { AboutSection } from './AboutSection';
 export { MissionSection } from './MissionSection';
 export { CommunityGallerySection } from './CommunityGallerySection';

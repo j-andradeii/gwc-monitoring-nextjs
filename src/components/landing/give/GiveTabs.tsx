@@ -1,10 +1,19 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 type TabType = 'ways-to-give' | 'gateway-projects';
+
+interface GiveTabsProps {
+  activeTab?: TabType;
+}
+
+interface CopyToClipboardProps {
+  copiedId: string | null;
+  copy: (text: string, id: string) => void;
+}
 
 // Copy to clipboard hook
 const useCopyToClipboard = () => {
@@ -159,28 +168,397 @@ const gatewayProjectsData = {
   ],
 };
 
-export const GiveTabs: React.FC = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<TabType>('ways-to-give');
-  const { copiedId, copy } = useCopyToClipboard();
+// Ways to Give Tab Component
+const WaysToGiveTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) => {
+  return (
+    <div className="give-tab-panel ways-to-give-panel">
+      {/* Why We Give Section */}
+      <div className="why-we-give">
+        <div className="why-we-give-header">
+          <span className="section-label">Generosity</span>
+          <h2>Why We Give</h2>
+        </div>
+        <div className="why-we-give-content">
+          <p className="why-we-give-intro">
+            Giving is an act of worship and obedience to God. When we give, we acknowledge
+            that everything we have comes from Him. Our tithes and offerings support the
+            ministry of Gateway Church, enabling us to reach more people with the Gospel,
+            serve our community, and equip believers for Kingdom work.
+          </p>
 
-  // Read tab from URL on mount and when searchParams change
-  useEffect(() => {
-    const tab = searchParams.get('tab') as TabType;
-    if (tab === 'ways-to-give' || tab === 'gateway-projects') {
-      setActiveTab(tab);
-    }
-  }, [searchParams]);
+          <div className="scriptures-grid">
+            {scriptures.map((scripture, index) => (
+              <div key={index} className="scripture-card">
+                <div className="scripture-icon">
+                  <i className="pi pi-book"></i>
+                </div>
+                <p className="scripture-text">&ldquo;{scripture.text}&rdquo;</p>
+                <span className="scripture-verse">{scripture.verse}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Giving Channels */}
+      <div className="giving-channels">
+        <div className="giving-channels-header">
+          <span className="section-label">Channels</span>
+          <h2>How to Give</h2>
+          <p>Choose your preferred method to give your tithes and offerings</p>
+        </div>
+
+        <div className="giving-channels-grid compact-grid">
+          {givingChannels.map((channel) => (
+            <div key={channel.id} className="giving-channel-card compact-card">
+              <div className="card-accent" style={{ backgroundColor: channel.color }}></div>
+              <div className="compact-card-header">
+                <div className="channel-logo-compact" style={{ backgroundColor: channel.color }}>
+                  <i className={channel.icon}></i>
+                </div>
+                <div className="channel-title-wrap">
+                  <h3>{channel.name}</h3>
+                  <span className="channel-subtitle">{channel.accountName}</span>
+                </div>
+              </div>
+
+              <div
+                className={`compact-account-box copyable ${copiedId === channel.id ? 'copied' : ''}`}
+                onClick={() => copy(channel.accountNumber, channel.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && copy(channel.accountNumber, channel.id)}
+              >
+                <span className="account-label">Account Number</span>
+                <div className="account-value-row">
+                  <span className="account-value">{channel.accountNumber}</span>
+                  <span className="copy-indicator">
+                    {copiedId === channel.id ? (
+                      <><i className="pi pi-check"></i> Copied!</>
+                    ) : (
+                      <><i className="pi pi-copy"></i> Tap to copy</>
+                    )}
+                  </span>
+                </div>
+              </div>
+
+              <div className="compact-instructions">
+                <details>
+                  <summary>
+                    <i className="pi pi-info-circle"></i>
+                    <span>How to Send</span>
+                    <i className="pi pi-chevron-down chevron"></i>
+                  </summary>
+                  <ol>
+                    {channel.instructions.map((instruction, idx) => (
+                      <li key={idx}>{instruction}</li>
+                    ))}
+                  </ol>
+                </details>
+              </div>
+
+              <div className="compact-qr">
+                <i className="pi pi-qrcode"></i>
+                <span>QR Coming Soon</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Gateway Projects Tab Component
+const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) => {
+  const progressPercentage = (gatewayProjectsData.currentAmount / gatewayProjectsData.goalAmount) * 100;
+  const remainingAmount = gatewayProjectsData.goalAmount - gatewayProjectsData.currentAmount;
+
+  return (
+    <div className="give-tab-panel gateway-projects-panel">
+      {/* Project Overview */}
+      <div className="project-overview">
+        <div className="project-header">
+          <span className="section-label">{gatewayProjectsData.subtitle}</span>
+          <h2>{gatewayProjectsData.title}</h2>
+          <p className="project-description">{gatewayProjectsData.description}</p>
+        </div>
+
+        {/* Project Scripture */}
+        <div className="project-scripture">
+          <div className="scripture-card featured-scripture">
+            <div className="scripture-icon">
+              <i className="pi pi-book"></i>
+            </div>
+            <p className="scripture-text">
+              &ldquo;Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord.
+            </p>
+            <span className="scripture-verse">Haggai 1:8</span>
+          </div>
+        </div>
+
+        {/* Project Gallery */}
+        <div className="project-gallery">
+          <h3>Our Worship Center</h3>
+          <div className="gallery-grid">
+            {gatewayProjectsData.gallery.map((image) => (
+              <div key={image.id} className="gallery-item">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="gallery-image"
+                  unoptimized
+                />
+                <div className="gallery-caption">
+                  <span>{image.caption}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Progress Section - Enhanced */}
+        <div className="project-progress enhanced-progress">
+          <div className="progress-header">
+            <div className="progress-percentage-circle">
+              <span className="percentage-value">{progressPercentage.toFixed(0)}%</span>
+              <span className="percentage-label">Raised</span>
+            </div>
+            <div className="progress-headline">
+              <h4>Together We&apos;re Building</h4>
+              <p>Your generosity is making a difference</p>
+            </div>
+          </div>
+
+          <div className="progress-bar-wrapper">
+            <div className="progress-bar enhanced">
+              <div
+                className="progress-bar-fill"
+                style={{ width: `${progressPercentage}%` }}
+              >
+                <div className="progress-bar-glow"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="progress-stats enhanced-stats">
+            <div className="progress-stat-card current-card">
+              <div className="stat-icon">
+                <i className="pi pi-heart-fill"></i>
+              </div>
+              <div className="stat-info">
+                <span className="stat-label">Raised So Far</span>
+                <span className="stat-value current">
+                  &#8369;{gatewayProjectsData.currentAmount.toLocaleString()}
+                </span>
+              </div>
+            </div>
+            <div className="progress-stat-card remaining-card">
+              <div className="stat-icon">
+                <i className="pi pi-flag"></i>
+              </div>
+              <div className="stat-info">
+                <span className="stat-label">Still Needed</span>
+                <span className="stat-value remaining">
+                  &#8369;{remainingAmount.toLocaleString()}
+                </span>
+              </div>
+            </div>
+            <div className="progress-stat-card goal-card">
+              <div className="stat-icon">
+                <i className="pi pi-star-fill"></i>
+              </div>
+              <div className="stat-info">
+                <span className="stat-label">Goal Amount</span>
+                <span className="stat-value goal">
+                  &#8369;{gatewayProjectsData.goalAmount.toLocaleString()}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Milestones Stepper - Enhanced Vertical */}
+        <div className="milestones-section enhanced-milestones vertical-milestones">
+          <div className="milestones-header">
+            <span className="section-label">Roadmap</span>
+            <h3>Project Milestones</h3>
+            <p>Track our journey to completing the worship center</p>
+          </div>
+          <div className="milestones-stepper vertical">
+            {gatewayProjectsData.milestones.map((milestone, index) => (
+              <div
+                key={index}
+                className={`milestone-step ${milestone.completed ? 'completed' : ''}`}
+              >
+                <div className="milestone-indicator">
+                  {milestone.completed ? (
+                    <i className="pi pi-check"></i>
+                  ) : (
+                    <span>{index + 1}</span>
+                  )}
+                </div>
+                <div className="milestone-content-card">
+                  <div className="milestone-content-inner">
+                    <span className="milestone-phase">Phase {index + 1}</span>
+                    <h4>{milestone.label.replace(/Phase \d+: /, '')}</h4>
+                    <span className="milestone-amount">
+                      &#8369;{milestone.amount.toLocaleString()}
+                    </span>
+                  </div>
+                  {milestone.completed && (
+                    <span className="milestone-badge completed-badge">
+                      <i className="pi pi-check-circle"></i> Complete
+                    </span>
+                  )}
+                </div>
+                {index < gatewayProjectsData.milestones.length - 1 && (
+                  <div className={`milestone-connector-vertical ${milestone.completed ? 'completed' : ''}`}></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Giving Channel for Gateway Projects - Gotyme Bank Only */}
+      <div className="giving-channels build-rise-channels">
+        <div className="giving-channels-header">
+          <span className="section-label">Contribute</span>
+          <h2>Give to Gateway Projects</h2>
+          <p>Support the worship center improvement project</p>
+        </div>
+
+        <div className="gateway-project-card-wrapper">
+          <div className="giving-channel-card compact-card featured-compact">
+            <div className="card-accent featured-accent"></div>
+
+            <div className="featured-card-layout">
+              {/* Left Side - Account Info */}
+              <div className="featured-card-info">
+                <div className="compact-card-header">
+                  <div className="channel-logo-compact featured-logo" style={{ backgroundColor: gatewayProjectsChannel.color }}>
+                    <i className={gatewayProjectsChannel.icon}></i>
+                  </div>
+                  <div className="channel-title-wrap">
+                    <h3>{gatewayProjectsChannel.name}</h3>
+                    <span className="channel-subtitle">{gatewayProjectsChannel.accountName}</span>
+                  </div>
+                </div>
+
+                <div className="featured-account-details">
+                  <div
+                    className={`compact-account-box copyable ${copiedId === 'gotyme-account' ? 'copied' : ''}`}
+                    onClick={() => copy(gatewayProjectsChannel.accountNumber, 'gotyme-account')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && copy(gatewayProjectsChannel.accountNumber, 'gotyme-account')}
+                  >
+                    <span className="account-label">Account Number</span>
+                    <div className="account-value-row">
+                      <span className="account-value">{gatewayProjectsChannel.accountNumber}</span>
+                      <span className="copy-indicator">
+                        {copiedId === 'gotyme-account' ? (
+                          <><i className="pi pi-check"></i> Copied!</>
+                        ) : (
+                          <><i className="pi pi-copy"></i></>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    className={`compact-account-box copyable ${copiedId === 'gotyme-swift' ? 'copied' : ''}`}
+                    onClick={() => copy(gatewayProjectsChannel.swiftCode, 'gotyme-swift')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && copy(gatewayProjectsChannel.swiftCode, 'gotyme-swift')}
+                  >
+                    <span className="account-label">Swift Code</span>
+                    <div className="account-value-row">
+                      <span className="account-value">{gatewayProjectsChannel.swiftCode}</span>
+                      <span className="copy-indicator">
+                        {copiedId === 'gotyme-swift' ? (
+                          <><i className="pi pi-check"></i> Copied!</>
+                        ) : (
+                          <><i className="pi pi-copy"></i></>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="reference-badge">
+                  <i className="pi pi-tag"></i>
+                  <span>Reference: <strong>Gateway Projects</strong></span>
+                </div>
+
+                <div className="compact-instructions">
+                  <details>
+                    <summary>
+                      <i className="pi pi-info-circle"></i>
+                      <span>How to Send</span>
+                      <i className="pi pi-chevron-down chevron"></i>
+                    </summary>
+                    <ol>
+                      {gatewayProjectsChannel.instructions.map((instruction, idx) => (
+                        <li key={idx}>{instruction}</li>
+                      ))}
+                    </ol>
+                  </details>
+                </div>
+              </div>
+
+              {/* Right Side - QR Code */}
+              <div className="featured-card-qr">
+                <div className="qr-container">
+                  <span className="qr-label">Scan to Give</span>
+                  <div className="qr-image-wrapper">
+                    <Image
+                      src={gatewayProjectsChannel.qrCode}
+                      alt="Gotyme Bank QR Code"
+                      width={180}
+                      height={180}
+                      className="qr-image"
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Screenshot Email Notice */}
+            <div className="screenshot-notice">
+              <div className="notice-icon">
+                <i className="pi pi-camera"></i>
+              </div>
+              <div className="notice-content">
+                <span className="notice-title">After giving, please send your screenshot to:</span>
+                <a href="mailto:justinmarctariman@yahoo.com" className="notice-email">
+                  <i className="pi pi-envelope"></i>
+                  justinmarctariman@yahoo.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Main GiveTabs Component
+export const GiveTabs: React.FC<GiveTabsProps> = ({ activeTab: initialTab = 'ways-to-give' }) => {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<TabType>(initialTab);
+  const { copiedId, copy } = useCopyToClipboard();
 
   // Update URL when tab changes
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);
-    router.push(`/give?tab=${tab}`, { scroll: false });
+    router.push(`/give/${tab}`, { scroll: false });
   };
-
-  const progressPercentage = (gatewayProjectsData.currentAmount / gatewayProjectsData.goalAmount) * 100;
-  const remainingAmount = gatewayProjectsData.goalAmount - gatewayProjectsData.currentAmount;
 
   return (
     <section id="give-content" className="give-tabs-section">
@@ -205,377 +583,11 @@ export const GiveTabs: React.FC = () => {
 
         {/* Tab Content */}
         <div className="give-tabs-content">
-          {/* Ways to Give Tab */}
           {activeTab === 'ways-to-give' && (
-            <div className="give-tab-panel ways-to-give-panel">
-              {/* Why We Give Section */}
-              <div className="why-we-give">
-                <div className="why-we-give-header">
-                  <span className="section-label">Generosity</span>
-                  <h2>Why We Give</h2>
-                </div>
-                <div className="why-we-give-content">
-                  <p className="why-we-give-intro">
-                    Giving is an act of worship and obedience to God. When we give, we acknowledge
-                    that everything we have comes from Him. Our tithes and offerings support the
-                    ministry of Gateway Church, enabling us to reach more people with the Gospel,
-                    serve our community, and equip believers for Kingdom work.
-                  </p>
-
-                  <div className="scriptures-grid">
-                    {scriptures.map((scripture, index) => (
-                      <div key={index} className="scripture-card">
-                        <div className="scripture-icon">
-                          <i className="pi pi-book"></i>
-                        </div>
-                        <p className="scripture-text">&ldquo;{scripture.text}&rdquo;</p>
-                        <span className="scripture-verse">{scripture.verse}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Giving Channels */}
-              <div className="giving-channels">
-                <div className="giving-channels-header">
-                  <span className="section-label">Channels</span>
-                  <h2>How to Give</h2>
-                  <p>Choose your preferred method to give your tithes and offerings</p>
-                </div>
-
-                <div className="giving-channels-grid compact-grid">
-                  {givingChannels.map((channel) => (
-                    <div key={channel.id} className="giving-channel-card compact-card">
-                      <div className="card-accent" style={{ backgroundColor: channel.color }}></div>
-                      <div className="compact-card-header">
-                        <div className="channel-logo-compact" style={{ backgroundColor: channel.color }}>
-                          <i className={channel.icon}></i>
-                        </div>
-                        <div className="channel-title-wrap">
-                          <h3>{channel.name}</h3>
-                          <span className="channel-subtitle">{channel.accountName}</span>
-                        </div>
-                      </div>
-
-                      <div
-                        className={`compact-account-box copyable ${copiedId === channel.id ? 'copied' : ''}`}
-                        onClick={() => copy(channel.accountNumber, channel.id)}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => e.key === 'Enter' && copy(channel.accountNumber, channel.id)}
-                      >
-                        <span className="account-label">Account Number</span>
-                        <div className="account-value-row">
-                          <span className="account-value">{channel.accountNumber}</span>
-                          <span className="copy-indicator">
-                            {copiedId === channel.id ? (
-                              <><i className="pi pi-check"></i> Copied!</>
-                            ) : (
-                              <><i className="pi pi-copy"></i> Tap to copy</>
-                            )}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="compact-instructions">
-                        <details>
-                          <summary>
-                            <i className="pi pi-info-circle"></i>
-                            <span>How to Send</span>
-                            <i className="pi pi-chevron-down chevron"></i>
-                          </summary>
-                          <ol>
-                            {channel.instructions.map((instruction, idx) => (
-                              <li key={idx}>{instruction}</li>
-                            ))}
-                          </ol>
-                        </details>
-                      </div>
-
-                      <div className="compact-qr">
-                        <i className="pi pi-qrcode"></i>
-                        <span>QR Coming Soon</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <WaysToGiveTab copiedId={copiedId} copy={copy} />
           )}
-
-          {/* Gateway Projects Tab */}
           {activeTab === 'gateway-projects' && (
-            <div className="give-tab-panel gateway-projects-panel">
-              {/* Project Overview */}
-              <div className="project-overview">
-                <div className="project-header">
-                  <span className="section-label">{gatewayProjectsData.subtitle}</span>
-                  <h2>{gatewayProjectsData.title}</h2>
-                  <p className="project-description">{gatewayProjectsData.description}</p>
-                </div>
-
-                {/* Project Scripture */}
-                <div className="project-scripture">
-                  <div className="scripture-card featured-scripture">
-                    <div className="scripture-icon">
-                      <i className="pi pi-book"></i>
-                    </div>
-                    <p className="scripture-text">
-                      &ldquo;Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord.
-                    </p>
-                    <span className="scripture-verse">Haggai 1:8</span>
-                  </div>
-                </div>
-
-                {/* Project Gallery */}
-                <div className="project-gallery">
-                  <h3>Our Worship Center</h3>
-                  <div className="gallery-grid">
-                    {gatewayProjectsData.gallery.map((image) => (
-                      <div key={image.id} className="gallery-item">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="gallery-image"
-                          unoptimized
-                        />
-                        <div className="gallery-caption">
-                          <span>{image.caption}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Progress Section - Enhanced */}
-                <div className="project-progress enhanced-progress">
-                  <div className="progress-header">
-                    <div className="progress-percentage-circle">
-                      <span className="percentage-value">{progressPercentage.toFixed(0)}%</span>
-                      <span className="percentage-label">Raised</span>
-                    </div>
-                    <div className="progress-headline">
-                      <h4>Together We&apos;re Building</h4>
-                      <p>Your generosity is making a difference</p>
-                    </div>
-                  </div>
-
-                  <div className="progress-bar-wrapper">
-                    <div className="progress-bar enhanced">
-                      <div
-                        className="progress-bar-fill"
-                        style={{ width: `${progressPercentage}%` }}
-                      >
-                        <div className="progress-bar-glow"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="progress-stats enhanced-stats">
-                    <div className="progress-stat-card current-card">
-                      <div className="stat-icon">
-                        <i className="pi pi-heart-fill"></i>
-                      </div>
-                      <div className="stat-info">
-                        <span className="stat-label">Raised So Far</span>
-                        <span className="stat-value current">
-                          &#8369;{gatewayProjectsData.currentAmount.toLocaleString()}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="progress-stat-card remaining-card">
-                      <div className="stat-icon">
-                        <i className="pi pi-flag"></i>
-                      </div>
-                      <div className="stat-info">
-                        <span className="stat-label">Still Needed</span>
-                        <span className="stat-value remaining">
-                          &#8369;{remainingAmount.toLocaleString()}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="progress-stat-card goal-card">
-                      <div className="stat-icon">
-                        <i className="pi pi-star-fill"></i>
-                      </div>
-                      <div className="stat-info">
-                        <span className="stat-label">Goal Amount</span>
-                        <span className="stat-value goal">
-                          &#8369;{gatewayProjectsData.goalAmount.toLocaleString()}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Milestones Stepper - Enhanced Vertical */}
-                <div className="milestones-section enhanced-milestones vertical-milestones">
-                  <div className="milestones-header">
-                    <span className="section-label">Roadmap</span>
-                    <h3>Project Milestones</h3>
-                    <p>Track our journey to completing the worship center</p>
-                  </div>
-                  <div className="milestones-stepper vertical">
-                    {gatewayProjectsData.milestones.map((milestone, index) => (
-                      <div
-                        key={index}
-                        className={`milestone-step ${milestone.completed ? 'completed' : ''}`}
-                      >
-                        <div className="milestone-indicator">
-                          {milestone.completed ? (
-                            <i className="pi pi-check"></i>
-                          ) : (
-                            <span>{index + 1}</span>
-                          )}
-                        </div>
-                        <div className="milestone-content-card">
-                          <div className="milestone-content-inner">
-                            <span className="milestone-phase">Phase {index + 1}</span>
-                            <h4>{milestone.label.replace(/Phase \d+: /, '')}</h4>
-                            <span className="milestone-amount">
-                              &#8369;{milestone.amount.toLocaleString()}
-                            </span>
-                          </div>
-                          {milestone.completed && (
-                            <span className="milestone-badge completed-badge">
-                              <i className="pi pi-check-circle"></i> Complete
-                            </span>
-                          )}
-                        </div>
-                        {index < gatewayProjectsData.milestones.length - 1 && (
-                          <div className={`milestone-connector-vertical ${milestone.completed ? 'completed' : ''}`}></div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Giving Channel for Gateway Projects - Gotyme Bank Only */}
-              <div className="giving-channels build-rise-channels">
-                <div className="giving-channels-header">
-                  <span className="section-label">Contribute</span>
-                  <h2>Give to Gateway Projects</h2>
-                  <p>Support the worship center improvement project</p>
-                </div>
-
-                <div className="gateway-project-card-wrapper">
-                  <div className="giving-channel-card compact-card featured-compact">
-                    <div className="card-accent featured-accent"></div>
-
-                    <div className="featured-card-layout">
-                      {/* Left Side - Account Info */}
-                      <div className="featured-card-info">
-                        <div className="compact-card-header">
-                          <div className="channel-logo-compact featured-logo" style={{ backgroundColor: gatewayProjectsChannel.color }}>
-                            <i className={gatewayProjectsChannel.icon}></i>
-                          </div>
-                          <div className="channel-title-wrap">
-                            <h3>{gatewayProjectsChannel.name}</h3>
-                            <span className="channel-subtitle">{gatewayProjectsChannel.accountName}</span>
-                          </div>
-                        </div>
-
-                        <div className="featured-account-details">
-                          <div
-                            className={`compact-account-box copyable ${copiedId === 'gotyme-account' ? 'copied' : ''}`}
-                            onClick={() => copy(gatewayProjectsChannel.accountNumber, 'gotyme-account')}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => e.key === 'Enter' && copy(gatewayProjectsChannel.accountNumber, 'gotyme-account')}
-                          >
-                            <span className="account-label">Account Number</span>
-                            <div className="account-value-row">
-                              <span className="account-value">{gatewayProjectsChannel.accountNumber}</span>
-                              <span className="copy-indicator">
-                                {copiedId === 'gotyme-account' ? (
-                                  <><i className="pi pi-check"></i> Copied!</>
-                                ) : (
-                                  <><i className="pi pi-copy"></i></>
-                                )}
-                              </span>
-                            </div>
-                          </div>
-                          <div
-                            className={`compact-account-box copyable ${copiedId === 'gotyme-swift' ? 'copied' : ''}`}
-                            onClick={() => copy(gatewayProjectsChannel.swiftCode, 'gotyme-swift')}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => e.key === 'Enter' && copy(gatewayProjectsChannel.swiftCode, 'gotyme-swift')}
-                          >
-                            <span className="account-label">Swift Code</span>
-                            <div className="account-value-row">
-                              <span className="account-value">{gatewayProjectsChannel.swiftCode}</span>
-                              <span className="copy-indicator">
-                                {copiedId === 'gotyme-swift' ? (
-                                  <><i className="pi pi-check"></i> Copied!</>
-                                ) : (
-                                  <><i className="pi pi-copy"></i></>
-                                )}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="reference-badge">
-                          <i className="pi pi-tag"></i>
-                          <span>Reference: <strong>Gateway Projects</strong></span>
-                        </div>
-
-                        <div className="compact-instructions">
-                          <details>
-                            <summary>
-                              <i className="pi pi-info-circle"></i>
-                              <span>How to Send</span>
-                              <i className="pi pi-chevron-down chevron"></i>
-                            </summary>
-                            <ol>
-                              {gatewayProjectsChannel.instructions.map((instruction, idx) => (
-                                <li key={idx}>{instruction}</li>
-                              ))}
-                            </ol>
-                          </details>
-                        </div>
-                      </div>
-
-                      {/* Right Side - QR Code */}
-                      <div className="featured-card-qr">
-                        <div className="qr-container">
-                          <span className="qr-label">Scan to Give</span>
-                          <div className="qr-image-wrapper">
-                            <Image
-                              src={gatewayProjectsChannel.qrCode}
-                              alt="Gotyme Bank QR Code"
-                              width={180}
-                              height={180}
-                              className="qr-image"
-                              unoptimized
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Screenshot Email Notice */}
-                    <div className="screenshot-notice">
-                      <div className="notice-icon">
-                        <i className="pi pi-camera"></i>
-                      </div>
-                      <div className="notice-content">
-                        <span className="notice-title">After giving, please send your screenshot to:</span>
-                        <a href="mailto:justinmarctariman@yahoo.com" className="notice-email">
-                          <i className="pi pi-envelope"></i>
-                          justinmarctariman@yahoo.com
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <GatewayProjectsTab copiedId={copiedId} copy={copy} />
           )}
         </div>
       </div>

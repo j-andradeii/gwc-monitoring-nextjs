@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, ReactNode } from 'react';
+import { useEffect, useRef, ReactNode, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 interface ScrollAnimationProviderProps {
@@ -10,25 +10,49 @@ interface ScrollAnimationProviderProps {
 export function ScrollAnimationProvider({ children }: ScrollAnimationProviderProps) {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const pathname = usePathname();
+  const [hash, setHash] = useState('');
 
-  // Scroll to top on route change (with iOS Safari fix)
+  // Track hash changes
   useEffect(() => {
-    // Use setTimeout to ensure scroll happens after route change completes
-    const scrollToTop = () => {
-      // Multiple approaches for iOS Safari compatibility
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    };
+    const updateHash = () => setHash(window.location.hash);
 
-    // Immediate scroll
-    scrollToTop();
+    // Set initial hash
+    updateHash();
 
-    // Delayed scroll for iOS Safari which sometimes needs a tick
-    const timeoutId = setTimeout(scrollToTop, 0);
+    // Listen for hash changes
+    window.addEventListener('hashchange', updateHash);
+    return () => window.removeEventListener('hashchange', updateHash);
+  }, []);
 
-    return () => clearTimeout(timeoutId);
-  }, [pathname]);
+  // Handle scroll on route/hash change - either to hash section or to top
+  useEffect(() => {
+    const currentHash = window.location.hash;
+
+    if (currentHash) {
+      // If there's a hash, scroll to that element
+      const scrollToHash = () => {
+        const element = document.querySelector(currentHash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      // Delay to ensure DOM is ready after navigation
+      const timeoutId = setTimeout(scrollToHash, 100);
+      return () => clearTimeout(timeoutId);
+    } else {
+      // No hash - scroll to top (with iOS Safari fix)
+      const scrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+
+      scrollToTop();
+      const timeoutId = setTimeout(scrollToTop, 0);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [pathname, hash]);
 
   useEffect(() => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
