@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
-        width: 1200,
-        height: 630,
+        width: 2048,
+        height: 715,
         alt: 'Gateway Church Family',
       },
     ],
