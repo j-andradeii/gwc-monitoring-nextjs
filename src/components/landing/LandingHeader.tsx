@@ -66,7 +66,7 @@ export const LandingHeader: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="#events" onClick={closeMobileMenu}>
+              <Link href="/events" className={isActive('/events') ? 'active' : ''} onClick={closeMobileMenu}>
                 Events
               </Link>
             </li>

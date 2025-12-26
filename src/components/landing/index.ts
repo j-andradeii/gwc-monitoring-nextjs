@@ -11,6 +11,8 @@ export { ChurchServiceSection } from './ChurchServiceSection';
 export { SermonsSection } from './SermonsSection';
 export { MinistriesSection } from './MinistriesSection';
 export { EventsSection } from './EventsSection';
+export { EventsCardGrid } from './EventsCardGrid';
+export { EventsFilter } from './EventsFilter';
 export { AriseAndBuildSection } from './AriseAndBuildSection';
 export { ContactSection } from './ContactSection';
 export { LandingFooter } from './LandingFooter';

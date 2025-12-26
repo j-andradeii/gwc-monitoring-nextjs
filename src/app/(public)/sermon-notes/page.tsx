@@ -409,7 +409,7 @@ export default function SermonNotesPage() {
         {/* Sermon Notes Grid - Warm Cream Background */}
         <section style={{
           padding: '60px 0',
-          background: 'linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%)',
+          background: '#fff',
         }}>
           <div className="landing-container">
             {regularSermons.length > 0 ? (
@@ -431,17 +431,17 @@ export default function SermonNotesPage() {
                         backgroundColor: '#ffffff',
                         borderRadius: '16px',
                         overflow: 'hidden',
-                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08)',
                         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                         height: '100%',
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'translateY(-4px)';
-                        e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.12)';
+                        e.currentTarget.style.boxShadow = '0 24px 50px rgba(0, 0, 0, 0.18), 0 8px 20px rgba(0, 0, 0, 0.12)';
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
+                        e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08)';
                       }}
                     >
                       {/* Card Image */}
