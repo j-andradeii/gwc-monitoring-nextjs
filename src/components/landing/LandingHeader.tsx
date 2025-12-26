@@ -61,7 +61,7 @@ export const LandingHeader: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="#ministries" onClick={closeMobileMenu}>
+              <Link href="/#ministries" onClick={closeMobileMenu}>
                 Ministries
               </Link>
             </li>
@@ -71,7 +71,7 @@ export const LandingHeader: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="#contact" onClick={closeMobileMenu}>
+              <Link href="/#contact" onClick={closeMobileMenu}>
                 Contact
               </Link>
             </li>
