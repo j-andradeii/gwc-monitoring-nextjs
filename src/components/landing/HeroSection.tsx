@@ -22,7 +22,6 @@ interface HeroSlide {
     href: string;
     icon: string;
   };
-  showServiceInfo?: boolean;
 }
 
 const heroSlides: HeroSlide[] = [
@@ -31,7 +30,8 @@ const heroSlides: HeroSlide[] = [
     type: 'welcome',
     badge: 'Welcome to Gateway Church',
     title: 'HIS PRESENCE, OUR HOME',
-    description: "Join our community of faith as we grow together in God's love",
+    subtitle: "Join our community of faith as we grow together in God's love",
+    description: 'Sundays 9:30 AM · 8th Floor, Golden Peak, Gorordo Avenue',
     backgroundImage: '/assets/images/fam-picture.jpg',
     overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.6) 0%, rgba(30, 58, 95, 0.8) 100%)',
     primaryAction: {
@@ -39,7 +39,11 @@ const heroSlides: HeroSlide[] = [
       href: '#services',
       icon: 'pi pi-calendar',
     },
-    showServiceInfo: true,
+    secondaryAction: {
+      label: 'Get Directions',
+      href: 'https://maps.google.com/?q=Golden+Peak+Gorordo+Avenue+Cebu',
+      icon: 'pi pi-map-marker',
+    },
   },
   {
     id: 'campaign',
@@ -62,27 +66,27 @@ const heroSlides: HeroSlide[] = [
       icon: 'pi pi-play-circle',
     },
   },
-  {
-    id: 'sermon',
-    type: 'sermon',
-    badge: 'Latest Sermon',
-    title: 'THE POWER OF FAITH',
-    subtitle: 'Pastor John Smith',
-    description:
-      'Exploring what it means to walk by faith and not by sight in our daily lives. Discover how trusting God transforms our perspective.',
-    backgroundImage: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/10473938-thumb-1024x576.jpg',
-    overlayGradient: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%)',
-    primaryAction: {
-      label: 'Watch Now',
-      href: '#sermons',
-      icon: 'pi pi-play-circle',
-    },
-    secondaryAction: {
-      label: 'View All Sermons',
-      href: '/sermon-notes',
-      icon: 'pi pi-list',
-    },
-  },
+  // {
+  //   id: 'sermon',
+  //   type: 'sermon',
+  //   badge: 'Latest Sermon',
+  //   title: 'THE POWER OF FAITH',
+  //   subtitle: 'Pastor John Smith',
+  //   description:
+  //     'Exploring what it means to walk by faith and not by sight in our daily lives. Discover how trusting God transforms our perspective.',
+  //   backgroundImage: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/10473938-thumb-1024x576.jpg',
+  //   overlayGradient: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%)',
+  //   primaryAction: {
+  //     label: 'Watch Now',
+  //     href: '#sermons',
+  //     icon: 'pi pi-play-circle',
+  //   },
+  //   secondaryAction: {
+  //     label: 'View All Sermons',
+  //     href: '/sermon-notes',
+  //     icon: 'pi pi-list',
+  //   },
+  // },
 ];
 
 export const HeroSection: React.FC = () => {
@@ -158,19 +162,6 @@ export const HeroSection: React.FC = () => {
               </Link>
             )}
           </div>
-          {currentSlide.showServiceInfo && (
-            <div className="hero-service-info">
-              <div className="service-info-item">
-                <i className="pi pi-clock"></i>
-                <span>Sundays 9:30 AM</span>
-              </div>
-              <div className="service-info-divider"></div>
-              <div className="service-info-item">
-                <i className="pi pi-map-marker"></i>
-                <span>8th Floor, Golden Peak, Gorordo Avenue</span>
-              </div>
-            </div>
-          )}
         </div>
       </div>
 

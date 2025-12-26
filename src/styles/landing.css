@@ -628,6 +628,12 @@
   color: #c4b5fd;
 }
 
+.hero-badge-sermon {
+  background: rgba(8, 145, 178, 0.3);
+  border-color: rgba(8, 145, 178, 0.5);
+  color: #67e8f9;
+}
+
 .hero-subtitle {
   font-size: 20px !important;
   color: var(--primary-gold-accent) !important;
@@ -696,6 +702,20 @@
 
 /* Hero Carousel Responsive */
 @media (max-width: 768px) {
+  .hero-carousel-section {
+    min-height: 100vh;
+  }
+
+  .hero-carousel-content-wrapper {
+    min-height: 100vh;
+    padding: 120px 20px 100px;
+    align-items: center;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
   .hero-carousel .p-carousel-prev,
   .hero-carousel .p-carousel-next,
   .hero-carousel-prev,
@@ -714,27 +734,68 @@
     right: 12px !important;
   }
 
+  /* Custom nav buttons - bottom right together on mobile, aligned with indicators */
+  .hero-nav-btn {
+    top: auto;
+    bottom: 32px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-nav-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .hero-nav-btn i {
+    font-size: 14px;
+  }
+
+  .hero-nav-prev {
+    left: auto;
+    right: 62px;
+  }
+
+  .hero-nav-next {
+    right: 16px;
+  }
+
+  /* Indicators centered between nav buttons */
+  .hero-indicators {
+    padding: 10px 20px;
+    gap: 10px;
+  }
+
+  .hero-indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hero-indicator.active {
+    width: 28px;
+  }
+
   .hero-slide {
     min-height: 80vh;
     padding: 100px 16px 60px;
   }
 
   .hero-content h1 {
-    font-size: 32px;
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .hero-description {
+    font-size: 15px !important;
+    margin-bottom: 24px !important;
   }
 
   .hero-subtitle {
     font-size: 16px !important;
   }
 
-  .hero-service-info {
-    flex-direction: column;
-    gap: 10px;
-    padding: 16px 20px;
-  }
-
-  .service-info-divider {
-    display: none;
+  .hero-actions {
+    margin-bottom: 24px;
   }
 }
 
