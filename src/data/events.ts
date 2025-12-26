@@ -138,7 +138,7 @@ export const events: Event[] = [
     description: 'Traning and Equipping is our Happy Hour!',
     category: 'Training',
     isFeatured: false,
-    type: GatewayEventType.TRAINING
+    type: GatewayEventType.CONFERENCE
   },
   {
     id: '9',
