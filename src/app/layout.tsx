@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: 'Church management and monitoring platform for Gateway Church',
     images: [
       {
-        url: '/assets/images/fam-picture.jpg',
+        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
         width: 1200,
         height: 630,
         alt: 'Gateway Church Family',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GATEWAY CHURCH',
     description: 'Church management and monitoring platform for Gateway Church',
-    images: ['/assets/images/fam-picture.jpg'],
+    images: ['https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg'],
   },
 };
 
