@@ -117,7 +117,7 @@ const gatewayProjectsChannel = {
 // Gateway Projects data
 const gatewayProjectsData = {
   title: 'Gateway Projects',
-  subtitle: 'Worship Center Improvement Project',
+  subtitle: 'Ministry Center Improvement Project',
   description:
     'Join us in improving the 8th Floor Golden Peak as our House of Worship. This project will enhance our facilities to better serve our growing congregation and community outreach programs.',
   goalAmount: 1000000,
@@ -132,37 +132,37 @@ const gatewayProjectsData = {
     {
       id: 1,
       src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/597992661_122181102518766700_6759379141760359149_n.jpg',
-      alt: 'Worship Center - Main Hall',
+      alt: 'Ministry Center - Main Hall',
       caption: 'Main Worship Hall',
     },
     {
       id: 2,
       src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598001057_122181102470766700_7721753414270859091_n.jpg',
-      alt: 'Worship Center - Stage Area',
+      alt: 'Ministry Center - Stage Area',
       caption: 'Stage & Platform',
     },
     {
       id: 3,
       src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598354889_122181101306766700_7166132187056166846_n.jpg',
-      alt: 'Worship Center - Congregation',
+      alt: 'Ministry Center - Congregation',
       caption: 'Congregation Area',
     },
     {
       id: 4,
       src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598691167_122181202298766700_3747857486846455162_n.jpg',
-      alt: 'Worship Center - Sound System',
+      alt: 'Ministry Center - Sound System',
       caption: 'Sound & Media Setup',
     },
     {
       id: 5,
       src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598696417_122181101384766700_414950063467040030_n.jpg',
-      alt: 'Worship Center - Lighting',
+      alt: 'Ministry Center - Lighting',
       caption: 'Lighting System',
     },
     {
       id: 6,
       src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598714870_122181102446766700_1099840975765605389_n.jpg',
-      alt: 'Worship Center - Fellowship Area',
+      alt: 'Ministry Center - Fellowship Area',
       caption: 'Fellowship Space',
     },
   ],
@@ -299,7 +299,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
 
         {/* Project Gallery */}
         <div className="project-gallery">
-          <h3>Our Worship Center</h3>
+          <h3>Our Ministry Center</h3>
           <div className="gallery-grid">
             {gatewayProjectsData.gallery.map((image) => (
               <div key={image.id} className="gallery-item">
@@ -385,7 +385,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
           <div className="milestones-header">
             <span className="section-label">Roadmap</span>
             <h3>Project Milestones</h3>
-            <p>Track our journey to completing the worship center</p>
+            <p>Track our journey to completing the ministry center</p>
           </div>
           <div className="milestones-stepper vertical">
             {gatewayProjectsData.milestones.map((milestone, index) => (
@@ -428,7 +428,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
         <div className="giving-channels-header">
           <span className="section-label">Contribute</span>
           <h2>Give to Gateway Projects</h2>
-          <p>Support the worship center improvement project</p>
+          <p>Support the ministry center improvement project</p>
         </div>
 
         <div className="gateway-project-card-wrapper">
