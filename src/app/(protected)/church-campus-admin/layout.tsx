@@ -17,7 +17,7 @@ export default function ChurchCampusAdminLayout({
 }) {
   return (
     <AuthGuard>
-      <AdminLayout>{children}</AdminLayout>
+      <AdminLayout showBreadcrumbs={true}>{children}</AdminLayout>
     </AuthGuard>
   );
 }

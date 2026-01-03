@@ -6,9 +6,10 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useBreadcrumbsStore, type BreadcrumbItem } from '@/stores/breadcrumbs.store';
+import { useBreadcrumbs } from '@/hooks';
 
 export interface BreadcrumbsProps {
   items?: BreadcrumbItem[];
@@ -21,9 +22,16 @@ export function Breadcrumbs({
   className = '',
   maxItems = 5,
 }: BreadcrumbsProps) {
+
+  const breadcrumbs = useBreadcrumbs();
   const { items: storeItems } = useBreadcrumbsStore();
   const items = propItems || storeItems;
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+
+  useEffect(()=>{ 
+    console.log("bredcrumbs", items);
+  }, [items]);
 
   if (!items || items.length === 0) {
     return null;
