@@ -346,7 +346,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
           <div className="progress-stats enhanced-stats">
             <div className="progress-stat-card current-card">
               <div className="stat-icon">
-                <i className="pi pi-heart-fill"></i>
+                <i className="pi pi-wallet"></i>
               </div>
               <div className="stat-info">
                 <span className="stat-label">Raised So Far</span>
@@ -357,7 +357,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
             </div>
             <div className="progress-stat-card remaining-card">
               <div className="stat-icon">
-                <i className="pi pi-flag"></i>
+                <i className="pi pi-chart-line"></i>
               </div>
               <div className="stat-info">
                 <span className="stat-label">Still Needed</span>
@@ -368,7 +368,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
             </div>
             <div className="progress-stat-card goal-card">
               <div className="stat-icon">
-                <i className="pi pi-star-fill"></i>
+                <i className="pi pi-bullseye"></i>
               </div>
               <div className="stat-info">
                 <span className="stat-label">Goal Amount</span>

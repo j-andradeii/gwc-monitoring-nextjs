@@ -5265,9 +5265,9 @@
 }
 
 .stat-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5275,20 +5275,34 @@
 }
 
 .current-card .stat-icon {
-  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  background: rgba(240, 180, 41, 0.15);
+  border: 1px solid rgba(240, 180, 41, 0.2);
 }
 
 .remaining-card .stat-icon {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .goal-card .stat-icon {
-  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  background: rgba(240, 180, 41, 0.08);
+  border: 1px solid rgba(240, 180, 41, 0.12);
+}
+
+.current-card .stat-icon i {
+  color: var(--primary-gold-accent);
+}
+
+.remaining-card .stat-icon i {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.goal-card .stat-icon i {
+  color: rgba(240, 180, 41, 0.7);
 }
 
 .stat-icon i {
-  font-size: 20px;
-  color: #ffffff;
+  font-size: 18px;
 }
 
 .stat-info {
@@ -5296,15 +5310,18 @@
 }
 
 .enhanced-stats .stat-label {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 4px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 3px;
   display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .enhanced-stats .stat-value {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .enhanced-stats .stat-value.current {
@@ -5312,11 +5329,11 @@
 }
 
 .enhanced-stats .stat-value.remaining {
-  color: #60a5fa;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .enhanced-stats .stat-value.goal {
-  color: #a78bfa;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* ============================================
