@@ -200,10 +200,12 @@ const makeRequest = async (
       }
 
       // Clear user on other 401 errors
-      const userStore = useUserStore.getState();
-      userStore.logout();
-      if (typeof window !== 'undefined') {
-        window.location.href = '/signin';
+      if (!isAuthUrl(endpoint)) {
+        const userStore = useUserStore.getState();
+        userStore.logout();
+        if (typeof window !== 'undefined') {
+          window.location.href = '/signin';
+        }
       }
     }
 

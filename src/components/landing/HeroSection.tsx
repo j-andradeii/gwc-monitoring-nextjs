@@ -49,7 +49,7 @@ const heroSlides: HeroSlideData[] = [
     title: 'HIS PRESENCE, OUR HOME',
     subtitle: 'Sundays 9:30 AM · 8th Floor, Golden Peak, Gorordo Avenue',
     backgroundImage: '/assets/images/fam-picture.jpg',
-    overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.5) 0%, rgba(30, 58, 95, 0.7) 100%)',
+    overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(26, 39, 68, 0.85) 100%)',
     cta: {
       label: 'Join This Sunday',
       href: '#services',
@@ -63,7 +63,7 @@ const heroSlides: HeroSlideData[] = [
     title: 'LEGACY',
     subtitle: 'Building a Foundation for Generations',
     backgroundImage: '/assets/images/community.jpg',
-    overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.5) 0%, rgba(30, 58, 95, 0.7) 100%)',
+    overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(26, 39, 68, 0.85) 100%)',
     cta: {
       label: 'Learn More',
       href: '#campaign',

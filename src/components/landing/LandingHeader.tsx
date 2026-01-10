@@ -1,13 +1,27 @@
  'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export const LandingHeader: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMinistriesOpen, setIsMinistriesOpen] = useState(false);
+  const ministriesRef = useRef<HTMLLIElement>(null);
   const pathname = usePathname();
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ministriesRef.current && !ministriesRef.current.contains(event.target as Node)) {
+        setIsMinistriesOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -60,10 +74,41 @@ export const LandingHeader: React.FC = () => {
                 Sermons
               </Link>
             </li>
-            <li>
-              <Link href="/#ministries" onClick={closeMobileMenu}>
+            <li
+              ref={ministriesRef}
+              className={`nav-dropdown ${isMinistriesOpen ? 'dropdown-open' : ''}`}
+            >
+              <button
+                className={`nav-dropdown-trigger ${pathname.startsWith('/ministries') ? 'active' : ''}`}
+                onClick={() => setIsMinistriesOpen(!isMinistriesOpen)}
+                aria-expanded={isMinistriesOpen}
+                aria-haspopup="true"
+              >
                 Ministries
-              </Link>
+                <i className={`pi pi-chevron-down dropdown-icon ${isMinistriesOpen ? 'rotated' : ''}`}></i>
+              </button>
+              <ul className="nav-dropdown-menu">
+                <li>
+                  <Link
+                    href="/ministries/community"
+                    className={pathname === '/ministries/community' ? 'active' : ''}
+                    onClick={() => { closeMobileMenu(); setIsMinistriesOpen(false); }}
+                  >
+                    <i className="pi pi-users"></i>
+                    Community
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/ministries/serve"
+                    className={pathname === '/ministries/serve' ? 'active' : ''}
+                    onClick={() => { closeMobileMenu(); setIsMinistriesOpen(false); }}
+                  >
+                    <i className="pi pi-heart"></i>
+                    Serve
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link href="/events" className={isActive('/events') ? 'active' : ''} onClick={closeMobileMenu}>

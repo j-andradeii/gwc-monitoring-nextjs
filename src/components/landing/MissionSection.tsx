@@ -10,24 +10,24 @@ interface QuickInfoItem {
 
 const quickInfoItems: QuickInfoItem[] = [
   {
-    icon: 'pi pi-heart',
-    title: 'Worship',
-    description: 'Experience God through authentic worship and praise.',
+    icon: 'pi pi-user-plus',
+    title: 'WIN',
+    description: 'Reaching new people for Jesus through sharing the Gospel.',
   },
   {
-    icon: 'pi pi-users',
-    title: 'Community',
-    description: 'Find your place in our church family.',
+    icon: 'pi pi-heart',
+    title: 'CONSOLIDATE',
+    description: 'Taking care of the new believer in the same way a parent takes care of a newborn baby. During this process their faith is affirmed through a personal Encounter with Jesus.',
   },
   {
     icon: 'pi pi-book',
-    title: 'Grow',
-    description: 'Deepen your faith through biblical teaching.',
+    title: 'DISCIPLE',
+    description: 'Reproducing the character of Christ in disciples and equipping them with the necessary tools so that they can become successful leaders who multiply and reproduce the Vision.',
   },
   {
     icon: 'pi pi-globe',
-    title: 'Serve',
-    description: 'Make an impact in our community and beyond.',
+    title: 'SEND',
+    description: 'The moment where new leaders are empowered to step into the ministry and fulfill the Great Commission.',
   },
 ];
 

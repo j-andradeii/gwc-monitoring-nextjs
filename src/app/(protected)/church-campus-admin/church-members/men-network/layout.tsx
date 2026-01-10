@@ -7,8 +7,6 @@
 'use client';
 
 import React from 'react';
-import { AdminLayout } from '@/components/layout/AdminLayout';
-import { AuthGuard } from '@/guards/AuthGuard';
 
 export default function MenNetworkLayout({
   children,
