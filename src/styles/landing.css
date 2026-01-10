@@ -58,6 +58,68 @@
   margin-bottom: 12px;
 }
 
+/* ===========================================
+   PREMIUM GLASS UTILITIES
+   =========================================== */
+.premium-glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-glass-card:hover {
+  transform: translateY(-12px);
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(212, 168, 75, 0.15),
+    0 12px 24px rgba(0, 0, 0, 0.06);
+  border-color: #ffffff;
+}
+
+.premium-glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.premium-glass-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-gold-accent), #f9d976);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.premium-glass-card:hover::after {
+  transform: scaleX(1);
+}
+
+.premium-stat-card {
+  background: rgba(26, 39, 68, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.premium-stat-card:hover {
+  background: rgba(26, 39, 68, 0.95);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+}
+
 .section-label::before {
   content: '';
   width: 20px;
@@ -94,10 +156,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 13px 28px;
+  padding: 14px 32px;
   border: 2px solid transparent;
-  border-radius: 6px;
-  font-size: 13px;
+  border-radius: 50px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.8px;
@@ -744,12 +806,13 @@
 }
 
 .hero-slide-content h1 {
-  font-size: 36px;
+  font-size: 56px;
   color: #ffffff;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.1;
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   margin: 0;
 }
 
@@ -1367,16 +1430,36 @@
 
 .sermon-card {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
 }
 
 .sermon-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(212, 168, 75, 0.2);
+}
+
+.sermon-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-gold-accent), #f9d976);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 10;
+}
+
+.sermon-card:hover::after {
+  transform: scaleX(1);
 }
 
 .sermon-card-image {
@@ -1798,6 +1881,24 @@
     0 20px 60px rgba(212, 168, 75, 0.15);
 }
 
+.ministry-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-gold-accent), #f9d976);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 10;
+}
+
+.ministry-card:hover::after {
+  transform: scaleX(1);
+}
+
 .ministry-image {
   position: absolute;
   inset: 0;
@@ -1843,6 +1944,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+  /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+  backdrop-filter: blur(0.1px);
 }
 
 .ministry-card h3 {
@@ -2100,16 +2204,35 @@
 
 .event-grid-card {
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
   text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  position: relative;
 }
 
 .event-grid-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18), 0 8px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(212, 168, 75, 0.1);
+}
+
+.event-grid-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-gold-accent), #f9d976);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 10;
+}
+
+.event-grid-card:hover::after {
+  transform: scaleX(1);
 }
 
 .event-grid-card-image {
@@ -2588,9 +2711,18 @@
    FOOTER STYLES - Compact & Professional
    =========================================== */
 .landing-footer {
-  background: linear-gradient(180deg, var(--color-navy) 0%, #192438 100%);
+  background: linear-gradient(180deg, var(--color-navy) 0%, #151e32 100%);
   color: #ffffff;
-  padding: 50px 0 0;
+  padding: 60px 0 0;
+  position: relative;
+}
+
+.landing-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(212, 168, 75, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .footer-main {
@@ -3501,16 +3633,13 @@
 }
 
 .value-card {
-  background: linear-gradient(145deg, #ffffff 0%, #f9f8f6 100%);
+  background: #ffffff;
   padding: 28px 22px;
-  border-radius: 14px;
-  transition: all 0.3s ease;
-  box-shadow:
-    0 2px 4px rgba(26, 39, 68, 0.04),
-    0 8px 24px rgba(26, 39, 68, 0.08),
-    0 16px 40px rgba(26, 39, 68, 0.04);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   text-align: center;
-  border: 1px solid rgba(26, 39, 68, 0.08);
+  border: 1px solid rgba(26, 39, 68, 0.04);
   position: relative;
   overflow: hidden;
 }
@@ -3528,13 +3657,27 @@
 }
 
 .value-card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 4px 8px rgba(26, 39, 68, 0.06),
-    0 16px 40px rgba(26, 39, 68, 0.12),
-    0 24px 56px rgba(26, 39, 68, 0.06);
-  border-color: rgba(212, 168, 75, 0.25);
-  background: linear-gradient(145deg, #ffffff 0%, #fdfcfa 100%);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(212, 168, 75, 0.2);
+  background: #ffffff;
+}
+
+.value-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-gold-accent), #f9d976);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.value-card:hover::after {
+  transform: scaleX(1);
 }
 
 .value-card:hover::before {
@@ -3835,18 +3978,37 @@
 
 .pastor-card {
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(26, 39, 68, 0.06);
-  border: 1px solid rgba(26, 39, 68, 0.04);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .pastor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 35px rgba(26, 39, 68, 0.12);
-  border-color: rgba(212, 168, 75, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(212, 168, 75, 0.2);
+}
+
+.pastor-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-gold-accent), #f9d976);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.pastor-card:hover::after {
+  transform: scaleX(1);
 }
 
 .pastor-image-placeholder {
