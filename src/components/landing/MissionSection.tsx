@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-interface QuickInfoItem {
+export interface ProcessStepItem {
   icon: string;
   title: string;
   description: string;
 }
 
-const quickInfoItems: QuickInfoItem[] = [
+export const defaultProcessSteps: ProcessStepItem[] = [
   {
     icon: 'pi pi-user-plus',
     title: 'WIN',
@@ -31,32 +31,46 @@ const quickInfoItems: QuickInfoItem[] = [
   },
 ];
 
+interface ProcessStepsProps {
+  items?: ProcessStepItem[];
+  className?: string;
+}
+
+export const ProcessSteps: React.FC<ProcessStepsProps> = ({
+  items = defaultProcessSteps,
+  className = '',
+}) => {
+  return (
+    <div className={`process-steps-container ${className}`}>
+      {items.map((item, index) => (
+        <React.Fragment key={index}>
+          <div className="process-step-card">
+            <div className="step-number">
+              <span>{index + 1}</span>
+            </div>
+            <div className="step-icon">
+              <i className={item.icon}></i>
+            </div>
+            <h3 className="step-title">{item.title}</h3>
+            <p className="step-description">{item.description}</p>
+          </div>
+          {index < items.length - 1 && (
+            <div className="step-connector">
+              <div className="connector-line"></div>
+              <i className="pi pi-arrow-right connector-arrow"></i>
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
+
 export const MissionSection: React.FC = () => {
   return (
     <section className="quick-info-section animate-on-scroll">
       <div className="landing-container">
-        <div className="process-steps-container">
-          {quickInfoItems.map((item, index) => (
-            <React.Fragment key={index}>
-              <div className="process-step-card">
-                <div className="step-number">
-                  <span>{index + 1}</span>
-                </div>
-                <div className="step-icon">
-                  <i className={item.icon}></i>
-                </div>
-                <h3 className="step-title">{item.title}</h3>
-                <p className="step-description">{item.description}</p>
-              </div>
-              {index < quickInfoItems.length - 1 && (
-                <div className="step-connector">
-                  <div className="connector-line"></div>
-                  <i className="pi pi-arrow-right connector-arrow"></i>
-                </div>
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        <ProcessSteps />
       </div>
     </section>
   );
