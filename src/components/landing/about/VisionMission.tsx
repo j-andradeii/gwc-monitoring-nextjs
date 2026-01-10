@@ -10,24 +10,24 @@ interface PillarItem {
 
 const pillars: PillarItem[] = [
   {
-    icon: 'pi pi-heart',
-    title: 'Worship',
-    description: 'Experience God through authentic worship and praise that transforms hearts.',
+    icon: 'pi pi-user-plus',
+    title: 'WIN',
+    description: 'Reaching new people for Jesus through sharing the Gospel.',
   },
   {
-    icon: 'pi pi-users',
-    title: 'Community',
-    description: 'Find your place in our church family and build genuine relationships.',
+    icon: 'pi pi-heart',
+    title: 'CONSOLIDATE',
+    description: 'Taking care of the new believer in the same way a parent takes care of a newborn baby. During this process their faith is affirmed through a personal Encounter with Jesus.',
   },
   {
     icon: 'pi pi-book',
-    title: 'Grow',
-    description: 'Deepen your faith through biblical teaching and spiritual formation.',
+    title: 'DISCIPLE',
+    description: 'Reproducing the character of Christ in disciples and equipping them with the necessary tools so that they can become successful leaders who multiply and reproduce the Vision.',
   },
   {
     icon: 'pi pi-globe',
-    title: 'Serve',
-    description: 'Make an impact in our community and beyond through compassionate service.',
+    title: 'SEND',
+    description: 'The moment where new leaders are empowered to step into the ministry and fulfill the Great Commission.',
   },
 ];
 
