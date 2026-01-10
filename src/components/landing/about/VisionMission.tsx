@@ -67,13 +67,13 @@ export const VisionMission: React.FC = () => {
 
         <div className="pillars-section">
           <h3 className="pillars-title">How We Live It Out</h3>
-          <div className="pillars-grid">
+          <div className="quick-info-grid">
             {pillars.map((pillar, index) => (
-              <div key={index} className="pillar-card">
-                <div className="pillar-icon">
+              <div key={index} className="quick-info-card">
+                <div className="quick-info-icon">
                   <i className={pillar.icon}></i>
                 </div>
-                <h4>{pillar.title}</h4>
+                <h3>{pillar.title}</h3>
                 <p>{pillar.description}</p>
               </div>
             ))}
