@@ -31,6 +31,16 @@ const ministries: Ministry[] = [
     title: 'Kids Church',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/kids.jpg',
   },
+  {
+    id: '5',
+    title: 'Men Ministry',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men.jpg',
+  },
+  {
+    id: '6',
+    title: 'Women Ministry',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/women.jpg',
+  },
 ];
 
 export const MinistriesSection: React.FC = () => {
