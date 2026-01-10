@@ -2,38 +2,34 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Ministry {
   id: string;
   title: string;
-  description: string;
-  icon: string;
+  image: string;
 }
 
 const ministries: Ministry[] = [
   {
     id: '1',
     title: 'Youth Ministry',
-    description: 'Empowering the next generation in their faith journey.',
-    icon: 'pi pi-users',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/youth_1.jpg',
   },
   {
     id: '2',
     title: 'Marketplace',
-    description: 'Connecting faith and work for professionals.',
-    icon: 'pi pi-briefcase',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/marketplace.jpg',
   },
   {
     id: '3',
     title: 'Couples',
-    description: 'Strengthening marriages through biblical guidance.',
-    icon: 'pi pi-heart',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/couple.jpg',
   },
   {
     id: '4',
     title: 'Kids Church',
-    description: 'Fun and faith-filled programs for children.',
-    icon: 'pi pi-star',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/kids.jpg',
   },
 ];
 
@@ -50,14 +46,22 @@ export const MinistriesSection: React.FC = () => {
         <div className="ministry-grid">
           {ministries.map((ministry) => (
             <Link key={ministry.id} href="#" className="ministry-card animate-on-scroll">
-              <div className="ministry-icon">
-                <i className={ministry.icon}></i>
+              <div className="ministry-image">
+                <Image
+                  src={ministry.image}
+                  alt={ministry.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
-              <h3>{ministry.title}</h3>
-              <p>{ministry.description}</p>
-              <span className="ministry-link">
-                Learn More <i className="pi pi-arrow-right"></i>
-              </span>
+              <div className="ministry-overlay"></div>
+              <div className="ministry-content">
+                <h3>{ministry.title}</h3>
+                <span className="ministry-link">
+                  Learn More <i className="pi pi-arrow-right"></i>
+                </span>
+              </div>
             </Link>
           ))}
         </div>
