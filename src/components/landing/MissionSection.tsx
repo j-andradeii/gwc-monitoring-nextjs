@@ -35,15 +35,26 @@ export const MissionSection: React.FC = () => {
   return (
     <section className="quick-info-section animate-on-scroll">
       <div className="landing-container">
-        <div className="quick-info-grid">
+        <div className="process-steps-container">
           {quickInfoItems.map((item, index) => (
-            <div key={index} className="quick-info-card">
-              <div className="quick-info-icon">
-                <i className={item.icon}></i>
+            <React.Fragment key={index}>
+              <div className="process-step-card">
+                <div className="step-number">
+                  <span>{index + 1}</span>
+                </div>
+                <div className="step-icon">
+                  <i className={item.icon}></i>
+                </div>
+                <h3 className="step-title">{item.title}</h3>
+                <p className="step-description">{item.description}</p>
               </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
+              {index < quickInfoItems.length - 1 && (
+                <div className="step-connector">
+                  <div className="connector-line"></div>
+                  <i className="pi pi-arrow-right connector-arrow"></i>
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>
