@@ -33,89 +33,109 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 export const CommunityGallerySection: React.FC = () => {
   const [images, setImages] = useState<GalleryImage[]>(galleryImages);
-  const [isMobile, setIsMobile] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
-  // Shuffle images and detect mobile on client
+  // Shuffle images on client
   useEffect(() => {
     setImages(shuffleArray(galleryImages));
 
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 767);
-    };
+    // Scroll Animation Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const items = document.querySelectorAll('.animate-on-scroll');
+    items.forEach((item) => observer.observe(item));
+
+    return () => {
+      items.forEach((item) => observer.unobserve(item));
+    };
   }, []);
 
-  // Carousel item template
-  const carouselItemTemplate = (image: GalleryImage) => {
-    return (
-      <div className="gallery-carousel-item">
-        <div className="carousel-image-wrapper">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="90vw"
-            className="carousel-image"
-            unoptimized
-          />
-        </div>
-      </div>
-    );
+  const openLightbox = (image: GalleryImage) => {
+    setSelectedImage(image);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setTimeout(() => setSelectedImage(null), 300); // Wait for fade out
+    document.body.style.overflow = 'unset';
   };
 
   return (
     <section className="community-gallery-section" id="community">
       <div className="landing-container landing-full-width">
-        <div className="section-header-center">
+        <div className="section-header-center animate-on-scroll">
           <span className="section-label">Our Community</span>
           <h2>Life Together</h2>
         </div>
 
-        {/* Desktop/Tablet: Bento Grid Layout */}
-        {!isMobile && (
-          <div className="bento-grid">
-            {images.slice(0, 8).map((image, index) => (
-              <div
-                key={image.id}
-                className={`bento-item bento-item-${index + 1}`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 33vw"
-                  className="bento-image"
-                  unoptimized
-                />
+        {/* Bento Grid Layout - Responsive for all screens */}
+        <div className="bento-grid">
+          {images.slice(0, 8).map((image, index) => (
+            <div
+              key={image.id}
+              className={`bento-item bento-item-${index + 1} animate-on-scroll`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              onClick={() => openLightbox(image)}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="bento-image"
+                unoptimized
+              />
+              <div className="bento-overlay">
+                <h3>{image.alt}</h3>
               </div>
-            ))}
-          </div>
-        )}
+            </div>
+          ))}
+        </div>
+      </div>
 
-        {/* Mobile: Carousel Layout */}
-        {isMobile && (
-          <div className="gallery-carousel-wrapper">
-            <Carousel
-              value={images}
-              itemTemplate={carouselItemTemplate}
-              numVisible={1}
-              numScroll={1}
-              circular
-              autoplayInterval={2800}
-              showIndicators
-              showNavigators={false}
-              pt={{
-                root: { className: 'gallery-carousel' },
-              }}
-            />
-          </div>
-        )}
+      {/* Lightbox Overlay */}
+      <div
+        className={`gallery-lightbox ${lightboxOpen ? 'active' : ''}`}
+        onClick={closeLightbox}
+      >
+        <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+          <button className="lightbox-close" onClick={closeLightbox}>
+            <i className="pi pi-times"></i>
+          </button>
+          {selectedImage && (
+            <div className="lightbox-image-container">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                fill
+                className="lightbox-image"
+                quality={100}
+                unoptimized
+              />
+              <div className="lightbox-caption">
+                <h3>{selectedImage.alt}</h3>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
 };
+
+
 
 export default CommunityGallerySection;
