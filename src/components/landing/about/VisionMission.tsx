@@ -1,35 +1,7 @@
 'use client';
 
 import React from 'react';
-
-interface PillarItem {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-const pillars: PillarItem[] = [
-  {
-    icon: 'pi pi-user-plus',
-    title: 'WIN',
-    description: 'Reaching new people for Jesus through sharing the Gospel.',
-  },
-  {
-    icon: 'pi pi-heart',
-    title: 'CONSOLIDATE',
-    description: 'Taking care of the new believer in the same way a parent takes care of a newborn baby. During this process their faith is affirmed through a personal Encounter with Jesus.',
-  },
-  {
-    icon: 'pi pi-book',
-    title: 'DISCIPLE',
-    description: 'Reproducing the character of Christ in disciples and equipping them with the necessary tools so that they can become successful leaders who multiply and reproduce the Vision.',
-  },
-  {
-    icon: 'pi pi-globe',
-    title: 'SEND',
-    description: 'The moment where new leaders are empowered to step into the ministry and fulfill the Great Commission.',
-  },
-];
+import { ProcessSteps } from '../MissionSection';
 
 export const VisionMission: React.FC = () => {
   return (
@@ -67,17 +39,7 @@ export const VisionMission: React.FC = () => {
 
         <div className="pillars-section">
           <h3 className="pillars-title">How We Live It Out</h3>
-          <div className="quick-info-grid">
-            {pillars.map((pillar, index) => (
-              <div key={index} className="quick-info-card">
-                <div className="quick-info-icon">
-                  <i className={pillar.icon}></i>
-                </div>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.description}</p>
-              </div>
-            ))}
-          </div>
+          <ProcessSteps />
         </div>
       </div>
     </section>

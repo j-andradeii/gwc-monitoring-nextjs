@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Gateway Church | Welcome Home',
   description:
-    'Gateway Church is a welcoming community of faith. Join us for worship services, ministries, and events. Experience love, hope, and belonging.',
+    'Gateway Church is a welcoming community of faith. Join us for worship services, ministries, and events. Experience love, hope, and belonging. Our discipleship process: WIN - Reaching new people for Jesus; CONSOLIDATE - Nurturing new believers through encounters with Jesus; DISCIPLE - Reproducing Christ\'s character and equipping leaders; SEND - Empowering leaders to fulfill the Great Commission.',
   keywords: [
     'Gateway Church',
     'Gateway Church Cebu',
@@ -32,7 +32,14 @@ export const metadata: Metadata = {
     'gateway community',
     'gateway hope',
     'gateway donation drive',
-    'love God, love people'
+    'love God, love people',
+    'discipleship',
+    'win consolidate disciple send',
+    'great commission',
+    'evangelism',
+    'new believers',
+    'church leadership',
+    'spiritual growth'
   ],
   alternates: {
     canonical: '/',
@@ -95,9 +102,16 @@ const jsonLd = {
   '@type': 'Church',
   name: 'Gateway Church',
   description:
-    'Gateway Church is a welcoming community of faith. Join us for worship services, ministries, and events. Experience love, hope, and belonging.',
+    'Gateway Church is a welcoming community of faith. Join us for worship services, ministries, and events. Experience love, hope, and belonging. Our discipleship process: WIN - Reaching new people for Jesus through sharing the Gospel; CONSOLIDATE - Taking care of new believers through personal Encounters with Jesus; DISCIPLE - Reproducing Christ\'s character and equipping leaders with tools for multiplication; SEND - Empowering new leaders to step into ministry and fulfill the Great Commission.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com',
   logo: '/logo.png',
+  slogan: 'Love God, Love People',
+  knowsAbout: [
+    'WIN - Reaching new people for Jesus through sharing the Gospel',
+    'CONSOLIDATE - Taking care of new believers through personal Encounters with Jesus',
+    'DISCIPLE - Reproducing Christ\'s character and equipping leaders',
+    'SEND - Empowering leaders to fulfill the Great Commission'
+  ],
   sameAs: [
     'https://facebook.com/gatewaychurch',
     'https://instagram.com/gatewaychurch',
