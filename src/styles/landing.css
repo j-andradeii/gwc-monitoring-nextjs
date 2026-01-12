@@ -2043,6 +2043,7 @@
   .bento-item-7 {
     grid-column: span 2;
     grid-row: span 1;
+    order: 1;
   }
 }
 
