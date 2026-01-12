@@ -70,6 +70,9 @@ export const MissionSection: React.FC = () => {
   return (
     <section className="quick-info-section animate-on-scroll">
       <div className="landing-container">
+        <div className='mission-content'>
+          <span className="section-label">How we live it out</span>
+        </div>
         <ProcessSteps />
       </div>
     </section>
