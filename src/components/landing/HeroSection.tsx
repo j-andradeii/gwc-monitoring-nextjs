@@ -59,8 +59,8 @@ const heroSlides: HeroSlideData[] = [
   {
     id: 'campaign',
     type: 'campaign',
-    badge: '2025 Campaign Theme',
-    title: 'LEGACY',
+    badge: '2026 Campaign Theme',
+    title: 'NEW BEGINNING',
     subtitle: 'Building a Foundation for Generations',
     backgroundImage: '/assets/images/community.jpg',
     overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(26, 39, 68, 0.85) 100%)',
