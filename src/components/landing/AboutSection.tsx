@@ -36,14 +36,14 @@ export const AboutSection: React.FC = () => {
               faith, and find a supportive family.
             </p>
 
-            <div className="about-stats">
+            {/* <div className="about-stats">
               {stats.map((stat, index) => (
                 <div key={index} className="stat-item">
                   <span className="stat-number">{stat.number}</span>
                   <span className="stat-label">{stat.label}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             <Link href="/about" className="landing-btn landing-btn-outline">
               Learn More

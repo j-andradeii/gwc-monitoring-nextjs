@@ -42,14 +42,14 @@ export const OurStory: React.FC = () => {
               for years, there&apos;s a place for you here.
             </p>
 
-            <div className="our-story-stats">
+            {/* <div className="our-story-stats">
               {stats.map((stat, index) => (
                 <div key={index} className="our-story-stat-item">
                   <span className="stat-number">{stat.number}</span>
                   <span className="stat-label">{stat.label}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
