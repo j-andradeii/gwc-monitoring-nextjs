@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LandingHeader, LandingFooter } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
+import { ScriptureCard } from '@/components/cards';
 import '@/styles/landing.css';
 
 interface Props {
@@ -381,34 +382,15 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                       color: 'white',
                     }}
                   >
-                    <div
-                      style={{
-                        display: 'inline-block',
-                        padding: '6px 14px',
-                        backgroundColor: 'rgba(255,255,255,0.2)',
-                        borderRadius: '20px',
-                        fontSize: '13px',
-                        fontWeight: '600',
-                        marginBottom: '20px',
-                      }}
-                    >
-                      {sermon.scripture}
-                    </div>
-                    {sermon.scriptureText && (
-                      <blockquote
-                        style={{
-                          fontSize: '20px',
-                          lineHeight: '1.8',
-                          fontStyle: 'italic',
-                          margin: 0,
-                          position: 'relative',
-                          paddingLeft: '24px',
-                          borderLeft: '4px solid var(--primary-gold-accent)',
-                        }}
-                      >
-                        &ldquo;{sermon.scriptureText}&rdquo;
-                      </blockquote>
-                    )}
+                    <ScriptureCard
+                      verse={sermon.scripture}
+                      text={sermon.scriptureText || ''}
+                    // Pass style reset class or inline style if needed to override component defaults,
+                    // but here standard component styles should work.
+                    // Since we have a wrapper div with background, we might need to adjust.
+                    // Actually, the wrapper here duplicates what ScriptureCard does (background, padding).
+                    // Let's replace the wrapper entirely with ScriptureCard.
+                    />
                   </div>
 
                   <div style={{ marginTop: '32px', textAlign: 'center' }}>
