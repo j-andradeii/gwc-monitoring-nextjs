@@ -188,12 +188,11 @@ const WaysToGiveTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) => {
 
           <div className="scriptures-grid">
             {scriptures.map((scripture, index) => (
-              <div key={index} className="scripture-card">
-                <div className="scripture-icon">
-                  <i className="pi pi-book"></i>
-                </div>
-                <p className="scripture-text">&ldquo;{scripture.text}&rdquo;</p>
-                <span className="scripture-verse">{scripture.verse}</span>
+              <div key={index} className="scripture-card enhanced-scripture">
+                <span className="scripture-verse-pill">{scripture.verse}</span>
+                <blockquote className="scripture-quote">
+                  &ldquo;{scripture.text}&rdquo;
+                </blockquote>
               </div>
             ))}
           </div>
@@ -286,14 +285,11 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
 
         {/* Project Scripture */}
         <div className="project-scripture">
-          <div className="scripture-card featured-scripture">
-            <div className="scripture-icon">
-              <i className="pi pi-book"></i>
-            </div>
-            <p className="scripture-text">
+          <div className="scripture-card enhanced-scripture">
+            <span className="scripture-verse-pill">Haggai 1:8</span>
+            <blockquote className="scripture-quote">
               &ldquo;Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord.
-            </p>
-            <span className="scripture-verse">Haggai 1:8</span>
+            </blockquote>
           </div>
         </div>
 
