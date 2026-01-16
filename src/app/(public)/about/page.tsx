@@ -67,7 +67,7 @@ import {
   VisionMission,
   OurValues,
   OurPastors,
-  AboutSideNav,
+  AboutTabs,
 } from '@/components/landing/about';
 
 export default function AboutPage() {
@@ -76,9 +76,9 @@ export default function AboutPage() {
       <LandingHeader />
 
       <main className="landing-main">
-        <AboutSideNav />
         <ScrollAnimationProvider>
           <AboutHero />
+          <AboutTabs />
           <OurStory />
           <VisionMission />
           <OurValues />
@@ -88,6 +88,6 @@ export default function AboutPage() {
       </main>
 
       <LandingFooter />
-    </div>
+    </div >
   );
 }
