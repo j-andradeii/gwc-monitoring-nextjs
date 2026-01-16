@@ -6345,12 +6345,16 @@
   }
 
   .give-tabs-nav {
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
+    padding: 4px;
   }
 
   .give-tab-btn {
-    width: 100%;
+    flex: 1;
     justify-content: center;
+    padding: 12px 16px;
+    font-size: 13px;
   }
 
   .give-tabs-content {
