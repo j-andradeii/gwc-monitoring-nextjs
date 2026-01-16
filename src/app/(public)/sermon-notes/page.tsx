@@ -28,7 +28,7 @@ export default function SermonNotesPage() {
         sermon.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         sermon.speaker.toLowerCase().includes(searchQuery.toLowerCase()) ||
         sermon.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        sermon.scripture.toLowerCase().includes(searchQuery.toLowerCase());
+        sermon.scriptures.some(s => s.verse.toLowerCase().includes(searchQuery.toLowerCase()) || s.text.toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesSeries && matchesSearch;
     });
   }, [selectedSeries, searchQuery]);
@@ -200,7 +200,7 @@ export default function SermonNotesPage() {
                         }}
                       >
                         <i className="pi pi-book" style={{ color: 'var(--primary-gold-accent)' }} />
-                        {featuredSermon.scripture}
+                        {featuredSermon.scriptures[0].verse}
                       </span>
                     </div>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -544,7 +544,7 @@ export default function SermonNotesPage() {
                               color: 'var(--primary-gold-accent)',
                             }}
                           >
-                            {sermon.scripture}
+                            {sermon.scriptures[0].verse}
                           </span>
                         </div>
 
