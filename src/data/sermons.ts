@@ -20,8 +20,10 @@ export interface Sermon {
   image: string;
   videoUrl?: string;
   audioUrl?: string;
-  scripture: string;
-  scriptureText?: string;
+  scriptures: {
+    verse: string;
+    text: string;
+  }[];
   downloadUrl?: string;
   isFeatured?: boolean;
   keyPoints?: string[];
@@ -52,8 +54,12 @@ This sermon will challenge you to:
     tags: ['Faith', 'Trust', 'Christian Living', 'Hebrews'],
     image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
     videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
-    scripture: 'Hebrews 11:1-6',
-    scriptureText: 'Now faith is confidence in what we hope for and assurance about what we do not see. This is what the ancients were commended for. By faith we understand that the universe was formed at God\'s command, so that what is seen was not made out of what was visible.',
+    scriptures: [
+      {
+        verse: 'Hebrews 11:1-6',
+        text: 'Now faith is confidence in what we hope for and assurance about what we do not see. This is what the ancients were commended for. By faith we understand that the universe was formed at God\'s command, so that what is seen was not made out of what was visible.'
+      }
+    ],
     isFeatured: true,
     keyPoints: [
       'Faith is the foundation of our relationship with God',
@@ -86,8 +92,12 @@ This sermon covers:
     tags: ['Community', 'Fellowship', 'Church', 'Relationships'],
     image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1200&h=675&fit=crop',
     // No video - image only sermon
-    scripture: 'Acts 2:42-47',
-    scriptureText: 'They devoted themselves to the apostles\' teaching and to fellowship, to the breaking of bread and to prayer. Everyone was filled with awe at the many wonders and signs performed by the apostles.',
+    scriptures: [
+      {
+        verse: 'Acts 2:42-47',
+        text: 'They devoted themselves to the apostles\' teaching and to fellowship, to the breaking of bread and to prayer. Everyone was filled with awe at the many wonders and signs performed by the apostles.'
+      }
+    ],
     keyPoints: [
       'We were created for community, not isolation',
       'The early church devoted themselves to fellowship',
@@ -119,8 +129,12 @@ In this sermon, you'll learn:
     tags: ['Purpose', 'Calling', 'Destiny', 'Identity'],
     image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
     videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
-    scripture: 'Jeremiah 29:11-13',
-    scriptureText: '"For I know the plans I have for you," declares the LORD, "plans to prosper you and not to harm you, plans to give you hope and a future."',
+    scriptures: [
+      {
+        verse: 'Jeremiah 29:11-13',
+        text: '"For I know the plans I have for you," declares the LORD, "plans to prosper you and not to harm you, plans to give you hope and a future."'
+      }
+    ],
     keyPoints: [
       'God has a unique purpose for your life',
       'Your gifts and passions are clues to your calling',
@@ -152,8 +166,12 @@ This sermon will help you:
     tags: ['Fear', 'Anxiety', 'Peace', 'Trust'],
     image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
     videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
-    scripture: 'Isaiah 41:10',
-    scriptureText: 'So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.',
+    scriptures: [
+      {
+        verse: 'Isaiah 41:10',
+        text: 'So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.'
+      }
+    ],
     keyPoints: [
       'Fear is not from God—He gives us power, love, and a sound mind',
       'God\'s presence is the antidote to fear',
@@ -185,8 +203,16 @@ You'll discover:
     tags: ['Giving', 'Generosity', 'Blessings', 'Stewardship'],
     image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200&h=675&fit=crop',
     // No video - image only sermon
-    scripture: '2 Corinthians 9:6-8',
-    scriptureText: 'Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each of you should give what you have decided in your heart to give.',
+    scriptures: [
+      {
+        verse: '2 Corinthians 9:6-8',
+        text: 'Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each of you should give what you have decided in your heart to give.'
+      },
+      {
+        verse: 'Malachi 3:10',
+        text: ' Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this,” says the Lord Almighty, “and see if I will not throw open the floodgates of heaven and pour out so much blessing that there will not be room enough to store it'
+      }
+    ],
     keyPoints: [
       'God loves a cheerful giver',
       'Generosity breaks the grip of materialism',
@@ -218,8 +244,12 @@ This sermon explores:
     tags: ['Love', 'Relationships', 'Grace', 'Forgiveness'],
     image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
     videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
-    scripture: '1 Corinthians 13:4-7',
-    scriptureText: 'Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs.',
+    scriptures: [
+      {
+        verse: '1 Corinthians 13:4-7',
+        text: 'Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs.'
+      }
+    ],
     keyPoints: [
       'Love is the greatest commandment',
       'True love is an action, not just an emotion',

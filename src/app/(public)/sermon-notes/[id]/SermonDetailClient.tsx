@@ -374,28 +374,19 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
 
               {activeTab === 'scripture' && (
                 <div>
-                  <div
-                    style={{
-                      padding: '40px',
-                      background: 'linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%)',
-                      borderRadius: '16px',
-                      color: 'white',
-                    }}
-                  >
-                    <ScriptureCard
-                      verse={sermon.scripture}
-                      text={sermon.scriptureText || ''}
-                    // Pass style reset class or inline style if needed to override component defaults,
-                    // but here standard component styles should work.
-                    // Since we have a wrapper div with background, we might need to adjust.
-                    // Actually, the wrapper here duplicates what ScriptureCard does (background, padding).
-                    // Let's replace the wrapper entirely with ScriptureCard.
-                    />
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                    {sermon.scriptures.map((item, index) => (
+                      <ScriptureCard
+                        key={index}
+                        verse={item.verse}
+                        text={item.text}
+                      />
+                    ))}
                   </div>
 
                   <div style={{ marginTop: '32px', textAlign: 'center' }}>
                     <a
-                      href={`https://www.biblegateway.com/passage/?search=${encodeURIComponent(sermon.scripture)}&version=NIV`}
+                      href={`https://www.biblegateway.com/passage/?search=${encodeURIComponent(sermon.scriptures[0].verse)}&version=NIV`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="landing-btn landing-btn-outline"
