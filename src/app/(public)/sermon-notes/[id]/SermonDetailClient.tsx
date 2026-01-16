@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LandingHeader, LandingFooter } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
+import { ScriptureCard } from '@/components/cards';
 import '@/styles/landing.css';
 
 interface Props {
@@ -373,47 +374,19 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
 
               {activeTab === 'scripture' && (
                 <div>
-                  <div
-                    style={{
-                      padding: '40px',
-                      background: 'linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%)',
-                      borderRadius: '16px',
-                      color: 'white',
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: 'inline-block',
-                        padding: '6px 14px',
-                        backgroundColor: 'rgba(255,255,255,0.2)',
-                        borderRadius: '20px',
-                        fontSize: '13px',
-                        fontWeight: '600',
-                        marginBottom: '20px',
-                      }}
-                    >
-                      {sermon.scripture}
-                    </div>
-                    {sermon.scriptureText && (
-                      <blockquote
-                        style={{
-                          fontSize: '20px',
-                          lineHeight: '1.8',
-                          fontStyle: 'italic',
-                          margin: 0,
-                          position: 'relative',
-                          paddingLeft: '24px',
-                          borderLeft: '4px solid var(--primary-gold-accent)',
-                        }}
-                      >
-                        &ldquo;{sermon.scriptureText}&rdquo;
-                      </blockquote>
-                    )}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                    {sermon.scriptures.map((item, index) => (
+                      <ScriptureCard
+                        key={index}
+                        verse={item.verse}
+                        text={item.text}
+                      />
+                    ))}
                   </div>
 
                   <div style={{ marginTop: '32px', textAlign: 'center' }}>
                     <a
-                      href={`https://www.biblegateway.com/passage/?search=${encodeURIComponent(sermon.scripture)}&version=NIV`}
+                      href={`https://www.biblegateway.com/passage/?search=${encodeURIComponent(sermon.scriptures[0].verse)}&version=NIV`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="landing-btn landing-btn-outline"

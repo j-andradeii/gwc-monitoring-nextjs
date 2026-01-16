@@ -3,6 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { ScriptureCard } from '@/components/cards';
 
 type TabType = 'ways-to-give' | 'gateway-projects';
 
@@ -188,13 +189,11 @@ const WaysToGiveTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) => {
 
           <div className="scriptures-grid">
             {scriptures.map((scripture, index) => (
-              <div key={index} className="scripture-card">
-                <div className="scripture-icon">
-                  <i className="pi pi-book"></i>
-                </div>
-                <p className="scripture-text">&ldquo;{scripture.text}&rdquo;</p>
-                <span className="scripture-verse">{scripture.verse}</span>
-              </div>
+              <ScriptureCard
+                key={index}
+                verse={scripture.verse}
+                text={scripture.text}
+              />
             ))}
           </div>
         </div>
@@ -286,15 +285,10 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
 
         {/* Project Scripture */}
         <div className="project-scripture">
-          <div className="scripture-card featured-scripture">
-            <div className="scripture-icon">
-              <i className="pi pi-book"></i>
-            </div>
-            <p className="scripture-text">
-              &ldquo;Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord.
-            </p>
-            <span className="scripture-verse">Haggai 1:8</span>
-          </div>
+          <ScriptureCard
+            verse="Haggai 1:8"
+            text="Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord."
+          />
         </div>
 
         {/* Project Gallery */}
