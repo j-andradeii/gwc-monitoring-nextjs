@@ -6715,6 +6715,7 @@
     font-size: 20px;
   }
 }
+
 /* Enhanced Scripture Card (Sermon Note Style) */
 .scripture-card.enhanced-scripture {
   background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
@@ -6745,5 +6746,5 @@
   padding-left: 24px;
   border-left: 4px solid var(--primary-gold-accent);
   color: #ffffff;
+  text-align: left;
 }
-
