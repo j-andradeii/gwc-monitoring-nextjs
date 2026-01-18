@@ -32,9 +32,9 @@ export const ContactSection: React.FC = () => {
           <div className="contact-card-inner">
             {/* Left - Info */}
             <div className="contact-info-panel">
-              <span className="contact-eyebrow">Get in Touch</span>
+              <span className="section-label-light">Get in Touch</span>
               <h2>Let&apos;s Start a Conversation</h2>
-              <p>We&apos;re here to help and answer any questions you might have.</p>
+              <p className="contact-description">We&apos;re here to help and answer any questions you might have.</p>
 
               <div className="contact-details">
                 <a href="mailto:hello@gatewaychurch.ph" className="contact-detail-item">

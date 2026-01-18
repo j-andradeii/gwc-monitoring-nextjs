@@ -137,14 +137,7 @@ export default function SermonNotesPage() {
                     >
                       {featuredSermon.series}
                     </div>
-                    <h2
-                      style={{
-                        fontSize: '32px',
-                        marginBottom: '16px',
-                        color: 'var(--text-primary)',
-                        lineHeight: '1.2',
-                      }}
-                    >
+                    <h2 className="featured-sermon-title">
                       {featuredSermon.title}
                     </h2>
                     <p
@@ -669,59 +662,23 @@ export default function SermonNotesPage() {
           </div>
         </section>
 
-        {/* Subscribe CTA - Vibrant Navy with Colorful Accents */}
-        <section
-          style={{
-            padding: '80px 0',
-            background: 'linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #3d5a7f 100%)',
-            textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
+        {/* Subscribe CTA - High Contrast Navy */}
+        <section className="service-cta-section">
           <div className="landing-container">
-            <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+            <div className="service-cta-content">
               <span className="section-label-light">Stay Connected</span>
-              <h2 style={{ color: '#ffffff', fontSize: '32px', marginBottom: '16px' }}>
-                Never Miss a Sermon
-              </h2>
-              <p
-                style={{
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  fontSize: '16px',
-                  marginBottom: '32px',
-                  lineHeight: '1.7',
-                }}
-              >
+              <h2>Never Miss a Sermon</h2>
+              <p>
                 Subscribe to receive sermon notes directly in your inbox. Get weekly study materials
                 and reflection questions to deepen your faith journey.
               </p>
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '12px',
-                  maxWidth: '450px',
-                  margin: '0 auto',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                }}
-              >
+              <div className="subscribe-form">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  style={{
-                    flex: '1',
-                    minWidth: '200px',
-                    padding: '14px 20px',
-                    border: '2px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '10px',
-                    fontSize: '15px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    color: '#ffffff',
-                    outline: 'none',
-                  }}
+                  className="subscribe-input"
                 />
-                <button className="landing-btn landing-btn-light">Subscribe</button>
+                <button className="landing-btn landing-btn-border-light">Subscribe</button>
               </div>
             </div>
           </div>

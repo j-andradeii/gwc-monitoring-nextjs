@@ -281,6 +281,78 @@
 }
 
 /* ===========================================
+   FAVOR CHURCH INSPIRED BUTTONS - High Contrast
+   =========================================== */
+.landing-btn-border {
+  background-color: transparent;
+  color: var(--color-navy);
+  border: 2px solid var(--color-navy);
+  padding: 12px 28px;
+  font-weight: 700;
+}
+
+.landing-btn-border:hover {
+  background-color: var(--color-navy);
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(26, 39, 68, 0.25);
+}
+
+.landing-btn-border-light {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 12px 28px;
+  font-weight: 700;
+}
+
+.landing-btn-border-light:hover {
+  background-color: #ffffff;
+  color: var(--color-navy) !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.25);
+}
+
+.landing-btn-border-gold {
+  background-color: transparent;
+  color: var(--primary-gold-accent);
+  border: 2px solid var(--primary-gold-accent);
+  padding: 12px 28px;
+  font-weight: 700;
+}
+
+.landing-btn-border-gold:hover {
+  background-color: var(--primary-gold-accent);
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(212, 168, 75, 0.35);
+}
+
+/* Solid variants with border inversion */
+.landing-btn-solid-dark {
+  background-color: var(--color-navy);
+  color: #ffffff !important;
+  border: 2px solid var(--color-navy);
+  padding: 12px 28px;
+  font-weight: 700;
+}
+
+.landing-btn-solid-dark:hover {
+  background-color: transparent;
+  color: var(--color-navy) !important;
+}
+
+.landing-btn-solid-gold {
+  background-color: var(--primary-gold-accent);
+  color: #ffffff !important;
+  border: 2px solid var(--primary-gold-accent);
+  padding: 12px 28px;
+  font-weight: 700;
+}
+
+.landing-btn-solid-gold:hover {
+  background-color: transparent;
+  color: var(--primary-gold-accent) !important;
+}
+
+/* ===========================================
    ARISE & BUILD SECTION - Bethel Style Campus Campaign
    =========================================== */
 .arise-build-section {
@@ -346,11 +418,12 @@
 
 .arise-build-title {
   font-size: 52px;
-  font-weight: 700;
+  font-weight: 800;
   color: #ffffff;
   margin-bottom: 24px;
-  line-height: 1.1;
-  letter-spacing: -1px;
+  line-height: 1.05;
+  letter-spacing: -1.8px;
+  text-transform: uppercase;
 }
 
 .arise-build-description {
@@ -808,9 +881,9 @@
 .hero-slide-content h1 {
   font-size: 56px;
   color: #ffffff;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1.8px;
   text-transform: uppercase;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   margin: 0;
@@ -899,8 +972,9 @@
   font-size: 42px;
   color: #ffffff;
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
   margin: 0;
 }
@@ -1105,10 +1179,12 @@
 
 .about-content h2 {
   text-align: left;
-  font-size: 32px;
+  font-size: 36px;
+  font-weight: 800;
   margin-bottom: 16px;
-  line-height: 1.2;
-  letter-spacing: -0.3px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
   margin-top: 12px;
 }
 
@@ -1510,8 +1586,8 @@
    SERVICE CTA SECTION - Bold Navy with Vibrant Accents
    =========================================== */
 .service-cta-section {
-  padding: 60px 0 !important;
-  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #3d5a7f 100%) !important;
+  padding: 80px 0 !important;
+  background: var(--color-navy) !important;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1525,14 +1601,13 @@
   right: 0;
   height: 100%;
   background:
-    radial-gradient(circle at 20% 50%, rgba(240, 180, 41, 0.2) 0%, transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(8, 145, 178, 0.15) 0%, transparent 35%),
-    radial-gradient(circle at 50% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 40%);
+    radial-gradient(circle at 20% 50%, rgba(212, 168, 75, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 35%);
   pointer-events: none;
 }
 
 .service-cta-content {
-  max-width: 650px;
+  max-width: 700px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -1540,9 +1615,11 @@
 
 .service-cta-content h2 {
   color: #ffffff;
-  font-size: 30px;
-  margin-bottom: 12px;
-  letter-spacing: -0.3px;
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
 }
 
 .service-cta-content h2::after {
@@ -1550,30 +1627,88 @@
 }
 
 .service-cta-content>p {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
   margin-bottom: 32px;
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+/* Subscribe Form */
+.subscribe-form {
+  display: flex;
+  gap: 12px;
+  max-width: 450px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subscribe-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.subscribe-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.subscribe-input:focus {
+  border-color: var(--primary-gold-accent);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Featured Sermon Title */
+.featured-sermon-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -1.2px;
 }
 
 .service-details-compact {
   display: flex;
   justify-content: center;
-  gap: 36px;
-  margin-bottom: 32px;
+  gap: 24px;
+  margin-bottom: 36px;
   flex-wrap: wrap;
 }
 
 .service-detail-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   color: #ffffff;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.service-detail-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(212, 168, 75, 0.4);
+  transform: translateY(-2px);
 }
 
 .service-detail-item i {
-  font-size: 22px;
+  font-size: 24px;
   color: var(--primary-gold-accent);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-detail-item div {
@@ -1583,12 +1718,139 @@
 .service-detail-item strong {
   display: block;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.3px;
 }
 
 .service-detail-item span {
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.7;
+}
+
+/* ===========================================
+   SERVICE INFO CARDS - Favor Church Inspired
+   =========================================== */
+.service-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.service-info-card {
+  background: #ffffff;
+  border: 2px solid var(--color-navy);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.service-info-card:hover {
+  background: var(--color-navy);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(26, 39, 68, 0.2);
+}
+
+.service-info-card:hover .service-info-label,
+.service-info-card:hover .service-info-value,
+.service-info-card:hover .service-info-sub {
+  color: #ffffff;
+}
+
+.service-info-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-gold-accent);
+  margin-bottom: 8px;
+}
+
+.service-info-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-navy);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+  transition: color 0.25s ease;
+}
+
+.service-info-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.25s ease;
+}
+
+/* Dark variant */
+.service-info-card-dark {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+.service-info-card-dark .service-info-value,
+.service-info-card-dark .service-info-sub {
+  color: #ffffff;
+}
+
+.service-info-card-dark:hover {
+  background: #ffffff;
+}
+
+.service-info-card-dark:hover .service-info-value,
+.service-info-card-dark:hover .service-info-sub {
+  color: var(--color-navy);
+}
+
+/* Direction links */
+.service-directions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.direction-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid var(--primary-gold-accent);
+  border-radius: 50px;
+  color: var(--primary-gold-accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+}
+
+.direction-link:hover {
+  background: var(--primary-gold-accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.direction-link i {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .service-info-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-info-value {
+    font-size: 20px;
+  }
+
+  .service-directions {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 /* ===========================================
@@ -1621,9 +1883,11 @@
 
 .section-header-inline h2 {
   text-align: left;
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: 800;
   margin-bottom: 0;
-  letter-spacing: -0.3px;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
 }
 
 .section-header-inline h2::after {
@@ -2157,9 +2421,11 @@
 }
 
 .section-header-center h2 {
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: 800;
   margin-bottom: 10px;
-  letter-spacing: -0.3px;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
 }
 
 .section-header-center h2::after {
@@ -2489,7 +2755,7 @@
    =========================================== */
 .events-grid-section {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
 .events-grid-header {
@@ -2501,8 +2767,10 @@
 
 .events-grid-header h2 {
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -2770,33 +3038,22 @@
   pointer-events: none;
 }
 
-.contact-eyebrow {
-  display: inline-block;
-  padding: 5px 12px;
-  background: rgba(212, 168, 75, 0.2);
-  color: var(--primary-gold-accent);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  border-radius: 16px;
-  margin-bottom: 16px;
-  width: fit-content;
-}
-
 .contact-info-panel h2 {
   color: #ffffff;
-  font-size: 26px;
-  line-height: 1.3;
-  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  margin-top: 12px;
   position: relative;
-  letter-spacing: -0.3px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
 }
 
-.contact-info-panel>p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14px;
-  line-height: 1.6;
+.contact-info-panel .contact-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  line-height: 1.7;
   margin-bottom: 28px;
   position: relative;
 }
@@ -3019,13 +3276,17 @@
 
 .contact-success-state h3 {
   color: var(--color-navy);
-  font-size: 22px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
   margin-bottom: 8px;
 }
 
 .contact-success-state p {
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.6;
   margin-bottom: 20px;
 }
 
@@ -3948,9 +4209,11 @@
 
 .values-header h2 {
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 16px;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
 }
 
 .values-subtitle {
@@ -3970,11 +4233,11 @@
 .value-card {
   background: #ffffff;
   padding: 28px 22px;
-  border-radius: 20px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   text-align: center;
-  border: 1px solid rgba(26, 39, 68, 0.04);
+  border: 2px solid rgba(26, 39, 68, 0.08);
   position: relative;
   overflow: hidden;
 }
@@ -3993,9 +4256,9 @@
 
 .value-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(212, 168, 75, 0.2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
   background: #ffffff;
+  border-color: var(--primary-gold-accent);
 }
 
 .value-card::after {
@@ -4049,10 +4312,12 @@
 
 .value-card h3 {
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 8px;
   line-height: 1.3;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
 }
 
 .value-card p {
@@ -4100,9 +4365,11 @@
 
 .beliefs-header h2 {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 12px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
 }
 
 .beliefs-subtitle {

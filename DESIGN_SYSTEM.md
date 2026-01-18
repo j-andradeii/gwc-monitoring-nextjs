@@ -42,15 +42,22 @@ Our design language is built on three core pillars:
 ## 3. Typography
 
 ### Font Family
-- **Primary**: `'Lato', sans-serif`
+- **Primary**: `'Inter', sans-serif` (variable weights 100-900)
 
 ### Hierarchy
-| Element | Size | Weight | Style | Usage |
-|---------|------|--------|-------|-------|
-| **Hero Title** | `56px+` | **900** | **UPPERCASE** | Main landing page impact |
-| **Section Title**| `36px` | **800** | **UPPERCASE** | Major section headers ("MINISTRIES") |
-| **Card Title** | `24px` | **800** | **UPPERCASE** | "WIN", "SEND", Card Headers |
-| Body Copy | `15px` | 500 | Regular | High readability text |
+| Element | Size | Weight | Letter-Spacing | Style | Usage |
+|---------|------|--------|----------------|-------|-------|
+| **Hero Title** | `56px+` | **800** | **-1.8px** | **UPPERCASE** | Main landing page impact |
+| **Section Title**| `32-36px` | **800** | **-1.5px** | **UPPERCASE** | Major section headers |
+| **Card Title** | `24px` | **800** | **-0.5px** | **UPPERCASE** | Card Headers |
+| Body Copy | `15px` | 500 | Normal | Regular | High readability text |
+
+### Letter-Spacing Variables
+```css
+--letter-spacing-tight: -1.5px;   /* Section headers */
+--letter-spacing-tighter: -1.8px; /* Hero titles */
+--letter-spacing-normal: -0.5px;  /* Card titles */
+```
 
 ---
 
@@ -85,6 +92,32 @@ Buttons are fully rounded for a modern, friendly feel.
 }
 ```
 
+### Border Buttons (High-Contrast Style)
+For high-contrast sections, use border-heavy buttons with hover inversions.
+```css
+.landing-btn-border {
+  background-color: transparent;
+  color: var(--color-navy);
+  border: 2px solid var(--color-navy);
+  padding: 12px 28px;
+  font-weight: 700;
+}
+
+.landing-btn-border:hover {
+  background-color: var(--color-navy);
+  color: #ffffff;
+}
+```
+
+**Variants:**
+| Class | Default | Hover |
+|-------|---------|-------|
+| `.landing-btn-border` | Navy outline | Solid navy |
+| `.landing-btn-border-light` | White outline | Solid white |
+| `.landing-btn-border-gold` | Gold outline | Solid gold |
+| `.landing-btn-solid-dark` | Solid navy | Navy outline |
+| `.landing-btn-solid-gold` | Solid gold | Gold outline |
+
 ### Dynamic Icons
 Icons live in a container that morphs shape on interaction.
 - **Rest**: Rounded Square (`border-radius: 20px`)
@@ -106,4 +139,77 @@ Icons live in a container that morphs shape on interaction.
 ## 6. Layout Principles
 1.  **Top Alignment**: In grids, always use `justify-content: flex-start` to keep icons/titles aligned across cards of varying height.
 2.  **Generous Spacing**: Use `40px` padding inside cards to avoid cramping.
-3.  **Responsive**: Cards stack to 1 column on mobile, maintaining their internal padding and hierarchy.
+3.  **Consistent Gap**: Use `24px` gap throughout flex/grid systems for modular spacing.
+4.  **Responsive**: Cards stack to 1 column on mobile, maintaining their internal padding and hierarchy.
+
+---
+
+## 7. High-Contrast Sections
+
+### Dark Section Backgrounds
+For impactful dark sections, use the navy or black background with white text.
+```css
+.section-dark {
+  background-color: var(--color-navy);
+  color: #ffffff;
+}
+
+.section-black {
+  background-color: #000000;
+  color: #ffffff;
+}
+```
+
+### Service Info Cards
+Cards with border-heavy styling and hover inversions for displaying service times/venues.
+```css
+.service-info-card {
+  background: #ffffff;
+  border: 2px solid var(--color-navy);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.service-info-card:hover {
+  background: var(--color-navy);
+  color: #ffffff;
+}
+```
+
+### Service Detail Items
+For inline service information within dark sections.
+```css
+.service-detail-item {
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+
+.service-detail-item:hover {
+  border-color: rgba(212, 168, 75, 0.4);
+}
+```
+
+---
+
+## 8. CSS Variables Reference
+
+### Colors
+```css
+--color-primary: #d4a84b;         /* Warm Gold */
+--color-navy: #1a2744;            /* Deep Navy */
+--color-navy-dark: #151e32;       /* Darker Navy */
+--color-cream: #f5f0e6;           /* Soft Cream */
+--color-contrast-dark: #000000;   /* Pure Black */
+--color-contrast-light: #ffffff;  /* Pure White */
+--color-glass: rgba(255, 255, 255, 0.85);
+```
+
+### Typography
+```css
+--letter-spacing-tight: -1.5px;
+--letter-spacing-tighter: -1.8px;
+--letter-spacing-normal: -0.5px;
+```
