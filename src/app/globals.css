@@ -67,16 +67,29 @@
 
   /* New sanctuary-inspired colors */
   --color-navy: #1a2744;
+  --color-navy-dark: #151e32;
   --color-purple: #4a3c6e;
   --color-burgundy: #6b2c3a;
   --color-cream: #f5f0e6;
   --color-ivory: #faf8f3;
+
+  /* High-contrast utilities (Favor Church inspired) */
+  --color-contrast-dark: #000000;
+  --color-contrast-light: #ffffff;
+  --color-glass: rgba(255, 255, 255, 0.85);
+  --color-glass-dark: rgba(26, 39, 68, 0.85);
+
+  /* Typography - tighter letter-spacing for headlines */
+  --letter-spacing-tight: -1.5px;
+  --letter-spacing-tighter: -1.8px;
+  --letter-spacing-normal: -0.5px;
 
   /* Sidebar */
   --sidebar-width: 280px;
   --sidebar-collapsed-width: 80px;
   --header-height: 64px;
 
+  /* Inter variable font (Favor Church inspired) */
   --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-sans-serif: var(--font-inter), 'Inter', system-ui, sans-serif;
@@ -368,6 +381,89 @@ body {
 
 .link {
   @apply text-primary hover:text-primary-dark hover:underline transition-colors;
+}
+
+/* ===========================================
+   HIGH-CONTRAST UTILITIES (Favor Church Inspired)
+   =========================================== */
+.btn-contrast {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3;
+  @apply font-bold uppercase tracking-wide;
+  background-color: var(--color-contrast-dark);
+  color: var(--color-contrast-light);
+  border: 2px solid var(--color-contrast-dark);
+  transition: all 0.25s ease;
+}
+
+.btn-contrast:hover {
+  background-color: var(--color-contrast-light);
+  color: var(--color-contrast-dark);
+  transform: translateY(-2px);
+}
+
+.btn-contrast-outline {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3;
+  @apply font-bold uppercase tracking-wide;
+  background-color: transparent;
+  color: var(--color-contrast-dark);
+  border: 2px solid var(--color-contrast-dark);
+  transition: all 0.25s ease;
+}
+
+.btn-contrast-outline:hover {
+  background-color: var(--color-contrast-dark);
+  color: var(--color-contrast-light);
+  transform: translateY(-2px);
+}
+
+.btn-contrast-light {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3;
+  @apply font-bold uppercase tracking-wide;
+  background-color: var(--color-contrast-light);
+  color: var(--color-contrast-dark);
+  border: 2px solid var(--color-contrast-light);
+  transition: all 0.25s ease;
+}
+
+.btn-contrast-light:hover {
+  background-color: transparent;
+  color: var(--color-contrast-light);
+  transform: translateY(-2px);
+}
+
+.btn-gold-border {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3;
+  @apply font-bold uppercase tracking-wide;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  transition: all 0.25s ease;
+}
+
+.btn-gold-border:hover {
+  background-color: var(--color-primary);
+  color: var(--color-contrast-light);
+  transform: translateY(-2px);
+}
+
+/* Tight letter-spacing headlines */
+.heading-tight {
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.heading-tighter {
+  letter-spacing: var(--letter-spacing-tighter);
+}
+
+/* High-contrast section backgrounds */
+.section-dark {
+  background-color: var(--color-navy);
+  color: var(--color-contrast-light);
+}
+
+.section-black {
+  background-color: var(--color-contrast-dark);
+  color: var(--color-contrast-light);
 }
 
 .page-title {

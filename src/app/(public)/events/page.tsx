@@ -92,16 +92,11 @@ export default function EventsPage() {
         {featuredEvent && <FeaturedEventCard event={featuredEvent} />}
 
         {/* Events Grid */}
-        <section style={{
-          padding: '60px 0',
-          background: '#fff',
-        }}>
+        <section className="events-grid-section">
           <div className="landing-container">
-            <div style={{ marginBottom: '32px' }}>
+            <div className="section-header-center" style={{ textAlign: 'left', marginBottom: '32px' }}>
               <span className="section-label">All Events</span>
-              <h2 style={{ fontSize: '28px', color: 'var(--text-primary)', marginTop: '8px' }}>
-                Upcoming Gatherings
-              </h2>
+              <h2>Upcoming Gatherings</h2>
             </div>
             <EventsCardGrid events={regularEvents} showDescription={true} showAll={true} limit={0} />
           </div>
