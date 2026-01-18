@@ -77,11 +77,10 @@
   --sidebar-collapsed-width: 80px;
   --header-height: 64px;
 
-  /* Typography */
-  --font-sans: 'Lato', var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-display: 'Lato', var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-family-sans-serif: 'Lato', 'Arial', sans-serif;
-  --font-family-headings: 'Lato', 'Arial', sans-serif;
+  --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-sans-serif: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-family-headings: var(--font-inter), 'Inter', system-ui, sans-serif;
 }
 
 /* Dark Mode */
@@ -235,15 +234,15 @@ body {
 }
 
 /* Data Table */
-.p-datatable .p-datatable-thead > tr > th {
+.p-datatable .p-datatable-thead>tr>th {
   @apply bg-surface font-semibold text-foreground;
 }
 
-.p-datatable .p-datatable-tbody > tr {
+.p-datatable .p-datatable-tbody>tr {
   @apply border-b border-border;
 }
 
-.p-datatable .p-datatable-tbody > tr:hover {
+.p-datatable .p-datatable-tbody>tr:hover {
   @apply bg-surface;
 }
 
@@ -429,13 +428,23 @@ body {
    ANIMATIONS
    =========================================== */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes slideUp {
@@ -443,6 +452,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -454,6 +464,7 @@ body {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -465,6 +476,7 @@ body {
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -476,6 +488,7 @@ body {
     opacity: 0;
     transform: translateX(20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -483,12 +496,21 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .animate-fade-in {
