@@ -210,12 +210,11 @@ export default function SermonNotesPage() {
           </section>
         )}
 
-        {/* Search and Filter Section - Soft Gold */}
+        {/* Search and Filter Section - Minimalist & Mobile Friendly */}
         <section
           style={{
-            padding: '40px 0',
-            background: 'linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%)',
-            borderBottom: '1px solid rgba(240, 180, 41, 0.15)',
+            padding: '24px 0',
+            background: '#FFFCF5', // Minimalist light cream
             position: 'sticky',
             top: '64px',
             zIndex: 100,
@@ -223,16 +222,17 @@ export default function SermonNotesPage() {
         >
           <div className="landing-container">
             <div
+              className="search-filter-container"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: '16px',
-                justifyContent: 'space-between',
+                justifyContent: 'center', // Center content for a balanced look
                 alignItems: 'center',
               }}
             >
-              {/* Search Input */}
-              <div style={{ position: 'relative', flex: '1', minWidth: '250px', maxWidth: '400px' }}>
+              {/* Search Input - Clean & Minimal */}
+              <div className="search-input-wrapper" style={{ position: 'relative', flex: '1', minWidth: '280px', maxWidth: '500px' }}>
                 <i
                   className="pi pi-search"
                   style={{
@@ -240,7 +240,7 @@ export default function SermonNotesPage() {
                     left: '16px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    color: 'var(--text-secondary)',
+                    color: '#9ca3af',
                     fontSize: '14px',
                   }}
                 />
@@ -251,21 +251,23 @@ export default function SermonNotesPage() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '14px 16px 14px 46px',
-                    border: '2px solid var(--border-color)',
-                    borderRadius: '12px',
-                    fontSize: '15px',
+                    padding: '10px 14px 10px 38px',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '8px',
+                    fontSize: '14px',
                     outline: 'none',
-                    transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+                    transition: 'all 0.2s ease',
                     backgroundColor: '#ffffff',
+                    color: '#374151',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
                   }}
                   onFocus={(e) => {
                     e.target.style.borderColor = 'var(--primary-gold-accent)';
-                    e.target.style.boxShadow = '0 0 0 4px var(--gold-shadow-hover)';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(240, 180, 41, 0.1)';
                   }}
                   onBlur={(e) => {
-                    e.target.style.borderColor = 'var(--border-color)';
-                    e.target.style.boxShadow = 'none';
+                    e.target.style.borderColor = '#e5e7eb';
+                    e.target.style.boxShadow = '0 1px 2px rgba(0,0,0,0.05)';
                   }}
                 />
                 {searchQuery && (
@@ -273,42 +275,39 @@ export default function SermonNotesPage() {
                     onClick={() => setSearchQuery('')}
                     style={{
                       position: 'absolute',
-                      right: '16px',
+                      right: '12px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       background: 'none',
                       border: 'none',
                       cursor: 'pointer',
-                      color: 'var(--text-secondary)',
+                      color: '#9ca3af',
                       padding: '4px',
                     }}
                   >
-                    <i className="pi pi-times" />
+                    <i className="pi pi-times" style={{ fontSize: '12px' }} />
                   </button>
                 )}
               </div>
 
-              {/* Desktop Filters */}
+              {/* Desktop Filters - Simple Pills */}
               <div className="desktop-filters" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 {seriesOptions.map((series) => (
                   <button
                     key={series}
                     onClick={() => setSelectedSeries(series)}
                     style={{
-                      padding: '12px 20px',
-                      fontSize: '14px',
+                      padding: '10px 18px',
+                      fontSize: '13px',
                       fontWeight: '600',
-                      border: '2px solid',
-                      borderRadius: '10px',
+                      border: selectedSeries === series ? 'none' : '1px solid #e5e7eb',
+                      borderRadius: '8px',
                       cursor: 'pointer',
-                      transition: 'all 0.3s ease',
+                      transition: 'all 0.2s ease',
                       backgroundColor:
-                        selectedSeries === series ? 'var(--primary-gold-accent)' : 'transparent',
-                      borderColor:
-                        selectedSeries === series
-                          ? 'var(--primary-gold-accent)'
-                          : 'var(--border-color)',
-                      color: selectedSeries === series ? '#ffffff' : 'var(--text-secondary)',
+                        selectedSeries === series ? 'var(--primary-gold-accent)' : '#ffffff',
+                      color: selectedSeries === series ? '#ffffff' : '#4b5563',
+                      boxShadow: selectedSeries === series ? '0 4px 12px rgba(240, 180, 41, 0.2)' : '0 1px 2px rgba(0,0,0,0.05)',
                     }}
                   >
                     {series}
@@ -316,7 +315,7 @@ export default function SermonNotesPage() {
                 ))}
               </div>
 
-              {/* Mobile Filter Dropdown */}
+              {/* Mobile Filter Button - Primary Action */}
               <div className="mobile-filters" style={{ position: 'relative', display: 'none' }}>
                 <button
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -324,20 +323,22 @@ export default function SermonNotesPage() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
-                    padding: '14px 20px',
-                    border: '2px solid var(--border-color)',
-                    borderRadius: '12px',
-                    backgroundColor: '#ffffff',
+                    padding: '12px 20px',
+                    border: 'none',
+                    borderRadius: '8px',
+                    backgroundColor: 'var(--primary-gold-accent)',
                     cursor: 'pointer',
                     fontSize: '14px',
                     fontWeight: '600',
-                    color: 'var(--text-primary)',
+                    color: '#ffffff',
+                    boxShadow: '0 4px 12px rgba(240, 180, 41, 0.2)',
                   }}
                 >
                   <i className="pi pi-filter" />
                   {selectedSeries}
                   <i className={`pi pi-chevron-${isFilterOpen ? 'up' : 'down'}`} />
                 </button>
+
                 {isFilterOpen && (
                   <div
                     style={{
@@ -347,10 +348,11 @@ export default function SermonNotesPage() {
                       marginTop: '8px',
                       backgroundColor: '#ffffff',
                       borderRadius: '12px',
-                      boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+                      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
                       overflow: 'hidden',
-                      minWidth: '200px',
+                      minWidth: '220px',
                       zIndex: 10,
+                      border: '1px solid #f3f4f6',
                     }}
                   >
                     {seriesOptions.map((series) => (
@@ -363,15 +365,17 @@ export default function SermonNotesPage() {
                         style={{
                           display: 'block',
                           width: '100%',
-                          padding: '14px 20px',
+                          padding: '12px 20px',
                           border: 'none',
                           backgroundColor:
-                            selectedSeries === series ? 'var(--primary-gold-accent)' : 'transparent',
-                          color: selectedSeries === series ? '#ffffff' : 'var(--text-primary)',
+                            selectedSeries === series ? '#fffbf2' : 'transparent',
+                          color: selectedSeries === series ? 'var(--primary-gold-accent)' : '#4b5563',
                           textAlign: 'left',
                           cursor: 'pointer',
                           fontSize: '14px',
+                          fontWeight: selectedSeries === series ? '600' : '400',
                           transition: 'background-color 0.2s ease',
+                          borderLeft: selectedSeries === series ? '3px solid var(--primary-gold-accent)' : '3px solid transparent',
                         }}
                       >
                         {series}
@@ -382,8 +386,8 @@ export default function SermonNotesPage() {
               </div>
             </div>
 
-            {/* Results Count */}
-            <div style={{ marginTop: '16px', fontSize: '14px', color: 'var(--text-secondary)' }}>
+            {/* Results Count - Subtle */}
+            <div style={{ marginTop: '12px', fontSize: '13px', color: '#9ca3af', textAlign: 'center' }}>
               {filteredSermons.length === sermons.length
                 ? `Showing all ${sermons.length} sermon notes`
                 : `Found ${filteredSermons.length} sermon${filteredSermons.length !== 1 ? 's' : ''}`}
@@ -703,12 +707,19 @@ export default function SermonNotesPage() {
           }
         }
         @media (max-width: 767px) {
+          .search-filter-container {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+          .search-input-wrapper {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+          }
           .desktop-filters {
             display: none !important;
           }
-          .mobile-filters {
-            display: block !important;
-          }
+
         }
       `}</style>
     </div>
