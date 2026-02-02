@@ -8,7 +8,7 @@ interface GiveHeroProps {
 }
 
 export const GiveHero: React.FC<GiveHeroProps> = ({
-  backgroundImage = '/assets/images/community.jpg',
+  backgroundImage = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/golden_peak.jpg',
 }) => {
   return (
     <PageHero

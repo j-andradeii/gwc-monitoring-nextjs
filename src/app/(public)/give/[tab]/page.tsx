@@ -108,7 +108,13 @@ export default async function GiveTabPage({ params }: Props) {
 
       <main className="landing-main">
         <ScrollAnimationProvider>
-          <GiveHero />
+          <GiveHero
+            backgroundImage={
+              tab === 'gateway-projects'
+                ? 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/golden_peak.jpg'
+                : 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/give.jpg'
+            }
+          />
           <GiveTabs activeTab={tab as TabType} />
           <ContactSection />
         </ScrollAnimationProvider>
