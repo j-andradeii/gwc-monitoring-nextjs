@@ -55,7 +55,7 @@ export default function SermonNotesPage() {
         badge="Study Resources"
         title="Sermon Notes"
         subtitle="Dive deeper into God's Word with notes from our recent sermons. Use these resources for personal study, small group discussions, and spiritual growth."
-        backgroundImage="/assets/images/community.jpg"
+        backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/notes.jpg"
         className="sermons-hero"
       />
 

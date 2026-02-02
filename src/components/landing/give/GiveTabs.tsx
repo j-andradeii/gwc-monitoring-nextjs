@@ -52,7 +52,7 @@ const givingChannels = [
     id: 'gcash',
     name: 'GCash',
     accountName: 'Gateway Church Cebu',
-    accountNumber: '0917-XXX-XXXX',
+    accountNumber: '0928-252-4463', // Formatted for readability
     icon: 'pi pi-mobile',
     color: '#007DFE',
     instructions: [
@@ -66,8 +66,8 @@ const givingChannels = [
   {
     id: 'bpi',
     name: 'BPI',
-    accountName: 'Gateway Church Cebu Inc.',
-    accountNumber: '1234-5678-90',
+    accountName: 'Anna Marie Baloran',
+    accountNumber: '0206007186',
     icon: 'pi pi-building',
     color: '#A6192E',
     instructions: [
@@ -81,8 +81,8 @@ const givingChannels = [
   {
     id: 'bdo',
     name: 'BDO',
-    accountName: 'Gateway Church Cebu Inc.',
-    accountNumber: '0012-3456-7890',
+    accountName: 'Anna Marie Baloran/Jimanuel Baloran',
+    accountNumber: '002428024627',
     icon: 'pi pi-credit-card',
     color: '#003087',
     instructions: [
