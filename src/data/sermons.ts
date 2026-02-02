@@ -104,35 +104,35 @@ The end-time ministry will not be carried by the gifted alone—but by the faith
     scriptures: [
       {
         verse: '1 Corinthians 10:27-33',
-        text: 'We must sensitively desist from any questionable conduct that dilutes or harms our Christian witness to unbelievers.'
+        text: 'If any of those who do not believe invites you to dinner, and you desire to go, eat whatever is set before you, asking no question for conscience’ sake. But if anyone says to you, "This was offered to idols," do not eat it for the sake of the one who told you, and for conscience’ sake; for "the earth is the Lord’s, and all its fullness." "Conscience," I say, not your own, but that of the other. For why is my liberty judged by another man’s conscience? But if I partake with thanks, why am I evil spoken of for the food over which I give thanks? Therefore, whether you eat or drink, or whatever you do, do all to the glory of God. Give no offense, either to the Jews or to the Greeks or to the church of God, just as I also please all men in all things, not seeking my own profit, but the profit of many, that they may be saved.'
       },
       {
         verse: '1 Corinthians 8:9-13',
-        text: 'The law of love will cause us to limit voluntarily our Christian freedom in order not to lead by example another believer into compromising their convictions.'
+        text: 'But beware lest somehow this liberty of yours become a stumbling block to those who are weak. For if anyone sees you who have knowledge eating in an idol’s temple, will not the conscience of him who is weak be emboldened to eat those things offered to idols? And because of your knowledge shall the weak brother perish, for whom Christ died? But when you thus sin against the brethren, and wound their weak conscience, you sin against Christ. Therefore, if food makes my brother stumble, I will never again eat meat, lest I make my brother stumble.'
       },
       {
         verse: 'Proverbs 18:1',
-        text: 'Whoever isolates himself seeks his own desire; he breaks out against all sound judgment.'
+        text: 'A man who isolates himself seeks his own desire; He rages against all wise judgment.'
       },
       {
         verse: 'Proverbs 16:18',
-        text: 'Pride goes before destruction, and haughtiness before a fall.'
+        text: 'Pride goes before destruction, And a haughty spirit before a fall.'
       },
       {
         verse: 'Romans 12:16',
-        text: 'Live in harmony with one another. Do not be proud, but be willing to associate with people of low position. Do not be conceited.'
+        text: 'Be of the same mind toward one another. Do not set your mind on high things, but associate with the humble. Do not be wise in your own opinion.'
       },
       {
         verse: 'Romans 6:1-4',
-        text: 'Well then, should we keep on sinning so that God can show us more and more of his wonderful grace? Of course not! Since we have died to sin, how can we continue to live in it?'
+        text: 'What shall we say then? Shall we continue in sin that grace may abound? Certainly not! How shall we who died to sin live any longer in it? Or do you not know that as many of us as were baptized into Christ Jesus were baptized into His death? Therefore we were buried with Him through baptism into death, that just as Christ was raised from the dead by the glory of the Father, even so we also should walk in newness of life.'
       },
       {
         verse: 'Zechariah 13:7',
-        text: 'Smite the shepherd, and the sheep shall be scattered.'
+        text: '"Awake, O sword, against My Shepherd, Against the Man who is My Companion," Says the Lord of hosts. "Strike the Shepherd, And the sheep will be scattered; Then I will turn My hand against the little ones."'
       },
       {
         verse: '1 Corinthians 16:13-14',
-        text: 'Be on guard. Stand firm in the faith. Be courageous. Be strong. And do everything with love.'
+        text: 'Watch, stand fast in the faith, be brave, be strong. Let all that you do be done with love.'
       }
     ],
     isFeatured: true,
@@ -272,19 +272,19 @@ You have access to a pillar of fire or cloud (the Holy Spirit). What steps can y
     scriptures: [
       {
         verse: 'Exodus 13:2, 11-16',
-        text: 'Consecrate to me every firstborn male. The first offspring of every womb among the Israelites belongs to me, whether human or animal.'
+        text: '"Consecrate to Me all the firstborn, whatever opens the womb among the children of Israel, both of man and beast; it is Mine." ... "And it shall be, when the Lord brings you into the land of the Canaanites, as He swore to you and your fathers, and gives it to you, that you shall set apart to the Lord all that open the womb, that is, every firstborn that comes from an animal which you have; the males shall be the Lord’s. But every firstborn of a donkey you shall redeem with a lamb; and if you will not redeem it, then you shall break its neck. And all the firstborn of man among your sons you shall redeem. So it shall be, when your son asks you in time to come, saying, ‘What is this?’ that you shall say to him, ‘By strength of hand the Lord brought us out of Egypt, out of the house of bondage. And it came to pass, when Pharaoh was stubborn about letting us go, that the Lord killed all the firstborn in the land of Egypt, both the firstborn of man and the firstborn of beast. Therefore I sacrifice to the Lord all males that open the womb, but all the firstborn of my sons I redeem.’ It shall be as a sign on your hand and as frontlets between your eyes, for by strength of hand the Lord brought us out of Egypt."'
       },
       {
         verse: 'Galatians 6:9-10',
-        text: 'So let\'s not get tired of doing what is good. At just the right time we will reap a harvest of blessing if we don\'t give up. Therefore, whenever we have the opportunity, we should do good to everyone—especially to those in the family of faith.'
+        text: 'And let us not grow weary while doing good, for in due season we shall reap if we do not lose heart. Therefore, as we have opportunity, let us do good to all, especially to those who are of the household of faith.'
       },
       {
         verse: 'Ephesians 1:7',
-        text: 'Through the blood of Jesus, we also have redemption. The word redemption means "freedom that is bought through the payment of a ransom."'
+        text: 'In Him we have redemption through His blood, the forgiveness of sins, according to the riches of His grace.'
       },
       {
         verse: 'Romans 8:1-2',
-        text: 'There is now no condemnation for those who are in Christ Jesus. The Holy Spirit brings freedom from sin.'
+        text: 'There is therefore now no condemnation to those who are in Christ Jesus, who do not walk according to the flesh, but according to the Spirit. For the law of the Spirit of life in Christ Jesus has made me free from the law of sin and death.'
       },
       {
         verse: 'Romans 6:23',
@@ -292,15 +292,15 @@ You have access to a pillar of fire or cloud (the Holy Spirit). What steps can y
       },
       {
         verse: 'Colossians 1:13-14',
-        text: 'For he has rescued us from the dominion of darkness and brought us into the kingdom of the Son he loves, in whom we have redemption, the forgiveness of sins.'
+        text: 'He has delivered us from the power of darkness and conveyed us into the kingdom of the Son of His love, in whom we have redemption through His blood, the forgiveness of sins.'
       },
       {
         verse: '1 Peter 1:17-21',
-        text: 'For you know that God paid a ransom to save you from the empty life you inherited from your ancestors. And it was not paid with mere gold or silver, which lose their value. It was the precious blood of Christ, the sinless, spotless Lamb of God.'
+        text: 'And if you call on the Father, who without partiality judges according to each one’s work, conduct yourselves throughout the time of your stay here in fear; knowing that you were not redeemed with corruptible things, like silver or gold, from your aimless conduct received by tradition from your fathers, but with the precious blood of Christ, as of a lamb without blemish and without spot. He indeed was foreordained before the foundation of the world, but was manifest in these last times for you who through Him believe in God, who raised Him from the dead and gave Him glory, so that your faith and hope are in God.'
       },
       {
         verse: 'John 10:10',
-        text: 'I have come that they may have life, and have it to the full.'
+        text: 'The thief does not come except to steal, and to kill, and to destroy. I have come that they may have life, and that they may have it more abundantly.'
       }
     ],
     keyPoints: [
@@ -410,31 +410,31 @@ Jesus' promise to be "with you" is the Christian's answer to every fear, every d
     scriptures: [
       {
         verse: 'Matthew 28:18-20',
-        text: 'All authority in heaven and on earth has been given to me. Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.'
+        text: 'And Jesus came and spoke to them, saying, "All authority has been given to Me in heaven and on earth. Go therefore and make disciples of all the nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all things that I have commanded you; and lo, I am with you always, even to the end of the age." Amen.'
       },
       {
         verse: 'Acts 1:8',
-        text: 'But you will receive power when the Holy Spirit comes upon you. And you will be my witnesses, telling people about me everywhere—in Jerusalem, throughout Judea, in Samaria, and to the ends of the earth.'
+        text: 'But you shall receive power when the Holy Spirit has come upon you; and you shall be witnesses to Me in Jerusalem, and in all Judea and Samaria, and to the end of the earth.'
       },
       {
         verse: 'Acts 1:4-5',
-        text: 'Do not leave Jerusalem until the Father sends you the gift he promised, as I told you before. John baptized with water, but in just a few days you will be baptized with the Holy Spirit.'
+        text: 'And being assembled together with them, He commanded them not to depart from Jerusalem, but to wait for the Promise of the Father, "which," He said, "you have heard from Me; for John truly baptized with water, but you shall be baptized with the Holy Spirit not many days from now."'
       },
       {
         verse: 'Luke 24:47-49',
-        text: 'The preaching of the gospel is centered on repentance and forgiveness of sins. They will be clothed with power from on high.'
+        text: 'And that repentance and remission of sins should be preached in His name to all nations, beginning at Jerusalem. And you are witnesses of these things. Behold, I send the Promise of My Father upon you; but tarry in the city of Jerusalem until you are endued with power from on high.'
       },
       {
         verse: 'Acts 2:38, 40',
-        text: 'The promise of receiving the gift of the Holy Spirit and the challenge to live in a way that is uniquely different from the spiritually corrupt world.'
+        text: 'Then Peter said to them, "Repent, and let every one of you be baptized in the name of Jesus Christ for the remission of sins; and you shall receive the gift of the Holy Spirit." ... And with many other words he testified and exhorted them, saying, "Be saved from this perverse generation."'
       },
       {
         verse: 'John 14:16, 23, 26',
-        text: 'God is personally interested in each one of his children and has promised to be with them in the person of the Holy Spirit.'
+        text: 'And I will pray the Father, and He will give you another Helper, that He may abide with you forever... Jesus answered and said to him, "If anyone loves Me, he will keep My word; and My Father will love him, and We will come to him and make Our home with him." ... "But the Helper, the Holy Spirit, whom the Father will send in My name, He will teach you all things, and bring to your remembrance all things that I said to you."'
       },
       {
         verse: 'Psalm 139:7',
-        text: 'It is both challenging and comforting to know that we cannot escape God\'s presence.'
+        text: 'Where can I go from Your Spirit? Or where can I flee from Your presence?'
       }
     ],
     keyPoints: [
@@ -518,11 +518,11 @@ So when he had received food, he was strengthened. Then Saul spent some days wit
     scriptures: [
       {
         verse: '2 Kings 4:1-7',
-        text: 'A certain woman of the wives of the sons of the prophets cried out to Elisha, saying, "Your servant my husband is dead, and you know that your servant feared the Lord. And the creditor is coming to take my two sons to be his slaves."'
+        text: 'A certain woman of the wives of the sons of the prophets cried out to Elisha, saying, "Your servant my husband is dead, and you know that your servant feared the Lord. And the creditor is coming to take my two sons to be his slaves." So Elisha said to her, "What shall I do for you? Tell me, what do you have in the house?" And she said, "Your maidservant has nothing in the house but a jar of oil." Then he said, "Go, borrow vessels from everywhere, from all your neighbors—empty vessels; do not gather just a few. And when you have come in, you shall shut the door behind you and your sons; then pour it into all those vessels, and set aside the full ones." So she went from him and shut the door behind her and her sons, who brought the vessels to her; and she poured it out. Now it came to pass, when the vessels were full, that she said to her son, "Bring me another vessel." And he said to her, "There is not another vessel." So the oil ceased. Then she came and told the man of God. And he said, "Go, sell the oil and pay your debt; and you and your sons live on the rest."'
       },
       {
         verse: 'Acts 9:10-19',
-        text: 'Now there was a believer in Damascus named Ananias. The Lord spoke to him in a vision, calling, "Ananias!" "Yes, Lord!" he replied. The Lord said, "Go over to Straight Street, to the house of Judas."'
+        text: 'Now there was a certain disciple at Damascus named Ananias; and to him the Lord said in a vision, "Ananias." And he said, "Here I am, Lord." ... And Ananias went his way and entered the house; and laying his hands on him he said, "Brother Saul, the Lord Jesus, who appeared to you on the road as you came, has sent me that you may receive your sight and be filled with the Holy Spirit." Immediately there fell from his eyes something like scales, and he received his sight at once; and he arose and was baptized.'
       }
     ],
     keyPoints: [
@@ -594,43 +594,43 @@ Above all, they live from a heart that has been transformed by God.`,
     scriptures: [
       {
         verse: 'John 3:3',
-        text: 'Regeneration refers to the heart being "born again".'
+        text: 'Jesus answered and said to him, "Most assuredly, I say to you, unless one is born again, he cannot see the kingdom of God."'
       },
       {
         verse: 'Romans 10:9',
-        text: 'Those who repent from their heart of all sin and confess in their heart that Jesus is Lord are "born again" spiritually.'
+        text: 'That if you confess with your mouth the Lord Jesus and believe in your heart that God has raised Him from the dead, you will be saved.'
       },
       {
         verse: 'Psalm 51:10',
-        text: 'Receive a new spiritual heart from God.'
+        text: 'Create in me a clean heart, O God, And renew a steadfast spirit within me.'
       },
       {
         verse: 'Ezekiel 11:19',
-        text: 'God gives a new heart to those who turn to Him.'
+        text: 'Then I will give them one heart, and I will put a new spirit within them, and take the stony heart out of their flesh, and give them a heart of flesh.'
       },
       {
         verse: 'John 14:15, 23',
-        text: 'True love for God and faithful obedience to God are like two sides of the same coin.'
+        text: '"If you love Me, keep My commandments." ... Jesus answered and said to him, "If anyone loves Me, he will keep My word; and My Father will love him, and We will come to him and make Our home with him."'
       },
       {
         verse: '1 John 2:5; 5:3',
-        text: 'True love for God cannot be separated from obedience to his Word.'
+        text: 'But whoever keeps His word, truly the love of God is perfected in him. By this we know that we are in Him. ... For this is the love of God, that we keep His commandments. And His commandments are not burdensome.'
       },
       {
         verse: 'Matthew 22:37-40',
-        text: 'Jesus said the way to fulfill all the law of God is to love God wholeheartedly and love others unselfishly.'
+        text: 'Jesus said to him, "‘You shall love the Lord your God with all your heart, with all your soul, and with all your mind.’ This is the first and great commandment. And the second is like it: ‘You shall love your neighbor as yourself.’ On these two commandments hang all the Law and the Prophets."'
       },
       {
         verse: 'Proverbs 3:5',
-        text: 'Trust in the Lord with all their heart.'
+        text: 'Trust in the Lord with all your heart, And lean not on your own understanding.'
       },
       {
         verse: 'Romans 5:5',
-        text: 'Experience God\'s love poured into their heart.'
+        text: 'Now hope does not disappoint, because the love of God has been poured out in our hearts by the Holy Spirit who was given to us.'
       },
       {
         verse: '1 Peter 1:22',
-        text: 'Love other Christians from their heart.'
+        text: 'Since you have purified your souls in obeying the truth through the Spirit in sincere love of the brethren, love one another fervently with a pure heart.'
       }
     ],
     keyPoints: [
@@ -736,23 +736,23 @@ Yet even during this time in his life, David continued to show the true presence
     scriptures: [
       {
         verse: 'Hosea 6:11-7:1',
-        text: 'Whenever I would restore the fortunes of my people, whenever I would heal Israel, the sins of Ephraim are exposed and the crimes of Samaria revealed.'
+        text: 'Also, O Judah, a harvest is appointed for you, When I return the captives of My people. When I would have healed Israel, Then the iniquity of Ephraim was uncovered, And the wickedness of Samaria. For they have committed fraud; A thief comes in; A band of robbers takes spoil outside.'
       },
       {
         verse: '1 Samuel 13:13-14',
-        text: 'God had told Saul exactly what to do: wait in Gilgal for the arrival of Samuel. Because Saul failed to follow God\'s instructions, Samuel told him that God would take the kingdom away from him.'
+        text: 'And Samuel said to Saul, "You have done foolishly. You have not kept the commandment of the Lord your God, which He commanded you. For now the Lord would have established your kingdom over Israel forever. But now your kingdom shall not continue..."'
       },
       {
         verse: 'Acts 13:22',
-        text: 'David was a man after God\'s own heart. In his public conduct, he sought to obey the Lord and carry out his plans.'
+        text: 'And when He had removed him, He raised up for them David as king, to whom also He gave testimony and said, "I have found David the son of Jesse, a man after My own heart, who will do all My will."'
       },
       {
         verse: '2 Samuel 12:7-13',
-        text: 'David continued to show the true presence of a humble and teachable spirit. This allowed him to accept God\'s judgment and receive correction.'
+        text: 'Then Nathan said to David, "You are the man! ... Why have you despised the commandment of the Lord, to do evil in His sight? ... So David said to Nathan, "I have sinned against the Lord." And Nathan said to David, "The Lord also has put away your sin; you shall not die."'
       },
       {
         verse: '1 Chronicles 21:1-17',
-        text: 'David defied God\'s commands by taking a census of Israel without God\'s authorization, yet he accepted God\'s judgment and received correction.'
+        text: 'Now Satan stood up against Israel, and moved David to number Israel. ... And God was displeased with this thing; therefore He struck Israel. So David said to God, "I have sinned greatly, because I have done this thing; but now, I pray, take away the iniquity of Your servant, for I have done very foolishly." ... Then David said to God, "Was it not I who commanded the people to be numbered? I am the one who has sinned and done evil indeed; but these sheep, what have they done? Let Your hand, I pray, O Lord my God, be against me and my father’s house, but not against Your people that they should be plagued."'
       }
     ],
     keyPoints: [
@@ -865,35 +865,35 @@ For the joy set before him he endured the cross, scorning its shame, and sat dow
     scriptures: [
       {
         verse: 'Acts 20:24',
-        text: 'I do not account my life of any value. Paul\'s main concern was not preserving his own life; what counted most was that he might finish the work to which God had called him.'
+        text: 'But none of these things move me; nor do I count my life dear to myself, so that I may finish my race with joy, and the ministry which I received from the Lord Jesus, to testify to the gospel of the grace of God.'
       },
       {
         verse: 'Matthew 6:33',
-        text: 'God has made it His responsibility to provide for all your needs.'
+        text: 'But seek first the kingdom of God and His righteousness, and all these things shall be added to you.'
       },
       {
         verse: '2 Corinthians 10:12',
-        text: 'No Comparison.'
+        text: 'For we dare not class ourselves or compare ourselves with those who commend themselves. But they, measuring themselves by themselves, and comparing themselves among themselves, are not wise.'
       },
       {
         verse: 'Proverbs 4:20-27',
-        text: 'Specific rules for successfully staying on our course: Listen to God\'s Word, Give attention to what God is saying, Read God\'s Word, Hold on to God\'s Word in your heart.'
+        text: 'My son, give attention to my words; Incline your ear to my sayings. ... Keep your heart with all diligence, For out of it spring the issues of life. ... Ponder the path of your feet, And let all your ways be established. Do not turn to the right or the left; Remove your foot from evil.'
       },
       {
         verse: 'Philippians 1:20-24; 3:7-12',
-        text: 'We found our lives by losing it and love our lives by not counting it dear. Christ will be honored in my body, whether by life or by death.'
+        text: 'According to my earnest expectation and hope that in nothing I shall be ashamed, but with all boldness, as always, so now also Christ will be magnified in my body, whether by life or by death. ... But what things were gain to me, these I have counted loss for Christ. ... Not that I have already attained, or am already perfected; but I press on, that I may lay hold of that for which Christ Jesus has also laid hold of me.'
       },
       {
         verse: '1 Corinthians 9:24-27',
-        text: 'Do you not know that those who run in a race all run, but one receives the prize? Run in such a way that you may obtain it.'
+        text: 'Do you not know that those who run in a race all run, but one receives the prize? Run in such a way that you may obtain it. ... But I discipline my body and bring it into subjection, lest, when I have preached to others, I myself should become disqualified.'
       },
       {
         verse: '2 Timothy 4:6-8',
-        text: 'I have fought the good fight, I have finished the race, I have kept the faith. Finally, there is laid up for me the crown of righteousness.'
+        text: 'For I am already being poured out as a drink offering, and the time of my departure is at hand. I have fought the good fight, I have finished the race, I have kept the faith. Finally, there is laid up for me the crown of righteousness...'
       },
       {
         verse: 'Hebrews 12:1-3',
-        text: 'Let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us, fixing our eyes on Jesus.'
+        text: 'Therefore we also, since we are surrounded by so great a cloud of witnesses, let us lay aside every weight, and the sin which so easily ensnares us, and let us run with endurance the race that is set before us, looking unto Jesus, the author and finisher of our faith...'
       }
     ],
     keyPoints: [
@@ -984,31 +984,31 @@ Jesus' description of the father's response to the son's return shows us the hea
     scriptures: [
       {
         verse: 'Luke 15',
-        text: 'The parables of the lost sheep, lost coin, and prodigal son.'
+        text: 'Then all the tax collectors and the sinners drew near to Him to hear Him. And the Pharisees and scribes complained, saying, "This Man receives sinners and eats with them." So He spoke this parable to them...'
       },
       {
         verse: '2 Peter 3:9',
-        text: 'The Lord is not slow to fulfill his promise as some count slowness, but is patient toward you, not wishing that any should perish, but that all should reach repentance.'
+        text: 'The Lord is not slack concerning His promise, as some count slackness, but is longsuffering toward us, not willing that any should perish but that all should come to repentance.'
       },
       {
         verse: 'Luke 15:8',
-        text: 'Seek diligently until she finds. We should pray that the Holy Spirit will fill us with a deep desire to reach out to people.'
+        text: 'Or what woman, having ten silver coins, if she loses one coin, does not light a lamp, sweep the house, and search carefully until she finds it?'
       },
       {
         verse: 'Luke 15:13',
-        text: 'Journey into a far country. A life of sin and selfishness rejects God\'s love, companionship and authority.'
+        text: 'And not many days after, the younger son gathered all together, journeyed to a far country, and there wasted his possessions with prodigal living.'
       },
       {
         verse: 'Luke 15:17-21',
-        text: 'He came to himself. Before those who are spiritually lost can come to God, they must recognize their true condition of slavery to sin and separation from God.'
+        text: 'But when he came to himself, he said, "How many of my father’s hired servants have bread enough and to spare, and I perish with hunger! I will arise and go to my father..." And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion...'
       },
       {
         verse: 'John 16:7-11',
-        text: 'It is the Holy Spirit\'s work to bring sinners to the realization of their true condition.'
+        text: 'Nevertheless I tell you the truth. It is to your advantage that I go away; for if I do not go away, the Helper will not come to you; but if I depart, I will send Him to you. And when He has come, He will convict the world of sin, and of righteousness, and of judgment...'
       },
       {
         verse: 'Luke 15:20',
-        text: 'His father saw him and felt compassion. Jesus\' description of the father\'s response to the son\'s return.'
+        text: 'And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion, and ran and fell on his neck and kissed him.'
       }
     ],
     keyPoints: [
@@ -1061,19 +1061,19 @@ When this happens:
     scriptures: [
       {
         verse: '2 Corinthians 4:13',
-        text: 'Enthusiastic determination grows out of being delivered by the Lord.'
+        text: 'And since we have the same spirit of faith, according to what is written, "I believed and therefore I spoke," we also believe and therefore speak.'
       },
       {
         verse: '2 Corinthians 4:14',
-        text: 'Enthusiastic determination grows when we focus on our future resurrection.'
+        text: 'Knowing that He who raised up the Lord Jesus will also raise us up with Jesus, and will present us with you.'
       },
       {
         verse: '1 Corinthians 15:52',
-        text: 'We anticipate that day when we will all be changed in a moment, in the twinkling of an eye.'
+        text: 'In a moment, in the twinkling of an eye, at the last trumpet. For the trumpet will sound, and the dead will be raised incorruptible, and we shall be changed.'
       },
       {
         verse: '2 Corinthians 4:15',
-        text: 'Enthusiastic determination grows when we invest in the lives of others.'
+        text: 'For all things are for your sakes, that grace, having spread through the many, may cause thanksgiving to abound to the glory of God.'
       }
     ],
     keyPoints: [
@@ -1141,35 +1141,35 @@ In light of God's revelation about how (and when) he is working, his people are 
     scriptures: [
       {
         verse: 'Habakkuk 2:1',
-        text: 'The watchman and watchtower are pictures of Habakkuk\'s attitude of patient waiting and watching for God\'s response.'
+        text: 'I will stand my watch And set myself on the rampart, And watch to see what He will say to me, And what I will answer when I am corrected.'
       },
       {
         verse: 'Habakkuk 2:2-3',
-        text: 'If it seems slow in coming, wait patiently, for it will surely take place.'
+        text: 'Then the Lord answered me and said: "Write the vision And make it plain on tablets, That he may run who reads it. For the vision is yet for an appointed time; But at the end it will speak, and it will not lie. Though it tarries, wait for it; Because it will surely come, It will not tarry."'
       },
       {
         verse: 'Habakkuk 2:4',
-        text: 'The righteous shall live by his faith.'
+        text: 'Behold the proud, His soul is not upright in him; But the just shall live by his faith.'
       },
       {
         verse: 'Isaiah 21:8, 11',
-        text: 'The watchman shows an attitude of expectation.'
+        text: 'Then he cried, "A lion, my Lord! I stand continually on the watchtower in the daytime, And I have sat at my post every night." ... The burden against Dumah. He calls to me out of Seir, "Watchman, what of the night? Watchman, what of the night?"'
       },
       {
         verse: 'Romans 1:17',
-        text: 'The righteous shall live by faith.'
+        text: 'For in it the righteousness of God is revealed from faith to faith; as it is written, "The just shall live by faith."'
       },
       {
         verse: 'Galatians 3:11',
-        text: 'People are saved by grace through faith in Christ.'
+        text: 'But that no one is justified by the law in the sight of God is evident, for "the just shall live by faith."'
       },
       {
         verse: 'Ephesians 2:8',
-        text: 'Saved by grace through faith.'
+        text: 'For by grace you have been saved through faith, and that not of yourselves; it is the gift of God.'
       },
       {
         verse: 'Hebrews 10:38; 11:6',
-        text: 'God\'s people must continue to live by faith in order to please God.'
+        text: 'Now the just shall live by faith; But if anyone draws back, My soul has no pleasure in him. ... But without faith it is impossible to please Him, for he who comes to God must believe that He is, and that He is a rewarder of those who diligently seek Him.'
       }
     ],
     keyPoints: [
@@ -1242,51 +1242,51 @@ APPLICATION
     scriptures: [
       {
         verse: 'Proverbs 1:1-5, 10',
-        text: 'Be a person with firm determinations.'
+        text: 'The proverbs of Solomon the son of David, king of Israel: To know wisdom and instruction... My son, if sinners entice you, Do not consent.'
       },
       {
         verse: 'Proverbs 2:3-5',
-        text: 'Ask for intelligence.'
+        text: 'Yes, if you cry out for discernment, And lift up your voice for understanding, If you seek her as silver, And search for her as for hidden treasures; Then you will understand the fear of the Lord, And find the knowledge of God.'
       },
       {
         verse: 'Proverbs 3:5',
-        text: 'Depend completely on God.'
+        text: 'Trust in the Lord with all your heart, And lean not on your own understanding.'
       },
       {
         verse: 'Proverbs 3:9-10',
-        text: 'Be generous with God.'
+        text: 'Honor the Lord with your possessions, And with the firstfruits of all your increase; So your barns will be filled with plenty, And your vats will overflow with new wine.'
       },
       {
         verse: 'Proverbs 4:23',
-        text: 'Guard your mind.'
+        text: 'Keep your heart with all diligence, For out of it spring the issues of life.'
       },
       {
         verse: 'Proverbs 5:18-19',
-        text: 'Protect your marriage.'
+        text: 'Let your fountain be blessed, And rejoice with the wife of your youth. As a loving deer and a graceful doe, Let her breasts satisfy you at all times; And always be enraptured with her love.'
       },
       {
         verse: 'Proverbs 6:2',
-        text: 'Guard your words.'
+        text: 'You are snared by the words of your mouth; You are taken by the words of your mouth.'
       },
       {
         verse: 'Proverbs 7:2-3',
-        text: 'Memorize the Word.'
+        text: 'Keep my commands and live, And my law as the apple of your eye. Bind them on your fingers; Write them on the tablet of your heart.'
       },
       {
         verse: 'Proverbs 8:10',
-        text: 'Train yourself in the Word.'
+        text: 'Receive my instruction, and not silver, And knowledge rather than choice gold.'
       },
       {
         verse: 'Proverbs 9:6',
-        text: 'Cast out that which does not edify.'
+        text: 'Forsake foolishness and live, And go in the way of understanding.'
       },
       {
         verse: 'Proverbs 10:16',
-        text: 'Reproduce life.'
+        text: 'The labor of the righteous leads to life, The wages of the wicked to sin.'
       },
       {
         verse: 'Proverbs 10:22',
-        text: 'Enjoy God\'s blessing.'
+        text: 'The blessing of the Lord makes one rich, And He adds no sorrow with it.'
       }
     ],
     keyPoints: [
