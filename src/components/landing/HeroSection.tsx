@@ -56,20 +56,20 @@ const heroSlides: HeroSlideData[] = [
       icon: 'pi pi-calendar',
     },
   },
-  {
-    id: 'campaign',
-    type: 'campaign',
-    badge: '2026 Campaign Theme',
-    title: 'NEW BEGINNING',
-    subtitle: 'Building a Foundation for Generations',
-    backgroundImage: '/assets/images/community.jpg',
-    overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(26, 39, 68, 0.85) 100%)',
-    cta: {
-      label: 'Learn More',
-      href: '#campaign',
-      icon: 'pi pi-arrow-right',
-    },
-  },
+  // {
+  //   id: 'campaign',
+  //   type: 'campaign',
+  //   badge: '2026 Campaign Theme',
+  //   title: 'NEW BEGINNING',
+  //   subtitle: 'Building a Foundation for Generations',
+  //   backgroundImage: '/assets/images/community.jpg',
+  //   overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(26, 39, 68, 0.85) 100%)',
+  //   cta: {
+  //     label: 'Learn More',
+  //     href: '#campaign',
+  //     icon: 'pi pi-arrow-right',
+  //   },
+  // },
 ];
 
 export const HeroSection: React.FC = () => {
@@ -95,6 +95,7 @@ export const HeroSection: React.FC = () => {
   }, [activeIndex, goToSlide]);
 
   useEffect(() => {
+    if (heroSlides.length <= 1) return;
     const interval = setInterval(goToNext, 8000);
     return () => clearInterval(interval);
   }, [goToNext]);
@@ -115,23 +116,29 @@ export const HeroSection: React.FC = () => {
         <HeroSlideContent slide={heroSlides[activeIndex]} isTransitioning={isTransitioning} />
       </div>
 
-      <button className="hero-nav-btn hero-nav-prev" onClick={goToPrev} aria-label="Previous slide">
-        <i className="pi pi-chevron-left"></i>
-      </button>
-      <button className="hero-nav-btn hero-nav-next" onClick={goToNext} aria-label="Next slide">
-        <i className="pi pi-chevron-right"></i>
-      </button>
+      {heroSlides.length > 1 && (
+        <>
+          <button className="hero-nav-btn hero-nav-prev" onClick={goToPrev} aria-label="Previous slide">
+            <i className="pi pi-chevron-left"></i>
+          </button>
+          <button className="hero-nav-btn hero-nav-next" onClick={goToNext} aria-label="Next slide">
+            <i className="pi pi-chevron-right"></i>
+          </button>
+        </>
+      )}
 
-      <div className="hero-indicators">
-        {heroSlides.map((slide, index) => (
-          <button
-            key={slide.id}
-            className={`hero-indicator ${index === activeIndex ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+      {heroSlides.length > 1 && (
+        <div className="hero-indicators">
+          {heroSlides.map((slide, index) => (
+            <button
+              key={slide.id}
+              className={`hero-indicator ${index === activeIndex ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
