@@ -2755,7 +2755,7 @@
    =========================================== */
 .events-grid-section {
   padding: 80px 0;
-  background: #ffffff;
+  background: var(--background-main);
 }
 
 .events-grid-header {

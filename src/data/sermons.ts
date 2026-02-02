@@ -52,8 +52,8 @@ This sermon will challenge you to:
 - Learn practical ways to strengthen your faith daily
 - Discover how faith changes your perspective on trials`,
     tags: ['Faith', 'Trust', 'Christian Living', 'Hebrews'],
-    image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
+    // No video - image only sermon
     scriptures: [
       {
         verse: 'Hebrews 11:1-6',
@@ -90,7 +90,7 @@ This sermon covers:
 - How to build authentic relationships in the church
 - Practical steps to deepen your connections`,
     tags: ['Community', 'Fellowship', 'Church', 'Relationships'],
-    image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1200&h=675&fit=crop',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
     // No video - image only sermon
     scriptures: [
       {
@@ -127,8 +127,8 @@ In this sermon, you'll learn:
 - Why your past experiences matter for your future calling
 - Steps to begin walking in your purpose today`,
     tags: ['Purpose', 'Calling', 'Destiny', 'Identity'],
-    image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
+    // No video - image only sermon
     scriptures: [
       {
         verse: 'Jeremiah 29:11-13',
@@ -164,8 +164,8 @@ This sermon will help you:
 - Develop practical habits for peace
 - Experience freedom from the grip of fear`,
     tags: ['Fear', 'Anxiety', 'Peace', 'Trust'],
-    image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
+    // No video - image only sermon
     scriptures: [
       {
         verse: 'Isaiah 41:10',
@@ -201,7 +201,7 @@ You'll discover:
 - How generosity transforms your heart
 - Practical ways to grow in generosity`,
     tags: ['Giving', 'Generosity', 'Blessings', 'Stewardship'],
-    image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200&h=675&fit=crop',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
     // No video - image only sermon
     scriptures: [
       {
@@ -242,8 +242,8 @@ This sermon explores:
 - Practical ways to grow in love
 - The power of unconditional love`,
     tags: ['Love', 'Relationships', 'Grace', 'Forgiveness'],
-    image: 'https://i.ytimg.com/vi/_LiAoQpEVlY/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/_LiAoQpEVlY',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
+    // No video - image only sermon
     scriptures: [
       {
         verse: '1 Corinthians 13:4-7',

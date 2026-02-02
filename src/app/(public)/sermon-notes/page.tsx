@@ -198,8 +198,7 @@ export default function SermonNotesPage() {
                     </div>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                       <span className="landing-btn landing-btn-primary">
-                        <i className="pi pi-play-circle" />
-                        Watch Now
+                        Learn More
                       </span>
                     </div>
                   </div>
