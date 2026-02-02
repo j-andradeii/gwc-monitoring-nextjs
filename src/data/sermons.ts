@@ -33,7 +33,7 @@ export interface Sermon {
 export const sermons: Sermon[] = [
   {
     id: '1',
-    title: 'Sunday Service',
+    title: 'TRAPS FOR MINISTERS',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
     date: '2026-01-25',
@@ -41,9 +41,7 @@ export const sermons: Sermon[] = [
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'A call to vigilance, focus, and holy passion. This is a season that demands watchfulness.',
-    description: `TRAPS FOR MINISTERS
-
-a. Burnout disguised as faithfulness
+    description: `a. Burnout disguised as faithfulness
 - Enduring, not enjoying, not bearing fruits
 - Enjoy the ministry, not endure the ministry
 - Humans are not meant to depend upon human strength

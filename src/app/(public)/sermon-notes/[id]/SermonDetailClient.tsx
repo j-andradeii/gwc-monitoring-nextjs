@@ -302,13 +302,13 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                   {/* Description */}
                   {sermon.description && (
                     <div style={{ marginBottom: '40px' }}>
-                      <h2 style={{ fontSize: '24px', marginBottom: '20px', color: 'var(--text-primary)' }}>
+                      <h2 style={{ fontSize: '28px', marginBottom: '24px', color: 'var(--text-primary)' }}>
                         About This Message
                       </h2>
                       <div
                         style={{
-                          fontSize: '16px',
-                          lineHeight: '1.8',
+                          fontSize: '18px',
+                          lineHeight: '1.9',
                           color: 'var(--text-secondary)',
                           whiteSpace: 'pre-line',
                         }}
@@ -328,7 +328,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                         border: '1px solid rgba(240, 180, 41, 0.2)',
                       }}
                     >
-                      <h3 style={{ fontSize: '20px', marginBottom: '20px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <h3 style={{ fontSize: '22px', marginBottom: '24px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <i className="pi pi-star-fill" style={{ color: 'var(--primary-gold-accent)' }} />
                         Key Takeaways
                       </h3>
@@ -340,9 +340,9 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                               display: 'flex',
                               alignItems: 'flex-start',
                               gap: '16px',
-                              marginBottom: index < sermon.keyPoints!.length - 1 ? '16px' : 0,
-                              fontSize: '16px',
-                              lineHeight: '1.6',
+                              marginBottom: index < sermon.keyPoints!.length - 1 ? '18px' : 0,
+                              fontSize: '17px',
+                              lineHeight: '1.7',
                               color: 'var(--text-secondary)',
                             }}
                           >
@@ -351,12 +351,12 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                width: '28px',
-                                height: '28px',
+                                width: '30px',
+                                height: '30px',
                                 borderRadius: '50%',
                                 backgroundColor: 'var(--primary-gold-accent)',
                                 color: 'white',
-                                fontSize: '13px',
+                                fontSize: '14px',
                                 fontWeight: '700',
                                 flexShrink: 0,
                               }}
