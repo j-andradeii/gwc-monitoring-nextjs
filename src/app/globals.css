@@ -44,8 +44,8 @@
 
   /* Neutrals - Warm sanctuary tones */
   --color-background: #f5f0e6;
-  --color-foreground: #1a2744;
-  --color-muted: #4a5568;
+  --color-foreground: #0d1424;
+  --color-muted: #374151;
   --color-border: #e8e3d9;
   --color-surface: #ffffff;
 
@@ -53,8 +53,8 @@
   --primary-gold-accent: #d4a84b;
   --background-main: #f5f0e6;
   --background-section: #ffffff;
-  --text-primary: #1a2744;
-  --text-secondary: #4a5568;
+  --text-primary: #0d1424;
+  --text-secondary: #374151;
   --border-color: #e8e3d9;
   --border-color-light: #f0ebe1;
   --button-text-on-gold: #ffffff;
@@ -475,7 +475,7 @@ body {
 }
 
 .label {
-  @apply text-sm font-medium text-gray-700;
+  @apply text-sm font-medium text-gray-900;
 }
 
 .error-text {
@@ -689,33 +689,33 @@ body {
    SIDEBAR MENU STYLES
    =========================================== */
 .sidebar-container .section-label {
-  color: #4b5563 !important;
+  color: #1f2937 !important;
 }
 
 .sidebar-container .menu-item {
-  color: #111827 !important;
+  color: #030712 !important;
 }
 
 .sidebar-container .menu-item-label {
-  color: #111827 !important;
+  color: #030712 !important;
 }
 
 .sidebar-container .menu-item-icon i {
-  color: #374151 !important;
+  color: #111827 !important;
 }
 
 .sidebar-container .menu-item.active .menu-item-label {
-  color: #1f2937 !important;
+  color: #030712 !important;
 }
 
 .sidebar-container .submenu-item .menu-item-label {
-  color: #1f2937 !important;
+  color: #0d1424 !important;
 }
 
 .sidebar-container .submenu-item .menu-item-icon i {
-  color: #4b5563 !important;
+  color: #1f2937 !important;
 }
 
 .sidebar-container .expand-icon {
-  color: #6b7280 !important;
+  color: #374151 !important;
 }

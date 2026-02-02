@@ -13,7 +13,7 @@ interface Ministry {
 const ministries: Ministry[] = [
   {
     id: '1',
-    title: 'Youth Ministry',
+    title: 'Gateway Axis',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/youth_1.jpg',
   },
   {

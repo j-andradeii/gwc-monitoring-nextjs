@@ -21,16 +21,18 @@ export default function SermonNotesPage() {
   const seriesOptions = ['All Series', ...getAllSeries()];
 
   const filteredSermons = useMemo(() => {
-    return sermons.filter((sermon) => {
-      const matchesSeries = selectedSeries === 'All Series' || sermon.series === selectedSeries;
-      const matchesSearch =
-        searchQuery === '' ||
-        sermon.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        sermon.speaker.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        sermon.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        sermon.scriptures.some(s => s.verse.toLowerCase().includes(searchQuery.toLowerCase()) || s.text.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesSeries && matchesSearch;
-    });
+    return sermons
+      .filter((sermon) => {
+        const matchesSeries = selectedSeries === 'All Series' || sermon.series === selectedSeries;
+        const matchesSearch =
+          searchQuery === '' ||
+          sermon.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          sermon.speaker.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          sermon.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          sermon.scriptures.some(s => s.verse.toLowerCase().includes(searchQuery.toLowerCase()) || s.text.toLowerCase().includes(searchQuery.toLowerCase()));
+        return matchesSeries && matchesSearch;
+      })
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, [selectedSeries, searchQuery]);
 
   const featuredSermon = getFeaturedSermon();
@@ -198,8 +200,7 @@ export default function SermonNotesPage() {
                     </div>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                       <span className="landing-btn landing-btn-primary">
-                        <i className="pi pi-play-circle" />
-                        Watch Now
+                        Learn More
                       </span>
                     </div>
                   </div>
@@ -663,7 +664,7 @@ export default function SermonNotesPage() {
         </section>
 
         {/* Subscribe CTA - High Contrast Navy */}
-        <section className="service-cta-section">
+        {/* <section className="service-cta-section">
           <div className="landing-container">
             <div className="service-cta-content">
               <span className="section-label-light">Stay Connected</span>
@@ -682,7 +683,7 @@ export default function SermonNotesPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <ScrollAnimationProvider>
           <ContactSection />

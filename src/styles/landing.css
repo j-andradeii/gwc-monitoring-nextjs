@@ -2755,7 +2755,7 @@
    =========================================== */
 .events-grid-section {
   padding: 80px 0;
-  background: #ffffff;
+  background: var(--background-main);
 }
 
 .events-grid-header {
@@ -5465,7 +5465,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #9ca3af;
+  color: #6b7280;
 }
 
 .qr-placeholder-box i {
@@ -5978,7 +5978,7 @@
   padding: 14px;
   background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
   border-top: 1px dashed rgba(0, 0, 0, 0.08);
-  color: #9ca3af;
+  color: #6b7280;
   font-size: 12px;
   font-weight: 500;
 }
