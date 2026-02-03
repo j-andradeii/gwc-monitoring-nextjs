@@ -7,7 +7,10 @@ import { sermons } from '@/data/sermons';
 
 export const SermonsSection: React.FC = () => {
   // Get the 3 most recent sermons
-  const recentSermons = sermons.slice(0, 3);
+  // Get the 3 most recent sermons
+  const recentSermons = [...sermons]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
