@@ -27,12 +27,26 @@ export interface Event {
   type: GatewayEventType;
 }
 
+const getUpcomingSunday = (): string => {
+  const date = new Date();
+  const day = date.getDay();
+  const diff = (7 - day) % 7;
+  date.setDate(date.getDate() + diff);
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric'
+  });
+};
+
+const upcomingSundayDate = getUpcomingSunday();
+
 export const events: Event[] = [
   {
     id: 1,
     title: 'SONday Service',
-    date: 'Dec 28, 2025',
-    displayDate: 'Dec 28',
+    date: upcomingSundayDate,
+    displayDate: upcomingSundayDate,
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
@@ -44,123 +58,11 @@ export const events: Event[] = [
   },
   {
     id: 2,
-    title: 'WELCOME HOME SUNDAY',
-    date: 'Jan 4, 2026',
-    displayDate: 'Jan 4',
-    day: 'Sunday',
-    time: '9:00 AM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Join us to praise and worship our Lord as a family.',
-    category: 'Fellowship',
-    isFeatured: false,
-    type: GatewayEventType.SONDAY_SERVICE
-  },
-  {
-    id: 3,
-    title: 'PLAN 40: LESSON 1',
-    date: 'Jan 4, 2026',
-    displayDate: 'Jan 4',
-    day: 'Sunday',
-    time: '2:00 PM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Traning and Equipping is our Happy Hour!',
-    category: 'Training',
-    isFeatured: false,
-    type: GatewayEventType.TRAINING
-  },
-  {
-    id: 4,
-    title: 'SONday Service',
-    date: 'Jan 11, 2026',
-    displayDate: 'Jan 11',
-    day: 'Sunday',
-    time: '9:00 AM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Join us to praise and worship our Lord as a family.',
-    category: 'Fellowship',
-    isFeatured: false,
-    type: GatewayEventType.SONDAY_SERVICE
-  },
-  {
-    id: 5,
-    title: 'PLAN 40: LESSON 2',
-    date: 'Jan 11, 2026',
-    displayDate: 'Jan 11',
-    day: 'Sunday',
-    time: '2:00 PM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Traning and Equipping is our Happy Hour!',
-    category: 'Training',
-    isFeatured: false,
-    type: GatewayEventType.TRAINING
-  },
-  {
-    id: 6,
-    title: 'SONday Service',
-    date: 'Jan 18, 2026',
-    displayDate: 'Jan 18',
-    day: 'Sunday',
-    time: '9:00 AM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Join us to praise and worship our Lord as a family.',
-    category: 'Fellowship',
-    isFeatured: false,
-    type: GatewayEventType.SONDAY_SERVICE
-  },
-  {
-    id: 7,
-    title: 'PLAN 40: LESSON 3',
-    date: 'Jan 18, 2026',
-    displayDate: 'Jan 18',
-    day: 'Sunday',
-    time: '2:00 PM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Traning and Equipping is our Happy Hour!',
-    category: 'Training',
-    isFeatured: false,
-    type: GatewayEventType.TRAINING
-  },
-  {
-    id: 8,
-    title: 'Consecration Nights',
-    date: 'Jan 24, 2026',
-    displayDate: 'Jan 24-25',
-    day: 'Friday',
-    time: '2:00 PM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Traning and Equipping is our Happy Hour!',
-    category: 'Training',
-    isFeatured: false,
-    type: GatewayEventType.CONFERENCE
-  },
-  {
-    id: 9,
-    title: 'GATEWAY CHURCH 1st Anniversarry',
-    date: 'Feb 01, 2026',
-    displayDate: 'Feb 01',
-    day: 'Sunday',
-    time: '9:00 AM',
-    location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Join us to praise and worship our Lord as a family.',
-    category: 'Fellowship',
-    isFeatured: true,
-    type: GatewayEventType.SONDAY_SERVICE
-  },
-  {
-    id: 11,
-    title: 'GATEWAY MARKETPLACE',
-    date: 'Jan 17, 2026',
-    displayDate: 'Jan 17',
+    title: 'GATEWAY MARKETPLACE x AXIS',
+    date: 'Feb 07, 2026',
+    displayDate: 'Feb 07',
     day: 'Saturday',
-    time: '6:00 PM',
+    time: '4:00 PM',
     location: '8th Floor, Golden Peak',
     image: '/assets/images/event-placeholder.svg',
     description: 'A Christ-centered community for young professionals, entrepreneurs, and families growing together in faith and purpose.',
@@ -169,15 +71,29 @@ export const events: Event[] = [
     type: GatewayEventType.FELLOWSHIP
   },
   {
-    id: 12,
-    title: 'GATEWAY AXIS',
-    date: 'Jan 18, 2026',
-    displayDate: 'Jan 18',
+    id: 3,
+    title: 'Lifeclass Party',
+    date: 'Feb 15, 2026',
+    displayDate: 'Feb 15',
     day: 'Sunday',
-    time: '4:00 PM',
+    time: '2:00 PM',
     location: '8th Floor, Golden Peak',
     image: '/assets/images/event-placeholder.svg',
-    description: 'Join us in reaching out the youth of this generation',
+    description: 'Lifeclass orientation for new delegates.',
+    category: 'Fellowship',
+    isFeatured: false,
+    type: GatewayEventType.TRAINING
+  },
+  {
+    id: 4,
+    title: `Men's and Women's Gathering`,
+    date: 'Feb 28, 2026',
+    displayDate: 'Feb 28',
+    day: 'Saturday',
+    time: '2:00 PM',
+    location: '8th Floor, Golden Peak',
+    image: '/assets/images/event-placeholder.svg',
+    description: 'Gateway monthly gathering for men and women.',
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP
