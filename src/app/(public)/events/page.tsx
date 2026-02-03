@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
 import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero } from '@/components/landing';
+import { MonthlyCalendar } from '@/components/events/MonthlyCalendar';
 import { events, getFeaturedEvent } from '@/data/events';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com';
@@ -85,6 +86,8 @@ export default function EventsPage() {
         backgroundImage="/assets/images/community.jpg"
         className="events-hero"
       />
+
+      <MonthlyCalendar imageSrc="https://gtxngthtpisigkys.public.blob.vercel-storage.com/calendar.jpg" />
 
       {/* Main Content */}
       <main className="landing-main" style={{ paddingTop: 0 }}>
