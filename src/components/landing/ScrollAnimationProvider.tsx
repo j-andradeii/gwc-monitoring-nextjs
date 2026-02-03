@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, ReactNode, useState } from 'react';
+import { useEffect, useRef, ReactNode, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 
 interface ScrollAnimationProviderProps {
@@ -33,7 +33,10 @@ export function ScrollAnimationProvider({ children }: ScrollAnimationProviderPro
       const scrollToHash = () => {
         const element = document.querySelector(currentHash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Use requestAnimationFrame for smoother scrolling
+          requestAnimationFrame(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
         }
       };
 
@@ -54,26 +57,55 @@ export function ScrollAnimationProvider({ children }: ScrollAnimationProviderPro
     }
   }, [pathname, hash]);
 
+  // Optimized IntersectionObserver for scroll animations
   useEffect(() => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
     if (!animatedElements.length) return;
 
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      // Immediately show all elements without animation
+      animatedElements.forEach((element) => {
+        element.classList.add('animate-visible');
+      });
+      return;
+    }
+
+    // Optimized observer options for mobile performance
     const observerOptions: IntersectionObserverInit = {
       root: null,
-      rootMargin: '0px 0px -100px 0px',
-      threshold: 0.1,
+      // Smaller negative margin triggers earlier, reducing visual pop-in
+      rootMargin: '0px 0px -50px 0px',
+      // Single threshold is more performant
+      threshold: 0.15,
     };
 
-    observerRef.current = new IntersectionObserver((entries) => {
+    // Batch DOM updates with requestAnimationFrame for smoother performance
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      const elementsToAnimate: Element[] = [];
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-visible');
+          elementsToAnimate.push(entry.target);
           observerRef.current?.unobserve(entry.target);
         }
       });
-    }, observerOptions);
 
+      if (elementsToAnimate.length > 0) {
+        requestAnimationFrame(() => {
+          elementsToAnimate.forEach((element) => {
+            element.classList.add('animate-visible');
+          });
+        });
+      }
+    };
+
+    observerRef.current = new IntersectionObserver(handleIntersection, observerOptions);
+
+    // Observe elements
     animatedElements.forEach((element) => {
       observerRef.current?.observe(element);
     });
