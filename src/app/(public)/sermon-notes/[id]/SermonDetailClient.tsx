@@ -309,7 +309,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                         style={{
                           fontSize: '18px',
                           lineHeight: '1.9',
-                          color: 'var(--text-secondary)',
+                          color: 'var(--text-primary)',
                           whiteSpace: 'pre-line',
                         }}
                       >
@@ -343,7 +343,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                               marginBottom: index < sermon.keyPoints!.length - 1 ? '18px' : 0,
                               fontSize: '17px',
                               lineHeight: '1.7',
-                              color: 'var(--text-secondary)',
+                              color: 'var(--text-primary)',
                             }}
                           >
                             <span
