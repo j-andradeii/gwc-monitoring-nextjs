@@ -12,7 +12,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
 }) => {
     return (
         <section className="monthly-calendar-section" style={{ padding: '80px 0 20px' }}>
-            <div className="landing-container">
+            <div className="landing-container" style={{ maxWidth: '1400px' }}>
                 <div className="section-header-center" style={{ textAlign: 'left', marginBottom: '32px' }}>
                     <span className="section-label">Monthly Schedule</span>
                     <h2>Calendar of Activities</h2>
