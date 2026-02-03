@@ -992,10 +992,12 @@
 /* Page Hero Responsive */
 @media (max-width: 768px) {
   .page-hero {
-    /* Fixed pixel height to prevent iOS address bar resize issues */
-    height: 550px;
-    min-height: 550px;
-    max-height: 550px;
+    /* Use svh for consistent height regardless of iOS address bar state */
+    /* svh = small viewport height - always uses smallest viewport (address bar visible) */
+    height: 100svh;
+    height: -webkit-fill-available; /* Fallback for older iOS */
+    min-height: 400px; /* Minimum floor for very small devices */
+    max-height: 650px; /* Maximum ceiling */
     padding: 100px 0 60px !important;
     /* Strict containment prevents layout recalculations during scroll */
     contain: strict;
@@ -1032,32 +1034,15 @@
   }
 }
 
-/* Page Hero - Taller mobile devices */
-@media (max-width: 768px) and (min-height: 800px) {
-  .page-hero {
-    height: 620px;
-    min-height: 620px;
-    max-height: 620px;
-  }
-}
-
-/* Page Hero - Shorter mobile devices */
-@media (max-width: 768px) and (max-height: 700px) {
-  .page-hero {
-    height: 420px;
-    min-height: 420px;
-    max-height: 420px;
-  }
-}
-
 /* Hero Carousel Responsive */
 @media (max-width: 768px) {
   .hero-carousel-section {
-    /* Use fixed pixel height to prevent iOS address bar resize issues */
-    /* 65vh approximates to ~520px on most phones */
-    height: 750px;
-    min-height: 750px;
-    max-height: 750px;
+    /* Use svh for consistent height regardless of iOS address bar state */
+    /* svh = small viewport height - always uses smallest viewport (address bar visible) */
+    height: 100svh;
+    height: -webkit-fill-available; /* Fallback for older iOS */
+    min-height: 550px; /* Minimum floor for very small devices */
+    max-height: 850px; /* Maximum ceiling */
     /* Strict containment prevents layout recalculations during scroll */
     contain: strict;
     /* Clip is more performant than hidden */
@@ -1065,8 +1050,10 @@
   }
 
   .hero-carousel-content-wrapper {
-    height: 750px;
-    min-height: 750px;
+    height: 100svh;
+    height: -webkit-fill-available;
+    min-height: 550px;
+    max-height: 850px;
     padding: 100px 20px 80px;
     align-items: center;
   }
@@ -1074,12 +1061,13 @@
   .hero-slide-bg {
     background-position: top center;
     background-attachment: scroll !important;
-    /* Fixed dimensions prevent background recalculation on scroll */
+    /* Use 100% of parent instead of fixed px to prevent rescaling */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 750px;
+    bottom: 0;
+    height: 100%;
     /* Lock the background size to prevent scaling */
     background-size: cover;
     /* Hardware acceleration - isolate to its own compositing layer */
@@ -1093,36 +1081,6 @@
 
   .hero-slide-content {
     text-align: center;
-  }
-}
-
-/* Taller mobile devices (iPhone Pro Max, large Android phones) */
-@media (max-width: 768px) and (min-height: 800px) {
-
-  .hero-carousel-section,
-  .hero-carousel-content-wrapper {
-    height: 820px;
-    min-height: 820px;
-    max-height: 820px;
-  }
-
-  .hero-slide-bg {
-    height: 820px;
-  }
-}
-
-/* Shorter mobile devices (iPhone SE, smaller phones) */
-@media (max-width: 768px) and (max-height: 700px) {
-
-  .hero-carousel-section,
-  .hero-carousel-content-wrapper {
-    height: 600px;
-    min-height: 600px;
-    max-height: 600px;
-  }
-
-  .hero-slide-bg {
-    height: 600px;
   }
 }
 
