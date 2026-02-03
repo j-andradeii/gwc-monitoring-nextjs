@@ -12,8 +12,10 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const scaleRef = useRef(1);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [dragY, setDragY] = useState(0);
     const touchStart = useRef<number | null>(null);
-    const touchEnd = useRef<number | null>(null);
+    const isDragging = useRef(false);
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -58,7 +60,8 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                         position: 'fixed',
                         inset: 0,
                         zIndex: 9999,
-                        backgroundColor: 'rgba(0, 0, 0, 0.95)',
+
+                        // Remove background color here as we use a separate overlay div for opacity control
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
@@ -66,40 +69,60 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                         touchAction: 'none'
                     }}
                     onTouchStart={(e) => {
-                        touchStart.current = e.targetTouches[0].clientY;
-                        touchEnd.current = null;
+                        if (scaleRef.current > 1.1) return;
+                        touchStart.current = e.touches[0].clientY;
+                        isDragging.current = true;
                     }}
                     onTouchMove={(e) => {
-                        touchEnd.current = e.targetTouches[0].clientY;
-                    }}
-                    onTouchEnd={() => {
-                        if (!touchStart.current || !touchEnd.current) return;
-                        const distance = touchEnd.current - touchStart.current;
-                        // Swipe down (positive distance) > 70px and not zoomed in
-                        if (distance > 70 && scaleRef.current <= 1.1) {
-                            setIsOpen(false);
+                        if (!isDragging.current || scaleRef.current > 1.1 || touchStart.current === null) return;
+                        const currentY = e.touches[0].clientY;
+                        const diff = currentY - touchStart.current;
+                        if (diff > 0) { // Only allow dragging down
+                            setDragY(diff);
                         }
                     }}
+                    onTouchEnd={() => {
+                        isDragging.current = false;
+                        touchStart.current = null;
+                        if (dragY > 150) {
+                            setIsOpen(false);
+                        }
+                        setDragY(0);
+                    }}
                     onMouseDown={(e) => {
+                        if (scaleRef.current > 1.1) return;
                         touchStart.current = e.clientY;
-                        touchEnd.current = null;
+                        isDragging.current = true;
                     }}
                     onMouseMove={(e) => {
-                        if (touchStart.current !== null) {
-                            touchEnd.current = e.clientY;
+                        if (!isDragging.current || scaleRef.current > 1.1 || touchStart.current === null) return;
+                        const currentY = e.clientY;
+                        const diff = currentY - touchStart.current;
+                        if (diff > 0) {
+                            setDragY(diff);
                         }
                     }}
                     onMouseUp={() => {
-                        if (touchStart.current !== null && touchEnd.current !== null) {
-                            const distance = touchEnd.current - touchStart.current;
-                            if (distance > 70 && scaleRef.current <= 1.1) {
-                                setIsOpen(false);
-                            }
-                        }
+                        isDragging.current = false;
                         touchStart.current = null;
-                        touchEnd.current = null;
+                        if (dragY > 150) {
+                            setIsOpen(false);
+                        }
+                        setDragY(0);
                     }}
                 >
+                    {/* Background Overlay with Dynamic Opacity */}
+                    <div
+                        style={{
+                            position: 'absolute',
+                            inset: 0,
+                            backgroundColor: 'black',
+                            opacity: Math.max(0, 1 - dragY / 400),
+                            transition: isDragging.current ? 'none' : 'opacity 0.3s ease-out'
+                        }}
+                    />
+
+
                     {/* Close Button */}
                     <button
                         onClick={() => setIsOpen(false)}
@@ -124,7 +147,18 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                         <i className="pi pi-times" style={{ fontSize: '1.2rem' }}></i>
                     </button>
 
-                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div
+                        ref={contentRef}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transform: `translateY(${dragY}px)`,
+                            transition: isDragging.current ? 'none' : 'transform 0.3s ease-out',
+                        }}
+                    >
                         <TransformWrapper
                             initialScale={1}
                             minScale={0.5}
