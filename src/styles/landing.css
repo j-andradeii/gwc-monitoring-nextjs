@@ -1022,13 +1022,17 @@
 /* Hero Carousel Responsive */
 @media (max-width: 768px) {
   .hero-carousel-section {
-    min-height: 85vh;
+    min-height: 65vh;
   }
 
   .hero-carousel-content-wrapper {
-    min-height: 85vh;
+    min-height: 65vh;
     padding: 100px 20px 80px;
     align-items: center;
+  }
+
+  .hero-slide-bg {
+    background-position: top center;
   }
 
   .hero-slide-content {
