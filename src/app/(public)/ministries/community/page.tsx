@@ -45,7 +45,7 @@ export default function CommunityPage() {
                             <MinistryFeatureSection
                                 key={ministry.id}
                                 ministry={ministry}
-                                reverse={false}
+                                reverse={index % 2 !== 0}
                                 alternateBackground={index % 2 !== 0}
                             />
                         ))}
