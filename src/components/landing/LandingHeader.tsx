@@ -23,6 +23,18 @@ export const LandingHeader: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -46,8 +58,8 @@ export const LandingHeader: React.FC = () => {
             <Image
               src="/assets/images/gwc-logo-gold.png"
               alt="Gateway Church Logo"
-              width={70}
-              height={70}
+              width={65}
+              height={65}
               priority
             />
           </Link>
@@ -59,11 +71,6 @@ export const LandingHeader: React.FC = () => {
 
         <div className={`nav-menu-wrapper ${isMobileMenuOpen ? 'mobile-nav-active' : ''}`}>
           <ul className="nav-links">
-            <li>
-              <Link href="/" className={isActive('/') ? 'active' : ''} onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
             <li>
               <Link href="/about" className={isActive('/about') ? 'active' : ''} onClick={closeMobileMenu}>
                 About Us
