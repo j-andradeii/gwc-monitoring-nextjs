@@ -11,17 +11,19 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
     imageSrc
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const scaleRef = useRef(1);
+    const [scale, setScale] = useState(1);
     const contentRef = useRef<HTMLDivElement>(null);
     const [dragY, setDragY] = useState(0);
     const touchStart = useRef<number | null>(null);
     const isDragging = useRef(false);
 
+    const isZoomed = scale > 1.05;
+
     // Lock body scroll when modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
-            scaleRef.current = 1;
+            setScale(1);
         } else {
             document.body.style.overflow = '';
         }
@@ -69,12 +71,12 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                         touchAction: 'none'
                     }}
                     onTouchStart={(e) => {
-                        if (scaleRef.current > 1.1) return;
+                        if (isZoomed) return;
                         touchStart.current = e.touches[0].clientY;
                         isDragging.current = true;
                     }}
                     onTouchMove={(e) => {
-                        if (!isDragging.current || scaleRef.current > 1.1 || touchStart.current === null) return;
+                        if (!isDragging.current || isZoomed || touchStart.current === null) return;
                         const currentY = e.touches[0].clientY;
                         const diff = currentY - touchStart.current;
                         if (diff > 0) { // Only allow dragging down
@@ -90,12 +92,12 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                         setDragY(0);
                     }}
                     onMouseDown={(e) => {
-                        if (scaleRef.current > 1.1) return;
+                        if (isZoomed) return;
                         touchStart.current = e.clientY;
                         isDragging.current = true;
                     }}
                     onMouseMove={(e) => {
-                        if (!isDragging.current || scaleRef.current > 1.1 || touchStart.current === null) return;
+                        if (!isDragging.current || isZoomed || touchStart.current === null) return;
                         const currentY = e.clientY;
                         const diff = currentY - touchStart.current;
                         if (diff > 0) {
@@ -161,12 +163,13 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                     >
                         <TransformWrapper
                             initialScale={1}
-                            minScale={0.5}
+                            minScale={1}
                             maxScale={4}
                             centerOnInit={true}
                             limitToBounds={false}
+                            panning={{ disabled: !isZoomed }}
                             onTransformed={(ref, state) => {
-                                scaleRef.current = state.scale;
+                                setScale(state.scale);
                             }}
                         >
                             <TransformComponent
