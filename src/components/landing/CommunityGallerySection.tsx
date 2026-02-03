@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Carousel } from 'primereact/carousel';
 
@@ -35,31 +35,45 @@ export const CommunityGallerySection: React.FC = () => {
   const [images, setImages] = useState<GalleryImage[]>(galleryImages);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [activeMobileId, setActiveMobileId] = useState<number | null>(null);
+  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
+  const sectionRef = useRef<HTMLElement>(null);
 
   // Shuffle images on client
   useEffect(() => {
     setImages(shuffleArray(galleryImages));
+  }, []);
 
-    // Scroll Animation Observer
+  // Scroll Animation Observer - Scoped to this component
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            const id = entry.target.getAttribute('data-interact-id');
+            if (id) {
+              setVisibleItems((prev) => {
+                const newSet = new Set(prev);
+                newSet.add(id);
+                return newSet;
+              });
+              observer.unobserve(entry.target);
+            }
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const items = document.querySelectorAll('.animate-on-scroll');
-    items.forEach((item) => observer.observe(item));
+    if (sectionRef.current) {
+      const items = sectionRef.current.querySelectorAll('.animate-on-scroll');
+      items.forEach((item) => observer.observe(item));
+    }
 
     return () => {
-      items.forEach((item) => observer.unobserve(item));
+      observer.disconnect();
     };
-  }, []);
+  }, [images]); // Re-run when images are set (shuffled)
 
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image);
@@ -73,10 +87,28 @@ export const CommunityGallerySection: React.FC = () => {
     document.body.style.overflow = 'unset';
   };
 
+  const handleImageInteraction = (e: React.MouseEvent | React.TouchEvent, image: GalleryImage) => {
+    // Check if device is likely mobile (touch primary) or small screen
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      e.preventDefault(); // Prevent opening lightbox immediately if it was onClick
+      if (activeMobileId === image.id) {
+        // Toggle off
+        setActiveMobileId(null);
+      } else {
+        setActiveMobileId(image.id);
+      }
+    }
+  };
+
   return (
-    <section className="community-gallery-section" id="community">
+    <section className="community-gallery-section" id="community" ref={sectionRef}>
       <div className="landing-container landing-full-width">
-        <div className="section-header-center animate-on-scroll">
+        <div
+          className={`section-header-center animate-on-scroll ${visibleItems.has('header') ? 'visible' : ''}`}
+          data-interact-id="header"
+        >
           <span className="section-label">Our Community</span>
           <h2>Life Together</h2>
         </div>
@@ -86,9 +118,9 @@ export const CommunityGallerySection: React.FC = () => {
           {images.slice(0, 8).map((image, index) => (
             <div
               key={image.id}
-              className={`bento-item bento-item-${index + 1} animate-on-scroll`}
+              data-interact-id={`img-${image.id}`}
+              className={`bento-item bento-item-${index + 1} animate-on-scroll ${activeMobileId === image.id ? 'active' : ''} ${visibleItems.has(`img-${image.id}`) ? 'visible' : ''}`}
               style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={() => openLightbox(image)}
             >
               <Image
                 src={image.src}
@@ -135,7 +167,5 @@ export const CommunityGallerySection: React.FC = () => {
     </section>
   );
 };
-
-
 
 export default CommunityGallerySection;
