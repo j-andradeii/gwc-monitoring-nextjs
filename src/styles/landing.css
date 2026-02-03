@@ -501,15 +501,15 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
   margin: 0;
   padding: 0;
 }
 
 .nav-links li a {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   transition: color 0.25s ease;
   position: relative;
   padding: 4px 0;
@@ -547,9 +547,9 @@
   gap: 6px;
   background: none;
   border: none;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   cursor: pointer;
   padding: 0;
   font-family: inherit;
@@ -615,7 +615,7 @@
   padding: 12px 16px;
   color: var(--text-secondary);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 8px;
   transition: all 0.25s ease;
 }
@@ -3783,11 +3783,10 @@
     border: none;
     border-radius: 0;
     padding: 0;
-    padding-left: 16px;
     background: transparent;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .nav-dropdown-menu::before {
@@ -3795,13 +3794,31 @@
   }
 
   .nav-dropdown.dropdown-open .nav-dropdown-menu {
-    max-height: 200px;
+    max-height: 300px;
+    margin-top: 4px;
+    padding-bottom: 8px;
     transform: none;
   }
 
   .nav-dropdown-menu li a {
-    padding: 10px 16px;
+    padding: 12px 0 12px 14px;
     border-bottom: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  .nav-dropdown-menu li a i {
+    color: var(--primary-gold-accent);
+    font-size: 18px;
+  }
+
+  .nav-dropdown-menu li a:hover,
+  .nav-dropdown-menu li a.active {
+    color: var(--primary-gold-accent);
+    background: transparent;
   }
 
   .header-actions {
@@ -7388,4 +7405,487 @@
   .calendar-preview-container {
     padding: 8px;
   }
+}
+
+/* ===========================================
+   MINISTRY FEATURE SECTIONS - Premium Modern
+   =========================================== */
+.ministry-feature-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.ministry-feature-grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  align-items: center;
+  position: relative;
+  min-height: 500px;
+}
+
+/* Reverse layout for alternating flow */
+.ministry-feature-reverse .ministry-feature-grid {
+  grid-template-columns: 55% 45%;
+  direction: rtl;
+  /* Quick way to swap columns visually for grid, but careful with text */
+}
+
+/* Reset direction for children when using rtl on grid */
+.ministry-feature-reverse .ministry-feature-grid>* {
+  direction: ltr;
+}
+
+.ministry-feature-card {
+  background: var(--color-navy);
+  color: #ffffff;
+  padding: 60px;
+  border-radius: 24px;
+  /* Soft roundness */
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* Left align content */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  /* The "Overlap" effect: Shift it slightly over the image? */
+  margin-right: -40px;
+}
+
+.ministry-feature-reverse .ministry-feature-card {
+  margin-right: 0;
+  margin-left: -40px;
+}
+
+.ministry-feature-image-wrapper {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: var(--shadow-soft);
+}
+
+.ministry-feature-image-wrapper img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+}
+
+.ministry-feature-section:hover .ministry-feature-image-wrapper img {
+  transform: scale(1.05);
+  /* Gentle zoom */
+}
+
+.ministry-feature-title {
+  font-size: 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.ministry-feature-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.85);
+  /* Slightly muted white */
+  max-width: 400px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ministry-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .ministry-feature-reverse .ministry-feature-grid {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    /* Reset direction */
+  }
+
+  .ministry-feature-card {
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: -60px;
+    /* Pull up to overlap image bottom */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 30px;
+  }
+
+  .ministry-feature-reverse .ministry-feature-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ministry-feature-image-wrapper {
+    height: 350px;
+    border-radius: 24px;
+  }
+
+  .ministry-feature-title {
+    font-size: 28px;
+  }
+}
+
+/* Alternating Background for feature sections */
+.section-alternate-bg {
+  background-color: var(--color-ivory);
+  /* Using ivory/cream from design system */
+}
+
+/* ===========================================
+   MINISTRY FEATURE SECTIONS - LIGHT THEME UPDATE
+   =========================================== */
+
+/* Reset/Update Container */
+.ministry-feature-section {
+  padding: 60px 0;
+  position: relative;
+  background: transparent;
+  /* Section background is transparent, card has collor */
+}
+
+/* Grid Layout - Clean Split */
+.ministry-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 50/50 Split */
+  align-items: stretch;
+  /* Full height */
+  min-height: 450px;
+  border-radius: 24px;
+  overflow: hidden;
+  /* Contain children */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  /* Subtle shadow container */
+}
+
+/* Card Content Styling - Light Theme Defaults */
+.ministry-feature-card {
+  background: #ffffff;
+  /* Default White */
+  color: var(--color-navy);
+  /* Dark Text */
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+  /* Reset margins */
+  border-radius: 0;
+  /* Flush with grid */
+  box-shadow: none;
+  /* Reset shadow */
+}
+
+/* Alternate Background (Cream/Ivory) */
+.section-alternate-bg .ministry-feature-card {
+  background: #FFFDF5;
+  /* Warm Cream to match screenshot */
+}
+
+/* Image Wrapper */
+.ministry-feature-image-wrapper {
+  position: relative;
+  height: 100%;
+  /* Fill grid cell */
+  width: 100%;
+  border-radius: 0;
+  /* Flush */
+  overflow: hidden;
+  box-shadow: none;
+  min-height: 400px;
+  /* Mobile fallback height */
+}
+
+.ministry-feature-image-wrapper img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+}
+
+.ministry-feature-section:hover .ministry-feature-image-wrapper img {
+  transform: scale(1.03);
+}
+
+/* Typography */
+.ministry-feature-title {
+  font-family: var(--font-family-sans-serif);
+  /* Keep Inter */
+  font-size: 32px;
+  font-weight: 800;
+  /* Extra bold */
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  color: var(--color-navy);
+  /* Dark Navy */
+}
+
+/* Optional: If we wanted Serif like screenshot, we'd need a font for it. 
+   Sticking to Inter/Safe Sans for consistency with Design System. */
+
+.ministry-feature-description {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  color: var(--text-secondary);
+  /* Grey text */
+  max-width: 480px;
+}
+
+/* Button override if needed */
+.ministry-feature-card .landing-btn {
+  padding: 12px 30px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ministry-feature-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+
+  .ministry-feature-image-wrapper {
+    height: 300px;
+    min-height: auto;
+  }
+
+  .ministry-feature-card {
+    padding: 40px 32px;
+  }
+
+  /* Ensure order is Image Top, Content Bottom */
+  .ministry-feature-grid>.ministry-feature-image-wrapper {
+    order: -1;
+  }
+}
+
+/* ===========================================
+   MINISTRY FEATURE SECTIONS - FULL WIDTH / FLAT STYLE
+   =========================================== */
+
+/* Section takes the background color now */
+.ministry-feature-section {
+  padding: 80px 0;
+  position: relative;
+  background: #ffffff;
+  /* Default white */
+}
+
+.ministry-feature-section.section-alternate-bg {
+  background-color: #FFFDF5;
+  /* Cream for alternate */
+}
+
+/* Grid Container - remove "card" containment */
+.ministry-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  /* Generous gap between image and text */
+  min-height: auto;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+/* Content Side - Remove Card Styling */
+.ministry-feature-card {
+  background: transparent !important;
+  /* Force transparent */
+  padding: 0;
+  /* Remove internal padding */
+  box-shadow: none !important;
+  border-radius: 0;
+  margin: 0 !important;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Remove any duplicate bg rules */
+.section-alternate-bg .ministry-feature-card {
+  background: transparent !important;
+}
+
+/* Image Side */
+.ministry-feature-image-wrapper {
+  order: 0;
+  /* Reset order */
+  height: 400px;
+  /* Fixed height for consistency */
+  border-radius: 12px;
+  /* Clean crisp radius */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  /* Subtle image shadow only */
+  width: 100%;
+}
+
+.ministry-feature-image-wrapper img {
+  transform: none;
+  /* Reset zoom on hover if desired, or keep it */
+}
+
+.ministry-feature-section:hover .ministry-feature-image-wrapper img {
+  transform: scale(1.03);
+}
+
+/* Typography Refresh */
+.ministry-feature-title {
+  font-size: 36px;
+  margin-bottom: 24px;
+  color: var(--color-navy);
+}
+
+.ministry-feature-description {
+  max-width: 100%;
+  font-size: 16px;
+  color: var(--text-secondary);
+  padding: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ministry-feature-section {
+    padding: 60px 0;
+  }
+
+  .ministry-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ministry-feature-image-wrapper {
+    height: 300px;
+  }
+}
+
+/* ===========================================
+   PASTOR-STYLE MINISTRY SECTIONS
+   =========================================== */
+
+/* Ensure full width and clean text display like OurPastors */
+.ministry-feature-section.pastor-style {
+  padding: 80px 0;
+  background-color: var(--color-surface);
+  /* White default */
+}
+
+.ministry-feature-section.pastor-style.section-alternate-bg {
+  background-color: var(--color-ivory);
+  /* Cream alternate */
+}
+
+/* Inherit grid structure but refine for Pastor style */
+.pastor-style .ministry-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  /* Wider gap like Pastors section */
+}
+
+/* Text Content Area */
+.pastor-style .ministry-feature-card {
+  padding: 0;
+  /* Removing internal padding */
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Title Styling - Matching .pastors-title */
+.pastor-style .ministry-feature-title {
+  font-size: 42px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+/* Description Styling */
+.pastor-style .ministry-feature-description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  /* Gray key */
+  margin-bottom: 40px;
+  max-width: 100%;
+}
+
+/* Image Wrapper - Matching .pastors-image-wrapper */
+.pastor-style .ministry-feature-image-wrapper {
+  height: 500px;
+  width: 100%;
+  border-radius: 4px;
+  /* Sharper corners like pastors section */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 4px solid #ffffff;
+  /* Matting effect */
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .pastor-style .ministry-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .pastor-style .ministry-feature-image-wrapper {
+    height: 400px;
+  }
+}
+
+
+/* ===========================================
+   THEME CONSISTENCY UPDATE - COMMUNITY PAGE
+   =========================================== */
+
+/* Use main background color variable instead of hardcoded white */
+.ministry-feature-section {
+  background-color: var(--background-section);
+  /* Default white section */
+}
+
+/* Use alternate background variable - Cream color */
+.ministry-feature-section.section-alternate-bg {
+  background-color: var(--background-main);
+  /* #f5f0e6 (soft cream) */
+}
+
+/* Ensure the pastor style inherits these properly */
+.ministry-feature-section.pastor-style {
+  background-color: var(--background-section);
+  /* Explicitly set default white */
+}
+
+.ministry-feature-section.pastor-style.section-alternate-bg {
+  background-color: var(--background-main);
+  /* Explicitly set cream alternate */
 }

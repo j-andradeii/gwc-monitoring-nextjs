@@ -1313,77 +1313,57 @@ APPLICATION
     duration: '45 min',
     series: 'Covenant',
     seriesDescription: 'Understanding the covenant relationship between God and His people.',
-    excerpt: 'There\'s no covenant without purpose. God is always ready to release His blessings but the question is can you still remember your covenant with God when you receive the blessings?',
-    description: `Genesis 12:1 - 2: There are things that we need to leave and abandon, things that we don't need in the next level. The reason why God didn't release the blessings in the first place is because we don't need it in our lives.
+    excerpt: 'When God enters covenant with a person, He calls them, covers them, and consecrates them for divine purpose. Covenant is not about who Abram is—it’s about who God is.',
+    description: `God of Covenant 
+(Genesis 12:1-9)
 
-If we are ready, the Lord is more than ready to bless us.
+When God enters covenant with a person, He calls them, covers them, and consecrates them for divine purpose. Covenant is not about who Abram is—it’s about who God is. 
 
----
+1. Called for Greatness (Genesis 12:1-3) 
+GOD’s call is: separational, directional and promissory. 
+* God never calls you to stay where you are— He calls you to become who he designed you to be. 
+* You cannot experience covenant greatness while clinging to familiar places.
+* Obedience precedes clarity. Step out even when the destination is not fully revealed
 
-THERE'S NO COVENANT WITHOUT PURPOSE
+2. Covered by God (Genesis 12: 4-9) 
+A. Covered by God’s Presence (“When you walk in covenant obedience, you never walk alone.” ) 
+B. Covered by God’s Protection (God personally defends covenant people. Abram doesn’t fight his battles—God does.) When God is your defender, every enemy must get permission first. Stop fighting battles God promised to handle. Trust God’s justice instead of personal revenge. 
+C. Covered by God’s Provision (Covenant provision, follows obedience) “ Where God guides, God provides ” Just like manna in the wilderness, provision shows up daily—not stored in advance. Don’t fear lack, when God is leading, obedience unlocks provision 
 
-God is always ready to release His blessings but the question is can you still remember your covenant with God when you receive the blessings?
-
-Genesis 12 marks a turning point in scripture.
-
----
-
-COVENANT IS NOT ABOUT WHO ABRAM IS, IT'S ABOUT WHO GOD IS
-
-When God calls you for Covenant, He:
-
-1. Called for greatness
-2. Covered by God's presence
-3. Coveted by God's provision - Obedience unlocks provision
-
----
-
-GOD'S CALL IS:
-
-1. Separation - Leave the things that you are used to that will not give glory to the Lord.
-
-2. Directional - "To a land I will show you." Sometimes the direction is already ready but we choose to deviate. It's a matter of obedience.
-
-3. Promissory - "I will make you great."
-
-Abram is called before he knows where, because covenant faith walks by trust, not by sight.
-
----
-
-CONCLUSION
-
-God never calls you to stay where you are, He calls you to become who He designed you to be.
-
-There's no miracles if there's no big need. Our sufferings are part of forming our hearts.`,
-    tags: ['Covenant', 'Blessings', 'Faith', 'Obedience', 'Calling', 'Trust', 'Provision'],
+3. Consecrated for God's Purpose (Genesis 12: 8-9) 
+* Consecration means living set apart for God’s mission God does not call us just to be blessed but to become a blessing. 
+* A vessel in the temple was not for common use-it was set apart. 
+* Covenant people are not ordinary vessels. Live with purpose not comfort. 
+* Let your life point others to God. Ask daily "how does my life bless others? 
+* Separation always precedes elevation (Genesis 13:14). What God is about to reveal next requires Abram to be fully consecrated—no divided loyalty. 
+* When god removes what’s holding you back He’s making room for what’s coming next.`,
+    tags: ['Covenant', 'Greatness', 'Protection', 'Provision', 'Consecration', 'Obedience', 'Calling'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-rodel.jpg',
     scriptures: [
       {
-        verse: 'Genesis 12:1-2',
-        text: 'Now the Lord had said to Abram: "Get out of your country, From your family And from your father\'s house, To a land that I will show you. I will make you a great nation; I will bless you And make your name great; And you shall be a blessing."'
+        verse: 'Genesis 12:1-3',
+        text: 'Now the Lord had said to Abram: "Get out of your country, From your family And from your father’s house, To a land that I will show you. I will make you a great nation; I will bless you And make your name great; And you shall be a blessing. I will bless those who bless you, And I will curse him who curses you; And in you all the families of the earth shall be blessed."'
       },
       {
-        verse: 'Genesis 12:3-4',
-        text: '"I will bless those who bless you, And I will curse him who curses you; And in you all the families of the earth shall be blessed." So Abram departed as the Lord had spoken to him, and Lot went with him. And Abram was seventy-five years old when he departed from Haran.'
+        verse: 'Genesis 12:4-9',
+        text: 'So Abram departed as the Lord had spoken to him, and Lot went with him. And Abram was seventy-five years old when he departed from Haran. Then Abram took Sarai his wife and Lot his brother’s son, and all their possessions that they had gathered, and the people whom they had acquired in Haran, and they departed to go to the land of Canaan. So they came to the land of Canaan. Abram passed through the land to the place of Shechem, as far as the terebinth tree of Moreh. And the Canaanites were then in the land. Then the Lord appeared to Abram and said, "To your descendants I will give this land." And there he built an altar to the Lord, who had appeared to him. And he moved from there to the mountain east of Bethel, and he pitched his tent with Bethel on the west and Ai on the east; there he built an altar to the Lord and called on the name of the Lord. So Abram journeyed, going on still toward the South.'
       },
       {
-        verse: 'Genesis 12:7-9',
-        text: 'Then the Lord appeared to Abram and said, "To your descendants I will give this land." And there he built an altar to the Lord, who had appeared to him. And he moved from there to the mountain east of Bethel, and he pitched his tent with Bethel on the west and Ai on the east; there he built an altar to the Lord and called on the name of the Lord. So Abram journeyed, going on still toward the South.'
+        verse: 'Genesis 13:14',
+        text: 'And the Lord said to Abram, after Lot had separated from him: "Lift your eyes now and look from the place where you are—northward, southward, eastward, and westward;"'
       }
     ],
     isFeatured: true,
     keyPoints: [
-      'There\'s no covenant without purpose',
-      'Covenant is not about who Abram is, it\'s about who God is',
-      'Called for greatness',
-      'Covered by God\'s presence',
-      'Coveted by God\'s provision - Obedience unlocks provision',
-      'Separation - Leave things that will not give glory to the Lord',
-      'Directional - To a land I will show you',
-      'Promissory - I will make you great',
-      'Covenant faith walks by trust, not by sight',
-      'God never calls you to stay where you are, He calls you to become who He designed you to be',
-      'There\'s no miracles if there\'s no big need'
+      'Covenant is about who God is, not who we are',
+      'God never calls you to stay where you are',
+      'Obedience precedes clarity',
+      'When you walk in covenant obedience, you never walk alone',
+      'Stop fighting battles God promised to handle',
+      'Where God guides, God provides',
+      'God does not call us just to be blessed but to become a blessing',
+      'Separation always precedes elevation',
+      'When God removes what\'s holding you back, He\'s making room for what\'s coming next'
     ],
     relatedSermons: ['2', '3'],
   },
