@@ -14,6 +14,14 @@ export const metadata: Metadata = {
         description: 'Join our vibrant community groups and connect with others.',
         url: `${siteUrl}/ministries/community`,
         type: 'website',
+        images: [
+            {
+                url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Gateway Church Community',
+            },
+        ],
     },
 };
 
