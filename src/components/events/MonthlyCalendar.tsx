@@ -18,13 +18,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                     <h2>Calendar of Activities</h2>
                 </div>
 
-                <div className="calendar-preview-container premium-glass-card" style={{
-                    padding: '24px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    background: 'rgba(255, 255, 255, 0.5)'
-                }}>
+                <div className="calendar-preview-container premium-glass-card">
                     <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden' }}>
                         <Image
                             src={imageSrc}

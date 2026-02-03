@@ -7208,3 +7208,20 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* ===========================================
+   MONTHLY CALENDAR
+   =========================================== */
+.calendar-preview-container {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+@media (max-width: 768px) {
+  .calendar-preview-container {
+    padding: 8px;
+  }
+}
