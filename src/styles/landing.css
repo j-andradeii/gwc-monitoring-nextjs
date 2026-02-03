@@ -2046,18 +2046,6 @@
   }
 }
 
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ===========================================
    COMMUNITY GALLERY SECTION - Premium Modern
    =========================================== */
@@ -3450,17 +3438,21 @@
 }
 
 /* ===========================================
-   ANIMATIONS - Smooth & Professional
+   ANIMATIONS - Smooth & Professional (GPU-optimized)
    =========================================== */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .animate-on-scroll.animate-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 
 /* Staggered animations for cards */
@@ -3490,11 +3482,71 @@
   transition-delay: 0.2s;
 }
 
+/* ===========================================
+   ACCESSIBILITY - Reduced Motion Support
+   =========================================== */
 @media (prefers-reduced-motion: reduce) {
   .animate-on-scroll {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  .premium-glass-card:hover,
+  .bento-item:hover,
+  .sermon-card:hover,
+  .ministry-card:hover,
+  .event-card:hover {
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===========================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   =========================================== */
+@media (max-width: 768px) {
+  /* GPU acceleration for animated elements */
+  .animate-on-scroll,
+  .bento-item,
+  .sermon-card,
+  .ministry-card,
+  .event-card,
+  .premium-glass-card {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Reduce backdrop-filter complexity on mobile for better performance */
+  .premium-glass-card,
+  .landing-header,
+  .nav-menu-wrapper {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Disable hover transforms on touch devices */
+  @media (hover: none) {
+    .premium-glass-card:hover,
+    .bento-item:hover,
+    .sermon-card:hover,
+    .ministry-card:hover,
+    .event-card:hover {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .bento-item:hover .bento-image {
+      transform: none;
+    }
   }
 }
 

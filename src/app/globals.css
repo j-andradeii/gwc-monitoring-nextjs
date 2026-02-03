@@ -157,7 +157,15 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Disable CSS smooth scroll on mobile - use JS for better control */
+  scroll-behavior: auto;
+}
+
+/* Enable smooth scroll only on desktop for users who haven't opted for reduced motion */
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
