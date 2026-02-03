@@ -154,6 +154,22 @@ Final thoughts and application...`,
 - Include scripture references inline: `(John 3:16)`
 - Use quotes for scripture: `"Scripture text here." (Reference)`
 
+**Bold formatting for points:**
+Use `**text**` markdown syntax to bold point markers that structure the sermon:
+- Section headers/titles: `**SERMON TITLE**`, `**MAIN SECTION**`
+- Numbered points: `**1. FIRST POINT**`, `**2. SECOND POINT**`
+- Lettered points: `**a.** Point text`, `**(a)** Point text`
+- Parenthetical numbers: `**(1)**`, `**(2)**`
+- Key headings with colons: `**CONCLUSION:**`, `**APPLICATION:**`
+
+Examples:
+```
+**1. Called for Greatness** (Genesis 12:1-3)
+**a. Burnout disguised as faithfulness**
+**(1)** We must sensitively desist...
+**FIRST:** GROWS OUT OF BEING DELIVERED
+```
+
 **STRICT RULE:** Do NOT add any words, transitional phrases, or filler text to the content. The `description` must strictly follow the provided sermon notes without additions or embellishments. Only format the existing text.
 
 ---
@@ -173,25 +189,25 @@ Copy and paste this template:
   series: 'Series Name',
   seriesDescription: 'Description of the series.',
   excerpt: 'Brief 1-2 sentence summary of the sermon.',
-  description: `SERMON TITLE
+  description: `**SERMON TITLE**
 
 Main Scripture Reference
 
 ---
 
-MAIN POINT 1
+**MAIN POINT 1**
 
 Content...
 
 ---
 
-MAIN POINT 2
+**MAIN POINT 2**
 
 Content...
 
 ---
 
-CONCLUSION
+**CONCLUSION**
 
 Application...`,
   tags: ['Tag1', 'Tag2', 'Tag3'],
@@ -227,6 +243,7 @@ Before committing a new sermon:
 - [ ] Only ONE sermon has `isFeatured: true` (update previous if needed)
 - [ ] No trailing commas causing syntax errors
 - [ ] Template literals use backticks (`` ` ``) not quotes
+- [ ] Point markers are bolded using `**text**` markdown syntax
 
 ---
 

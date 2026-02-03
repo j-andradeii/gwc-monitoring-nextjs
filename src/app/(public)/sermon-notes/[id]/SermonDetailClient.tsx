@@ -312,9 +312,11 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                           color: 'var(--text-primary)',
                           whiteSpace: 'pre-line',
                         }}
-                      >
-                        {sermon.description}
-                      </div>
+                        dangerouslySetInnerHTML={{
+                          __html: sermon.description
+                            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                        }}
+                      />
                     </div>
                   )}
 
