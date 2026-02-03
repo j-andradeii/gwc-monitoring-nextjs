@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 export const AriseAndBuildSection: React.FC = () => {
-   const router = useRouter()
+  const router = useRouter()
   return (
     <section
       className="arise-build-section animate-on-scroll"
@@ -22,12 +22,13 @@ export const AriseAndBuildSection: React.FC = () => {
             Help bring heaven to earth and invest in the future of our community.
           </p>
           <Link
-            href="/give?tab=gateway-projects"
+            href="/give/gateway-projects"
             className="btn-arrow btn-arrow-white"
             scroll={true}
-            onClick={() => {
-              window.scrollTo({top: 0});
-              router.push('/give?tab=gateway-projects')
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0 });
+              router.push('/give/gateway-projects');
             }}
           >
             Learn More
