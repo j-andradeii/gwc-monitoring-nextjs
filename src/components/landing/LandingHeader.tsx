@@ -124,6 +124,11 @@ export const LandingHeader: React.FC = () => {
             </li>
             <li>
               <Link href="/give" className={isActive('/give') ? 'active' : ''} onClick={closeMobileMenu}>
+                Connect
+              </Link>
+            </li>
+            <li>
+              <Link href="/give" className={isActive('/give') ? 'active' : ''} onClick={closeMobileMenu}>
                 Give
               </Link>
             </li>
