@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import { sermons } from '../../data/sermons';
 
 type SlideType = 'welcome' | 'campaign' | 'sermon';
 
@@ -41,6 +42,8 @@ const HeroSlideContent: React.FC<HeroSlideContentProps> = ({ slide, isTransition
   );
 };
 
+const latestSermon = [...sermons].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
+
 const heroSlides: HeroSlideData[] = [
   {
     id: 'welcome',
@@ -56,20 +59,20 @@ const heroSlides: HeroSlideData[] = [
       icon: 'pi pi-calendar',
     },
   },
-  // {
-  //   id: 'campaign',
-  //   type: 'campaign',
-  //   badge: '2026 Campaign Theme',
-  //   title: 'NEW BEGINNING',
-  //   subtitle: 'Building a Foundation for Generations',
-  //   backgroundImage: '/assets/images/community.jpg',
-  //   overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(26, 39, 68, 0.85) 100%)',
-  //   cta: {
-  //     label: 'Learn More',
-  //     href: '#campaign',
-  //     icon: 'pi pi-arrow-right',
-  //   },
-  // },
+  {
+    id: `sermon-${latestSermon.id}`,
+    type: 'sermon',
+    badge: 'Latest Message',
+    title: latestSermon.title,
+    subtitle: latestSermon.excerpt,
+    backgroundImage: latestSermon.image,
+    overlayGradient: '',
+    cta: {
+      label: 'Learn More',
+      href: `/sermon-notes/${latestSermon.id}`,
+      icon: 'pi pi-play',
+    },
+  },
 ];
 
 export const HeroSection: React.FC = () => {
