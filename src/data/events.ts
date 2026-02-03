@@ -52,7 +52,7 @@ export const events: Event[] = [
     location: '8th Floor, Golden Peak',
     image: '/assets/images/event-placeholder.svg',
     description: 'Join us to praise and worship our Lord as a family.',
-    category: 'Fellowship',
+    category: 'SONDAY SERVICE',
     isFeatured: false,
     type: GatewayEventType.SONDAY_SERVICE
   },
