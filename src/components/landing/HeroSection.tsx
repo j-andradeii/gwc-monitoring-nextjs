@@ -52,7 +52,7 @@ const heroSlides: HeroSlideData[] = [
     title: 'HIS PRESENCE, OUR HOME',
     subtitle: 'Sundays 9:30 AM · 8th Floor, Golden Peak, Gorordo Avenue',
     backgroundImage: '/assets/images/fam-picture.jpg',
-    overlayGradient: 'linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(26, 39, 68, 0.85) 100%)',
+    overlayGradient: 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(26, 39, 68, 0.40) 100%)',
     cta: {
       label: 'Join This Sunday',
       href: '#services',
