@@ -1314,7 +1314,7 @@ APPLICATION
     series: 'Covenant',
     seriesDescription: 'Understanding the covenant relationship between God and His people.',
     excerpt: 'There\'s no covenant without purpose. God is always ready to release His blessings but the question is can you still remember your covenant with God when you receive the blessings?',
-    description: `There are things that we need to leave and abandon, things that we don't need in the next level. The reason why God didn't release the blessings in the first place is because we don't need it in our lives.
+    description: `Genesis 12:1 - 2: There are things that we need to leave and abandon, things that we don't need in the next level. The reason why God didn't release the blessings in the first place is because we don't need it in our lives.
 
 If we are ready, the Lord is more than ready to bless us.
 
