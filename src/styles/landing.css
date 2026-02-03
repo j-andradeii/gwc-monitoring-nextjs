@@ -2120,7 +2120,8 @@
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.bento-item:hover .bento-image {
+.bento-item:hover .bento-image,
+.bento-item.active .bento-image {
   transform: scale(1.1);
 }
 
@@ -2137,6 +2138,7 @@
 }
 
 .bento-item:hover .bento-overlay,
+.bento-item.active .bento-overlay,
 .gallery-carousel-item:hover .bento-overlay {
   opacity: 1;
 }
@@ -2152,6 +2154,7 @@
 }
 
 .bento-item:hover .bento-overlay h3,
+.bento-item.active .bento-overlay h3,
 .gallery-carousel-item:hover .bento-overlay h3 {
   transform: translateY(0);
 }
@@ -2329,29 +2332,11 @@
     border-radius: 4px;
   }
 
-  /* Show overlay text on mobile */
-  .bento-item .bento-overlay {
-    opacity: 1;
-    background: linear-gradient(to top, rgba(26, 39, 68, 0.9) 0%, rgba(26, 39, 68, 0) 70%);
-  }
 
-  .bento-item .bento-overlay h3 {
-    transform: translateY(0);
-    font-size: 14px;
-  }
 
-  .lightbox-content {
-    height: 60vh;
-  }
 
-  .lightbox-close {
-    top: -50px;
-    right: 0;
-  }
 
-  .lightbox-caption h3 {
-    font-size: 18px;
-  }
+
 }
 
 /* PrimeReact Carousel Overrides for Gallery */
@@ -3514,6 +3499,7 @@
    MOBILE PERFORMANCE OPTIMIZATIONS
    =========================================== */
 @media (max-width: 768px) {
+
   /* GPU acceleration for animated elements */
   .animate-on-scroll,
   .bento-item,
@@ -3536,6 +3522,7 @@
 
   /* Disable hover transforms on touch devices */
   @media (hover: none) {
+
     .premium-glass-card:hover,
     .bento-item:hover,
     .sermon-card:hover,

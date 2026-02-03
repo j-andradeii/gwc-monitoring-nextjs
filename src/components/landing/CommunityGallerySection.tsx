@@ -33,8 +33,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 export const CommunityGallerySection: React.FC = () => {
   const [images, setImages] = useState<GalleryImage[]>(galleryImages);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [activeImageId, setActiveImageId] = useState<number | null>(null);
 
   // Shuffle images on client
   useEffect(() => {
@@ -61,16 +60,8 @@ export const CommunityGallerySection: React.FC = () => {
     };
   }, []);
 
-  const openLightbox = (image: GalleryImage) => {
-    setSelectedImage(image);
-    setLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    setLightboxOpen(false);
-    setTimeout(() => setSelectedImage(null), 300); // Wait for fade out
-    document.body.style.overflow = 'unset';
+  const handleImageClick = (id: number) => {
+    setActiveImageId(activeImageId === id ? null : id);
   };
 
   return (
@@ -86,9 +77,9 @@ export const CommunityGallerySection: React.FC = () => {
           {images.slice(0, 8).map((image, index) => (
             <div
               key={image.id}
-              className={`bento-item bento-item-${index + 1} animate-on-scroll`}
+              className={`bento-item bento-item-${index + 1} animate-on-scroll ${activeImageId === image.id ? 'active' : ''}`}
               style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={() => openLightbox(image)}
+              onClick={() => handleImageClick(image.id)}
             >
               <Image
                 src={image.src}
@@ -105,37 +96,8 @@ export const CommunityGallerySection: React.FC = () => {
           ))}
         </div>
       </div>
-
-      {/* Lightbox Overlay */}
-      <div
-        className={`gallery-lightbox ${lightboxOpen ? 'active' : ''}`}
-        onClick={closeLightbox}
-      >
-        <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-          <button className="lightbox-close" onClick={closeLightbox}>
-            <i className="pi pi-times"></i>
-          </button>
-          {selectedImage && (
-            <div className="lightbox-image-container">
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                fill
-                className="lightbox-image"
-                quality={100}
-                unoptimized
-              />
-              <div className="lightbox-caption">
-                <h3>{selectedImage.alt}</h3>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
     </section>
   );
 };
-
-
 
 export default CommunityGallerySection;
