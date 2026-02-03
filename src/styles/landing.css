@@ -992,18 +992,19 @@
 /* Page Hero Responsive */
 @media (max-width: 768px) {
   .page-hero {
-    /* Use svh for consistent height regardless of iOS address bar state */
-    /* svh = small viewport height - always uses smallest viewport (address bar visible) */
-    height: 100svh;
-    height: -webkit-fill-available; /* Fallback for older iOS */
-    min-height: 400px; /* Minimum floor for very small devices */
-    max-height: 650px; /* Maximum ceiling */
+    /* Fixed pixel height to prevent iOS address bar resize issues */
+    /* Using fixed height instead of viewport units eliminates scaling on scroll */
+    height: 500px;
+    min-height: 400px;
+    max-height: 500px;
     padding: 100px 0 60px !important;
     /* Strict containment prevents layout recalculations during scroll */
     contain: strict;
     /* Clip is more performant than hidden */
     overflow: clip;
     background-attachment: scroll !important;
+    /* Fixed background size to prevent scaling */
+    background-size: cover;
     /* Hardware acceleration - isolate to its own compositing layer */
     transform: translate3d(0, 0, 0);
     will-change: auto;
@@ -1037,12 +1038,11 @@
 /* Hero Carousel Responsive */
 @media (max-width: 768px) {
   .hero-carousel-section {
-    /* Use svh for consistent height regardless of iOS address bar state */
-    /* svh = small viewport height - always uses smallest viewport (address bar visible) */
-    height: 100svh;
-    height: -webkit-fill-available; /* Fallback for older iOS */
-    min-height: 550px; /* Minimum floor for very small devices */
-    max-height: 850px; /* Maximum ceiling */
+    /* Fixed pixel height to prevent iOS address bar resize issues */
+    /* Using fixed height instead of viewport units eliminates scaling on scroll */
+    height: 650px;
+    min-height: 550px;
+    max-height: 650px;
     /* Strict containment prevents layout recalculations during scroll */
     contain: strict;
     /* Clip is more performant than hidden */
@@ -1050,10 +1050,10 @@
   }
 
   .hero-carousel-content-wrapper {
-    height: 100svh;
-    height: -webkit-fill-available;
+    /* Match parent fixed height */
+    height: 650px;
     min-height: 550px;
-    max-height: 850px;
+    max-height: 650px;
     padding: 100px 20px 80px;
     align-items: center;
   }
@@ -1061,13 +1061,12 @@
   .hero-slide-bg {
     background-position: top center;
     background-attachment: scroll !important;
-    /* Use 100% of parent instead of fixed px to prevent rescaling */
+    /* Use fixed height matching parent to prevent any resize */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    height: 100%;
+    height: 650px;
     /* Lock the background size to prevent scaling */
     background-size: cover;
     /* Hardware acceleration - isolate to its own compositing layer */
@@ -3816,8 +3815,19 @@
   }
 
   .hero-section {
+    /* Fixed pixel height to prevent iOS address bar resize issues */
+    height: 500px;
+    min-height: 400px;
+    max-height: 500px;
     padding: 106px 0 50px !important;
-    min-height: auto;
+    /* Strict containment prevents layout recalculations during scroll */
+    contain: strict;
+    overflow: clip;
+    background-attachment: scroll !important;
+    background-size: cover;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .hero-content h1 {
@@ -4895,8 +4905,16 @@
 
 @media (max-width: 767px) {
   .about-hero-section {
-    min-height: 40vh;
+    /* Fixed pixel height to prevent iOS address bar resize issues */
+    height: 400px;
+    min-height: 350px;
+    max-height: 400px;
     padding: 100px 20px 60px;
+    contain: strict;
+    overflow: clip;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .about-hero-content h1 {
@@ -5177,6 +5195,21 @@
   min-height: 65vh;
 }
 
+/* Mobile fix for about-hero iOS address bar issues */
+@media (max-width: 768px) {
+  .about-hero {
+    /* Fixed pixel height to prevent iOS address bar resize issues */
+    height: 450px;
+    min-height: 400px;
+    max-height: 450px;
+    contain: strict;
+    overflow: clip;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
 /* Enhanced sections with better spacing */
 .about-page .our-story-section {
   padding: 100px 0 !important;
@@ -5208,7 +5241,15 @@
 /* About page responsive adjustments */
 @media (max-width: 767px) {
   .about-hero {
-    min-height: 55vh;
+    /* Fixed pixel height to prevent iOS address bar resize issues */
+    height: 420px;
+    min-height: 380px;
+    max-height: 420px;
+    contain: strict;
+    overflow: clip;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .about-page .our-story-section,
