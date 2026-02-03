@@ -135,7 +135,6 @@ The end-time ministry will not be carried by the gifted alone—but by the faith
         text: 'Watch, stand fast in the faith, be brave, be strong. Let all that you do be done with love.'
       }
     ],
-    isFeatured: true,
     keyPoints: [
       'Burnout disguised as faithfulness - enduring, not enjoying, not bearing fruits',
       'Compromise justified as strategy - they do not announce themselves as sin',
@@ -1304,6 +1303,89 @@ APPLICATION
       'Enjoy God\'s blessing'
     ],
     relatedSermons: ['10', '9'],
+  },
+  {
+    id: '12',
+    title: 'God of Covenant',
+    speaker: 'Ptr. Rodel Umapas',
+    speakerRole: 'guest pastor',
+    date: '2026-02-01',
+    duration: '45 min',
+    series: 'Covenant',
+    seriesDescription: 'Understanding the covenant relationship between God and His people.',
+    excerpt: 'There\'s no covenant without purpose. God is always ready to release His blessings but the question is can you still remember your covenant with God when you receive the blessings?',
+    description: `There are things that we need to leave and abandon, things that we don't need in the next level. The reason why God didn't release the blessings in the first place is because we don't need it in our lives.
+
+If we are ready, the Lord is more than ready to bless us.
+
+---
+
+THERE'S NO COVENANT WITHOUT PURPOSE
+
+God is always ready to release His blessings but the question is can you still remember your covenant with God when you receive the blessings?
+
+Genesis 12 marks a turning point in scripture.
+
+---
+
+COVENANT IS NOT ABOUT WHO ABRAM IS, IT'S ABOUT WHO GOD IS
+
+When God calls you for Covenant, He:
+
+1. Called for greatness
+2. Covered by God's presence
+3. Coveted by God's provision - Obedience unlocks provision
+
+---
+
+GOD'S CALL IS:
+
+1. Separation - Leave the things that you are used to that will not give glory to the Lord.
+
+2. Directional - "To a land I will show you." Sometimes the direction is already ready but we choose to deviate. It's a matter of obedience.
+
+3. Promissory - "I will make you great."
+
+Abram is called before he knows where, because covenant faith walks by trust, not by sight.
+
+---
+
+CONCLUSION
+
+God never calls you to stay where you are, He calls you to become who He designed you to be.
+
+There's no miracles if there's no big need. Our sufferings are part of forming our hearts.`,
+    tags: ['Covenant', 'Blessings', 'Faith', 'Obedience', 'Calling', 'Trust', 'Provision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-rodel.jpg',
+    scriptures: [
+      {
+        verse: 'Genesis 12:1-2',
+        text: 'Now the Lord had said to Abram: "Get out of your country, From your family And from your father\'s house, To a land that I will show you. I will make you a great nation; I will bless you And make your name great; And you shall be a blessing."'
+      },
+      {
+        verse: 'Genesis 12:3-4',
+        text: '"I will bless those who bless you, And I will curse him who curses you; And in you all the families of the earth shall be blessed." So Abram departed as the Lord had spoken to him, and Lot went with him. And Abram was seventy-five years old when he departed from Haran.'
+      },
+      {
+        verse: 'Genesis 12:7-9',
+        text: 'Then the Lord appeared to Abram and said, "To your descendants I will give this land." And there he built an altar to the Lord, who had appeared to him. And he moved from there to the mountain east of Bethel, and he pitched his tent with Bethel on the west and Ai on the east; there he built an altar to the Lord and called on the name of the Lord. So Abram journeyed, going on still toward the South.'
+      }
+    ],
+    isFeatured: true,
+    keyPoints: [
+      'There\'s no covenant without purpose',
+      'Covenant is not about who Abram is, it\'s about who God is',
+      'Called for greatness',
+      'Covered by God\'s presence',
+      'Coveted by God\'s provision - Obedience unlocks provision',
+      'Separation - Leave things that will not give glory to the Lord',
+      'Directional - To a land I will show you',
+      'Promissory - I will make you great',
+      'Covenant faith walks by trust, not by sight',
+      'God never calls you to stay where you are, He calls you to become who He designed you to be',
+      'There\'s no miracles if there\'s no big need'
+    ],
+    relatedSermons: ['2', '3'],
   },
 ];
 
