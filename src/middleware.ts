@@ -45,8 +45,20 @@ const matchesRoute = (path: string, routes: string[]): boolean => {
   });
 };
 
+/**
+ * Route redirects - instant redirects at the edge level
+ */
+const ROUTE_REDIRECTS: Record<string, string> = {
+  '/give': '/give/ways-to-give',
+};
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Handle instant redirects first (before any other processing)
+  if (ROUTE_REDIRECTS[pathname]) {
+    return NextResponse.redirect(new URL(ROUTE_REDIRECTS[pathname], request.url));
+  }
 
   // Get token from httpOnly cookies (set by backend)
   const token = request.cookies.get(CONST.ACCESS_TOKEN)?.value;
