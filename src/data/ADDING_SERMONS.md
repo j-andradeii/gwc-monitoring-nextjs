@@ -93,15 +93,20 @@ For new speakers, upload image to Vercel Blob storage first.
 
 ## Scriptures Format
 
+1. **Extract all scripture references** mentioned in the sermon content.
+2. **Fetch the full text**: Do NOT use the partial text or summary found in the content/notes. You must look up the actual full verse text (NKJV preferred) based on the reference.
+3. Use the format below:
+
 ```typescript
 scriptures: [
   {
-    verse: 'John 3:16',
-    text: 'For God so loved the world that He gave His only begotten Son...'
+    verse: 'John 3:16', // The reference found in content
+    // The ACTUAL full text looked up separately, NOT just what was in the notes
+    text: 'For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.'
   },
   {
     verse: 'Romans 8:28',
-    text: 'And we know that all things work together for good...'
+    text: 'And we know that all things work together for good to those who love God, to those who are the called according to His purpose.'
   }
 ]
 ```
@@ -148,6 +153,8 @@ Final thoughts and application...`,
 - Use lettered lists: `a.`, `b.`, `c.`
 - Include scripture references inline: `(John 3:16)`
 - Use quotes for scripture: `"Scripture text here." (Reference)`
+
+**STRICT RULE:** Do NOT add any words, transitional phrases, or filler text to the content. The `description` must strictly follow the provided sermon notes without additions or embellishments. Only format the existing text.
 
 ---
 
