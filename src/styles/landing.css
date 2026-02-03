@@ -992,8 +992,17 @@
 /* Page Hero Responsive */
 @media (max-width: 768px) {
   .page-hero {
-    min-height: 45vh;
+    min-height: 45svh;
+    height: 45svh;
     padding: 100px 0 60px !important;
+    /* Prevent layout shifts and background scaling during scroll */
+    contain: layout style;
+    background-attachment: scroll !important;
+    /* Hardware acceleration to prevent repaints */
+    transform: translateZ(0);
+    will-change: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .page-hero .hero-content {
@@ -1023,9 +1032,9 @@
 @media (max-width: 768px) {
   .hero-carousel-section {
     min-height: 65svh;
-    /* Use svh to prevent resizing when address bar toggles */
     height: 65svh;
-    /* Enforce stable height */
+    /* Prevent layout shifts during scroll */
+    contain: layout style;
   }
 
   .hero-carousel-content-wrapper {
@@ -1038,14 +1047,15 @@
   .hero-slide-bg {
     background-position: top center;
     background-attachment: scroll !important;
-    /* Prevent image scaling on mobile scroll by using lvh (largest viewport) */
-    /* This ensures the background size stays constant regardless of address bar */
-    inset: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 65lvh;
+    /* Use 100% height relative to parent instead of viewport units */
+    /* This prevents the image from scaling when the mobile address bar toggles */
+    inset: 0;
+    height: 100%;
+    /* Hardware acceleration to prevent repaints during scroll */
     transform: translateZ(0);
+    will-change: opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .hero-slide-content {
