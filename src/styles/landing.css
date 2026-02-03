@@ -1038,7 +1038,14 @@
   .hero-slide-bg {
     background-position: top center;
     background-attachment: scroll !important;
-    /* Ensure no parallax jank */
+    /* Prevent image scaling on mobile scroll by using lvh (largest viewport) */
+    /* This ensures the background size stays constant regardless of address bar */
+    inset: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 65lvh;
+    transform: translateZ(0);
   }
 
   .hero-slide-content {
