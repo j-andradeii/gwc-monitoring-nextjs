@@ -18,7 +18,11 @@ export const MinistriesSection: React.FC = () => {
 
         <div className="ministry-grid">
           {ministries.map((ministry) => (
-            <Link key={ministry.id} href="#" className="ministry-card animate-on-scroll">
+            <Link
+              key={ministry.id}
+              href={`/ministries/community#${ministry.title.toLowerCase().replace(/\s+/g, '-')}`}
+              className="ministry-card animate-on-scroll"
+            >
               <div className="ministry-image">
                 <Image
                   src={ministry.image}

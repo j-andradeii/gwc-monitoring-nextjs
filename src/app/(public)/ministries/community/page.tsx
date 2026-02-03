@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider } from '@/components/landing';
+import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, MinistryFeatureSection, ContactSection } from '@/components/landing';
+import { ministries } from '@/data/ministries';
 import '@/styles/landing.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com';
@@ -26,20 +27,30 @@ export default function CommunityPage() {
                         badge="Ministries"
                         title="Community"
                         subtitle="Doing Life Together"
-                        backgroundImage="/assets/images/community.jpg"
+                        backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg"
                     />
-                    <section className="landing-section">
+
+                    <section className="landing-section" style={{ paddingBottom: 0 }}>
                         <div className="landing-container">
-                            <div className="section-label">Connect</div>
-                            <h2 className="section-title">Life Groups</h2>
-                            <p className="section-description">
-                                We believe that life is better together. Our community groups are the heartbeat of our church,
-                                providing a place for you to connect, grow, and share life with others.
-                            </p>
-                            <br />
-                            <p>More details coming soon.</p>
+                            <div className="section-header-center" style={{ paddingTop: '40px' }}>
+                                <span className="section-label">Get Involved</span>
+                                <h2>Our Ministries</h2>
+                                <p>Find your place to serve and grow</p>
+                            </div>
                         </div>
                     </section>
+
+                    <div className="ministries-list-container">
+                        {ministries.map((ministry, index) => (
+                            <MinistryFeatureSection
+                                key={ministry.id}
+                                ministry={ministry}
+                                reverse={false}
+                                alternateBackground={index % 2 !== 0}
+                            />
+                        ))}
+                    </div>
+                    <ContactSection />
                 </ScrollAnimationProvider>
             </main>
             <LandingFooter />

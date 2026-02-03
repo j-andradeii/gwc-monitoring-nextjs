@@ -19,3 +19,5 @@ export { AriseAndBuildSection } from './AriseAndBuildSection';
 export { ContactSection } from './ContactSection';
 export { LandingFooter } from './LandingFooter';
 export { ScrollAnimationProvider } from './ScrollAnimationProvider';
+export { MinistryFeatureSection } from './MinistryFeatureSection';
+export { InProgressSection } from './InProgressSection';
