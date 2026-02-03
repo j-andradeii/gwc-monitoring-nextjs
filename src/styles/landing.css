@@ -2109,7 +2109,8 @@
   will-change: transform, box-shadow;
 }
 
-.bento-item:hover {
+.bento-item:hover,
+.bento-item:active {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 24px 60px rgba(212, 168, 75, 0.15);
   z-index: 10;
@@ -2121,8 +2122,8 @@
 }
 
 .bento-item:hover .bento-image,
-.bento-item.active .bento-image {
-  transform: scale(1.1);
+.bento-item:active .bento-image {
+  transform: scale(1.1) !important;
 }
 
 /* Overlay Styles */
@@ -2336,7 +2337,38 @@
 
 
 
+  /* Show overlay text on mobile only when active */
+  .bento-item .bento-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
+  .bento-item.active .bento-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(26, 39, 68, 0.9) 0%, rgba(26, 39, 68, 0) 70%);
+  }
+
+  .bento-item .bento-overlay h3 {
+    transform: translateY(20px);
+    font-size: 14px;
+  }
+
+  .bento-item.active .bento-overlay h3 {
+    transform: translateY(0);
+  }
+
+  .lightbox-content {
+    height: 60vh;
+  }
+
+  .lightbox-close {
+    top: -50px;
+    right: 0;
+  }
+
+  .lightbox-caption h3 {
+    font-size: 18px;
+  }
 }
 
 /* PrimeReact Carousel Overrides for Gallery */
