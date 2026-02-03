@@ -41,24 +41,24 @@ export const sermons: Sermon[] = [
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'A call to vigilance, focus, and holy passion. This is a season that demands watchfulness.',
-    description: `a. Burnout disguised as faithfulness
+    description: `**a. Burnout disguised as faithfulness**
 - Enduring, not enjoying, not bearing fruits
 - Enjoy the ministry, not endure the ministry
 - Humans are not meant to depend upon human strength
 - When God created us, He created us in a way that we should be power assisted
 
-b. Compromise justified as strategy
+**b. Compromise justified as strategy**
 They do not announce themselves as sin. They often appear as opportunities, responsibilities, sympathetic actions, growth, relevance, or even blessings. Yet they slowly pull the called away from prayer, consecration, holiness, and divine focus.
 
-(1) We must sensitively desist from any questionable conduct that dilutes or harms our Christian witness to unbelievers (1 Cor. 10:27-33).
+**(1)** We must sensitively desist from any questionable conduct that dilutes or harms our Christian witness to unbelievers (1 Cor. 10:27-33).
 
-(2) All association with or appearance of idolatry must be decisively avoided (1 Cor. 8:10; 10:7, 12, 14, 18-20).
+**(2)** All association with or appearance of idolatry must be decisively avoided (1 Cor. 8:10; 10:7, 12, 14, 18-20).
 
-(3) The law of love will cause us to limit voluntarily our Christian freedom in order not to lead by example another believer into compromising their convictions, defiling their conscience and thereby going down a path to spiritual ruin (1 Cor. 8:9-13; 10:24; cf. Rom. 14:1-15:3).
+**(3)** The law of love will cause us to limit voluntarily our Christian freedom in order not to lead by example another believer into compromising their convictions, defiling their conscience and thereby going down a path to spiritual ruin (1 Cor. 8:9-13; 10:24; cf. Rom. 14:1-15:3).
 
 Those who have not prepared their minds and hearts to stay true to God and his Word will find it difficult to resist sin and to avoid conforming to the world's ungodly ideas and lifestyles.
 
-c. Isolation masked as independence
+**c. Isolation masked as independence**
 Daniel 10:4-20 - the spirit prince of the kingdoms... Angels on assignment...
 
 The devil's strategy is Isolation but God's antidote is connection.
@@ -67,14 +67,14 @@ The devil's strategy is Isolation but God's antidote is connection.
 
 This reveals the motivation and consequence for willful isolation. We isolate ourselves primarily because of selfish desires for comfort, protection, and self-rule.
 
-d. Pride camouflaged as confidence
+**d. Pride camouflaged as confidence**
 Daniel 4:20-33
 
 "Pride goes before destruction, and haughtiness before a fall." (Proverbs 16:18)
 
 "Live in harmony with one another. Do not be proud, but be willing to associate with people of low position. Do not be conceited." (Romans 12:16)
 
-e. Moral looseness excused as grace
+**e. Moral looseness excused as grace**
 "King Nebuchadnezzar, please accept my advice. Stop sinning and do what is right. Break from your wicked past and be merciful to the poor. Perhaps then you will continue to prosper." (Daniel 4:27)
 
 "Well then, should we keep on sinning so that God can show us more and more of his wonderful grace? Of course not! Since we have died to sin, how can we continue to live in it? Or have you forgotten that when we were joined with Christ Jesus in baptism, we joined him in his death? For we died and were buried with Christ by baptism. And just as Christ was raised from the dead by the glorious power of the Father, now we also may live new lives." (Romans 6:1-4)
@@ -85,18 +85,18 @@ These traps are designed not just to destroy ministers—but to wound the flocks
 
 ---
 
-CONCLUSION/APPLICATION: A Call to Vigilance, Focus, and Holy Passion
+**CONCLUSION/APPLICATION:** A Call to Vigilance, Focus, and Holy Passion
 
 This is a season that demands watchfulness.
 
 "Be on guard. Stand firm in the faith. Be courageous. Be strong. And do everything with love." (1 Corinthians 16:13-14, NLT)
 
 To every Gate-keeper:
-a. Guard your prayer life fiercely
-b. Protect your private consecration
-c. Discipline your time and attention
-d. Refuse every distraction that steals spiritual depth
-e. Reignite your first love
+**a.** Guard your prayer life fiercely
+**b.** Protect your private consecration
+**c.** Discipline your time and attention
+**d.** Refuse every distraction that steals spiritual depth
+**e.** Reignite your first love
 
 The end-time ministry will not be carried by the gifted alone—but by the faithful, focused, and fiery!`,
     tags: ['Ministry', 'Leadership', 'Burnout', 'Compromise', 'Pride', 'Vigilance', 'Holiness'],
@@ -159,7 +159,7 @@ The end-time ministry will not be carried by the gifted alone—but by the faith
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Redemption Consecration of the Firstborn - The Lord said to Moses, "Consecrate to me every firstborn male. The first offspring of every womb among the Israelites belongs to me."',
-    description: `REDEMPTION: CONSECRATION OF THE FIRSTBORN
+    description: `**REDEMPTION: CONSECRATION OF THE FIRSTBORN**
 
 EXODUS 13 - Consecration of the Firstborn
 
@@ -171,7 +171,7 @@ The Lord said to Moses, "Consecrate to me every firstborn male. The first offspr
 
 ---
 
-UNDERSTANDING CONSECRATION
+**UNDERSTANDING CONSECRATION**
 
 Consecrate - emphatic in the Hebrew language: "It belongs to me (emphatic). It is my property. It is mine. The first born is mine."
 
@@ -181,9 +181,9 @@ But every firstborn of a donkey you shall redeem with a lamb, and if you will no
 
 ---
 
-VERY IMPORTANT PRINCIPLE
+**VERY IMPORTANT PRINCIPLE**
 
-1. The first born must be sacrificed or redeemed
+**1. The first born must be sacrificed or redeemed**
 
 How do you know what you should sacrifice or redeem? God gives two classifications of animals:
 - Clean animals (e.g., lambs)
@@ -195,7 +195,7 @@ Redeemed means to buy back - not just to buy, but to buy back. It has to be rede
 
 ---
 
-APPLICATION FOR TODAY
+**APPLICATION FOR TODAY**
 
 This was written about 4,000 years ago, so what does this have to do with us today?
 
@@ -209,12 +209,12 @@ Through the blood of Jesus, we also have redemption (Ephesians 1:7). The word re
 
 ---
 
-FOUR TRUTHS ABOUT OUR REDEMPTION
+**FOUR TRUTHS ABOUT OUR REDEMPTION**
 
-1. Our redemption price was paid to God
+**1. Our redemption price was paid to God**
 Some have taught that Jesus paid the ransom to Satan, but we have never been indebted to Satan. Our debt is to the holiness and justice of God. Whereas God's holiness demanded a payment for sin, His love and grace paid the debt for us through the blood of Jesus.
 
-2. Redemption sets us free from the consequences of sin
+**2. Redemption sets us free from the consequences of sin**
 Paul wrote, "There is now no condemnation for those who are in Christ Jesus" (Romans 8:1).
 
 The Holy Spirit brings freedom from sin. The Greek word used for "No" is a special negative, stronger than the ordinary no - very emphatic, double emphasis. Condemnation is already out of question.
@@ -229,7 +229,7 @@ Condemnation means "judgment or penalty." We could paraphrase this: "Now there i
 
 Paul restated this truth: "For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord." (Romans 6:23)
 
-3. Redemption frees us from the power of sin
+**3. Redemption frees us from the power of sin**
 Suppose a cocaine addict is arrested for drug possession and then is freed on a technicality. While he momentarily escapes the consequences of his sin, he is not freed from the power of the addiction that controls him. Within weeks, he is arrested again for the same crime.
 
 In contrast, our redemption is complete. God frees us not only from the punishment for sin but also from sin's controlling power in our lives.
@@ -238,7 +238,7 @@ In contrast, our redemption is complete. God frees us not only from the punishme
 
 When we were controlled by our sinful nature, we could not please God. Now, however, we are controlled by the Spirit if the Spirit lives in us (Romans 8:8-9).
 
-4. Redemption sets us free from an empty life
+**4. Redemption sets us free from an empty life**
 God redeemed us "from the empty way of life handed down" from our forefathers (1 Peter 1:18).
 
 Jesus himself said, "I have come that they may have life, and have it to the full" (John 10:10).
@@ -247,13 +247,13 @@ Through redemption, we find true meaning and purpose for our lives.
 
 ---
 
-EXPLORE: 1 PETER 1:17-21
+**EXPLORE:** 1 PETER 1:17-21
 
 "And remember that the heavenly Father to whom you pray has no favorites. He will judge or reward you according to what you do. So you must live in reverent fear of him during your time here as 'temporary residents.' For you know that God paid a ransom to save you from the empty life you inherited from your ancestors. And it was not paid with mere gold or silver, which lose their value. It was the precious blood of Christ, the sinless, spotless Lamb of God. God chose him as your ransom long before the world began, but now in these last days he has been revealed for your sake. Through Christ you have come to trust in God. And you have placed your faith and hope in God because he raised Christ from the dead and gave him great glory."
 
 ---
 
-CROSSING THE SEA (Exodus 13:17-22)
+**CROSSING THE SEA** (Exodus 13:17-22)
 
 When Pharaoh let the people go, God did not lead them on the road through the Philistine country, though that was shorter. For God said, "If they face war, they might change their minds and return to Egypt."
 
@@ -263,7 +263,7 @@ After leaving Sukkoth they camped at Etham on the edge of the desert. By day the
 
 ---
 
-GO
+**GO**
 
 You have access to a pillar of fire or cloud (the Holy Spirit). What steps can you take to seek out God's presence this week? Where has God been trying to move or lead you in recent days, weeks, or months?`,
     tags: ['Redemption', 'Consecration', 'Sacrifice', 'Exodus', 'Freedom', 'Holy Spirit'],
@@ -322,9 +322,9 @@ You have access to a pillar of fire or cloud (the Holy Spirit). What steps can y
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'All authority. Jesus promises that his followers—now his representatives on earth—would have his authority and power to proclaim and spread his message throughout the world.',
-    description: `THE GREAT COMMISSION
+    description: `**THE GREAT COMMISSION**
 
-MATTHEW 28:18 - All Authority
+**MATTHEW 28:18 - All Authority**
 
 Jesus promises that his followers—now his representatives on earth—would have his authority and power to proclaim and spread his message throughout the world (vv. 19-20).
 
@@ -336,7 +336,7 @@ But first they must obey Jesus' command to wait for the Father to fulfill his pr
 
 ---
 
-MATTHEW 28:19 - Go... Make Disciples... Baptizing
+**MATTHEW 28:19 - Go... Make Disciples... Baptizing**
 
 These words are referred to as Christ's Great Commission—his primary command, instruction and task, along with the authority to carry it out. This command applies to all his followers of every generation.
 
@@ -344,19 +344,19 @@ In his final instructions, Christ states the goal and responsibility of his chur
 
 ---
 
-SIX KEY ASPECTS OF THE COMMISSION
+**SIX KEY ASPECTS OF THE COMMISSION**
 
-(1) GO INTO ALL THE WORLD
+**(1) GO INTO ALL THE WORLD**
 The church is to go into all the world and spread the message of Christ as revealed in his own teaching and through the teaching of his apostles. This task includes the responsibility of sending missionaries into every nation (Acts 13:1-4).
 
-(2) PREACH THE GOSPEL
+**(2) PREACH THE GOSPEL**
 The preaching of the gospel is centered on:
 - "Repentance and forgiveness of sins" (Luke 24:47)
 - The promise of receiving "the gift of the Holy Spirit" (Acts 2:38)
 - The challenge to live in a way that is uniquely different from the spiritually corrupt world (Acts 2:40)
 - We must also preach with an expectancy of Jesus' return for his church (Acts 3:19-20; 1 Thess. 1:10)
 
-(3) MAKE DISCIPLES, NOT JUST CONVERTS
+**(3) MAKE DISCIPLES, NOT JUST CONVERTS**
 The primary purpose of Christ's commission was to make disciples (Gk. matheteusate)—disciplined "learners" and followers of Jesus who live by his commands and are continually growing in their relationship with him.
 
 To make disciples is the only direct command in this passage (the word "go" could be translated "as you are going").
@@ -369,14 +369,14 @@ If individuals who accept Christ do not grow beyond that starting point, they wi
 
 A church's spiritual energies and efforts must not be focused merely on enlarging church membership, but in making true disciples—life-long followers of Christ who avoid evil, follow Christ's commands and pursue his purposes with all their heart, mind and will.
 
-(4) SEPARATE FROM THE WORLD
+**(4) SEPARATE FROM THE WORLD**
 Christ commands us to concentrate on reaching spiritually lost men and women with his message of hope, but this does not mean that believers are called to Christianize society or to expect that all of the world will become Christians.
 
 While we must strive to make a positive difference in the world, we also must understand that the world system will remain defiant toward God until he returns. Until then, God's people must separate themselves from the corrupt beliefs, behaviors and lifestyles that surround them.
 
 Believers should devote themselves wholeheartedly to God and his purposes (Rom. 13:12; 2 Cor. 6:14). Devotion to Christ includes not hesitating to expose the evil and shame in the world so as to encourage others to avoid it (Eph. 5:11-12).
 
-(5) BAPTIZE BELIEVERS
+**(5) BAPTIZE BELIEVERS**
 Those who believe in Christ, who accept his message by faith and actively yield their lives to him—are to be "baptized" with water. (The word translated "baptized" literally speaks of being immersed, or put completely under the water.)
 
 This act of obedience serves as a public statement of faith in Christ—a sign that a person is identifying with Jesus in:
@@ -386,12 +386,12 @@ This act of obedience serves as a public statement of faith in Christ—a sign t
 
 It represents a person's spiritual pledge to turn away from sin and immorality, to die to one's own sinful nature and, with God's help, to be raised up to live a new life (see Rom. 6:4). In this new life, the believer is completely committed to Christ and his purposes.
 
-(6) EMPOWERED BY THE HOLY SPIRIT
+**(6) EMPOWERED BY THE HOLY SPIRIT**
 Christ will be with his obedient followers through the presence and power of the Holy Spirit. They will be able to fulfill their task to take Christ's message wherever they go, even to all people and all nations, only after they are "clothed with power from on high" (Luke 24:49).
 
 ---
 
-MATTHEW 28:20 - "I Am With You"
+**MATTHEW 28:20 - "I Am With You"**
 
 This promise is Christ's assurance to his followers who are actively involved in reaching and "winning" those who are spiritually lost and teaching them to obey his standards of truth.
 
@@ -457,7 +457,7 @@ Jesus' promise to be "with you" is the Christian's answer to every fear, every d
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Elisha and the Widow\'s Oil - A certain woman of the wives of the sons of the prophets cried out to Elisha, saying, "Your servant my husband is dead, and you know that your servant feared the Lord."',
-    description: `ELISHA AND THE WIDOW'S OIL (2 Kings 4:1-7, NKJV)
+    description: `**ELISHA AND THE WIDOW'S OIL** (2 Kings 4:1-7, NKJV)
 
 A certain woman of the wives of the sons of the prophets cried out to Elisha, saying, "Your servant my husband is dead, and you know that your servant feared the Lord. And the creditor is coming to take my two sons to be his slaves."
 
@@ -477,7 +477,7 @@ Then she came and told the man of God. And he said, "Go, sell the oil and pay yo
 
 ---
 
-ANANIAS BAPTIZES SAUL (Acts 9:10-19, NLT)
+**ANANIAS BAPTIZES SAUL** (Acts 9:10-19, NLT)
 
 Now there was a believer in Damascus named Ananias. The Lord spoke to him in a vision, calling, "Ananias!"
 
@@ -495,7 +495,7 @@ Instantly something like scales fell from Saul's eyes, and he regained his sight
 
 ---
 
-ANANIAS BAPTIZES SAUL (Acts 9:10-19, NKJV)
+**ANANIAS BAPTIZES SAUL** (Acts 9:10-19, NKJV)
 
 Now there was a certain disciple at Damascus named Ananias; and to him the Lord said in a vision, "Ananias."
 
@@ -543,7 +543,7 @@ So when he had received food, he was strengthened. Then Saul spent some days wit
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'God\'s answer to the sinfulness of the human heart is regeneration, which happens in individuals who truly repent, turn to God by faith and accept Jesus as the Forgiver of their sins and Leader of their lives.',
-    description: `THE RENEWED HEART
+    description: `**THE RENEWED HEART**
 
 God's answer to the sinfulness of the human heart is regeneration, which happens in individuals who truly repent, turn to God by faith and accept Jesus as the Forgiver of their sins and Leader of their lives.
 
@@ -551,12 +551,12 @@ Regeneration refers to a heart that has been spiritually reborn, renewed, revita
 
 ---
 
-UNDERSTANDING REGENERATION
+**UNDERSTANDING REGENERATION**
 
-1. BORN AGAIN (John 3:3)
+**1. BORN AGAIN** (John 3:3)
 Regeneration refers to the heart being "born again." Those who repent from their heart of all sin and confess in their heart that Jesus is Lord (Rom. 10:9) are "born again" spiritually and receive a new spiritual heart from God (cf. Ps. 51:10; Ezek. 11:19).
 
-2. A NEW DESIRE TO LOVE AND OBEY
+**2. A NEW DESIRE TO LOVE AND OBEY**
 For those who experience this spiritual birth, God creates within them a desire to love him and to obey him.
 
 Repeatedly God makes it clear to his people the necessity of expressing a love that comes from the heart (see Deut. 4:29; 6:6). This type of true love for God and devotion to him cannot be separated from obedience to his Word (cf. Ps. 119:34, 69, 112).
@@ -565,14 +565,14 @@ True love for God and faithful obedience to God are like two sides of the same c
 
 Jesus said the way to fulfill all the law of God is to love God wholeheartedly and love others unselfishly (Matt. 22:37-40).
 
-3. LOVE FROM THE HEART IS NECESSARY
+**3. LOVE FROM THE HEART IS NECESSARY**
 Love from the heart is the necessary part of obedience to God. But it is often the part that is lacking.
 
 Too often God's people try to substitute a practice of religious rituals and regulations (such as sacred feast days, offerings and sacrifices) for a genuine love from the heart (see Isa. 1:10-17; Amos 5:21-26; Mic. 6:6-8).
 
 Outward activity without an inner desire to serve God is not true love and devotion. In fact, it is being boastful and false, and it is greatly condemned by Jesus (see Matt. 23:13-28; Luke 21:1-4).
 
-4. SPIRITUAL ACTIVITIES OF THE TRANSFORMED HEART
+**4. SPIRITUAL ACTIVITIES OF THE TRANSFORMED HEART**
 Many other spiritual activities take place in the hearts of those who are spiritually transformed:
 
 - Praise God with all their heart (Ps. 9:1)
@@ -652,7 +652,7 @@ Above all, they live from a heart that has been transformed by God.`,
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Before restoration and healing, comes revelation and exposing of sins and crimes of God\'s people. Whenever I would restore the fortunes of my people, the sins of Ephraim are exposed.',
-    description: `EXPOSED!
+    description: `**EXPOSED!**
 
 HOSEA 6:11-7:1
 
@@ -662,11 +662,11 @@ Before restoration and healing, comes revelation and exposing of sins and crimes
 
 ---
 
-THE PARALYSIS OF SIN (Hosea 6:11b-7:16)
+**THE PARALYSIS OF SIN** (Hosea 6:11b-7:16)
 
 Hosea moves on to a devastating indictment of Israel, giving details of the wrongs and injustices perpetrated by the nation's leaders. It makes sad reading.
 
-DECEIT AND INTRIGUES (6:11b-7:7)
+**DECEIT AND INTRIGUES** (6:11b-7:7)
 
 The Lord longs to help Israel, but he recognizes that the nation has become incapable of repentance and change: "Whenever I would restore the fortunes of my people… the sins of Ephraim are exposed" (6:11-7:1a).
 
@@ -682,7 +682,7 @@ Leaders like this are not passionate about justice but about injustice. Their un
 
 ---
 
-1 SAMUEL 13:13 - NOT KEPT THE COMMAND OF THE LORD
+**1 SAMUEL 13:13 - NOT KEPT THE COMMAND OF THE LORD**
 
 God had told Saul exactly what to do: wait in Gilgal for the arrival of Samuel, who would offer sacrifices and give further instructions (10:8).
 
@@ -692,35 +692,35 @@ Because Saul failed to follow God's instructions, Samuel told him that God would
 
 ---
 
-1 SAMUEL 13:14 - A MAN AFTER HIS OWN HEART
+**1 SAMUEL 13:14 - A MAN AFTER HIS OWN HEART**
 
 David is this man. He was one who was always seeking a deep relationship with God and a knowledge of his purposes in the following ways:
 
-(a) He had great boldness because he had great faith in God from his youth (17:34-37).
+**(a)** He had great boldness because he had great faith in God from his youth (17:34-37).
 
-(b) He was a man of deep spiritual hunger and passion for God. From a life of prayer and a deep relationship with God came his many psalms.
+**(b)** He was a man of deep spiritual hunger and passion for God. From a life of prayer and a deep relationship with God came his many psalms.
 
-(c) In contrast to Saul, he desired to please God rather than to appear great in the eyes of the people.
+**(c)** In contrast to Saul, he desired to please God rather than to appear great in the eyes of the people.
 
-(d) He had an unshakable confidence in God's faithfulness and purpose for his life.
+**(d)** He had an unshakable confidence in God's faithfulness and purpose for his life.
 
-(e) He was humble though he had great success (18:12-18).
+**(e)** He was humble though he had great success (18:12-18).
 
-(f) He stubbornly searched for and relied on God's presence and counsel (23:2, 4; 30:8; 2 Sam. 2:1; 5:19, 23).
+**(f)** He stubbornly searched for and relied on God's presence and counsel (23:2, 4; 30:8; 2 Sam. 2:1; 5:19, 23).
 
-(g) He worshiped God with his whole heart and life and directed all of Israel to do the same (1 Chr. 15-16).
+**(g)** He worshiped God with his whole heart and life and directed all of Israel to do the same (1 Chr. 15-16).
 
-(h) He was a man of character, courage (16:18) and loyalty and inspired these traits in others (20:2; 2 Sam. 9; 1 Chr. 11).
+**(h)** He was a man of character, courage (16:18) and loyalty and inspired these traits in others (20:2; 2 Sam. 9; 1 Chr. 11).
 
-(i) He humbly recognized that God was the real King of Israel and that he was only God's representative (2 Sam. 5:12).
+**(i)** He humbly recognized that God was the real King of Israel and that he was only God's representative (2 Sam. 5:12).
 
-(j) In his public conduct, he sought to obey the Lord and carry out his plans (cf. Acts 13:22).
+**(j)** In his public conduct, he sought to obey the Lord and carry out his plans (cf. Acts 13:22).
 
 David's heart should be an example for all of Christ's followers today.
 
 ---
 
-DAVID WAS NOT PERFECT
+**DAVID WAS NOT PERFECT**
 
 This does not mean that David was perfect and flawless. Later in his life, David caused God grief on several occasions:
 
@@ -775,13 +775,13 @@ Yet even during this time in his life, David continued to show the true presence
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Joy in your spirit, peace in your soul, and refreshment along the way. The power of ministry is THE HOLY SPIRIT. Your course is your life in God and your calling in God.',
-    description: `CROSS THE FINISH LINE WITH JOY!
+    description: `**CROSS THE FINISH LINE WITH JOY!**
 
 Acts 20:24 (17-25) NKJV
 
 ---
 
-KEY PRINCIPLES
+**KEY PRINCIPLES**
 
 - Joy in your spirit, peace in your soul, and refreshment along the way (v24)
 - The power of ministry is THE HOLY SPIRIT (v22-23)
@@ -793,7 +793,7 @@ KEY PRINCIPLES
 
 ---
 
-STEPS TO STAY ON COURSE (Proverbs 4:20-27, NKJV)
+**STEPS TO STAY ON COURSE** (Proverbs 4:20-27, NKJV)
 
 Contained within verses 20 through 27 are specific rules for successfully staying on our course. We are given the following guidelines:
 
@@ -804,7 +804,7 @@ Contained within verses 20 through 27 are specific rules for successfully stayin
 
 ---
 
-JUST LIKE PAUL
+**JUST LIKE PAUL**
 
 We found our lives by losing it and love our lives by not counting it dear (Matt. 16:24-25; Phil. 1:21-24; 3:7-12).
 
@@ -824,7 +824,7 @@ Living for Jesus makes life more meaningful!
 
 ---
 
-ACTS 20:24 - I DO NOT ACCOUNT MY LIFE OF ANY VALUE
+**ACTS 20:24 - I DO NOT ACCOUNT MY LIFE OF ANY VALUE**
 
 Paul's main concern was not preserving his own life; what counted most was that he might finish the work to which God had called him.
 
@@ -834,13 +834,13 @@ For Paul, life and service for Christ are represented as a race that must be run
 
 ---
 
-ACTS 13:24-25 (NKJV)
+**ACTS 13:24-25** (NKJV)
 
 "After John had first preached, before His coming, the baptism of repentance to all the people of Israel. And as John was finishing his course, he said, 'Who do you think I am? I am not He. But behold, there comes One after me, the sandals of whose feet I am not worthy to loose.'"
 
 ---
 
-STRIVING FOR A CROWN (1 Corinthians 9:24-27, NKJV)
+**STRIVING FOR A CROWN** (1 Corinthians 9:24-27, NKJV)
 
 "Do you not know that those who run in a race all run, but one receives the prize? Run in such a way that you may obtain it. And everyone who competes for the prize is temperate in all things. Now they do it to obtain a perishable crown, but we for an imperishable crown.
 
@@ -848,13 +848,13 @@ Therefore I run thus: not with uncertainty. Thus I fight: not as one who beats t
 
 ---
 
-PAUL'S VALEDICTORY (2 Timothy 4:6-8, NKJV)
+**PAUL'S VALEDICTORY** (2 Timothy 4:6-8, NKJV)
 
 "For I am already being poured out as a drink offering, and the time of my departure is at hand. I have fought the good fight, I have finished the race, I have kept the faith. Finally, there is laid up for me the crown of righteousness, which the Lord, the righteous Judge, will give to me on that Day, and not to me only but also to all who have loved His appearing."
 
 ---
 
-THE RACE OF FAITH (Hebrews 12:1-3, NIV)
+**THE RACE OF FAITH** (Hebrews 12:1-3, NIV)
 
 "Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us, fixing our eyes on Jesus, the pioneer and perfecter of faith.
 
@@ -917,17 +917,17 @@ For the joy set before him he endured the cross, scorning its shame, and sat dow
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'God\'s Priorities should be our priorities too. Rejoice with the heavens when even one person admits their helpless condition, accepts Christ\'s forgiveness, turns from their own way and begins to follow him.',
-    description: `LOST
+    description: `**LOST**
 
 Luke 15
 
 ---
 
-1. GOD'S PRIORITIES SHOULD BE OUR PRIORITIES TOO
+**1. GOD'S PRIORITIES SHOULD BE OUR PRIORITIES TOO**
 
 ---
 
-2. REJOICE WITH THE HEAVENS!
+**2. REJOICE WITH THE HEAVENS!**
 
 Even when one person admits their helpless condition, accepts Christ's forgiveness, turns from their own way and begins to follow him. (v17-21)
 
@@ -935,7 +935,7 @@ Even when one person admits their helpless condition, accepts Christ's forgivene
 
 ---
 
-3. A DEEP DESIRE TO REACH OUT TO PEOPLE
+**3. A DEEP DESIRE TO REACH OUT TO PEOPLE**
 
 Luke 15:8 - "Seek diligently until she finds."
 
@@ -943,7 +943,7 @@ We should pray that the Holy Spirit will fill us with a deep desire to reach out
 
 ---
 
-4. A LIFE OF SIN AND SELFISHNESS REJECTS GOD'S LOVE, COMPANIONSHIP AND AUTHORITY
+**4. A LIFE OF SIN AND SELFISHNESS REJECTS GOD'S LOVE, COMPANIONSHIP AND AUTHORITY**
 
 Luke 15:13 - "Journey into a far country."
 
@@ -951,7 +951,7 @@ In this parable, Jesus teaches that a life of sin (i.e., going our own way and r
 
 ---
 
-5. RECOGNIZE OUR TRUE CONDITION
+**5. RECOGNIZE OUR TRUE CONDITION**
 
 Luke 15:17 - "He came to himself."
 
@@ -963,7 +963,7 @@ Though God's people can help lead and influence people to turn (or return) to Ch
 
 ---
 
-6. KEEP PRAYING FOR OUR SPIRITUALLY LOST
+**6. KEEP PRAYING FOR OUR SPIRITUALLY LOST**
 
 Luke 15:20 - "While he was still a long way off."
 
@@ -973,7 +973,7 @@ We must keep praying for our spiritually lost loved ones, trusting God to pursue
 
 ---
 
-7. HAVE THE FATHER'S HEARTBEAT FOR THE LOST
+**7. HAVE THE FATHER'S HEARTBEAT FOR THE LOST**
 
 Luke 15:20 - "His father saw him and felt compassion."
 
@@ -1031,23 +1031,23 @@ Jesus' description of the father's response to the son's return shows us the hea
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Enthusiastic determination grows out of being delivered by the Lord. When we come to an impasse in life, we should recall the way God has delivered us from these things in the past.',
-    description: `ENTHUSIASTIC DETERMINATION
+    description: `**ENTHUSIASTIC DETERMINATION**
 
 ---
 
-FIRST: GROWS OUT OF BEING DELIVERED BY THE LORD (2 Cor. 4:13)
+**FIRST:** GROWS OUT OF BEING DELIVERED BY THE LORD (2 Cor. 4:13)
 
 When we come to an impasse in life—a situation where no progress can be made, especially because of a disagreement or deadlock—in which we feel weighed down by the burdens or bogged down by the difficulties, we should recall the way God has delivered us from these things in the past.
 
 ---
 
-SECOND: GROWS WHEN WE FOCUS ON OUR FUTURE RESURRECTION (2 Cor. 4:14)
+**SECOND:** GROWS WHEN WE FOCUS ON OUR FUTURE RESURRECTION (2 Cor. 4:14)
 
 As Bible-believing Christians, we anticipate that day when we will all be changed in a moment, in the twinkling of an eye (1 Cor. 15:52).
 
 ---
 
-THIRD: GROWS WHEN WE INVEST IN THE LIVES OF OTHERS (2 Cor. 4:15)
+**THIRD:** GROWS WHEN WE INVEST IN THE LIVES OF OTHERS (2 Cor. 4:15)
 
 When we take seriously the temporary nature of our present life and the glories of our future resurrection life, it should motivate us to "die" to ourselves and "live" for others.
 
@@ -1094,13 +1094,13 @@ When this happens:
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Be in your best position to hear and receive. The watchman and watchtower are pictures of Habakkuk\'s attitude of patient waiting and watching for God\'s response.',
-    description: `VISION SUNDAY
+    description: `**VISION SUNDAY**
 
 Habakkuk 1:14, Habakkuk 2:2-3
 
 ---
 
-BE IN YOUR BEST POSITION TO HEAR AND RECEIVE (Hab 2:1)
+**BE IN YOUR BEST POSITION TO HEAR AND RECEIVE** (Hab 2:1)
 
 The watchman and watchtower, often used by the prophets to show an attitude of expectation (Isa 21:8, 11; Jer 6:17; Ezek 3:17), are pictures of Habakkuk's attitude of patient waiting and watching for God's response.
 
@@ -1108,7 +1108,7 @@ Habakkuk wanted to be in the best position to receive God's message.
 
 ---
 
-TRUST GOD (Hab 2:3)
+**TRUST GOD** (Hab 2:3)
 
 Evil and injustice seem to have the upper hand in the world. Like Habakkuk, Christians often feel angry and discouraged as they see what goes on. Habakkuk complained vigorously to God about the situation.
 
@@ -1122,19 +1122,19 @@ We must trust God even when we don't understand why events occur as they do.
 
 ---
 
-LIVE BY FAITH (Hab 2:4)
+**LIVE BY FAITH** (Hab 2:4)
 
 "The righteous shall live by his faith."
 
 In light of God's revelation about how (and when) he is working, his people are to be patient and live by faith.
 
-(1) It is "the righteous"—those who entrust their lives to God and do what is right according to his standards—who will come through victorious in the end.
+**(1)** It is "the righteous"—those who entrust their lives to God and do what is right according to his standards—who will come through victorious in the end.
 
-(2) The righteous are contrasted with the proud and the ungodly, whose life choices and direction oppose God. The hearts of the righteous are devoted to God; they want to be his children, to have close fellowship with him and to obey his plans and desires.
+**(2)** The righteous are contrasted with the proud and the ungodly, whose life choices and direction oppose God. The hearts of the righteous are devoted to God; they want to be his children, to have close fellowship with him and to obey his plans and desires.
 
-(3) The righteous must rely on God to accomplish his purposes for them in this world. This kind of "faith" implies an active and lasting trust in God. It is evidence of a personal loyalty to him as Savior and Lord (i.e., the Leader and authority over their lives) and a moral commitment to follow his plans.
+**(3)** The righteous must rely on God to accomplish his purposes for them in this world. This kind of "faith" implies an active and lasting trust in God. It is evidence of a personal loyalty to him as Savior and Lord (i.e., the Leader and authority over their lives) and a moral commitment to follow his plans.
 
-(4) This phrase, "the righteous shall live by his faith," or a form of it, is used throughout the NT to support the teaching that people are saved by grace (i.e., God's undeserved favor) through faith in Christ (cf. Eph. 2:8). Paul develops the theme in Rom. 1:17 and Gal. 3:11, and the writer to the Hebrews emphasizes that God's people must continue to live by faith in order to please God (see Heb. 10:38; 11:6).`,
+**(4)** This phrase, "the righteous shall live by his faith," or a form of it, is used throughout the NT to support the teaching that people are saved by grace (i.e., God's undeserved favor) through faith in Christ (cf. Eph. 2:8). Paul develops the theme in Rom. 1:17 and Gal. 3:11, and the writer to the Hebrews emphasizes that God's people must continue to live by faith in order to please God (see Heb. 10:38; 11:6).`,
     tags: ['Vision', 'Faith', 'Patience', 'Trust', 'Watchfulness'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
     scriptures: [
@@ -1191,51 +1191,51 @@ In light of God's revelation about how (and when) he is working, his people are 
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Twelve practical tips from the book of Proverbs to help you conquer the new year with wisdom, discipline, and dependence on God.',
-    description: `TWELVE TIPS TO CONQUER THE NEW YEAR
+    description: `**TWELVE TIPS TO CONQUER THE NEW YEAR**
 
 Proverbs 1:1-5
 
 ---
 
-THE TWELVE TIPS
+**THE TWELVE TIPS**
 
-1. BE A PERSON WITH FIRM DETERMINATIONS (Proverbs 1:10)
+**1. BE A PERSON WITH FIRM DETERMINATIONS** (Proverbs 1:10)
 
-2. ASK FOR INTELLIGENCE (Proverbs 2:3-5)
+**2. ASK FOR INTELLIGENCE** (Proverbs 2:3-5)
 
-3. DEPEND COMPLETELY ON GOD (Proverbs 3:5)
+**3. DEPEND COMPLETELY ON GOD** (Proverbs 3:5)
 
-4. BE GENEROUS WITH GOD (Proverbs 3:9-10)
+**4. BE GENEROUS WITH GOD** (Proverbs 3:9-10)
 
-5. GUARD YOUR MIND (Proverbs 4:23)
+**5. GUARD YOUR MIND** (Proverbs 4:23)
 
-6. PROTECT YOUR MARRIAGE (Proverbs 5:18-19)
+**6. PROTECT YOUR MARRIAGE** (Proverbs 5:18-19)
 
-7. GUARD YOUR WORDS (Proverbs 6:2)
+**7. GUARD YOUR WORDS** (Proverbs 6:2)
 
-8. MEMORIZE THE WORD (Proverbs 7:2-3)
+**8. MEMORIZE THE WORD** (Proverbs 7:2-3)
 
-9. TRAIN YOURSELF IN THE WORD (Proverbs 8:10)
+**9. TRAIN YOURSELF IN THE WORD** (Proverbs 8:10)
 
-10. CAST OUT THAT WHICH DOES NOT EDIFY (Proverbs 9:6)
+**10. CAST OUT THAT WHICH DOES NOT EDIFY** (Proverbs 9:6)
 
-11. REPRODUCE LIFE (Proverbs 10:16)
+**11. REPRODUCE LIFE** (Proverbs 10:16)
 
-12. ENJOY GOD'S BLESSING (Proverbs 10:22)
+**12. ENJOY GOD'S BLESSING** (Proverbs 10:22)
 
 ---
 
-APPLICATION
+**APPLICATION**
 
-1. Pray the Lord will give you new and creative ideas as well as the grace to put them into action.
+**1.** Pray the Lord will give you new and creative ideas as well as the grace to put them into action.
 
-2. Come up with a plan that will cause you to completely depend on God.
+**2.** Come up with a plan that will cause you to completely depend on God.
 
-3. Purpose in your heart to be generous in your giving to God.
+**3.** Purpose in your heart to be generous in your giving to God.
 
-4. Discipline yourself in daily reading of the Word with the purpose of keeping your mind pure, protecting every area of your life, and memorizing scripture.
+**4.** Discipline yourself in daily reading of the Word with the purpose of keeping your mind pure, protecting every area of your life, and memorizing scripture.
 
-5. Write up a list of all of the unedifying things you do daily and work towards eradicating them from your life.`,
+**5.** Write up a list of all of the unedifying things you do daily and work towards eradicating them from your life.`,
     tags: ['New Year', 'Proverbs', 'Wisdom', 'Discipline', 'Generosity', 'Marriage'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
     scriptures: [
@@ -1314,29 +1314,29 @@ APPLICATION
     series: 'Covenant',
     seriesDescription: 'Understanding the covenant relationship between God and His people.',
     excerpt: 'When God enters covenant with a person, He calls them, covers them, and consecrates them for divine purpose. Covenant is not about who Abram is—it’s about who God is.',
-    description: `God of Covenant 
+    description: `**God of Covenant**
 (Genesis 12:1-9)
 
-When God enters covenant with a person, He calls them, covers them, and consecrates them for divine purpose. Covenant is not about who Abram is—it’s about who God is. 
+When God enters covenant with a person, He calls them, covers them, and consecrates them for divine purpose. Covenant is not about who Abram is—it's about who God is.
 
-1. Called for Greatness (Genesis 12:1-3) 
-GOD’s call is: separational, directional and promissory. 
-* God never calls you to stay where you are— He calls you to become who he designed you to be. 
+**1. Called for Greatness** (Genesis 12:1-3)
+GOD's call is: separational, directional and promissory.
+* God never calls you to stay where you are— He calls you to become who he designed you to be.
 * You cannot experience covenant greatness while clinging to familiar places.
 * Obedience precedes clarity. Step out even when the destination is not fully revealed
 
-2. Covered by God (Genesis 12: 4-9) 
-A. Covered by God’s Presence (“When you walk in covenant obedience, you never walk alone.” ) 
-B. Covered by God’s Protection (God personally defends covenant people. Abram doesn’t fight his battles—God does.) When God is your defender, every enemy must get permission first. Stop fighting battles God promised to handle. Trust God’s justice instead of personal revenge. 
-C. Covered by God’s Provision (Covenant provision, follows obedience) “ Where God guides, God provides ” Just like manna in the wilderness, provision shows up daily—not stored in advance. Don’t fear lack, when God is leading, obedience unlocks provision 
+**2. Covered by God** (Genesis 12: 4-9)
+**A.** Covered by God's Presence ("When you walk in covenant obedience, you never walk alone." )
+**B.** Covered by God's Protection (God personally defends covenant people. Abram doesn't fight his battles—God does.) When God is your defender, every enemy must get permission first. Stop fighting battles God promised to handle. Trust God's justice instead of personal revenge.
+**C.** Covered by God's Provision (Covenant provision, follows obedience) " Where God guides, God provides " Just like manna in the wilderness, provision shows up daily—not stored in advance. Don't fear lack, when God is leading, obedience unlocks provision
 
-3. Consecrated for God's Purpose (Genesis 12: 8-9) 
-* Consecration means living set apart for God’s mission God does not call us just to be blessed but to become a blessing. 
-* A vessel in the temple was not for common use-it was set apart. 
-* Covenant people are not ordinary vessels. Live with purpose not comfort. 
-* Let your life point others to God. Ask daily "how does my life bless others? 
-* Separation always precedes elevation (Genesis 13:14). What God is about to reveal next requires Abram to be fully consecrated—no divided loyalty. 
-* When god removes what’s holding you back He’s making room for what’s coming next.`,
+**3. Consecrated for God's Purpose** (Genesis 12: 8-9)
+* Consecration means living set apart for God's mission God does not call us just to be blessed but to become a blessing.
+* A vessel in the temple was not for common use-it was set apart.
+* Covenant people are not ordinary vessels. Live with purpose not comfort.
+* Let your life point others to God. Ask daily "how does my life bless others?
+* Separation always precedes elevation (Genesis 13:14). What God is about to reveal next requires Abram to be fully consecrated—no divided loyalty.
+* When god removes what's holding you back He's making room for what's coming next.`,
     tags: ['Covenant', 'Greatness', 'Protection', 'Provision', 'Consecration', 'Obedience', 'Calling'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-rodel.jpg',
     scriptures: [
