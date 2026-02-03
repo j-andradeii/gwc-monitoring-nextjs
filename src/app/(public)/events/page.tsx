@@ -12,6 +12,7 @@ import { MonthlyCalendar } from '@/components/events/MonthlyCalendar';
 import { events, getFeaturedEvent } from '@/data/events';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com';
+const CALENDAR_IMAGE_URL = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/calendar.jpg';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -41,10 +42,8 @@ export const metadata: Metadata = {
     url: `${siteUrl}/events`,
     images: [
       {
-        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
-        width: 2048,
-        height: 715,
-        alt: 'Gateway Church Family',
+        url: CALENDAR_IMAGE_URL,
+        alt: 'Gateway Church Monthly Calendar',
       },
     ],
   },
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
     title: 'Events | Gateway Church',
     description:
       'Connect, grow, and celebrate with our church community. Find upcoming events and fellowship opportunities.',
-    images: ['https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg'],
+    images: [CALENDAR_IMAGE_URL],
   },
   robots: {
     index: true,
@@ -87,7 +86,7 @@ export default function EventsPage() {
         className="events-hero"
       />
 
-      <MonthlyCalendar imageSrc="https://gtxngthtpisigkys.public.blob.vercel-storage.com/calendar.jpg" />
+      <MonthlyCalendar imageSrc={CALENDAR_IMAGE_URL} />
 
       {/* Main Content */}
       <main className="landing-main" style={{ paddingTop: 0 }}>
