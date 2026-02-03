@@ -1169,10 +1169,10 @@
 }
 
 /* Hover States */
-.about-image:hover,
+/* .about-image:hover,
 .about-image.active {
   transform: scale(1.15);
-}
+} */
 
 
 .about-image-accent {
