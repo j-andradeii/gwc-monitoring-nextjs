@@ -7128,3 +7128,77 @@
     font-size: 32px;
   }
 }
+
+/* Enhanced Our Pastors Section - Premium Redesign */
+.our-pastors-section {
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF8E6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.our-pastors-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 20%, rgba(212, 168, 75, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.pastors-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Softer, deeper shadow */
+  overflow: hidden;
+  border: 4px solid #ffffff; /* White matting effect */
+}
+
+/* Decorative background behind image */
+.pastors-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: -20px;
+  bottom: -20px;
+  border: 2px solid var(--primary-gold-accent);
+  z-index: -1;
+  border-radius: 12px;
+  opacity: 0.3;
+}
+
+.pastors-title {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.pastors-title .highlight {
+  color: var(--primary-gold-accent);
+  position: relative;
+  display: inline-block;
+}
+
+.pastors-title-underline {
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-gold-accent), transparent);
+  border-radius: 3px;
+  width: 60px;
+}
+
+.pastors-description {
+  font-size: 17px; /* Slightly larger for editorial feel */
+  color: #555;
+  font-weight: 400;
+}
+
+.pastors-action-btn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+

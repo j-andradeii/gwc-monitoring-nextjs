@@ -36,7 +36,8 @@ export const OurPastors: React.FC = () => {
           {/* Right Side - Content */}
           <div className="pastors-content">
             <h2 className="pastors-title">
-              Meet Our<br />Pastors
+              Meet Our<br />
+              <span className="highlight" style={{ color: '#C9973F' }}>Pastors</span>
               <span className="pastors-title-underline"></span>
             </h2>
 
@@ -45,24 +46,19 @@ export const OurPastors: React.FC = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </p>
 
-            {/* <button style={{
-              background: 'transparent',
-              border: '2px solid #000',
-              padding: '14px 32px',
-              fontSize: '14px',
-              fontWeight: '700',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              color: '#000',
-              borderRadius: '50px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease'
-            }}
-              onMouseOver={(e) => { e.currentTarget.style.background = '#000'; e.currentTarget.style.color = '#fff'; }}
-              onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#000'; }}
-            >
-              Learn More
-            </button> */}
+            <div style={{ marginTop: '40px' }}>
+              <button className="landing-btn landing-btn-outline pastors-action-btn"
+                style={{
+                  borderRadius: '4px',
+                  letterSpacing: '2px',
+                  fontSize: '13px',
+                  padding: '16px 40px',
+                  borderWidth: '1px'
+                }}
+              >
+                Learn More
+              </button>
+            </div>
           </div>
 
         </div>
