@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 interface MonthlyCalendarProps {
@@ -11,11 +11,15 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
     imageSrc
 }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const scaleRef = useRef(1);
+    const touchStart = useRef<number | null>(null);
+    const touchEnd = useRef<number | null>(null);
 
     // Lock body scroll when modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            scaleRef.current = 1;
         } else {
             document.body.style.overflow = '';
         }
@@ -32,7 +36,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                     <h2>Calendar of Activities</h2>
                 </div>
 
-                <div className="calendar-preview-container premium-glass-card">
+                <div className="calendar-preview-container">
                     {/* Thumbnail - Click to open */}
                     <div
                         style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', cursor: 'pointer' }}
@@ -60,6 +64,40 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                         justifyContent: 'center',
                         alignItems: 'center',
                         touchAction: 'none'
+                    }}
+                    onTouchStart={(e) => {
+                        touchStart.current = e.targetTouches[0].clientY;
+                        touchEnd.current = null;
+                    }}
+                    onTouchMove={(e) => {
+                        touchEnd.current = e.targetTouches[0].clientY;
+                    }}
+                    onTouchEnd={() => {
+                        if (!touchStart.current || !touchEnd.current) return;
+                        const distance = touchEnd.current - touchStart.current;
+                        // Swipe down (positive distance) > 70px and not zoomed in
+                        if (distance > 70 && scaleRef.current <= 1.1) {
+                            setIsOpen(false);
+                        }
+                    }}
+                    onMouseDown={(e) => {
+                        touchStart.current = e.clientY;
+                        touchEnd.current = null;
+                    }}
+                    onMouseMove={(e) => {
+                        if (touchStart.current !== null) {
+                            touchEnd.current = e.clientY;
+                        }
+                    }}
+                    onMouseUp={() => {
+                        if (touchStart.current !== null && touchEnd.current !== null) {
+                            const distance = touchEnd.current - touchStart.current;
+                            if (distance > 70 && scaleRef.current <= 1.1) {
+                                setIsOpen(false);
+                            }
+                        }
+                        touchStart.current = null;
+                        touchEnd.current = null;
                     }}
                 >
                     {/* Close Button */}
@@ -93,6 +131,9 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                             maxScale={4}
                             centerOnInit={true}
                             limitToBounds={false}
+                            onTransformed={(ref, state) => {
+                                scaleRef.current = state.scale;
+                            }}
                         >
                             <TransformComponent
                                 wrapperStyle={{ width: '100vw', height: '100vh' }}
