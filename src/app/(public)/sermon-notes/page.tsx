@@ -499,6 +499,7 @@ export default function SermonNotesPage() {
                             marginBottom: '12px',
                             color: 'var(--text-primary)',
                             lineHeight: '1.3',
+                            fontWeight: 'bold'
                           }}
                         >
                           {sermon.title}
