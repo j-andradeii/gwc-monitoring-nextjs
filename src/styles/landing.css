@@ -1022,13 +1022,23 @@
 /* Hero Carousel Responsive */
 @media (max-width: 768px) {
   .hero-carousel-section {
-    min-height: 85vh;
+    min-height: 65svh;
+    /* Use svh to prevent resizing when address bar toggles */
+    height: 65svh;
+    /* Enforce stable height */
   }
 
   .hero-carousel-content-wrapper {
-    min-height: 85vh;
+    min-height: 65svh;
+    height: 65svh;
     padding: 100px 20px 80px;
     align-items: center;
+  }
+
+  .hero-slide-bg {
+    background-position: top center;
+    background-attachment: scroll !important;
+    /* Ensure no parallax jank */
   }
 
   .hero-slide-content {
@@ -1159,10 +1169,10 @@
 }
 
 /* Hover States */
-.about-image:hover,
+/* .about-image:hover,
 .about-image.active {
   transform: scale(1.15);
-}
+} */
 
 
 .about-image-accent {
