@@ -19,6 +19,9 @@ interface FormTextareaProps {
   autoResize?: boolean;
   maxLength?: number;
   showCount?: boolean;
+  className?: string;
+  textareaClassName?: string;
+  labelClassName?: string;
 }
 
 const getNestedError = (errors: Record<string, unknown>, path: string): string | undefined => {
@@ -46,6 +49,9 @@ export const FormTextarea = React.memo<FormTextareaProps>(({
   autoResize = false,
   maxLength,
   showCount = false,
+  className = '',
+  textareaClassName = '',
+  labelClassName = '',
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
@@ -56,9 +62,9 @@ export const FormTextarea = React.memo<FormTextareaProps>(({
   const uniqueId = `${name}-${reactId}`;
 
   return (
-    <div className="grid grid-cols-12 gap-0">
+    <div className={`grid grid-cols-12 gap-0 ${className}`}>
       {showLabel && label && (
-        <label htmlFor={uniqueId} className="col-span-12">
+        <label htmlFor={uniqueId} className={`col-span-12 ${labelClassName}`}>
           {label}
           {showRequired && <span className="form-required">*</span>}
         </label>
@@ -83,7 +89,7 @@ export const FormTextarea = React.memo<FormTextareaProps>(({
                   cols={cols}
                   autoResize={autoResize}
                   maxLength={maxLength}
-                  className={`w-full ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''}`}
+                  className={`w-full ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''} ${textareaClassName}`}
                   readOnly={readonly}
                   name={uniqueId}
                   style={{ width: '100%' }}

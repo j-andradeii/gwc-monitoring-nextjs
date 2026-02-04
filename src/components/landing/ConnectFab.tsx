@@ -2,29 +2,56 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
+import { FormSelect } from '@/components/forms/FormSelect';
 import { contactSchema, type ContactFormData } from '@/models/schemas/contact.schema';
 
 export function ConnectFab() {
     const [isOpen, setIsOpen] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [activeTab, setActiveTab] = useState<'prayer' | 'join'>('prayer');
     const pathname = usePathname();
 
     const methods = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
-        mode: 'onTouched', // Optimize performance: validate on blur instead of every keystroke
+        mode: 'onTouched',
         defaultValues: {
+            type: 'prayer',
             name: '',
             email: '',
+            phone: '',
+            // facebook: '', // Optional defaults
+            // instagram: '',
             message: '',
+            gender: '',
         },
     });
 
-    const { handleSubmit, reset } = methods;
+    const { handleSubmit, reset, setValue, clearErrors } = methods;
+
+    const handleTabChange = (tab: 'prayer' | 'join') => {
+        setActiveTab(tab);
+        reset({
+            type: tab,
+            name: '',
+            email: '',
+            phone: '',
+            message: '',
+            gender: '',
+            address: '',
+            joinReason: '',
+            facebook: '',
+            instagram: ''
+        });
+        clearErrors();
+    };
+
+
 
     const onSubmit = async (data: ContactFormData) => {
         setIsSubmitting(true);
@@ -52,7 +79,24 @@ export function ConnectFab() {
         };
     }, [isOpen]);
 
-    const toggleModal = () => setIsOpen(!isOpen);
+    const toggleModal = () => {
+        if (!isOpen) {
+            setActiveTab('prayer');
+            setSubmitted(false);
+            reset({
+                type: 'prayer',
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+                gender: '',
+                facebook: '',
+                instagram: ''
+            });
+            clearErrors();
+        }
+        setIsOpen(!isOpen);
+    };
 
     const handleReset = () => {
         setSubmitted(false);
@@ -92,22 +136,9 @@ export function ConnectFab() {
                     <div className="connect-modal-right">
                         <div className="mb-6 md:mb-8">
                             <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-2 block">Connect With Us</span>
-                            <h3 className="text-2xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6" style={{ color: 'var(--color-navy)' }}>HOW CAN WE HELP?</h3>
+                            <h3 className="text-2xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6 !mt-2" style={{ color: 'var(--color-navy)' }}>HOW CAN WE HELP?</h3>
 
-                            <div className="connect-options-grid">
-                                <div className="connect-option-card">
-                                    <div className="connect-option-icon">
-                                        <i className="pi pi-heart"></i>
-                                    </div>
-                                    <span className="font-bold text-xs md:text-sm text-dark">REQUEST PRAYER</span>
-                                </div>
-                                <div className="connect-option-card">
-                                    <div className="connect-option-icon">
-                                        <i className="pi pi-users"></i>
-                                    </div>
-                                    <span className="font-bold text-xs md:text-sm text-dark">JOIN A GROUP</span>
-                                </div>
-                            </div>
+
                         </div>
 
                         {submitted ? (
@@ -122,48 +153,160 @@ export function ConnectFab() {
                                 </button>
                             </div>
                         ) : (
-                            <FormProvider {...methods}>
-                                <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="space-y-1">
+                            <div>
+                                <div className="grid grid-cols-2 gap-4 mb-6 !mt-2">
+                                    <div
+                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 text-center h-32 md:h-36 ${activeTab === 'prayer' ? 'border-yellow-500 bg-yellow-50/30 shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
+                                        onClick={() => handleTabChange('prayer')}
+                                    >
+                                        {activeTab === 'prayer' && (
+                                            <div className="absolute top-2 right-2 text-yellow-500">
+                                                <i className="pi pi-check-circle lg:text-lg"></i>
+                                            </div>
+                                        )}
+                                        <div className={`w-12 h-12 flex items-center justify-center rounded-full transition-colors ${activeTab === 'prayer' ? 'bg-yellow-500 text-white shadow-sm' : 'bg-gray-100 text-gray-400'}`}>
+                                            <i className="pi pi-heart text-xl"></i>
+                                        </div>
+                                        <span className={`font-bold text-xs md:text-sm uppercase tracking-wider leading-tight ${activeTab === 'prayer' ? 'text-navy-900' : 'text-gray-400'}`}>
+                                            Request<br className="md:hidden" /> Prayer
+                                        </span>
+                                    </div>
+
+                                    <div
+                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 text-center h-32 md:h-36 ${activeTab === 'join' ? 'border-yellow-500 bg-white shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
+                                        onClick={() => handleTabChange('join')}
+                                    >
+                                        {activeTab === 'join' && (
+                                            <div className="absolute top-2 right-2 text-yellow-500">
+                                                <i className="pi pi-check-circle lg:text-lg"></i>
+                                            </div>
+                                        )}
+                                        <div className={`w-12 h-12 flex items-center justify-center rounded-full transition-colors ${activeTab === 'join' ? 'bg-yellow-500 text-white shadow-sm' : 'bg-gray-100 text-gray-400'}`}>
+                                            <i className="pi pi-users text-xl"></i>
+                                        </div>
+                                        <span className={`font-bold text-xs md:text-sm uppercase tracking-wider leading-tight ${activeTab === 'join' ? 'text-navy-900' : 'text-gray-400'}`}>
+                                            Join A<br className="md:hidden" /> Group
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <FormProvider {...methods}>
+                                    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 !mt-4">
                                             <FormInput
                                                 name="name"
                                                 label="Full Name"
                                                 placeholder="JOHN DOE"
                                                 showRequired
+                                                inputClassName="connect-input"
+                                                labelClassName="font-bold text-sm mb-1"
                                             />
-                                        </div>
-                                        <div className="space-y-1">
+
                                             <FormInput
                                                 name="email"
                                                 label="Email Address"
                                                 placeholder="JOHN@EXAMPLE.COM"
                                                 showRequired
+                                                inputClassName="connect-input"
+                                                labelClassName="font-bold text-sm mb-1"
                                             />
+
+                                            <FormInput
+                                                name="phone"
+                                                label="Phone Number"
+                                                placeholder="+1 234 567 8900"
+                                                showRequired
+                                                inputClassName="connect-input"
+                                                labelClassName="font-bold text-sm mb-1"
+                                            />
+
+                                            <FormSelect
+                                                name="gender"
+                                                label="Gender"
+                                                placeholder="Select Gender"
+                                                options={[
+                                                    { label: 'Male', value: 'Male' },
+                                                    { label: 'Female', value: 'Female' }
+                                                ]}
+                                                showRequired
+                                                dropdownClassName="connect-select"
+                                                labelClassName="font-bold text-sm mb-1"
+                                            />
+
+                                            <FormInput
+                                                name="facebook"
+                                                label="Facebook Link/Handle"
+                                                placeholder="facebook.com/johndoe"
+                                                inputClassName="connect-input"
+                                                labelClassName="font-bold text-sm mb-1"
+                                            />
+
+                                            <FormInput
+                                                name="instagram"
+                                                label="Instagram Link/Handle"
+                                                placeholder="@johndoe"
+                                                inputClassName="connect-input"
+                                                labelClassName="font-bold text-sm mb-1"
+                                            />
+
+                                            {activeTab === 'join' && (
+                                                <div className="md:col-span-2">
+                                                    <FormInput
+                                                        name="address"
+                                                        label="Address"
+                                                        placeholder="123 Main St, City, Country"
+                                                        showRequired
+                                                        inputClassName="connect-input"
+                                                        labelClassName="font-bold text-sm mb-1"
+                                                    />
+                                                </div>
+                                            )}
                                         </div>
-                                    </div>
 
-                                    <div className="space-y-1" style={{ marginBottom: '16px', marginTop: '16px' }}>
-                                        <FormTextarea
-                                            name="message"
-                                            label="Your Message"
-                                            placeholder="HOW CAN WE PRAY FOR YOU OR HELP YOU TODAY?"
-                                            rows={4}
-                                            showRequired
-                                        />
-                                    </div>
+                                        <div className="w-full">
+                                            {activeTab === 'prayer' ? (
+                                                <FormTextarea
+                                                    name="message"
+                                                    label="Prayer Request"
+                                                    placeholder="HOW CAN WE PRAY FOR YOU OR HELP YOU TODAY?"
+                                                    rows={4}
+                                                    showRequired
+                                                    textareaClassName="connect-input"
+                                                    labelClassName="font-bold text-sm mb-1"
+                                                />
+                                            ) : (
+                                                <FormTextarea
+                                                    name="joinReason"
+                                                    label="Why do you want to join a cell group?"
+                                                    placeholder="Tell us a bit about yourself and why you'd like to join..."
+                                                    rows={4}
+                                                    showRequired
+                                                    textareaClassName="connect-input"
+                                                    labelClassName="font-bold text-sm mb-1"
+                                                />
+                                            )}
+                                        </div>
 
-                                    <button type="submit" className="connect-submit-btn mt-4" disabled={isSubmitting}>
-                                        {isSubmitting ? (
-                                            <i className="pi pi-spin pi-spinner"></i>
-                                        ) : (
-                                            <>
-                                                SEND MESSAGE <i className="pi pi-send text-sm"></i>
-                                            </>
+                                        {activeTab === 'join' && (
+                                            <div className="text-center">
+                                                <Link href="/ministries/community" className="inline-flex items-center gap-2 text-sm text-yellow-600 hover:text-yellow-700 font-bold uppercase tracking-wider transition-colors">
+                                                    Check our Community <i className="pi pi-arrow-right"></i>
+                                                </Link>
+                                            </div>
                                         )}
-                                    </button>
-                                </form>
-                            </FormProvider>
+
+                                        <button type="submit" className="connect-submit-btn" disabled={isSubmitting}>
+                                            {isSubmitting ? (
+                                                <i className="pi pi-spin pi-spinner"></i>
+                                            ) : (
+                                                <>
+                                                    SEND MESSAGE <i className="pi pi-send text-sm"></i>
+                                                </>
+                                            )}
+                                        </button>
+                                    </form>
+                                </FormProvider>
+                            </div>
                         )}
                     </div>
                 </div>
