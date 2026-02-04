@@ -159,7 +159,7 @@ export function ConnectFab() {
                             <div>
                                 <div className="grid grid-cols-2 gap-4 mb-6 !mt-2">
                                     <div
-                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 text-center h-32 md:h-36 ${activeTab === 'prayer' ? 'border-yellow-500 bg-yellow-50/30 shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
+                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 text-center h-32 md:h-36 ${activeTab === 'prayer' ? 'border-yellow-500 bg-white shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
                                         onClick={() => handleTabChange('prayer')}
                                     >
                                         {activeTab === 'prayer' && (
@@ -214,14 +214,16 @@ export function ConnectFab() {
                                                 labelClassName="font-bold text-sm mb-1"
                                             />
 
-                                            <FormInput
-                                                name="phone"
-                                                label="Phone Number"
-                                                placeholder="+1 234 567 8900"
-                                                showRequired
-                                                inputClassName="connect-input"
-                                                labelClassName="font-bold text-sm mb-1"
-                                            />
+                                            <div className={activeTab === 'prayer' ? 'md:col-span-2' : ''}>
+                                                <FormInput
+                                                    name="phone"
+                                                    label="Phone Number"
+                                                    placeholder="+1 234 567 8900"
+                                                    showRequired
+                                                    inputClassName="connect-input"
+                                                    labelClassName="font-bold text-sm mb-1"
+                                                />
+                                            </div>
 
                                             {activeTab === 'join' && (
                                                 <>
@@ -293,7 +295,7 @@ export function ConnectFab() {
 
                                         {activeTab === 'join' && (
                                             <div className="text-center">
-                                                <Link href="/ministries/community" className="inline-flex items-center gap-2 text-sm text-yellow-600 hover:text-yellow-700 font-bold uppercase tracking-wider transition-colors">
+                                                <Link href="/ministries/community" onClick={() => setIsOpen(false)} className="inline-flex items-center gap-2 text-sm text-yellow-600 hover:text-yellow-700 font-bold uppercase tracking-wider transition-colors">
                                                     Check our Community <i className="pi pi-arrow-right"></i>
                                                 </Link>
                                             </div>
