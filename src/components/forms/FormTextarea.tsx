@@ -54,15 +54,15 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
   const uniqueId = `${name}-${reactId}`;
 
   return (
-    <div className="grid grid-nogutter">
+    <div className="grid grid-cols-12 gap-0">
       {showLabel && label && (
-        <label htmlFor={uniqueId} className="col-12">
+        <label htmlFor={uniqueId} className="col-span-12">
           {label}
           {showRequired && <span className="form-required">*</span>}
         </label>
       )}
 
-      <div className="col-12 input-container">
+      <div className="col-span-12 input-container">
         <Controller
           name={name}
           control={control}
@@ -81,9 +81,10 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
                   cols={cols}
                   autoResize={autoResize}
                   maxLength={maxLength}
-                  className={`w-100 ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''}`}
+                  className={`w-full ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''}`}
                   readOnly={readonly}
                   name={uniqueId}
+                  style={{ width: '100%' }}
                 />
 
                 {showCount && maxLength && (
