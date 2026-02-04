@@ -11,14 +11,14 @@ interface GalleryImage {
 }
 
 const galleryImages: GalleryImage[] = [
-  { id: 1, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/597992661_122181102518766700_6759379141760359149_n.jpg', alt: 'Sunday Worship' },
-  { id: 2, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598001057_122181102470766700_7721753414270859091_n.jpg', alt: 'Fellowship Lunch' },
-  { id: 3, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598354889_122181101306766700_7166132187056166846_n.jpg', alt: 'Youth Night' },
-  { id: 4, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598691167_122181202298766700_3747857486846455162_n.jpg', alt: 'Community Outreach' },
-  { id: 5, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598696417_122181101384766700_414950063467040030_n.jpg', alt: 'Kids Ministry' },
-  { id: 6, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598714870_122181102446766700_1099840975765605389_n.jpg', alt: 'Volunteer Team' },
-  { id: 7, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598718079_122181100730766700_1031415504206357468_n.jpg', alt: 'Prayer Meeting' },
-  { id: 8, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598721854_122181101078766700_9143129039121658822_n.jpg', alt: 'Baptism Service' },
+  { id: 1, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg', alt: 'Sunday Worship' },
+  { id: 2, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/2.jpg', alt: 'Fellowship Lunch' },
+  { id: 3, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/3.jpg', alt: 'Youth Night' },
+  { id: 4, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/4.jpg', alt: 'Community Outreach' },
+  { id: 5, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/5.jpg', alt: 'Kids Ministry' },
+  { id: 6, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/6.jpg', alt: 'Volunteer Team' },
+  { id: 7, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/8.jpg', alt: 'Prayer Meeting' },
+  { id: 8, src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/9.jpg', alt: 'Baptism Service' },
 ];
 
 // Fisher-Yates shuffle algorithm
@@ -131,7 +131,7 @@ export const CommunityGallerySection: React.FC = () => {
                 unoptimized
               />
               <div className="bento-overlay">
-                <h3>{image.alt}</h3>
+                <h3></h3>
               </div>
             </div>
           ))}
