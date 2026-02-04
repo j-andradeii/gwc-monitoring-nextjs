@@ -7,7 +7,7 @@
 import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
-import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero } from '@/components/landing';
+import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero, ConnectFab } from '@/components/landing';
 import { MonthlyCalendar } from '@/components/events/MonthlyCalendar';
 import { events, getFeaturedEvent } from '@/data/events';
 

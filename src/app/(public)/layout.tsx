@@ -4,6 +4,7 @@
  * Layout for public pages (landing, sermon-notes)
  */
 
+import { ConnectFab } from '@/components/landing';
 import React from 'react';
 
 export default function PublicLayout({
@@ -11,5 +12,8 @@ export default function PublicLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <>
+    <ConnectFab />
+    {children}
+  </>;
 }

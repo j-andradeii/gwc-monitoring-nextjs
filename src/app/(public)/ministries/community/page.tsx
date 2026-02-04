@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, MinistryFeatureSection, ContactSection } from '@/components/landing';
+import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, MinistryFeatureSection, ContactSection, ConnectFab } from '@/components/landing';
 import { ministries } from '@/data/ministries';
 import '@/styles/landing.css';
 
