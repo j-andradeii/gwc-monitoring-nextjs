@@ -38,6 +38,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [sermon.image],
       type: 'article',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: sermon.title,
+      description: sermon.excerpt,
+      images: [sermon.image],
+    },
   };
 }
 
