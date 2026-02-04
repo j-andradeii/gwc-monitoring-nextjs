@@ -38,7 +38,7 @@ export interface AppConfig {
 // Export configuration with direct env var access for Next.js compatibility
 export const config: AppConfig = {
   app: {
-    name: process.env.NEXT_PUBLIC_APP_NAME || 'GWC Monitoring',
+    name: process.env.NEXT_PUBLIC_APP_NAME || 'Gateway Church Cebu',
     url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
   },
   api: {

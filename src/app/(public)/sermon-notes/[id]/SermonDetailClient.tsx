@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { LandingHeader, LandingFooter } from '@/components/landing';
+import { LandingHeader, LandingFooter, ShareModal } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
 import { ScriptureCard } from '@/components/cards';
 import '@/styles/landing.css';
@@ -16,6 +16,7 @@ interface Props {
 
 export default function SermonDetailClient({ sermon, relatedSermons, seriesSermons }: Props) {
   const [activeTab, setActiveTab] = useState<'notes' | 'scripture'>('notes');
+  const [showShareModal, setShowShareModal] = useState(false);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -464,15 +465,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                   <button
                     className="landing-btn landing-btn-outline"
                     style={{ justifyContent: 'center' }}
-                    onClick={() => {
-                      navigator.share?.({
-                        title: sermon.title,
-                        text: sermon.excerpt,
-                        url: window.location.href,
-                      }).catch(() => {
-                        navigator.clipboard.writeText(window.location.href);
-                      });
-                    }}
+                    onClick={() => setShowShareModal(true)}
                   >
                     <i className="pi pi-share-alt" />
                     Share Sermon
@@ -631,6 +624,14 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
       </main>
 
       <LandingFooter />
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        title={sermon.title}
+        excerpt={sermon.excerpt}
+      />
 
       {/* Responsive Styles */}
       <style jsx>{`
