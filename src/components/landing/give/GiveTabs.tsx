@@ -4,6 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ScriptureCard } from '@/components/cards';
+import { ProjectGallery } from './ProjectGallery';
 
 type TabType = 'ways-to-give' | 'gateway-projects';
 
@@ -132,37 +133,37 @@ const gatewayProjectsData = {
   gallery: [
     {
       id: 1,
-      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/597992661_122181102518766700_6759379141760359149_n.jpg',
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg',
       alt: 'Ministry Center - Main Hall',
       caption: 'Main Worship Hall',
     },
     {
       id: 2,
-      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598001057_122181102470766700_7721753414270859091_n.jpg',
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/2.jpg',
       alt: 'Ministry Center - Stage Area',
       caption: 'Stage & Platform',
     },
     {
       id: 3,
-      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598354889_122181101306766700_7166132187056166846_n.jpg',
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/3.jpg',
       alt: 'Ministry Center - Congregation',
       caption: 'Congregation Area',
     },
     {
       id: 4,
-      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598691167_122181202298766700_3747857486846455162_n.jpg',
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/4.jpg',
       alt: 'Ministry Center - Sound System',
       caption: 'Sound & Media Setup',
     },
     {
       id: 5,
-      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598696417_122181101384766700_414950063467040030_n.jpg',
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/5.jpg',
       alt: 'Ministry Center - Lighting',
       caption: 'Lighting System',
     },
     {
       id: 6,
-      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/598714870_122181102446766700_1099840975765605389_n.jpg',
+      src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/6.jpg',
       alt: 'Ministry Center - Fellowship Area',
       caption: 'Fellowship Space',
     },
@@ -294,23 +295,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
         {/* Project Gallery */}
         <div className="project-gallery">
           <h3>Our Ministry Center</h3>
-          <div className="gallery-grid">
-            {gatewayProjectsData.gallery.map((image) => (
-              <div key={image.id} className="gallery-item">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="gallery-image"
-                  unoptimized
-                />
-                <div className="gallery-caption">
-                  <span>{image.caption}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectGallery images={gatewayProjectsData.gallery} />
         </div>
 
         {/* Progress Section - Enhanced */}
