@@ -81,8 +81,8 @@ export function ConnectFab() {
                     {/* Left Side - Image/Visual */}
                     <div className="connect-modal-left" style={{ backgroundImage: 'url("https://gtxngthtpisigkys.public.blob.vercel-storage.com/pray.jpg")' }}>
                         <div className="connect-modal-left-content">
-                            <h2 className="text-4xl font-bold mb-4">WE'RE HERE FOR YOU.</h2>
-                            <p className="text-lg opacity-90">
+                            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">WE'RE HERE FOR YOU.</h2>
+                            <p className="text-sm md:text-lg opacity-90">
                                 Whether you have questions about faith, need prayer, or want to join a small group, we're just a message away.
                             </p>
                         </div>
@@ -90,22 +90,22 @@ export function ConnectFab() {
 
                     {/* Right Side - Form & Options */}
                     <div className="connect-modal-right">
-                        <div className="mb-8">
+                        <div className="mb-6 md:mb-8">
                             <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-2 block">Connect With Us</span>
-                            <h3 className="text-3xl font-bold text-navy-900 mb-6" style={{ color: 'var(--color-navy)' }}>HOW CAN WE HELP?</h3>
+                            <h3 className="text-2xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6" style={{ color: 'var(--color-navy)' }}>HOW CAN WE HELP?</h3>
 
                             <div className="connect-options-grid">
                                 <div className="connect-option-card">
                                     <div className="connect-option-icon">
                                         <i className="pi pi-heart"></i>
                                     </div>
-                                    <span className="font-bold text-sm text-dark">REQUEST PRAYER</span>
+                                    <span className="font-bold text-xs md:text-sm text-dark">REQUEST PRAYER</span>
                                 </div>
                                 <div className="connect-option-card">
                                     <div className="connect-option-icon">
                                         <i className="pi pi-users"></i>
                                     </div>
-                                    <span className="font-bold text-sm text-dark">JOIN A GROUP</span>
+                                    <span className="font-bold text-xs md:text-sm text-dark">JOIN A GROUP</span>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +143,7 @@ export function ConnectFab() {
                                         </div>
                                     </div>
 
-                                    <div className="space-y-1" style={{ marginBottom: '16px' }}>
+                                    <div className="space-y-1" style={{ marginBottom: '16px', marginTop: '16px' }}>
                                         <FormTextarea
                                             name="message"
                                             label="Your Message"
