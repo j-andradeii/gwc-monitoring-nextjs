@@ -4,6 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ScriptureCard } from '@/components/cards';
+import { ProjectGallery } from './ProjectGallery';
 
 type TabType = 'ways-to-give' | 'gateway-projects';
 
@@ -294,23 +295,7 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
         {/* Project Gallery */}
         <div className="project-gallery">
           <h3>Our Ministry Center</h3>
-          <div className="gallery-grid">
-            {gatewayProjectsData.gallery.map((image) => (
-              <div key={image.id} className="gallery-item">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="gallery-image"
-                  unoptimized
-                />
-                <div className="gallery-caption">
-                  <span></span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectGallery images={gatewayProjectsData.gallery} />
         </div>
 
         {/* Progress Section - Enhanced */}
