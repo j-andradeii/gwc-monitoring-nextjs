@@ -8139,7 +8139,7 @@
   right: 60px;
   z-index: 999;
   /* High priority */
-  background-color: var(--color-navy);
+  background-color: var(--primary-gold-accent);
   color: #ffffff;
   border: none;
   border-radius: 50px;
@@ -8163,7 +8163,8 @@
 }
 
 .connect-fab-btn:hover {
-  background-color: var(--primary-gold-accent);
+  background-color: #fff;
+  color: var(--primary-gold-accent);
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(212, 168, 75, 0.4);
 }
