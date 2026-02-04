@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Gateway Church',
     url: siteUrl,
-   images: [
+    images: [
       {
         url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
         width: 2048,
@@ -95,6 +95,7 @@ import {
   ContactSection,
   LandingFooter,
   ScrollAnimationProvider,
+  ConnectFab,
 } from '@/components/landing';
 
 const jsonLd = {
@@ -140,6 +141,7 @@ export default function LandingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <LandingHeader />
+      <ConnectFab />
 
       <main className="landing-main">
         <ScrollAnimationProvider>

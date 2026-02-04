@@ -22,4 +22,5 @@ export { ScrollAnimationProvider } from './ScrollAnimationProvider';
 export { MinistryFeatureSection } from './MinistryFeatureSection';
 export { InProgressSection } from './InProgressSection';
 export { ShareModal } from './ShareModal';
+export { ConnectFab } from './ConnectFab';
 

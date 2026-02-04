@@ -59,6 +59,7 @@ import {
   LandingFooter,
   ScrollAnimationProvider,
   ContactSection,
+  ConnectFab,
 } from '@/components/landing';
 
 import {
