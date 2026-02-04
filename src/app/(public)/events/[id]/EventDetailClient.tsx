@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider } from '@/components/landing';
+import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider, ShareModal } from '@/components/landing';
 import { Event } from '@/data/events';
 import '@/styles/landing.css';
 
@@ -12,6 +12,7 @@ interface Props {
 }
 
 export default function EventDetailClient({ event, otherEvents }: Props) {
+  const [showShareModal, setShowShareModal] = useState(false);
   return (
     <div className="landing-page">
       <LandingHeader />
@@ -307,15 +308,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                   <button
                     className="landing-btn landing-btn-outline"
                     style={{ justifyContent: 'center' }}
-                    onClick={() => {
-                      navigator.share?.({
-                        title: event.title,
-                        text: event.description || `Join us for ${event.title}`,
-                        url: window.location.href,
-                      }).catch(() => {
-                        navigator.clipboard.writeText(window.location.href);
-                      });
-                    }}
+                    onClick={() => setShowShareModal(true)}
                   >
                     <i className="pi pi-share-alt" />
                     Share Event
@@ -416,6 +409,13 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
       </main>
 
       <LandingFooter />
+
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        title={event.title}
+        excerpt={event.description || `Join us for ${event.title} at Gateway Church`}
+      />
 
       {/* Responsive Styles */}
       <style jsx>{`
