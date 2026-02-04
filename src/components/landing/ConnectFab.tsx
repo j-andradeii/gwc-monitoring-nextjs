@@ -131,6 +131,8 @@ export function ConnectFab() {
                                                 label="Full Name"
                                                 placeholder="JOHN DOE"
                                                 showRequired
+                                                inputClassName="connect-input"
+                                                labelClassName="font-bold text-sm mb-1"
                                             />
                                         </div>
                                         <div className="space-y-1">
@@ -139,6 +141,8 @@ export function ConnectFab() {
                                                 label="Email Address"
                                                 placeholder="JOHN@EXAMPLE.COM"
                                                 showRequired
+                                                inputClassName="connect-input"
+                                                labelClassName="font-bold text-sm mb-1"
                                             />
                                         </div>
                                     </div>
@@ -150,6 +154,8 @@ export function ConnectFab() {
                                             placeholder="HOW CAN WE PRAY FOR YOU OR HELP YOU TODAY?"
                                             rows={4}
                                             showRequired
+                                            textareaClassName="connect-input"
+                                            labelClassName="font-bold text-sm mb-1"
                                         />
                                     </div>
 

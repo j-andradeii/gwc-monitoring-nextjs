@@ -127,6 +127,9 @@ interface FormInputProps {
   enablePhoneNumberFormat?: boolean;
   enableAllowNumbersSpacesPlusDash?: boolean;
   enableCreditCardInputFormat?: boolean;
+  className?: string; // Container custom class
+  inputClassName?: string; // Input element custom class
+  labelClassName?: string; // Label custom class
 }
 
 export const FormInput = React.memo<FormInputProps>(({
@@ -142,6 +145,9 @@ export const FormInput = React.memo<FormInputProps>(({
   enablePhoneNumberFormat = false,
   enableAllowNumbersSpacesPlusDash = false,
   enableCreditCardInputFormat = false,
+  className = '',
+  inputClassName = '',
+  labelClassName = '',
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
@@ -174,9 +180,9 @@ export const FormInput = React.memo<FormInputProps>(({
   };
 
   return (
-    <div className="grid grid-cols-12 gap-0">
+    <div className={`grid grid-cols-12 gap-0 ${className}`}>
       {showLabel && label && (
-        <label htmlFor={uniqueId} className="col-span-12">
+        <label htmlFor={uniqueId} className={`col-span-12 ${labelClassName}`}>
           {label}
           {showRequired && <span className="form-required">*</span>}
         </label>
@@ -195,7 +201,7 @@ export const FormInput = React.memo<FormInputProps>(({
               )}
 
               <InputText
-                className={`w-100 ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''}`}
+                className={`w-100 ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''} ${inputClassName}`}
                 value={field.value || ''}
                 onPaste={(e) => handlePaste(e, field)}
                 onChange={(e) => {
