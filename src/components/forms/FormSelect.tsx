@@ -22,6 +22,9 @@ interface FormSelectProps {
   feedback?: boolean;
   disabled?: boolean;
   optionDisabled?: string | null;
+  className?: string; // Container custom class
+  dropdownClassName?: string; // Dropdown element custom class
+  labelClassName?: string; // Label custom class
 }
 
 export const FormSelect: React.FC<FormSelectProps> = ({
@@ -35,6 +38,9 @@ export const FormSelect: React.FC<FormSelectProps> = ({
   showRightIcon = false,
   disabled = false,
   optionDisabled = null,
+  className = '',
+  dropdownClassName = '',
+  labelClassName = '',
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
@@ -55,26 +61,20 @@ export const FormSelect: React.FC<FormSelectProps> = ({
   const uniqueId = `${name}-${reactId}`;
 
   return (
-    <div className="grid grid-nogutter w-100">
+    <div className={`w-full ${className}`}>
       {showLabel && label && (
-        <label htmlFor={uniqueId} className="col-12">
+        <label htmlFor={uniqueId} className={`block mb-1 ${labelClassName}`}>
           {label}
           {showRequired && <span className="form-required">*</span>}
         </label>
       )}
 
-      <div className="col-12 input-container w-100">
+      <div className="w-full input-container">
         <Controller
           name={name}
           control={control}
           render={({ field, fieldState }) => (
-            <span className="p-input-icon-right w-100 flex">
-              {showRightIcon && (
-                <span className="p-inputgroup-addon">
-                  <i className="pi pi-user"></i>
-                </span>
-              )}
-
+            <div className="w-full">
               <Dropdown
                 id={field.name}
                 value={field.value || ''}
@@ -87,11 +87,12 @@ export const FormSelect: React.FC<FormSelectProps> = ({
                 optionLabel="label"
                 optionDisabled={optionDisabled ?? undefined}
                 placeholder={placeholder}
-                className={`acps-dropdown w-100 ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''}`}
+                className={`acps-dropdown w-full ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''} ${dropdownClassName}`}
                 name={uniqueId}
                 disabled={disabled}
+                style={{ width: '100%' }}
               />
-            </span>
+            </div>
           )}
         />
         {error && <FormError error={error} />}

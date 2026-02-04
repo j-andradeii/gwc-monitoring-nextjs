@@ -8080,6 +8080,65 @@
   box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.1);
 }
 
+/* Fix for PrimeReact Dropdown to match connect-input */
+.connect-select {
+  width: 100% !important;
+  padding: 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.connect-select .p-dropdown-label {
+  padding: 14px 16px !important;
+  font-size: 14px !important;
+  color: var(--text-primary) !important;
+}
+
+.connect-select .p-dropdown-label.p-placeholder {
+  color: #9CA3AF !important;
+}
+
+.connect-select .p-dropdown-trigger {
+  width: 3rem !important;
+  color: #6b7280 !important;
+}
+
+.connect-select:not(.p-disabled):hover {
+  border-color: var(--primary-gold-accent) !important;
+}
+
+.connect-select.p-focus {
+  border-color: var(--primary-gold-accent) !important;
+  box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.1) !important;
+}
+
+/* Dropdown panel styles for modal context */
+.connect-modal-content .p-dropdown-panel,
+.p-dropdown-panel {
+  z-index: 10001 !important;
+}
+
+.p-dropdown-panel .p-dropdown-items {
+  padding: 0.5rem 0 !important;
+}
+
+.p-dropdown-panel .p-dropdown-item {
+  padding: 0.75rem 1rem !important;
+  font-size: 14px !important;
+}
+
+.p-dropdown-panel .p-dropdown-item:hover {
+  background: rgba(212, 168, 75, 0.1) !important;
+}
+
+.p-dropdown-panel .p-dropdown-item.p-highlight {
+  background: var(--primary-gold-accent) !important;
+  color: white !important;
+}
+
 .connect-submit-btn {
   width: 100%;
   padding: 16px;
