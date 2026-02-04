@@ -138,8 +138,8 @@ export function ConnectFab() {
                     {/* Right Side - Form & Options */}
                     <div className="connect-modal-right">
                         <div className="mb-6 md:mb-8">
-                            <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-2 block">Connect With Us</span>
-                            <h3 className="text-2xl md:text-3xl font-bold text-navy-900 mb-4 md:mb-6 !mt-2" style={{ color: 'var(--color-navy)' }}>HOW CAN WE HELP?</h3>
+                            <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-1 block">Connect With Us</span>
+                            <h3 className="text-xl md:text-2xl font-bold text-navy-900 mb-2 md:mb-4 !mt-1" style={{ color: 'var(--color-navy)' }}>HOW CAN WE HELP?</h3>
 
 
                         </div>
@@ -157,45 +157,45 @@ export function ConnectFab() {
                             </div>
                         ) : (
                             <div>
-                                <div className="grid grid-cols-2 gap-4 mb-6 !mt-2">
+                                <div className="grid grid-cols-2 gap-3 mb-4 !mt-2">
                                     <div
-                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 text-center h-32 md:h-36 ${activeTab === 'prayer' ? 'border-yellow-500 bg-white shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
+                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-3 flex flex-col items-center justify-center gap-2 text-center h-24 md:h-28 ${activeTab === 'prayer' ? 'border-yellow-500 bg-yellow-50/30 shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
                                         onClick={() => handleTabChange('prayer')}
                                     >
                                         {activeTab === 'prayer' && (
                                             <div className="absolute top-2 right-2 text-yellow-500">
-                                                <i className="pi pi-check-circle lg:text-lg"></i>
+                                                <i className="pi pi-check-circle lg:text-md"></i>
                                             </div>
                                         )}
-                                        <div className={`w-12 h-12 flex items-center justify-center rounded-full transition-colors ${activeTab === 'prayer' ? 'bg-yellow-500 text-white shadow-sm' : 'bg-gray-100 text-gray-400'}`}>
-                                            <i className="pi pi-heart text-xl"></i>
+                                        <div className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${activeTab === 'prayer' ? 'bg-yellow-500 text-white shadow-sm' : 'bg-gray-100 text-gray-400'}`}>
+                                            <i className="pi pi-heart text-lg"></i>
                                         </div>
-                                        <span className={`font-bold text-xs md:text-sm uppercase tracking-wider leading-tight ${activeTab === 'prayer' ? 'text-navy-900' : 'text-gray-400'}`}>
+                                        <span className={`font-bold text-[10px] md:text-xs uppercase tracking-wider leading-tight ${activeTab === 'prayer' ? 'text-navy-900' : 'text-gray-400'}`}>
                                             Request<br className="md:hidden" /> Prayer
                                         </span>
                                     </div>
 
                                     <div
-                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 text-center h-32 md:h-36 ${activeTab === 'join' ? 'border-yellow-500 bg-white shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
+                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-3 flex flex-col items-center justify-center gap-2 text-center h-24 md:h-28 ${activeTab === 'join' ? 'border-yellow-500 bg-white shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
                                         onClick={() => handleTabChange('join')}
                                     >
                                         {activeTab === 'join' && (
                                             <div className="absolute top-2 right-2 text-yellow-500">
-                                                <i className="pi pi-check-circle lg:text-lg"></i>
+                                                <i className="pi pi-check-circle lg:text-md"></i>
                                             </div>
                                         )}
-                                        <div className={`w-12 h-12 flex items-center justify-center rounded-full transition-colors ${activeTab === 'join' ? 'bg-yellow-500 text-white shadow-sm' : 'bg-gray-100 text-gray-400'}`}>
-                                            <i className="pi pi-users text-xl"></i>
+                                        <div className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${activeTab === 'join' ? 'bg-yellow-500 text-white shadow-sm' : 'bg-gray-100 text-gray-400'}`}>
+                                            <i className="pi pi-users text-lg"></i>
                                         </div>
-                                        <span className={`font-bold text-xs md:text-sm uppercase tracking-wider leading-tight ${activeTab === 'join' ? 'text-navy-900' : 'text-gray-400'}`}>
+                                        <span className={`font-bold text-[10px] md:text-xs uppercase tracking-wider leading-tight ${activeTab === 'join' ? 'text-navy-900' : 'text-gray-400'}`}>
                                             Join A<br className="md:hidden" /> Group
                                         </span>
                                     </div>
                                 </div>
 
                                 <FormProvider {...methods}>
-                                    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 !mt-4">
+                                    <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 !mt-3">
                                             <FormInput
                                                 name="name"
                                                 label="Full Name"
