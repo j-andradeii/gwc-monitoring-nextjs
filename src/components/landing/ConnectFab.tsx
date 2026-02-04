@@ -25,10 +25,7 @@ export function ConnectFab() {
             name: '',
             email: '',
             phone: '',
-            // facebook: '', // Optional defaults
-            // instagram: '',
             message: '',
-            gender: '',
         },
     });
 
@@ -36,18 +33,27 @@ export function ConnectFab() {
 
     const handleTabChange = (tab: 'prayer' | 'join') => {
         setActiveTab(tab);
-        reset({
-            type: tab,
-            name: '',
-            email: '',
-            phone: '',
-            message: '',
-            gender: '',
-            address: '',
-            joinReason: '',
-            facebook: '',
-            instagram: ''
-        });
+        if (tab === 'prayer') {
+            reset({
+                type: 'prayer',
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+            });
+        } else {
+            reset({
+                type: 'join',
+                name: '',
+                email: '',
+                phone: '',
+                gender: '',
+                facebook: '',
+                instagram: '',
+                address: '',
+                joinReason: '',
+            });
+        }
         clearErrors();
     };
 
@@ -89,9 +95,6 @@ export function ConnectFab() {
                 email: '',
                 phone: '',
                 message: '',
-                gender: '',
-                facebook: '',
-                instagram: ''
             });
             clearErrors();
         }
@@ -220,46 +223,47 @@ export function ConnectFab() {
                                                 labelClassName="font-bold text-sm mb-1"
                                             />
 
-                                            <FormSelect
-                                                name="gender"
-                                                label="Gender"
-                                                placeholder="Select Gender"
-                                                options={[
-                                                    { label: 'Male', value: 'Male' },
-                                                    { label: 'Female', value: 'Female' }
-                                                ]}
-                                                showRequired
-                                                dropdownClassName="connect-select"
-                                                labelClassName="font-bold text-sm mb-1"
-                                            />
-
-                                            <FormInput
-                                                name="facebook"
-                                                label="Facebook Link/Handle"
-                                                placeholder="facebook.com/johndoe"
-                                                inputClassName="connect-input"
-                                                labelClassName="font-bold text-sm mb-1"
-                                            />
-
-                                            <FormInput
-                                                name="instagram"
-                                                label="Instagram Link/Handle"
-                                                placeholder="@johndoe"
-                                                inputClassName="connect-input"
-                                                labelClassName="font-bold text-sm mb-1"
-                                            />
-
                                             {activeTab === 'join' && (
-                                                <div className="md:col-span-2">
-                                                    <FormInput
-                                                        name="address"
-                                                        label="Address"
-                                                        placeholder="123 Main St, City, Country"
+                                                <>
+                                                    <FormSelect
+                                                        name="gender"
+                                                        label="Gender"
+                                                        placeholder="Select Gender"
+                                                        options={[
+                                                            { label: 'Male', value: 'Male' },
+                                                            { label: 'Female', value: 'Female' }
+                                                        ]}
                                                         showRequired
+                                                        dropdownClassName="connect-select"
+                                                        labelClassName="font-bold text-sm mb-1"
+                                                    />
+
+                                                    <FormInput
+                                                        name="facebook"
+                                                        label="Facebook Link/Handle"
+                                                        placeholder="facebook.com/johndoe"
                                                         inputClassName="connect-input"
                                                         labelClassName="font-bold text-sm mb-1"
                                                     />
-                                                </div>
+
+                                                    <FormInput
+                                                        name="instagram"
+                                                        label="Instagram Link/Handle"
+                                                        placeholder="@johndoe"
+                                                        inputClassName="connect-input"
+                                                        labelClassName="font-bold text-sm mb-1"
+                                                    />
+                                                    <div className="md:col-span-2">
+                                                        <FormInput
+                                                            name="address"
+                                                            label="Address"
+                                                            placeholder="123 Main St, City, Country"
+                                                            showRequired
+                                                            inputClassName="connect-input"
+                                                            labelClassName="font-bold text-sm mb-1"
+                                                        />
+                                                    </div>
+                                                </>
                                             )}
                                         </div>
 
