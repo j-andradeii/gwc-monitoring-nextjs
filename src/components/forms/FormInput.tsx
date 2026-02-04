@@ -14,6 +14,18 @@ interface InputProcessingOptions {
   enableCreditCardInputFormat?: boolean;
 }
 
+const getNestedError = (errors: Record<string, unknown>, path: string): string | undefined => {
+  const parts = path.split('.');
+  let current: Record<string, unknown> = errors;
+
+  for (const part of parts) {
+    if (!current[part]) return undefined;
+    current = current[part] as Record<string, unknown>;
+  }
+
+  return (current as { message?: string }).message;
+};
+
 /**
  * Validates if the input contains only integers
  * @returns true if valid, false if invalid
@@ -117,7 +129,7 @@ interface FormInputProps {
   enableCreditCardInputFormat?: boolean;
 }
 
-export const FormInput: React.FC<FormInputProps> = ({
+export const FormInput = React.memo<FormInputProps>(({
   name,
   label,
   placeholder,
@@ -133,17 +145,7 @@ export const FormInput: React.FC<FormInputProps> = ({
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
-  const getNestedError = (errors: Record<string, unknown>, path: string): string | undefined => {
-    const parts = path.split('.');
-    let current: Record<string, unknown> = errors;
 
-    for (const part of parts) {
-      if (!current[part]) return undefined;
-      current = current[part] as Record<string, unknown>;
-    }
-
-    return (current as { message?: string }).message;
-  };
 
   const error = getNestedError(errors, name);
   const reactId = useId();
@@ -223,6 +225,8 @@ export const FormInput: React.FC<FormInputProps> = ({
       </div>
     </div>
   );
-};
+});
+
+FormInput.displayName = 'FormInput';
 
 export default FormInput;
