@@ -16,7 +16,7 @@ export function ConnectFab() {
 
     const methods = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
-        mode: 'onChange', // Enable real-time validation as user types
+        mode: 'onTouched', // Optimize performance: validate on blur instead of every keystroke
         defaultValues: {
             name: '',
             email: '',

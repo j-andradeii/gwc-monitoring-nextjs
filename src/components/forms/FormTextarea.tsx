@@ -21,7 +21,19 @@ interface FormTextareaProps {
   showCount?: boolean;
 }
 
-export const FormTextarea: React.FC<FormTextareaProps> = ({
+const getNestedError = (errors: Record<string, unknown>, path: string): string | undefined => {
+  const parts = path.split('.');
+  let current: Record<string, unknown> = errors;
+
+  for (const part of parts) {
+    if (!current[part]) return undefined;
+    current = current[part] as Record<string, unknown>;
+  }
+
+  return (current as { message?: string }).message;
+};
+
+export const FormTextarea = React.memo<FormTextareaProps>(({
   name,
   label,
   placeholder,
@@ -37,17 +49,7 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
-  const getNestedError = (errors: Record<string, unknown>, path: string): string | undefined => {
-    const parts = path.split('.');
-    let current: Record<string, unknown> = errors;
 
-    for (const part of parts) {
-      if (!current[part]) return undefined;
-      current = current[part] as Record<string, unknown>;
-    }
-
-    return (current as { message?: string }).message;
-  };
 
   const error = getNestedError(errors, name);
   const reactId = useId();
@@ -102,6 +104,8 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
       </div>
     </div>
   );
-};
+});
+
+FormTextarea.displayName = 'FormTextarea';
 
 export default FormTextarea;
