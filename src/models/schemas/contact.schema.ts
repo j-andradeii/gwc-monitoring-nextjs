@@ -4,9 +4,6 @@ const baseSchema = z.object({
     name: z.string().min(1, 'Name is required'),
     email: z.string().email('Invalid email address'),
     phone: z.string().min(1, 'Phone number is required'),
-    facebook: z.string().optional(),
-    instagram: z.string().optional(),
-    gender: z.string().min(1, 'Gender is required'),
 });
 
 const prayerSchema = baseSchema.extend({
@@ -16,6 +13,9 @@ const prayerSchema = baseSchema.extend({
 
 const joinSchema = baseSchema.extend({
     type: z.literal('join'),
+    facebook: z.string().optional(),
+    instagram: z.string().optional(),
+    gender: z.string().min(1, 'Gender is required'),
     address: z.string().min(1, 'Address is required'),
     joinReason: z.string().min(1, 'Please tell us why you want to join'),
 });

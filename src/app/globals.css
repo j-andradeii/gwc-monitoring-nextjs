@@ -72,6 +72,8 @@
   --color-burgundy: #6b2c3a;
   --color-cream: #f5f0e6;
   --color-ivory: #faf8f3;
+  --velvet: #DA4453;
+
 
   /* High-contrast utilities (Favor Church inspired) */
   --color-contrast-dark: #000000;
@@ -251,7 +253,7 @@ body {
 .p-invalid,
 .p-invalid.p-inputtext,
 .p-invalid .p-inputtext {
-  @apply border-error;
+  border: 1px solid var(--velvet);
 }
 
 /* Data Table */
