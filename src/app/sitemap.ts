@@ -17,13 +17,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/sermons`,
+      url: `${siteUrl}/sermon-notes`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${siteUrl}/ministries`,
+      url: `${siteUrl}/ministries/community`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/ministries/serve`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -35,10 +41,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/contact`,
+      url: `${siteUrl}/give/ways-to-give`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.7,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/give/gateway-projects`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
     },
   ];
 }
