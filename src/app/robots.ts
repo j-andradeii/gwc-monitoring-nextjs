@@ -4,13 +4,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/admin/', '/dashboard/', '/private/'],
-      },
-    ],
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/api/', '/admin/', '/dashboard/', '/private/'],
+    },
     sitemap: `${siteUrl}/sitemap.xml`,
   };
 }
