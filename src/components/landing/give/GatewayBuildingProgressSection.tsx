@@ -8,7 +8,13 @@ export const GatewayBuildingProgressSection: React.FC = () => {
   const remainingAmount = gatewayProjectsData.goalAmount - gatewayProjectsData.currentAmount;
 
   return (
-    <section className="landing-section building-progress-section">
+    <section
+      className="landing-section building-progress-section"
+      style={{
+        backgroundImage: "url('https://gtxngthtpisigkys.public.blob.vercel-storage.com/center.jpg')",
+      }}
+    >
+      <div className="building-progress-overlay" />
       <div className="landing-container">
         {/* Section Header */}
         <div className="section-header-center animate-on-scroll">

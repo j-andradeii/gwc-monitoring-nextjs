@@ -5672,18 +5672,48 @@
    =========================================== */
 .building-progress-section {
   padding: 80px 0;
-  background-color: #fff;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Dark overlay for readability */
+.building-progress-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(6, 6, 6, 0.7) 100%);
+  z-index: 1;
+}
+
+.building-progress-section .landing-container {
+  position: relative;
+  z-index: 2;
 }
 
 .building-progress-section .section-header-center {
   text-align: center;
   margin-bottom: 40px;
+
+  p {
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+.building-progress-section .section-header-center .section-label {
+  color: var(--primary-gold-accent, #d4a84b);
+}
+
+.building-progress-section .section-header-center .section-label::before {
+  background: var(--primary-gold-accent, #d4a84b);
 }
 
 .building-progress-section .section-header-center h2 {
   font-size: 36px;
   font-weight: 800;
-  color: var(--color-navy, #1a2744);
+  color: #ffffff;
   margin: 12px 0;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -5691,7 +5721,7 @@
 
 .building-progress-section .section-header-center p {
   font-size: 16px;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.7);
   max-width: 500px;
   margin: 0 auto;
   line-height: 1.6;
@@ -5904,7 +5934,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--color-primary-dark, #b8923f);
+  color: var(--primary-gold-accent, #d4a84b);
   margin: 0 0 20px 0;
 }
 
@@ -5921,7 +5951,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #e5e7eb;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .timeline-step {
@@ -6040,6 +6070,8 @@
 @media (max-width: 768px) {
   .building-progress-section {
     padding: 60px 0;
+    background-attachment: scroll;
+    /* Disable parallax on mobile for performance */
   }
 
   .building-progress-section .section-header-center h2 {
