@@ -7,9 +7,9 @@ export const AriseAndBuildSection: React.FC = () => {
   const router = useRouter()
   return (
     <section
-      className="arise-build-section animate-on-scroll"
+      className="arise-build-section"
       style={{
-        backgroundImage: "url('/assets/images/community.jpg')",
+        backgroundImage: "url('https://gtxngthtpisigkys.public.blob.vercel-storage.com/center.jpg')",
       }}
     >
       <div className="arise-build-overlay"></div>
