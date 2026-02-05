@@ -1,2 +1,10 @@
 export { GiveHero } from './GiveHero';
 export { GiveTabs } from './GiveTabs';
+export { GiveWhySection } from './GiveWhySection';
+export { GiveChannelsSection } from './GiveChannelsSection';
+export { GatewayProjectsSection } from './GatewayProjectsSection';
+export { GatewayProgressSection } from './GatewayProgressSection';
+export { GatewayMilestonesSection } from './GatewayMilestonesSection';
+export { GatewayBuildingProgressSection } from './GatewayBuildingProgressSection';
+export { GatewayGiveSection } from './GatewayGiveSection';
+export { ProjectGallery } from './ProjectGallery';

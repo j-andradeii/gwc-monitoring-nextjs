@@ -8,7 +8,9 @@ import { usePathname } from 'next/navigation';
 export const LandingHeader: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMinistriesOpen, setIsMinistriesOpen] = useState(false);
+  const [isGiveOpen, setIsGiveOpen] = useState(false);
   const ministriesRef = useRef<HTMLLIElement>(null);
+  const giveRef = useRef<HTMLLIElement>(null);
   const pathname = usePathname();
 
   // Close dropdown when clicking outside
@@ -16,6 +18,9 @@ export const LandingHeader: React.FC = () => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ministriesRef.current && !ministriesRef.current.contains(event.target as Node)) {
         setIsMinistriesOpen(false);
+      }
+      if (giveRef.current && !giveRef.current.contains(event.target as Node)) {
+        setIsGiveOpen(false);
       }
     };
 
@@ -122,10 +127,41 @@ export const LandingHeader: React.FC = () => {
                 Events
               </Link>
             </li>
-            <li>
-              <Link href="/give" className={isActive('/give') ? 'active' : ''} onClick={closeMobileMenu}>
+            <li
+              ref={giveRef}
+              className={`nav-dropdown ${isGiveOpen ? 'dropdown-open' : ''}`}
+            >
+              <button
+                className={`nav-dropdown-trigger ${pathname.startsWith('/give') ? 'active' : ''}`}
+                onClick={() => setIsGiveOpen(!isGiveOpen)}
+                aria-expanded={isGiveOpen}
+                aria-haspopup="true"
+              >
                 Give
-              </Link>
+                <i className={`pi pi-chevron-down dropdown-icon ${isGiveOpen ? 'rotated' : ''}`}></i>
+              </button>
+              <ul className="nav-dropdown-menu give-dropdown">
+                <li>
+                  <Link
+                    href="/give/ways-to-give"
+                    className={pathname === '/give/ways-to-give' ? 'active' : ''}
+                    onClick={() => { closeMobileMenu(); setIsGiveOpen(false); }}
+                  >
+                    <i className="pi pi-wallet"></i>
+                    Ways to Give
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/give/gateway-projects"
+                    className={pathname === '/give/gateway-projects' ? 'active' : ''}
+                    onClick={() => { closeMobileMenu(); setIsGiveOpen(false); }}
+                  >
+                    <i className="pi pi-building"></i>
+                    Gateway Projects
+                  </Link>
+                </li>
+              </ul>
             </li>
           </ul>
 
