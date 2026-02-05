@@ -18,8 +18,7 @@ import {
 
 import {
   GatewayProjectsSection,
-  GatewayProgressSection,
-  GatewayMilestonesSection,
+  GatewayBuildingProgressSection,
   GatewayGiveSection,
 } from '@/components/landing/give';
 
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/give/gateway-projects`,
     images: [
       {
-        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
+        url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/golden_peak.jpg',
         width: 2048,
         height: 715,
         alt: 'Gateway Church Family',
@@ -81,7 +80,7 @@ export default function GatewayProjectsPage() {
             badge="Gateway Projects"
             title="Building for the Future"
             subtitle="Ministry Center Improvement Project"
-            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/give.jpg"
+            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/golden_peak.jpg"
             className="give-hero gateway-projects-hero"
             serviceInfo={[
               { icon: 'pi pi-building', text: 'Ministry Center' },
@@ -92,13 +91,10 @@ export default function GatewayProjectsPage() {
           {/* Section 1: Gateway Projects Overview (Cream background) */}
           <GatewayProjectsSection />
 
-          {/* Section 2: Project Progress (Dark/Navy background) */}
-          <GatewayProgressSection />
+          {/* Section 2: Building Progress with Milestones (Dark/Navy background) */}
+          <GatewayBuildingProgressSection />
 
-          {/* Section 3: Milestones (White background) */}
-          <GatewayMilestonesSection />
-
-          {/* Section 4: Give to Gateway Projects (Cream background) */}
+          {/* Section 3: Give to Gateway Projects (Cream background) */}
           <GatewayGiveSection />
 
           {/* Contact Section */}
