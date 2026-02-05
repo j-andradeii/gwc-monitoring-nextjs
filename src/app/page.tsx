@@ -152,8 +152,8 @@ export default function LandingPage() {
           <ChurchServiceSection />
           <SermonsSection />
           <MinistriesSection />
-          <EventsSection />
           <AriseAndBuildSection />
+          <EventsSection />
           <ContactSection />
         </ScrollAnimationProvider>
       </main>
