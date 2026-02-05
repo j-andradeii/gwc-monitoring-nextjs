@@ -199,7 +199,6 @@ export function ConnectFab() {
                                             <FormInput
                                                 name="name"
                                                 label="Full Name"
-                                                placeholder="JOHN DOE"
                                                 showRequired
                                                 inputClassName="connect-input"
                                                 labelClassName="font-bold text-sm mb-1"
@@ -208,7 +207,6 @@ export function ConnectFab() {
                                             <FormInput
                                                 name="email"
                                                 label="Email Address"
-                                                placeholder="JOHN@EXAMPLE.COM"
                                                 showRequired
                                                 inputClassName="connect-input"
                                                 labelClassName="font-bold text-sm mb-1"
@@ -243,7 +241,6 @@ export function ConnectFab() {
                                                     <FormInput
                                                         name="facebook"
                                                         label="Facebook Link/Handle"
-                                                        placeholder="facebook.com/johndoe"
                                                         inputClassName="connect-input"
                                                         labelClassName="font-bold text-sm mb-1"
                                                     />
@@ -251,7 +248,6 @@ export function ConnectFab() {
                                                     <FormInput
                                                         name="instagram"
                                                         label="Instagram Link/Handle"
-                                                        placeholder="@johndoe"
                                                         inputClassName="connect-input"
                                                         labelClassName="font-bold text-sm mb-1"
                                                     />

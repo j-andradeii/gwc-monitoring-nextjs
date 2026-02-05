@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/give/gateway-projects`,
     images: [
       {
-        url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/golden_peak.jpg',
+        url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg',
         width: 2048,
         height: 715,
         alt: 'Gateway Church Family',
@@ -80,7 +80,7 @@ export default function GatewayProjectsPage() {
             badge="Gateway Projects"
             title="Building for the Future"
             subtitle="Ministry Center Improvement Project"
-            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/golden_peak.jpg"
+            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg"
             className="give-hero gateway-projects-hero"
             serviceInfo={[
               { icon: 'pi pi-building', text: 'Ministry Center' },

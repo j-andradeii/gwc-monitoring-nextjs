@@ -20,7 +20,7 @@ export const GatewayBuildingProgressSection: React.FC = () => {
         <div className="section-header-center animate-on-scroll">
           <span className="section-label">Roadmap</span>
           <h2>Project Milestones</h2>
-          <p>Track our journey to completing the ministry center</p>
+          <p className="building-progress-section-description">Track our journey to completing the ministry center</p>
         </div>
 
         <div className="building-progress-grid">
