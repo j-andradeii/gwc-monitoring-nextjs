@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { createPortal } from 'react-dom';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 interface GalleryImage {
@@ -80,7 +81,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
             </div>
 
             {/* Full Screen Zoom Modal */}
-            {previewIndex !== null && (
+            {previewIndex !== null && createPortal(
                 <div
                     style={{
                         position: 'fixed',
@@ -250,8 +251,8 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                                     src={images[previewIndex].src}
                                     alt={images[previewIndex].alt}
                                     style={{
-                                        maxWidth: '100%',
-                                        maxHeight: '100%',
+                                        width: '100%',
+                                        height: '100%',
                                         objectFit: 'contain',
                                         userSelect: 'none'
                                     }}
@@ -260,7 +261,8 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                             </TransformComponent>
                         </TransformWrapper>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </>
     );
