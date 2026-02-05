@@ -645,6 +645,11 @@
   opacity: 1;
 }
 
+/* Give dropdown - wider */
+.nav-dropdown-menu.give-dropdown {
+  min-width: 220px;
+}
+
 .header-actions .landing-btn {
   padding: 10px 22px;
   font-size: 12px;
@@ -5299,6 +5304,453 @@
   background: linear-gradient(180deg, rgba(30, 58, 95, 0.2) 0%, rgba(26, 39, 68, 0.6) 100%) !important;
 }
 
+/* ===========================================
+   GIVE PAGE - SECTIONAL LAYOUT STYLES
+   =========================================== */
+
+/* Why We Give Section - Cream Background */
+.give-why-section {
+  padding: 80px 0;
+  background-color: var(--color-cream, #f5f0e6);
+}
+
+.give-why-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.give-why-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
+/* Giving Channels Section - White Background */
+.give-channels-section {
+  padding: 80px 0;
+  background: var(--color-navy, #1a2744);
+  position: relative;
+  overflow: hidden;
+}
+
+.give-channels-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(212, 168, 75, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+.give-channels-section .landing-container {
+  position: relative;
+  z-index: 1;
+}
+
+.give-channels-section .section-label {
+  color: var(--primary-gold-accent, #d4a84b) !important;
+}
+
+.give-channels-section .section-header-center h2 {
+  color: #ffffff !important;
+}
+
+.give-channels-section .section-header-center p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Gateway Projects Overview Section - Cream Background */
+.gateway-projects-section {
+  padding: 80px 0;
+  background-color: var(--color-cream, #f5f0e6);
+}
+
+.gateway-projects-section .project-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gateway-projects-section .project-scripture {
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.gateway-projects-section .project-gallery {
+  margin-top: 50px;
+}
+
+.gateway-projects-section .project-gallery h3 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+}
+
+/* Gateway Progress Section - Dark Navy Background */
+.gateway-progress-section {
+  padding: 80px 0;
+  background-color: var(--color-navy, #1a2744);
+  color: #ffffff;
+}
+
+.gateway-progress-section.section-dark {
+  background-color: var(--color-navy, #1a2744);
+}
+
+.gateway-progress-section .progress-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.gateway-progress-section .progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.gateway-progress-section .progress-headline h4 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.gateway-progress-section .progress-headline p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.gateway-progress-section .progress-percentage-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #d4a332 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(212, 168, 75, 0.35);
+}
+
+.gateway-progress-section .percentage-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.gateway-progress-section .percentage-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gateway-progress-section .progress-bar-wrapper {
+  margin-bottom: 40px;
+}
+
+.gateway-progress-section .progress-bar {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gateway-progress-section .progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-gold-accent), #f0c14b);
+  border-radius: 10px;
+  position: relative;
+  transition: width 1s ease-out;
+}
+
+.gateway-progress-section .progress-bar-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.gateway-progress-section .progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gateway-progress-section .progress-stat-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.gateway-progress-section .progress-stat-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.gateway-progress-section .stat-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gateway-progress-section .stat-icon i {
+  font-size: 22px;
+  color: var(--primary-gold-accent);
+}
+
+.gateway-progress-section .stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.gateway-progress-section .stat-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 4px;
+}
+
+.gateway-progress-section .stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.gateway-progress-section .stat-value.current {
+  color: var(--primary-gold-accent);
+}
+
+/* Gateway Milestones Section - White Background */
+.gateway-milestones-section {
+  padding: 80px 0;
+  background-color: var(--color-surface, #ffffff);
+}
+
+.gateway-milestones-section.section-white {
+  background-color: var(--color-surface, #ffffff);
+}
+
+.gateway-milestones-section .milestones-stepper {
+  max-width: 600px;
+  margin: 50px auto 0;
+}
+
+.gateway-milestones-section .milestone-step {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  padding-bottom: 30px;
+}
+
+.gateway-milestones-section .milestone-step:last-child {
+  padding-bottom: 0;
+}
+
+.gateway-milestones-section .milestone-indicator {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #6b7280;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.gateway-milestones-section .milestone-step.completed .milestone-indicator {
+  background: linear-gradient(135deg, var(--primary-gold-accent), #d4a332);
+  color: #ffffff;
+}
+
+.gateway-milestones-section .milestone-connector-vertical {
+  position: absolute;
+  left: 21px;
+  top: 44px;
+  width: 2px;
+  height: calc(100% - 44px);
+  background: #e5e7eb;
+}
+
+.gateway-milestones-section .milestone-connector-vertical.completed {
+  background: var(--primary-gold-accent);
+}
+
+.gateway-milestones-section .milestone-content-card {
+  flex: 1;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.gateway-milestones-section .milestone-step.completed .milestone-content-card {
+  background: rgba(212, 168, 75, 0.05);
+  border-color: rgba(212, 168, 75, 0.2);
+}
+
+.gateway-milestones-section .milestone-phase {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-gold-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gateway-milestones-section .milestone-content-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 6px 0;
+}
+
+.gateway-milestones-section .milestone-amount {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.gateway-milestones-section .milestone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 4px 10px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Gateway Give Section - Cream Background */
+.gateway-give-section {
+  padding: 80px 0;
+  background-color: var(--color-cream, #f5f0e6);
+}
+
+.gateway-give-section .gateway-project-card-wrapper {
+  max-width: 700px;
+  margin: 50px auto 0;
+}
+
+/* Section Header Center - Unified */
+.give-why-section .section-header-center,
+.give-channels-section .section-header-center,
+.gateway-projects-section .section-header-center,
+.gateway-milestones-section .section-header-center,
+.gateway-give-section .section-header-center {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.give-why-section .section-header-center h2,
+.give-channels-section .section-header-center h2,
+.gateway-projects-section .section-header-center h2,
+.gateway-milestones-section .section-header-center h2,
+.gateway-give-section .section-header-center h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1a2744;
+  margin: 12px 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.give-why-section .section-header-center p,
+.give-channels-section .section-header-center p,
+.gateway-projects-section .section-header-center p,
+.gateway-milestones-section .section-header-center p,
+.gateway-give-section .section-header-center p {
+  font-size: 16px;
+  color: #4b5563;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Responsive Styles for Give Sections */
+@media (max-width: 768px) {
+
+  .give-why-section,
+  .give-channels-section,
+  .gateway-projects-section,
+  .gateway-progress-section,
+  .gateway-milestones-section,
+  .gateway-give-section {
+    padding: 60px 0;
+  }
+
+  .give-why-section .section-header-center h2,
+  .give-channels-section .section-header-center h2,
+  .gateway-projects-section .section-header-center h2,
+  .gateway-milestones-section .section-header-center h2,
+  .gateway-give-section .section-header-center h2 {
+    font-size: 28px;
+  }
+
+  .gateway-progress-section .progress-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .gateway-progress-section .progress-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .gateway-progress-section .progress-headline h4 {
+    font-size: 22px;
+  }
+
+  .gateway-milestones-section .milestones-stepper {
+    padding: 0 20px;
+  }
+}
+
 /* Give Tabs Section */
 .give-tabs-section {
   padding: 80px 0;
@@ -5999,15 +6451,16 @@
   border-radius: 20px !important;
   padding: 0 !important;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   position: relative;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .compact-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), 0 0 0 3px rgba(212, 168, 75, 0.1) !important;
-  border-color: rgba(212, 168, 75, 0.2) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(212, 168, 75, 0.4) !important;
+  border-color: rgba(212, 168, 75, 0.5) !important;
 }
 
 /* Card Top Accent Bar */
@@ -6058,13 +6511,14 @@
 .channel-title-wrap h3 {
   font-size: 18px;
   font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 2px 0;
+  color: #1a2744;
+  margin: 0 0 4px 0;
 }
 
 .channel-subtitle {
-  font-size: 12px;
-  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -6073,38 +6527,40 @@
 
 /* Compact Account Box */
 .compact-account-box {
-  margin: 0 24px 16px;
-  padding: 14px 16px;
-  background: linear-gradient(135deg, rgba(30, 58, 95, 0.04) 0%, rgba(30, 58, 95, 0.08) 100%);
+  margin: 0 20px 16px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   text-align: center;
 }
 
 .account-label {
   display: block;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-secondary);
-  margin-bottom: 6px;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  margin-bottom: 8px;
 }
 
 .account-value {
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--color-navy);
-  letter-spacing: 0.03em;
+  color: #1a2744;
+  letter-spacing: 0.05em;
 }
 
 /* Compact Instructions (Collapsible) */
 .compact-instructions {
-  padding: 0 24px 16px;
+  padding: 0 20px 16px;
 }
 
 .compact-instructions details {
-  background: rgba(0, 0, 0, 0.02);
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -6117,7 +6573,7 @@
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #64748b;
   list-style: none;
   transition: all 0.2s ease;
 }
@@ -6127,17 +6583,19 @@
 }
 
 .compact-instructions summary:hover {
-  background: rgba(0, 0, 0, 0.03);
-  color: var(--color-navy);
+  background: #f1f5f9;
+  color: #1a2744;
 }
 
 .compact-instructions summary i {
   font-size: 14px;
+  color: #d4a84b;
 }
 
 .compact-instructions summary .chevron {
   margin-left: auto;
   transition: transform 0.3s ease;
+  color: #94a3b8;
 }
 
 .compact-instructions details[open] summary .chevron {
@@ -6147,14 +6605,14 @@
 .compact-instructions ol {
   margin: 0;
   padding: 12px 16px 16px 32px;
-  background: rgba(0, 0, 0, 0.01);
+  background: #ffffff;
 }
 
 .compact-instructions li {
-  font-size: 12px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  padding: 3px 0;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.8;
+  padding: 4px 0;
 }
 
 /* Compact QR Placeholder */
@@ -6164,15 +6622,16 @@
   justify-content: center;
   gap: 8px;
   padding: 14px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
-  border-top: 1px dashed rgba(0, 0, 0, 0.08);
-  color: #6b7280;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  color: #94a3b8;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .compact-qr i {
-  font-size: 16px;
+  font-size: 18px;
+  color: #cbd5e1;
 }
 
 /* Featured Compact Card (Gateway Projects) */
@@ -6343,8 +6802,13 @@
 }
 
 .compact-account-box.copyable:hover {
-  background: linear-gradient(135deg, rgba(30, 58, 95, 0.08) 0%, rgba(30, 58, 95, 0.12) 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+  border-color: rgba(59, 130, 246, 0.2);
   transform: scale(1.02);
+}
+
+.compact-account-box.copyable:hover .copy-indicator {
+  color: #3b82f6;
 }
 
 .compact-account-box.copyable:active {
@@ -6352,7 +6816,8 @@
 }
 
 .compact-account-box.copied {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.18) 100%) !important;
+  background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%) !important;
+  border-color: rgba(34, 197, 94, 0.3) !important;
 }
 
 .account-value-row {
@@ -6365,9 +6830,10 @@
 .copy-indicator {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 500;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
   color: var(--text-secondary);
   opacity: 0.7;
   transition: all 0.2s ease;

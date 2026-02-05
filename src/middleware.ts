@@ -47,9 +47,10 @@ const matchesRoute = (path: string, routes: string[]): boolean => {
 
 /**
  * Route redirects - instant redirects at the edge level
+ * Note: /give no longer redirects since we removed tabs and use sectional layout
  */
 const ROUTE_REDIRECTS: Record<string, string> = {
-  '/give': '/give/ways-to-give',
+  // Empty - no redirects needed currently
 };
 
 export function middleware(request: NextRequest) {
