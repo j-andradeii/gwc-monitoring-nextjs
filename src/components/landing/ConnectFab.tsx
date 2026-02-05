@@ -19,7 +19,7 @@ export function ConnectFab() {
 
     const methods = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
-        mode: 'onTouched',
+        mode: 'onChange',
         defaultValues: {
             type: 'prayer',
             name: '',
@@ -159,7 +159,7 @@ export function ConnectFab() {
                             <div>
                                 <div className="grid grid-cols-2 gap-3 mb-4 !mt-2">
                                     <div
-                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-3 flex flex-col items-center justify-center gap-2 text-center h-24 md:h-28 ${activeTab === 'prayer' ? 'border-yellow-500 bg-yellow-50/30 shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
+                                        className={`relative cursor-pointer transition-all duration-300 border-2 rounded-2xl p-3 flex flex-col items-center justify-center gap-2 text-center h-24 md:h-28 ${activeTab === 'prayer' ? 'border-yellow-500 bg-white shadow-md' : 'border-gray-100 bg-white hover:border-yellow-200 hover:shadow-sm'}`}
                                         onClick={() => handleTabChange('prayer')}
                                     >
                                         {activeTab === 'prayer' && (
