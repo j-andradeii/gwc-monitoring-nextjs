@@ -102,7 +102,7 @@ export async function POST(request: Request) {
 
         return NextResponse.json({
             ...result,
-            message: 'Booking inquiry received! We will contact you shortly.',
+            message: 'Inquiry received! We will contact you shortly.',
         });
     } catch (error) {
         console.error('Booking submission error:', error);
