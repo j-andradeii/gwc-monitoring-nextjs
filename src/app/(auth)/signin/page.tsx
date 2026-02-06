@@ -28,7 +28,12 @@ function SigninForm() {
   const { login, isLoading } = useAuth();
   const [loginError, setLoginError] = useState<string | null>(null);
 
-  // Redirect if already authenticated
+
+  /**
+   * SUBSCRIBES TO AUTH STATE CHANGES
+   * Redirects to dashboard if already authenticated
+   * WILL CHANGE THIS TO THE TRADITIONAL API EVENT CALLBACK
+   */
   useRedirectIfAuthenticated();
 
   const returnUrl = searchParams.get('returnUrl') || ROUTES.DASHBOARD;
