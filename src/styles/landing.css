@@ -3225,7 +3225,15 @@
   color: var(--text-primary);
   transition: border-color 0.25s ease;
   font-family: inherit;
+  border-radius: 0 !important;
   outline: none;
+}
+
+.input-group input.p-invalid,
+.input-group textarea.p-invalid {
+  border: none !important;
+  border-bottom: 1px solid var(--velvet, #ef4444) !important;
+  box-shadow: none !important;
 }
 
 .input-group textarea {
@@ -3245,14 +3253,17 @@
 
 .input-group input:focus,
 .input-group textarea:focus {
-  border-color: var(--color-navy);
+  border: none;
+  box-shadow: none;
+  border-bottom: 2px solid var(--color-navy);
+  border-radius: 0;
 }
 
 .input-group input:focus+label,
 .input-group input:not(:placeholder-shown)+label,
 .input-group textarea:focus+label,
 .input-group textarea:not(:placeholder-shown)+label {
-  top: -6px;
+  top: -8px;
   font-size: 11px;
   color: var(--color-navy);
   font-weight: 600;

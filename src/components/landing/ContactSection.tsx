@@ -12,6 +12,7 @@ export const ContactSection: React.FC = () => {
 
   const methods = useForm<SimpleContactFormData>({
     resolver: zodResolver(simpleContactSchema),
+    mode: 'onChange',
     defaultValues: {
       name: '',
       email: '',

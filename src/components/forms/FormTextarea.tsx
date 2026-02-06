@@ -104,15 +104,16 @@ export const FormTextarea = React.memo<FormTextareaProps>(({
                     </small>
                   </div>
                 )}
+
+                {isFloating && label && (
+                  <label htmlFor={uniqueId} className={labelClassName}>
+                    {label}
+                  </label>
+                )}
               </>
             );
           }}
         />
-        {isFloating && label && (
-          <label htmlFor={uniqueId} className={labelClassName}>
-            {label}
-          </label>
-        )}
         {error && <FormError error={error} />}
       </div>
     </div>

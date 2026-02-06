@@ -195,7 +195,7 @@ export const FormInput = React.memo<FormInputProps>(({
           name={name}
           control={control}
           render={({ field, fieldState }) => (
-            <span className="p-input-icon-right w-100 flex">
+            <span className="p-input-icon-right w-100 flex relative">
               {showRightIcon && (
                 <span className="p-inputgroup-addon">
                   <i className="pi pi-user"></i>
@@ -226,14 +226,14 @@ export const FormInput = React.memo<FormInputProps>(({
                 name={uniqueId}
                 autoComplete="off"
               />
+              {isFloating && label && (
+                <label htmlFor={uniqueId} className={labelClassName}>
+                  {label}
+                </label>
+              )}
             </span>
           )}
         />
-        {isFloating && label && (
-          <label htmlFor={uniqueId} className={labelClassName}>
-            {label}
-          </label>
-        )}
         {error && <FormError error={error} />}
       </div>
     </div>
