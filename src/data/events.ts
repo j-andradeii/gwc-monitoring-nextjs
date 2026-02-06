@@ -62,10 +62,16 @@ export const events: Event[] = [
     date: 'Feb 07, 2026',
     displayDate: 'Feb 07',
     day: 'Saturday',
-    time: '4:00 PM',
+    time: '3:00 PM',
     location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'A Christ-centered community for young professionals, entrepreneurs, and families growing together in faith and purpose.',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/mrkplc.jpg',
+    description: `“Love is patient, love is kind.”
+— 1 Corinthians 13:4
+
+You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering—together, 
+let’s discover what it truly means to wait, trust, and honor love the way God designed it.
+
+Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP
