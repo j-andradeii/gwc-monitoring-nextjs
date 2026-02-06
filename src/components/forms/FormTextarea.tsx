@@ -22,6 +22,7 @@ interface FormTextareaProps {
   className?: string;
   textareaClassName?: string;
   labelClassName?: string;
+  isFloating?: boolean;
 }
 
 const getNestedError = (errors: Record<string, unknown>, path: string): string | undefined => {
@@ -52,6 +53,7 @@ export const FormTextarea = React.memo<FormTextareaProps>(({
   className = '',
   textareaClassName = '',
   labelClassName = '',
+  isFloating = false,
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
@@ -63,7 +65,7 @@ export const FormTextarea = React.memo<FormTextareaProps>(({
 
   return (
     <div className={`grid grid-cols-12 gap-0 ${className}`}>
-      {showLabel && label && (
+      {showLabel && label && !isFloating && (
         <label htmlFor={uniqueId} className={`col-span-12 ${labelClassName}`}>
           {label}
           {showRequired && <span className="form-required">*</span>}
@@ -101,6 +103,12 @@ export const FormTextarea = React.memo<FormTextareaProps>(({
                       {currentLength}/{maxLength}
                     </small>
                   </div>
+                )}
+
+                {isFloating && label && (
+                  <label htmlFor={uniqueId} className={labelClassName}>
+                    {label}
+                  </label>
                 )}
               </>
             );

@@ -165,4 +165,4 @@ export const useRedirectIfAuthenticated = (redirectUrl?: string) => {
   }, [isAuthenticated, isLoading, router, redirectUrl]);
 
   return { isAuthenticated, isLoading };
-};
+};  

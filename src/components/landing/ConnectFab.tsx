@@ -9,8 +9,11 @@ import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
 import { FormSelect } from '@/components/forms/FormSelect';
 import { contactSchema, type ContactFormData } from '@/models/schemas/contact.schema';
+import * as inquiryService from "@/services/inquiry.service";
+import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 
 export function ConnectFab() {
+    const apiEventStore = useApiEventStore();
     const [isOpen, setIsOpen] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,11 +64,15 @@ export function ConnectFab() {
 
     const onSubmit = async (data: ContactFormData) => {
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setSubmitted(true);
-        reset();
+        if (activeTab === 'prayer') {
+            await inquiryService.submitPrayerRequest(data);
+        } else if (activeTab === 'join') {
+            await inquiryService.submitCellGroupJoinRequest(data);
+        } else {
+            // Simulate API call for 'join' tab or implement another service
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+        }
+
     };
 
     // Close modal on route change
@@ -84,6 +91,71 @@ export function ConnectFab() {
             document.body.style.overflow = 'auto';
         };
     }, [isOpen]);
+
+    // Event Listener for API responses
+    useEffect(() => {
+        const cleanup = getApiEvents();
+        return () => {
+            cleanup();
+        };
+    }, []);
+
+    const getApiEvents = () => {
+        const unsubscribe = apiEventStore.subscribe((event) => {
+            if (!event) return;
+            // Use the factory pattern to handle different event statuses
+
+            const eventStatusHandleMap = createEventStatusHandleMap(event);
+            const handleEvent = eventStatusHandleMap[event.status] || (() => { });
+            handleEvent();
+        });
+        return () => {
+            unsubscribe();
+        };
+    }
+
+    const createEventStatusHandleMap = (
+        apiEvent: ApiEvent,
+    ): { [key in ApiEventStatus]?: () => void } => {
+        return {
+            [ApiEventStatus.COMPLETED]: () => {
+                const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
+                    [ApiEventType.SUBMIT_PRAYER_REQUEST]: async () => {
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
+                    },
+                    [ApiEventType.SUBMIT_CELL_GROUP_JOIN]: async () => {
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
+                    },
+                };
+                const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
+                handleEventType();
+            },
+            [ApiEventStatus.ERROR]: () => {
+                const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
+                    [ApiEventType.SUBMIT_PRAYER_REQUEST]: async () => {
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
+                    },
+                    [ApiEventType.SUBMIT_CELL_GROUP_JOIN]: async () => {
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
+                    },
+                };
+                const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
+                handleEventType();
+            },
+            [ApiEventStatus.IN_PROGRESS]: () => {
+            },
+            [ApiEventStatus.DEFAULT]: () => {
+            }
+        };
+    };
 
     const toggleModal = () => {
         if (!isOpen) {

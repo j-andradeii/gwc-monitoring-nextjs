@@ -130,6 +130,7 @@ interface FormInputProps {
   className?: string; // Container custom class
   inputClassName?: string; // Input element custom class
   labelClassName?: string; // Label custom class
+  isFloating?: boolean; // Enable floating label mode
 }
 
 export const FormInput = React.memo<FormInputProps>(({
@@ -148,6 +149,7 @@ export const FormInput = React.memo<FormInputProps>(({
   className = '',
   inputClassName = '',
   labelClassName = '',
+  isFloating = false,
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
@@ -181,7 +183,7 @@ export const FormInput = React.memo<FormInputProps>(({
 
   return (
     <div className={`grid grid-cols-12 gap-0 ${className}`}>
-      {showLabel && label && (
+      {showLabel && label && !isFloating && (
         <label htmlFor={uniqueId} className={`col-span-12 ${labelClassName}`}>
           {label}
           {showRequired && <span className="form-required">*</span>}
@@ -193,7 +195,7 @@ export const FormInput = React.memo<FormInputProps>(({
           name={name}
           control={control}
           render={({ field, fieldState }) => (
-            <span className="p-input-icon-right w-100 flex">
+            <span className="p-input-icon-right w-100 flex relative">
               {showRightIcon && (
                 <span className="p-inputgroup-addon">
                   <i className="pi pi-user"></i>
@@ -224,6 +226,11 @@ export const FormInput = React.memo<FormInputProps>(({
                 name={uniqueId}
                 autoComplete="off"
               />
+              {isFloating && label && (
+                <label htmlFor={uniqueId} className={labelClassName}>
+                  {label}
+                </label>
+              )}
             </span>
           )}
         />

@@ -165,15 +165,15 @@ export const LandingHeader: React.FC = () => {
             </li>
           </ul>
 
-          <div className="header-actions">
-            {/* <Link
+          {/* <div className="header-actions">
+            <Link
               href="/signin"
               className="landing-btn landing-btn-primary"
               onClick={closeMobileMenu}
             >
               Sign In
-            </Link> */}
-          </div>
+            </Link>
+          </div> */}
         </div>
       </nav>
     </header>

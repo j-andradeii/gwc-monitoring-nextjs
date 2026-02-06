@@ -1,8 +1,11 @@
 import { z } from 'zod';
 
-const baseSchema = z.object({
+const contactInfoSchema = z.object({
     name: z.string().min(1, 'Name is required'),
     email: z.string().email('Invalid email address'),
+});
+
+const baseSchema = contactInfoSchema.extend({
     phone: z.string().min(1, 'Phone number is required'),
 });
 
@@ -11,7 +14,7 @@ const prayerSchema = baseSchema.extend({
     message: z.string().min(1, 'Prayer request is required'),
 });
 
-const joinSchema = baseSchema.extend({
+export const joinSchema = baseSchema.extend({
     type: z.literal('join'),
     facebook: z.string().optional(),
     instagram: z.string().optional(),
@@ -20,9 +23,15 @@ const joinSchema = baseSchema.extend({
     joinReason: z.string().min(1, 'Please tell us why you want to join'),
 });
 
+export const simpleContactSchema = contactInfoSchema.extend({
+    message: z.string().min(1, 'Message is required'),
+});
+
 export const contactSchema = z.discriminatedUnion('type', [
     prayerSchema,
     joinSchema,
 ]);
+
+export type SimpleContactFormData = z.infer<typeof simpleContactSchema>;
 
 export type ContactFormData = z.infer<typeof contactSchema>;

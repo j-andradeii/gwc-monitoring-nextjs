@@ -1,27 +1,91 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { simpleContactSchema, type SimpleContactFormData } from '@/models/schemas/contact.schema';
+import { FormInput } from '@/components/forms/FormInput';
+import { FormTextarea } from '@/components/forms/FormTextarea';
+import * as inquiryService from "@/services/inquiry.service";
+import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 
 export const ContactSection: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const apiEventStore = useApiEventStore();
+
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const methods = useForm<SimpleContactFormData>({
+    resolver: zodResolver(simpleContactSchema),
+    mode: 'onChange',
+    defaultValues: {
+      name: '',
+      email: '',
+      message: ''
+    }
+  });
+
+
+  useEffect(() => {
+    const cleanup = getApiEvents();
+    return () => {
+      cleanup();
+    };
+  }, []);
+
+  const getApiEvents = () => {
+    const unsubscribe = apiEventStore.subscribe((event) => {
+      if (!event) return;
+      // Use the factory pattern to handle different event statuses
+      const eventStatusHandleMap = createEventStatusHandleMap(event);
+      const handleEvent = eventStatusHandleMap[event.status] || (() => { });
+      handleEvent();
+    });
+    return () => {
+      unsubscribe();
+    };
+  }
+
+  const createEventStatusHandleMap = (
+    apiEvent: ApiEvent,
+  ): { [key in ApiEventStatus]?: () => void } => {
+    return {
+      [ApiEventStatus.COMPLETED]: () => {
+        const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
+          [ApiEventType.SUBMIT_QUERY]: async () => {
+            reset();
+            setSubmitted(true);
+          },
+        };
+        const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
+        handleEventType();
+      },
+      [ApiEventStatus.ERROR]: () => {
+        const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
+          [ApiEventType.SUBMIT_QUERY]: async () => {
+          },
+        };
+        const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
+        handleEventType();
+      },
+      [ApiEventStatus.IN_PROGRESS]: () => {
+      },
+      [ApiEventStatus.DEFAULT]: () => {
+      }
+    };
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
+  const {
+    handleSubmit,
+    reset,
+    formState: { isSubmitting }
+  } = methods;
+
+  const onSubmit = async (data: SimpleContactFormData) => {
+    // Simulate API call
+    // await new Promise((resolve) => setTimeout(resolve, 1500));
+    await inquiryService.submitQuery(data);
+
   };
 
   return (
@@ -72,54 +136,48 @@ export const ContactSection: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="contact-form-minimal">
-                  <div className="input-group">
-                    <input
-                      type="text"
+                <FormProvider {...methods}>
+                  <form onSubmit={handleSubmit(onSubmit)} className="contact-form-minimal">
+                    <FormInput
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
+                      label="Name"
                       placeholder=" "
+                      isFloating
+                      className="input-group"
+                      displayDisabled={isSubmitting}
                     />
-                    <label>Name</label>
-                  </div>
 
-                  <div className="input-group">
-                    <input
-                      type="email"
+                    <FormInput
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
+                      label="Email"
                       placeholder=" "
+                      isFloating
+                      className="input-group"
+                      displayDisabled={isSubmitting}
                     />
-                    <label>Email</label>
-                  </div>
 
-                  <div className="input-group">
-                    <textarea
+                    <FormTextarea
                       name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={3}
+                      label="Message"
                       placeholder=" "
-                    ></textarea>
-                    <label>Message</label>
-                  </div>
+                      rows={3}
+                      isFloating
+                      className="input-group"
+                      displayDisabled={isSubmitting}
+                    />
 
-                  <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                    {isSubmitting ? (
-                      <i className="pi pi-spin pi-spinner"></i>
-                    ) : (
-                      <>
-                        Send Message
-                        <i className="pi pi-send"></i>
-                      </>
-                    )}
-                  </button>
-                </form>
+                    <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                      {isSubmitting ? (
+                        <i className="pi pi-spin pi-spinner"></i>
+                      ) : (
+                        <>
+                          Send Message
+                          <i className="pi pi-send"></i>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </FormProvider>
               )}
             </div>
           </div>
