@@ -37,6 +37,7 @@ export enum ApiEventType {
   SUBMIT_QUERY,
   SUBMIT_PRAYER_REQUEST,
   SUBMIT_CELL_GROUP_JOIN,
+  SUBMIT_EVENT_INQUIRY,
 }
 
 // Event interface

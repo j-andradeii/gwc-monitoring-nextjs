@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider, ShareModal } from '@/components/landing';
+import { LandingHeader, LandingFooter, EventContactSection, ScrollAnimationProvider, ShareModal } from '@/components/landing';
 import { Event } from '@/data/events';
 import '@/styles/landing.css';
 
@@ -388,7 +388,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
         </div>
 
         <ScrollAnimationProvider>
-          <ContactSection />
+          <EventContactSection eventSlug={event.slug} />
         </ScrollAnimationProvider>
 
         {/* Back to All Events */}
