@@ -6,7 +6,7 @@ import { getNearestSondayService } from '@/data/events';
 
 export const ChurchServiceSection: React.FC = () => {
   const nearestService = getNearestSondayService();
-  const serviceLink = nearestService ? `/events/${nearestService.id}` : '/events';
+  const serviceLink = nearestService ? `/events/${nearestService.slug}` : '/events';
 
   return (
     <section id="services" className="service-cta-section animate-on-scroll">

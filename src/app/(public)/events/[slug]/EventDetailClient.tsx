@@ -333,7 +333,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                     {otherEvents.map((e) => (
                       <Link
                         key={e.id}
-                        href={`/events/${e.id}`}
+                        href={`/events/${e.slug}`}
                         style={{
                           display: 'flex',
                           alignItems: 'center',

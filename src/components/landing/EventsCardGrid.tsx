@@ -78,7 +78,7 @@ export const EventsCardGrid: React.FC<EventsCardGridProps> = ({
   return (
     <div className="events-card-grid">
       {displayEvents.map((event) => (
-        <Link key={event.id} href={`/events/${event.id}`} className="event-grid-card">
+        <Link key={event.id} href={`/events/${event.slug}`} className="event-grid-card">
           <div
             className="event-grid-card-image"
             style={{ backgroundImage: `url('${event.image}')` }}
