@@ -48,7 +48,7 @@ async function appendToGoogleSheet(data: Record<string, unknown>): Promise<Sheet
         const sheets = google.sheets({ version: 'v4', auth });
 
         // Prepare row data
-        const timestamp = new Date().toISOString();
+        const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
         const row = [
             timestamp,
             data.name || '',
