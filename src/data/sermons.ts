@@ -6,6 +6,7 @@
 
 export interface Sermon {
   id: string;
+  slug: string;
   title: string;
   speaker: string;
   speakerRole?: string;
@@ -33,6 +34,7 @@ export interface Sermon {
 export const sermons: Sermon[] = [
   {
     id: '1',
+    slug: 'traps-for-ministers',
     title: 'TRAPS FOR MINISTERS',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -151,6 +153,7 @@ The end-time ministry will not be carried by the gifted alone—but by the faith
   },
   {
     id: '2',
+    slug: 'consecration-of-the-first-born',
     title: 'Consecration of the First Born',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -314,6 +317,7 @@ You have access to a pillar of fire or cloud (the Holy Spirit). What steps can y
   },
   {
     id: '3',
+    slug: 'the-great-commission',
     title: 'The Great Commission',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -449,6 +453,7 @@ Jesus' promise to be "with you" is the Christian's answer to every fear, every d
   },
   {
     id: '4',
+    slug: 'elisha-and-the-widows-oil',
     title: 'Sunday Service',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -535,6 +540,7 @@ So when he had received food, he was strengthened. Then Saul spent some days wit
   },
   {
     id: '5',
+    slug: 'the-renewed-heart',
     title: 'The Renewed Heart',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -644,6 +650,7 @@ Above all, they live from a heart that has been transformed by God.`,
   },
   {
     id: '6',
+    slug: 'exposed',
     title: 'Exposed',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -767,6 +774,7 @@ Yet even during this time in his life, David continued to show the true presence
   },
   {
     id: '7',
+    slug: 'cross-the-finish-line-with-joy',
     title: 'Cross the Finish Line With Joy',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -909,6 +917,7 @@ For the joy set before him he endured the cross, scorning its shame, and sat dow
   },
   {
     id: '8',
+    slug: 'lost',
     title: 'Lost',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -1023,6 +1032,7 @@ Jesus' description of the father's response to the son's return shows us the hea
   },
   {
     id: '9',
+    slug: 'enthusiastic-determination',
     title: 'Enthusiastic Determination',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -1086,6 +1096,7 @@ When this happens:
   },
   {
     id: '10',
+    slug: 'vision-sunday',
     title: 'Vision Sunday',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -1183,6 +1194,7 @@ In light of God's revelation about how (and when) he is working, his people are 
   },
   {
     id: '11',
+    slug: 'twelve-tips-to-conquer-the-new-year',
     title: 'Twelve Tips to Conquer the New Year',
     speaker: 'Ptr. Jim Baloran',
     speakerRole: 'senior pastor',
@@ -1306,6 +1318,7 @@ Proverbs 1:1-5
   },
   {
     id: '12',
+    slug: 'god-of-covenant',
     title: 'God of Covenant',
     speaker: 'Ptr. Rodel Umapas',
     speakerRole: 'guest pastor',
@@ -1371,6 +1384,10 @@ GOD's call is: separational, directional and promissory.
 
 export const getSermonById = (id: string): Sermon | undefined => {
   return sermons.find(sermon => sermon.id === id);
+};
+
+export const getSermonBySlug = (slug: string): Sermon | undefined => {
+  return sermons.find(sermon => sermon.slug === slug);
 };
 
 export const getRelatedSermons = (sermonId: string): Sermon[] => {
