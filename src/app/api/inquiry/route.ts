@@ -51,21 +51,15 @@ async function appendToGoogleSheet(data: Record<string, unknown>): Promise<Sheet
         const timestamp = new Date().toISOString();
         const row = [
             timestamp,
-            data.fullName || '',
+            data.name || '',
             data.email || '',
-            data.phone || '',
-            data.serviceType || '',
-            data.vehicleType || '',
-            data.preferredDate || '',
             data.message || '',
-            data.addDriver ? 'Yes' : 'No',
-            data.source || '',
         ];
 
         // Append to sheet
         await sheets.spreadsheets.values.append({
             spreadsheetId,
-            range: 'Sheet1!A:J', // Adjust based on your sheet structure
+            range: 'INQUIRIES!A:D', // Adjust based on your sheet structure
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [row],
