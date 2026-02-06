@@ -52,7 +52,7 @@ const { incrementRequests, decrementRequests } = useLoadingStore.getState();
 // --- Request Interceptor ---
 
 const buildUrl = (endpoint: string): string => {
-  const baseUrl = config.api.url;
+  const baseUrl = config.app.url;
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
   return `${baseUrl}/${cleanEndpoint}`;
 };

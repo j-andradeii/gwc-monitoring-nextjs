@@ -1,13 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { simpleContactSchema, type SimpleContactFormData } from '@/models/schemas/contact.schema';
 import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
+import * as inquiryService from "@/services/inquiry.service";
+import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 
 export const ContactSection: React.FC = () => {
+
+  const apiEventStore = useApiEventStore();
+
   const [submitted, setSubmitted] = useState(false);
 
   const methods = useForm<SimpleContactFormData>({
@@ -20,6 +25,56 @@ export const ContactSection: React.FC = () => {
     }
   });
 
+
+  useEffect(() => {
+    const cleanup = getApiEvents();
+    return () => {
+      cleanup();
+    };
+  }, []);
+
+  const getApiEvents = () => {
+    const unsubscribe = apiEventStore.subscribe((event) => {
+      if (!event) return;
+      // Use the factory pattern to handle different event statuses
+      const eventStatusHandleMap = createEventStatusHandleMap(event);
+      const handleEvent = eventStatusHandleMap[event.status] || (() => { });
+      handleEvent();
+    });
+    return () => {
+      unsubscribe();
+    };
+  }
+
+  const createEventStatusHandleMap = (
+    apiEvent: ApiEvent,
+  ): { [key in ApiEventStatus]?: () => void } => {
+    return {
+      [ApiEventStatus.COMPLETED]: () => {
+        const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
+          [ApiEventType.SUBMIT_QUERY]: async () => {
+            reset();
+            setSubmitted(true);
+          },
+        };
+        const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
+        handleEventType();
+      },
+      [ApiEventStatus.ERROR]: () => {
+        const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
+          [ApiEventType.SUBMIT_QUERY]: async () => {
+          },
+        };
+        const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
+        handleEventType();
+      },
+      [ApiEventStatus.IN_PROGRESS]: () => {
+      },
+      [ApiEventStatus.DEFAULT]: () => {
+      }
+    };
+  };
+
   const {
     handleSubmit,
     reset,
@@ -28,9 +83,9 @@ export const ContactSection: React.FC = () => {
 
   const onSubmit = async (data: SimpleContactFormData) => {
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSubmitted(true);
-    reset();
+    // await new Promise((resolve) => setTimeout(resolve, 1500));
+    await inquiryService.submitQuery(data);
+
   };
 
   return (
