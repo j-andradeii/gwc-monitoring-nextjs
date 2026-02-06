@@ -66,6 +66,8 @@ export function ConnectFab() {
         setIsSubmitting(true);
         if (activeTab === 'prayer') {
             await inquiryService.submitPrayerRequest(data);
+        } else if (activeTab === 'join') {
+            await inquiryService.submitCellGroupJoinRequest(data);
         } else {
             // Simulate API call for 'join' tab or implement another service
             await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -119,11 +121,14 @@ export function ConnectFab() {
             [ApiEventStatus.COMPLETED]: () => {
                 const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
                     [ApiEventType.SUBMIT_PRAYER_REQUEST]: async () => {
-                        if (activeTab === 'prayer') {
-                            setIsSubmitting(false);
-                            setSubmitted(true);
-                            reset();
-                        }
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
+                    },
+                    [ApiEventType.SUBMIT_CELL_GROUP_JOIN]: async () => {
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
                     },
                 };
                 const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
@@ -132,6 +137,14 @@ export function ConnectFab() {
             [ApiEventStatus.ERROR]: () => {
                 const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
                     [ApiEventType.SUBMIT_PRAYER_REQUEST]: async () => {
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
+                    },
+                    [ApiEventType.SUBMIT_CELL_GROUP_JOIN]: async () => {
+                        setIsSubmitting(false);
+                        setSubmitted(true);
+                        reset();
                     },
                 };
                 const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });

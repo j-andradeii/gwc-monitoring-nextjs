@@ -25,3 +25,16 @@ export const submitPrayerRequest = async (data: any) => {
         apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
     }
 }
+
+export const submitCellGroupJoinRequest = async (data: any) => {
+    const eventType = ApiEventType.SUBMIT_CELL_GROUP_JOIN;
+    const apiEventStore = useApiEventStore.getState();
+    try {
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.IN_PROGRESS, spinner: true });
+        await apiClient.post('/api/inquiry/cell-groups', data)
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.COMPLETED, spinner: true });
+    } catch (error) {
+        console.log(error);
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
+    }
+}

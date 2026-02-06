@@ -14,7 +14,7 @@ const prayerSchema = baseSchema.extend({
     message: z.string().min(1, 'Prayer request is required'),
 });
 
-const joinSchema = baseSchema.extend({
+export const joinSchema = baseSchema.extend({
     type: z.literal('join'),
     facebook: z.string().optional(),
     instagram: z.string().optional(),

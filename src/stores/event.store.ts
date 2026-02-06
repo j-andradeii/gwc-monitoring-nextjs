@@ -36,7 +36,7 @@ export enum ApiEventType {
   DELETE_CAMPAIGN,
   SUBMIT_QUERY,
   SUBMIT_PRAYER_REQUEST,
-
+  SUBMIT_CELL_GROUP_JOIN,
 }
 
 // Event interface
