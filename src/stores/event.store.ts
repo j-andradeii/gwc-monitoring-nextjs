@@ -34,7 +34,9 @@ export enum ApiEventType {
   CREATE_CAMPAIGN,
   UPDATE_CAMPAIGN,
   DELETE_CAMPAIGN,
-  SUBMIT_QUERY
+  SUBMIT_QUERY,
+  SUBMIT_PRAYER_REQUEST,
+
 }
 
 // Event interface
