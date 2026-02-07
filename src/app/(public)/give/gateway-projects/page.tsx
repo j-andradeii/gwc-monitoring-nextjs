@@ -22,7 +22,7 @@ import {
   GatewayGiveSection,
 } from '@/components/landing/give';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com';
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

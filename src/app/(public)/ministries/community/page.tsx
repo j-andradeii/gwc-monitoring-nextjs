@@ -3,17 +3,32 @@ import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, Minist
 import { ministries } from '@/data/ministries';
 import '@/styles/landing.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gatewaychurch.com';
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
     title: 'Community | Gateway Church',
-    description: 'Join our vibrant community groups and connect with others.',
+    description: 'Join our vibrant community groups and connect with others at Gateway Church. Find fellowship, small groups, and meaningful relationships.',
+    keywords: [
+        'Gateway Church',
+        'community',
+        'small groups',
+        'fellowship',
+        'church community',
+        'Cebu church',
+        'connect groups',
+        'Gateway Church Cebu',
+    ],
+    alternates: {
+        canonical: '/ministries/community',
+    },
     openGraph: {
         title: 'Community | Gateway Church',
-        description: 'Join our vibrant community groups and connect with others.',
+        description: 'Join our vibrant community groups and connect with others at Gateway Church.',
         url: `${siteUrl}/ministries/community`,
         type: 'website',
+        locale: 'en_US',
+        siteName: 'Gateway Church',
         images: [
             {
                 url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg',
@@ -22,6 +37,23 @@ export const metadata: Metadata = {
                 alt: 'Gateway Church Community',
             },
         ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Community | Gateway Church',
+        description: 'Join our vibrant community groups and connect with others at Gateway Church.',
+        images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg'],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
     },
 };
 
