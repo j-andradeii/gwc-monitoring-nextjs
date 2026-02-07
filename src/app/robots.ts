@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+import { siteMetadata } from '@/data/site-metadata';
+
+const siteUrl = siteMetadata.siteUrl;
 
 export default function robots(): MetadataRoute.Robots {
   return {

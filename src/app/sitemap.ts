@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+import { siteMetadata } from '@/data/site-metadata';
+
+const siteUrl = siteMetadata.siteUrl;
 
 import { sermons } from '@/data/sermons';
 import { events } from '@/data/events';
