@@ -12,9 +12,12 @@ import { contactSchema, type ContactFormData } from '@/models/schemas/contact.sc
 import * as inquiryService from "@/services/inquiry.service";
 import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 
+const FAB_TEXTS = ['CONNECT', 'PRAYER', 'NEED HELP?'];
+
 export function ConnectFab() {
     const apiEventStore = useApiEventStore();
     const [isOpen, setIsOpen] = useState(false);
+    const [textIndex, setTextIndex] = useState(0);
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [activeTab, setActiveTab] = useState<'prayer' | 'join'>('prayer');
@@ -100,7 +103,15 @@ export function ConnectFab() {
         };
     }, []);
 
-    const getApiEvents = () => {
+    // Cycle FAB text
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTextIndex((prev) => (prev + 1) % FAB_TEXTS.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    function getApiEvents() {
         const unsubscribe = apiEventStore.subscribe((event) => {
             if (!event) return;
             // Use the factory pattern to handle different event statuses
@@ -114,9 +125,9 @@ export function ConnectFab() {
         };
     }
 
-    const createEventStatusHandleMap = (
+    function createEventStatusHandleMap(
         apiEvent: ApiEvent,
-    ): { [key in ApiEventStatus]?: () => void } => {
+    ): { [key in ApiEventStatus]?: () => void } {
         return {
             [ApiEventStatus.COMPLETED]: () => {
                 const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
@@ -184,9 +195,12 @@ export function ConnectFab() {
                 className="connect-fab-btn"
                 onClick={toggleModal}
                 aria-label="Connect with us"
+                style={{ minWidth: '140px', justifyContent: 'center' }}
             >
-                <span>CONNECT</span>
-                <i className={`pi ${isOpen ? 'pi-times' : 'pi-comment'}`} style={{ fontSize: '1.2rem' }}></i>
+                <span key={textIndex} className="fab-text-changing" style={{ minWidth: '80px', textAlign: 'center' }}>
+                    {FAB_TEXTS[textIndex]}
+                </span>
+                <i className={`pi ${isOpen ? 'pi-times' : 'pi-comment'}`} style={{ fontSize: '1.2rem', marginLeft: 'auto' }}></i>
             </button>
 
             <div className={`connect-modal-overlay ${isOpen ? 'open' : ''}`} onClick={(e) => {
