@@ -465,7 +465,21 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                   <button
                     className="landing-btn landing-btn-outline"
                     style={{ justifyContent: 'center' }}
-                    onClick={() => setShowShareModal(true)}
+                    onClick={async () => {
+                      if (typeof navigator !== 'undefined' && navigator.share) {
+                        try {
+                          await navigator.share({
+                            title: sermon.title,
+                            text: sermon.excerpt || `Check out this sermon: ${sermon.title}`,
+                            url: window.location.href,
+                          });
+                        } catch (error) {
+                          console.error('Error sharing:', error);
+                        }
+                      } else {
+                        setShowShareModal(true);
+                      }
+                    }}
                   >
                     <i className="pi pi-share-alt" />
                     Share Sermon
@@ -631,6 +645,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
         onClose={() => setShowShareModal(false)}
         title={sermon.title}
         excerpt={sermon.excerpt}
+        modalTitle="Share Sermon"
       />
 
       {/* Responsive Styles */}
