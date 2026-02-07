@@ -55,9 +55,12 @@ export const events: Event[] = [
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sunday_poster.jpg',
     description: `Church isn’t just a place — it’s people.
 Join us this Sunday at Gateway Church as we worship and grow together.
+
 🕘 9:00 AM
 📍8F Golden Peak Hotel & Suites
+
 We’ve saved you a seat. 🤍
+
 #GatewayChurchCebu #SundayService #ChurchFamily`,
     category: 'SONDAY SERVICE',
     isFeatured: false,
