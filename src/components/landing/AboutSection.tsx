@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { siteMetadata } from '@/data/site-metadata';
+
 const stats = [
   { number: '500+', label: 'Members' },
   { number: '10+', label: 'Ministries' },
@@ -18,7 +20,7 @@ export const AboutSection: React.FC = () => {
           <div className="about-image-wrapper">
             <Image
               src="/assets/images/community.jpg"
-              alt="Gateway Church Community"
+              alt={`${siteMetadata.name} Community`}
               width={500}
               height={500}
               className="about-image"
@@ -29,11 +31,9 @@ export const AboutSection: React.FC = () => {
 
           <div className="about-content">
             <span className="section-label">About Us</span>
-            <h2>Loving God, Loving People</h2>
+            <h2>{siteMetadata.slogan}</h2>
             <p>
-              Gateway Church is a vibrant, multicultural community dedicated to sharing the
-              love of Christ. We create a space where people can encounter God, grow in their
-              faith, and find a supportive family.
+              {siteMetadata.description}
             </p>
 
             {/* <div className="about-stats">
