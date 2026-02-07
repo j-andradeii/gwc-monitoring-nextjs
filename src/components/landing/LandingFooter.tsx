@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CONTACT_INFO } from '@/data/contact';
 
 interface SocialLink {
   icon: string;
@@ -11,9 +12,8 @@ interface SocialLink {
 }
 
 const socialLinks: SocialLink[] = [
-  { icon: 'pi pi-facebook', label: 'Facebook', href: '#' },
-  { icon: 'pi pi-instagram', label: 'Instagram', href: '#' },
-  { icon: 'pi pi-youtube', label: 'YouTube', href: '#' },
+  { icon: 'pi pi-facebook', label: 'Facebook', href: CONTACT_INFO.social.facebook },
+  { icon: 'pi pi-instagram', label: 'Instagram', href: CONTACT_INFO.social.instagram },
 ];
 
 export const LandingFooter: React.FC = () => {
@@ -61,8 +61,9 @@ export const LandingFooter: React.FC = () => {
             <div className="footer-contact">
               <h4>Service Times</h4>
               <p><i className="pi pi-calendar"></i> Sundays at 9:30 AM</p>
-              <p><i className="pi pi-map-marker"></i> 8th Floor, Golden Peak, Gorordo Avenue</p>
-              <p><i className="pi pi-envelope"></i> connect@gatewaychurch.com</p>
+              <p><i className="pi pi-map-marker"></i> {CONTACT_INFO.address}</p>
+              <p><i className="pi pi-phone"></i> {CONTACT_INFO.phone}</p>
+              <p><i className="pi pi-envelope"></i> {CONTACT_INFO.email}</p>
             </div>
           </div>
         </div>
