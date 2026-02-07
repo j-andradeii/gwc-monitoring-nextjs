@@ -53,6 +53,25 @@ const ROUTE_REDIRECTS: Record<string, string> = {
   // Empty - no redirects needed currently
 };
 
+// Security Headers - Calculated once at module load
+const CSP_HEADER = `
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  img-src 'self' blob: data: https://*.vercel-storage.com https://placehold.co https://img.youtube.com https://i.ytimg.com;
+  font-src 'self' https://fonts.gstatic.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  frame-src 'self' https://www.youtube.com https://youtube.com https://player.vimeo.com;
+  upgrade-insecure-requests;
+`;
+
+const CONTENT_SECURITY_POLICY_HEADER_VALUE = CSP_HEADER
+  .replace(/\s{2,}/g, ' ')
+  .trim();
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -87,29 +106,12 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   // Security Headers
+
+
   // 1. Content-Security-Policy (CSP)
-  const cspHeader = `
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' blob: data: https://*.vercel-storage.com https://placehold.co https://img.youtube.com https://i.ytimg.com;
-    font-src 'self' https://fonts.gstatic.com;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    frame-src 'self' https://www.youtube.com https://youtube.com https://player.vimeo.com;
-    upgrade-insecure-requests;
-  `;
-
-  // Replace newline characters and extra spaces
-  const contentSecurityPolicyHeaderValue = cspHeader
-    .replace(/\s{2,}/g, ' ')
-    .trim();
-
   response.headers.set(
     'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue
+    CONTENT_SECURITY_POLICY_HEADER_VALUE
   );
 
   // 2. Strict-Transport-Security (HSTS)
