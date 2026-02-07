@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Gateway Church',
-        short_name: 'Gateway',
-        description: 'Gateway Church is a welcoming community of faith. Join us for worship services, ministries, and events.',
+        name: siteMetadata.name,
+        short_name: siteMetadata.shortName,
+        description: siteMetadata.description,
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
