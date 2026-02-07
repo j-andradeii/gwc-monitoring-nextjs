@@ -311,7 +311,8 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                     className="landing-btn landing-btn-outline"
                     style={{ justifyContent: 'center' }}
                     onClick={async () => {
-                      if (typeof navigator !== 'undefined' && navigator.share) {
+                      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                      if (isMobile && typeof navigator !== 'undefined' && navigator.share) {
                         try {
                           await navigator.share({
                             title: event.title,
