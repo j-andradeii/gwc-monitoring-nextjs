@@ -310,7 +310,21 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                   <button
                     className="landing-btn landing-btn-outline"
                     style={{ justifyContent: 'center' }}
-                    onClick={() => setShowShareModal(true)}
+                    onClick={async () => {
+                      if (typeof navigator !== 'undefined' && navigator.share) {
+                        try {
+                          await navigator.share({
+                            title: event.title,
+                            text: event.description || `Join us for ${event.title} at Gateway Church`,
+                            url: window.location.href,
+                          });
+                        } catch (error) {
+                          console.error('Error sharing:', error);
+                        }
+                      } else {
+                        setShowShareModal(true);
+                      }
+                    }}
                   >
                     <i className="pi pi-share-alt" />
                     Share Event

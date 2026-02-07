@@ -22,9 +22,10 @@ interface ShareModalProps {
     onClose: () => void;
     title: string;
     excerpt: string;
+    modalTitle?: string;
 }
 
-export function ShareModal({ isOpen, onClose, title, excerpt }: ShareModalProps) {
+export function ShareModal({ isOpen, onClose, title, excerpt, modalTitle = 'Share' }: ShareModalProps) {
     if (!isOpen) return null;
 
     const APP_URI = config.app.url;
@@ -63,7 +64,7 @@ export function ShareModal({ isOpen, onClose, title, excerpt }: ShareModalProps)
             >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                     <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: 'var(--text-primary)', margin: 0 }}>
-                        Share Sermon
+                        {modalTitle}
                     </h3>
                     <button
                         onClick={onClose}
