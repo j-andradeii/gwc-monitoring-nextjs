@@ -6,6 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { eventContactSchema, type EventContactFormData } from '@/models/schemas/contact.schema';
 import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
+import { FormSelect } from '@/components/forms/FormSelect';
+import { GENDER_OPTIONS } from '@/models/enums';
 import * as inquiryService from "@/services/inquiry.service";
 import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 
@@ -25,6 +27,7 @@ export const EventContactSection: React.FC<EventContactSectionProps> = ({ eventS
     defaultValues: {
       name: '',
       email: '',
+      gender: '',
       phone: '',
       address: '',
       facebook: '',
@@ -168,6 +171,17 @@ export const EventContactSection: React.FC<EventContactSectionProps> = ({ eventS
                         displayDisabled={isSubmitting}
                       />
                     </div>
+
+                    <FormSelect
+                      name="gender"
+                      label="Gender"
+                      placeholder="Select Gender"
+                      options={GENDER_OPTIONS}
+                      displayDisabled={isSubmitting}
+                      className="input-group"
+                      showLabel={true}
+                      isFloating={true}
+                    />
 
                     <FormInput
                       name="address"

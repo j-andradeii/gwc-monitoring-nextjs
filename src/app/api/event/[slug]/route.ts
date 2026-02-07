@@ -58,6 +58,7 @@ async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: str
             data.email || '',
             data.phone || '',
             data.address || '',
+            data.gender || '',
             data.facebook || '',
             data.message || '',
         ];
@@ -65,7 +66,7 @@ async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: str
         // Append to sheet
         await sheets.spreadsheets.values.append({
             spreadsheetId,
-            range: 'EVENTS!A:H', // Using 'EVENTS' sheet, adjusted columns
+            range: 'EVENTS!A:I', // Using 'EVENTS' sheet, adjusted columns
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [row],

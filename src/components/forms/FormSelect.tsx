@@ -27,7 +27,7 @@ interface FormSelectProps {
   labelClassName?: string; // Label custom class
 }
 
-export const FormSelect: React.FC<FormSelectProps> = ({
+export const FormSelect: React.FC<FormSelectProps & { isFloating?: boolean }> = ({
   name,
   label,
   placeholder,
@@ -41,6 +41,7 @@ export const FormSelect: React.FC<FormSelectProps> = ({
   className = '',
   dropdownClassName = '',
   labelClassName = '',
+  isFloating = false,
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
@@ -62,7 +63,7 @@ export const FormSelect: React.FC<FormSelectProps> = ({
 
   return (
     <div className={`w-full ${className}`}>
-      {showLabel && label && (
+      {showLabel && label && !isFloating && (
         <label htmlFor={uniqueId} className={`block mb-1 ${labelClassName}`}>
           {label}
           {showRequired && <span className="form-required">*</span>}
@@ -74,7 +75,7 @@ export const FormSelect: React.FC<FormSelectProps> = ({
           name={name}
           control={control}
           render={({ field, fieldState }) => (
-            <div className="w-full">
+            <div className="w-full relative">
               <Dropdown
                 id={field.name}
                 value={field.value || ''}
@@ -86,12 +87,17 @@ export const FormSelect: React.FC<FormSelectProps> = ({
                 options={options}
                 optionLabel="label"
                 optionDisabled={optionDisabled ?? undefined}
-                placeholder={placeholder}
-                className={`acps-dropdown w-full ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''} ${dropdownClassName}`}
+                placeholder={isFloating ? " " : placeholder}
+                className={`acps-dropdown w-full ${fieldState.invalid ? 'p-invalid' : ''} ${field.value ? 'p-inputwrapper-filled' : ''} ${displayDisabled ? 'disable' : ''} ${dropdownClassName}`}
                 name={uniqueId}
                 disabled={disabled}
                 style={{ width: '100%' }}
               />
+              {isFloating && label && (
+                <label htmlFor={uniqueId} className={labelClassName}>
+                  {label}
+                </label>
+              )}
             </div>
           )}
         />

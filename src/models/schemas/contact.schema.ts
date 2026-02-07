@@ -37,6 +37,7 @@ export type SimpleContactFormData = z.infer<typeof simpleContactSchema>;
 export const eventContactSchema = contactInfoSchema.extend({
     phone: z.string().min(1, 'Phone number is required'),
     address: z.string().min(1, 'Address is required'),
+    gender: z.string().min(1, 'Gender is required'),
     facebook: z.string().optional(),
     message: z.string().optional(),
 });
