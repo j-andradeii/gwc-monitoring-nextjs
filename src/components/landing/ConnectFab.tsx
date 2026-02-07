@@ -12,7 +12,7 @@ import { contactSchema, type ContactFormData } from '@/models/schemas/contact.sc
 import * as inquiryService from "@/services/inquiry.service";
 import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 
-const FAB_TEXTS = ['CONNECT', 'PRAYER', 'NEED HELP?'];
+const FAB_TEXTS = ['CONNECT', 'PRAYER?', 'NEED HELP?'];
 
 export function ConnectFab() {
     const apiEventStore = useApiEventStore();
@@ -107,7 +107,7 @@ export function ConnectFab() {
     useEffect(() => {
         const interval = setInterval(() => {
             setTextIndex((prev) => (prev + 1) % FAB_TEXTS.length);
-        }, 3000);
+        }, 5000);
         return () => clearInterval(interval);
     }, []);
 
