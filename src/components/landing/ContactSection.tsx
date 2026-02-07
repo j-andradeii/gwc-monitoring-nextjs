@@ -8,6 +8,7 @@ import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
 import * as inquiryService from "@/services/inquiry.service";
 import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
+import { CONTACT_INFO } from '@/data/contact';
 
 export const ContactSection: React.FC = () => {
 
@@ -101,25 +102,20 @@ export const ContactSection: React.FC = () => {
               <p className="contact-description">We&apos;re here to help and answer any questions you might have.</p>
 
               <div className="contact-details">
-                <a href="mailto:hello@gatewaychurch.ph" className="contact-detail-item">
+                <a href={`mailto:${CONTACT_INFO.email}`} className="contact-detail-item">
                   <i className="pi pi-envelope"></i>
-                  <span>hello@gatewaychurch.ph</span>
+                  <span>{CONTACT_INFO.email}</span>
                 </a>
-                <a href="tel:+639171234567" className="contact-detail-item">
+                <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="contact-detail-item">
                   <i className="pi pi-phone"></i>
-                  <span>+63 917 123 4567</span>
+                  <span>{CONTACT_INFO.phone}</span>
                 </a>
                 <div className="contact-detail-item">
                   <i className="pi pi-map-marker"></i>
-                  <span>8th Floor, Golden Peak, Gorordo Avenue</span>
+                  <span>{CONTACT_INFO.address}</span>
                 </div>
               </div>
 
-              <div className="contact-social-row">
-                <a href="#" aria-label="Facebook"><i className="pi pi-facebook"></i></a>
-                <a href="#" aria-label="Instagram"><i className="pi pi-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i className="pi pi-youtube"></i></a>
-              </div>
             </div>
 
             {/* Right - Form */}
