@@ -5,6 +5,8 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormInput } from '@/components/forms/FormInput';
 import { eventContactSchema, type EventContactFormData } from '@/models/schemas/contact.schema';
+import * as inquiryService from "@/services/inquiry.service";
+import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 
 interface Props {
     isOpen: boolean;
@@ -14,6 +16,7 @@ interface Props {
 }
 
 export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props) {
+    const apiEventStore = useApiEventStore();
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -38,40 +41,76 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            // Reset state when opening
+            setSubmitted(false);
+            setError(null);
+            reset({
+                name: '',
+                email: '',
+                phone: '',
+                address: '',
+                gender: '',
+                facebook: '',
+                message: '',
+            });
         } else {
             document.body.style.overflow = 'auto';
         }
         return () => {
             document.body.style.overflow = 'auto';
         };
-    }, [isOpen]);
+    }, [isOpen, reset]);
+
+    // Event Listener for API responses
+    useEffect(() => {
+        const cleanup = getApiEvents();
+        return () => {
+            cleanup();
+        };
+    }, []);
+
+    function getApiEvents() {
+        const unsubscribe = apiEventStore.subscribe((event) => {
+            if (!event) return;
+
+            const eventStatusHandleMap = createEventStatusHandleMap(event);
+            const handleEvent = eventStatusHandleMap[event.status] || (() => { });
+            handleEvent();
+        });
+        return () => {
+            unsubscribe();
+        };
+    }
+
+    function createEventStatusHandleMap(
+        apiEvent: ApiEvent,
+    ): { [key in ApiEventStatus]?: () => void } {
+        return {
+            [ApiEventStatus.COMPLETED]: () => {
+                if (apiEvent.type === ApiEventType.SUBMIT_EVENT_INQUIRY) {
+                    setIsSubmitting(false);
+                    setSubmitted(true);
+                    reset();
+                }
+            },
+            [ApiEventStatus.ERROR]: () => {
+                if (apiEvent.type === ApiEventType.SUBMIT_EVENT_INQUIRY) {
+                    setIsSubmitting(false);
+                    setSubmitted(true); // Following ConnectFab pattern
+                    reset();
+                }
+            },
+            [ApiEventStatus.IN_PROGRESS]: () => {
+            },
+            [ApiEventStatus.DEFAULT]: () => {
+            }
+        };
+    };
 
     const onSubmit = async (data: EventContactFormData) => {
         setIsSubmitting(true);
         setError(null);
-
-        try {
-            const response = await fetch(`/api/event/${eventSlug}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (!response.ok) {
-                const result = await response.json();
-                throw new Error(result.error || 'Failed to submit registration');
-            }
-
-            setSubmitted(true);
-            reset();
-        } catch (err: unknown) {
-            console.error(err);
-            setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
-        } finally {
-            setIsSubmitting(false);
-        }
+        await inquiryService.submitEventInquiry(data, eventSlug);
     };
 
     const handleReset = () => {
