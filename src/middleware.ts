@@ -84,7 +84,59 @@ export function middleware(request: NextRequest) {
   }
 
   // Continue to the route
-  return NextResponse.next();
+  const response = NextResponse.next();
+
+  // Security Headers
+  // 1. Content-Security-Policy (CSP)
+  const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' blob: data: https://*.vercel-storage.com https://placehold.co https://img.youtube.com https://i.ytimg.com;
+    font-src 'self' https://fonts.gstatic.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    frame-src 'self' https://www.youtube.com https://youtube.com https://player.vimeo.com;
+    upgrade-insecure-requests;
+  `;
+
+  // Replace newline characters and extra spaces
+  const contentSecurityPolicyHeaderValue = cspHeader
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  response.headers.set(
+    'Content-Security-Policy',
+    contentSecurityPolicyHeaderValue
+  );
+
+  // 2. Strict-Transport-Security (HSTS)
+  response.headers.set(
+    'Strict-Transport-Security',
+    'max-age=31536000; includeSubDomains; preload'
+  );
+
+  // 3. X-Frame-Options
+  response.headers.set('X-Frame-Options', 'DENY');
+
+  // 4. X-Content-Type-Options
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+
+  // 5. Referrer-Policy
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+
+  // 6. Permissions-Policy
+  response.headers.set(
+    'Permissions-Policy',
+    'camera=(), microphone=(), geolocation=()'
+  );
+
+  // 7. Cross-Origin-Opener-Policy (COOP)
+  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+
+  return response;
 }
 
 /**
