@@ -73,30 +73,77 @@ import { siteMetadata } from '@/data/site-metadata';
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Church',
-  name: siteMetadata.name,
-  description: `${siteMetadata.description} Our discipleship process: ${siteMetadata.discipleshipProcess.join('; ')}.`,
-  url: siteUrl,
-  logo: '/logo.png',
-  slogan: siteMetadata.slogan,
-  knowsAbout: siteMetadata.discipleshipProcess,
-  sameAs: [
-    siteMetadata.socials.facebook,
-    siteMetadata.socials.instagram,
+  '@graph': [
+    {
+      '@type': 'Church',
+      name: siteMetadata.name,
+      description: `${siteMetadata.description} Our discipleship process: ${siteMetadata.discipleshipProcess.join('; ')}.`,
+      url: siteUrl,
+      logo: `${siteUrl}/logo.png`,
+      image: `${siteUrl}/assets/images/fam-picture.jpg`,
+      slogan: siteMetadata.slogan,
+      knowsAbout: siteMetadata.discipleshipProcess,
+      sameAs: [
+        siteMetadata.socials.facebook,
+        siteMetadata.socials.instagram,
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: siteMetadata.address.street,
+        addressLocality: siteMetadata.address.city,
+        addressRegion: siteMetadata.address.region,
+        postalCode: siteMetadata.address.postalCode,
+        addressCountry: siteMetadata.address.country,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: siteMetadata.contact.phone,
+        contactType: siteMetadata.contact.type,
+      },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${siteUrl}/#main-navigation`,
+      name: 'Main Navigation',
+      itemListElement: [
+        {
+          '@type': 'SiteNavigationElement',
+          position: 1,
+          name: 'About Us',
+          description: 'Learn about our history, mission, and leadership.',
+          url: `${siteUrl}/about`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 2,
+          name: 'Sermons',
+          description: 'Watch past sermons and series.',
+          url: `${siteUrl}/sermon-notes`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 3,
+          name: 'Ministries',
+          description: 'Get involved in our community and serve.',
+          url: `${siteUrl}/ministries/community`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 4,
+          name: 'Events',
+          description: 'Upcoming events and gatherings.',
+          url: `${siteUrl}/events`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 5,
+          name: 'Give',
+          description: 'Support the mission and projects of Gateway Church.',
+          url: `${siteUrl}/give/ways-to-give`,
+        },
+      ],
+    },
   ],
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: siteMetadata.address.street,
-    addressLocality: siteMetadata.address.city,
-    addressRegion: siteMetadata.address.region,
-    postalCode: siteMetadata.address.postalCode,
-    addressCountry: siteMetadata.address.country,
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: siteMetadata.contact.phone,
-    contactType: siteMetadata.contact.type,
-  },
 };
 
 export default function LandingPage() {
