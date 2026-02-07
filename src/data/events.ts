@@ -48,7 +48,7 @@ export const events: Event[] = [
     slug: 'sonday-service',
     title: 'SONday Service',
     date: upcomingSundayDate,
-    displayDate: upcomingSundayDate,
+    displayDate: upcomingSundayDate.split(',')[0],
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
