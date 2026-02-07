@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { LandingHeader, LandingFooter, EventContactSection, ScrollAnimationProvider, ShareModal } from '@/components/landing';
+import { LandingHeader, LandingFooter, EventContactSection, ScrollAnimationProvider, ShareModal, JoinEventModal, ContactSection } from '@/components/landing';
 import { Event } from '@/data/events';
 import '@/styles/landing.css';
 
@@ -13,6 +13,7 @@ interface Props {
 
 export default function EventDetailClient({ event, otherEvents }: Props) {
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showJoinModal, setShowJoinModal] = useState(false);
   return (
     <div className="landing-page">
       <LandingHeader />
@@ -301,9 +302,10 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                   <button
                     className="landing-btn landing-btn-primary"
                     style={{ justifyContent: 'center' }}
+                    onClick={() => setShowJoinModal(true)}
                   >
-                    <i className="pi pi-calendar-plus" />
-                    Add to Calendar
+                    <i className="pi pi-user-plus" />
+                    Join Event
                   </button>
                   <button
                     className="landing-btn landing-btn-outline"
@@ -388,7 +390,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
         </div>
 
         <ScrollAnimationProvider>
-          <EventContactSection eventSlug={event.slug} />
+          <ContactSection />
         </ScrollAnimationProvider>
 
         {/* Back to All Events */}
@@ -415,6 +417,13 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
         onClose={() => setShowShareModal(false)}
         title={event.title}
         excerpt={event.description || `Join us for ${event.title} at Gateway Church`}
+      />
+
+      <JoinEventModal
+        isOpen={showJoinModal}
+        onClose={() => setShowJoinModal(false)}
+        eventSlug={event.slug}
+        eventTitle={event.title}
       />
 
       {/* Responsive Styles */}
