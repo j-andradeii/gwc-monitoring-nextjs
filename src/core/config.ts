@@ -35,6 +35,7 @@ export interface AppConfig {
   };
 }
 
+
 // Export configuration with direct env var access for Next.js compatibility
 export const config: AppConfig = {
   app: {
