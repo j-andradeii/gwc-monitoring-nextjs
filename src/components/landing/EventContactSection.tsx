@@ -153,24 +153,23 @@ export const EventContactSection: React.FC<EventContactSectionProps> = ({ eventS
                       displayDisabled={isSubmitting}
                     />
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                      <FormInput
-                        name="email"
-                        label="Email"
-                        placeholder=" "
-                        isFloating
-                        className="input-group"
-                        displayDisabled={isSubmitting}
-                      />
-                      <FormInput
-                        name="phone"
-                        label="Phone Number"
-                        placeholder=" "
-                        isFloating
-                        className="input-group"
-                        displayDisabled={isSubmitting}
-                      />
-                    </div>
+                    <FormInput
+                      name="email"
+                      label="Email"
+                      placeholder=" "
+                      isFloating
+                      className="input-group"
+                      displayDisabled={isSubmitting}
+                    />
+
+                    <FormInput
+                      name="phone"
+                      label="Phone Number"
+                      placeholder=" "
+                      isFloating
+                      className="input-group"
+                      displayDisabled={isSubmitting}
+                    />
 
                     <FormSelect
                       name="gender"
