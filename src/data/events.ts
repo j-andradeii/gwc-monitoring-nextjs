@@ -52,8 +52,13 @@ export const events: Event[] = [
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
-    image: '/assets/images/event-placeholder.svg',
-    description: 'Join us to praise and worship our Lord as a family.',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sunday_poster.jpg',
+    description: `Church isn’t just a place — it’s people.
+Join us this Sunday at Gateway Church as we worship and grow together.
+🕘 9:00 AM
+📍8F Golden Peak Hotel & Suites
+We’ve saved you a seat. 🤍
+#GatewayChurchCebu #SundayService #ChurchFamily`,
     category: 'SONDAY SERVICE',
     isFeatured: false,
     type: GatewayEventType.SONDAY_SERVICE
@@ -139,4 +144,21 @@ export const getNearestSondayService = (): Event | undefined => {
   const sondayServices = events.filter(event => event.type === GatewayEventType.SONDAY_SERVICE);
   // Return the first one (assuming events are ordered by date)
   return sondayServices[0];
+};
+
+export const isEventUpcoming = (event: Event): boolean => {
+  const eventDateStr = event.date;
+
+  // Create date object from string (e.g., "Feb 07, 2026")
+  const eventDate = new Date(eventDateStr);
+
+  // Get current date
+  const now = new Date();
+
+  // Reset time to midnight for both dates to compare just the day
+  eventDate.setHours(0, 0, 0, 0);
+  now.setHours(0, 0, 0, 0);
+
+  // Return true if event is today or in the future
+  return eventDate.getTime() >= now.getTime();
 };
