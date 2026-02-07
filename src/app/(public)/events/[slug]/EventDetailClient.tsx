@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider, ShareModal } from '@/components/landing';
+import { LandingHeader, LandingFooter, EventContactSection, ScrollAnimationProvider, ShareModal } from '@/components/landing';
 import { Event } from '@/data/events';
 import '@/styles/landing.css';
 
@@ -82,15 +82,15 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                 left: '20px',
                 backgroundColor: 'var(--primary-gold-accent)',
                 color: 'white',
-                padding: '16px 20px',
+                padding: '10px 12px',
                 borderRadius: '12px',
                 textAlign: 'center',
               }}
             >
-              <span style={{ display: 'block', fontSize: '32px', fontWeight: '700', lineHeight: '1' }}>
+              <span style={{ display: 'block', fontSize: '22px', fontWeight: '700', lineHeight: '1' }}>
                 {(event.displayDate || event.date).split(' ')[1]}
               </span>
-              <span style={{ display: 'block', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase' }}>
+              <span style={{ display: 'block', fontSize: '12px', fontWeight: '600', textTransform: 'uppercase' }}>
                 {(event.displayDate || event.date).split(' ')[0]}
               </span>
             </div>
@@ -333,7 +333,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                     {otherEvents.map((e) => (
                       <Link
                         key={e.id}
-                        href={`/events/${e.id}`}
+                        href={`/events/${e.slug}`}
                         style={{
                           display: 'flex',
                           alignItems: 'center',
@@ -388,7 +388,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
         </div>
 
         <ScrollAnimationProvider>
-          <ContactSection />
+          <EventContactSection eventSlug={event.slug} />
         </ScrollAnimationProvider>
 
         {/* Back to All Events */}

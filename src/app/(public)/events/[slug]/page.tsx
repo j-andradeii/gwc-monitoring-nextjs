@@ -6,24 +6,23 @@
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { events, getEventById } from '@/data/events';
+import { events, getEventBySlug } from '@/data/events';
 import { config } from '@/core/config';
 import EventDetailClient from './EventDetailClient';
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
   return events.map((event) => ({
-    id: String(event.id),
+    slug: event.slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
-  const eventId = parseInt(id, 10);
-  const event = getEventById(eventId);
+  const { slug } = await params;
+  const event = getEventBySlug(slug);
   const siteUrl = config.app.url;
 
   if (!event) {
@@ -35,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const eventUrl = `${siteUrl}/events/${eventId}`;
+  const eventUrl = `${siteUrl}/events/${event.slug}`;
 
   return {
     title: `${event.title} | Gateway Church Events`,
@@ -69,15 +68,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function EventDetailPage({ params }: Props) {
-  const { id } = await params;
-  const eventId = parseInt(id, 10);
-  const event = getEventById(eventId);
+  const { slug } = await params;
+  const event = getEventBySlug(slug);
 
   if (!event) {
     notFound();
   }
 
-  const otherEvents = events.filter(e => e.id !== eventId).slice(0, 3);
+  const otherEvents = events.filter(e => e.id !== event.id).slice(0, 3);
   const siteUrl = config.app.url;
 
   // Create JSON-LD structured data for the event

@@ -14,6 +14,7 @@ export enum GatewayEventType {
 
 export interface Event {
   id: number;
+  slug: string;
   title: string;
   date: string;
   displayDate?: string; // Optional display date for date ranges (e.g., "Jan 24-25")
@@ -44,6 +45,7 @@ const upcomingSundayDate = getUpcomingSunday();
 export const events: Event[] = [
   {
     id: 1,
+    slug: 'sonday-service',
     title: 'SONday Service',
     date: upcomingSundayDate,
     displayDate: upcomingSundayDate,
@@ -58,6 +60,7 @@ export const events: Event[] = [
   },
   {
     id: 2,
+    slug: 'gateway-marketplace-x-axis',
     title: 'GATEWAY MARKETPLACE x AXIS',
     date: 'Feb 07, 2026',
     displayDate: 'Feb 07',
@@ -78,6 +81,7 @@ Everyone is invited. See you there! 🫶✨`,
   },
   {
     id: 3,
+    slug: 'lifeclass-party',
     title: 'Lifeclass Party',
     date: 'Feb 15, 2026',
     displayDate: 'Feb 15',
@@ -92,6 +96,7 @@ Everyone is invited. See you there! 🫶✨`,
   },
   {
     id: 4,
+    slug: 'mens-and-womens-gathering',
     title: `Men's and Women's Gathering`,
     date: 'Feb 28, 2026',
     displayDate: 'Feb 28',
@@ -108,6 +113,10 @@ Everyone is invited. See you there! 🫶✨`,
 
 export const getEventById = (id: number): Event | undefined => {
   return events.find(event => event.id === id);
+};
+
+export const getEventBySlug = (slug: string): Event | undefined => {
+  return events.find(event => event.slug === slug);
 };
 
 export const getFeaturedEvent = (): Event | undefined => {

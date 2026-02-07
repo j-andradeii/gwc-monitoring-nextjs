@@ -69,7 +69,7 @@ const heroSlides: HeroSlideData[] = [
     overlayGradient: '',
     cta: {
       label: 'Learn More',
-      href: `/sermon-notes/${latestSermon.id}`,
+      href: `/sermon-notes/${latestSermon.slug}`,
       icon: 'pi pi-play',
     },
   },

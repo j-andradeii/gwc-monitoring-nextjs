@@ -1,21 +1,41 @@
-import { contactSchema } from '@/models/schemas/contact.schema';
+import { eventContactSchema } from '@/models/schemas/contact.schema';
 import { NextResponse } from 'next/server';
+
+// Google Sheets API integration
+// To enable, install: npm install googleapis
+// And set up environment variables:
+// - GOOGLE_SHEETS_CLIENT_EMAIL
+// - GOOGLE_SHEETS_PRIVATE_KEY
+// - GOOGLE_SPREADSHEET_ID
 
 interface SheetResult {
     success: boolean;
     message: string;
 }
 
-async function appendToGoogleSheet(data: Record<string, unknown>): Promise<SheetResult> {
+// Params definition for dynamic route
+interface Params {
+    params: Promise<{ slug: string }>;
+}
+
+async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: string): Promise<SheetResult> {
+    // Check if Google Sheets is configured
     const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
     const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
     const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
 
     if (!clientEmail || !privateKey || !spreadsheetId) {
+        // Log the submission for development/testing
+        console.log('=== New Event Inquiry Submission ===');
+        console.log('Event Slug:', eventSlug);
+        console.log('Timestamp:', new Date().toISOString());
+        console.log('Data:', JSON.stringify(data, null, 2));
+        console.log('====================================');
         return { success: true, message: 'Logged locally (Google Sheets not configured)' };
     }
 
     try {
+        // Try to use googleapis if available
         // eslint-disable-next-line @typescript-eslint/no-require-imports
         const { google } = require('googleapis');
 
@@ -33,16 +53,20 @@ async function appendToGoogleSheet(data: Record<string, unknown>): Promise<Sheet
         const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
         const row = [
             timestamp,
+            eventSlug,
             data.name || '',
             data.email || '',
             data.phone || '',
+            data.address || '',
+            data.gender || '',
+            data.facebook || '',
             data.message || '',
         ];
 
         // Append to sheet
         await sheets.spreadsheets.values.append({
             spreadsheetId,
-            range: 'PRAYER!A:E',
+            range: 'EVENTS!A:I', // Using 'EVENTS' sheet, adjusted columns
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [row],
@@ -51,18 +75,26 @@ async function appendToGoogleSheet(data: Record<string, unknown>): Promise<Sheet
 
         return { success: true, message: 'Added to Google Sheets' };
     } catch (error) {
+        // If googleapis is not installed or there's an error, log and continue
         if ((error as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
+            console.log('googleapis not installed. Logging submission locally.');
+            console.log('To enable Google Sheets: npm install googleapis');
+            console.log('Submission data:', JSON.stringify(data, null, 2));
             return { success: true, message: 'Logged locally (googleapis not installed)' };
         }
+
         console.error('Google Sheets error:', error);
         throw error;
     }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: Request, context: Params) {
     try {
+        const { slug } = await context.params;
         const body = await request.json();
-        const validationResult = contactSchema.safeParse(body);
+
+        // Validate the submission
+        const validationResult = eventContactSchema.safeParse(body);
 
         if (!validationResult.success) {
             return NextResponse.json(
@@ -72,16 +104,19 @@ export async function POST(request: Request) {
         }
 
         const data = validationResult.data;
-        const result = await appendToGoogleSheet(data as unknown as Record<string, unknown>);
+
+        // Save to Google Sheets (or log if not configured)
+        const result = await appendToGoogleSheet(data, slug);
 
         return NextResponse.json({
             ...result,
-            message: 'Prayer request received.',
+            message: 'Inquiry received! We will contact you shortly.',
         });
     } catch (error) {
-        console.error('Prayer request submission error:', error);
+        console.error('Booking submission error:', error);
+
         return NextResponse.json(
-            { error: 'Failed to process request.' },
+            { error: 'Failed to process booking. Please try again or contact us directly.' },
             { status: 500 }
         );
     }

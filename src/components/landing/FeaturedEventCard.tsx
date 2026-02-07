@@ -25,7 +25,7 @@ export const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({ event }) =
           <span className="section-label">Featured Event</span>
         </div>
         <Link
-          href={`/events/${event.id}`}
+          href={`/events/${event.slug}`}
           style={{ textDecoration: 'none', display: 'block' }}
         >
           <div

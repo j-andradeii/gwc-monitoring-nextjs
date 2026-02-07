@@ -73,7 +73,7 @@ export default function SermonNotesClient() {
                                 <span className="section-label">Latest Message</span>
                             </div>
                             <Link
-                                href={`/sermon-notes/${featuredSermon.id}`}
+                                href={`/sermon-notes/${featuredSermon.slug}`}
                                 style={{ textDecoration: 'none', display: 'block' }}
                             >
                                 <div
@@ -412,7 +412,7 @@ export default function SermonNotesClient() {
                                 {regularSermons.map((sermon) => (
                                     <Link
                                         key={sermon.id}
-                                        href={`/sermon-notes/${sermon.id}`}
+                                        href={`/sermon-notes/${sermon.slug}`}
                                         style={{ textDecoration: 'none' }}
                                     >
                                         <article

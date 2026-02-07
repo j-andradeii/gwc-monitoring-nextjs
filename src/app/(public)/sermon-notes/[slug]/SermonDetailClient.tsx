@@ -500,7 +500,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                       {seriesSermons.slice(0, 3).map((s) => (
                         <Link
                           key={s.id}
-                          href={`/sermon-notes/${s.id}`}
+                          href={`/sermon-notes/${s.slug}`}
                           style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -553,7 +553,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                     {relatedSermons.map((s) => (
                       <Link
                         key={s.id}
-                        href={`/sermon-notes/${s.id}`}
+                        href={`/sermon-notes/${s.slug}`}
                         style={{
                           display: 'flex',
                           gap: '12px',

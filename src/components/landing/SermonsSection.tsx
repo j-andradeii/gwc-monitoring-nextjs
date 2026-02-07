@@ -37,7 +37,7 @@ export const SermonsSection: React.FC = () => {
           {recentSermons.map((sermon) => (
             <Link
               key={sermon.id}
-              href={`/sermon-notes/${sermon.id}`}
+              href={`/sermon-notes/${sermon.slug}`}
               style={{ textDecoration: 'none' }}
             >
               <article className="sermon-card animate-on-scroll">

@@ -17,6 +17,7 @@ export { EventsFilter } from './EventsFilter';
 export { FeaturedEventCard } from './FeaturedEventCard';
 export { AriseAndBuildSection } from './AriseAndBuildSection';
 export { ContactSection } from './ContactSection';
+export { EventContactSection } from './EventContactSection';
 export { LandingFooter } from './LandingFooter';
 export { ScrollAnimationProvider } from './ScrollAnimationProvider';
 export { MinistryFeatureSection } from './MinistryFeatureSection';

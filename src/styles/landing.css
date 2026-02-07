@@ -9240,3 +9240,70 @@
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
 }
+
+/* Custom Dropdown Styling for Input Groups (Event Contact Form) - Highly specific overrides */
+.landing-page .input-group .p-dropdown {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid #e5e7eb !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  box-shadow: none !important;
+  align-items: center;
+  transition: border-color 0.25s ease;
+}
+
+.landing-page .input-group .p-dropdown:not(.p-disabled).p-focus {
+  border-bottom-color: var(--color-navy) !important;
+  box-shadow: none !important;
+}
+
+.landing-page .input-group .p-dropdown.p-invalid {
+  border-bottom-color: #ef4444 !important;
+}
+
+.landing-page .input-group .p-dropdown .p-dropdown-label {
+  padding: 14px 0 8px !important;
+  background: transparent !important;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 15px;
+  border: none;
+  box-shadow: none;
+}
+
+.landing-page .input-group .p-dropdown .p-dropdown-label.p-placeholder {
+  color: transparent !important;
+  height: 44px;
+  border: none;
+}
+
+.landing-page .input-group .p-dropdown .p-dropdown-trigger {
+  width: 2rem;
+  background: transparent !important;
+  color: var(--text-secondary);
+}
+
+/* Floating Label Logic for Dropdown */
+.landing-page .input-group .p-dropdown+label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+/* Move label up when focused or has value - using strong selector */
+.landing-page .input-group .p-dropdown:focus+label,
+.landing-page .input-group .p-dropdown.p-focus+label,
+.landing-page .input-group .p-dropdown.p-inputwrapper-filled+label,
+.landing-page .input-group .p-dropdown.p-inputwrapper-focus+label {
+  top: -8px;
+  font-size: 11px;
+  color: var(--color-navy);
+  font-weight: 600;
+}

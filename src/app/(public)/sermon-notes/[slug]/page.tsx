@@ -6,22 +6,22 @@
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { sermons, getSermonById, getRelatedSermons, getSermonsBySeries } from '@/data/sermons';
+import { sermons, getSermonBySlug, getRelatedSermons, getSermonsBySeries } from '@/data/sermons';
 import SermonDetailClient from './SermonDetailClient';
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
   return sermons.map((sermon) => ({
-    id: sermon.id,
+    slug: sermon.slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
-  const sermon = getSermonById(id);
+  const { slug } = await params;
+  const sermon = getSermonBySlug(slug);
 
   if (!sermon) {
     return {
@@ -48,15 +48,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SermonDetailPage({ params }: Props) {
-  const { id } = await params;
-  const sermon = getSermonById(id);
+  const { slug } = await params;
+  const sermon = getSermonBySlug(slug);
 
   if (!sermon) {
     notFound();
   }
 
-  const relatedSermons = getRelatedSermons(id);
-  const seriesSermons = getSermonsBySeries(sermon.series).filter(s => s.id !== id);
+  const relatedSermons = getRelatedSermons(sermon.id);
+  const seriesSermons = getSermonsBySeries(sermon.series).filter(s => s.id !== sermon.id);
 
   return (
     <SermonDetailClient

@@ -38,3 +38,16 @@ export const submitCellGroupJoinRequest = async (data: any) => {
         apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
     }
 }
+
+export const submitEventInquiry = async (data: any, slug: string) => {
+    const eventType = ApiEventType.SUBMIT_EVENT_INQUIRY;
+    const apiEventStore = useApiEventStore.getState();
+    try {
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.IN_PROGRESS, spinner: true });
+        await apiClient.post(`/api/event/${slug}`, data)
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.COMPLETED, spinner: true });
+    } catch (error) {
+        console.log(error);
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
+    }
+}
