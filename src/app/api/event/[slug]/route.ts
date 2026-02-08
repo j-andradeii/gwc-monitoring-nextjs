@@ -1,4 +1,5 @@
 import { eventContactSchema } from '@/models/schemas/contact.schema';
+import { getEventBySlug } from '@/data/events';
 import { NextResponse } from 'next/server';
 
 // Google Sheets API integration
@@ -18,7 +19,7 @@ interface Params {
     params: Promise<{ slug: string }>;
 }
 
-async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: string): Promise<SheetResult> {
+async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: string, eventDate: string): Promise<SheetResult> {
     // Check if Google Sheets is configured
     const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
     const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
@@ -28,6 +29,7 @@ async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: str
         // Log the submission for development/testing
         console.log('=== New Event Inquiry Submission ===');
         console.log('Event Slug:', eventSlug);
+        console.log('Event Date:', eventDate);
         console.log('Timestamp:', new Date().toISOString());
         console.log('Data:', JSON.stringify(data, null, 2));
         console.log('====================================');
@@ -54,6 +56,7 @@ async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: str
         const row = [
             timestamp,
             eventSlug,
+            eventDate,
             data.name || '',
             data.email || '',
             data.phone || '',
@@ -66,7 +69,7 @@ async function appendToGoogleSheet(data: Record<string, unknown>, eventSlug: str
         // Append to sheet
         await sheets.spreadsheets.values.append({
             spreadsheetId,
-            range: 'EVENTS!A:I', // Using 'EVENTS' sheet, adjusted columns
+            range: 'EVENTS!A:J', // Using 'EVENTS' sheet, adjusted columns to include date
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [row],
@@ -104,9 +107,11 @@ export async function POST(request: Request, context: Params) {
         }
 
         const data = validationResult.data;
+        const event = getEventBySlug(slug);
+        const eventDate = event?.date || 'Unknown';
 
         // Save to Google Sheets (or log if not configured)
-        const result = await appendToGoogleSheet(data, slug);
+        const result = await appendToGoogleSheet(data, slug, eventDate);
 
         return NextResponse.json({
             ...result,
