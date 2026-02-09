@@ -1433,6 +1433,10 @@ The greatest representation of love in history was when our Heavenly Father sent
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
     scriptures: [
       {
+        verse: 'Hebrews 10:1-10',
+        text: `For the law, having a shadow of the good things to come, and not the very image of the things, can never with these same sacrifices, which they offer continually year by year, make those who approach perfect. For then would they not have ceased to be offered? For the worshipers, once purified, would have had no more consciousness of sins. But in those sacrifices there is a reminder of sins every year. For it is not possible that the blood of bulls and goats could take away sins. Therefore, when He came into the world, He said: “Sacrifice and offering You did not desire, But a body You have prepared for Me. In burnt offerings and sacrifices for sin You had no pleasure. Then I said, ‘Behold, I have come— In the volume of the book it is written of Me— To do Your will, O God.’ ” Previously saying, “Sacrifice and offering, burnt offerings, and offerings for sin You did not desire, nor had pleasure in them” (which are offered according to the law), then He said, “Behold, I have come to do Your will, O God.” He takes away the first that He may establish the second. By that will we have been sanctified through the offering of the body of Jesus Christ once for all.`
+      },
+      {
         verse: 'Philippians 2:5-8',
         text: 'Let this mind be in you which was also in Christ Jesus, who, being in the form of God, did not consider it robbery to be equal with God, but made Himself of no reputation, taking the form of a bondservant, and coming in the likeness of men. And being found in appearance as a man, He humbled Himself and became obedient to the point of death, even the death of the cross.'
       },
