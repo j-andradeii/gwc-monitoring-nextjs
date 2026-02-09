@@ -1393,42 +1393,59 @@ GOD's call is: separational, directional and promissory.
     excerpt: 'The greatest representation of love in history was when our Heavenly Father sent his only-begotten son to redeem the world.',
     description: `**PERSEVERING LOVE**
 
-** Although He was God, he became a man.**
-"Your attitude should be the same as that of Christ Jesus: Who, being in very nature God, did not consider equality with God something to be grasped, but made himself nothing, taking the very nature of a servant, being made in human likeness. And being found in appearance as a man, he humbled himself and became obedient to death even death on a cross!" (Philippians 2:5-8).
+Hebrews 10:5–7
 
-** Although He was rich, he became poor.**
-"For you know the grace of our Lord Jesus Christ, that though he was rich, yet for your sakes he became poor, so that you through his poverty might become rich" (2 Corinthians 8:9).
+The love of God is not temporary, conditional, or based on our performance. It is a persevering love—a love that endured suffering, sacrifice, and the Cross in order to redeem mankind.
 
-** Although He was holy, he was accursed. **
-"Christ redeemed us from the curse of the law by becoming a curse for us, for it is written: 'Cursed is everyone who is hung on a tree'" (Galatians 3:13).
+In Hebrews 10:5–7, we are reminded that Jesus willingly came to fulfill the will of the Father. He did not come reluctantly, but with complete surrender and obedience. His life was a divine mission of love—love that endured all things so that we could be saved.
 
-** Although He was righteous, he became sin. **
-"But God demonstrates his own love for us in this: While we were still sinners, Christ died for us" (Romans 5:8).
+---
 
-** Although He was healthy, he bore our sickness and infirmities. **
-"Surely he took up our infirmities and carried our sorrows, yet we considered him stricken by God, smitten by him, and afflicted. But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was upon him, and by his wounds we are healed" (Isaiah 53:4-5).
-    
-** Although He was just, he died with the unjust. **
-"He was assigned a grave with the wicked and with the rich in his death, though he had done no violence, nor was any deceit in his mouth" (Isaiah 53:9).
+**THE “ALTHOUGH” LOVE OF CHRIST**
 
-** Although He was perfect, he was broken for us. **
-"Yet it was the Lord's will to crush him and cause him to suffer, and though the LORD makes his life a guilt offering, he will see his offspring and prolong his days, and the will of the LORD will prosper in his hand" (Isaiah 53:10).
+The sacrifice of Jesus reveals a love so deep and powerful that it cannot be measured. Over and over again, Scripture shows how Christ laid aside everything for our redemption:
+
+**1. Although He was God, He became a Man**
+Jesus, fully God, humbled Himself and came in human form, choosing the path of a servant and submitting to death on the Cross. (Philippians 2:5–8)
+
+**2. Although He was Rich, He became Poor**
+Jesus gave up heavenly riches so that through His sacrifice, we could receive spiritual riches, provision, and eternal life. (2 Corinthians 8:9)
+
+**3. Although He was Holy, He became Accursed**
+Christ redeemed us from the curse of the law by becoming a curse for us, taking what we deserved upon Himself. (Galatians 3:13)
+
+**4. Although He was Righteous, He became Sin**
+Jesus died for us while we were still sinners. His righteousness was exchanged for our sin so that we could be reconciled to God. (Romans 5:8)
+
+**5. Although He was Healthy, He bore our Sickness**
+Jesus carried our infirmities, pains, and sorrows. Through His suffering, healing was made available to us. (Isaiah 53:4–5)
+
+**6. Although He was Just, He died with the Unjust**
+Though innocent and without deceit, Jesus was treated as wicked and placed among sinners, fulfilling prophecy and taking our punishment. (Isaiah 53:9)
+
+**7. Although He was Perfect, He was Broken for Us**
+It was the will of the Lord to crush Him as an offering for sin, so that God’s purpose of salvation could be fulfilled through His suffering. (Isaiah 53:10)
 
 ---
 
 **CONCLUSION**
 
-The greatest representation of love in history was when our Heavenly Father sent his only-begotten son to redeem the world, being sacrificed for our sins on the Cross of Calvary, and making us free of all oppression from the enemy.
+The greatest representation of love in history was when our Heavenly Father sent His only-begotten Son to redeem the world. Jesus was sacrificed for our sins on the Cross of Calvary, breaking every chain and making us free from all oppression of the enemy.
+
+The Cross is not just a reminder of suffering—it is the ultimate proof of God’s enduring love and the victory of Jesus Christ.
 
 ---
 
-**APPLICATION**
+**APPLICATION: LIVING IN THE POWER OF PERSEVERING LOVE**
 
-**1.** Determine to be a **new creature in Christ**. Loose yourself from everything that has kept you bound to your past, and receive the new that God has for you.
+**1. Choose to be a New Creature in Christ**
+Make a decision to walk in your new identity. Let go of what has kept you bound to your past and embrace the new life God has prepared for you.
 
-**2.** Have a heart thankful heart towards God, giving Him thanks for everything He has done for your life: the healing, prosperity, restoration, love, forgiving of sins received through the Cross.
+**2. Develop a Heart of Gratitude**
+Live with thanksgiving for all God has done through the Cross—healing, prosperity, restoration, forgiveness of sins, and the love that saved you.
 
-**3.** Make a list of the things Satan has tried to steal from you, and through spiritual warfare, remind him that he was already defeated at the Cross of Calvary.`,
+**3. Stand in Victory Through Spiritual Warfare**
+Make a list of the things Satan has tried to steal from you. Then, through prayer and spiritual warfare, remind the enemy that he has already been defeated at the Cross of Calvary.`,
     tags: ['Love', 'Redemption', 'Sacrifice', 'Christ', 'Atonement', 'Perseverance'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
     scriptures: [
