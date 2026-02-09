@@ -1393,13 +1393,26 @@ GOD's call is: separational, directional and promissory.
     excerpt: 'The greatest representation of love in history was when our Heavenly Father sent his only-begotten son to redeem the world.',
     description: `**PERSEVERING LOVE**
 
-* Although He was God, he became a man. "Your attitude should be the same as that of Christ Jesus: Who, being in very nature God, did not consider equality with God something to be grasped, but made himself nothing, taking the very nature of a servant, being made in human likeness. And being found in appearance as a man, he humbled himself and became obedient to death even death on a cross!" (Philippians 2:5-8).
-* Although He was rich, he became poor. "For you know the grace of our Lord Jesus Christ, that though he was rich, yet for your sakes he became poor, so that you through his poverty might become rich" (2 Corinthians 8:9).
-* Although He was holy, he was accursed. "Christ redeemed us from the curse of the law by becoming a curse for us, for it is written: 'Cursed is everyone who is hung on a tree'" (Galatians 3:13).
-* Although He was righteous, he became sin. "But God demonstrates his own love for us in this: While we were still sinners, Christ died for us" (Romans 5:8).
-* Although He was healthy, he bore our sickness and infirmities. "Surely he took up our infirmities and carried our sorrows, yet we considered him stricken by God, smitten by him, and afflicted. But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was upon him, and by his wounds we are healed" (Isaiah 53:4-5).
-* Although He was just, he died with the unjust. "He was assigned a grave with the wicked and with the rich in his death, though he had done no violence, nor was any deceit in his mouth" (Isaiah 53:9).
-* Although He was perfect, he was broken for us. "Yet it was the Lord's will to crush him and cause him to suffer, and though the LORD makes his life a guilt offering, he will see his offspring and prolong his days, and the will of the LORD will prosper in his hand" (Isaiah 53:10).
+** Although He was God, he became a man.**
+"Your attitude should be the same as that of Christ Jesus: Who, being in very nature God, did not consider equality with God something to be grasped, but made himself nothing, taking the very nature of a servant, being made in human likeness. And being found in appearance as a man, he humbled himself and became obedient to death even death on a cross!" (Philippians 2:5-8).
+
+** Although He was rich, he became poor.**
+"For you know the grace of our Lord Jesus Christ, that though he was rich, yet for your sakes he became poor, so that you through his poverty might become rich" (2 Corinthians 8:9).
+
+** Although He was holy, he was accursed. **
+"Christ redeemed us from the curse of the law by becoming a curse for us, for it is written: 'Cursed is everyone who is hung on a tree'" (Galatians 3:13).
+
+** Although He was righteous, he became sin. **
+"But God demonstrates his own love for us in this: While we were still sinners, Christ died for us" (Romans 5:8).
+
+** Although He was healthy, he bore our sickness and infirmities. **
+"Surely he took up our infirmities and carried our sorrows, yet we considered him stricken by God, smitten by him, and afflicted. But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was upon him, and by his wounds we are healed" (Isaiah 53:4-5).
+    
+** Although He was just, he died with the unjust. **
+"He was assigned a grave with the wicked and with the rich in his death, though he had done no violence, nor was any deceit in his mouth" (Isaiah 53:9).
+
+** Although He was perfect, he was broken for us. **
+"Yet it was the Lord's will to crush him and cause him to suffer, and though the LORD makes his life a guilt offering, he will see his offspring and prolong his days, and the will of the LORD will prosper in his hand" (Isaiah 53:10).
 
 ---
 
@@ -1411,7 +1424,7 @@ The greatest representation of love in history was when our Heavenly Father sent
 
 **APPLICATION**
 
-**1.** Determine to be a new creature in Christ. Loose yourself from everything that has kept you bound to your past, and receive the new that God has for you.
+**1.** Determine to be a **new creature in Christ**. Loose yourself from everything that has kept you bound to your past, and receive the new that God has for you.
 
 **2.** Have a heart thankful heart towards God, giving Him thanks for everything He has done for your life: the healing, prosperity, restoration, love, forgiving of sins received through the Cross.
 
