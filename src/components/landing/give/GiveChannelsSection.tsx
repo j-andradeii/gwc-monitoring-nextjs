@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { givingChannels } from '@/data/giveData';
+import DownloadQRButton from '@/components/ui/DownloadQRButton';
 
 // Copy to clipboard hook
 const useCopyToClipboard = () => {
@@ -79,8 +80,26 @@ export const GiveChannelsSection: React.FC = () => {
               </div>
 
               <div className="compact-qr">
-                <i className="pi pi-qrcode"></i>
-                <span>QR Coming Soon</span>
+                {channel.qrCode ? (
+                  <div className="qr-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                    <img
+                      src={channel.qrCode}
+                      alt={`${channel.name} QR Code`}
+                      style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px' }}
+                    />
+                    <DownloadQRButton
+                      qrCodeUrl={channel.qrCode!}
+                      filename={`${channel.name}-qrcode.jpg`}
+                      color={channel.color}
+                      style={{ fontSize: '0.8rem' }}
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <i className="pi pi-qrcode"></i>
+                    <span>QR Coming Soon</span>
+                  </>
+                )}
               </div>
             </div>
           ))}
