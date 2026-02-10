@@ -2,6 +2,8 @@
 
 import React, { useState, useCallback } from 'react';
 import { givingChannels } from '@/data/giveData';
+import DownloadQRButton from '@/components/ui/DownloadQRButton';
+import { CONTACT_INFO } from '@/data/contact';
 
 // Copy to clipboard hook
 const useCopyToClipboard = () => {
@@ -26,7 +28,7 @@ export const GiveChannelsSection: React.FC = () => {
         <div className="section-header-center animate-on-scroll">
           <span className="section-label">Channels</span>
           <h2>How to Give</h2>
-          <p>Choose your preferred method to give your tithes and offerings</p>
+          <p>Choose your preferred method to give your tithes and offerings. Please send a screenshot of your transaction to <a href={`mailto:${CONTACT_INFO.email}`} className="text-primary hover:underline">{CONTACT_INFO.email}</a> or via <a href={CONTACT_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Facebook</a>.</p>
         </div>
 
         <div className="giving-channels-grid compact-grid animate-on-scroll">
@@ -79,8 +81,26 @@ export const GiveChannelsSection: React.FC = () => {
               </div>
 
               <div className="compact-qr">
-                <i className="pi pi-qrcode"></i>
-                <span>QR Coming Soon</span>
+                {channel.qrCode ? (
+                  <div className="qr-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                    <img
+                      src={channel.qrCode}
+                      alt={`${channel.name} QR Code`}
+                      style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px' }}
+                    />
+                    <DownloadQRButton
+                      qrCodeUrl={channel.qrCode!}
+                      filename={`${channel.name}-qrcode.jpg`}
+                      color={channel.color}
+                      style={{ fontSize: '0.8rem' }}
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <i className="pi pi-qrcode"></i>
+                    <span>QR Coming Soon</span>
+                  </>
+                )}
               </div>
             </div>
           ))}

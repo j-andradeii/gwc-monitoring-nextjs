@@ -51,6 +51,7 @@ export const givingChannels: GivingChannel[] = [
     accountNumber: '0206007186',
     icon: 'pi pi-building',
     color: '#A6192E',
+    qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bpi.jpg',
     instructions: [
       'Log in to BPI Online or Mobile App',
       'Select "Transfer"',
@@ -66,6 +67,7 @@ export const givingChannels: GivingChannel[] = [
     accountNumber: '002428024627',
     icon: 'pi pi-credit-card',
     color: '#003087',
+    qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bdo.jpg',
     instructions: [
       'Log in to BDO Online or Mobile App',
       'Select "Send Money"',

@@ -59,6 +59,7 @@ const CSP_HEADER = `
   script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   img-src 'self' blob: data: https://*.vercel-storage.com https://placehold.co https://img.youtube.com https://i.ytimg.com;
+  connect-src 'self' https://*.vercel-storage.com;
   font-src 'self' https://fonts.gstatic.com;
   object-src 'none';
   base-uri 'self';

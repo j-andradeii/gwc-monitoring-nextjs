@@ -3,6 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
 import { gatewayProjectsChannel } from '@/data/giveData';
+import DownloadQRButton from '@/components/ui/DownloadQRButton';
 
 // Copy to clipboard hook
 const useCopyToClipboard = () => {
@@ -126,6 +127,15 @@ export const GatewayGiveSection: React.FC = () => {
                         unoptimized
                       />
                     </div>
+                    <DownloadQRButton
+                      qrCodeUrl={gatewayProjectsChannel.qrCode!}
+                      filename="gateway-projects-qrcode.jpg"
+                      color="var(--primary-color, #007DFE)"
+                      style={{
+                        marginTop: '10px',
+                        fontSize: '0.85rem'
+                      }}
+                    />
                   </div>
                 </div>
               )}
