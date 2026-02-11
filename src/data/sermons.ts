@@ -1447,7 +1447,7 @@ Live with thanksgiving for all God has done through the Cross—healing, prosper
 **3. Stand in Victory Through Spiritual Warfare**
 Make a list of the things Satan has tried to steal from you. Then, through prayer and spiritual warfare, remind the enemy that he has already been defeated at the Cross of Calvary.`,
     tags: ['Love', 'Redemption', 'Sacrifice', 'Christ', 'Atonement', 'Perseverance'],
-    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
     scriptures: [
       {
         verse: 'Hebrews 10:1-10',
