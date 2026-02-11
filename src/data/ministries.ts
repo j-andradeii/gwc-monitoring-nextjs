@@ -29,7 +29,10 @@ export const ministries: Ministry[] = [
         id: '2',
         title: 'Gateway Marketplace',
         image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/marketplace.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        description: `[We are] Ambassadors of Christ in the Marketplace
+                       
+                       We are therefore Christ’s ambassadors, as though God were making his appeal through us. We implore you on Christ’s behalf: Be reconciled to God
+                       - 2 Corinthians 5:20`,
         social: {
             instagram: 'https://www.instagram.com/gatewaymarketplace.ceb'
         }
