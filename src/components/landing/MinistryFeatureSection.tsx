@@ -30,7 +30,18 @@ export const MinistryFeatureSection: React.FC<MinistryFeatureSectionProps> = ({
                     {/* Card Content */}
                     <div className="ministry-feature-card animate-on-scroll">
                         <h2 className="ministry-feature-title">{ministry.title}</h2>
-                        <p className="ministry-feature-description">{ministry.description}</p>
+                        <div
+                            style={{
+                                fontSize: '18px',
+                                lineHeight: '1.9',
+                                color: 'var(--text-primary)',
+                                whiteSpace: 'pre-line',
+                            }}
+                            dangerouslySetInnerHTML={{
+                                __html: ministry.description
+                                    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                            }}
+                        />
                         <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
                             {ministry.social?.facebook && (
                                 <a
