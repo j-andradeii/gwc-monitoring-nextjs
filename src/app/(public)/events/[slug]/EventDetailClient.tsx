@@ -182,7 +182,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                   </h2>
                   <div
                     style={{
-                      fontSize: '16px',
+                      fontSize: '18px',
                       lineHeight: '1.8',
                       color: 'var(--text-secondary)',
                       whiteSpace: 'pre-line',
