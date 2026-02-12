@@ -125,7 +125,7 @@ export const EventsCardGrid: React.FC<EventsCardGridProps> = ({
             <div className="event-grid-card-info">
               <div className="event-grid-info-row">
                 <i className="pi pi-calendar"></i>
-                <span>{event.day}, {event.displayDate || event.date}</span>
+                <span><strong>{event.day}, {event.displayDate || event.date}</strong></span>
               </div>
               <div className="event-grid-info-row">
                 <i className="pi pi-clock"></i>
