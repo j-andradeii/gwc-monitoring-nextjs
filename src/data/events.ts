@@ -94,10 +94,15 @@ Everyone is invited. See you there! 🫶✨`,
     date: 'Feb 15, 2026',
     displayDate: 'Feb 15',
     day: 'Sunday',
-    time: '2:00 PM',
+    time: '1:30 PM',
     location: '8th Floor, Golden Peak',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/lifeclass_party_4.jpg',
-    description: 'Lifeclass orientation for new delegates.',
+    description: `Life Class Party gives you a glimpse of what to expect in Life Class. 
+    You’ll learn more about what Life Class is all about, why your commitment matters, and meet the team who will journey with you throughout the Life Class. 
+    
+    It’s also a time of celebration and connection.
+
+    We can’t wait to see you there! 🎉`,
     category: 'Training',
     isFeatured: false,
     type: GatewayEventType.TRAINING
