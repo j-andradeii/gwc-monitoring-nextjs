@@ -184,7 +184,7 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                     style={{
                       fontSize: '18px',
                       lineHeight: '1.8',
-                      color: 'var(--text-secondary)',
+                      color: 'var(--text-primary)',
                       whiteSpace: 'pre-line',
                     }}
                   >
