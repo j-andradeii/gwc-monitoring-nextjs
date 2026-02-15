@@ -1482,7 +1482,7 @@ Make a list of the things Satan has tried to steal from you. Then, through praye
         text: 'Yet it pleased the Lord to bruise Him; He has put Him to grief. When You make His soul an offering for sin, He shall see His seed, He shall prolong His days, And the pleasure of the Lord shall prosper in His hand.'
       }
     ],
-    isFeatured: true,
+
     keyPoints: [
       'Although He was God, He became a man',
       'Although He was rich, He became poor',
@@ -1493,6 +1493,62 @@ Make a list of the things Satan has tried to steal from you. Then, through praye
       'Although He was perfect, He was broken for us'
     ],
     relatedSermons: ['12', '2'],
+  },
+  {
+    id: '14',
+    slug: 'first-love-should-never-die',
+    title: 'First Love Should Never Die',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-02-15',
+    duration: '45 min',
+    series: 'Faith Foundation',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    excerpt: 'Sincere love for Jesus should be evident in our personal priorities. Spiritual decline can be stopped and corrected only if there is sincere repentance and a return to original love.',
+    description: `**FIRST LOVE SHOULD NEVER DIE**
+
+Revelation 2:4
+
+---
+
+**1. GIVING THEIR SERVICE BUT NOT THEMSELVES**
+
+**2. A DEEP AND SINCERE LOVE FOR HIM PERSONALLY**
+
+**3. SINCERE LOVE FOR JESUS SHOULD BE EVIDENT IN OUR PERSONAL PRIORITIES**
+
+**4. FALLEN SPIRITUALLY**
+
+**5. TAKING TIME TO BE WITH HIM**
+
+---
+
+**CONCLUSION**
+
+How can churches avoid spiritual decline and the resulting judgment by Christ? These letters offer several ways.
+
+**(a)** First and most importantly, churches must be willing to "hear what the Spirit says" (2:5-7, 16-17, 21), which means they must listen and respond with obedience to God's direct message. The Word of Jesus Christ must always be the church's guide (1:1-5). His Word, as revealed to his NT messengers through the Holy Spirit, is the measure by which churches must examine their beliefs and activities and constantly renew their spiritual lives (2:7, 11, 17, 29).
+
+**(b)** Churches must continually examine their spiritual condition in relation to God and his standards. If necessary, they must correct their actions and their degree of toleration of worldly and immoral beliefs and behaviors among their members (2:4, 14-15, 20; 3:1-2, 14-17).
+
+**(c)** Spiritual decline can be stopped and corrected in any church or group only if there is sincere repentance (see Matt. 3:2, note on repentance) and a sincere return to the original love, truth, purity and power of Jesus Christ and his original Biblical revelation (2:5-7, 16-17; 3:1-3, 15-22).`,
+    tags: ['Love', 'Revival', 'Repentance', 'Priorities', 'Spiritual Decline'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
+    scriptures: [
+      {
+        verse: 'Revelation 2:4',
+        text: 'Nevertheless I have this against you, that you have left your first love.'
+      }
+    ],
+    isFeatured: true,
+    keyPoints: [
+      'Giving their service but not themselves',
+      'A deep and sincere love for Him personally',
+      'Sincere love for Jesus should be evident in our personal priorities',
+      'Fallen spiritually',
+      'Taking time to be with Him'
+    ],
+    relatedSermons: ['13', '5'],
   },
 ];
 
