@@ -36,7 +36,8 @@ const getUpcomingSunday = (): string => {
   return date.toLocaleDateString('en-US', {
     month: 'short',
     day: '2-digit',
-    year: 'numeric'
+    year: 'numeric',
+    timeZone: 'Asia/Manila'
   });
 };
 
