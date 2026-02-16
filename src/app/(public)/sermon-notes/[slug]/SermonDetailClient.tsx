@@ -6,15 +6,17 @@ import Image from 'next/image';
 import { LandingHeader, LandingFooter, ShareModal } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
 import { ScriptureCard } from '@/components/cards';
+import { Event } from '@/data/events';
 import '@/styles/landing.css';
 
 interface Props {
   sermon: Sermon;
   relatedSermons: Sermon[];
   seriesSermons: Sermon[];
+  upcomingEvents: Event[];
 }
 
-export default function SermonDetailClient({ sermon, relatedSermons, seriesSermons }: Props) {
+export default function SermonDetailClient({ sermon, relatedSermons, seriesSermons, upcomingEvents }: Props) {
   const [activeTab, setActiveTab] = useState<'notes' | 'scripture'>('notes');
   const [showShareModal, setShowShareModal] = useState(false);
 
@@ -610,6 +612,82 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                           </div>
                           <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
                             {s.speaker}
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Upcoming Events */}
+              {upcomingEvents.length > 0 && (
+                <div
+                  style={{
+                    padding: '24px',
+                    marginTop: '24px',
+                    backgroundColor: '#ffffff',
+                    borderRadius: '16px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                    <h3 style={{ fontSize: '16px', color: 'var(--text-primary)', margin: 0 }}>
+                      Upcoming Events
+                    </h3>
+                    <Link
+                      href="/events"
+                      style={{ fontSize: '12px', color: 'var(--primary-gold-accent)', textDecoration: 'none', fontWeight: '600' }}
+                    >
+                      View All
+                    </Link>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    {upcomingEvents.map((event) => (
+                      <Link
+                        key={event.id}
+                        href="/events"
+                        style={{
+                          display: 'flex',
+                          gap: '12px',
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <div
+                          style={{
+                            position: 'relative',
+                            width: '80px',
+                            height: '50px',
+                            borderRadius: '8px',
+                            overflow: 'hidden',
+                            flexShrink: 0,
+                          }}
+                        >
+                          <Image
+                            src={event.image}
+                            alt={event.title}
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            unoptimized
+                          />
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div
+                            style={{
+                              fontSize: '14px',
+                              fontWeight: '600',
+                              color: 'var(--text-primary)',
+                              marginBottom: '4px',
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden',
+                            }}
+                          >
+                            {event.title}
+                          </div>
+                          <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
+                            {event.date}
                           </div>
                         </div>
                       </Link>
