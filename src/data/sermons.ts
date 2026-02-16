@@ -1502,51 +1502,108 @@ Make a list of the things Satan has tried to steal from you. Then, through praye
     speakerRole: 'senior pastor',
     date: '2026-02-15',
     duration: '45 min',
-    series: 'Faith Foundation',
+    series: 'Covenant',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    excerpt: 'Sincere love for Jesus should be evident in our personal priorities. Spiritual decline can be stopped and corrected only if there is sincere repentance and a return to original love.',
+    excerpt: 'In Revelation 2:1–7, Jesus speaks to the church in Ephesus—a church known for its hard work, perseverance, and commitment to truth. Yet despite their faithful service, the Lord confronted them with a serious issue: they had left their first love.',
     description: `**FIRST LOVE SHOULD NEVER DIE**
 
-Revelation 2:4
+Revelation 2:1–7
+
+In Revelation 2:1–7, Jesus speaks to the church in Ephesus—a church known for its hard work, perseverance, and commitment to truth. Yet despite their faithful service, the Lord confronted them with a serious issue: they had left their first love.
+This passage reminds us that it is possible to be active in ministry while slowly drifting away in intimacy with Christ. Jesus does not only desire our service—He desires our hearts.
+
+---
+
+**KEY MESSAGE: FIRST LOVE SHOULD NEVER DIE**
+
+When a person is truly in love, time, sacrifice, distance, and effort do not become burdens. Love naturally expresses itself through devotion and priority.
+In the same way, our love for Jesus must remain sincere, personal, and passionate.
 
 ---
 
 **1. GIVING THEIR SERVICE BUT NOT THEMSELVES**
+The church in Ephesus was faithful in deeds and endurance, but they had lost the love they once had for Jesus. They continued serving, but their hearts were no longer fully devoted.
+
+"I know your deeds, your hard work and your perseverance… Yet I hold this against you: You have forsaken the love you had at first." (Revelation 2:2, 4)
+
+---
 
 **2. A DEEP AND SINCERE LOVE FOR HIM PERSONALLY**
+Christianity is not only about doing what is right—it is about loving Jesus personally. God desires a relationship with His people that is genuine and wholehearted.
+
+---
 
 **3. SINCERE LOVE FOR JESUS SHOULD BE EVIDENT IN OUR PERSONAL PRIORITIES**
+Our love for Christ is reflected in what we prioritize. If Jesus is truly first, it will be evident in our choices, schedules, and desire to seek Him.
+
+---
 
 **4. FALLEN SPIRITUALLY**
+Spiritual decline often begins quietly. Jesus warned the Ephesian church that they had “fallen” because their passion and devotion had weakened.
+
+"Consider how far you have fallen! Repent and do the things you did at first." (Revelation 2:5)
+
+---
 
 **5. TAKING TIME TO BE WITH HIM**
+The solution is not simply to do more—it is to return to Jesus. Our first love is restored when we intentionally spend time with Him and allow our relationship with Him to be renewed.
 
 ---
 
 **CONCLUSION**
 
-How can churches avoid spiritual decline and the resulting judgment by Christ? These letters offer several ways.
+How can churches avoid spiritual decline and the resulting judgment of Christ? The letters in Revelation provide clear instruction for every believer and every church.
 
-**(a)** First and most importantly, churches must be willing to "hear what the Spirit says" (2:5-7, 16-17, 21), which means they must listen and respond with obedience to God's direct message. The Word of Jesus Christ must always be the church's guide (1:1-5). His Word, as revealed to his NT messengers through the Holy Spirit, is the measure by which churches must examine their beliefs and activities and constantly renew their spiritual lives (2:7, 11, 17, 29).
+**First, churches must be willing to hear what the Spirit says**
+—listening carefully and responding with obedience to God’s direct message. The Word of Jesus Christ must remain the church’s foundation and guide, and it is through His Word that believers are continually renewed. (Revelation 2:5–7)
 
-**(b)** Churches must continually examine their spiritual condition in relation to God and his standards. If necessary, they must correct their actions and their degree of toleration of worldly and immoral beliefs and behaviors among their members (2:4, 14-15, 20; 3:1-2, 14-17).
+**Second, churches must continually examine their spiritual condition according to God’s standards**. 
+Where compromise is found, there must be correction—especially when worldly thinking or immoral practices are tolerated among God’s people. (Revelation 2:14–15)
 
-**(c)** Spiritual decline can be stopped and corrected in any church or group only if there is sincere repentance (see Matt. 3:2, note on repentance) and a sincere return to the original love, truth, purity and power of Jesus Christ and his original Biblical revelation (2:5-7, 16-17; 3:1-3, 15-22).`,
-    tags: ['Love', 'Revival', 'Repentance', 'Priorities', 'Spiritual Decline'],
+**Finally, spiritual decline can only be stopped and corrected through sincere repentance and a wholehearted return to the original love, truth, purity, and power of Jesus Christ and His Word**. 
+(Revelation 2:5–7, Matthew 3:2)
+
+**May we not only serve God faithfully, but also love Him deeply—because first love should never die.**
+
+---
+
+** Serving God is not the same as loving God. We can be active in ministry yet still lose intimacy with Jesus. (Revelation 2:2, 4)
+** First love must remain alive. Jesus desires not only our works, but our wholehearted devotion.
+
+** True love for Christ is personal. God wants a deep and sincere relationship, not mere religious routine.
+** Our priorities reveal our love. If Jesus is first, it will be evident in how we spend our time, energy, and attention.
+
+** Spiritual decline begins when passion fades. Losing our hunger for God leads to falling spiritually. (Revelation 2:5)
+** The solution is to return. Restoration happens when we repent and return to the things we did at first.
+
+** Churches must hear and obey the Spirit. Spiritual renewal begins when we listen to God’s Word and respond in obedience. (Revelation 2:7)
+** Repentance restores purity and power. Decline is reversed through sincere repentance and a return to Christ-centered living. (Matthew 3:2)`,
+    tags: ['First Love', 'Intimacy', 'Repentance', 'Restoration', 'Priorities', 'Ministry'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
     scriptures: [
       {
-        verse: 'Revelation 2:4',
-        text: 'Nevertheless I have this against you, that you have left your first love.'
+        verse: 'Revelation 2:1-7',
+        text: 'To the angel of the church of Ephesus write, ‘These things says He who holds the seven stars in His right hand, who walks in the midst of the seven golden lampstands: "I know your works, your labor, your patience, and that you cannot bear those who are evil. And you have tested those who say they are apostles and are not, and have found them liars; and you have persevered and have patience, and have labored for My name’s sake and have not become weary. Nevertheless I have this against you, that you have left your first love. Remember therefore from where you have fallen; repent and do the first works, or else I will come to you quickly and remove your lampstand from its place—unless you repent. But this you have, that you hate the deeds of the Nicolaitans, which I also hate. He who has an ear, let him hear what the Spirit says to the churches. To him who overcomes I will give to eat from the tree of life, which is in the midst of the Paradise of God."’'
+      },
+      {
+        verse: 'Revelation 2:16-17',
+        text: 'Repent, or else I will come to you quickly and will fight against them with the sword of My mouth. He who has an ear, let him hear what the Spirit says to the churches. To him who overcomes I will give some of the hidden manna to eat. And I will give him a white stone, and on the stone a new name written which no one knows except him who receives it.'
+      },
+      {
+        verse: 'Matthew 3:2',
+        text: 'and saying, "Repent, for the kingdom of heaven is at hand!"'
       }
     ],
     isFeatured: true,
     keyPoints: [
-      'Giving their service but not themselves',
-      'A deep and sincere love for Him personally',
-      'Sincere love for Jesus should be evident in our personal priorities',
-      'Fallen spiritually',
-      'Taking time to be with Him'
+      'Serving God is not the same as loving God',
+      'First love must remain alive',
+      'True love for Christ is personal',
+      'Our priorities reveal our love',
+      'Spiritual decline begins when passion fades',
+      'The solution is to return',
+      'Churches must hear and obey the Spirit',
+      'Repentance restores purity and power'
     ],
     relatedSermons: ['13', '5'],
   },
