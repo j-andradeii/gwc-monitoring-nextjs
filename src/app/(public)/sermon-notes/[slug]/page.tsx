@@ -7,6 +7,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { sermons, getSermonBySlug, getRelatedSermons, getSermonsBySeries } from '@/data/sermons';
+import { events, isEventUpcoming } from '@/data/events';
 import SermonDetailClient from './SermonDetailClient';
 
 interface Props {
@@ -57,12 +58,14 @@ export default async function SermonDetailPage({ params }: Props) {
 
   const relatedSermons = getRelatedSermons(sermon.id);
   const seriesSermons = getSermonsBySeries(sermon.series).filter(s => s.id !== sermon.id);
+  const upcomingEvents = events.filter(isEventUpcoming).slice(0, 3);
 
   return (
     <SermonDetailClient
       sermon={sermon}
       relatedSermons={relatedSermons}
       seriesSermons={seriesSermons}
+      upcomingEvents={upcomingEvents}
     />
   );
 }
