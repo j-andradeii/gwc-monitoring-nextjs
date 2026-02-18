@@ -9,7 +9,7 @@ export const siteMetadata = {
     shortName: 'Gateway',
     slogan: 'Loving God, Loving People',
     description: 'Loving God, Loving People. Gateway Church is a vibrant, multicultural community dedicated to sharing the love of Christ. We create a space where people can encounter God, grow in their faith, and find a supportive family.',
-    siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com',
+    siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://www.gatewaychurchcebu.com',
     keywords: [
         'Gateway Church',
         'Gateway Church Cebu',
@@ -48,7 +48,7 @@ export const siteMetadata = {
         country: 'PH',
     },
     contact: {
-        phone: '+1-555-555-5555',
+        phone: '+639225262508',
         type: 'customer service',
     },
     discipleshipProcess: [

@@ -7,8 +7,9 @@
 import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
+import { siteMetadata } from '@/data/site-metadata';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
