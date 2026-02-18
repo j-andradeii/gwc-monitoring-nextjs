@@ -40,7 +40,7 @@ export interface AppConfig {
 export const config: AppConfig = {
   app: {
     name: process.env.NEXT_PUBLIC_APP_NAME || 'Gateway Church Cebu',
-    url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://www.gatewaychurchcebu.com',
   },
   api: {
     url: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1',
