@@ -47,7 +47,10 @@ export const ministries: Ministry[] = [
         id: '4',
         title: 'Gateway Kids',
         image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/kids.jpg',
-        description: 'Gateway Church is ready and happy to serve everyone who visits with their precious ones by ushering them to our Kids’ Corner. There, children play, sing songs of God’s goodness, share their stories, and create art. They also discover great stories from the Bible, learning that the same amazing things God did for His people then, He will do for them today. We are honored to support parents who desire to "train up a child in the way they should go" (Proverbs 22:6).',
+        description: `Gateway Church is ready and happy to serve everyone who visits with their precious ones by ushering them to our Kids’ Corner. 
+        There, children play, sing songs of God’s goodness, share their stories, and create art. 
+        They also discover great stories from the Bible, learning that the same amazing things God did for His people then, He will do for them today. 
+        We are honored to support parents who desire to "train up a child in the way they should go" (Proverbs 22:6).`,
     },
     {
         id: '5',
