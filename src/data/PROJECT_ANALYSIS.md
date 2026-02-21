@@ -15,6 +15,8 @@ This document provides a complete technical analysis of the GWC Monitoring NextJ
 7. [Form Patterns (Zod + React Hook Form)](#7-form-patterns-zod--react-hook-form)
 8. [Service Layer Patterns](#8-service-layer-patterns)
 9. [Reusable Form Components](#9-reusable-form-components)
+10. [Comprehensive Styling Patterns](#10-comprehensive-styling-patterns)
+11. [SEO Setup](#11-seo-setup)
 
 ---
 
@@ -2294,6 +2296,872 @@ export { default as FormError } from './FormError';
 
 ---
 
+## 10. Comprehensive Styling Patterns
+
+### 10.1 CSS File Architecture
+
+The project uses a layered CSS architecture with clear separation of concerns:
+
+| File | Location | Lines | Purpose |
+|------|----------|-------|---------|
+| `globals.css` | `src/app/` | ~730 | Core theme, CSS variables, utilities, PrimeReact overrides |
+| `landing.css` | `src/styles/` | ~9,300 | Public/landing page styles, component-specific styles |
+| `signin.css` | `src/styles/` | ~633 | Authentication page styles (two-panel layout) |
+| `admin.css` | `src/styles/` | ~44 | Admin dashboard overrides (minimal) |
+| `form-input.css` | `src/components/forms/styles/` | ~200 | Form component PrimeReact overrides |
+
+**Style Loading Order:**
+1. `globals.css` - Root layout (`src/app/layout.tsx`)
+2. PrimeReact theme - `primereact/resources/themes/lara-light-blue/theme.css`
+3. Page-specific CSS - Imported in individual page components
+4. Component CSS - Imported at component level
+
+---
+
+### 10.2 CSS Variables & Design Tokens
+
+**File: `src/app/globals.css` (Lines 12-99)**
+
+The design system uses a "Sanctuary-Inspired" color palette:
+
+```css
+:root {
+  /* Primary - Warm Gold (sanctuary lighting) */
+  --color-primary: #d4a84b;
+  --color-primary-light: #e5c47a;
+  --color-primary-dark: #b8923f;
+
+  /* Secondary - Royal Purple */
+  --color-secondary: #4a3c6e;
+  --color-secondary-light: #6b5a8e;
+  --color-secondary-dark: #352a52;
+
+  /* Accent - Rich Burgundy */
+  --color-accent: #6b2c3a;
+  --color-accent-light: #8e4a5a;
+  --color-accent-dark: #4d1f2a;
+
+  /* Semantic Colors */
+  --color-success: #22C55E;
+  --color-success-light: #4ADE80;
+  --color-success-dark: #16A34A;
+  --color-warning: #d4a84b;        /* Maps to primary */
+  --color-error: #6b2c3a;          /* Maps to accent */
+  --color-info: #4a3c6e;           /* Maps to secondary */
+
+  /* Background & Surface */
+  --color-background: #f5f0e6;     /* Soft Cream */
+  --color-foreground: #0d1424;     /* Deep Navy */
+  --color-surface: #ffffff;
+  --color-border: #e8e3d9;         /* Warm border */
+  --color-muted: #374151;
+
+  /* Named Colors */
+  --color-navy: #1a2744;           /* Deep Navy */
+  --color-navy-dark: #151e32;
+  --color-purple: #4a3c6e;
+  --color-burgundy: #6b2c3a;
+  --color-cream: #f5f0e6;
+  --color-ivory: #faf8f3;
+  --color-velvet: #DA4453;         /* Error/invalid state */
+
+  /* Glass Effects (Glassmorphism) */
+  --color-glass: rgba(255, 255, 255, 0.85);
+  --color-glass-dark: rgba(26, 39, 68, 0.85);
+
+  /* Layout Dimensions */
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 80px;
+  --header-height: 64px;
+
+  /* Typography */
+  --letter-spacing-tight: -1.5px;
+  --letter-spacing-tighter: -1.8px;
+  --letter-spacing-normal: -0.5px;
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1A1A2E;
+    --color-foreground: #F5F5F5;
+    --color-muted: #9CA3AF;
+    --color-border: #374151;
+    --color-surface: #1F2937;
+  }
+}
+```
+
+---
+
+### 10.3 Typography System
+
+**Font Family:** Inter (Google Fonts, variable weights 100-900)
+
+**Loaded in `src/app/layout.tsx`:**
+```typescript
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+```
+
+**Typography Hierarchy:**
+
+| Element | Size | Weight | Letter-Spacing | Style |
+|---------|------|--------|----------------|-------|
+| Hero Title | 56px | 800 | -1.8px | UPPERCASE |
+| Campaign Title | 52px | 800 | -1.8px | UPPERCASE |
+| Section Title | 32-36px | 800 | -1.5px | UPPERCASE |
+| Card Title | 24px | 800 | -0.5px | UPPERCASE |
+| Step Title | 20px | 700 | -0.5px | UPPERCASE |
+| Body Copy | 15px | 500 | Normal | Regular |
+| Section Label | 11-12px | 900 | 2.5px | UPPERCASE |
+| Meta Text | 12-13px | 500 | Normal | Regular |
+
+**Line Heights:**
+- Hero Headings: 1.05
+- Subheadings: 1.1 - 1.2
+- Body Text: 1.6 - 1.7
+
+---
+
+### 10.4 Component Styling Patterns
+
+#### Premium Glass Card (Glassmorphism)
+
+```css
+.premium-glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-glass-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 24px 60px rgba(212, 168, 75, 0.15),
+              0 12px 24px rgba(0, 0, 0, 0.06);
+}
+```
+
+#### Button Variants
+
+| Class | Description |
+|-------|-------------|
+| `.landing-btn-primary` | Gold gradient background |
+| `.landing-btn-outline` | Gold outline, transparent background |
+| `.landing-btn-border` | Navy outline |
+| `.landing-btn-border-light` | White outline |
+| `.landing-btn-border-gold` | Gold outline |
+| `.landing-btn-light` | Solid white |
+| `.landing-btn-solid-dark` | Solid navy |
+| `.landing-btn-solid-gold` | Solid gold |
+| `.btn-arrow-gold` | Gold gradient with animated arrow |
+| `.btn-contrast` | High-contrast dark button |
+| `.btn-contrast-outline` | Black outline |
+
+**Button Base Pattern:**
+```css
+.landing-btn {
+  border-radius: 50px;           /* Full pill shape */
+  padding: 14px 32px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease;
+}
+```
+
+#### Process Step Cards
+
+```css
+.process-step-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+}
+
+.process-step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Step number badge */
+.step-number {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #d4a84b 0%, #d97706 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+```
+
+---
+
+### 10.5 Animation System
+
+**Keyframe Animations (from `globals.css`):**
+
+```css
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+```
+
+**Transition Timing Standards:**
+
+| Timing | Value | Usage |
+|--------|-------|-------|
+| Fast | `0.2s ease` | Micro-interactions (icons, underlines) |
+| Standard | `0.25s ease` | Buttons, links, inputs |
+| Smooth | `0.3s ease` | Dropdowns, menus, tooltips |
+| Elegant | `0.4s ease` | Card transforms |
+| Premium | `0.5s cubic-bezier(0.4, 0, 0.2, 1)` | Glass cards |
+
+**Scroll Animations with Staggering:**
+
+```css
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays */
+.animate-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.15s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.2s; }
+```
+
+---
+
+### 10.6 Responsive Design
+
+**Breakpoints:**
+
+| Name | Width | Usage |
+|------|-------|-------|
+| Mobile Small | 480px | Extra small devices |
+| Mobile | 768px | Tablets and below |
+| Tablet | 1024px | Larger tablets, small laptops |
+| Desktop | 1024px+ | Laptops and desktops |
+
+**Grid Adjustments:**
+
+| Component | Desktop | Tablet | Mobile |
+|-----------|---------|--------|--------|
+| Hero | 75vh | 75vh | 650px fixed |
+| Sermons Grid | 3 columns | 2 columns | 1 column |
+| Ministries | 2 columns | 2 columns | 1 column |
+| Events | 3 columns | 2 columns | 1 column |
+| Footer Links | 4 columns | 2 columns | 1 column |
+
+**Typography Scaling:**
+
+| Element | Desktop | Tablet | Mobile |
+|---------|---------|--------|--------|
+| Hero H1 | 56px | 42px | 32px |
+| Section H2 | 36px | 32px | 28px |
+| Card H3 | 24px | 22px | 20px |
+| Body | 15px | 15px | 14px |
+
+---
+
+### 10.7 PrimeReact Theme Customization
+
+**Base Theme:** Lara Light Blue (`primereact/resources/themes/lara-light-blue/theme.css`)
+
+**Custom Overrides (from `globals.css`):**
+
+```css
+/* Calendar */
+.p-calendar .p-inputtext {
+  @apply w-full rounded-lg border border-gray-300 px-4 py-3;
+}
+
+/* Dropdown */
+.p-dropdown {
+  @apply w-full rounded-lg border border-gray-300;
+}
+
+/* Button */
+.p-button {
+  @apply rounded-lg;
+}
+
+/* DataTable */
+.p-datatable .p-datatable-thead > tr > th {
+  @apply bg-surface font-semibold text-foreground;
+}
+
+/* Toast Notifications */
+.p-toast-message-success {
+  background-color: rgba(74, 222, 128, 0.1);
+  border-left: 4px solid var(--color-success);
+}
+
+.p-toast-message-error {
+  background-color: rgba(107, 44, 58, 0.1);
+  border-left: 4px solid var(--color-error);
+}
+
+/* Invalid State */
+.p-invalid {
+  border-color: var(--color-velvet) !important;
+}
+```
+
+---
+
+### 10.8 Performance Optimizations
+
+```css
+/* GPU Acceleration */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Will-Change for Animations */
+.will-animate {
+  will-change: opacity, transform;
+}
+
+/* Contain for Layout Stability */
+.hero-section {
+  contain: strict;
+  overflow: clip;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+---
+
+## 11. SEO Setup
+
+### 11.1 Centralized SEO Data
+
+**File: `src/data/site-metadata.ts`**
+
+```typescript
+export const siteMetadata = {
+  name: 'Gateway Church',
+  shortName: 'Gateway',
+  slogan: 'Loving God, Loving People',
+  description: 'Loving God, Loving People. Gateway Church is a vibrant,
+                multicultural community dedicated to sharing the love of Christ...',
+  siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://www.gatewaychurchcebu.com',
+  keywords: [
+    'Gateway Church', 'Gateway Church Cebu', 'church', 'worship', 'community',
+    'faith', 'ministries', 'sermons', 'events', 'Cebu', 'discipleship',
+    'great commission', 'evangelism', 'new believers', 'church leadership'
+  ],
+  socials: {
+    facebook: 'https://www.facebook.com/profile.php?id=61573001004310',
+    instagram: 'https://www.instagram.com/gatewaychurchcebu',
+  },
+  address: {
+    street: '8th Floor, Golden Peak, Gorordo Avenue',
+    city: 'Cebu City',
+    region: 'Cebu',
+    postalCode: '6000',
+    country: 'PH',
+  },
+  contact: {
+    phone: '+639225262508',
+    type: 'customer service',
+  },
+  discipleshipProcess: [
+    'WIN - Reaching new people for Jesus',
+    'CONSOLIDATE - Taking care of new believers',
+    'DISCIPLE - Reproducing Christ\'s character',
+    'SEND - Empowering leaders to fulfill the Great Commission'
+  ]
+};
+```
+
+---
+
+### 11.2 Technical SEO Files
+
+#### robots.ts
+
+**File: `src/app/robots.ts`**
+
+```typescript
+import { MetadataRoute } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
+
+export default function robots(): MetadataRoute.Robots {
+  const siteUrl = siteMetadata.siteUrl;
+
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/api/', '/admin/', '/dashboard/', '/private/'],
+    },
+    sitemap: `${siteUrl}/sitemap.xml`,
+  };
+}
+```
+
+#### sitemap.ts
+
+**File: `src/app/sitemap.ts`**
+
+```typescript
+import { MetadataRoute } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
+import { sermons } from '@/data/sermons';
+import { events } from '@/data/events';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl = siteMetadata.siteUrl;
+
+  // Dynamic sermon routes
+  const sermonRoutes = sermons.map((sermon) => ({
+    url: `${siteUrl}/sermon-notes/${sermon.slug}`,
+    lastModified: new Date(sermon.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  // Dynamic event routes
+  const eventRoutes = events.map((event) => ({
+    url: `${siteUrl}/events/${event.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [
+    // Root
+    { url: siteUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
+    // Static pages
+    { url: `${siteUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/sermon-notes`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${siteUrl}/events`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${siteUrl}/ministries/community`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/ministries/serve`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/give/ways-to-give`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${siteUrl}/give/gateway-projects`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    // Dynamic routes
+    ...sermonRoutes,
+    ...eventRoutes,
+  ];
+}
+```
+
+#### manifest.ts
+
+**File: `src/app/manifest.ts`**
+
+```typescript
+import { MetadataRoute } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: siteMetadata.name,
+    short_name: siteMetadata.shortName,
+    description: siteMetadata.description,
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#ffffff',
+    theme_color: '#ffffff',
+    icons: [
+      {
+        src: '/favicon.ico',
+        sizes: 'any',
+        type: 'image/x-icon',
+      },
+    ],
+  };
+}
+```
+
+---
+
+### 11.3 Root Layout Metadata
+
+**File: `src/app/layout.tsx`**
+
+```typescript
+import { Metadata } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
+
+export const metadata: Metadata = {
+  title: siteMetadata.name,
+  description: siteMetadata.description,
+  keywords: siteMetadata.keywords,
+  authors: [{ name: siteMetadata.name }],
+  metadataBase: new URL(siteMetadata.siteUrl),
+  icons: {
+    icon: '/assets/images/gwc-logo-gold.png',
+    apple: '/assets/images/gwc-logo-gold.png',
+  },
+  openGraph: {
+    title: siteMetadata.name,
+    description: siteMetadata.description,
+    images: [{
+      url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
+      width: 2048,
+      height: 715,
+      alt: `${siteMetadata.name} Family`,
+    }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteMetadata.name,
+    description: siteMetadata.description,
+    images: ['https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg'],
+  },
+};
+```
+
+---
+
+### 11.4 Static Page Metadata
+
+| Page | Title | Keywords | Notes |
+|------|-------|----------|-------|
+| `/` (Landing) | `Gateway Church \| Welcome Home` | Full siteMetadata.keywords | Robots: index, follow |
+| `/about` | `About Us \| Gateway Church` | 8 keywords (vision, mission, values) | Canonical set |
+| `/sermon-notes` | `Sermon Notes \| Gateway Church Cebu` | Sermon-related | OpenGraph type: website |
+| `/events` | `Events \| Gateway Church` | 8 event keywords | GoogleBot extended |
+| `/ministries/community` | `Community \| Gateway Church` | Community keywords | Locale: en_US |
+| `/ministries/serve` | `Serve \| Gateway Church` | Volunteer keywords | |
+| `/give/ways-to-give` | `Ways to Give \| Gateway Church` | GCash, BPI, BDO keywords | |
+| `/give/gateway-projects` | `Gateway Projects \| Gateway Church` | Building/project keywords | |
+
+**Static Page Pattern:**
+
+```typescript
+// src/app/(public)/about/page.tsx
+import { Metadata } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
+
+const siteUrl = siteMetadata.siteUrl;
+
+export const metadata: Metadata = {
+  title: 'About Us | Gateway Church',
+  description: 'Learn about Gateway Church...',
+  keywords: ['vision', 'mission', 'values', 'faith', 'community', ...],
+  alternates: {
+    canonical: `${siteUrl}/about`,
+  },
+  openGraph: {
+    title: 'About Us | Gateway Church',
+    description: 'Learn about Gateway Church...',
+    url: `${siteUrl}/about`,
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Gateway Church',
+    images: [{
+      url: '/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Gateway Church',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | Gateway Church',
+    description: 'Learn about Gateway Church...',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+};
+```
+
+---
+
+### 11.5 Dynamic Page Metadata
+
+**Pattern: `generateStaticParams` + `generateMetadata`**
+
+```typescript
+// src/app/(public)/sermon-notes/[slug]/page.tsx
+import { Metadata } from 'next';
+import { sermons, getSermonBySlug } from '@/data/sermons';
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+// Generate static paths at build time
+export async function generateStaticParams() {
+  return sermons.map((sermon) => ({
+    slug: sermon.slug,
+  }));
+}
+
+// Generate metadata for each sermon
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const sermon = getSermonBySlug(slug);
+
+  if (!sermon) {
+    return {
+      title: 'Sermon Not Found | Gateway Church',
+    };
+  }
+
+  return {
+    title: `${sermon.title} | Gateway Church Sermons`,
+    description: sermon.excerpt,
+    openGraph: {
+      title: sermon.title,
+      description: sermon.excerpt,
+      images: [sermon.image],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: sermon.title,
+      description: sermon.excerpt,
+      images: [sermon.image],
+    },
+  };
+}
+```
+
+**Event Detail Page:**
+
+```typescript
+// src/app/(public)/events/[slug]/page.tsx
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const event = getEventBySlug(slug);
+  const siteUrl = config.app.url;
+
+  if (!event) {
+    return {
+      title: 'Event Not Found | Gateway Church',
+      alternates: { canonical: `${siteUrl}/events` },
+    };
+  }
+
+  const eventUrl = `${siteUrl}/events/${event.slug}`;
+
+  return {
+    title: `${event.title} | Gateway Church Events`,
+    description: event.description ? event.description.substring(0, 160) : `Join us for ${event.title}`,
+    alternates: { canonical: eventUrl },
+    openGraph: {
+      title: event.title,
+      description: event.description || `Join us for ${event.title}`,
+      url: eventUrl,
+      siteName: 'Gateway Church Cebu',
+      locale: 'en_PH',
+      type: 'website',
+      images: [{
+        url: event.image.startsWith('http') ? event.image : `${siteUrl}${event.image}`,
+        width: 1200,
+        height: 630,
+        alt: event.title,
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: event.title,
+      description: event.description ? event.description.substring(0, 160) : `Join us for ${event.title}`,
+      images: [event.image.startsWith('http') ? event.image : `${siteUrl}${event.image}`],
+    },
+  };
+}
+```
+
+---
+
+### 11.6 JSON-LD Structured Data
+
+#### Church Schema (Landing Page)
+
+**File: `src/app/page.tsx`**
+
+```typescript
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Church',
+      name: siteMetadata.name,
+      description: siteMetadata.description,
+      url: siteUrl,
+      logo: `${siteUrl}/logo.png`,
+      image: `${siteUrl}/assets/images/fam-picture.jpg`,
+      slogan: siteMetadata.slogan,
+      knowsAbout: siteMetadata.discipleshipProcess,
+      sameAs: [
+        siteMetadata.socials.facebook,
+        siteMetadata.socials.instagram,
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: siteMetadata.address.street,
+        addressLocality: siteMetadata.address.city,
+        addressRegion: siteMetadata.address.region,
+        postalCode: siteMetadata.address.postalCode,
+        addressCountry: siteMetadata.address.country,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: siteMetadata.contact.phone,
+        contactType: siteMetadata.contact.type,
+      },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${siteUrl}/#main-navigation`,
+      name: 'Main Navigation',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', url: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'About', url: `${siteUrl}/about` },
+        { '@type': 'ListItem', position: 3, name: 'Sermons', url: `${siteUrl}/sermon-notes` },
+        { '@type': 'ListItem', position: 4, name: 'Events', url: `${siteUrl}/events` },
+      ],
+    },
+  ],
+};
+
+// In page component:
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+/>
+```
+
+#### Event Schema (Event Detail Pages)
+
+```typescript
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: event.title,
+  startDate: new Date(`${event.date} ${event.time}`).toISOString(),
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: event.location,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Gorordo Ave. cor. Escario St.',
+      addressLocality: 'Cebu City',
+      postalCode: '6000',
+      addressRegion: 'Cebu',
+      addressCountry: 'PH'
+    }
+  },
+  image: [event.image],
+  description: event.description,
+  organizer: {
+    '@type': 'Organization',
+    name: 'Gateway Church Cebu',
+    url: siteUrl
+  }
+};
+```
+
+---
+
+### 11.7 Meta Tags Summary
+
+| Meta Tag | Implementation | Notes |
+|----------|----------------|-------|
+| `title` | Page-specific with "Gateway Church" suffix | |
+| `description` | 160-180 characters | |
+| `keywords` | Array from siteMetadata or page-specific | |
+| `metadataBase` | `new URL(siteMetadata.siteUrl)` | Required for relative URLs |
+| `alternates.canonical` | Full page URL | Prevents duplicate content |
+| `openGraph.type` | `website` or `article` | Dynamic pages use `article` |
+| `openGraph.locale` | `en_US` or `en_PH` | |
+| `openGraph.images` | 1200x630 (standard) or 2048x715 (hero) | |
+| `twitter.card` | `summary_large_image` | All pages |
+| `robots.index` | `true` for public pages | |
+| `robots.googleBot` | Extended controls | `max-snippet`, `max-image-preview` |
+
+---
+
 ## Summary
 
 This project implements a modern, full-stack Next.js application with:
@@ -2306,5 +3174,7 @@ This project implements a modern, full-stack Next.js application with:
 6. **httpOnly Cookie Authentication** for secure token management
 7. **Route Groups** for organized routing with authentication middleware
 8. **TypeScript Path Aliases** for clean imports
+9. **Comprehensive Styling System** with CSS variables, glassmorphism effects, responsive design, and PrimeReact theme customization
+10. **SEO Architecture** with centralized metadata, dynamic `generateMetadata`, JSON-LD structured data, and complete sitemap/robots configuration
 
-The architecture ensures separation of concerns, type safety, and maintainable code patterns across the entire codebase.
+The architecture ensures separation of concerns, type safety, maintainable code patterns, consistent visual design, and search engine optimization across the entire codebase.
