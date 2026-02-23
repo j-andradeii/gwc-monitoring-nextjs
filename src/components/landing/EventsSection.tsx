@@ -7,7 +7,9 @@ import { EventsCardGrid } from './EventsCardGrid';
 
 export const EventsSection: React.FC = () => {
   const sortedEvents = useMemo(() => {
-    return [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    return [...events]
+      .filter((e) => !e.is_event_finished)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   }, []);
 
   return (
