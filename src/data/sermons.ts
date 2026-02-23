@@ -1594,7 +1594,6 @@ Where compromise is found, there must be correction—especially when worldly th
         text: 'and saying, "Repent, for the kingdom of heaven is at hand!"'
       }
     ],
-    isFeatured: true,
     keyPoints: [
       'Serving God is not the same as loving God',
       'First love must remain alive',
@@ -1606,6 +1605,113 @@ Where compromise is found, there must be correction—especially when worldly th
       'Repentance restores purity and power'
     ],
     relatedSermons: ['13', '5'],
+  },
+  {
+    id: '15',
+    slug: 'promise-to-come',
+    title: 'Promise To Come',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-02-22',
+    duration: '45 min',
+    series: 'Covenant',
+    seriesDescription: 'Understanding the covenant relationship between God and His people.',
+    excerpt: 'First fruit means "a promise to come." It is the first portion that guarantees a greater harvest ahead.',
+    description: `**PROMISE TO COME**
+
+Genesis 4:1–7
+
+---
+
+**1. JESUS WAS THE FIRST OF MANY**
+
+Jesus is the First Fruit.
+
+God gave His Son so that He could harvest many sons and daughters. The Father’s heart has always been for a big family. He gave His first so that He could gain many.
+
+In John 3:16, God demonstrated His love by giving His best.
+
+First fruit means “a promise to come.” It is the first portion that guarantees a greater harvest ahead.
+
+Jesus is the firstborn among many.
+
+When we give our first and our best, we reflect the heart of the Father.
+
+How can we give a stingy offering to a generous God? Those who experience grace give generously.
+
+---
+
+**2. FIRST FRUIT IS BUILT INTO NATURE**
+
+First fruit comes before the harvest. It requires faith.
+
+In Genesis 4:1–7, Cain and Abel both brought offerings. But Scripture says, “in the process of time.” When you give and how you give matters.
+
+Abel gave the firstborn of his flock—the best portion.
+Cain gave an offering, but not necessarily the first and the best.
+
+First fruit is before you see the full harvest.
+Tithing is after you gather the harvest—when you are already blessed.
+
+When you give your first fruit, you invite God into your future.
+God stands by His promise and fulfils what He has spoken.
+
+---
+
+**3. WHEN WE HONOR HIM, GOD GIVES US COMPREHENSIVE INSURANCE**
+
+“Honour the Lord with your wealth, with the firstfruits…” (Proverbs 3:9–10)
+
+When we honor Him with our first and our best, He responds with provision.
+
+In Jeremiah 2:3, the first fruits were holy to the Lord. What is holy belongs to God.
+
+When we return the holy portion, God blesses and consecrates the rest.
+He stands beside what is given to Him. He protects it.
+
+Like Hannah in 1 Samuel 1:11 and 2:21, when she gave her first son to the Lord, God multiplied her blessing.
+
+First fruit is not only about finances—it includes our plans, our time, and our future.
+
+When we honor Him with our first and our best, He secures what concerns us.
+
+First fruit is a promise to come.`,
+    tags: ['First Fruit', 'Promise', 'Offering', 'Faith', 'Honor', 'Harvest', 'Generosity'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
+    scriptures: [
+      {
+        verse: 'Genesis 4:1-7',
+        text: 'Now Adam knew Eve his wife, and she conceived and bore Cain, and said, "I have acquired a man from the Lord." Then she bore again, this time his brother Abel. Now Abel was a keeper of sheep, but Cain was a tiller of the ground. And in the process of time it came to pass that Cain brought an offering of the fruit of the ground to the Lord. Abel also brought of the firstborn of his flock and of their fat. And the Lord respected Abel and his offering, but He did not respect Cain and his offering. And Cain was very angry, and his countenance fell. So the Lord said to Cain, "Why are you angry? And why has your countenance fallen? If you do well, will you not be accepted? And if you do not do well, sin lies at the door. And its desire is for you, but you should rule over it."'
+      },
+      {
+        verse: 'John 3:16',
+        text: 'For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.'
+      },
+      {
+        verse: 'Proverbs 3:9-10',
+        text: 'Honor the Lord with your possessions, And with the firstfruits of all your increase; So your barns will be filled with plenty, And your vats will overflow with new wine.'
+      },
+      {
+        verse: 'Jeremiah 2:3',
+        text: '"Israel was holiness to the Lord, The firstfruits of His increase. All that devour him will offend; Disaster will come upon them," says the Lord.'
+      },
+      {
+        verse: '1 Samuel 1:11',
+        text: 'Then she made a vow and said, "O Lord of hosts, if You will indeed look on the affliction of Your maidservant and remember me, and not forget Your maidservant, but will give Your maidservant a male child, then I will give him to the Lord all the days of his life, and no razor shall come upon his head."'
+      },
+      {
+        verse: '1 Samuel 2:21',
+        text: 'And the Lord visited Hannah, so that she conceived and bore three sons and two daughters. Meanwhile the child Samuel grew before the Lord.'
+      }
+    ],
+    isFeatured: true,
+    keyPoints: [
+      'Jesus was the first of many',
+      'First fruit is built into nature',
+      'When we honor Him, God gives us comprehensive insurance',
+      'First fruit means "a promise to come"'
+    ],
+    relatedSermons: ['14', '2'],
   },
 ];
 
