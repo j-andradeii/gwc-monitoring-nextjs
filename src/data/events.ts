@@ -26,6 +26,7 @@ export interface Event {
   category?: string;
   isFeatured?: boolean;
   type: GatewayEventType;
+  is_event_finished?: boolean;
 }
 
 const getUpcomingSunday = (): string => {
@@ -65,7 +66,8 @@ We’ve saved you a seat. 🤍
 #GatewayChurchCebu #SundayService #ChurchFamily`,
     category: 'SONDAY SERVICE',
     isFeatured: false,
-    type: GatewayEventType.SONDAY_SERVICE
+    type: GatewayEventType.SONDAY_SERVICE,
+    is_event_finished: false
   },
   {
     id: 2,
@@ -86,7 +88,8 @@ let’s discover what it truly means to wait, trust, and honor love the way God 
 Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
-    type: GatewayEventType.FELLOWSHIP
+    type: GatewayEventType.FELLOWSHIP,
+    is_event_finished: true
   },
   {
     id: 3,
@@ -106,7 +109,8 @@ Everyone is invited. See you there! 🫶✨`,
     We can’t wait to see you there! 🎉`,
     category: 'Training',
     isFeatured: false,
-    type: GatewayEventType.TRAINING
+    type: GatewayEventType.TRAINING,
+    is_event_finished: true
   },
   {
     id: 4,
@@ -121,7 +125,8 @@ Everyone is invited. See you there! 🫶✨`,
     description: 'Gateway monthly gathering for men and women.',
     category: 'Fellowship',
     isFeatured: false,
-    type: GatewayEventType.FELLOWSHIP
+    type: GatewayEventType.FELLOWSHIP,
+    is_event_finished: false
   },
 ];
 
@@ -134,11 +139,11 @@ export const getEventBySlug = (slug: string): Event | undefined => {
 };
 
 export const getFeaturedEvent = (): Event | undefined => {
-  return events.find(event => event.isFeatured);
+  return events.find(event => event.isFeatured && !event.is_event_finished);
 };
 
 export const getEventsByCategory = (category: string): Event[] => {
-  return events.filter(event => event.category === category);
+  return events.filter(event => event.category === category && !event.is_event_finished);
 };
 
 export const getAllCategories = (): string[] => {
@@ -146,11 +151,11 @@ export const getAllCategories = (): string[] => {
 };
 
 export const getEventsByType = (type: GatewayEventType): Event[] => {
-  return events.filter(event => event.type === type);
+  return events.filter(event => event.type === type && !event.is_event_finished);
 };
 
 export const getNearestSondayService = (): Event | undefined => {
-  const sondayServices = events.filter(event => event.type === GatewayEventType.SONDAY_SERVICE);
+  const sondayServices = events.filter(event => event.type === GatewayEventType.SONDAY_SERVICE && !event.is_event_finished);
   // Return the first one (assuming events are ordered by date)
   return sondayServices[0];
 };
