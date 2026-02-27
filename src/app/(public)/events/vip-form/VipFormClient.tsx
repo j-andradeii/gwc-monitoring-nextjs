@@ -16,7 +16,6 @@ export default function VipFormClient() {
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [step, setStep] = useState(1);
 
     const methods = useForm<VipFormData>({
         resolver: zodResolver(vipFormSchema),
@@ -31,7 +30,7 @@ export default function VipFormClient() {
         },
     });
 
-    const { handleSubmit, reset, trigger, formState: { errors } } = methods;
+    const { handleSubmit, reset } = methods;
 
     // Event Listener for API responses
     useEffect(() => {
@@ -52,7 +51,7 @@ export default function VipFormClient() {
         return () => {
             unsubscribe();
         };
-    }, []); // Use empty dependency array to prevent infinite loops from store updates
+    }, []);
 
     const onSubmit = async (data: VipFormData) => {
         setIsSubmitting(true);
@@ -60,259 +59,173 @@ export default function VipFormClient() {
         await inquiryService.submitVipForm(data);
     };
 
-    const nextStep = async () => {
-        const fieldsToValidate = step === 1 
-            ? ['firstName', 'familyName', 'birthdate'] 
-            : ['contactNumber', 'socialMedia', 'whoInvitedYou'];
-        
-        const isValid = await trigger(fieldsToValidate as any);
-        if (isValid) {
-            setStep(prev => prev + 1);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    };
-
-    const prevStep = () => {
-        setStep(prev => prev - 1);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
     return (
-        <div className="landing-page">
+        <div className="landing-page" style={{ background: '#fcfcfd' }}>
             <LandingHeader />
 
             <PageHero
                 badge="Ministries"
                 title="Community"
                 subtitle="Doing Life Together"
-                backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg"
+                backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/vip_2.jpg"
             />
 
-            {/* Form Section with Progress */}
-
-            {/* Form Section with Progress */}
-            <main style={{ 
-                backgroundColor: '#ffffff', 
-                padding: '0 0 100px',
-                marginTop: '-40px',
+            <main style={{
+                padding: '80px 0 120px',
+                marginTop: '-60px',
                 position: 'relative',
-                zIndex: 2
+                zIndex: 10
             }}>
                 <div className="landing-container">
-                    <div style={{ 
-                        maxWidth: '800px', 
-                        margin: '0 auto', 
-                    }}>
-                        {/* Progress Tracker */}
-                        {!submitted && (
-                            <div style={{ 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center', 
-                                gap: '12px',
-                                marginBottom: '40px'
-                            }}>
-                                <div style={{ 
-                                    width: '40px', 
-                                    height: '40px', 
-                                    borderRadius: '50%', 
-                                    backgroundColor: step >= 1 ? 'var(--primary-gold-accent)' : '#e2e8f0',
-                                    color: step >= 1 ? 'white' : '#64748b',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontWeight: '700',
-                                    transition: 'all 0.3s ease',
-                                    boxShadow: step >= 1 ? '0 4px 12px rgba(240, 180, 41, 0.3)' : 'none'
-                                }}>
-                                    {step > 1 ? <i className="pi pi-check" /> : '1'}
+                    <div className="vip-layout-grid">
+
+                        {/* Left Side: Welcome Card (Pinterest/Dribbble feel) */}
+                        <div className="vip-welcome-card">
+                            <div className="glass-overlay" />
+                            <div className="card-content">
+                                <h2 className="welcome-title">Welcome Home</h2>
+                                <p className="welcome-text">
+                                    We believe that every person who walks through our doors is a VIP.
+                                    Gateway is more than just a building—it&apos;s a family.
+                                </p>
+
+                                <div className="welcome-features">
+                                    <div className="feature-item">
+                                        <i className="pi pi-check-circle"></i>
+                                        <span>Personal Connection</span>
+                                    </div>
+                                    <div className="feature-item">
+                                        <i className="pi pi-check-circle"></i>
+                                        <span>Community Support</span>
+                                    </div>
+                                    <div className="feature-item">
+                                        <i className="pi pi-check-circle"></i>
+                                        <span>Spiritual Growth</span>
+                                    </div>
                                 </div>
-                                <div style={{ width: '60px', height: '2px', backgroundColor: step > 1 ? 'var(--primary-gold-accent)' : '#e2e8f0' }} />
-                                <div style={{ 
-                                    width: '40px', 
-                                    height: '40px', 
-                                    borderRadius: '50%', 
-                                    backgroundColor: step >= 2 ? 'var(--primary-gold-accent)' : '#e2e8f0',
-                                    color: step >= 2 ? 'white' : '#64748b',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontWeight: '700',
-                                    transition: 'all 0.3s ease',
-                                    boxShadow: step >= 2 ? '0 4px 12px rgba(240, 180, 41, 0.3)' : 'none'
-                                }}>
-                                    2
+
+                                <div className="card-footer">
+                                    <img src="/assets/images/church-logo-white.png" alt="Gateway Logo" style={{ height: '30px', opacity: 0.8 }} />
                                 </div>
                             </div>
-                        )}
+                        </div>
 
-                        <div style={{ 
-                            backgroundColor: '#ffffff', 
-                            borderRadius: '32px', 
-                            padding: '48px',
-                            boxShadow: '0 30px 60px rgba(0,0,0,0.08)',
-                            border: '1px solid rgba(0,0,0,0.05)',
-                            position: 'relative',
-                            overflow: 'hidden'
-                        }}>
-                            {/* Decorative Blur */}
-                            <div style={{
-                                position: 'absolute',
-                                top: '-20%',
-                                right: '-10%',
-                                width: '200px',
-                                height: '200px',
-                                backgroundColor: 'rgba(240, 180, 41, 0.05)',
-                                filter: 'blur(40px)',
-                                borderRadius: '50%'
-                            }} />
-
+                        {/* Right Side: Advanced Form */}
+                        <div className="vip-form-container">
                             {submitted ? (
-                                <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                                    <div style={{ 
-                                        width: '100px', 
-                                        height: '100px', 
-                                        backgroundColor: 'var(--primary-gold-accent)', 
-                                        borderRadius: '50%', 
-                                        display: 'flex', 
-                                        alignItems: 'center', 
-                                        justifyContent: 'center', 
-                                        margin: '0 auto 32px',
-                                        color: 'white',
-                                        fontSize: '48px',
-                                        boxShadow: '0 20px 40px rgba(240, 180, 41, 0.3)',
-                                        animation: 'scaleIn 0.5s ease'
-                                    }}>
+                                <div className="success-animation-container">
+                                    <div className="success-icon-wrapper">
                                         <i className="pi pi-heart-fill"></i>
+                                        <div className="pulse-ring"></div>
                                     </div>
-                                    <h2 style={{ fontSize: '32px', color: 'var(--color-navy)', marginBottom: '16px', fontWeight: '800' }}>You&apos;re All Set!</h2>
-                                    <p style={{ fontSize: '18px', color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>
-                                        Thank you for sharing your details with us. <br />
-                                        We can&apos;t wait to meet you properly!
-                                    </p>
-                                    <Link href="/" className="landing-btn landing-btn-primary" style={{ padding: '16px 40px', height: 'auto', fontSize: '16px' }}>
-                                        Explore Our Community
+                                    <h3>It&apos;s Official!</h3>
+                                    <p>Your VIP registration is complete. We are so excited to have you as part of our community!</p>
+                                    <Link href="/" className="landing-btn landing-btn-primary elevated">
+                                        Go to Homepage
                                     </Link>
                                 </div>
                             ) : (
                                 <FormProvider {...methods}>
-                                    <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                                    <form onSubmit={handleSubmit(onSubmit)} className="advanced-vip-form">
+                                        <div className="form-header">
+                                            <span className="step-label">Registration Form</span>
+                                            <h3 className="form-main-title">Share your story with us</h3>
+                                        </div>
+
                                         {error && (
-                                            <div style={{ 
-                                                padding: '20px', 
-                                                backgroundColor: '#fff1f2', 
-                                                color: '#e11d48', 
-                                                borderRadius: '16px', 
-                                                fontSize: '14px',
-                                                border: '1px solid #ffe4e6',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '12px'
-                                            }}>
-                                                <i className="pi pi-exclamation-circle" style={{ fontSize: '20px' }} />
+                                            <div className="form-error-alert">
+                                                <i className="pi pi-info-circle"></i>
                                                 {error}
                                             </div>
                                         )}
 
-                                        {step === 1 && (
-                                            <div style={{ animation: 'fadeInRight 0.4s ease' }}>
-                                                <h3 style={{ fontSize: '24px', color: 'var(--color-navy)', marginBottom: '32px', fontWeight: '700' }}>
-                                                    Personal Details
-                                                </h3>
-                                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }} className="responsive-grid">
-                                                    <FormInput 
-                                                        name="firstName" 
-                                                        label="First Name" 
-                                                        placeholder="John" 
-                                                        showRequired 
-                                                        inputClassName="enhanced-input"
-                                                    />
-                                                    <FormInput 
-                                                        name="familyName" 
-                                                        label="Family Name" 
-                                                        placeholder="Doe" 
-                                                        showRequired 
-                                                        inputClassName="enhanced-input"
-                                                    />
-                                                </div>
-                                                <div style={{ marginTop: '24px' }}>
-                                                    <FormCalendar 
-                                                        name="birthdate" 
-                                                        label="When is your birthday?" 
-                                                        placeholder="Select your birthdate" 
-                                                        showRequired 
-                                                        calendarView={CalendarViewType.DATE}
-                                                        format="mm/dd/yy"
-                                                    />
-                                                </div>
-                                                <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
-                                                    <button 
-                                                        type="button" 
-                                                        className="landing-btn landing-btn-primary" 
-                                                        onClick={nextStep}
-                                                        style={{ padding: '12px 32px' }}
-                                                    >
-                                                        Continue <i className="pi pi-arrow-right" style={{ marginLeft: '8px', fontSize: '12px' }} />
-                                                    </button>
-                                                </div>
+                                        {/* Group 1: Identity */}
+                                        <div className="form-section">
+                                            <div className="section-title">
+                                                <span className="section-number">01</span>
+                                                <h4>Personal Identity</h4>
                                             </div>
-                                        )}
+                                            <div className="form-row">
+                                                <FormInput
+                                                    name="firstName"
+                                                    label="First Name"
+                                                    placeholder="e.g. Maria"
+                                                    showRequired
+                                                    className="modern-field"
+                                                />
+                                                <FormInput
+                                                    name="familyName"
+                                                    label="Family Name"
+                                                    placeholder="e.g. Santos"
+                                                    showRequired
+                                                    className="modern-field"
+                                                />
+                                            </div>
+                                            <div className="form-row-single">
+                                                <FormCalendar
+                                                    name="birthdate"
+                                                    label="Birthdate"
+                                                    placeholder="When do we celebrate you?"
+                                                    showRequired
+                                                    calendarView={CalendarViewType.DATE}
+                                                    format="mm/dd/yy"
+                                                />
+                                            </div>
+                                        </div>
 
-                                        {step === 2 && (
-                                            <div style={{ animation: 'fadeInRight 0.4s ease' }}>
-                                                <h3 style={{ fontSize: '24px', color: 'var(--color-navy)', marginBottom: '32px', fontWeight: '700' }}>
-                                                    How can we reach you?
-                                                </h3>
-                                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }} className="responsive-grid">
-                                                    <FormInput 
-                                                        name="contactNumber" 
-                                                        label="Mobile Number" 
-                                                        placeholder="09XX XXX XXXX" 
-                                                        showRequired 
-                                                        inputClassName="enhanced-input"
-                                                    />
-                                                    <FormInput 
-                                                        name="socialMedia" 
-                                                        label="FB/IG Handle" 
-                                                        placeholder="@johndoe" 
-                                                        showRequired 
-                                                        inputClassName="enhanced-input"
-                                                    />
-                                                </div>
-                                                <div style={{ marginTop: '24px' }}>
-                                                    <FormInput 
-                                                        name="whoInvitedYou" 
-                                                        label="Who invited you to Gateway?" 
-                                                        placeholder="Name of your friend or family" 
-                                                        showRequired 
-                                                        inputClassName="enhanced-input"
-                                                    />
-                                                </div>
-                                                
-                                                <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'space-between', gap: '16px' }}>
-                                                    <button 
-                                                        type="button" 
-                                                        className="landing-btn landing-btn-outline" 
-                                                        onClick={prevStep}
-                                                        style={{ padding: '12px 32px' }}
-                                                    >
-                                                        <i className="pi pi-arrow-left" style={{ marginRight: '8px', fontSize: '12px' }} /> Back
-                                                    </button>
-                                                    <button 
-                                                        type="submit" 
-                                                        className="landing-btn landing-btn-primary" 
-                                                        style={{ padding: '12px 32px', minWidth: '200px', justifyContent: 'center' }}
-                                                        disabled={isSubmitting}
-                                                    >
-                                                        {isSubmitting ? (
-                                                            <i className="pi pi-spin pi-spinner"></i>
-                                                        ) : (
-                                                            <>Complete Registration <i className="pi pi-check-circle" style={{ marginLeft: '8px' }} /></>
-                                                        )}
-                                                    </button>
-                                                </div>
+                                        {/* Group 2: Connectivity */}
+                                        <div className="form-section">
+                                            <div className="section-title">
+                                                <span className="section-number">02</span>
+                                                <h4>Connectivity</h4>
                                             </div>
-                                        )}
+                                            <div className="form-row">
+                                                <FormInput
+                                                    name="contactNumber"
+                                                    label="Mobile Number"
+                                                    placeholder="0917 XXX XXXX"
+                                                    showRequired
+                                                    className="modern-field"
+                                                />
+                                                <FormInput
+                                                    name="socialMedia"
+                                                    label="Social Handle"
+                                                    placeholder="@username"
+                                                    showRequired
+                                                    className="modern-field"
+                                                />
+                                            </div>
+                                            <div className="form-row-single">
+                                                <FormInput
+                                                    name="whoInvitedYou"
+                                                    label="How did you find us?"
+                                                    placeholder="Name of the person who invited you"
+                                                    showRequired
+                                                    className="modern-field"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="form-actions">
+                                            <button
+                                                type="submit"
+                                                className="vip-submit-button"
+                                                disabled={isSubmitting}
+                                            >
+                                                {isSubmitting ? (
+                                                    <i className="pi pi-spin pi-spinner"></i>
+                                                ) : (
+                                                    <>
+                                                        Complete Registration
+                                                        <i className="pi pi-arrow-right"></i>
+                                                    </>
+                                                )}
+                                            </button>
+                                            <p className="privacy-note">
+                                                <i className="pi pi-lock"></i>
+                                                Your information is safe and will only be used for church connectivity.
+                                            </p>
+                                        </div>
                                     </form>
                                 </FormProvider>
                             )}
@@ -324,30 +237,287 @@ export default function VipFormClient() {
             <LandingFooter />
 
             <style jsx global>{`
-                .enhanced-input {
-                    border-radius: 12px !important;
-                    padding: 12px 16px !important;
-                    transition: all 0.2s ease !important;
-                    border: 2px solid #e2e8f0 !important;
+                .vip-layout-grid {
+                    display: grid;
+                    grid-template-columns: 350px 1fr;
+                    gap: 30px;
+                    align-items: start;
                 }
-                .enhanced-input:focus {
-                    border-color: var(--primary-gold-accent) !important;
-                    box-shadow: 0 0 0 4px rgba(240, 180, 41, 0.1) !important;
+
+                /* Welcome Card Styling */
+                .vip-welcome-card {
+                    position: sticky;
+                    top: 100px;
+                    height: 600px;
+                    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+                    border-radius: 30px;
+                    overflow: hidden;
+                    color: white;
+                    padding: 40px;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
                 }
-                
-                @keyframes scaleIn {
-                    from { transform: scale(0.8); opacity: 0; }
-                    to { transform: scale(1); opacity: 1; }
+
+                .vip-welcome-card .glass-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: url('https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg') center/cover;
+                    opacity: 0.2;
+                    filter: grayscale(100%);
                 }
-                
-                @keyframes fadeInRight {
-                    from { transform: translateX(20px); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
+
+                .vip-welcome-card .card-content {
+                    position: relative;
+                    z-index: 2;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .icon-badge {
+                    width: 50px;
+                    height: 50px;
+                    background: var(--primary-gold-accent);
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                    margin-bottom: 30px;
+                    box-shadow: 0 10px 20px rgba(240, 180, 41, 0.4);
+                }
+
+                .welcome-title {
+                    font-size: 32px;
+                    font-weight: 800;
+                    margin-bottom: 20px;
+                    line-height: 1.2;
+                }
+
+                .welcome-text {
+                    font-size: 16px;
+                    color: rgba(255,255,255,0.7);
+                    line-height: 1.6;
+                    margin-bottom: 40px;
+                }
+
+                .welcome-features {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .feature-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    font-weight: 500;
+                    color: rgba(255,255,255,0.9);
+                }
+
+                .feature-item i {
+                    color: var(--primary-gold-accent);
+                }
+
+                .card-footer {
+                    margin-top: auto;
+                }
+
+                /* Form Container Styling */
+                .vip-form-container {
+                    background: white;
+                    border-radius: 30px;
+                    padding: 50px;
+                    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+                    border: 1px solid rgba(0,0,0,0.05);
+                }
+
+                .form-header {
+                    margin-bottom: 40px;
+                }
+
+                .step-label {
+                    color: var(--primary-gold-accent);
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-size: 12px;
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                .form-main-title {
+                    font-size: 28px;
+                    color: #0f172a;
+                    font-weight: 800;
+                }
+
+                .form-section {
+                    margin-bottom: 40px;
+                }
+
+                .section-title {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 25px;
+                    border-bottom: 1px solid #f1f5f9;
+                    padding-bottom: 15px;
+                }
+
+                .section-number {
+                    font-size: 14px;
+                    font-weight: 800;
+                    color: var(--primary-gold-accent);
+                    background: rgba(240, 180, 41, 0.1);
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 8px;
+                }
+
+                .section-title h4 {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: #334155;
+                    margin: 0;
+                }
+
+                .form-row {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    margin-bottom: 20px;
+                }
+
+                .form-row-single {
+                    margin-bottom: 20px;
+                }
+
+                .form-error-alert {
+                    background: #fff1f2;
+                    color: #e11d48;
+                    padding: 15px 20px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    font-size: 14px;
+                }
+
+                .vip-submit-button {
+                    width: 100%;
+                    background: #0f172a;
+                    color: white;
+                    border: none;
+                    padding: 18px;
+                    border-radius: 15px;
+                    font-size: 16px;
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 12px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+                    margin-bottom: 20px;
+                }
+
+                .vip-submit-button:hover:not(:disabled) {
+                    background: #1e293b;
+                    transform: translateY(-2px);
+                    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
+                }
+
+                .vip-submit-button:disabled {
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
+
+                .privacy-note {
+                    text-align: center;
+                    font-size: 12px;
+                    color: #94a3b8;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 6px;
+                }
+
+                /* Success State Styling */
+                .success-animation-container {
+                    text-align: center;
+                    padding: 40px 0;
+                }
+
+                .success-icon-wrapper {
+                    position: relative;
+                    width: 100px;
+                    height: 100px;
+                    background: var(--primary-gold-accent);
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 40px;
+                    margin: 0 auto 30px;
+                    z-index: 1;
+                }
+
+                .pulse-ring {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    background: var(--primary-gold-accent);
+                    opacity: 0.4;
+                    animation: pulse 2s infinite;
+                    z-index: -1;
+                }
+
+                @keyframes pulse {
+                    0% { transform: scale(1); opacity: 0.4; }
+                    100% { transform: scale(2); opacity: 0; }
+                }
+
+                .success-animation-container h3 {
+                    font-size: 32px;
+                    font-weight: 800;
+                    margin-bottom: 15px;
+                    color: #0f172a;
+                }
+
+                .success-animation-container p {
+                    color: #64748b;
+                    line-height: 1.6;
+                    margin-bottom: 40px;
+                    max-width: 400px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                @media (max-width: 992px) {
+                    .vip-layout-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    .vip-welcome-card {
+                        height: auto;
+                        position: relative;
+                        top: 0;
+                        margin-bottom: 30px;
+                    }
                 }
 
                 @media (max-width: 640px) {
-                    .responsive-grid {
-                        grid-template-columns: 1fr !important;
+                    .form-row {
+                        grid-template-columns: 1fr;
+                    }
+                    .vip-form-container {
+                        padding: 30px 20px;
                     }
                 }
             `}</style>

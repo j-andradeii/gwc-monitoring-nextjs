@@ -89,3 +89,8 @@ textarea::placeholder {
 .w-100 {
   width: 100%;
 }
+
+.calendar-full-panel {
+  width: 100% !important;
+  min-width: 320px !important;
+}
