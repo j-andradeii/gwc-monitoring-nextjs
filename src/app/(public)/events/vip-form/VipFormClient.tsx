@@ -121,9 +121,23 @@ export default function VipFormClient() {
                                     </div>
                                     <h3>Thank You!</h3>
                                     <p>Your VIP registration is complete. We are so excited to have you as part of our community!</p>
-                                    <Link href="/" className="landing-btn landing-btn-primary elevated">
-                                        Go to Homepage
-                                    </Link>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setSubmitted(false);
+                                            reset({
+                                                familyName: '',
+                                                firstName: '',
+                                                birthdate: null,
+                                                socialMedia: [{ platform: 'Facebook', handle: '' }],
+                                                contactNumber: '',
+                                                whoInvitedYou: '',
+                                            });
+                                        }}
+                                        className="landing-btn landing-btn-primary elevated"
+                                    >
+                                        Submit Another VIP
+                                    </button>
                                 </div>
                             ) : (
                                 <FormProvider {...methods}>
