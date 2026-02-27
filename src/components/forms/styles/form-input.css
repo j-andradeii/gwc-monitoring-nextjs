@@ -103,10 +103,18 @@ textarea::placeholder {
   padding: 0.5rem !important;
 }
 
+.form-social-add-btn {
+  padding: 0.5rem;
+}
+
 /* Social Media Button Overrides */
 .form-social-add-btn.p-button.p-button-text:enabled {
   background: transparent !important;
   color: var(--color-navy, #1a2744) !important;
+}
+
+.form-social-add-btn .p-button-label {
+  padding-left: 0.5rem !important;
 }
 
 .form-social-add-btn.p-button.p-button-text:enabled:hover {

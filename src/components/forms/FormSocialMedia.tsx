@@ -95,14 +95,14 @@ export const FormSocialMedia: React.FC<FormSocialMediaProps> = ({
 
             {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
 
-            <div className="mt-2">
+            <div className="!mt-2">
                 <Button
                     type="button"
                     label="Add another account"
                     icon="pi pi-plus"
                     className="p-button-text p-button-sm form-social-add-btn"
                     onClick={() => append({ platform: '', handle: '' })}
-                    style={{ padding: '0.5rem 1rem 0.5rem 0', fontWeight: 600 }}
+                    style={{ fontWeight: 600 }}
                 />
             </div>
         </div>

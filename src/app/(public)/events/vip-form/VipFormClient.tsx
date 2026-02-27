@@ -24,7 +24,7 @@ export default function VipFormClient() {
             familyName: '',
             firstName: '',
             birthdate: null,
-            socialMedia: [{ platform: 'Instagram', handle: '' }],
+            socialMedia: [{ platform: 'Facebook', handle: '' }],
             contactNumber: '',
             whoInvitedYou: '',
         },
@@ -119,7 +119,7 @@ export default function VipFormClient() {
                                         <i className="pi pi-heart-fill"></i>
                                         <div className="pulse-ring"></div>
                                     </div>
-                                    <h3>It&apos;s Official!</h3>
+                                    <h3>Thank You!</h3>
                                     <p>Your VIP registration is complete. We are so excited to have you as part of our community!</p>
                                     <Link href="/" className="landing-btn landing-btn-primary elevated">
                                         Go to Homepage

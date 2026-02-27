@@ -105,6 +105,9 @@ export const FormCalendar: React.FC<FormCalendarProps> = ({
                   onChange={(e) => {
                     field.onChange(e.value);
                     triggerBodyClick();
+                    if (document.activeElement instanceof HTMLElement) {
+                      document.activeElement.blur();
+                    }
                   }}
                   onBlur={field.onBlur}
                   className={`w-full ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''}`}
