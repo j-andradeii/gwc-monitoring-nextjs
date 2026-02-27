@@ -42,6 +42,10 @@ export default function VipFormClient() {
                     setIsSubmitting(false);
                     setSubmitted(true);
                     reset();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                    });
                 } else if (event.status === ApiEventStatus.ERROR) {
                     setIsSubmitting(false);
                     setError('Something went wrong. Please try again.');
