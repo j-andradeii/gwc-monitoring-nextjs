@@ -78,14 +78,16 @@ export const FormSocialMedia: React.FC<FormSocialMediaProps> = ({
                             </div>
                         </div>
                         {fields.length > 1 && (
-                            <Button
-                                type="button"
-                                icon="pi pi-times"
-                                className="p-button-danger p-button-text p-button-rounded ml-1"
-                                onClick={() => remove(index)}
-                                aria-label="Remove Social Media"
-                                style={{ width: '42px', height: '42px', flexShrink: 0 }}
-                            />
+                            <div className="flex align-items-center justify-content-center" style={{ marginTop: '0.2rem' }}>
+                                <Button
+                                    type="button"
+                                    icon="pi pi-times"
+                                    className="p-button-rounded p-button-text form-social-remove-btn"
+                                    onClick={() => remove(index)}
+                                    aria-label="Remove Social Media"
+                                    style={{ width: '40px', height: '40px' }}
+                                />
+                            </div>
                         )}
                     </div>
                 ))}
@@ -93,14 +95,14 @@ export const FormSocialMedia: React.FC<FormSocialMediaProps> = ({
 
             {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
 
-            <div className="mt-3">
+            <div className="mt-2">
                 <Button
                     type="button"
                     label="Add another account"
                     icon="pi pi-plus"
-                    className="p-button-text p-button-sm"
+                    className="p-button-text p-button-sm form-social-add-btn"
                     onClick={() => append({ platform: '', handle: '' })}
-                    style={{ padding: '0.5rem 0' }}
+                    style={{ padding: '0.5rem 1rem 0.5rem 0', fontWeight: 600 }}
                 />
             </div>
         </div>
