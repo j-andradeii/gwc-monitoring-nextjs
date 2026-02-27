@@ -51,3 +51,16 @@ export const submitEventInquiry = async (data: any, slug: string) => {
         apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
     }
 }
+
+export const submitVipForm = async (data: any) => {
+    const eventType = ApiEventType.SUBMIT_VIP_FORM;
+    const apiEventStore = useApiEventStore.getState();
+    try {
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.IN_PROGRESS, spinner: true });
+        await apiClient.post('/api/inquiry/vip', data)
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.COMPLETED, spinner: true });
+    } catch (error) {
+        console.log(error);
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
+    }
+}

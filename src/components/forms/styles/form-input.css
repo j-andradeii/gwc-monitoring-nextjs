@@ -55,8 +55,8 @@ textarea::placeholder {
 
 /* Center the toggle mask icon vertically */
 .p-password .p-password-toggle-mask-icon,
-.p-password .p-icon-field > svg,
-.p-password .p-icon-field > i,
+.p-password .p-icon-field>svg,
+.p-password .p-icon-field>i,
 .p-password [data-pc-section="showicon"],
 .p-password [data-pc-section="hideicon"] {
   position: absolute;
@@ -88,4 +88,48 @@ textarea::placeholder {
 /* Full width utility */
 .w-100 {
   width: 100%;
+}
+
+.calendar-full-panel {
+  width: 390px !important;
+  min-width: 390px !important;
+}
+
+.p-datepicker-header {
+  padding: 0.5rem !important;
+}
+
+.p-datepicker-calendar-container {
+  padding: 0.5rem !important;
+}
+
+.form-social-add-btn {
+  padding: 0.5rem;
+}
+
+/* Social Media Button Overrides */
+.form-social-add-btn.p-button.p-button-text:enabled {
+  background: transparent !important;
+  color: var(--color-navy, #1a2744) !important;
+}
+
+.form-social-add-btn .p-button-label {
+  padding-left: 0.5rem !important;
+}
+
+.form-social-add-btn.p-button.p-button-text:enabled:hover {
+  background: transparent !important;
+  color: var(--color-primary-dark, #b8923f) !important;
+  text-decoration: underline;
+}
+
+.form-social-remove-btn.p-button.p-button-text:enabled {
+  background: transparent !important;
+  color: var(--color-navy, #1a2744) !important;
+}
+
+.form-social-remove-btn.p-button.p-button-text:enabled:hover {
+  background: rgba(107, 44, 58, 0.1) !important;
+  color: var(--color-error, #6b2c3a) !important;
+  /* Rich Burgundy */
 }

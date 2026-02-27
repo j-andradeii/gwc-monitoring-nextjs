@@ -15,6 +15,7 @@ interface PageHeroProps {
   backgroundImage?: string;
   serviceInfo?: ServiceInfoItem[];
   className?: string;
+  displayBadge?: boolean;
 }
 
 /**
@@ -31,6 +32,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   backgroundImage = '/assets/images/community.jpg',
   serviceInfo,
   className = '',
+  displayBadge = true
 }) => {
   return (
     <section
@@ -39,7 +41,9 @@ export const PageHero: React.FC<PageHeroProps> = ({
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
       <div className="hero-content">
-        <span className="hero-badge">{badge}</span>
+        {displayBadge && (
+          <span className="hero-badge">{badge}</span>
+        )}
         <h1>{title}</h1>
         <p>{subtitle}</p>
         {serviceInfo && serviceInfo.length > 0 && (
