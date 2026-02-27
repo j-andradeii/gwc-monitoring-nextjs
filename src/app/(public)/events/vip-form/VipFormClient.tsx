@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LandingHeader, LandingFooter, PageHero } from '@/components/landing';
-import { FormInput, FormCalendar, CalendarViewType } from '@/components/forms';
+import { FormInput, FormCalendar, FormSocialMedia, CalendarViewType } from '@/components/forms';
 import { vipFormSchema, type VipFormData } from '@/models/schemas/vip.schema';
 import * as inquiryService from "@/services/inquiry.service";
 import { ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
@@ -24,7 +24,7 @@ export default function VipFormClient() {
             familyName: '',
             firstName: '',
             birthdate: null,
-            socialMedia: '',
+            socialMedia: [{ platform: 'Instagram', handle: '' }],
             contactNumber: '',
             whoInvitedYou: '',
         },
@@ -65,9 +65,10 @@ export default function VipFormClient() {
 
             <PageHero
                 badge="Ministries"
-                title="Community"
-                subtitle="Doing Life Together"
+                title="Welome to Gateway Church"
+                subtitle="HIS PRECENSE, OUR HOME"
                 backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/vip_2.jpg"
+                displayBadge={false}
             />
 
             <main style={{
@@ -187,10 +188,9 @@ export default function VipFormClient() {
                                                     showRequired
                                                     className="modern-field"
                                                 />
-                                                <FormInput
+                                                <FormSocialMedia
                                                     name="socialMedia"
-                                                    label="Social Handle"
-                                                    placeholder="@username"
+                                                    label="Social Handles"
                                                     showRequired
                                                     className="modern-field"
                                                 />

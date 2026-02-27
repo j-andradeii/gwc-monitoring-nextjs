@@ -6,7 +6,10 @@ export const vipFormSchema = z.object({
     birthdate: z.union([z.date(), z.null()]).refine((val) => val !== null, {
         message: 'Birthdate is required',
     }),
-    socialMedia: z.string().min(1, 'Social media handle is required'),
+    socialMedia: z.array(z.object({
+        platform: z.string().min(1, 'Platform is required'),
+        handle: z.string().min(1, 'Handle is required')
+    })).min(1, 'At least one social media handle is required'),
     contactNumber: z.string().min(1, 'Contact number is required'),
     whoInvitedYou: z.string().min(1, 'Please tell us who invited you'),
 });
