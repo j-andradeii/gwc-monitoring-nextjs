@@ -1704,7 +1704,6 @@ First fruit is a promise to come.`,
         text: 'And the Lord visited Hannah, so that she conceived and bore three sons and two daughters. Meanwhile the child Samuel grew before the Lord.'
       }
     ],
-    isFeatured: true,
     keyPoints: [
       'Jesus was the first of many',
       'First fruit is built into nature',
@@ -1712,6 +1711,117 @@ First fruit is a promise to come.`,
       'First fruit means "a promise to come"'
     ],
     relatedSermons: ['14', '2'],
+  },
+  {
+    id: '16',
+    slug: 'first-fruit-sunday',
+    title: 'First Fruit Sunday',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-03-01',
+    duration: '45 min',
+    series: 'Covenant',
+    seriesDescription: 'Understanding the covenant relationship between God and His people.',
+    excerpt: 'God has always made us first in His heart. Because He prioritized us even before we were born, we are called to honor Him by putting Him first in every area of our lives.',
+    description: `**FIRST FRUIT SUNDAY**
+
+Matthew 6:24
+
+---
+
+**GOD IS FIRST**
+
+From the very beginning, God established order — He is first.
+Jeremiah 1:5 reminds us: "Before I formed you in the womb I knew you, before you were born I set you apart…"
+Before we ever thought about God, He was already thinking about us. We were in His heart and mind. If we were not, Christ would not have gone to the cross for us. Because God made us a priority, He deserves to be our priority.
+If God made us first in His heart, then He deserves to be first in our lives.
+
+---
+
+**YOU CANNOT SERVE TWO MASTERS**
+
+In Matthew 6:24, Jesus makes it clear — we cannot divide our loyalty. We cannot serve both God and money.
+We may say that God is first, but our actions reveal our true priorities. If He is not first in our finances, then He is not truly first. Lordship is demonstrated, not declared.
+The principle of first fruits is about putting God first in every area — especially in our giving.
+
+---
+
+**THE PRINCIPLE OF FIRST FRUITS**
+
+Proverbs 3:9–10 says: "Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing…"
+When we give our first fruits:
+* We honor God.
+* We acknowledge that everything comes from Him.
+* We demonstrate obedience and trust.
+This principle is not about the result — it is about obedience. The blessing is a byproduct; obedience is the priority.
+When you give your first fruit to God, He stands on it. He stands guard over what you entrust to Him.
+
+---
+
+**FROM PROMISE TO PROVISION**
+
+God does not just give promises — He brings provision.
+In Genesis 12:2, God promised Abraham that he would be blessed and become a blessing. The first fruit is the beginning of many more blessings to come. It is the first of what God will multiply.
+Jeremiah 2:3 describes Israel as holy to the Lord, the firstfruits of His harvest — set apart and protected. When we give our first to God, we position ourselves under His covering and care.
+God is bound to His Word. When we honor Him according to His principles, He responds according to His promises.
+
+---
+
+**SUPERNATURAL BLESSING**
+
+First fruit giving opens the door for supernatural blessing — not merely financial increase, but divine provision, protection, and favor.
+God desires to take us from promise to provision.
+And often, a testimony of what God has done in someone’s life speaks louder than a thousand sermons. What God has done for us is living proof of His faithfulness.
+
+---
+
+**CLOSING CHARGE**
+
+Honor God with your wealth.
+Put Him first — not just in words, but in action. When God is first, everything else finds its proper place.
+
+
+**APPLICATION**
+
+** God made us first** — He deserves our first.We were in His heart before we were born (Jeremiah 1:5), so He must be first in our lives.
+** You cannot serve two masters**. Matthew 6:24 reminds us that our actions — especially in our finances — reveal who truly rules our hearts.
+** First fruits is about obedience, not results**.We give to honor God, not to chase blessing. Obedience comes first; blessing follows (Proverbs 3:9–10).
+** God moves us from promise to provision**.What begins with faith and surrender leads to divine multiplication and covering (Genesis 12:2).
+** When God is first, everything finds its proper place**.Alignment brings provision, protection, and supernatural favor.
+`,
+    tags: ['First Fruits', 'Giving', 'Obedience', 'Provision', 'Blessing', 'Trust'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
+    scriptures: [
+      {
+        verse: 'Matthew 6:24',
+        text: 'No one can serve two masters; for either he will hate the one and love the other, or else he will be loyal to the one and despise the other. You cannot serve God and mammon.'
+      },
+      {
+        verse: 'Jeremiah 1:5',
+        text: 'Before I formed you in the womb I knew you; Before you were born I sanctified you; I ordained you a prophet to the nations.'
+      },
+      {
+        verse: 'Proverbs 3:9-10',
+        text: 'Honor the Lord with your possessions, And with the firstfruits of all your increase; So your barns will be filled with plenty, And your vats will overflow with new wine.'
+      },
+      {
+        verse: 'Genesis 12:2',
+        text: 'I will make you a great nation; I will bless you And make your name great; And you shall be a blessing.'
+      },
+      {
+        verse: 'Jeremiah 2:3',
+        text: '"Israel was holiness to the Lord, The firstfruits of His increase. All that devour him will offend; Disaster will come upon them," says the Lord.'
+      }
+    ],
+    isFeatured: true,
+    keyPoints: [
+      'God made us first — He deserves our first',
+      'You cannot serve two masters',
+      'First fruits is about obedience, not results',
+      'God moves us from promise to provision',
+      'When God is first, everything finds its proper place'
+    ],
+    relatedSermons: ['15', '12'],
   },
 ];
 
