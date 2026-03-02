@@ -1781,7 +1781,7 @@ Honor God with your wealth.
 Put Him first — not just in words, but in action. When God is first, everything else finds its proper place.
 
 
-**APPLICATION**
+**KEY POINTS**
 
 ** God made us first** — He deserves our first.We were in His heart before we were born (Jeremiah 1:5), so He must be first in our lives.
 ** You cannot serve two masters**. Matthew 6:24 reminds us that our actions — especially in our finances — reveal who truly rules our hearts.
