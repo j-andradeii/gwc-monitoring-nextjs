@@ -104,10 +104,6 @@ export const FormCalendar: React.FC<FormCalendarProps> = ({
                   value={field.value || ''}
                   onChange={(e) => {
                     field.onChange(e.value);
-                    triggerBodyClick();
-                    if (document.activeElement instanceof HTMLElement) {
-                      document.activeElement.blur();
-                    }
                   }}
                   onBlur={field.onBlur}
                   className={`w-full ${fieldState.invalid ? 'p-invalid' : ''} ${displayDisabled ? 'disable' : ''}`}
@@ -116,6 +112,7 @@ export const FormCalendar: React.FC<FormCalendarProps> = ({
                   name={uniqueId}
                   placeholder={placeholder}
                   view={calendarView}
+                  mask="99/99/9999"
                   showTime={showTime}
                   minDate={minDateStr ? new Date(minDateStr) : undefined}
                   showButtonBar={showButtonBar}
