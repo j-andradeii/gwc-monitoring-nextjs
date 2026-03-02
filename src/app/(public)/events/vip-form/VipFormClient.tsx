@@ -17,6 +17,7 @@ export default function VipFormClient() {
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [vipName, setVipName] = useState<string | null>(null);
 
     const methods = useForm<VipFormData>({
         resolver: zodResolver(vipFormSchema),
@@ -31,7 +32,7 @@ export default function VipFormClient() {
         },
     });
 
-    const { handleSubmit, reset } = methods;
+    const { handleSubmit, reset, getValues } = methods;
 
     // Event Listener for API responses
     useEffect(() => {
@@ -61,6 +62,7 @@ export default function VipFormClient() {
     const onSubmit = async (data: VipFormData) => {
         setIsSubmitting(true);
         setError(null);
+        setVipName(`${data.firstName} ${data.familyName}`);
         await inquiryService.submitVipForm(data);
     };
 
@@ -125,7 +127,7 @@ export default function VipFormClient() {
                                         <div className="pulse-ring"></div>
                                     </div>
                                     <h3>Thank You!</h3>
-                                    <p>Your VIP registration is complete. We are so excited to have you as part of our community!</p>
+                                    <p>Welcome <strong>{vipName}</strong>. We are so excited to have you as part of our community!</p>
                                     <button
                                         type="button"
                                         onClick={() => {
@@ -138,6 +140,7 @@ export default function VipFormClient() {
                                                 contactNumber: '',
                                                 whoInvitedYou: '',
                                             });
+                                            setVipName(null);
                                         }}
                                         className="landing-btn landing-btn-primary elevated"
                                     >
@@ -185,7 +188,7 @@ export default function VipFormClient() {
                                                 <FormCalendar
                                                     name="birthdate"
                                                     label="Birthdate"
-                                                    placeholder="When do we celebrate you?"
+                                                    placeholder="mm/dd/yyyy"
                                                     showRequired
                                                     calendarView={CalendarViewType.DATE}
                                                     format="mm/dd/yy"
