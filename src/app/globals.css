@@ -45,8 +45,8 @@
   /* Neutrals - Warm sanctuary tones */
   --color-background: #f5f0e6;
   --color-foreground: #0d1424;
-  --color-muted: #374151;
-  --color-border: #e8e3d9;
+  --color-muted: #1f2937;
+  --color-border: #c8bfa8;
   --color-surface: #ffffff;
 
   /* Landing/Public page theme */
@@ -54,15 +54,16 @@
   --background-main: #f5f0e6;
   --background-section: #ffffff;
   --text-primary: #0d1424;
-  --text-secondary: #374151;
-  --border-color: #e8e3d9;
-  --border-color-light: #f0ebe1;
+  --text-heading: #020617;
+  --text-secondary: #1e293b;
+  --border-color: #c8bfa8;
+  --border-color-light: #ddd5c4;
   --button-text-on-gold: #ffffff;
   --button-text-on-light: #d4a84b;
   --header-background: rgba(245, 240, 230, 0.95);
   --footer-background: #1a2744;
-  --shadow-color-soft: rgba(26, 39, 68, 0.06);
-  --shadow-color-medium: rgba(26, 39, 68, 0.1);
+  --shadow-color-soft: rgba(26, 39, 68, 0.14);
+  --shadow-color-medium: rgba(26, 39, 68, 0.22);
   --gold-shadow-hover: rgba(212, 168, 75, 0.25);
 
   /* New sanctuary-inspired colors */
@@ -175,6 +176,8 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   line-height: 1.6;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
 }
 
 /* ===========================================
@@ -477,11 +480,13 @@ body {
 }
 
 .page-title {
-  @apply text-2xl font-bold text-foreground md:text-3xl;
+  @apply text-2xl font-extrabold md:text-3xl tracking-tight;
+  color: var(--text-heading);
 }
 
 .section-title {
-  @apply text-xl font-semibold text-foreground;
+  @apply text-xl font-bold tracking-tight;
+  color: var(--text-heading);
 }
 
 .label {
