@@ -171,7 +171,7 @@ Everyone is invited. See you there! 🫶✨`,
     location: '8th Floor, Golden Peak',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/encounter.jpg',
     description: 'Experience Fire, Freedom and Focus as we Encounter God!',
-    category: 'Fellowship',
+    category: 'Retreat',
     isFeatured: false,
     type: GatewayEventType.RETREAT,
     is_event_finished: false
