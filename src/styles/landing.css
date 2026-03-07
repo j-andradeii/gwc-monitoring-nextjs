@@ -1248,7 +1248,7 @@
 }
 
 .about-content p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-secondary);
   margin-bottom: 24px;
   line-height: 1.7;
@@ -1532,11 +1532,11 @@
 }
 
 .step-description {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-secondary);
   margin: 0;
   line-height: 1.6;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 /* Step Connector */
@@ -4179,7 +4179,7 @@
 }
 
 .our-story-content p {
-  font-size: 1rem;
+  font-size: 16px;
   color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 16px;
@@ -4290,7 +4290,7 @@
 
 .vision-card p,
 .mission-card p {
-  font-size: 1rem;
+  font-size: 16px;
   color: var(--text-secondary);
   line-height: 1.7;
 }
@@ -4482,7 +4482,7 @@
 }
 
 .value-card h3 {
-  font-size: 0.95rem;
+  font-size: 18px;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 8px;
@@ -4492,7 +4492,7 @@
 }
 
 .value-card p {
-  font-size: 0.82rem;
+  font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
