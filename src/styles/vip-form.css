@@ -56,9 +56,10 @@
 
 .welcome-text {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.88);
     line-height: 1.6;
     margin-bottom: 40px;
+    font-weight: 500;
 }
 
 .welcome-features {
@@ -71,7 +72,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    font-weight: 500;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
 }
 
@@ -88,8 +89,8 @@
     background: white;
     border-radius: 30px;
     padding: 50px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .form-header {
@@ -121,7 +122,7 @@
     align-items: center;
     gap: 15px;
     margin-bottom: 25px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #d1d9e6;
     padding-bottom: 15px;
 }
 
@@ -140,8 +141,8 @@
 
 .section-title h4 {
     font-size: 18px;
-    font-weight: 700;
-    color: #334155;
+    font-weight: 800;
+    color: #1e293b;
     margin: 0;
 }
 
@@ -201,7 +202,7 @@
 .privacy-note {
     text-align: center;
     font-size: 12px;
-    color: #94a3b8;
+    color: #64748b;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,7 +261,7 @@
 }
 
 .success-animation-container p {
-    color: #64748b;
+    color: #475569;
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 400px;

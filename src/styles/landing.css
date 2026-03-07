@@ -50,8 +50,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   color: var(--primary-gold-accent);
@@ -65,8 +65,8 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(212, 168, 75, 0.20);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -429,7 +429,7 @@
   max-width: 550px;
   margin: 0 auto 36px;
   line-height: 1.7;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
@@ -456,7 +456,7 @@
    =========================================== */
 .landing-header {
   background-color: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   position: fixed;
   top: 0;
   left: 0;
@@ -505,7 +505,7 @@
 }
 
 .nav-links li a {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
   color: var(--text-primary);
   transition: color 0.25s ease;
@@ -1240,6 +1240,7 @@
   letter-spacing: -1.5px;
   text-transform: uppercase;
   margin-top: 12px;
+  text-shadow: 0 1px 3px rgba(13, 20, 36, 0.1);
 }
 
 .about-content h2::after {
@@ -1270,7 +1271,7 @@
 .stat-number {
   display: block;
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--primary-gold-accent);
   line-height: 1;
   margin-bottom: 4px;
@@ -1280,8 +1281,8 @@
   font-size: 12px;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 }
 
 /* ===========================================
@@ -1324,9 +1325,9 @@
   padding: 40px 32px;
   border-radius: 24px;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.10);
   position: relative;
   overflow: hidden;
   height: 100%;
@@ -1418,7 +1419,7 @@
   line-height: 1.7;
   position: relative;
   z-index: 2;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* ===========================================
@@ -1441,11 +1442,11 @@
   border-radius: 20px;
   text-align: center;
   box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.04),
-    0 10px 20px rgba(0, 0, 0, 0.06),
+    0 4px 6px rgba(0, 0, 0, 0.10),
+    0 10px 20px rgba(0, 0, 0, 0.14),
     0 20px 40px rgba(212, 168, 75, 0.08);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   position: relative;
   overflow: visible;
   display: flex;
@@ -1535,7 +1536,7 @@
   color: var(--text-secondary);
   margin: 0;
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Step Connector */
@@ -1942,6 +1943,8 @@
   margin-bottom: 0;
   letter-spacing: -1.2px;
   text-transform: uppercase;
+  color: var(--text-primary);
+  text-shadow: 0 1px 3px rgba(13, 20, 36, 0.1);
 }
 
 .section-header-inline h2::after {
@@ -1972,9 +1975,9 @@
   background: #ffffff;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   position: relative;
 }
 
@@ -2061,7 +2064,8 @@
   color: var(--text-primary);
   margin-bottom: 10px;
   line-height: 1.3;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.3px;
 }
 
 .sermon-meta {
