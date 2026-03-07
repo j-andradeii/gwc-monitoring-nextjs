@@ -12,7 +12,7 @@ import { MonthlyCalendar } from '@/components/events/MonthlyCalendar';
 import { events, getFeaturedEvent } from '@/data/events';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
-const CALENDAR_IMAGE_URL = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/calendar.jpg';
+const CALENDAR_IMAGE_URL = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/calendar-march.jpg';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
