@@ -3052,7 +3052,7 @@
 .contact-section {
   padding: 80px 0 !important;
   /* background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important; */
-  background: #ffffff !important;
+  background: #f0f0f0 !important;
 
   position: relative;
   overflow: hidden;
@@ -3062,8 +3062,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 15% 50%, rgba(240, 180, 41, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 85% 25%, rgba(30, 58, 95, 0.04) 0%, transparent 35%);
+    radial-gradient(circle at 15% 50%, rgba(0, 0, 0, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(100, 100, 100, 0.04) 0%, transparent 35%);
   pointer-events: none;
 }
 
