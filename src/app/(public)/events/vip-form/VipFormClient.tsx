@@ -73,7 +73,7 @@ export default function VipFormClient() {
             <PageHero
                 badge="Ministries"
                 title="Welome to Gateway Church"
-                subtitle="HIS PRECENSE, OUR HOME"
+                subtitle="HIS PRESENCE, OUR HOME"
                 backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/vip_2.jpg"
                 displayBadge={false}
             />
