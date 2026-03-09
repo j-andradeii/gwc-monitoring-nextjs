@@ -7,4 +7,8 @@ export { GatewayProgressSection } from './GatewayProgressSection';
 export { GatewayMilestonesSection } from './GatewayMilestonesSection';
 export { GatewayBuildingProgressSection } from './GatewayBuildingProgressSection';
 export { GatewayGiveSection } from './GatewayGiveSection';
+export { GatewaySectionNav } from './GatewaySectionNav';
+export { GatewayVisionSection } from './GatewayVisionSection';
+export { GatewayQuickFactsSection } from './GatewayQuickFactsSection';
+export { GatewayTestimonialsSection } from './GatewayTestimonialsSection';
 export { ProjectGallery } from './ProjectGallery';

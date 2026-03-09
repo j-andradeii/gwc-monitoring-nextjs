@@ -113,6 +113,43 @@ export interface GalleryImage {
   caption: string;
 }
 
+// Quick fact interface
+export interface QuickFact {
+  image: string;
+  value: string;
+  label: string;
+}
+
+// Vision data interface
+export interface VisionData {
+  sectionLabel: string;
+  heading: string;
+  paragraphs: string[];
+  pastorName: string;
+  pastorRole: string;
+  pastorImage: string;
+  scripture: {
+    verse: string;
+    text: string;
+  };
+}
+
+// Testimonial interface
+export interface LeaderTestimonial {
+  id: number;
+  quote: string;
+  name: string;
+  role: string;
+  image: string;
+}
+
+// Section nav link interface
+export interface SectionNavLink {
+  id: string;
+  label: string;
+  icon: string;
+}
+
 // Gateway Projects data
 export const gatewayProjectsData = {
   title: 'Gateway Projects',
@@ -123,8 +160,8 @@ export const gatewayProjectsData = {
   currentAmount: 195000,
   milestones: [
     { label: 'Phase 1: Planning & Design', amount: 150000, completed: true },
-    { label: 'Phase 2: Airconditioning and Flooring', amount: 400000, completed: false },
-    { label: 'Phase 3: Interior and Reception', amount: 300000, completed: false },
+    { label: 'Phase 2: Interior and Reception', amount: 300000, completed: false },
+    { label: 'Phase 3: Airconditioning and Flooring', amount: 400000, completed: false },
     { label: 'Phase 4: Completion', amount: 150000, completed: false },
   ] as Milestone[],
   gallery: [
@@ -166,3 +203,152 @@ export const gatewayProjectsData = {
     },
   ] as GalleryImage[],
 };
+
+// Gateway Vision data — Pastor's vision narrative
+export const gatewayVisionData: VisionData = {
+  sectionLabel: 'Our Vision',
+  heading: 'Building a House for God\u2019s Glory',
+  paragraphs: [
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+    'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
+    ' Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur'
+  ],
+  pastorName: 'Pastor Jimanuel Baloran',
+  pastorRole: 'Senior Pastor, Gateway Church Cebu',
+  pastorImage:
+    'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
+  scripture: {
+    verse: 'Haggai 1:8',
+    text: '\u201CGo up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,\u201D says the Lord.',
+  },
+};
+
+// Gateway Quick Facts — project specifications
+export const gatewayQuickFacts: QuickFact[] = [
+  {
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg',
+    value: '500+',
+    label: 'Worship Capacity',
+  },
+  {
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/2.jpg',
+    value: '8th Floor',
+    label: 'Golden Peak Tower',
+  },
+  {
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/3.jpg',
+    value: '4 Phases',
+    label: 'Project Roadmap',
+  },
+  {
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/4.jpg',
+    value: '2026',
+    label: 'Target Completion',
+  },
+  {
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/5.jpg',
+    value: 'Full A/V',
+    label: 'Sound & Media System',
+  },
+  {
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/6.jpg',
+    value: 'Multi-Use',
+    label: 'Worship, Fellowship & Ministry',
+  },
+];
+
+// Gateway Testimonials — leader quote cards
+export const gatewayTestimonials: LeaderTestimonial[] = [
+  {
+    id: 1,
+    quote:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    name: 'Pastor Jimanuel Baloran',
+    role: 'Senior Pastor',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr_jim_thumbnail.jpg',
+  },
+  {
+    id: 2,
+    quote:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    name: 'Ptr. Anna Marie Baloran',
+    role: 'Co-Pastor',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr_anne.jpg',
+  },
+  {
+    id: 3,
+    quote:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    name: 'Justin Marc Tariman',
+    role: 'Project Lead',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/just.jpg',
+  },
+];
+
+// Gateway Section Nav links
+export const gatewaySectionNavLinks: SectionNavLink[] = [
+  { id: 'gateway-vision', label: 'Vision', icon: 'pi pi-eye' },
+  { id: 'gateway-about', label: 'About', icon: 'pi pi-info-circle' },
+  { id: 'gateway-facts', label: 'Quick Facts', icon: 'pi pi-list' },
+  { id: 'gateway-testimonials', label: 'Testimonials', icon: 'pi pi-comments' },
+  { id: 'gateway-progress', label: 'Progress', icon: 'pi pi-chart-bar' },
+  { id: 'gateway-give', label: 'Give', icon: 'pi pi-wallet' },
+  { id: 'contact', label: 'Contact', icon: 'pi pi-envelope' },
+];
+
+// Gateway giving channels — all channels available for Gateway Projects
+export const gatewayGivingChannels: GivingChannel[] = [
+  {
+    ...gatewayProjectsChannel,
+    // Gotyme is the primary / featured channel
+  },
+  {
+    id: 'gcash-gateway',
+    name: 'GCash',
+    accountName: 'Gateway Church Cebu',
+    accountNumber: '0928-252-4463',
+    icon: 'pi pi-mobile',
+    color: '#007DFE',
+    instructions: [
+      'Open your GCash app',
+      'Tap "Send Money"',
+      'Enter the GCash number above',
+      'Enter the amount and add "Gateway Projects" as message',
+      'Confirm and send',
+    ],
+  },
+  {
+    id: 'bpi-gateway',
+    name: 'BPI',
+    accountName: 'Anna Marie Baloran',
+    accountNumber: '0206007186',
+    icon: 'pi pi-building',
+    color: '#A6192E',
+    qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bpi.jpg',
+    instructions: [
+      'Log in to BPI Online or Mobile App',
+      'Select "Transfer"',
+      'Choose "Transfer to BPI Account"',
+      'Enter the account number above',
+      'Add "Gateway Projects" as reference',
+      'Enter amount and confirm',
+    ],
+  },
+  {
+    id: 'bdo-gateway',
+    name: 'BDO',
+    accountName: 'Anna Marie Baloran/Jimanuel Baloran',
+    accountNumber: '002428024627',
+    icon: 'pi pi-credit-card',
+    color: '#003087',
+    qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bdo.jpg',
+    instructions: [
+      'Log in to BDO Online or Mobile App',
+      'Select "Send Money"',
+      'Choose "Transfer to BDO Account"',
+      'Enter the account number above',
+      'Add "Gateway Projects" as reference',
+      'Enter amount and confirm',
+    ],
+  },
+];

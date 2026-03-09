@@ -9,6 +9,7 @@ export const GatewayBuildingProgressSection: React.FC = () => {
 
   return (
     <section
+      id="gateway-progress"
       className="landing-section building-progress-section"
       style={{
         backgroundImage: "url('https://gtxngthtpisigkys.public.blob.vercel-storage.com/center.jpg')",
