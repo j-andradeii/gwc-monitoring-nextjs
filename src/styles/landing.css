@@ -5379,32 +5379,175 @@
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Gateway Projects Overview Section - Cream Background */
+/* Gateway Projects Overview Section - Gallery Showcase */
 .gateway-projects-section {
   padding: 50px 0;
-  background-color: var(--color-cream, #f5f0e6);
+  background-color: var(--cream);
+  position: relative;
 }
 
-.gateway-projects-section .project-content {
-  max-width: 1000px;
+/* Subtle top border accent */
+.gateway-projects-section::before {
+  /* content: ''; */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 2px;
+}
+
+/* Section header — compact, no description */
+.gateway-projects-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.gateway-projects-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-heading, #020617);
+  margin: 12px 0 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+/* Main layout — gallery + scripture sidebar */
+.gateway-projects-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.gateway-projects-section .project-scripture {
-  max-width: 700px;
-  margin: 40px auto;
+/* Gallery takes the spotlight */
+.gateway-projects-gallery-main {
+  min-width: 0;
+  /* Prevent grid blowout */
 }
 
-.gateway-projects-section .project-gallery {
-  margin-top: 50px;
+/* Sidebar with scripture accent + scroll CTA */
+.gateway-projects-sidebar {
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: sticky;
 }
 
-.gateway-projects-section .project-gallery h3 {
+/* Make the scripture card more compact in sidebar context */
+.gateway-projects-sidebar .scripture-card.enhanced-scripture {
+  padding: 28px 24px;
+  border-radius: 14px;
+}
+
+.gateway-projects-sidebar .scripture-quote {
+  font-size: 17px;
+  line-height: 1.7;
+  padding-left: 18px;
+  border-left-width: 3px;
+}
+
+/* Scroll CTA prompt */
+.gateway-projects-scroll-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--border-color-light, #ddd5c4);
   text-align: center;
-  font-size: 24px;
+}
+
+.gateway-projects-scroll-cta span {
+  font-size: 14px;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary, #1e293b);
+}
+
+.gateway-projects-scroll-cta i {
+  font-size: 18px;
+  color: var(--color-primary, #d4a84b);
+  animation: bounceDown 2s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ---- Responsive: Tablet (stack sidebar below gallery) ---- */
+@media (max-width: 1024px) {
+  .gateway-projects-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .gateway-projects-sidebar {
+    position: static;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .gateway-projects-sidebar .scripture-card.enhanced-scripture {
+    flex: 1;
+  }
+
+  .gateway-projects-scroll-cta {
+    flex: 0 0 auto;
+    padding: 20px 28px;
+    justify-content: center;
+  }
+
+  .gateway-projects-scroll-cta i {
+    display: none;
+  }
+}
+
+/* ---- Responsive: Mobile ---- */
+@media (max-width: 768px) {
+  .gateway-projects-section {
+    padding: 50px 0 60px;
+  }
+
+  .gateway-projects-header {
+    margin-bottom: 32px;
+  }
+
+  .gateway-projects-header h2 {
+    font-size: 28px;
+  }
+
+  .gateway-projects-sidebar {
+    flex-direction: column;
+  }
+
+  .gateway-projects-scroll-cta {
+    flex-direction: row;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .gateway-projects-scroll-cta i {
+    display: block;
+    animation: none;
+    transform: rotate(-90deg);
+  }
 }
 
 /* Gateway Progress Section - Dark Navy Background */
@@ -6152,7 +6295,7 @@
 /* Gateway Give Section - Cream Background */
 .gateway-give-section {
   padding: 50px 0;
-  background-color: var(--color-cream, #f5f0e6);
+  background-color: #fff;
 }
 
 .gateway-give-section .gateway-project-card-wrapper {
@@ -6163,7 +6306,6 @@
 /* Section Header Center - Unified */
 .give-why-section .section-header-center,
 .give-channels-section .section-header-center,
-.gateway-projects-section .section-header-center,
 .gateway-milestones-section .section-header-center,
 .gateway-give-section .section-header-center {
   text-align: center;
@@ -6172,7 +6314,6 @@
 
 .give-why-section .section-header-center h2,
 .give-channels-section .section-header-center h2,
-.gateway-projects-section .section-header-center h2,
 .gateway-milestones-section .section-header-center h2,
 .gateway-give-section .section-header-center h2 {
   font-size: 36px;
@@ -6185,7 +6326,6 @@
 
 .give-why-section .section-header-center p,
 .give-channels-section .section-header-center p,
-.gateway-projects-section .section-header-center p,
 .gateway-milestones-section .section-header-center p,
 .gateway-give-section .section-header-center p {
   font-size: 18px;
@@ -6200,7 +6340,6 @@
 
   .give-why-section,
   .give-channels-section,
-  .gateway-projects-section,
   .gateway-progress-section,
   .gateway-milestones-section,
   .gateway-give-section {
@@ -6209,7 +6348,6 @@
 
   .give-why-section .section-header-center h2,
   .give-channels-section .section-header-center h2,
-  .gateway-projects-section .section-header-center h2,
   .gateway-milestones-section .section-header-center h2,
   .gateway-give-section .section-header-center h2 {
     font-size: 28px;
@@ -9768,7 +9906,7 @@
 }
 
 .gateway-testimonials-subtitle {
-  font-size: 16px;
+  font-size: 18px !important;
   color: var(--text-secondary);
   font-weight: 500;
 }
@@ -9811,7 +9949,7 @@
 }
 
 .gateway-testimonial-text {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--text-primary);
   font-weight: 500;

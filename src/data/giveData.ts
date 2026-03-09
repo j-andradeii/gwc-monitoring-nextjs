@@ -115,7 +115,7 @@ export interface GalleryImage {
 
 // Quick fact interface
 export interface QuickFact {
-  icon: string;
+  image: string;
   value: string;
   label: string;
 }
@@ -140,7 +140,7 @@ export interface LeaderTestimonial {
   quote: string;
   name: string;
   role: string;
-  icon: string;
+  image: string;
 }
 
 // Section nav link interface
@@ -160,8 +160,8 @@ export const gatewayProjectsData = {
   currentAmount: 195000,
   milestones: [
     { label: 'Phase 1: Planning & Design', amount: 150000, completed: true },
-    { label: 'Phase 2: Airconditioning and Flooring', amount: 400000, completed: false },
-    { label: 'Phase 3: Interior and Reception', amount: 300000, completed: false },
+    { label: 'Phase 2: Interior and Reception', amount: 300000, completed: false },
+    { label: 'Phase 3: Airconditioning and Flooring', amount: 400000, completed: false },
     { label: 'Phase 4: Completion', amount: 150000, completed: false },
   ] as Milestone[],
   gallery: [
@@ -209,14 +209,14 @@ export const gatewayVisionData: VisionData = {
   sectionLabel: 'Our Vision',
   heading: 'Building a House for God\u2019s Glory',
   paragraphs: [
-    'Gateway Church has always been a community that believes in the power of gathering together in worship. As our congregation grows, so does the need for a space that reflects the excellence of our God and the warmth of our fellowship.',
-    'The Ministry Center Improvement Project at the 8th Floor Golden Peak is more than a renovation -- it is a declaration of faith. We are preparing a place where lives will be transformed, families will be strengthened, and the Gospel will go forth with greater impact.',
-    'We invite every member and partner to be part of this legacy. Whether through prayer, giving, or volunteering, your contribution is an investment in eternity. Together, we are building not just walls, but a future for generations to come.',
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+    'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
+    ' Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur'
   ],
   pastorName: 'Pastor Jimanuel Baloran',
   pastorRole: 'Senior Pastor, Gateway Church Cebu',
   pastorImage:
-    'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg',
+    'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptrjim_compressed.jpg',
   scripture: {
     verse: 'Haggai 1:8',
     text: '\u201CGo up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,\u201D says the Lord.',
@@ -226,32 +226,32 @@ export const gatewayVisionData: VisionData = {
 // Gateway Quick Facts — project specifications
 export const gatewayQuickFacts: QuickFact[] = [
   {
-    icon: 'pi pi-users',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg',
     value: '500+',
     label: 'Worship Capacity',
   },
   {
-    icon: 'pi pi-building',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/2.jpg',
     value: '8th Floor',
     label: 'Golden Peak Tower',
   },
   {
-    icon: 'pi pi-th-large',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/3.jpg',
     value: '4 Phases',
     label: 'Project Roadmap',
   },
   {
-    icon: 'pi pi-calendar',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/4.jpg',
     value: '2026',
     label: 'Target Completion',
   },
   {
-    icon: 'pi pi-volume-up',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/5.jpg',
     value: 'Full A/V',
     label: 'Sound & Media System',
   },
   {
-    icon: 'pi pi-heart',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/6.jpg',
     value: 'Multi-Use',
     label: 'Worship, Fellowship & Ministry',
   },
@@ -262,26 +262,26 @@ export const gatewayTestimonials: LeaderTestimonial[] = [
   {
     id: 1,
     quote:
-      'This project is an expression of our faith. We are not just building a facility -- we are preparing a place where heaven meets earth and lives are forever changed.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     name: 'Pastor Jimanuel Baloran',
     role: 'Senior Pastor',
-    icon: 'pi pi-star',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr_jim_thumbnail.jpg',
   },
   {
     id: 2,
     quote:
-      'Every peso given is a seed planted for future generations. I see a ministry center that will be the heart of outreach in Cebu for decades to come.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     name: 'Ptr. Anna Marie Baloran',
     role: 'Co-Pastor',
-    icon: 'pi pi-heart',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr_anne.jpg',
   },
   {
     id: 3,
     quote:
-      'Imagine a space where youth are equipped, families are restored, and the community finds hope. That is what we are building together.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     name: 'Justin Marc Tariman',
     role: 'Project Lead',
-    icon: 'pi pi-bolt',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/just.jpg',
   },
 ];
 

@@ -101,13 +101,15 @@ export default function GatewayProjectsPage() {
           <GatewayProjectsSection />
 
           {/* Section 3: Quick Facts / Project Specs (Navy background) */}
-          <GatewayQuickFactsSection />
+          {/* <GatewayQuickFactsSection /> */}
 
           {/* Section 4: Leader Testimonials (Cream background) */}
-          <GatewayTestimonialsSection />
 
           {/* Section 5: Building Progress with Milestones (Dark/Navy background) */}
           <GatewayBuildingProgressSection />
+
+          <GatewayTestimonialsSection />
+
 
           {/* Section 6: Give to Gateway Projects (Cream background) */}
           <GatewayGiveSection />

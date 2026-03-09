@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { gatewayTestimonials } from '@/data/giveData';
 
 export const GatewayTestimonialsSection: React.FC = () => {
@@ -23,8 +24,15 @@ export const GatewayTestimonialsSection: React.FC = () => {
                 {testimonial.quote}
               </blockquote>
               <div className="gateway-testimonial-attribution">
-                <div className="gateway-testimonial-avatar">
-                  <i className={testimonial.icon}></i>
+                <div className="gateway-testimonial-avatar" style={{ overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                    unoptimized
+                  />
                 </div>
                 <div className="gateway-testimonial-info">
                   <span className="gateway-testimonial-name">{testimonial.name}</span>

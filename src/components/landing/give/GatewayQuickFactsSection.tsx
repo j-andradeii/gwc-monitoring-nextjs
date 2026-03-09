@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { gatewayQuickFacts } from '@/data/giveData';
 
 export const GatewayQuickFactsSection: React.FC = () => {
@@ -16,8 +17,15 @@ export const GatewayQuickFactsSection: React.FC = () => {
         <div className="gateway-quickfacts-grid animate-on-scroll">
           {gatewayQuickFacts.map((fact, index) => (
             <div key={index} className="gateway-quickfact-card">
-              <div className="gateway-quickfact-icon">
-                <i className={fact.icon}></i>
+              <div className="gateway-quickfact-icon" style={{ overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '12px' }}>
+                <Image
+                  src={fact.image}
+                  alt={fact.label}
+                  width={64}
+                  height={64}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  unoptimized
+                />
               </div>
               <span className="gateway-quickfact-value">{fact.value}</span>
               <span className="gateway-quickfact-label">{fact.label}</span>
