@@ -113,6 +113,43 @@ export interface GalleryImage {
   caption: string;
 }
 
+// Quick fact interface
+export interface QuickFact {
+  icon: string;
+  value: string;
+  label: string;
+}
+
+// Vision data interface
+export interface VisionData {
+  sectionLabel: string;
+  heading: string;
+  paragraphs: string[];
+  pastorName: string;
+  pastorRole: string;
+  pastorImage: string;
+  scripture: {
+    verse: string;
+    text: string;
+  };
+}
+
+// Testimonial interface
+export interface LeaderTestimonial {
+  id: number;
+  quote: string;
+  name: string;
+  role: string;
+  icon: string;
+}
+
+// Section nav link interface
+export interface SectionNavLink {
+  id: string;
+  label: string;
+  icon: string;
+}
+
 // Gateway Projects data
 export const gatewayProjectsData = {
   title: 'Gateway Projects',
@@ -166,3 +203,152 @@ export const gatewayProjectsData = {
     },
   ] as GalleryImage[],
 };
+
+// Gateway Vision data — Pastor's vision narrative
+export const gatewayVisionData: VisionData = {
+  sectionLabel: 'Our Vision',
+  heading: 'Building a House for God\u2019s Glory',
+  paragraphs: [
+    'Gateway Church has always been a community that believes in the power of gathering together in worship. As our congregation grows, so does the need for a space that reflects the excellence of our God and the warmth of our fellowship.',
+    'The Ministry Center Improvement Project at the 8th Floor Golden Peak is more than a renovation -- it is a declaration of faith. We are preparing a place where lives will be transformed, families will be strengthened, and the Gospel will go forth with greater impact.',
+    'We invite every member and partner to be part of this legacy. Whether through prayer, giving, or volunteering, your contribution is an investment in eternity. Together, we are building not just walls, but a future for generations to come.',
+  ],
+  pastorName: 'Pastor Jimanuel Baloran',
+  pastorRole: 'Senior Pastor, Gateway Church Cebu',
+  pastorImage:
+    'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg',
+  scripture: {
+    verse: 'Haggai 1:8',
+    text: '\u201CGo up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,\u201D says the Lord.',
+  },
+};
+
+// Gateway Quick Facts — project specifications
+export const gatewayQuickFacts: QuickFact[] = [
+  {
+    icon: 'pi pi-users',
+    value: '500+',
+    label: 'Worship Capacity',
+  },
+  {
+    icon: 'pi pi-building',
+    value: '8th Floor',
+    label: 'Golden Peak Tower',
+  },
+  {
+    icon: 'pi pi-th-large',
+    value: '4 Phases',
+    label: 'Project Roadmap',
+  },
+  {
+    icon: 'pi pi-calendar',
+    value: '2026',
+    label: 'Target Completion',
+  },
+  {
+    icon: 'pi pi-volume-up',
+    value: 'Full A/V',
+    label: 'Sound & Media System',
+  },
+  {
+    icon: 'pi pi-heart',
+    value: 'Multi-Use',
+    label: 'Worship, Fellowship & Ministry',
+  },
+];
+
+// Gateway Testimonials — leader quote cards
+export const gatewayTestimonials: LeaderTestimonial[] = [
+  {
+    id: 1,
+    quote:
+      'This project is an expression of our faith. We are not just building a facility -- we are preparing a place where heaven meets earth and lives are forever changed.',
+    name: 'Pastor Jimanuel Baloran',
+    role: 'Senior Pastor',
+    icon: 'pi pi-star',
+  },
+  {
+    id: 2,
+    quote:
+      'Every peso given is a seed planted for future generations. I see a ministry center that will be the heart of outreach in Cebu for decades to come.',
+    name: 'Ptr. Anna Marie Baloran',
+    role: 'Co-Pastor',
+    icon: 'pi pi-heart',
+  },
+  {
+    id: 3,
+    quote:
+      'Imagine a space where youth are equipped, families are restored, and the community finds hope. That is what we are building together.',
+    name: 'Justin Marc Tariman',
+    role: 'Project Lead',
+    icon: 'pi pi-bolt',
+  },
+];
+
+// Gateway Section Nav links
+export const gatewaySectionNavLinks: SectionNavLink[] = [
+  { id: 'gateway-vision', label: 'Vision', icon: 'pi pi-eye' },
+  { id: 'gateway-about', label: 'About', icon: 'pi pi-info-circle' },
+  { id: 'gateway-facts', label: 'Quick Facts', icon: 'pi pi-list' },
+  { id: 'gateway-testimonials', label: 'Testimonials', icon: 'pi pi-comments' },
+  { id: 'gateway-progress', label: 'Progress', icon: 'pi pi-chart-bar' },
+  { id: 'gateway-give', label: 'Give', icon: 'pi pi-wallet' },
+  { id: 'contact', label: 'Contact', icon: 'pi pi-envelope' },
+];
+
+// Gateway giving channels — all channels available for Gateway Projects
+export const gatewayGivingChannels: GivingChannel[] = [
+  {
+    ...gatewayProjectsChannel,
+    // Gotyme is the primary / featured channel
+  },
+  {
+    id: 'gcash-gateway',
+    name: 'GCash',
+    accountName: 'Gateway Church Cebu',
+    accountNumber: '0928-252-4463',
+    icon: 'pi pi-mobile',
+    color: '#007DFE',
+    instructions: [
+      'Open your GCash app',
+      'Tap "Send Money"',
+      'Enter the GCash number above',
+      'Enter the amount and add "Gateway Projects" as message',
+      'Confirm and send',
+    ],
+  },
+  {
+    id: 'bpi-gateway',
+    name: 'BPI',
+    accountName: 'Anna Marie Baloran',
+    accountNumber: '0206007186',
+    icon: 'pi pi-building',
+    color: '#A6192E',
+    qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bpi.jpg',
+    instructions: [
+      'Log in to BPI Online or Mobile App',
+      'Select "Transfer"',
+      'Choose "Transfer to BPI Account"',
+      'Enter the account number above',
+      'Add "Gateway Projects" as reference',
+      'Enter amount and confirm',
+    ],
+  },
+  {
+    id: 'bdo-gateway',
+    name: 'BDO',
+    accountName: 'Anna Marie Baloran/Jimanuel Baloran',
+    accountNumber: '002428024627',
+    icon: 'pi pi-credit-card',
+    color: '#003087',
+    qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bdo.jpg',
+    instructions: [
+      'Log in to BDO Online or Mobile App',
+      'Select "Send Money"',
+      'Choose "Transfer to BDO Account"',
+      'Enter the account number above',
+      'Add "Gateway Projects" as reference',
+      'Enter amount and confirm',
+    ],
+  },
+];

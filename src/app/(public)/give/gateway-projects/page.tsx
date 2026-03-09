@@ -1,7 +1,8 @@
 /**
  * Gateway Projects Page
  *
- * Dedicated page for Gateway Church's Ministry Center Improvement Project
+ * Dedicated page for Gateway Church's Ministry Center Improvement Project.
+ * Inspired by Bethel Church's "Arise & Build" campaign design patterns.
  */
 
 import type { Metadata } from 'next';
@@ -17,7 +18,11 @@ import {
 } from '@/components/landing';
 
 import {
+  GatewaySectionNav,
+  GatewayVisionSection,
   GatewayProjectsSection,
+  GatewayQuickFactsSection,
+  GatewayTestimonialsSection,
   GatewayBuildingProgressSection,
   GatewayGiveSection,
 } from '@/components/landing/give';
@@ -88,13 +93,23 @@ export default function GatewayProjectsPage() {
             ]}
           />
 
-          {/* Section 1: Gateway Projects Overview (Cream background) */}
+
+          {/* Section 1: Pastor's Vision Narrative (Cream background) */}
+          <GatewayVisionSection />
+
+          {/* Section 2: Gateway Projects Overview (Cream background) */}
           <GatewayProjectsSection />
 
-          {/* Section 2: Building Progress with Milestones (Dark/Navy background) */}
+          {/* Section 3: Quick Facts / Project Specs (Navy background) */}
+          <GatewayQuickFactsSection />
+
+          {/* Section 4: Leader Testimonials (Cream background) */}
+          <GatewayTestimonialsSection />
+
+          {/* Section 5: Building Progress with Milestones (Dark/Navy background) */}
           <GatewayBuildingProgressSection />
 
-          {/* Section 3: Give to Gateway Projects (Cream background) */}
+          {/* Section 6: Give to Gateway Projects (Cream background) */}
           <GatewayGiveSection />
 
           {/* Contact Section */}

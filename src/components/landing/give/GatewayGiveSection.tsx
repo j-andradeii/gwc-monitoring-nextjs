@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
-import { gatewayProjectsChannel } from '@/data/giveData';
+import { gatewayProjectsChannel, gatewayGivingChannels, type GivingChannel } from '@/data/giveData';
 import DownloadQRButton from '@/components/ui/DownloadQRButton';
 
 // Copy to clipboard hook
@@ -19,19 +19,98 @@ const useCopyToClipboard = () => {
   return { copiedId, copy };
 };
 
+// Compact channel card for additional channels
+const ChannelCard: React.FC<{
+  channel: GivingChannel;
+  copiedId: string | null;
+  copy: (text: string, id: string) => void;
+}> = ({ channel, copiedId, copy }) => {
+  return (
+    <div className="gateway-alt-channel-card">
+      <div className="gateway-alt-channel-header">
+        <div className="gateway-alt-channel-logo" style={{ backgroundColor: channel.color }}>
+          <i className={channel.icon}></i>
+        </div>
+        <div className="gateway-alt-channel-title">
+          <h4>{channel.name}</h4>
+          <span>{channel.accountName}</span>
+        </div>
+      </div>
+
+      <div
+        className={`compact-account-box copyable ${copiedId === `${channel.id}-account` ? 'copied' : ''}`}
+        onClick={() => copy(channel.accountNumber, `${channel.id}-account`)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && copy(channel.accountNumber, `${channel.id}-account`)}
+      >
+        <span className="account-label">Account Number</span>
+        <div className="account-value-row">
+          <span className="account-value">{channel.accountNumber}</span>
+          <span className="copy-indicator">
+            {copiedId === `${channel.id}-account` ? (
+              <><i className="pi pi-check"></i> Copied!</>
+            ) : (
+              <><i className="pi pi-copy"></i></>
+            )}
+          </span>
+        </div>
+      </div>
+
+      {channel.qrCode && (
+        <div className="gateway-alt-channel-qr">
+          <Image
+            src={channel.qrCode}
+            alt={`${channel.name} QR Code`}
+            width={100}
+            height={100}
+            className="qr-image"
+            unoptimized
+          />
+        </div>
+      )}
+
+      <div className="compact-instructions">
+        <details>
+          <summary>
+            <i className="pi pi-info-circle"></i>
+            <span>How to Send</span>
+            <i className="pi pi-chevron-down chevron"></i>
+          </summary>
+          <ol>
+            {channel.instructions.map((instruction, idx) => (
+              <li key={idx}>{instruction}</li>
+            ))}
+          </ol>
+        </details>
+      </div>
+    </div>
+  );
+};
+
 export const GatewayGiveSection: React.FC = () => {
   const { copiedId, copy } = useCopyToClipboard();
 
+  // Additional channels (skip the first one which is Gotyme / featured)
+  const additionalChannels = gatewayGivingChannels.filter(
+    (ch) => ch.id !== gatewayProjectsChannel.id
+  );
+
   return (
-    <section className="landing-section gateway-give-section">
+    <section id="gateway-give" className="landing-section gateway-give-section">
       <div className="landing-container">
         <div className="section-header-center animate-on-scroll">
           <span className="section-label">Contribute</span>
           <h2>Give to Gateway Projects</h2>
-          <p>Support the ministry center improvement project</p>
+          <p>Support the ministry center improvement project through any of our giving channels</p>
         </div>
 
+        {/* Featured Channel: Gotyme Bank */}
         <div className="gateway-project-card-wrapper animate-on-scroll">
+          {/* <div className="gateway-featured-badge">
+            <i className="pi pi-star-fill"></i>
+            <span>Preferred Channel</span>
+          </div> */}
           <div className="giving-channel-card compact-card featured-compact">
             <div className="card-accent featured-accent"></div>
 

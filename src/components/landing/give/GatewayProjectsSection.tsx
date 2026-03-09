@@ -7,7 +7,7 @@ import { gatewayProjectsData } from '@/data/giveData';
 
 export const GatewayProjectsSection: React.FC = () => {
   return (
-    <section id="gateway-projects" className="landing-section gateway-projects-section">
+    <section id="gateway-about" className="landing-section gateway-projects-section">
       <div className="landing-container">
         <div className="section-header-center animate-on-scroll">
           <span className="section-label">{gatewayProjectsData.subtitle}</span>
