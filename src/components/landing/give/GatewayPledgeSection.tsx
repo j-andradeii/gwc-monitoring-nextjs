@@ -110,9 +110,13 @@ export const GatewayPledgeSection: React.FC = () => {
                   <div className="success-checkmark">
                     <i className="pi pi-check"></i>
                   </div>
-                  <h3>Pledge Received!</h3>
+                  <h3>May God bless you more!</h3>
                   <p>Thank you for your generosity.</p>
-                  <button onClick={() => setSubmitted(false)} className="success-reset">
+                  <button onClick={() => {
+                    setSubmitted(false);
+                    reset();
+                  }}
+                    className="success-reset">
                     Submit another <i className="pi pi-arrow-right"></i>
                   </button>
                 </div>
