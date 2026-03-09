@@ -39,6 +39,7 @@ export enum ApiEventType {
   SUBMIT_CELL_GROUP_JOIN,
   SUBMIT_EVENT_INQUIRY,
   SUBMIT_VIP_FORM,
+  SUBMIT_GATEWAY_PLEDGE,
 }
 
 // Event interface

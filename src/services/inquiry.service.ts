@@ -64,3 +64,16 @@ export const submitVipForm = async (data: any) => {
         apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
     }
 }
+
+export const submitGatewayPledge = async (data: any) => {
+    const eventType = ApiEventType.SUBMIT_GATEWAY_PLEDGE;
+    const apiEventStore = useApiEventStore.getState();
+    try {
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.IN_PROGRESS, spinner: true });
+        await apiClient.post('/api/inquiry/pledge', data)
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.COMPLETED, spinner: true });
+    } catch (error) {
+        console.log(error);
+        apiEventStore.sendEvent({ type: eventType, status: ApiEventStatus.ERROR, spinner: false });
+    }
+}
