@@ -1841,8 +1841,6 @@ Judges 6:15–16
 
 ---
 
-**SERMON SUMMARY**
-
 God’s intention for His people has always been abundance, not fear or scarcity. Yet in Judges 6, the Israelites were living in fear and oppression because they had turned away from God and relied on their own strength.
 Judges 6:1 shows that their situation was the result of disobedience. Because of this, the Midianites repeatedly invaded their land, destroyed their crops, and left the people of Israel in poverty and fear.
 But even in their broken condition, God raised a deliverer—Gideon.
