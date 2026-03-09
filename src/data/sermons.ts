@@ -1813,7 +1813,7 @@ Put Him first — not just in words, but in action. When God is first, everythin
         text: '"Israel was holiness to the Lord, The firstfruits of His increase. All that devour him will offend; Disaster will come upon them," says the Lord.'
       }
     ],
-    isFeatured: true,
+    isFeatured: false,
     keyPoints: [
       'God made us first — He deserves our first',
       'You cannot serve two masters',
@@ -1832,6 +1832,7 @@ Put Him first — not just in words, but in action. When God is first, everythin
     date: '2026-03-08',
     duration: '45 min',
     series: 'Covenant',
+    isFeatured: true,
     seriesDescription: 'Understanding the covenant relationship between God and His people.',
     excerpt: 'God’s intention for His people has always been abundance, not fear or scarcity. Yet in Judges 6, the Israelites were living in fear and oppression because they had turned away from God and relied on their own strength.',
     description: `**FILLED WITH GOD**
@@ -1936,6 +1937,7 @@ When we are filled with God, our lives become vessels through which His power, l
 * God often calls us in difficult seasons.Like Gideon, we may be called when we feel least prepared, but God equips those He calls.
 * Dedication matters more than numbers.Victory does not come from human strength but from God’s Spirit (Zechariah 4:6).
 * Obedience allows God to work through us.When we trust God and step forward in faith, He can accomplish extraordinary things through ordinary people.`,
+
     tags: ['Abundance', 'Faith', 'Obedience', 'Gideon', 'Limitations', 'Victory'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
     scriptures: [
