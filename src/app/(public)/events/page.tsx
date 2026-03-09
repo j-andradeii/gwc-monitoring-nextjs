@@ -10,6 +10,7 @@ import '@/styles/landing.css';
 import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero, ConnectFab } from '@/components/landing';
 import { MonthlyCalendar } from '@/components/events/MonthlyCalendar';
 import { events, getFeaturedEvent } from '@/data/events';
+import { EventsShareButton } from './EventsShareButton';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
 const CALENDAR_IMAGE_URL = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/calendar-march.jpg';
@@ -96,9 +97,23 @@ export default function EventsPage() {
         {/* Events Grid */}
         <section className="events-grid-section">
           <div className="landing-container">
-            <div className="section-header-center" style={{ textAlign: 'left', marginBottom: '32px' }}>
-              <span className="section-label">All Events</span>
-              <h2>Upcoming Gatherings</h2>
+            <div
+              className="section-header-center"
+              style={{
+                textAlign: 'left',
+                marginBottom: '32px',
+                display: 'flex',
+                alignItems: 'flex-end',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '16px',
+              }}
+            >
+              <div>
+                <span className="section-label">All Events</span>
+                <h2>Upcoming Gatherings</h2>
+              </div>
+              <EventsShareButton />
             </div>
             <EventsCardGrid events={regularEvents} showDescription={true} showAll={true} limit={0} />
           </div>
