@@ -1823,6 +1823,160 @@ Put Him first — not just in words, but in action. When God is first, everythin
     ],
     relatedSermons: ['15', '12'],
   },
+  {
+    id: '17',
+    slug: 'filled-with-god',
+    title: 'Filled with God',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-03-08',
+    duration: '45 min',
+    series: 'Covenant',
+    seriesDescription: 'Understanding the covenant relationship between God and His people.',
+    excerpt: 'God’s intention for His people has always been abundance, not fear or scarcity. Yet in Judges 6, the Israelites were living in fear and oppression because they had turned away from God and relied on their own strength.',
+    description: `**FILLED WITH GOD**
+
+Judges 6:15–16
+
+---
+
+**SERMON SUMMARY**
+
+God’s intention for His people has always been abundance, not fear or scarcity. Yet in Judges 6, the Israelites were living in fear and oppression because they had turned away from God and relied on their own strength.
+Judges 6:1 shows that their situation was the result of disobedience. Because of this, the Midianites repeatedly invaded their land, destroyed their crops, and left the people of Israel in poverty and fear.
+But even in their broken condition, God raised a deliverer—Gideon.
+This story reminds us that God often calls people who feel weak, unqualified, and limited. Yet our limitations cannot prevent God from fulfilling His purpose.
+As Jesus said in John 10:10:
+"The thief comes only to steal and kill and destroy; I have come that they may have life, and have it to the full."
+God’s desire is for His people to live in abundance and freedom, not in fear and scarcity.
+
+---
+
+**THE LIFE OF GIDEON**
+
+When God called Gideon, he struggled to believe that he could be used. Gideon believed that his own limitations would prevent God from working through him.
+He saw himself as the weakest in his family and from the least significant clan. His focus was on his natural circumstances rather than on God’s promise.
+Because Gideon focused on what he lacked, his vision became limited. Yet God saw something greater in him.
+God does not call us based on our ability — He calls us based on His purpose.
+
+---
+
+**WHAT WE CAN LEARN FROM GIDEON**
+
+**1. God Calls in the Middle of Our Obedience**
+Gideon was faithfully working when God appeared to him.
+God often calls people who are already being faithful in small things. When we can be trusted with little, God entrusts us with more.
+Faithfulness opens the door for greater responsibility.
+
+**2. Our Limitations Cannot Prevent God**
+Gideon believed his weaknesses disqualified him. But God responded with a powerful promise:
+"I will be with you."
+When God calls you, He also qualifies you and supplies everything you need.
+In spite of our weaknesses and failures, God can still use us for His purpose.
+
+**3. God Can Do Powerful Things Through Dedicated People**
+In Judges 7:3–7, God reduced Gideon’s army from thousands to only 300 men.
+This showed that victory would not depend on numbers but on God.
+As Zechariah 4:6 reminds us:
+"Not by might nor by power, but by my Spirit," says the Lord.
+Dedication and spiritual awareness are more important to God than numbers or human strength.
+
+---
+
+**GIDEON’S LIMITED VISION AND HIS OBJECTIONS**
+
+Gideon struggled with fear and doubt because his vision was limited by what he could see in the natural. Instead of focusing on God’s power and promise, he focused on his own weaknesses and circumstances.
+Because of this limited perspective, Gideon raised several objections when God called him.
+
+**1. Gideon’s feelings of responsibility for his family’s welfare**
+Gideon was concerned about the safety and well-being of his family. Yet when God calls you, He also qualifies you and supplies everything you need.
+
+**2. Doubts about the call itself**
+Gideon doubted whether he was truly the one God had chosen. But God has a habit of calling people in their worst situations. He calls the desperate, and He is the one who qualifies them.
+
+**3. Feelings of inadequacy for the task**
+Gideon felt incapable of fulfilling the assignment. Yet when he chose to obey, he responded with resourcefulness, moved with speed, and acted with enthusiasm.
+
+---
+
+**GIDEON’S RESPONSE AND GOD’S STRATEGY**
+
+Despite his fears and doubts, Gideon chose to obey God. His obedience opened the door for God to move in a powerful and unexpected way.
+In Judges 7:1–7, God reduced Gideon’s army so that the victory would clearly belong to Him and not to human strength.
+In Judges 7:15–19, God gave Gideon an unusual strategy. Instead of traditional weapons, the men carried jars, trumpets, and torches.
+These items symbolized powerful truths:
+* Trumpets – proclaiming and declaring God’s victory
+* Torches – the light of God shining in darkness
+* Jars – vessels that carried the light
+Through faith and obedience, Gideon and his small army witnessed God bring victory in a miraculous way.
+
+---
+
+**LIVING A LIFE FILLED WITH GOD**
+
+When we are filled with God, fear no longer controls us and our limitations no longer define us.
+God’s intention for us is abundant life. He does not want us to live in fear or limit ourselves because of our circumstances.
+If we allow fear to limit us, we may miss the opportunity to bless others. But when we trust God, He can use us far beyond what we imagine.
+In the eyes of faith, we can believe that God is working even when we cannot see it — chains being broken, curses being stopped, angels being sent on assignments, and God intervening in our families.
+Scripture reminds us in Hebrews 11, often called the Hall of Faith, that God works through people who trust Him.
+God often calls things as they are not, even though they may seem impossible.
+
+---
+
+**CLOSING ENCOURAGEMENT**
+
+God’s plan for His people is abundant life.
+Do not allow your limitations, fears, or doubts to stop you from responding to God’s call. Just like Gideon, God can use ordinary people to accomplish extraordinary things.
+When we dedicate ourselves to Him and walk in obedience, God will move in ways beyond our understanding.
+When we are filled with God, our lives become vessels through which His power, light, and victory are revealed.
+
+**Key Takeaways**
+* God’s desire for us is abundant life.He calls us to live in freedom, not in fear or scarcity (John 10:10).
+* Our limitations cannot prevent God from using us.Even when we feel weak or unqualified, God’s power is greater than our weaknesses.
+* God often calls us in difficult seasons.Like Gideon, we may be called when we feel least prepared, but God equips those He calls.
+* Dedication matters more than numbers.Victory does not come from human strength but from God’s Spirit (Zechariah 4:6).
+* Obedience allows God to work through us.When we trust God and step forward in faith, He can accomplish extraordinary things through ordinary people.`,
+    tags: ['Abundance', 'Faith', 'Obedience', 'Gideon', 'Limitations', 'Victory'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
+    scriptures: [
+      {
+        verse: 'Judges 6:15-16',
+        text: 'So he said to Him, “O my Lord, how can I save Israel? Indeed my clan is the weakest in Manasseh, and I am the least in my father’s house.” And the Lord said to him, “Surely I will be with you, and you shall defeat the Midianites as one man.”'
+      },
+      {
+        verse: 'Judges 6:1',
+        text: 'Then the children of Israel did evil in the sight of the Lord. So the Lord delivered them into the hand of Midian for seven years,'
+      },
+      {
+        verse: 'John 10:10',
+        text: 'The thief does not come except to steal, and to kill, and to destroy. I have come that they may have life, and that they may have it more abundantly.'
+      },
+      {
+        verse: 'Judges 7:3-7',
+        text: 'Now therefore, proclaim in the hearing of the people, saying, ‘Whoever is fearful and afraid, let him turn and depart at once from Mount Gilead.’ ” And twenty-two thousand of the people returned, and ten thousand remained. But the Lord said to Gideon, “The people are still too many; bring them down to the water, and I will test them for you there. Then it will be, that of whom I say to you, ‘This one shall go with you,’ the same shall go with you; and of whomever I say to you, ‘This one shall not go with you,’ the same shall not go.” So he brought the people down to the water. And the Lord said to Gideon, “Everyone who laps from the water with his tongue, as a dog laps, you shall set apart by himself; likewise everyone who gets down on his knees to drink.” And the number of those who lapped, putting their hand to their mouth, was three hundred men; but all the rest of the people got down on their knees to drink water. Then the Lord said to Gideon, “By the three hundred men who lapped I will save you, and deliver the Midianites into your hand. Let all the other people go, every man to his place.”'
+      },
+      {
+        verse: 'Zechariah 4:6',
+        text: 'So he answered and said to me: “This is the word of the Lord to Zerubbabel: ‘Not by might nor by power, but by My Spirit,’ Says the Lord of hosts."'
+      },
+      {
+        verse: 'Judges 7:1-7',
+        text: 'Then Jerubbaal (that is, Gideon) and all the people who were with him rose early and encamped beside the well of Harod, so that the camp of the Midianites was on the north side of them by the hill of Moreh in the valley. And the Lord said to Gideon, “The people who are with you are too many for Me to give the Midianites into their hands, lest Israel claim glory for itself against Me, saying, ‘My own hand has saved me.’ ” Now therefore, proclaim in the hearing of the people, saying, ‘Whoever is fearful and afraid, let him turn and depart at once from Mount Gilead.’ ” And twenty-two thousand of the people returned, and ten thousand remained. But the Lord said to Gideon, “The people are still too many; bring them down to the water, and I will test them for you there. Then it will be, that of whom I say to you, ‘This one shall go with you,’ the same shall go with you; and of whomever I say to you, ‘This one shall not go with you,’ the same shall not go.” So he brought the people down to the water. And the Lord said to Gideon, “Everyone who laps from the water with his tongue, as a dog laps, you shall set apart by himself; likewise everyone who gets down on his knees to drink.” And the number of those who lapped, putting their hand to their mouth, was three hundred men; but all the rest of the people got down on their knees to drink water. Then the Lord said to Gideon, “By the three hundred men who lapped I will save you, and deliver the Midianites into your hand. Let all the other people go, every man to his place.”'
+      },
+      {
+        verse: 'Judges 7:15-19',
+        text: 'And so it was, when Gideon heard the telling of the dream and its interpretation, that he worshiped. He returned to the camp of Israel, and said, “Arise, for the Lord has delivered the camp of Midian into your hand.” Then he divided the three hundred men into three companies, and he put a trumpet into every man’s hand, with empty pitchers, and torches inside the pitchers. And he said to them, “Look at me and do likewise; watch, and when I come to the edge of the camp you shall do as I do: When I blow the trumpet, I and all who are with me, then you also blow the trumpets on every side of the whole camp, and say, ‘The sword of the Lord and of Gideon!’” So Gideon and the hundred men who were with him came to the outpost of the camp at the beginning of the middle watch, just as they had posted the watch; and they blew the trumpets and broke the pitchers that were in their hands.'
+      }
+    ],
+    keyPoints: [
+      'God’s desire for us is abundant life',
+      'Our limitations cannot prevent God from using us',
+      'God often calls us in difficult seasons',
+      'Dedication matters more than numbers',
+      'Obedience allows God to work through us'
+    ],
+    relatedSermons: ['16', '12'],
+  },
 ];
 
 export const getSermonById = (id: string): Sermon | undefined => {
