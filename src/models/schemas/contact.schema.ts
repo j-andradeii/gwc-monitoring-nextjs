@@ -45,3 +45,12 @@ export const eventContactSchema = contactInfoSchema.extend({
 export type EventContactFormData = z.infer<typeof eventContactSchema>;
 
 export type ContactFormData = z.infer<typeof contactSchema>;
+
+export const gatewayPledgeSchema = z.object({
+    name: z.string().min(1, 'Name is required'),
+    email: z.string().email('Invalid email address'),
+    phone: z.string().min(1, 'Phone number is required'),
+    pledgeAmount: z.string().min(1, 'Pledge amount is required'),
+});
+
+export type GatewayPledgeFormData = z.infer<typeof gatewayPledgeSchema>;

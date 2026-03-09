@@ -12,3 +12,4 @@ export { GatewayVisionSection } from './GatewayVisionSection';
 export { GatewayQuickFactsSection } from './GatewayQuickFactsSection';
 export { GatewayTestimonialsSection } from './GatewayTestimonialsSection';
 export { ProjectGallery } from './ProjectGallery';
+export { GatewayPledgeSection } from './GatewayPledgeSection';

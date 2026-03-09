@@ -13,7 +13,6 @@ import {
   LandingHeader,
   LandingFooter,
   ScrollAnimationProvider,
-  ContactSection,
   PageHero,
 } from '@/components/landing';
 
@@ -25,6 +24,7 @@ import {
   GatewayTestimonialsSection,
   GatewayBuildingProgressSection,
   GatewayGiveSection,
+  GatewayPledgeSection,
 } from '@/components/landing/give';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
@@ -114,8 +114,8 @@ export default function GatewayProjectsPage() {
           {/* Section 6: Give to Gateway Projects (Cream background) */}
           <GatewayGiveSection />
 
-          {/* Contact Section */}
-          <ContactSection />
+          {/* Pledge Section */}
+          <GatewayPledgeSection />
         </ScrollAnimationProvider>
       </main>
 
