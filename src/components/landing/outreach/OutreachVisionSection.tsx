@@ -11,8 +11,8 @@ export const OutreachVisionSection: React.FC = () => {
           <div className="gateway-vision-image animate-on-scroll">
             <div className="gateway-vision-image-wrapper">
               <Image
-                src={outreachVisionData.pastorImage}
-                alt={`${outreachVisionData.pastorName} - ${outreachVisionData.pastorRole}`}
+                src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/10.jpg"
+                alt="Gateway Outreach Volounteers"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="gateway-vision-photo"
@@ -42,13 +42,13 @@ export const OutreachVisionSection: React.FC = () => {
             </div>
 
             {/* Pastor attribution */}
-            <div className="gateway-vision-attribution">
+            {/* <div className="gateway-vision-attribution">
               <div className="gateway-vision-attr-line"></div>
               <div className="gateway-vision-attr-info">
                 <span className="gateway-vision-attr-name">{outreachVisionData.pastorName}</span>
                 <span className="gateway-vision-attr-role">{outreachVisionData.pastorRole}</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

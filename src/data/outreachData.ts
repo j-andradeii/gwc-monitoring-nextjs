@@ -94,22 +94,22 @@ export const outreachInitiatives: OutreachInitiative[] = [
 export const outreachImpactStats: OutreachImpactStat[] = [
   {
     icon: 'pi pi-users',
-    value: '5,000+',
+    value: '50+',
     label: 'Families Served',
   },
   {
     icon: 'pi pi-map-marker',
-    value: '30+',
+    value: '2+',
     label: 'Relief Operations',
   },
   {
     icon: 'pi pi-clock',
-    value: '10,000+',
-    label: 'Volunteer Hours',
+    value: '20',
+    label: 'Volunteer',
   },
   {
     icon: 'pi pi-globe',
-    value: '20+',
+    value: '8+',
     label: 'Communities Reached',
   },
 ];
@@ -150,37 +150,37 @@ export const outreachTestimonials: LeaderTestimonial[] = [
 export const outreachGalleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/1.jpg',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/10.jpg',
     alt: 'Relief distribution — volunteers packing goods',
     caption: 'Emergency Relief Distribution',
   },
   {
     id: 2,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/2.jpg',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/12.jpg',
     alt: 'Disaster recovery team clearing debris',
     caption: 'Disaster Recovery Operations',
   },
   {
     id: 3,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/3.jpg',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/13.jpg',
     alt: 'Community preparedness training session',
     caption: 'Community Preparedness Training',
   },
   {
     id: 4,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/4.jpg',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg',
     alt: 'Feeding program inside evacuation center',
     caption: 'Evacuation Center Support',
   },
   {
     id: 5,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/5.jpg',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/6.jpg',
     alt: 'Pastoral care and counseling session',
     caption: 'Post-Disaster Counseling',
   },
   {
     id: 6,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/6.jpg',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/8.jpg',
     alt: 'Church volunteers in community prayer',
     caption: 'Prayer and Community Care',
   },

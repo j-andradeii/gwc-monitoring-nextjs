@@ -15,6 +15,7 @@ import {
   LandingFooter,
   ScrollAnimationProvider,
   PageHero,
+  ContactSection,
 } from '@/components/landing';
 
 import {
@@ -85,7 +86,7 @@ export default function GatewayOutreachPage() {
             badge="Gateway Outreach"
             title="Disaster Response Ministry"
             subtitle="Bringing Hope in Times of Crisis"
-            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg"
+            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/team.jpg"
             className="give-hero gateway-outreach-hero"
             serviceInfo={[
               { icon: 'pi pi-heart', text: 'Community Relief' },
@@ -97,7 +98,7 @@ export default function GatewayOutreachPage() {
           <OutreachVisionSection />
 
           {/* Section 2: Our Disaster Response Initiatives */}
-          <OutreachInitiativesSection />
+          {/* <OutreachInitiativesSection /> */}
 
           {/* Section 3: Impact Statistics (Navy background) */}
           <OutreachImpactSection />
@@ -110,6 +111,9 @@ export default function GatewayOutreachPage() {
 
           {/* Section 6: Support Our Outreach — Giving Channels */}
           <OutreachGiveSection />
+
+          <ContactSection />
+
         </ScrollAnimationProvider>
       </main>
 

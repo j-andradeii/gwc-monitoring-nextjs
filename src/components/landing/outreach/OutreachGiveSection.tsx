@@ -1,6 +1,7 @@
 import React from 'react';
 import { GiveChannelsSection } from '@/components/landing/give/GiveChannelsSection';
 
+
 export const OutreachGiveSection: React.FC = () => {
   return (
     <section id="outreach-give" className="outreach-give-section">
@@ -13,7 +14,7 @@ export const OutreachGiveSection: React.FC = () => {
           </p>
         </div>
       </div>
-      <GiveChannelsSection />
+      <GiveChannelsSection showGivingDescription={false} />
     </section>
   );
 };
