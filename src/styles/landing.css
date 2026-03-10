@@ -10161,3 +10161,431 @@
     padding: 16px;
   }
 }
+
+/* ===========================================
+   GATEWAY OUTREACH PAGE STYLES
+   =========================================== */
+
+/* -------------------------------------------
+   Outreach Vision Section
+   ------------------------------------------- */
+.outreach-vision-section {
+  background: #fff;
+  padding: 50px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.outreach-vision-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 168, 75, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* -------------------------------------------
+   Outreach Initiatives Section
+   ------------------------------------------- */
+.outreach-initiatives-section {
+  background: var(--color-cream);
+  padding: 80px 0;
+  position: relative;
+}
+
+.outreach-initiatives-title {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: var(--text-heading) !important;
+  letter-spacing: -0.5px;
+}
+
+.outreach-initiatives-subtitle {
+  font-size: 18px !important;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.outreach-initiatives-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 16px;
+}
+
+.outreach-initiative-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid var(--border-color-light);
+  box-shadow: 0 4px 20px rgba(26, 39, 68, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.outreach-initiative-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(26, 39, 68, 0.14);
+}
+
+.outreach-initiative-image-wrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.outreach-initiative-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.outreach-initiative-card:hover .outreach-initiative-image {
+  transform: scale(1.05);
+}
+
+.outreach-initiative-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(26, 39, 68, 0.35) 100%);
+}
+
+.outreach-initiative-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.outreach-initiative-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.outreach-initiative-icon i {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.outreach-initiative-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.outreach-initiative-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin: 0;
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .outreach-initiatives-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .outreach-initiatives-section {
+    padding: 60px 0;
+  }
+
+  .outreach-initiatives-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 16px auto 0;
+  }
+
+  .outreach-initiatives-title {
+    font-size: 28px !important;
+  }
+
+  .outreach-initiatives-subtitle {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .outreach-initiative-image-wrapper {
+    height: 160px;
+  }
+
+  .outreach-initiative-content {
+    padding: 20px;
+  }
+}
+
+/* -------------------------------------------
+   Outreach Impact Section
+   ------------------------------------------- */
+.outreach-impact-section {
+  background: var(--color-navy);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.outreach-impact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(212, 168, 75, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.outreach-impact-section .section-header-center {
+  margin-bottom: 56px;
+}
+
+.outreach-impact-title {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.5px;
+}
+
+.outreach-impact-subtitle {
+  font-size: 18px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.outreach-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.outreach-impact-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.outreach-impact-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(212, 168, 75, 0.30);
+}
+
+.outreach-impact-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.outreach-impact-icon i {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.outreach-impact-value {
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.outreach-impact-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.60);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+  .outreach-impact-section {
+    padding: 60px 0;
+  }
+
+  .outreach-impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .outreach-impact-title {
+    font-size: 28px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .outreach-impact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .outreach-impact-card {
+    padding: 28px 16px;
+  }
+
+  .outreach-impact-value {
+    font-size: 32px;
+  }
+
+  .outreach-impact-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .outreach-impact-icon i {
+    font-size: 18px;
+  }
+}
+
+/* -------------------------------------------
+   Outreach Gallery Section
+   ------------------------------------------- */
+.outreach-gallery-section {
+  background: #ffffff;
+  padding: 80px 0;
+}
+
+.outreach-gallery-title {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: var(--text-heading) !important;
+  letter-spacing: -0.5px;
+}
+
+.outreach-gallery-subtitle {
+  font-size: 18px !important;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .outreach-gallery-section {
+    padding: 60px 0;
+  }
+
+  .outreach-gallery-title {
+    font-size: 28px !important;
+  }
+}
+
+/* -------------------------------------------
+   Outreach Testimonials Section
+   ------------------------------------------- */
+.outreach-testimonials-section {
+  background: var(--color-cream);
+  padding: 80px 0;
+  position: relative;
+}
+
+.outreach-testimonials-section .section-header-center {
+  margin-bottom: 50px;
+}
+
+.outreach-testimonials-title {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: var(--text-heading) !important;
+  letter-spacing: -0.5px;
+}
+
+.outreach-testimonials-subtitle {
+  font-size: 18px !important;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .outreach-testimonials-section {
+    padding: 60px 0;
+  }
+
+  .outreach-testimonials-title {
+    font-size: 28px !important;
+  }
+}
+
+/* -------------------------------------------
+   Outreach Give Section
+   ------------------------------------------- */
+.outreach-give-section {
+  background: #ffffff;
+}
+
+.outreach-give-header {
+  padding-top: 80px;
+  padding-bottom: 0;
+}
+
+.outreach-give-title {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: var(--text-heading) !important;
+  letter-spacing: -0.5px;
+}
+
+.outreach-give-subtitle {
+  font-size: 18px !important;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Override the give-channels-section background within outreach context */
+.outreach-give-section .give-channels-section {
+  background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .outreach-give-header {
+    padding-top: 60px;
+  }
+
+  .outreach-give-title {
+    font-size: 28px !important;
+  }
+
+  .outreach-give-subtitle {
+    font-size: 16px !important;
+  }
+}
