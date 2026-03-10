@@ -6,11 +6,19 @@ const siteUrl = siteMetadata.siteUrl;
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/admin/', '/dashboard/', '/private/'],
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/church-campus-admin/',
+          '/signin',
+          '/signup',
+          '/forgot-password',
+        ],
+      },
+    ],
     sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

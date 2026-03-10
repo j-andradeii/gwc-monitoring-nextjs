@@ -1,11 +1,10 @@
 import type { MetadataRoute } from 'next';
 
 import { siteMetadata } from '@/data/site-metadata';
-
-const siteUrl = siteMetadata.siteUrl;
-
 import { sermons } from '@/data/sermons';
 import { events } from '@/data/events';
+
+const siteUrl = siteMetadata.siteUrl;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const sermonRoutes = sermons.map((sermon) => ({
@@ -15,30 +14,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const eventRoutes = events.map((event) => ({
-    url: `${siteUrl}/events/${event.slug}`,
-    // Use current date if event date is not parseable or future, but sitemap expects a date. 
-    // Usually LastModified is about the page update. We'll use new Date() for now or parse the event date if strict.
-    // For simplicity and to match the other static entries, we can use new Date() or the event date if it's strictly formatted.
-    // Given event.date is string like "Feb 07, 2026", new Date(event.date) works.
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
+  const eventRoutes = events
+    .filter((event) => !event.is_event_finished)
+    .map((event) => ({
+      url: `${siteUrl}/events/${event.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
 
   return [
+    // Homepage
     {
       url: siteUrl,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
+
+    // About
     {
       url: `${siteUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+
+    // Sermon Notes
     {
       url: `${siteUrl}/sermon-notes`,
       lastModified: new Date(),
@@ -46,6 +48,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...sermonRoutes,
+
+    // Ministries
     {
       url: `${siteUrl}/ministries/community`,
       lastModified: new Date(),
@@ -58,6 +62,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+
+    // Events
     {
       url: `${siteUrl}/events`,
       lastModified: new Date(),
@@ -65,6 +71,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...eventRoutes,
+    {
+      url: `${siteUrl}/events/vip-form`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+
+    // Give
     {
       url: `${siteUrl}/give/ways-to-give`,
       lastModified: new Date(),
@@ -76,6 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/give/gateway-outreach`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
   ];
 }

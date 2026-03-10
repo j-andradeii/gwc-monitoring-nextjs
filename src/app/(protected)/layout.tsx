@@ -1,8 +1,8 @@
 /**
- * Auth Layout
+ * Protected Layout
  *
- * Layout for authentication pages (signin, signup, forgot-password)
- * These pages should not be indexed by search engines.
+ * Parent layout for all protected/admin pages.
+ * These pages should never be indexed by search engines.
  */
 
 import React from 'react';
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AuthLayout({
+export default function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;

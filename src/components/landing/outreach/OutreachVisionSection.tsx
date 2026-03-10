@@ -1,0 +1,59 @@
+import React from 'react';
+import Image from 'next/image';
+import { outreachVisionData } from '@/data/outreachData';
+
+export const OutreachVisionSection: React.FC = () => {
+  return (
+    <section id="outreach-vision" className="landing-section outreach-vision-section">
+      <div className="landing-container">
+        <div className="gateway-vision-grid">
+          {/* Left Column: Pastor portrait image */}
+          <div className="gateway-vision-image animate-on-scroll">
+            <div className="gateway-vision-image-wrapper">
+              <Image
+                src={outreachVisionData.pastorImage}
+                alt={`${outreachVisionData.pastorName} - ${outreachVisionData.pastorRole}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="gateway-vision-photo"
+                unoptimized
+              />
+              {/* Scripture overlay on image */}
+              <div className="gateway-vision-scripture">
+                <p className="gateway-vision-scripture-text">
+                  {outreachVisionData.scripture.text}
+                </p>
+                <span className="gateway-vision-scripture-verse">
+                  {outreachVisionData.scripture.verse}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Vision narrative text */}
+          <div className="gateway-vision-content animate-on-scroll">
+            <span className="section-label">{outreachVisionData.sectionLabel}</span>
+            <h2 className="gateway-vision-heading">{outreachVisionData.heading}</h2>
+
+            <div className="gateway-vision-text">
+              {outreachVisionData.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+
+            {/* Pastor attribution */}
+            <div className="gateway-vision-attribution">
+              <div className="gateway-vision-attr-line"></div>
+              <div className="gateway-vision-attr-info">
+                <span className="gateway-vision-attr-name">{outreachVisionData.pastorName}</span>
+                <span className="gateway-vision-attr-role">{outreachVisionData.pastorRole}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default OutreachVisionSection;

@@ -12,7 +12,6 @@ import { siteMetadata } from '@/data/site-metadata';
 const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: 'About Us | Gateway Church',
   description:
     'Learn about Gateway Church - our vision, mission, values, and what we believe. We are a vibrant, multicultural community dedicated to sharing the love of Christ.',
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
     'Cebu church',
   ],
   alternates: {
-    canonical: '/about',
+    canonical: `${siteUrl}/about`,
   },
   openGraph: {
     title: 'About Us | Gateway Church',
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
       'Learn about Gateway Church - our vision, mission, values, and what we believe.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Gateway Church',
+    siteName: siteMetadata.name,
     url: `${siteUrl}/about`,
     images: [
       {

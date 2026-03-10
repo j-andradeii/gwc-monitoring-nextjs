@@ -161,6 +161,16 @@ export const LandingHeader: React.FC = () => {
                     Gateway Projects
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/give/gateway-outreach"
+                    className={pathname === '/give/gateway-outreach' ? 'active' : ''}
+                    onClick={() => { closeMobileMenu(); setIsGiveOpen(false); }}
+                  >
+                    <i className="pi pi-building"></i>
+                    Gateway Outreach
+                  </Link>
+                </li>
               </ul>
             </li>
           </ul>

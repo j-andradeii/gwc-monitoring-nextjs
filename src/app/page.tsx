@@ -7,11 +7,11 @@
 import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
+import { siteMetadata } from '@/data/site-metadata';
 
 const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: `${siteMetadata.name} | Welcome Home`,
   description: `${siteMetadata.description} Join us at ${siteMetadata.address.street}.`,
   keywords: siteMetadata.keywords,
@@ -27,10 +27,10 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
-        width: 2048,
-        height: 715,
-        alt: `${siteMetadata.name} Family`,
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: `${siteMetadata.name} - Loving God, Loving People`,
       },
     ],
   },
@@ -39,17 +39,6 @@ export const metadata: Metadata = {
     title: `${siteMetadata.name} | Welcome Home`,
     description: siteMetadata.description,
     images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 };
 
@@ -69,13 +58,13 @@ import {
   ScrollAnimationProvider,
   ConnectFab,
 } from '@/components/landing';
-import { siteMetadata } from '@/data/site-metadata';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Church',
+      '@id': `${siteUrl}/#church`,
       name: siteMetadata.name,
       description: `${siteMetadata.description} Our discipleship process: ${siteMetadata.discipleshipProcess.join('; ')}.`,
       url: siteUrl,
@@ -102,46 +91,47 @@ const jsonLd = {
       },
     },
     {
-      '@type': 'ItemList',
-      '@id': `${siteUrl}/#main-navigation`,
-      name: 'Main Navigation',
-      itemListElement: [
-        {
-          '@type': 'SiteNavigationElement',
-          position: 1,
-          name: 'About Us',
-          description: 'Learn about our history, mission, and leadership.',
-          url: `${siteUrl}/about`,
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 2,
-          name: 'Sermons',
-          description: 'Watch past sermons and series.',
-          url: `${siteUrl}/sermon-notes`,
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 3,
-          name: 'Ministries',
-          description: 'Get involved in our community and serve.',
-          url: `${siteUrl}/ministries/community`,
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 4,
-          name: 'Events',
-          description: 'Upcoming events and gatherings.',
-          url: `${siteUrl}/events`,
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 5,
-          name: 'Give',
-          description: 'Support the mission and projects of Gateway Church.',
-          url: `${siteUrl}/give/ways-to-give`,
-        },
-      ],
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteMetadata.name,
+      description: siteMetadata.description,
+      publisher: { '@id': `${siteUrl}/#church` },
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      '@id': `${siteUrl}/#nav-about`,
+      name: 'About Us',
+      description: 'Learn about our history, mission, and leadership.',
+      url: `${siteUrl}/about`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      '@id': `${siteUrl}/#nav-sermons`,
+      name: 'Sermons',
+      description: 'Watch past sermons and series.',
+      url: `${siteUrl}/sermon-notes`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      '@id': `${siteUrl}/#nav-ministries`,
+      name: 'Ministries',
+      description: 'Get involved in our community and serve.',
+      url: `${siteUrl}/ministries/community`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      '@id': `${siteUrl}/#nav-events`,
+      name: 'Events',
+      description: 'Upcoming events and gatherings.',
+      url: `${siteUrl}/events`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      '@id': `${siteUrl}/#nav-give`,
+      name: 'Give',
+      description: 'Support the mission and projects of Gateway Church.',
+      url: `${siteUrl}/give/ways-to-give`,
     },
   ],
 };
