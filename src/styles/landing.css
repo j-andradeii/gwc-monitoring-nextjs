@@ -5343,7 +5343,7 @@
 
 /* Giving Channels Section - White Background */
 .give-channels-section {
-  padding: 80px 0;
+  padding: 50px 0;
   background: var(--color-navy, #1a2744);
   position: relative;
   overflow: hidden;
@@ -10342,7 +10342,7 @@
    ------------------------------------------- */
 .outreach-impact-section {
   background: var(--color-navy);
-  padding: 80px 0;
+  padding: 50px 0;
   position: relative;
   overflow: hidden;
 }
@@ -10478,7 +10478,7 @@
    ------------------------------------------- */
 .outreach-gallery-section {
   background: #ffffff;
-  padding: 80px 0;
+  padding: 50px 0;
 }
 
 .outreach-gallery-title {
@@ -10511,7 +10511,7 @@
    ------------------------------------------- */
 .outreach-testimonials-section {
   background: var(--color-cream);
-  padding: 80px 0;
+  padding: 50px 0;
   position: relative;
 }
 
@@ -10549,23 +10549,38 @@
    ------------------------------------------- */
 .outreach-give-section {
   background: #ffffff;
+  padding: 50px 0;
+
 }
 
 .outreach-give-header {
-  padding-top: 80px;
   padding-bottom: 0;
+}
+
+/* Ensure the header is always visible regardless of scroll-animation state */
+.outreach-give-section .outreach-give-header .section-header-center.animate-on-scroll {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.outreach-give-section .section-header-center .section-label {
+  color: var(--color-primary, #d4a84b) !important;
+}
+
+.outreach-give-section .section-header-center .section-label::before {
+  background: var(--color-primary, #d4a84b);
 }
 
 .outreach-give-title {
   font-size: 36px !important;
   font-weight: 800 !important;
-  color: var(--text-heading) !important;
+  color: var(--text-heading, #020617) !important;
   letter-spacing: -0.5px;
 }
 
 .outreach-give-subtitle {
   font-size: 18px !important;
-  color: var(--text-secondary);
+  color: var(--text-secondary, #1e293b) !important;
   font-weight: 500;
   max-width: 600px;
   margin: 0 auto;
@@ -10574,7 +10589,10 @@
 /* Override the give-channels-section background within outreach context */
 .outreach-give-section .give-channels-section {
   background: #ffffff;
+  padding: 10px 0px !important;
 }
+
+
 
 @media (max-width: 768px) {
   .outreach-give-header {

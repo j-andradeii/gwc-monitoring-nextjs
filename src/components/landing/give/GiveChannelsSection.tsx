@@ -19,17 +19,26 @@ const useCopyToClipboard = () => {
   return { copiedId, copy };
 };
 
-export const GiveChannelsSection: React.FC = () => {
+
+export interface GiveChannelsSectionProps {
+  showGivingDescription?: boolean;
+}
+
+
+export const GiveChannelsSection: React.FC<GiveChannelsSectionProps> = ({ showGivingDescription = true }) => {
   const { copiedId, copy } = useCopyToClipboard();
 
   return (
     <section className="landing-section give-channels-section section-white">
       <div className="landing-container">
-        <div className="section-header-center animate-on-scroll">
-          <span className="section-label">Channels</span>
-          <h2>How to Give</h2>
-          <p>Choose your preferred method to give your tithes and offerings. Please send a screenshot of your transaction to <a href={`mailto:${CONTACT_INFO.email}`} className="text-primary hover:underline">{CONTACT_INFO.email}</a> or via <a href={CONTACT_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Facebook</a>.</p>
-        </div>
+        {showGivingDescription && (
+          <div className="section-header-center animate-on-scroll">
+            <span className="section-label">Channels</span>
+            <h2>How to Give</h2>
+            <p>Choose your preferred method to give your tithes and offerings. Please send a screenshot of your transaction to <a href={`mailto:${CONTACT_INFO.email}`} className="text-primary hover:underline">{CONTACT_INFO.email}</a> or via <a href={CONTACT_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Facebook</a>.</p>
+          </div>
+        )}
+
 
         <div className="giving-channels-grid compact-grid animate-on-scroll">
           {givingChannels.map((channel) => (

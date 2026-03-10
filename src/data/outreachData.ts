@@ -107,11 +107,11 @@ export const outreachImpactStats: OutreachImpactStat[] = [
     value: '20',
     label: 'Volunteer',
   },
-  // {
-  //   icon: 'pi pi-globe',
-  //   value: '20+',
-  //   label: 'Communities Reached',
-  // },
+  {
+    icon: 'pi pi-globe',
+    value: '8+',
+    label: 'Communities Reached',
+  },
 ];
 
 // -------------------------------------------

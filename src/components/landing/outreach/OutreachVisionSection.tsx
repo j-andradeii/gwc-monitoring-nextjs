@@ -11,7 +11,7 @@ export const OutreachVisionSection: React.FC = () => {
           <div className="gateway-vision-image animate-on-scroll">
             <div className="gateway-vision-image-wrapper">
               <Image
-                src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/outreach.jpg"
+                src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/10.jpg"
                 alt="Gateway Outreach Volounteers"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
