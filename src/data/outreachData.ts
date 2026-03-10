@@ -94,24 +94,24 @@ export const outreachInitiatives: OutreachInitiative[] = [
 export const outreachImpactStats: OutreachImpactStat[] = [
   {
     icon: 'pi pi-users',
-    value: '5,000+',
+    value: '50+',
     label: 'Families Served',
   },
   {
     icon: 'pi pi-map-marker',
-    value: '30+',
+    value: '2+',
     label: 'Relief Operations',
   },
   {
     icon: 'pi pi-clock',
-    value: '10,000+',
-    label: 'Volunteer Hours',
+    value: '20',
+    label: 'Volunteer',
   },
-  {
-    icon: 'pi pi-globe',
-    value: '20+',
-    label: 'Communities Reached',
-  },
+  // {
+  //   icon: 'pi pi-globe',
+  //   value: '20+',
+  //   label: 'Communities Reached',
+  // },
 ];
 
 // -------------------------------------------
