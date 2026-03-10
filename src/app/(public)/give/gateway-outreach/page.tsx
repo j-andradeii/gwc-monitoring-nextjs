@@ -97,7 +97,7 @@ export default function GatewayOutreachPage() {
           <OutreachVisionSection />
 
           {/* Section 2: Our Disaster Response Initiatives */}
-          <OutreachInitiativesSection />
+          {/* <OutreachInitiativesSection /> */}
 
           {/* Section 3: Impact Statistics (Navy background) */}
           <OutreachImpactSection />
