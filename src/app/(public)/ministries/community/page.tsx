@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
 import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, MinistryFeatureSection, ContactSection, ConnectFab } from '@/components/landing';
 import { ministries } from '@/data/ministries';
 import '@/styles/landing.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-    metadataBase: new URL(siteUrl),
     title: 'Community | Gateway Church',
     description: 'Join our vibrant community groups and connect with others at Gateway Church. Find fellowship, small groups, and meaningful relationships.',
     keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         'Gateway Church Cebu',
     ],
     alternates: {
-        canonical: '/ministries/community',
+        canonical: `${siteUrl}/ministries/community`,
     },
     openGraph: {
         title: 'Community | Gateway Church',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: `${siteUrl}/ministries/community`,
         type: 'website',
         locale: 'en_US',
-        siteName: 'Gateway Church',
+        siteName: siteMetadata.name,
         images: [
             {
                 url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg',
@@ -43,17 +43,6 @@ export const metadata: Metadata = {
         title: 'Community | Gateway Church',
         description: 'Join our vibrant community groups and connect with others at Gateway Church.',
         images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg'],
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-        },
     },
 };
 

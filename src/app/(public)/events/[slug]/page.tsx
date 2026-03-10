@@ -7,8 +7,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { events, getEventBySlug } from '@/data/events';
-import { config } from '@/core/config';
+import { siteMetadata } from '@/data/site-metadata';
 import EventDetailClient from './EventDetailClient';
+
+const siteUrl = siteMetadata.siteUrl;
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,7 +25,6 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const event = getEventBySlug(slug);
-  const siteUrl = config.app.url;
 
   if (!event) {
     return {
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const eventUrl = `${siteUrl}/events/${event.slug}`;
+  const imageUrl = event.image.startsWith('http') ? event.image : `${siteUrl}${event.image}`;
 
   return {
     title: `${event.title} | Gateway Church Events`,
@@ -46,12 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: event.title,
       description: event.description || `Join us for ${event.title} at Gateway Church`,
       url: eventUrl,
-      siteName: 'Gateway Church Cebu',
-      locale: 'en_PH',
+      siteName: siteMetadata.name,
+      locale: 'en_US',
       type: 'website',
       images: [
         {
-          url: event.image.startsWith('http') ? event.image : `${siteUrl}${event.image}`,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: event.title,
@@ -62,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: event.title,
       description: event.description ? event.description.substring(0, 160) : `Join us for ${event.title} at Gateway Church`,
-      images: [event.image.startsWith('http') ? event.image : `${siteUrl}${event.image}`],
+      images: [imageUrl],
     },
   };
 }
@@ -76,7 +78,6 @@ export default async function EventDetailPage({ params }: Props) {
   }
 
   const otherEvents = events.filter(e => e.id !== event.id).slice(0, 3);
-  const siteUrl = config.app.url;
 
   // Create JSON-LD structured data for the event
   const jsonLd = {

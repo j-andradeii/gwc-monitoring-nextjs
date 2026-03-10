@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
 import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, InProgressSection } from '@/components/landing';
 import '@/styles/landing.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-    metadataBase: new URL(siteUrl),
     title: 'Serve | Gateway Church',
     description: 'Find your place to serve and make a difference at Gateway Church. Discover volunteer opportunities and use your gifts to impact lives.',
     keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         'Gateway Church Cebu',
     ],
     alternates: {
-        canonical: '/ministries/serve',
+        canonical: `${siteUrl}/ministries/serve`,
     },
     openGraph: {
         title: 'Serve | Gateway Church',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: `${siteUrl}/ministries/serve`,
         type: 'website',
         locale: 'en_US',
-        siteName: 'Gateway Church',
+        siteName: siteMetadata.name,
         images: [
             {
                 url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/serve.jpg',
@@ -42,17 +42,6 @@ export const metadata: Metadata = {
         title: 'Serve | Gateway Church',
         description: 'Find your place to serve and make a difference at Gateway Church.',
         images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/serve.jpg'],
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-        },
     },
 };
 

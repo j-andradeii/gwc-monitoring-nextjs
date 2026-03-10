@@ -5,23 +5,38 @@
  */
 
 import { Metadata } from 'next';
+import { siteMetadata } from '@/data/site-metadata';
 import VipFormClient from './VipFormClient';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
   title: 'VIP Registration | Gateway Church',
   description: 'Welcome to Gateway Church! Please register your details so we can connect with you.',
   alternates: {
-    canonical: '/events/vip-form',
+    canonical: `${siteUrl}/events/vip-form`,
   },
   openGraph: {
     title: 'VIP Registration | Gateway Church',
     description: 'Welcome to Gateway Church! Please register your details so we can connect with you.',
     url: `${siteUrl}/events/vip-form`,
-    siteName: 'Gateway Church',
+    siteName: siteMetadata.name,
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'VIP Registration - Gateway Church',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VIP Registration | Gateway Church',
+    description: 'Welcome to Gateway Church! Please register your details so we can connect with you.',
+    images: ['/og-image.jpg'],
   },
 };
 

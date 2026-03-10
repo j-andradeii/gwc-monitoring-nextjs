@@ -7,11 +7,11 @@
 import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
+import { siteMetadata } from '@/data/site-metadata';
 
 const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: `${siteMetadata.name} | Welcome Home`,
   description: `${siteMetadata.description} Join us at ${siteMetadata.address.street}.`,
   keywords: siteMetadata.keywords,
@@ -27,10 +27,10 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
-        width: 2048,
-        height: 715,
-        alt: `${siteMetadata.name} Family`,
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: `${siteMetadata.name} - Loving God, Loving People`,
       },
     ],
   },
@@ -39,17 +39,6 @@ export const metadata: Metadata = {
     title: `${siteMetadata.name} | Welcome Home`,
     description: siteMetadata.description,
     images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 };
 
@@ -69,7 +58,6 @@ import {
   ScrollAnimationProvider,
   ConnectFab,
 } from '@/components/landing';
-import { siteMetadata } from '@/data/site-metadata';
 
 const jsonLd = {
   '@context': 'https://schema.org',

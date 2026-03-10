@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
 
+import { siteMetadata } from '@/data/site-metadata';
 import {
   LandingHeader,
   LandingFooter,
@@ -21,10 +22,9 @@ import {
   GiveChannelsSection,
 } from '@/components/landing/give';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: 'Ways to Give | Gateway Church',
   description:
     'Support Gateway Church through your tithes and offerings. Multiple giving channels available including GCash, BPI, and BDO.',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     'BDO',
   ],
   alternates: {
-    canonical: '/give/ways-to-give',
+    canonical: `${siteUrl}/give/ways-to-give`,
   },
   openGraph: {
     title: 'Ways to Give | Gateway Church',
@@ -48,14 +48,14 @@ export const metadata: Metadata = {
       'Support Gateway Church through your tithes and offerings. Multiple giving channels available including GCash, BPI, and BDO.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Gateway Church',
+    siteName: siteMetadata.name,
     url: `${siteUrl}/give/ways-to-give`,
     images: [
       {
-        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
-        width: 2048,
-        height: 715,
-        alt: 'Gateway Church Family',
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Ways to Give - Gateway Church',
       },
     ],
   },

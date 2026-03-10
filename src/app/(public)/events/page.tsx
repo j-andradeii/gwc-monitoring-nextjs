@@ -7,16 +7,16 @@
 import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
+import { siteMetadata } from '@/data/site-metadata';
 import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero, ConnectFab } from '@/components/landing';
 import { MonthlyCalendar } from '@/components/events/MonthlyCalendar';
 import { events, getFeaturedEvent } from '@/data/events';
 import { EventsShareButton } from './EventsShareButton';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 const CALENDAR_IMAGE_URL = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/calendar-march.jpg';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: 'Events | Gateway Church',
   description:
     'Connect, grow, and celebrate with our church community. Find upcoming events, gatherings, and fellowship opportunities at Gateway Church.',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'Gateway Church Cebu',
   ],
   alternates: {
-    canonical: '/events',
+    canonical: `${siteUrl}/events`,
   },
   openGraph: {
     title: 'Events | Gateway Church',
@@ -39,11 +39,13 @@ export const metadata: Metadata = {
       'Connect, grow, and celebrate with our church community. Find upcoming events and fellowship opportunities.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Gateway Church',
+    siteName: siteMetadata.name,
     url: `${siteUrl}/events`,
     images: [
       {
         url: CALENDAR_IMAGE_URL,
+        width: 1200,
+        height: 630,
         alt: 'Gateway Church Monthly Calendar',
       },
     ],
@@ -54,17 +56,6 @@ export const metadata: Metadata = {
     description:
       'Connect, grow, and celebrate with our church community. Find upcoming events and fellowship opportunities.',
     images: [CALENDAR_IMAGE_URL],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 };
 

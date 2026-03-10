@@ -16,7 +16,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: siteMetadata.name,
+  title: {
+    default: siteMetadata.name,
+    template: `%s | ${siteMetadata.name}`,
+  },
   description: siteMetadata.description,
   keywords: siteMetadata.keywords,
   authors: [{ name: siteMetadata.name }],
@@ -28,21 +31,38 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteMetadata.name,
     description: siteMetadata.description,
+    url: siteMetadata.siteUrl,
+    siteName: siteMetadata.name,
+    locale: 'en_US',
+    type: 'website',
     images: [
       {
-        url: 'https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg',
-        width: 2048,
-        height: 715,
-        alt: `${siteMetadata.name} Family`,
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: `${siteMetadata.name} - Loving God, Loving People`,
       },
     ],
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: siteMetadata.name,
     description: siteMetadata.description,
-    images: ['https://gwc-monitoring-nextjs.vercel.app/assets/images/fam-picture.jpg'],
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: siteMetadata.siteUrl,
   },
 };
 

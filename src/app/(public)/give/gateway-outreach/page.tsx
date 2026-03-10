@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
 
+import { siteMetadata } from '@/data/site-metadata';
 import {
   LandingHeader,
   LandingFooter,
@@ -25,10 +26,9 @@ import {
   OutreachGiveSection,
 } from '@/components/landing/outreach';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: 'Gateway Outreach | Disaster Response Ministry | Gateway Church',
   description:
     'Gateway Church Cebu\'s disaster response ministry. We bring hope in times of crisis through emergency relief, community recovery, and long-term care for affected families across Cebu and the Visayas.',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     'Christian Outreach Philippines',
   ],
   alternates: {
-    canonical: '/give/gateway-outreach',
+    canonical: `${siteUrl}/give/gateway-outreach`,
   },
   openGraph: {
     title: 'Gateway Outreach | Disaster Response Ministry | Gateway Church',
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
       'Gateway Church Cebu\'s disaster response ministry. We bring hope in times of crisis through emergency relief, community recovery, and long-term care for affected families.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Gateway Church',
+    siteName: siteMetadata.name,
     url: `${siteUrl}/give/gateway-outreach`,
     images: [
       {
         url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/1.jpg',
         width: 1200,
         height: 630,
-        alt: 'Gateway Outreach — Disaster Response Ministry',
+        alt: 'Gateway Outreach - Disaster Response Ministry',
       },
     ],
   },
@@ -69,10 +69,6 @@ export const metadata: Metadata = {
     description:
       'Gateway Church Cebu\'s disaster response ministry. Bringing hope when disaster strikes.',
     images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/1.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 

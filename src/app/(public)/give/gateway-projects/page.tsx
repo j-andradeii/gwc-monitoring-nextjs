@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
 
+import { siteMetadata } from '@/data/site-metadata';
 import {
   LandingHeader,
   LandingFooter,
@@ -27,10 +28,9 @@ import {
   GatewayPledgeSection,
 } from '@/components/landing/give';
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gatewaychurch.com';
+const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: 'Gateway Projects | Gateway Church',
   description:
     'Support Gateway Church Ministry Center Improvement Project. Help us build a better facility for worship, ministry, and community impact.',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     'Gotyme Bank',
   ],
   alternates: {
-    canonical: '/give/gateway-projects',
+    canonical: `${siteUrl}/give/gateway-projects`,
   },
   openGraph: {
     title: 'Gateway Projects | Gateway Church',
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
       'Support Gateway Church Ministry Center Improvement Project. Help us build a better facility for worship, ministry, and community impact.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Gateway Church',
+    siteName: siteMetadata.name,
     url: `${siteUrl}/give/gateway-projects`,
     images: [
       {
         url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg',
-        width: 2048,
-        height: 715,
-        alt: 'Gateway Church Family',
+        width: 1200,
+        height: 630,
+        alt: 'Gateway Church Ministry Center Improvement Project',
       },
     ],
   },
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: 'Gateway Projects | Gateway Church',
     description:
       'Support Gateway Church Ministry Center Improvement Project.',
-    images: ['/og-image.jpg'],
+    images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg'],
   },
 };
 
