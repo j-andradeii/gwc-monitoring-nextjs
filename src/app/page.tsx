@@ -63,7 +63,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Church',
+      '@type': ['Church', 'Organization'],
       '@id': `${siteUrl}/#church`,
       name: siteMetadata.name,
       description: `${siteMetadata.description} Our discipleship process: ${siteMetadata.discipleshipProcess.join('; ')}.`,
@@ -106,7 +106,10 @@ const jsonLd = {
       areaServed: {
         '@type': 'City',
         name: 'Cebu City',
-        addressCountry: 'PH',
+        containedInPlace: {
+          '@type': 'Country',
+          name: 'Philippines',
+        },
       },
       legalName: 'Gateway Church Cebu',
       foundingDate: '2015',
