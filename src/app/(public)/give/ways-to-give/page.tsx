@@ -68,9 +68,56 @@ export const metadata: Metadata = {
   },
 };
 
+const giveFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Give', item: `${siteUrl}/give/ways-to-give` },
+        { '@type': 'ListItem', position: 3, name: 'Ways to Give' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How can I give to Gateway Church Cebu online?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You can give to Gateway Church Cebu through GCash (0928-252-4463, account name: Gateway Church Cebu), bank transfer via BPI (account number: 0206007186, account name: Anna Marie Baloran) or BDO (account number: 002428024627, account name: Anna Marie Baloran/Jimanuel Baloran), or during our Sunday services.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Does Gateway Church Cebu accept online donations?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, Gateway Church Cebu accepts online donations through GCash (0928-252-4463) and bank transfers via BPI (0206007186) and BDO (002428024627). You can give anytime from anywhere.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What are the giving channels at Gateway Church Cebu?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Gateway Church Cebu offers multiple giving channels: GCash mobile payment (0928-252-4463, Gateway Church Cebu), BPI bank transfer (account number: 0206007186, Anna Marie Baloran), BDO bank transfer (account number: 002428024627, Anna Marie Baloran/Jimanuel Baloran), and in-person giving during Sunday services.',
+          },
+        },
+      ],
+    },
+  ],
+};
+
 export default function WaysToGivePage() {
   return (
     <div className="landing-page give-page ways-to-give-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(giveFaqJsonLd) }}
+      />
       <LandingHeader />
 
       <main className="landing-main">

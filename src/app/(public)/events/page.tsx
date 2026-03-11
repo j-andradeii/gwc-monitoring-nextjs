@@ -59,6 +59,15 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Events' },
+  ],
+};
+
 export default function EventsPage() {
   const featuredEvent = getFeaturedEvent();
   const regularEvents = events
@@ -67,6 +76,10 @@ export default function EventsPage() {
 
   return (
     <div className="landing-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <LandingHeader />
 
       <PageHero

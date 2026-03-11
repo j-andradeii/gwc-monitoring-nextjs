@@ -47,42 +47,58 @@ export const metadata: Metadata = {
 };
 
 export default function CommunityPage() {
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Ministries', item: `${siteUrl}/ministries` },
+            { '@type': 'ListItem', position: 3, name: 'Community' },
+        ],
+    };
+
     return (
-        <div className="landing-page community-page">
-            <LandingHeader />
-            <main className="landing-main">
-                <ScrollAnimationProvider>
-                    <PageHero
-                        badge="Ministries"
-                        title="Community"
-                        subtitle="Doing Life Together"
-                        backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg"
-                    />
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
+            <div className="landing-page community-page">
+                <LandingHeader />
+                <main className="landing-main">
+                    <ScrollAnimationProvider>
+                        <PageHero
+                            badge="Ministries"
+                            title="Community"
+                            subtitle="Doing Life Together"
+                            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg"
+                        />
 
-                    <section className="landing-section" style={{ paddingBottom: 0 }}>
-                        <div className="landing-container">
-                            <div className="section-header-center" style={{ paddingTop: '40px' }}>
-                                <span className="section-label">Get Involved</span>
-                                <h2>Our Ministries</h2>
-                                <p>Find your place to serve and grow</p>
+                        <section className="landing-section" style={{ paddingBottom: 0 }}>
+                            <div className="landing-container">
+                                <div className="section-header-center" style={{ paddingTop: '40px' }}>
+                                    <span className="section-label">Get Involved</span>
+                                    <h2>Our Ministries</h2>
+                                    <p>Find your place to serve and grow</p>
+                                </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <div className="ministries-list-container">
-                        {ministries.map((ministry, index) => (
-                            <MinistryFeatureSection
-                                key={ministry.id}
-                                ministry={ministry}
-                                reverse={index % 2 !== 0}
-                                alternateBackground={index % 2 !== 0}
-                            />
-                        ))}
-                    </div>
-                    <ContactSection />
-                </ScrollAnimationProvider>
-            </main>
-            <LandingFooter />
-        </div>
+                        <div className="ministries-list-container">
+                            {ministries.map((ministry, index) => (
+                                <MinistryFeatureSection
+                                    key={ministry.id}
+                                    ministry={ministry}
+                                    reverse={index % 2 !== 0}
+                                    alternateBackground={index % 2 !== 0}
+                                />
+                            ))}
+                        </div>
+                        <ContactSection />
+                    </ScrollAnimationProvider>
+                </main>
+                <LandingFooter />
+            </div>
+        </>
     );
 }

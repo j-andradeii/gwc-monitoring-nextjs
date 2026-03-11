@@ -71,9 +71,73 @@ import {
   AboutTabs,
 } from '@/components/landing/about';
 
+const aboutJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'About Us' },
+      ],
+    },
+    {
+      '@type': 'Person',
+      name: 'Ptr. Jim Baloran',
+      jobTitle: 'Senior Pastor',
+      worksFor: {
+        '@type': 'Church',
+        name: 'Gateway Church Cebu',
+        url: siteUrl,
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: "What is Gateway Church Cebu's vision?",
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Gateway Church Cebu's vision is to be a gateway for every person to encounter God, experience transformation, and be empowered to impact the world.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What does Gateway Church Cebu believe?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Gateway Church Cebu believes in the Bible as the inspired Word of God, the Trinity (Father, Son, and Holy Spirit), salvation through Jesus Christ, and the power of the Holy Spirit in the life of every believer.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Who is the senior pastor of Gateway Church Cebu?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The senior pastor of Gateway Church Cebu is Ptr. Jim Baloran.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the WIN-CONSOLIDATE-DISCIPLE-SEND process?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "The WIN-CONSOLIDATE-DISCIPLE-SEND process is Gateway Church's discipleship framework: WIN means reaching new people for Jesus through sharing the Gospel, CONSOLIDATE means taking care of new believers through personal Encounters with Jesus, DISCIPLE means reproducing Christ's character and equipping leaders, and SEND means empowering leaders to fulfill the Great Commission.",
+          },
+        },
+      ],
+    },
+  ],
+};
+
 export default function AboutPage() {
   return (
     <div className="landing-page about-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
       <LandingHeader />
 
       <main className="landing-main">
