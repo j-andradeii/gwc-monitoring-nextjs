@@ -356,7 +356,7 @@
    ARISE & BUILD SECTION - Bethel Style Campus Campaign
    =========================================== */
 .arise-build-section {
-  padding: 120px 0;
+  padding: 50px 0;
   position: relative;
   overflow: hidden;
   background-size: cover;
@@ -1178,7 +1178,7 @@
    ABOUT SECTION - White with Subtle Gold Accent
    =========================================== */
 .about-section {
-  padding: 70px 0 !important;
+  padding: 50px 0 !important;
   background: #ffffff !important;
   position: relative;
 }
@@ -1641,7 +1641,7 @@
    SERVICE CTA SECTION - Bold Navy with Vibrant Accents
    =========================================== */
 .service-cta-section {
-  padding: 80px 0 !important;
+  padding: 50px 0 !important;
   background: var(--color-navy) !important;
   text-align: center;
   position: relative;
@@ -1912,7 +1912,7 @@
    SERMONS SECTION - Warm Cream Background
    =========================================== */
 .sermons-section {
-  padding: 70px 0 !important;
+  padding: 50px 0 !important;
   /* background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%) !important; */
   background: var(--background-main);
   position: relative;
@@ -2108,7 +2108,7 @@
    COMMUNITY GALLERY SECTION - Premium Modern
    =========================================== */
 .community-gallery-section {
-  padding: 100px 0 !important;
+  padding: 50px 0 !important;
   background-color: var(--color-cream, #f5f0e6) !important;
   overflow: hidden;
   position: relative;
@@ -2461,7 +2461,7 @@
    MINISTRIES SECTION - Soft Gold with Warm Accent
    =========================================== */
 .ministries-section {
-  padding: 70px 0 !important;
+  padding: 50px 0 !important;
   /* background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important; */
   background: #ffffff !important;
   position: relative;
@@ -2817,7 +2817,7 @@
    EVENTS GRID SECTION - Card Grid Display
    =========================================== */
 .events-grid-section {
-  padding: 40px 0;
+  padding: 50px 0;
   background: #fff;
 }
 
@@ -3050,7 +3050,7 @@
    CONTACT SECTION - Soft Gold with Warm Accent
    =========================================== */
 .contact-section {
-  padding: 80px 0 !important;
+  padding: 50px 0 !important;
   /* background: linear-gradient(180deg, #fefcf3 0%, #fdf6e3 100%) !important; */
   background: #f0f0f0 !important;
 
