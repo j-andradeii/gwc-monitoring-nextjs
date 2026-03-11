@@ -98,14 +98,14 @@ export default function GatewayOutreachPage() {
           <PageHero
             id="gateway-outreach-top"
             badge="Gateway Outreach"
-            title="Disaster Response Ministry"
-            subtitle="Bringing Hope in Times of Crisis"
+            title="Community Outreach Ministry"
+            subtitle=""
             backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/team.jpg"
             className="give-hero gateway-outreach-hero"
-            serviceInfo={[
-              { icon: 'pi pi-heart', text: 'Community Relief' },
-              { icon: 'pi pi-users', text: 'Disaster Response' },
-            ]}
+          // serviceInfo={[
+          //   { icon: 'pi pi-heart', text: 'Community Relief' },
+          //   { icon: 'pi pi-users', text: 'Disaster Response' },
+          // ]}
           />
 
           {/* Section 1: Pastor's Vision for Disaster Response */}
