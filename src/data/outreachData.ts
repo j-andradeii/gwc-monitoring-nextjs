@@ -19,6 +19,7 @@ export interface OutreachImpactStat {
   icon: string;
   value: string;
   label: string;
+  image: string;
 }
 
 // -------------------------------------------
@@ -96,21 +97,25 @@ export const outreachImpactStats: OutreachImpactStat[] = [
     icon: 'pi pi-users',
     value: '50+',
     label: 'Families Served',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg',
   },
   {
     icon: 'pi pi-map-marker',
     value: '2+',
     label: 'Relief Operations',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/13.jpg',
   },
   {
     icon: 'pi pi-clock',
     value: '20',
     label: 'Volunteer',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/8.jpg',
   },
   {
     icon: 'pi pi-globe',
     value: '8+',
     label: 'Communities Reached',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/10.jpg',
   },
 ];
 

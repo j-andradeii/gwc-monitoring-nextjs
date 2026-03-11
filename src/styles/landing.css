@@ -10387,12 +10387,9 @@
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 16px;
-  padding: 36px 24px;
-  text-align: center;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
   transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
@@ -10402,20 +10399,40 @@
   border-color: rgba(212, 168, 75, 0.30);
 }
 
-.outreach-impact-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 4px;
+.outreach-impact-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
-.outreach-impact-icon i {
-  font-size: 22px;
-  color: #ffffff;
+.outreach-impact-image {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.outreach-impact-card:hover .outreach-impact-image {
+  transform: scale(1.05);
+}
+
+.outreach-impact-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 39, 68, 0.10) 0%,
+    rgba(26, 39, 68, 0.50) 100%
+  );
+}
+
+.outreach-impact-card-body {
+  padding: 24px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
 }
 
 .outreach-impact-value {
@@ -10455,21 +10472,12 @@
     gap: 12px;
   }
 
-  .outreach-impact-card {
-    padding: 28px 16px;
+  .outreach-impact-card-body {
+    padding: 16px 12px;
   }
 
   .outreach-impact-value {
     font-size: 32px;
-  }
-
-  .outreach-impact-icon {
-    width: 48px;
-    height: 48px;
-  }
-
-  .outreach-impact-icon i {
-    font-size: 18px;
   }
 }
 
