@@ -19,6 +19,7 @@ export interface OutreachImpactStat {
   icon: string;
   value: string;
   label: string;
+  image: string;
 }
 
 // -------------------------------------------
@@ -96,21 +97,25 @@ export const outreachImpactStats: OutreachImpactStat[] = [
     icon: 'pi pi-users',
     value: '50+',
     label: 'Families Served',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg',
   },
   {
     icon: 'pi pi-map-marker',
     value: '2+',
     label: 'Relief Operations',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/13.jpg',
   },
   {
     icon: 'pi pi-clock',
     value: '20',
     label: 'Volunteer',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/8.jpg',
   },
   {
     icon: 'pi pi-globe',
     value: '8+',
     label: 'Communities Reached',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/10.jpg',
   },
 ];
 
@@ -121,7 +126,7 @@ export const outreachTestimonials: LeaderTestimonial[] = [
   {
     id: 1,
     quote:
-      'After Typhoon Odette, we lost almost everything. Gateway Church was one of the first to arrive in our barangay. They brought food, water, and most importantly, hope. The volunteers prayed with us and made us feel that God had not forgotten us.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     name: 'Maria Santos',
     role: 'Community Resident, Mandaue City',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr_anne.jpg',
@@ -129,7 +134,7 @@ export const outreachTestimonials: LeaderTestimonial[] = [
   {
     id: 2,
     quote:
-      'The Gateway Outreach team helped us repair our roof and clean our home after the flooding. They worked alongside us for three days without complaint. I have never experienced such selfless love from a church community before.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     name: 'Roberto Dela Cruz',
     role: 'Beneficiary Family, Consolacion, Cebu',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr_jim_thumbnail.jpg',
@@ -137,7 +142,7 @@ export const outreachTestimonials: LeaderTestimonial[] = [
   {
     id: 3,
     quote:
-      'As a barangay captain, I have worked with many organizations during disasters, but Gateway Church stands out. Their volunteers are organized, compassionate, and always go beyond what is expected. They are true servants of the community.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     name: 'Capt. Lorna Villanueva',
     role: 'Barangay Captain, Liloan, Cebu',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/just.jpg',
