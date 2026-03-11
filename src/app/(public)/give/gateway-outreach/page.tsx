@@ -25,6 +25,7 @@ import {
   OutreachGallerySection,
   OutreachTestimonialsSection,
   OutreachGiveSection,
+  OutreachDonationDropoffSection,
 } from '@/components/landing/outreach';
 
 const siteUrl = siteMetadata.siteUrl;
@@ -125,6 +126,9 @@ export default function GatewayOutreachPage() {
 
           {/* Section 6: Support Our Outreach — Giving Channels */}
           <OutreachGiveSection />
+
+          {/* Section 7: Drop Off Donations */}
+          <OutreachDonationDropoffSection />
 
           <ContactSection />
 
