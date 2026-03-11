@@ -73,9 +73,23 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Give', item: `${siteUrl}/give/ways-to-give` },
+    { '@type': 'ListItem', position: 3, name: 'Gateway Outreach' },
+  ],
+};
+
 export default function GatewayOutreachPage() {
   return (
     <div className="landing-page give-page gateway-outreach-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <LandingHeader />
 
       <main className="landing-main">

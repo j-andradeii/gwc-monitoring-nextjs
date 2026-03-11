@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: `${siteMetadata.description} Join us at ${siteMetadata.address.street}.`,
   keywords: siteMetadata.keywords,
   alternates: {
-    canonical: '/',
+    canonical: siteUrl,
   },
   openGraph: {
     title: `${siteMetadata.name} | Welcome Home`,
@@ -89,6 +89,28 @@ const jsonLd = {
         telephone: siteMetadata.contact.phone,
         contactType: siteMetadata.contact.type,
       },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: 'https://schema.org/Sunday',
+          opens: '09:00',
+          closes: '12:00',
+          description: 'Sunday Service',
+        },
+      ],
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 10.3157,
+        longitude: 123.8854,
+      },
+      areaServed: {
+        '@type': 'City',
+        name: 'Cebu City',
+        addressCountry: 'PH',
+      },
+      legalName: 'Gateway Church Cebu',
+      foundingDate: '2015',
+      hasMap: 'https://maps.google.com/?q=Golden+Peak+Hotel+Gorordo+Avenue+Cebu+City',
     },
     {
       '@type': 'WebSite',
@@ -97,6 +119,14 @@ const jsonLd = {
       name: siteMetadata.name,
       description: siteMetadata.description,
       publisher: { '@id': `${siteUrl}/#church` },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${siteUrl}/sermon-notes?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
     },
     {
       '@type': 'SiteNavigationElement',
@@ -132,6 +162,51 @@ const jsonLd = {
       name: 'Give',
       description: 'Support the mission and projects of Gateway Church.',
       url: `${siteUrl}/give/ways-to-give`,
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What time is the Sunday service at Gateway Church Cebu?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Gateway Church Cebu holds Sunday services starting at 9:30 AM. Gates open at 9:00 AM. We are located at the 8th Floor, Golden Peak Hotel & Suites, Gorordo Avenue, Cebu City.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Where is Gateway Church Cebu located?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Gateway Church Cebu is located at the 8th Floor, Golden Peak Hotel & Suites, Gorordo Avenue, Cebu City 6000, Philippines.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is Gateway Church Cebu open to visitors and newcomers?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes! Everyone is welcome at Gateway Church Cebu. Whether you are new to faith or have been a believer for years, we would love to have you join us. Our VIP team will help you feel at home.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How can I give or donate to Gateway Church Cebu?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You can give to Gateway Church Cebu through GCash, bank transfer via BPI or BDO, or during our Sunday services. Visit our Ways to Give page for account details.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the discipleship process at Gateway Church?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Gateway Church follows a 4-step discipleship process: WIN (evangelism and outreach), CONSOLIDATE (grounding new believers), DISCIPLE (growing in faith through small groups and mentorship), and SEND (equipping and sending leaders to serve).',
+          },
+        },
+      ],
     },
   ],
 };

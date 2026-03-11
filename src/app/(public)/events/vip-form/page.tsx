@@ -13,6 +13,7 @@ const siteUrl = siteMetadata.siteUrl;
 export const metadata: Metadata = {
   title: 'VIP Registration | Gateway Church',
   description: 'Welcome to Gateway Church! Please register your details so we can connect with you.',
+  keywords: ['VIP registration', 'Gateway Church', 'church registration', 'first time visitor', 'newcomer', 'Cebu City'],
   alternates: {
     canonical: `${siteUrl}/events/vip-form`,
   },
@@ -40,6 +41,24 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Events', item: `${siteUrl}/events` },
+    { '@type': 'ListItem', position: 3, name: 'VIP Registration' },
+  ],
+};
+
 export default function VipFormPage() {
-  return <VipFormClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <VipFormClient />
+    </>
+  );
 }

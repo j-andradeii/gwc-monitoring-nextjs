@@ -52,6 +52,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: siteMetadata.name,
       locale: 'en_US',
       type: 'article',
+      authors: [sermon.speaker],
+      publishedTime: new Date(sermon.date).toISOString(),
+      tags: sermon.tags.length > 0 ? sermon.tags : [sermon.series, 'sermon', 'Gateway Church'],
       images: [
         {
           url: imageUrl,
@@ -82,12 +85,51 @@ export default async function SermonDetailPage({ params }: Props) {
   const seriesSermons = getSermonsBySeries(sermon.series).filter(s => s.id !== sermon.id);
   const upcomingEvents = events.filter(isEventUpcoming).slice(0, 3);
 
+  const sermonJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+          { '@type': 'ListItem', position: 2, name: 'Sermon Notes', item: `${siteUrl}/sermon-notes` },
+          { '@type': 'ListItem', position: 3, name: sermon.title },
+        ],
+      },
+      ...(sermon.videoUrl
+        ? [
+            {
+              '@type': 'VideoObject',
+              name: sermon.title,
+              description: sermon.excerpt || `Sermon by ${sermon.speaker} at Gateway Church Cebu`,
+              uploadDate: new Date(sermon.date).toISOString(),
+              thumbnailUrl: sermon.image.startsWith('http') ? sermon.image : `${siteUrl}${sermon.image}`,
+              contentUrl: sermon.videoUrl,
+              author: { '@type': 'Person', name: sermon.speaker },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Gateway Church Cebu',
+                url: siteUrl,
+                logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/images/gwc-logo-gold.png` },
+              },
+            },
+          ]
+        : []),
+    ],
+  };
+
   return (
-    <SermonDetailClient
-      sermon={sermon}
-      relatedSermons={relatedSermons}
-      seriesSermons={seriesSermons}
-      upcomingEvents={upcomingEvents}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sermonJsonLd) }}
+      />
+      <SermonDetailClient
+        sermon={sermon}
+        relatedSermons={relatedSermons}
+        seriesSermons={seriesSermons}
+        upcomingEvents={upcomingEvents}
+      />
+    </>
   );
 }

@@ -46,21 +46,37 @@ export const metadata: Metadata = {
 };
 
 export default function ServePage() {
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Ministries', item: `${siteUrl}/ministries` },
+            { '@type': 'ListItem', position: 3, name: 'Serve' },
+        ],
+    };
+
     return (
-        <div className="landing-page serve-page">
-            <LandingHeader />
-            <main className="landing-main">
-                <ScrollAnimationProvider>
-                    <PageHero
-                        badge="Ministries"
-                        title="Serve"
-                        subtitle="Made to Make a Difference"
-                        backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/serve.jpg"
-                    />
-                    <InProgressSection />
-                </ScrollAnimationProvider>
-            </main>
-            <LandingFooter />
-        </div>
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
+            <div className="landing-page serve-page">
+                <LandingHeader />
+                <main className="landing-main">
+                    <ScrollAnimationProvider>
+                        <PageHero
+                            badge="Ministries"
+                            title="Serve"
+                            subtitle="Made to Make a Difference"
+                            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/serve.jpg"
+                        />
+                        <InProgressSection />
+                    </ScrollAnimationProvider>
+                </main>
+                <LandingFooter />
+            </div>
+        </>
     );
 }
