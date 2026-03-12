@@ -518,3 +518,253 @@ The current architecture is a **hand-rolled reimplementation of server state man
 ---
 
 *This analysis was generated based on the GWC Monitoring Next.js codebase as of March 2026.*
+
+---
+
+## 11. Parent-Child Data Sharing: Current Pattern vs. TanStack Query
+
+### The Current Pattern: Global Pub/Sub Event Bus
+
+In the current architecture, a global Zustand store (`useApiEventStore`) acts as an event bus. When a service executes, it manually dispatches events (`IN_PROGRESS`, `COMPLETED`, `ERROR`). Any component — regardless of its place in the component tree — can subscribe to these events via `apiEventStore.subscribe(...)`.
+
+**Real example from this codebase:**
+
+```
+EventDetailClient (Parent)
+  └── JoinEventModal (Child)
+        └── subscribes to useApiEventStore
+              └── catches SUBMIT_EVENT_INQUIRY COMPLETED
+```
+
+```typescript
+// Parent — EventDetailClient.tsx
+export default function EventDetailClient({ event }) {
+  const [showJoinModal, setShowJoinModal] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShowJoinModal(true)}>Join Event</button>
+      <JoinEventModal
+        isOpen={showJoinModal}
+        onClose={() => setShowJoinModal(false)}
+        eventSlug={event.slug}
+      />
+    </div>
+  );
+}
+
+// Child — JoinEventModal.tsx
+export function JoinEventModal({ isOpen, onClose, eventSlug }) {
+  const apiEventStore = useApiEventStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = apiEventStore.subscribe((event) => {
+      if (event?.status === ApiEventStatus.COMPLETED &&
+          event?.type === ApiEventType.SUBMIT_EVENT_INQUIRY) {
+        setIsSubmitting(false);
+        setSubmitted(true);
+        reset();
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    await inquiryService.submitEventInquiry(data, eventSlug);
+    // ↑ Service fires sendEvent(IN_PROGRESS) → fetch → sendEvent(COMPLETED)
+    // The useEffect above catches COMPLETED automatically
+  };
+}
+```
+
+**Why this was used:** Valid architectural choice for decoupling. The child reacts to the parent's (or service's) API activity without prop drilling the response back down.
+
+**The real cost:**
+- The child needs `useEffect` + `subscribe` + `createEventStatusHandleMap` just to track `isSubmitting`
+- If two modals are open, both subscribe to the same global bus — collision risk
+- Every service method must manually fire 3 events per operation
+
+---
+
+### The TanStack Query Paradigm: The Cache Is the Event Bus
+
+> **Key Insight:** TanStack Query eliminates the need for a separate pub/sub system entirely. The **query cache** is the shared state layer. Instead of broadcasting events about a request, multiple components simply declare their need for the same data using the same `queryKey`. TanStack automatically deduplicates network requests and propagates `isPending`, `data`, and `isError` to all subscribed components instantly.
+
+---
+
+### Pattern A — Shared Query Key (Preferred for Data Fetching)
+
+Both parent and child call `useQuery` with the same `queryKey`. TanStack Query ensures only **one** network request fires. When it resolves, both components instantly get `data`.
+
+**Use case:** Parent page fetches members list; a child dropdown in a modal also needs the same list.
+
+```typescript
+// 1. Define a shared query hook
+export const useMembers = (params: MemberPaginationParams) => {
+  return useQuery({
+    queryKey: ['members', params],
+    queryFn: () => apiClient.get<MemberListResponseDto>(
+      `members?page=${params.page}&pageSize=${params.pageSize}`
+    ),
+  });
+};
+
+// 2. Parent Page — triggers the network request
+export function MembersPage() {
+  const { data: members, isPending } = useMembers({ page: 1, pageSize: 20 });
+  return (
+    <div>
+      <MembersTable members={members} loading={isPending} />
+      <AddMemberModal /> {/* child */}
+    </div>
+  );
+}
+
+// 3. Child Modal — reads from cache, NO second network request fires
+export function AddMemberModal() {
+  const { data: members, isSuccess } = useMembers({ page: 1, pageSize: 20 });
+  // When parent's query completes → this component gets data instantly from cache
+  // No subscription, no useEffect, no event store needed
+}
+```
+
+---
+
+### Pattern B — Props (Simple & Explicit)
+
+Parent fetches via `useQuery`, passes `data` + `isPending` down as props to the child.
+
+**Use case:** Child is tightly coupled to the parent's data (e.g., an edit modal for a specific member).
+
+```typescript
+export function MembersPage() {
+  const { data: members, isPending } = useQuery({
+    queryKey: ['members'],
+    queryFn: () => apiClient.get('members'),
+  });
+
+  return <EditMemberModal members={members} isLoading={isPending} />;
+}
+
+// Child receives data as props — no event bus, no subscription
+export function EditMemberModal({ members, isLoading }) {
+  if (isLoading) return <Spinner />;
+  return <form>...</form>;
+}
+```
+
+---
+
+### Pattern C — Query State Observation (Advanced)
+
+A child component can observe the loading state of a query without triggering a fetch itself, using `useIsFetching`.
+
+**Use case:** A global spinner or notification banner that reacts when any member fetch is in progress.
+
+```typescript
+import { useIsFetching } from '@tanstack/react-query';
+
+export function MembersLoadingBanner() {
+  // Returns count of in-flight queries matching this key
+  const isFetchingMembers = useIsFetching({ queryKey: ['members'] });
+
+  if (isFetchingMembers > 0) {
+    return <div className="loading-banner">Loading members...</div>;
+  }
+  return null;
+}
+```
+
+---
+
+### Pattern D — Mutations with Built-in Callbacks (Replaces JoinEventModal's Pattern)
+
+For form submissions, the child owns the mutation entirely via `useMutation`. No parent involvement, no event bus.
+
+**This is the direct replacement for JoinEventModal:**
+
+```typescript
+// BEFORE — JoinEventModal (current pattern)
+// Needs: useState(isSubmitting) + useState(submitted) + useEffect + subscribe + createEventStatusHandleMap
+// ~35 lines of wiring just to handle submit state
+
+// AFTER — with useMutation
+export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }) {
+  const { handleSubmit, reset } = useForm<EventContactFormData>({
+    resolver: zodResolver(eventContactSchema),
+  });
+
+  const submitInquiry = useMutation({
+    mutationFn: (data: EventContactFormData) =>
+      apiClient.post(`/api/event/${eventSlug}`, data),
+    onSuccess: () => {
+      reset();
+      // submitInquiry.isSuccess drives the UI — no useState needed
+    },
+  });
+
+  const onSubmit = (data: EventContactFormData) => {
+    submitInquiry.mutate(data);
+  };
+
+  return (
+    <div className={`connect-modal-overlay ${isOpen ? 'open' : ''}`}>
+      {submitInquiry.isSuccess ? (
+        // Replaces local `submitted` state
+        <div className="contact-success-state">
+          <h3>Registration Sent!</h3>
+          <button onClick={onClose}>Close</button>
+        </div>
+      ) : (
+        <FormProvider {...methods}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormInput name="name" label="Full Name" showRequired />
+            <FormInput name="email" label="Email Address" showRequired />
+            <FormInput name="phone" label="Phone Number" showRequired />
+
+            {/* Replaces local `isSubmitting` state */}
+            <button type="submit" disabled={submitInquiry.isPending}>
+              {submitInquiry.isPending ? (
+                <i className="pi pi-spin pi-spinner" />
+              ) : (
+                'JOIN EVENT'
+              )}
+            </button>
+          </form>
+        </FormProvider>
+      )}
+    </div>
+  );
+}
+```
+
+**Lines eliminated:** `useState(isSubmitting)`, `useState(submitted)`, the entire `useEffect` subscription block, and `createEventStatusHandleMap`.
+
+---
+
+### Decision Matrix
+
+| Scenario | Current Pattern | TanStack Query Pattern |
+|----------|----------------|------------------------|
+| Child needs to know when parent's GET completed | Global event bus subscription | **Pattern A**: Same `useQuery` queryKey — automatic cache sharing |
+| Child is a form that submits and needs success/error | `sendEvent` + `useEffect` subscription | **Pattern D**: `useMutation` — built-in `isPending`, `isSuccess`, `isError` |
+| Child just needs to show data fetched by parent | Props or event bus | **Pattern B**: Props, or **Pattern A** if the child fetches independently |
+| Child watches ANY fetch of a type (loading banner) | Global loading store | **Pattern C**: `useIsFetching({ queryKey: [...] })` |
+| Two unrelated components need the same data | Both call service, both subscribe | **Pattern A**: Both call `useQuery` — deduplicated, cached, synchronized |
+
+---
+
+### Summary: What Replaces the Event Bus
+
+| Current Mechanism | TanStack Query Equivalent |
+|------------------|--------------------------|
+| `useApiEventStore.subscribe()` | `useQuery` shared queryKey — cache notifies all consumers |
+| `ApiEventStatus.IN_PROGRESS` | `isPending` from `useQuery` or `useMutation` |
+| `ApiEventStatus.COMPLETED` | `isSuccess` + `data` from `useQuery` or `useMutation` |
+| `ApiEventStatus.ERROR` | `isError` + `error` from `useQuery` or `useMutation` |
+| `sendEvent({ toast: true })` | `onSuccess` / `onError` callbacks in `useMutation` |
+| `ApiEventType` enum | `queryKey` arrays — typed, composable, scoped |
+| `createEventStatusHandleMap` | Eliminated — use `isPending`, `isSuccess`, `isError` directly |
