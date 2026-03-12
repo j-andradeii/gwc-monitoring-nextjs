@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/give/gateway-outreach`,
     images: [
       {
-        url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/1.jpg',
+        url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg',
         width: 1200,
         height: 630,
         alt: 'Gateway Outreach - Disaster Response Ministry',
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: 'Gateway Outreach | Disaster Response Ministry | Gateway Church',
     description:
       'Gateway Church Cebu\'s disaster response ministry. Bringing hope when disaster strikes.',
-    images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/1.jpg'],
+    images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg'],
   },
 };
 
