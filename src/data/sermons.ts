@@ -2044,12 +2044,14 @@ These themes reveal that the Spirit of God empowers His people to carry out His 
 
 **Theme 1: Transfer of the Spirit (for the work of serving)**
 In Scripture, the Spirit is often transferred or given to individuals so they can serve God and lead His people.
-*Old Testament*
+
+**Old Testament**
 * The Spirit was transferred from Moses to the seventy elders (Num. 11:10–30).
 * The Spirit was transferred from Moses to Joshua (Num. 27:16–20; Deut. 34:9).
 * The Spirit was transferred from Saul to David (1 Sam. 10:10; 16:13–14).
 * The Spirit was transferred from Elijah to Elisha (2 Kings 2:8–9; 14–15).
-*New Testament*
+
+**New Testament**
 * The Spirit anointed Jesus to preach the good news, release the captives, heal, and set people free (Isa. 11:2; 42:1; Luke 4:18–19). At Pentecost, the Spirit was transferred from Jesus to His disciples.
 * The Spirit was transferred from Jesus, through Peter and John, to Samaritan disciples (Acts 8:17).
 * The Spirit was transferred from Jesus, through Ananias, to Saul (Acts 9:17).
@@ -2058,12 +2060,14 @@ In Scripture, the Spirit is often transferred or given to individuals so they ca
 
 **Theme 2: Sign to Confirm the Spirit’s Presence and God’s Call to Serve**
 When the Spirit comes upon people, Scripture often records signs that confirm God’s presence and His calling.
-*Old Testament*
+
+**Old Testament**
 * The Spirit enabled the seventy elders to help bear the burden of the people (Num. 11:17).
 * A sign is not recorded, but the people knew Joshua had been filled with the spirit of wisdom, so they listened to him (Deut. 34:9).
 * When the Spirit came upon Saul, he prophesied (1 Sam. 10:1–6; 9–10). David also prophesied (2 Sam. 23:1–2).
 * Elisha was able to part the Jordan River as Elijah had done (2 Kings 2:8, 14).
-*New Testament*
+
+**New Testament**
 * Luke records the sign of the dove coming upon Jesus (Luke 3:22). The 120 disciples spoke in tongues when the Spirit came upon them for service (Acts 2:4).
 * Something happened that convinced Simon to offer money for the ability to impart the Spirit (Acts 8:18–19).
 * Saul’s eyes were healed (Acts 9:18; see 1 Cor. 14:18).
@@ -2072,17 +2076,32 @@ When the Spirit comes upon people, Scripture often records signs that confirm Go
 
 **Theme 3: Ability from the Spirit**
 The Holy Spirit not only comes with signs but also gives people the ability and power to serve God effectively.
-*Old Testament*
+
+**Old Testament**
 * The seventy elders prophesied (Num. 11:25).
 * The Spirit filled Joshua with wisdom to lead (Deut. 34:9).
 * The Spirit changed Saul into a different person, making him fit to lead (1 Sam. 10:6). The Spirit also gave David power to lead (1 Sam. 16:13).
 * The Spirit gave Elijah and Elisha power to prophesy and perform signs and wonders.
-*New Testament*
+
+**New Testament**
 * The Spirit gave the disciples the ability or power to witness for Jesus (Acts 1:8).
 * The Spirit gave Samaritan believers the power to do their part in spreading the good news of Jesus.
 * The Spirit equipped Saul to carry the Lord’s name to Gentiles and their kings (Acts 9:15).
 * The Spirit enabled Gentile believers to be witnesses for Jesus.
-* The Spirit gave the Ephesian believers power to witness for Jesus.`,
+* The Spirit gave the Ephesian believers power to witness for Jesus.
+
+
+** KEY POINTS **
+1. The Holy Spirit empowers believers for service.The Holy Spirit was sent to equip believers with power to serve God and participate in His mission (Acts 2:1–4).
+
+2. Pentecost marks the beginning of a spiritual harvest.Just as the Feast of Weeks celebrated the harvest of crops, the outpouring of the Holy Spirit prepared believers to gather people into God’s kingdom (Luke 10:2).
+
+3. The Holy Spirit connects believers to the true source of power.Before Pentecost, Peter was afraid and denied Jesus. After receiving the Holy Spirit, he boldly preached the gospel (Luke 22:57; Acts 2:38).
+
+4. The gospel is for all people.When the disciples spoke in different languages at Pentecost, people from many nations heard the message. This shows that the good news of Jesus is for everyone (Acts 2:4).
+
+5. The Holy Spirit enables believers to be witnesses.Just as the Spirit empowered Jesus to proclaim good news and serve others, the Spirit now empowers believers to continue that mission (Luke 4:18–19).
+`,
     tags: ['Holy Spirit', 'Pentecost', 'Service', 'Empowerment', 'Harvest', 'Witness'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/power_for_service.jpg',
     scriptures: [

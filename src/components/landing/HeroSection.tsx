@@ -38,12 +38,17 @@ const HeroSlideContent: React.FC<HeroSlideContentProps> = ({ slide, isTransition
           <span className={`hero-badge ${badgeClass}`}>{slide.badge}</span>
           <h1>{slide.title}</h1>
           <p className="hero-subtitle">{slide.subtitle}</p>
-          <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
+          {/* <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
             <i className={slide.cta.icon}></i>
             {slide.cta.label}
-          </Link>
+          </Link> */}
         </>
       )}
+
+      <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
+        <i className={slide.cta.icon}></i>
+        {slide.cta.label}
+      </Link>
     </div>
   );
 };
