@@ -14,6 +14,7 @@ interface HeroSlideData {
   subtitle: string;
   backgroundImage: string;
   overlayGradient: string;
+  is_display_info?: boolean;
   cta: {
     label: string;
     href: string;
@@ -28,16 +29,21 @@ interface HeroSlideContentProps {
 
 const HeroSlideContent: React.FC<HeroSlideContentProps> = ({ slide, isTransitioning }) => {
   const badgeClass = slide.type !== 'welcome' ? `hero-badge-${slide.type}` : '';
+  const shouldDisplayInfo = slide.is_display_info !== false;
 
   return (
     <div className={`hero-slide-content ${isTransitioning ? 'transitioning' : ''}`}>
-      <span className={`hero-badge ${badgeClass}`}>{slide.badge}</span>
-      <h1>{slide.title}</h1>
-      <p className="hero-subtitle">{slide.subtitle}</p>
-      <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
-        <i className={slide.cta.icon}></i>
-        {slide.cta.label}
-      </Link>
+      {shouldDisplayInfo && (
+        <>
+          <span className={`hero-badge ${badgeClass}`}>{slide.badge}</span>
+          <h1>{slide.title}</h1>
+          <p className="hero-subtitle">{slide.subtitle}</p>
+          <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
+            <i className={slide.cta.icon}></i>
+            {slide.cta.label}
+          </Link>
+        </>
+      )}
     </div>
   );
 };
@@ -67,6 +73,7 @@ const heroSlides: HeroSlideData[] = [
     subtitle: latestSermon.excerpt,
     backgroundImage: latestSermon.image,
     overlayGradient: '',
+    is_display_info: false,
     cta: {
       label: 'Learn More',
       href: `/sermon-notes/${latestSermon.slug}`,
