@@ -1832,7 +1832,7 @@ Put Him first — not just in words, but in action. When God is first, everythin
     date: '2026-03-08',
     duration: '45 min',
     series: 'Covenant',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Understanding the covenant relationship between God and His people.',
     excerpt: 'God’s intention for His people has always been abundance, not fear or scarcity. Yet in Judges 6, the Israelites were living in fear and oppression because they had turned away from God and relied on their own strength.',
     description: `**FILLED WITH GOD**
@@ -1974,6 +1974,163 @@ When we are filled with God, our lives become vessels through which His power, l
       'Obedience allows God to work through us'
     ],
     relatedSermons: ['16', '12'],
+  },
+  {
+    id: '18',
+    slug: 'power-for-service',
+    title: 'Power for Service',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-03-15',
+    duration: '45 min',
+    series: 'Covenant',
+    isFeatured: true,
+    seriesDescription: 'Understanding the covenant relationship between God and His people.',
+    excerpt: 'The coming of the Holy Spirit was God’s empowerment for believers to serve and witness.',
+    description: `**POWER FOR SERVICE**
+
+Key Verse: Acts 2:1-4
+
+The coming of the Holy Spirit was God’s empowerment for believers to serve and witness.
+The Holy Spirit is a Person and part of the Trinity (Father, Son, and Holy Spirit).
+
+God sent the Holy Spirit for a purpose: to empower His people for service.
+Jesus died during the Passover. He is the true Lamb of God. After three days, He rose from the dead and remained on earth for forty days before ascending into heaven.
+During that time, many people saw the risen Jesus. At one point, more than 500 people witnessed Him alive (1 Corinthians 15:6). Yet when the disciples gathered to wait for the promise of the Holy Spirit, about 120 believers were present in the upper room (Acts 1:15).
+
+---
+
+**Why the Holy Spirit Was Poured Out**
+The pouring out of the Holy Spirit is connected to harvest.
+The word Pentecost means “fifty.” It refers to the fiftieth day after Passover. In the Old Testament, Pentecost was known as the Feast of Weeks (Exodus 34:22).
+This feast took place fifty days after Passover (Leviticus 23:15–16). While it celebrated the physical harvest of crops, it also points to a spiritual harvest.
+Jesus spoke about this when He said:
+“The harvest is plentiful, but the workers are few.” — Luke 10:2
+The pouring out of the Holy Spirit prepares believers to become harvesters in God’s field.
+
+---
+
+**Speaking in Tongues at Pentecost**
+On the day of Pentecost, the disciples were filled with the Holy Spirit and began to speak in other tongues (Acts 2:4).
+People from different nations heard the message in their own languages. This showed that the gospel was meant for all nations, and that the Holy Spirit empowers believers to share the good news with the world.
+
+---
+
+**The Change in Peter**
+Before Pentecost, Peter struggled with fear and weakness. When questioned about his association with Jesus, he denied Him (Luke 22:57).
+The anointing he experienced before was temporary and did not last long. Peter even denied Jesus to a group of people and to a servant girl.
+But on the day of Pentecost, everything changed. Peter was now connected to the source of power.
+With boldness, he preached the gospel and called people to repentance (Acts 2:38).
+
+---
+
+**The Purpose of the Holy Spirit**
+The Holy Spirit came to enable believers to serve and witness.
+Jesus declared this mission when He read from the prophet Isaiah:
+“The Spirit of the Lord is upon Me, because He has anointed Me to preach good news to the poor.” — Luke 4:18–19
+In the same way, the Holy Spirit empowers believers today to preach the gospel, serve others, and participate in God’s work.
+
+---
+
+**Pentecost and the Harvest**
+Pentecost is a celebration of the feast of harvest.
+God poured out the Holy Spirit to prepare His people for the harvest. Through the power of the Spirit, believers are equipped to proclaim the good news and bring people into the kingdom of God.
+
+---
+
+**Three Themes Linked to the Spirit in the Old and New Testaments**
+After understanding that Pentecost celebrates the feast of harvest, we see a consistent biblical pattern in how the Holy Spirit works. Throughout both the Old Testament and the New Testament, three themes appear whenever the Spirit is given: transfer of the Spirit for service, signs confirming God’s call, and ability from the Spirit.
+These themes reveal that the Spirit of God empowers His people to carry out His mission.
+
+**Theme 1: Transfer of the Spirit (for the work of serving)**
+In Scripture, the Spirit is often transferred or given to individuals so they can serve God and lead His people.
+*Old Testament*
+* The Spirit was transferred from Moses to the seventy elders (Num. 11:10–30).
+* The Spirit was transferred from Moses to Joshua (Num. 27:16–20; Deut. 34:9).
+* The Spirit was transferred from Saul to David (1 Sam. 10:10; 16:13–14).
+* The Spirit was transferred from Elijah to Elisha (2 Kings 2:8–9; 14–15).
+*New Testament*
+* The Spirit anointed Jesus to preach the good news, release the captives, heal, and set people free (Isa. 11:2; 42:1; Luke 4:18–19). At Pentecost, the Spirit was transferred from Jesus to His disciples.
+* The Spirit was transferred from Jesus, through Peter and John, to Samaritan disciples (Acts 8:17).
+* The Spirit was transferred from Jesus, through Ananias, to Saul (Acts 9:17).
+* The Spirit was transferred from Jesus to Cornelius and other Gentiles (Acts 10:44–46).
+* The Spirit was transferred from Jesus, through Paul, to Ephesian believers (Acts 19:6).
+
+**Theme 2: Sign to Confirm the Spirit’s Presence and God’s Call to Serve**
+When the Spirit comes upon people, Scripture often records signs that confirm God’s presence and His calling.
+*Old Testament*
+* The Spirit enabled the seventy elders to help bear the burden of the people (Num. 11:17).
+* A sign is not recorded, but the people knew Joshua had been filled with the spirit of wisdom, so they listened to him (Deut. 34:9).
+* When the Spirit came upon Saul, he prophesied (1 Sam. 10:1–6; 9–10). David also prophesied (2 Sam. 23:1–2).
+* Elisha was able to part the Jordan River as Elijah had done (2 Kings 2:8, 14).
+*New Testament*
+* Luke records the sign of the dove coming upon Jesus (Luke 3:22). The 120 disciples spoke in tongues when the Spirit came upon them for service (Acts 2:4).
+* Something happened that convinced Simon to offer money for the ability to impart the Spirit (Acts 8:18–19).
+* Saul’s eyes were healed (Acts 9:18; see 1 Cor. 14:18).
+* Cornelius and those with him spoke in tongues (Acts 10:44–46).
+* The Ephesian believers spoke in tongues and prophesied (Acts 19:6).
+
+**Theme 3: Ability from the Spirit**
+The Holy Spirit not only comes with signs but also gives people the ability and power to serve God effectively.
+*Old Testament*
+* The seventy elders prophesied (Num. 11:25).
+* The Spirit filled Joshua with wisdom to lead (Deut. 34:9).
+* The Spirit changed Saul into a different person, making him fit to lead (1 Sam. 10:6). The Spirit also gave David power to lead (1 Sam. 16:13).
+* The Spirit gave Elijah and Elisha power to prophesy and perform signs and wonders.
+*New Testament*
+* The Spirit gave the disciples the ability or power to witness for Jesus (Acts 1:8).
+* The Spirit gave Samaritan believers the power to do their part in spreading the good news of Jesus.
+* The Spirit equipped Saul to carry the Lord’s name to Gentiles and their kings (Acts 9:15).
+* The Spirit enabled Gentile believers to be witnesses for Jesus.
+* The Spirit gave the Ephesian believers power to witness for Jesus.`,
+    tags: ['Holy Spirit', 'Pentecost', 'Service', 'Empowerment', 'Harvest', 'Witness'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/power_for_service.jpg',
+    scriptures: [
+      {
+        verse: 'Acts 2:1-4',
+        text: 'When the Day of Pentecost had fully come, they were all with one accord in one place. And suddenly there came a sound from heaven, as of a rushing mighty wind, and it filled the whole house where they were sitting. Then there appeared to them divided tongues, as of fire, and one sat upon each of them. And they were all filled with the Holy Spirit and began to speak with other tongues, as the Spirit gave them utterance.'
+      },
+      {
+        verse: '1 Corinthians 15:6',
+        text: 'After that He was seen by over five hundred brethren at once, of whom the greater part remain to the present, but some have fallen asleep.'
+      },
+      {
+        verse: 'Acts 1:15',
+        text: 'And in those days Peter stood up in the midst of the disciples (altogether the number of names was about a hundred and twenty), and said,'
+      },
+      {
+        verse: 'Exodus 34:22',
+        text: 'And you shall observe the Feast of Weeks, of the firstfruits of wheat harvest, and the Feast of Ingathering at the year’s end.'
+      },
+      {
+        verse: 'Leviticus 23:15-16',
+        text: 'And you shall count for yourselves from the day after the Sabbath, from the day that you brought the sheaf of the wave offering: seven Sabbaths shall be completed. Count fifty days to the day after the seventh Sabbath; then you shall offer a new grain offering to the Lord.'
+      },
+      {
+        verse: 'Luke 10:2',
+        text: 'Then He said to them, “The harvest truly is great, but the laborers are few; therefore pray the Lord of the harvest to send out laborers into His harvest.”'
+      },
+      {
+        verse: 'Luke 22:57',
+        text: 'But he denied Him, saying, “Woman, I do not know Him.”'
+      },
+      {
+        verse: 'Acts 2:38',
+        text: 'Then Peter said to them, “Repent, and let every one of you be baptized in the name of Jesus Christ for the remission of sins; and you shall receive the gift of the Holy Spirit.”'
+      },
+      {
+        verse: 'Luke 4:18-19',
+        text: '“The Spirit of the Lord is upon Me, Because He has anointed Me To preach the gospel to the poor; He has sent Me to heal the brokenhearted, To proclaim liberty to the captives And recovery of sight to the blind, To set at liberty those who are oppressed; To proclaim the acceptable year of the Lord.”'
+      }
+    ],
+    keyPoints: [
+      'The Holy Spirit empowers believers for service.',
+      'Pentecost marks the beginning of a spiritual harvest.',
+      'The Holy Spirit connects believers to the true source of power.',
+      'The gospel is for all people.',
+      'The Holy Spirit enables believers to be witnesses.'
+    ],
+    relatedSermons: ['17', '16'],
   },
 ];
 
