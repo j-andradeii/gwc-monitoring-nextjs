@@ -169,7 +169,14 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
-    is_event_finished: false
+    is_event_finished: false,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women_gathering/women_march_promotional.jpg',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women_gathering/men_march_promotional.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women_gathering/men.jpg',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women_gathering/women.jpg',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women_gathering/women_activity.jpg'
+    ]
   },
   {
     id: 7,
