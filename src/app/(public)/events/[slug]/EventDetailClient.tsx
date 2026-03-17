@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { LandingHeader, LandingFooter, EventContactSection, ScrollAnimationProvider, ShareModal, JoinEventModal, ContactSection } from '@/components/landing';
+import { ProjectGallery } from '@/components/landing/give';
 import { Event } from '@/data/events';
 import '@/styles/landing.css';
 
@@ -190,6 +191,23 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                   >
                     {event.description}
                   </div>
+                </div>
+              )}
+
+              {/* Event Gallery */}
+              {event.gallery && event.gallery.length > 0 && (
+                <div style={{ marginBottom: '40px' }}>
+                  <h2 style={{ fontSize: '24px', marginBottom: '20px', color: 'var(--text-primary)' }}>
+                    Event Gallery
+                  </h2>
+                  <ProjectGallery
+                    images={event.gallery.map((src, index) => ({
+                      id: index + 1,
+                      src,
+                      alt: `${event.title} - Photo ${index + 1}`,
+                      caption: `${event.title} - Photo ${index + 1}`,
+                    }))}
+                  />
                 </div>
               )}
 

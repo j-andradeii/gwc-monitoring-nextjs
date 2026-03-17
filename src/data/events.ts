@@ -153,10 +153,7 @@ Everyone is invited. See you there! 🫶✨`,
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
     is_event_finished: false,
-    gallery: [
-      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/couple.jpg',
-      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/couple.jpg'
-    ]
+    gallery: []
   },
   {
     id: 6,
