@@ -5,7 +5,7 @@
  */
 
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { events, getEventBySlug } from '@/data/events';
 import { siteMetadata } from '@/data/site-metadata';
 import EventDetailClient from './EventDetailClient';
@@ -74,7 +74,7 @@ export default async function EventDetailPage({ params }: Props) {
   const event = getEventBySlug(slug);
 
   if (!event) {
-    notFound();
+    redirect('/events');
   }
 
   const otherEvents = events.filter(e => e.id !== event.id).slice(0, 3);
