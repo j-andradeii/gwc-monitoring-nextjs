@@ -157,7 +157,7 @@ Everyone is invited. See you there! 🫶✨`,
   },
   {
     id: 6,
-    slug: 'mens-and-womens-gathering-march-14',
+    slug: 'mens-and-womens-gathering-march-22',
     title: `Men's and Women's Gathering`,
     date: 'March 22, 2026',
     displayDate: 'March 22',
