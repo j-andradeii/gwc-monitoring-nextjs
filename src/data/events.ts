@@ -27,6 +27,7 @@ export interface Event {
   isFeatured?: boolean;
   type: GatewayEventType;
   is_event_finished?: boolean;
+  gallery?: string[]; // Optional array of image URLs for the event gallery
 }
 
 const getUpcomingSunday = (): string => {
@@ -89,7 +90,10 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
-    is_event_finished: true
+    is_event_finished: true,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/mrkplc.jpg',
+    ]
   },
   {
     id: 3,
@@ -110,7 +114,10 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Training',
     isFeatured: false,
     type: GatewayEventType.TRAINING,
-    is_event_finished: true
+    is_event_finished: true,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/lifeclass_party_4.jpg',
+    ]
   },
   {
     id: 4,
@@ -126,11 +133,14 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
-    is_event_finished: true
+    is_event_finished: true,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women.jpg',
+    ]
   },
   {
     id: 5,
-    slug: 'mens-and-womens-gathering-march-14',
+    slug: 'couples-gathering-march',
     title: `Gateway Couples`,
     date: 'March 14, 2026',
     displayDate: 'March 14',
@@ -142,11 +152,15 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
-    is_event_finished: false
+    is_event_finished: false,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/couple.jpg',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/couple.jpg'
+    ]
   },
   {
     id: 6,
-    slug: 'couples-gathering-march',
+    slug: 'mens-and-womens-gathering-march-14',
     title: `Men's and Women's Gathering`,
     date: 'March 22, 2026',
     displayDate: 'March 22',
