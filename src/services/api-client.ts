@@ -51,8 +51,15 @@ const { incrementRequests, decrementRequests } = useLoadingStore.getState();
 
 // --- Request Interceptor ---
 
-const buildUrl = (endpoint: string): string => {
+//APP URL is using nextjs api
+const builAppdUrl = (endpoint: string): string => {
   const baseUrl = config.app.url;
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+  return `${baseUrl}/${cleanEndpoint}`;
+};
+
+const builApidUrl = (endpoint: string): string => {
+  const baseUrl = config.api.url;
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
   return `${baseUrl}/${cleanEndpoint}`;
 };
@@ -125,7 +132,7 @@ const handleErrorResponse = async (response: Response): Promise<ApiError> => {
 const refreshToken = async (): Promise<boolean> => {
   try {
     const headers = await buildHeaders('auth/refresh', { skipAuth: true });
-    const response = await fetch(buildUrl('auth/refresh'), {
+    const response = await fetch(builAppdUrl('auth/refresh'), {
       method: 'POST',
       headers,
       credentials: 'include', // Send cookies with request
@@ -168,7 +175,7 @@ const makeRequest = async (
   incrementRequests();
 
   try {
-    const url = buildUrl(endpoint);
+    const url = builAppdUrl(endpoint);
     const headers = await buildHeaders(endpoint, options);
     const body = options?.body ? JSON.stringify(options.body) : undefined;
 
