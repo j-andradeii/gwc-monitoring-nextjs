@@ -1984,7 +1984,7 @@ When we are filled with God, our lives become vessels through which His power, l
     date: '2026-03-15',
     duration: '45 min',
     series: 'Covenant',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Understanding the covenant relationship between God and His people.',
     excerpt: 'The coming of the Holy Spirit was God’s empowerment for believers to serve and witness.',
     description: `**POWER FOR SERVICE**
@@ -2151,6 +2151,164 @@ The Holy Spirit not only comes with signs but also gives people the ability and 
     ],
     relatedSermons: ['17', '16'],
   },
+  {
+    id: '19',
+    slug: 'anatomy-and-physiology-of-a-divine-vision',
+    title: 'The Anatomy and Physiology of a Divine Vision',
+    speaker: 'Doc. Vince Araneta',
+    speakerRole: 'primary leader',
+    date: '2026-03-29',
+    duration: '45 min',
+    series: 'Vision',
+    isFeatured: true,
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    excerpt: 'When God Redirects Your Path',
+    description: `**INTRODUCTION**
+
+Vision is not simply a good idea—it is God’s given picture and strategy for His people. It lays the foundation for growth, direction, and purpose. A divine vision does not rely on human strength or knowledge but on God’s guidance and timing.
+Sometimes, God will say “no” to our good ideas to lead us to His greater plan. Vision is often birthed in moments of prayer, obedience, and time alone with God, where He speaks clearly and redirects our path.
+As believers, we are reminded that God is our greatest healer, guide, and source of strength, and His vision always leads to growth and transformation.
+
+Follow-up Verse:
+Matthew 28:19
+
+---
+
+**THE ANATOMY AND PHYSIOLOGY OF A DIVINE VISION**
+
+**1. The Preparation of the Visionary** (Acts 16:1–5)
+Before God gives a global vision, He often focuses on local faithfulness and leadership multiplication.
+God prepares the person before releasing the vision. Faithfulness in small responsibilities builds the foundation for greater assignments.
+
+**Key Moments in Preparation:**
+**a. The Selection of Timothy**
+Paul identified a young leader with a good reputation. This represents the selection phase, where character and faithfulness are recognized before responsibility is given.
+
+**b. The Circumcision of Timothy**
+This decision was not about salvation but about removing barriers to reach others. Sometimes we must lay down personal rights or preferences for the sake of the mission.
+
+**c. The Result**
+The churches were strengthened in faith and grew in number daily.
+
+**Key Truth:**
+Vision always leads to growth.
+
+---
+
+**2. The Redirection of the Spirit** (Acts 16:6–10)
+Sometimes God says “no” to a good idea to prepare you for a “God idea.”
+Closed doors are not failures—they are often God’s protection or preparation for something greater.
+
+**Key Moments in Redirection:**
+**a. The Closed Doors**
+The Holy Spirit prevented Paul and his team from preaching in certain regions. This shows that not every opportunity is God’s assignment.
+
+**b. The Macedonian Call**
+Paul received a vision of a man asking for help. This moment revealed that vision is often born from the needs of others.
+
+**c. The Immediate Response**
+They responded immediately in obedience.
+
+**Key Truth:**
+True vision requires instant obedience.
+
+---
+
+**3. The Firstfruits of the Vision** (Acts 16:11–15)
+Vision is confirmed by the people God opens to receive the message.
+God’s fulfillment of a vision may look different from what we imagined, but His purpose remains the same.
+
+**Key Moments in Confirmation:**
+**a. The Conversion of Lydia**
+Paul expected to meet a man but instead encountered a woman. This reminds us that God’s plans may unfold differently than expected.
+
+**b. The Open Heart**
+The Lord opened Lydia’s heart to receive the message.
+
+**Key Truth:**
+Vision depends on God’s sovereignty, not just our strategy.
+
+---
+
+**4. The Conflict of the Vision** (Acts 16:16–24)
+A God-given vision will always be challenged by the enemy.
+Opposition is often a sign that the vision is moving forward and disrupting the status quo.
+
+**Key Moments in Conflict:**
+**a. The Spirit of Divination**
+A slave girl mocked the mission using religious-sounding words, showing how deception can oppose truth.
+
+**b. The Cost of Deliverance**
+When Paul cast out the spirit, the girl’s owners lost profit and attacked the missionaries.
+
+**c. The Inner Prison**
+Paul and Silas were beaten and imprisoned. Vision is often tested in difficult seasons.
+
+**Key Truth:**
+If you aren’t facing opposition, you might not be moving forward in God’s vision.
+
+---
+
+**5. The Breakthrough of the Vision** (Acts 16:25–40)
+Victory comes through praise and results in household salvation.
+Breakthrough often happens in the darkest moments when faith and worship remain strong.
+
+**Key Moments in Breakthrough:**
+**a. Midnight Worship**
+Paul and Silas sang hymns in prison. Praise became the key that unlocked the supernatural.
+
+**b. The Earthquake**
+God shook the prison’s foundations, bringing freedom not only to them but to others.
+
+**c. The Jailer’s Household**
+The jailer and his entire family believed and were saved.
+
+**Key Truth:**
+The ultimate goal of the vision is multiplication—reaching families, communities, and generations.
+
+**Key Points**
+1. God prepares you before He releases the vision.
+2. Closed doors may be God’s protection or redirection.
+3. Vision is confirmed when hearts are open to receive the message.
+4. Opposition does not stop the vision—it strengthens faith.
+5. Praise invites breakthrough and leads to salvation.`,
+    tags: ['Vision', 'Preparation', 'Redirection', 'Breakthrough', 'Growth', 'Obedience'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/anatomy.png',
+    scriptures: [
+      {
+        verse: 'Acts 16:1-5',
+        text: 'He came to Derbe and Lystra: and behold, a certain disciple was there, named Timothy, the son of a Jewess who believed; but his father was a Greek. The brothers who were at Lystra and Iconium gave a good testimony about him. Paul wanted to have him go out with him, and he took and circumcised him because of the Jews who were in those parts; for they all knew that his father was a Greek. As they went on their way through the cities, they delivered the decrees to them to keep which had been ordained by the apostles and elders who were at Jerusalem. So the assemblies were strengthened in the faith, and increased in number daily.'
+      },
+      {
+        verse: 'Acts 16:6-10',
+        text: 'When they had gone through the region of Phrygia and Galatia, they were forbidden by the Holy Spirit to speak the word in Asia. When they had come opposite Mysia, they tried to go into Bithynia, but the Spirit didn’t allow them. Passing by Mysia, they came down to Troas. A vision appeared to Paul in the night. There was a man of Macedonia standing, begging him, and saying, “Come over into Macedonia and help us.” When he had seen the vision, immediately we sought to go out to Macedonia, concluding that the Lord had called us to preach the Good News to them.'
+      },
+      {
+        verse: 'Acts 16:11-15',
+        text: 'Setting sail therefore from Troas, we made a straight course to Samothrace, and the day following to Neapolis; and from there to Philippi, which is a city of Macedonia, the foremost of the district, a Roman colony. We were staying some days in this city. On the Sabbath day we went outside of the city by a riverside, where we supposed there was a place of prayer, and we sat down, and spoke to the women who had come together. A certain woman named Lydia, a seller of purple, of the city of Thyatira, one who worshiped God, heard us; whose heart the Lord opened to listen to the things which were spoken by Paul. When she and her household were baptized, she begged us, saying, “If you have judged me to be faithful to the Lord, come into my house, and stay.” So she persuaded us.'
+      },
+      {
+        verse: 'Acts 16:16-24',
+        text: 'As we were going to prayer, a certain girl having a spirit of divination met us, who brought her masters much gain by fortune telling. Following Paul and us, she cried out, “These men are servants of the Most High God, who proclaim to us a way of salvation!” She was doing this for many days. But Paul, becoming greatly annoyed, turned and said to the spirit, “I command you in the name of Jesus Christ to come out of her!” It came out that very hour. But when her masters saw that the hope of their gain was gone, they seized Paul and Silas, and dragged them into the marketplace before the rulers. When they had brought them to the magistrates, they said, “These men, being Jews, are agitating our city, and advocate customs which it is not lawful for us to accept or to observe, being Romans.” The multitude rose up together against them, and the magistrates tore their clothes from them, and commanded them to be beaten with rods. When they had laid many stripes on them, they threw them into prison, charging the jailer to keep them safely, who, having received such a command, threw them into the inner prison, and secured their feet in the stocks.'
+      },
+      {
+        verse: 'Acts 16:25-40',
+        text: 'But about midnight Paul and Silas were praying and singing hymns to God, and the prisoners were listening to them. Suddenly there was a great earthquake, so that the foundations of the prison were shaken; and immediately all the doors were opened, and everyone’s bonds were loosened. The jailer, being roused out of sleep and seeing the prison doors open, drew his sword and was about to kill himself, supposing that the prisoners had escaped. But Paul cried with a loud voice, saying, “Don’t harm yourself, for we are all here!” He called for lights, sprang in, fell down trembling before Paul and Silas, brought them out, and said, “Sirs, what must I do to be saved?” They said, “Believe in the Lord Jesus Christ, and you will be saved, you and your household.” They spoke the word of the Lord to him, and to all who were in his house. He took them the same hour of the night, and washed their stripes, and was immediately baptized, he and all his household. He brought them up into his house, and set food before them, and rejoiced greatly, with all his household, having believed in God. But when it was day, the magistrates sent the sergeants, saying, “Let those men go.” The jailer reported these words to Paul, saying, “The magistrates have sent to let you go; now therefore come out, and go in peace.” But Paul said to them, “They have beaten us publicly, without a trial, men who are Romans, and have cast us into prison! Do they now release us secretly? No, most certainly, but let them come themselves and bring us out!” The sergeants reported these words to the magistrates, and they were afraid when they heard that they were Romans, and they came and begged them. When they had brought them out, they asked them to depart from the city. They went out of the prison, and entered into Lydia’s house. When they had seen the brothers, they encouraged them, and departed.'
+      },
+      {
+        verse: 'Matthew 28:19',
+        text: 'Go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,'
+      }
+    ],
+    keyPoints: [
+      'God prepares you before He releases the vision.',
+      'Closed doors may be God’s protection or redirection.',
+      'Vision is confirmed when hearts are open to receive the message.',
+      'Opposition does not stop the vision—it strengthens faith.',
+      'Praise invites breakthrough and leads to salvation.'
+    ],
+    relatedSermons: ['18', '17']
+  }
 ];
 
 export const getSermonById = (id: string): Sermon | undefined => {
