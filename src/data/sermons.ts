@@ -2265,13 +2265,7 @@ The jailer and his entire family believed and were saved.
 
 **Key Truth:**
 The ultimate goal of the vision is multiplication—reaching families, communities, and generations.
-
-**Key Points**
-1. God prepares you before He releases the vision.
-2. Closed doors may be God’s protection or redirection.
-3. Vision is confirmed when hearts are open to receive the message.
-4. Opposition does not stop the vision—it strengthens faith.
-5. Praise invites breakthrough and leads to salvation.`,
+`,
     tags: ['Vision', 'Preparation', 'Redirection', 'Breakthrough', 'Growth', 'Obedience'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/anatomy.png',
     scriptures: [
