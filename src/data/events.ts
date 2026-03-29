@@ -43,15 +43,13 @@ const getUpcomingSunday = (): string => {
   });
 };
 
-const upcomingSundayDate = getUpcomingSunday();
-
 export const events: Event[] = [
   {
     id: 1,
     slug: 'sonday-service',
     title: 'SONday Service',
-    date: upcomingSundayDate,
-    displayDate: upcomingSundayDate.split(',')[0],
+    get date() { return getUpcomingSunday(); },
+    get displayDate() { return getUpcomingSunday().split(',')[0]; },
     day: 'Sunday',
     time: '9:00 AM',
     location: '8th Floor, Golden Peak',
