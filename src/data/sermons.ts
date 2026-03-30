@@ -2215,8 +2215,7 @@ True vision requires instant obedience.
 ---
 
 **3. The Firstfruits of the Vision** (Acts 16:11–15)
-Vision is confirmed by the people God opens to receive the message.
-God’s fulfillment of a vision may look different from what we imagined, but His purpose remains the same.
+A God-given vision is validated when God opens the hearts of the people meant to hear it.
 
 **Key Moments in Confirmation:**
 **a. The Conversion of Lydia**
