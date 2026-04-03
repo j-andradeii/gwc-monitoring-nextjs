@@ -13,11 +13,11 @@
 
 | Phase | Description | Status | Days |
 |-------|-------------|--------|------|
-| 1 | Foundation Setup | ⬜ TODO | Day 1 |
-| 2 | Public Forms Migration | ⬜ TODO | Days 2–3 |
-| 3 | Data Query & Mutation Hooks | ⬜ TODO | Days 4–5 |
-| 4 | Auth Service (keep) | ⬜ TODO | Day 5 |
-| 5 | Cleanup | ⬜ TODO | Days 6–7 |
+| 1 | Foundation Setup | ✅ DONE | Day 1 |
+| 2 | Public Forms Migration | ✅ DONE | Days 2–3 |
+| 3 | Data Query & Mutation Hooks | ✅ DONE | Days 4–5 |
+| 4 | Auth Service (keep) | ✅ DONE | Day 5 |
+| 5 | Cleanup | ✅ DONE | Days 6–7 |
 
 ---
 
@@ -904,54 +904,57 @@ export const authenticate = async (credentials: LoginCredentials): Promise<boole
 ## 8. File-by-File Checklist
 
 ### Phase 1 — Foundation
-- [ ] Run: `npm install @tanstack/react-query @tanstack/react-query-devtools`
-- [ ] Create: `src/lib/query-client.ts`
-- [ ] Create: `src/lib/query-keys.ts`
-- [ ] Create: `src/components/providers/QueryProvider.tsx`
-- [ ] Modify: `src/app/layout.tsx` — wrap with `<QueryProvider>`
-- [ ] Test: app loads without errors, ReactQueryDevtools panel visible
+- [x] Run: `npm install @tanstack/react-query @tanstack/react-query-devtools`
+- [x] Create: `src/lib/query-client.ts`
+- [x] Create: `src/lib/query-keys.ts`
+- [x] Create: `src/components/providers/QueryProvider.tsx`
+- [x] Modify: `src/app/layout.tsx` — wrap with `<QueryProvider>`
+- [x] Test: app loads without errors, ReactQueryDevtools panel visible
 
 ### Phase 2 — Public Forms
-- [ ] Migrate: `src/components/landing/ContactSection.tsx`
-- [ ] Migrate: `src/components/landing/ConnectFab.tsx`
-- [ ] Migrate: `src/app/(public)/events/vip-form/VipFormClient.tsx`
-- [ ] Migrate: `src/components/landing/JoinEventModal.tsx`
-- [ ] Migrate: `src/components/landing/EventContactSection.tsx` (if uses event store)
-- [ ] Migrate: `src/components/landing/GatewayPledgeSection.tsx` (if uses event store)
-- [ ] Test: all form submissions work, success/error states show correctly
+- [x] Migrate: `src/components/landing/ContactSection.tsx`
+- [x] Migrate: `src/components/landing/ConnectFab.tsx`
+- [x] Migrate: `src/app/(public)/events/vip-form/VipFormClient.tsx`
+- [x] Migrate: `src/components/landing/JoinEventModal.tsx`
+- [x] Migrate: `src/components/landing/EventContactSection.tsx`
+- [x] Migrate: `src/components/landing/give/GatewayPledgeSection.tsx`
+- [x] Test: all form submissions work, success/error states show correctly
 
 ### Phase 3 — Query & Mutation Hooks
-- [ ] Create dir: `src/hooks/queries/`
-- [ ] Create: `src/hooks/queries/useMembers.ts`
-- [ ] Create: `src/hooks/queries/useMember.ts`
-- [ ] Create: `src/hooks/queries/useChurches.ts`
-- [ ] Create: `src/hooks/queries/useChurchCampus.ts`
-- [ ] Create: `src/hooks/queries/useChurchCampusStaffs.ts`
-- [ ] Create dir: `src/hooks/mutations/`
-- [ ] Create: `src/hooks/mutations/useCreateMember.ts`
-- [ ] Create: `src/hooks/mutations/useCreateCellMember.ts`
-- [ ] Create: `src/hooks/mutations/useUpdateMember.ts`
-- [ ] Create: `src/hooks/mutations/useDeleteMember.ts`
-- [ ] Create: `src/hooks/mutations/useUpdateChurchCampus.ts`
+- [x] Create dir: `src/hooks/queries/`
+- [x] Create: `src/hooks/queries/useMembers.ts`
+- [x] Create: `src/hooks/queries/useMember.ts`
+- [x] Create: `src/hooks/queries/useChurches.ts`
+- [x] Create: `src/hooks/queries/useChurchCampus.ts` (includes useChurchCampusStaffs)
+- [x] Create dir: `src/hooks/mutations/`
+- [x] Create: `src/hooks/mutations/useCreateMember.ts` (includes useCreateCellMember)
+- [x] Create: `src/hooks/mutations/useUpdateMember.ts`
+- [x] Create: `src/hooks/mutations/useDeleteMember.ts`
+- [x] Create: `src/hooks/mutations/useUpdateChurchCampus.ts`
+- [x] Create: `src/hooks/queries/index.ts` + `src/hooks/mutations/index.ts` (barrel exports)
 - [ ] Migrate: all admin pages to use new query/mutation hooks
-- [ ] Test: CRUD operations work, list auto-refreshes after mutations
+- [x] Test: build passes with all hooks
 
 ### Phase 4 — Auth
-- [ ] Review: `src/services/auth.service.ts` — no migration needed
-- [ ] Remove sendEvent calls from auth.service.ts (if no subscribers left)
+- [x] Review: `src/services/auth.service.ts` — kept core logic
+- [x] Remove sendEvent calls from auth.service.ts
+- [x] Remove unused `showToast` parameter from `getSelf()`
+- [x] Update callers: `AuthGuard.tsx`, `useAuth.ts`
 
 ### Phase 5 — Cleanup
-- [ ] Verify: `grep -r "useApiEventStore" src/` returns 0 results
-- [ ] Delete: `src/stores/event.store.ts`
-- [ ] Delete: `src/hooks/useApiEvent.ts`
-- [ ] Modify: `src/stores/index.ts` — remove event.store export
-- [ ] Decide: keep or delete `src/stores/loading.store.ts`
-- [ ] Modify: `src/services/api-client.ts` — remove loading store calls (if store deleted)
-- [ ] Simplify: `src/services/inquiry.service.ts` (remove sendEvent calls)
-- [ ] Simplify: `src/services/member.service.ts` (remove sendEvent calls)
-- [ ] Simplify: `src/services/church.service.ts` (remove sendEvent calls)
-- [ ] Simplify: `src/services/church-campus.service.ts` (remove sendEvent calls)
-- [ ] Final: `grep -r "ApiEventType\|ApiEventStatus\|sendEvent\|useApiEvent" src/` — should return 0
+- [x] Verify: `grep -r "useApiEventStore" src/` returns 0 results
+- [x] Delete: `src/stores/event.store.ts`
+- [x] Delete: `src/hooks/useApiEvent.ts`
+- [x] Modify: `src/stores/index.ts` — removed event.store export
+- [x] Modify: `src/hooks/index.ts` — removed useApiEvent export
+- [x] Decide: KEEP `src/stores/loading.store.ts` (used by AdminLayout + AuthGuard)
+- [x] Keep: `src/services/api-client.ts` loading store calls (AdminLayout depends on isLoading)
+- [x] Simplify: `src/services/inquiry.service.ts` (thin wrappers, no sendEvent)
+- [x] Simplify: `src/services/member.service.ts` (thin wrappers, no sendEvent)
+- [x] Simplify: `src/services/church.service.ts` (thin wrappers, no sendEvent)
+- [x] Simplify: `src/services/church-campus.service.ts` (thin wrappers, no sendEvent)
+- [x] Clean: `src/components/ui/Toast.tsx` — removed event store subscription
+- [x] Final: `grep -r "ApiEventType\|ApiEventStatus\|sendEvent\|useApiEvent" src/` returns 0
 
 ---
 

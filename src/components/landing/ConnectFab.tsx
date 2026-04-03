@@ -9,17 +9,15 @@ import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
 import { FormSelect } from '@/components/forms/FormSelect';
 import { contactSchema, type ContactFormData } from '@/models/schemas/contact.schema';
-import * as inquiryService from "@/services/inquiry.service";
-import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
+import { useMutation } from '@tanstack/react-query';
+import { apiClient } from '@/services/api-client';
 
 const FAB_TEXTS = ['CONNECT', 'PRAYER?', 'NEED HELP?'];
 
 export function ConnectFab() {
-    const apiEventStore = useApiEventStore();
     const [isOpen, setIsOpen] = useState(false);
     const [textIndex, setTextIndex] = useState(0);
     const [submitted, setSubmitted] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [activeTab, setActiveTab] = useState<'prayer' | 'join'>('prayer');
     const pathname = usePathname();
 
@@ -35,7 +33,7 @@ export function ConnectFab() {
         },
     });
 
-    const { handleSubmit, reset, setValue, clearErrors } = methods;
+    const { handleSubmit, reset, clearErrors } = methods;
 
     const handleTabChange = (tab: 'prayer' | 'join') => {
         setActiveTab(tab);
@@ -63,24 +61,40 @@ export function ConnectFab() {
         clearErrors();
     };
 
+    const submitPrayerRequest = useMutation({
+        mutationFn: (data: ContactFormData) =>
+            apiClient.post('/api/inquiry/prayer-requests', data),
+        onSuccess: () => {
+            setSubmitted(true);
+            reset();
+        },
+    });
 
+    const submitCellGroupJoin = useMutation({
+        mutationFn: (data: ContactFormData) =>
+            apiClient.post('/api/inquiry/cell-groups', data),
+        onSuccess: () => {
+            setSubmitted(true);
+            reset();
+        },
+    });
 
-    const onSubmit = async (data: ContactFormData) => {
-        setIsSubmitting(true);
+    const isSubmitting = submitPrayerRequest.isPending || submitCellGroupJoin.isPending;
+
+    const onSubmit = (data: ContactFormData) => {
         if (activeTab === 'prayer') {
-            await inquiryService.submitPrayerRequest(data);
-        } else if (activeTab === 'join') {
-            await inquiryService.submitCellGroupJoinRequest(data);
+            submitPrayerRequest.mutate(data);
         } else {
-            // Simulate API call for 'join' tab or implement another service
-            await new Promise((resolve) => setTimeout(resolve, 1500));
+            submitCellGroupJoin.mutate(data);
         }
-
     };
 
     // Close modal on route change
     useEffect(() => {
-        setIsOpen(false);
+        if (isOpen) {
+            setIsOpen(false);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname]);
 
     // Prevent body scroll when modal is open
@@ -95,14 +109,6 @@ export function ConnectFab() {
         };
     }, [isOpen]);
 
-    // Event Listener for API responses
-    useEffect(() => {
-        const cleanup = getApiEvents();
-        return () => {
-            cleanup();
-        };
-    }, []);
-
     // Cycle FAB text
     useEffect(() => {
         const interval = setInterval(() => {
@@ -111,67 +117,12 @@ export function ConnectFab() {
         return () => clearInterval(interval);
     }, []);
 
-    function getApiEvents() {
-        const unsubscribe = apiEventStore.subscribe((event) => {
-            if (!event) return;
-            // Use the factory pattern to handle different event statuses
-
-            const eventStatusHandleMap = createEventStatusHandleMap(event);
-            const handleEvent = eventStatusHandleMap[event.status] || (() => { });
-            handleEvent();
-        });
-        return () => {
-            unsubscribe();
-        };
-    }
-
-    function createEventStatusHandleMap(
-        apiEvent: ApiEvent,
-    ): { [key in ApiEventStatus]?: () => void } {
-        return {
-            [ApiEventStatus.COMPLETED]: () => {
-                const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
-                    [ApiEventType.SUBMIT_PRAYER_REQUEST]: async () => {
-                        setIsSubmitting(false);
-                        setSubmitted(true);
-                        reset();
-                    },
-                    [ApiEventType.SUBMIT_CELL_GROUP_JOIN]: async () => {
-                        setIsSubmitting(false);
-                        setSubmitted(true);
-                        reset();
-                    },
-                };
-                const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
-                handleEventType();
-            },
-            [ApiEventStatus.ERROR]: () => {
-                const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
-                    [ApiEventType.SUBMIT_PRAYER_REQUEST]: async () => {
-                        setIsSubmitting(false);
-                        setSubmitted(true);
-                        reset();
-                    },
-                    [ApiEventType.SUBMIT_CELL_GROUP_JOIN]: async () => {
-                        setIsSubmitting(false);
-                        setSubmitted(true);
-                        reset();
-                    },
-                };
-                const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
-                handleEventType();
-            },
-            [ApiEventStatus.IN_PROGRESS]: () => {
-            },
-            [ApiEventStatus.DEFAULT]: () => {
-            }
-        };
-    };
-
     const toggleModal = () => {
         if (!isOpen) {
             setActiveTab('prayer');
             setSubmitted(false);
+            submitPrayerRequest.reset();
+            submitCellGroupJoin.reset();
             reset({
                 type: 'prayer',
                 name: '',
@@ -186,6 +137,8 @@ export function ConnectFab() {
 
     const handleReset = () => {
         setSubmitted(false);
+        submitPrayerRequest.reset();
+        submitCellGroupJoin.reset();
         reset();
     };
 
@@ -214,9 +167,9 @@ export function ConnectFab() {
                     {/* Left Side - Image/Visual */}
                     <div className="connect-modal-left" style={{ backgroundImage: 'url("https://gtxngthtpisigkys.public.blob.vercel-storage.com/pray.jpg")' }}>
                         <div className="connect-modal-left-content">
-                            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">WE'RE HERE FOR YOU.</h2>
+                            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">WE&apos;RE HERE FOR YOU.</h2>
                             <p className="text-sm md:text-lg opacity-90">
-                                Whether you have questions about faith, need prayer, or want to join a small group, we're just a message away.
+                                Whether you have questions about faith, need prayer, or want to join a small group, we&apos;re just a message away.
                             </p>
                         </div>
                     </div>
@@ -236,7 +189,7 @@ export function ConnectFab() {
                                     <i className="pi pi-check"></i>
                                 </div>
                                 <h3>Message Sent!</h3>
-                                <p>We'll get back to you soon.</p>
+                                <p>We&apos;ll get back to you soon.</p>
                                 <button onClick={handleReset} className="success-reset">
                                     Send another <i className="pi pi-arrow-right"></i>
                                 </button>

@@ -1,22 +1,17 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LandingHeader, LandingFooter, PageHero } from '@/components/landing';
 import { FormInput, FormCalendar, FormSocialMedia, CalendarViewType } from '@/components/forms';
 import { vipFormSchema, type VipFormData } from '@/models/schemas/vip.schema';
-import * as inquiryService from "@/services/inquiry.service";
-import { ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
-import Link from 'next/link';
+import { useMutation } from '@tanstack/react-query';
+import { apiClient } from '@/services/api-client';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
 export default function VipFormClient() {
-    const apiEventStore = useApiEventStore();
-    const [submitted, setSubmitted] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState<string | null>(null);
     const [vipName, setVipName] = useState<string | null>(null);
 
     const methods = useForm<VipFormData>({
@@ -25,45 +20,30 @@ export default function VipFormClient() {
         defaultValues: {
             familyName: '',
             firstName: '',
-            birthdate: null,
+            birthdate: undefined,
             socialMedia: [{ platform: 'Facebook', handle: '' }],
             contactNumber: '',
             whoInvitedYou: '',
         },
     });
 
-    const { handleSubmit, reset, getValues } = methods;
+    const { handleSubmit, reset } = methods;
 
-    // Event Listener for API responses
-    useEffect(() => {
-        const unsubscribe = apiEventStore.subscribe((event) => {
-            if (!event) return;
+    const submitVipForm = useMutation({
+        mutationFn: (data: VipFormData) =>
+            apiClient.post('/api/inquiry/vip', data),
+        onSuccess: () => {
+            reset();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        },
+    });
 
-            if (event.type === ApiEventType.SUBMIT_VIP_FORM) {
-                if (event.status === ApiEventStatus.COMPLETED) {
-                    setIsSubmitting(false);
-                    setSubmitted(true);
-                    reset();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth',
-                    });
-                } else if (event.status === ApiEventStatus.ERROR) {
-                    setIsSubmitting(false);
-                    setError('Something went wrong. Please try again.');
-                }
-            }
-        });
-        return () => {
-            unsubscribe();
-        };
-    }, []);
-
-    const onSubmit = async (data: VipFormData) => {
-        setIsSubmitting(true);
-        setError(null);
+    const onSubmit = (data: VipFormData) => {
         setVipName(`${data.firstName} ${data.familyName}`);
-        await inquiryService.submitVipForm(data);
+        submitVipForm.mutate(data);
     };
 
     return (
@@ -120,7 +100,7 @@ export default function VipFormClient() {
 
                         {/* Right Side: Advanced Form */}
                         <div className="vip-form-container">
-                            {submitted ? (
+                            {submitVipForm.isSuccess ? (
                                 <div className="success-animation-container">
                                     <div className="success-icon-wrapper">
                                         <i className="pi pi-heart-fill"></i>
@@ -131,11 +111,11 @@ export default function VipFormClient() {
                                     <button
                                         type="button"
                                         onClick={() => {
-                                            setSubmitted(false);
+                                            submitVipForm.reset();
                                             reset({
                                                 familyName: '',
                                                 firstName: '',
-                                                birthdate: null,
+                                                birthdate: undefined,
                                                 socialMedia: [{ platform: 'Facebook', handle: '' }],
                                                 contactNumber: '',
                                                 whoInvitedYou: '',
@@ -155,10 +135,10 @@ export default function VipFormClient() {
                                             <h3 className="form-main-title">Share your story with us</h3>
                                         </div>
 
-                                        {error && (
+                                        {submitVipForm.isError && (
                                             <div className="form-error-alert">
                                                 <i className="pi pi-info-circle"></i>
-                                                {error}
+                                                Something went wrong. Please try again.
                                             </div>
                                         )}
 
@@ -232,9 +212,9 @@ export default function VipFormClient() {
                                             <button
                                                 type="submit"
                                                 className="vip-submit-button"
-                                                disabled={isSubmitting}
+                                                disabled={submitVipForm.isPending}
                                             >
-                                                {isSubmitting ? (
+                                                {submitVipForm.isPending ? (
                                                     <i className="pi pi-spin pi-spinner"></i>
                                                 ) : (
                                                     <>

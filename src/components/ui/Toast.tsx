@@ -1,14 +1,15 @@
 /**
  * Toast Component
  *
- * Toast notification system using PrimeReact Toast
+ * Toast notification system using PrimeReact Toast.
+ * Use the imperative helpers (showToast, showSuccess, showError, etc.)
+ * to display notifications from mutation onSuccess/onError callbacks.
  */
 
 'use client';
 
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Toast as PrimeToast } from 'primereact/toast';
-import { useApiEventStore, ApiEventStatus, type ApiEvent } from '@/stores/event.store';
 
 export type ToastSeverity = 'success' | 'info' | 'warn' | 'error';
 
@@ -95,14 +96,14 @@ export interface ToastProviderProps {
 
 /**
  * Toast Provider Component
- * Renders the toast container and listens to API events
+ * Renders the toast container. Use showSuccess/showError helpers
+ * in mutation callbacks to display notifications.
  */
 export function ToastProvider({
   position = 'top-right',
   children,
 }: ToastProviderProps) {
   const toastRef = useRef<PrimeToast>(null);
-  const { subscribe } = useApiEventStore();
 
   // Set global ref
   useEffect(() => {
@@ -113,42 +114,6 @@ export function ToastProvider({
       globalToastRef = null;
     };
   }, []);
-
-  // Handle API events
-  const handleApiEvent = useCallback((event: ApiEvent | null) => {
-    if (!event || !event.toast || !toastRef.current) return;
-
-    let severity: ToastSeverity = 'info';
-
-    switch (event.status) {
-      case ApiEventStatus.COMPLETED:
-        severity = 'success';
-        break;
-      case ApiEventStatus.ERROR:
-        severity = 'error';
-        break;
-      case ApiEventStatus.IN_PROGRESS:
-        severity = 'info';
-        break;
-      default:
-        severity = 'info';
-    }
-
-    toastRef.current.show({
-      severity,
-      summary: event.title || (severity === 'success' ? 'Success' : 'Error'),
-      detail: event.message,
-      life: severity === 'error' ? 5000 : 3000,
-    });
-  }, []);
-
-  // Subscribe to all API events
-  useEffect(() => {
-    const unsubscribe = subscribe(handleApiEvent);
-    return () => {
-      unsubscribe();
-    };
-  }, [subscribe,  ]);
 
   return (
     <>

@@ -1,282 +1,77 @@
 /**
  * Member Service
  *
- * Handles member CRUD operations
+ * Thin wrappers around apiClient for member CRUD operations.
+ * State management and caching is handled by TanStack Query hooks
+ * in src/hooks/queries/ and src/hooks/mutations/.
  */
 
 import { apiClient } from './api-client';
-import { useApiEventStore, ApiEventType, ApiEventStatus } from '@/stores/event.store';
-import { Messages } from '@/core/messages';
 import { buildQueryString } from '@/core/utils';
 import {
-  MemberDto,
   MemberCreationDto,
   MemberListResponseDto,
   MemberResponseDto,
   MemberPaginationParams,
 } from '@/models/member.types';
 
-const { sendEvent } = useApiEventStore.getState();
-
 /**
  * Get paginated list of members
  */
-export const getMembers = async (
+export const getMembers = (
   params: MemberPaginationParams
-): Promise<MemberListResponseDto | null> => {
-  const eventType = ApiEventType.GET_MEMBERS;
+): Promise<MemberListResponseDto> => {
+  const queryParams = buildQueryString({
+    page: params.page,
+    pageSize: params.pageSize,
+    sortBy: params.sortBy,
+    sortDirection: params.sortDirection,
+    search: params.search,
+    gender: params.gender,
+    affiliation: params.affiliation,
+    civil_status: params.civil_status,
+  });
 
-  try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-    });
-
-    const queryParams = buildQueryString({
-      page: params.page,
-      pageSize: params.pageSize,
-      sortBy: params.sortBy,
-      sortDirection: params.sortDirection,
-      search: params.search,
-      gender: params.gender,
-      affiliation: params.affiliation,
-      civil_status: params.civil_status,
-    });
-
-    const endpoint = `members${queryParams ? `?${queryParams}` : ''}`;
-    const response = await apiClient.get<MemberListResponseDto>(endpoint);
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.COMPLETED,
-    });
-
-    return response;
-  } catch (error) {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_GENERIC_ERROR,
-      message: Messages.MESSAGE_FETCH_ERROR,
-      toast: true,
-    });
-
-    return null;
-  }
+  const endpoint = `members${queryParams ? `?${queryParams}` : ''}`;
+  return apiClient.get<MemberListResponseDto>(endpoint);
 };
 
 /**
  * Get single member by ID
  */
-export const getMemberById = async (id: string): Promise<MemberDto | null> => {
-  const eventType = ApiEventType.GET_MEMBER;
-
-  try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-      targetId: id,
-    });
-
-    const response = await apiClient.get<MemberResponseDto>(`members/${id}`);
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.COMPLETED,
-      targetId: id,
-    });
-
-    return response.data;
-  } catch (error) {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_GENERIC_ERROR,
-      message: Messages.MESSAGE_FETCH_ERROR,
-      toast: true,
-      targetId: id,
-    });
-
-    return null;
-  }
-};
+export const getMemberById = (id: string): Promise<MemberResponseDto> =>
+  apiClient.get<MemberResponseDto>(`members/${id}`);
 
 /**
  * Create new member
  */
-export const createMember = async (
+export const createMember = (
   data: MemberCreationDto
-): Promise<MemberDto | null> => {
-  const eventType = ApiEventType.CREATE_MEMBER;
-
-  try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-    });
-
-    const response = await apiClient.post<MemberResponseDto>('members', data);
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.COMPLETED,
-      message: Messages.MESSAGE_MEMBER_CREATED,
-      toast: true,
-    });
-
-    return response.data;
-  } catch (error) {
-    const errorMessage =
-      (error as { message?: string })?.message || Messages.MESSAGE_GENERIC_ERROR;
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_GENERIC_ERROR,
-      message: errorMessage,
-      toast: true,
-    });
-
-    return null;
-  }
-};
+): Promise<MemberResponseDto> =>
+  apiClient.post<MemberResponseDto>('members', data);
 
 /**
  * Create cell member
  */
-export const createCellMember = async (
+export const createCellMember = (
   data: MemberCreationDto
-): Promise<MemberDto | null> => {
-  const eventType = ApiEventType.CREATE_MEMBER;
-
-  try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-    });
-
-    const response = await apiClient.post<MemberResponseDto>(
-      'members/cell-member',
-      data
-    );
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.COMPLETED,
-      message: Messages.MESSAGE_MEMBER_CREATED,
-      toast: true,
-    });
-
-    return response.data;
-  } catch (error) {
-    const errorMessage =
-      (error as { message?: string })?.message || Messages.MESSAGE_GENERIC_ERROR;
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_GENERIC_ERROR,
-      message: errorMessage,
-      toast: true,
-    });
-
-    return null;
-  }
-};
+): Promise<MemberResponseDto> =>
+  apiClient.post<MemberResponseDto>('members/cell-member', data);
 
 /**
  * Update existing member
  */
-export const updateMember = async (
+export const updateMember = (
   id: string,
   data: Partial<MemberCreationDto>
-): Promise<MemberDto | null> => {
-  const eventType = ApiEventType.UPDATE_MEMBER;
-
-  try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-      targetId: id,
-    });
-
-    const response = await apiClient.patch<MemberResponseDto>(
-      `members/${id}`,
-      data
-    );
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.COMPLETED,
-      message: Messages.MESSAGE_MEMBER_UPDATED,
-      toast: true,
-      targetId: id,
-    });
-
-    return response.data;
-  } catch (error) {
-    const errorMessage =
-      (error as { message?: string })?.message || Messages.MESSAGE_GENERIC_ERROR;
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_GENERIC_ERROR,
-      message: errorMessage,
-      toast: true,
-      targetId: id,
-    });
-
-    return null;
-  }
-};
+): Promise<MemberResponseDto> =>
+  apiClient.patch<MemberResponseDto>(`members/${id}`, data);
 
 /**
  * Delete member
  */
-export const deleteMember = async (id: string): Promise<boolean> => {
-  const eventType = ApiEventType.DELETE_MEMBER;
-
-  try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-      targetId: id,
-    });
-
-    await apiClient.delete(`members/${id}`);
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.COMPLETED,
-      message: Messages.MESSAGE_MEMBER_DELETED,
-      toast: true,
-      targetId: id,
-    });
-
-    return true;
-  } catch (error) {
-    const errorMessage =
-      (error as { message?: string })?.message || Messages.MESSAGE_GENERIC_ERROR;
-
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_GENERIC_ERROR,
-      message: errorMessage,
-      toast: true,
-      targetId: id,
-    });
-
-    return false;
-  }
-};
+export const deleteMember = (id: string): Promise<unknown> =>
+  apiClient.delete(`members/${id}`);
 
 // Export as service object
 export const memberService = {
