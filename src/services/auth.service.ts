@@ -6,7 +6,6 @@
  */
 
 import { apiClient } from './api-client';
-import { useApiEventStore, ApiEventType, ApiEventStatus } from '@/stores/event.store';
 import { useUserStore } from '@/stores/user.store';
 import { encrypt } from '@/core/crypto';
 import { CONST } from '@/core/constants';
@@ -18,23 +17,13 @@ import {
   LoginCredentials,
 } from '@/models/auth.types';
 
-const { sendEvent } = useApiEventStore.getState();
-
 /**
  * Authenticate user with email and password
  */
 export const authenticate = async (
   credentials: LoginCredentials
 ): Promise<boolean> => {
-  const eventType = ApiEventType.AUTHENTICATION;
-
   try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-    });
-
     // Encrypt password before sending
     const encryptedPassword = await encrypt(credentials.password.trim());
 
@@ -47,13 +36,8 @@ export const authenticate = async (
       // Note: Tokens are stored as httpOnly cookies by the backend
       // No need to store in localStorage or Zustand store
 
-      sendEvent({
-        type: eventType,
-        status: ApiEventStatus.COMPLETED,
-      });
-
       // Fetch user info (user data still stored in localStorage for quick hydration)
-      await getSelf(false);
+      await getSelf();
 
       return true;
     }
@@ -63,31 +47,16 @@ export const authenticate = async (
     const errorMessage =
       (error as { message?: string })?.message || Messages.MESSAGE_INVALID_CREDENTIALS;
 
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_AUTHENTICATION_FAILED_ERROR,
-      message: errorMessage,
-      toast: true,
-    });
-
-    return false;
+    // Re-throw so the calling component (e.g. useMutation onError) can handle it
+    throw new Error(errorMessage);
   }
 };
 
 /**
  * Get authenticated user information
  */
-export const getSelf = async (showToast: boolean = true): Promise<boolean> => {
-  const eventType = ApiEventType.GET_AUTHENTICATED_SELF;
-
+export const getSelf = async (): Promise<boolean> => {
   try {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.IN_PROGRESS,
-      spinner: true,
-    });
-
     const response = await apiClient.get<SelfInformationResponseDto>('self');
 
     if (response.data) {
@@ -98,26 +67,11 @@ export const getSelf = async (showToast: boolean = true): Promise<boolean> => {
       const userStore = useUserStore.getState();
       userStore.setUserInfo(response.data);
 
-      sendEvent({
-        type: eventType,
-        status: ApiEventStatus.COMPLETED,
-        toast: showToast,
-        message: showToast ? Messages.MESSAGE_LOGIN_SUCCESSFUL : undefined,
-      });
-
       return true;
     }
 
     return false;
-  } catch (error) {
-    sendEvent({
-      type: eventType,
-      status: ApiEventStatus.ERROR,
-      title: Messages.HEADER_GENERIC_ERROR,
-      message: Messages.MESSAGE_GENERIC_ERROR,
-      toast: true,
-    });
-
+  } catch {
     return false;
   }
 };

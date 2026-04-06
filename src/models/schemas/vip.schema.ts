@@ -3,9 +3,7 @@ import { z } from 'zod';
 export const vipFormSchema = z.object({
     familyName: z.string().min(1, 'Family name is required'),
     firstName: z.string().min(1, 'First name is required'),
-    birthdate: z.union([z.date(), z.null()]).refine((val) => val !== null, {
-        message: 'Birthdate is required',
-    }),
+    birthdate: z.date({ message: 'Birthdate is required' }),
     socialMedia: z.array(z.object({
         platform: z.string().min(1, 'Platform is required'),
         handle: z.string().min(1, 'Handle is required')

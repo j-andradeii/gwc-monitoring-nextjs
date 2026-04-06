@@ -1,18 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { simpleContactSchema, type SimpleContactFormData } from '@/models/schemas/contact.schema';
 import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
-import * as inquiryService from "@/services/inquiry.service";
-import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 import { CONTACT_INFO } from '@/data/contact';
+import { useMutation } from '@tanstack/react-query';
+import { apiClient } from '@/services/api-client';
 
 export const ContactSection: React.FC = () => {
-
-  const apiEventStore = useApiEventStore();
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -26,67 +24,19 @@ export const ContactSection: React.FC = () => {
     }
   });
 
+  const { handleSubmit, reset } = methods;
 
-  useEffect(() => {
-    const cleanup = getApiEvents();
-    return () => {
-      cleanup();
-    };
-  }, []);
+  const submitQuery = useMutation({
+    mutationFn: (data: SimpleContactFormData) =>
+      apiClient.post('/api/inquiry', data),
+    onSuccess: () => {
+      reset();
+      setSubmitted(true);
+    },
+  });
 
-  const getApiEvents = () => {
-    const unsubscribe = apiEventStore.subscribe((event) => {
-      if (!event) return;
-      // Use the factory pattern to handle different event statuses
-      const eventStatusHandleMap = createEventStatusHandleMap(event);
-      const handleEvent = eventStatusHandleMap[event.status] || (() => { });
-      handleEvent();
-    });
-    return () => {
-      unsubscribe();
-    };
-  }
-
-  const createEventStatusHandleMap = (
-    apiEvent: ApiEvent,
-  ): { [key in ApiEventStatus]?: () => void } => {
-    return {
-      [ApiEventStatus.COMPLETED]: () => {
-        const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
-          [ApiEventType.SUBMIT_QUERY]: async () => {
-            reset();
-            setSubmitted(true);
-          },
-        };
-        const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
-        handleEventType();
-      },
-      [ApiEventStatus.ERROR]: () => {
-        const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
-          [ApiEventType.SUBMIT_QUERY]: async () => {
-          },
-        };
-        const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
-        handleEventType();
-      },
-      [ApiEventStatus.IN_PROGRESS]: () => {
-      },
-      [ApiEventStatus.DEFAULT]: () => {
-      }
-    };
-  };
-
-  const {
-    handleSubmit,
-    reset,
-    formState: { isSubmitting }
-  } = methods;
-
-  const onSubmit = async (data: SimpleContactFormData) => {
-    // Simulate API call
-    // await new Promise((resolve) => setTimeout(resolve, 1500));
-    await inquiryService.submitQuery(data);
-
+  const onSubmit = (data: SimpleContactFormData) => {
+    submitQuery.mutate(data);
   };
 
   return (
@@ -140,7 +90,7 @@ export const ContactSection: React.FC = () => {
                       placeholder=" "
                       isFloating
                       className="input-group"
-                      displayDisabled={isSubmitting}
+                      displayDisabled={submitQuery.isPending}
                     />
 
                     <FormInput
@@ -149,7 +99,7 @@ export const ContactSection: React.FC = () => {
                       placeholder=" "
                       isFloating
                       className="input-group"
-                      displayDisabled={isSubmitting}
+                      displayDisabled={submitQuery.isPending}
                     />
 
                     <FormTextarea
@@ -159,11 +109,11 @@ export const ContactSection: React.FC = () => {
                       rows={3}
                       isFloating
                       className="input-group"
-                      displayDisabled={isSubmitting}
+                      displayDisabled={submitQuery.isPending}
                     />
 
-                    <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                      {isSubmitting ? (
+                    <button type="submit" className="submit-btn" disabled={submitQuery.isPending}>
+                      {submitQuery.isPending ? (
                         <i className="pi pi-spin pi-spinner"></i>
                       ) : (
                         <>

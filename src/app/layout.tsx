@@ -5,8 +5,8 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import './globals.css';
 
-
 import { siteMetadata } from '@/data/site-metadata';
+import { QueryProvider } from '@/components/providers/QueryProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -74,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

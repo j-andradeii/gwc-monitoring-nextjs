@@ -1,16 +1,15 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { gatewayPledgeSchema, type GatewayPledgeFormData } from '@/models/schemas/contact.schema';
 import { FormInput } from '@/components/forms/FormInput';
-import * as inquiryService from '@/services/inquiry.service';
-import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
 import { CONTACT_INFO } from '@/data/contact';
+import { useMutation } from '@tanstack/react-query';
+import { apiClient } from '@/services/api-client';
 
 export const GatewayPledgeSection: React.FC = () => {
-  const apiEventStore = useApiEventStore();
   const [submitted, setSubmitted] = useState(false);
 
   const methods = useForm<GatewayPledgeFormData>({
@@ -24,53 +23,19 @@ export const GatewayPledgeSection: React.FC = () => {
     },
   });
 
-  useEffect(() => {
-    const cleanup = getApiEvents();
-    return () => {
-      cleanup();
-    };
-  }, []);
+  const { handleSubmit, reset } = methods;
 
-  const getApiEvents = () => {
-    const unsubscribe = apiEventStore.subscribe((event) => {
-      if (!event) return;
-      const eventStatusHandleMap = createEventStatusHandleMap(event);
-      const handleEvent = eventStatusHandleMap[event.status] || (() => { });
-      handleEvent();
-    });
-    return () => {
-      unsubscribe();
-    };
-  };
+  const submitGatewayPledge = useMutation({
+    mutationFn: (data: GatewayPledgeFormData) =>
+      apiClient.post('/api/inquiry/pledge', data),
+    onSuccess: () => {
+      reset();
+      setSubmitted(true);
+    },
+  });
 
-  const createEventStatusHandleMap = (
-    apiEvent: ApiEvent,
-  ): { [key in ApiEventStatus]?: () => void } => {
-    return {
-      [ApiEventStatus.COMPLETED]: () => {
-        const eventTypeHandleMap: { [key in ApiEventType]?: () => void } = {
-          [ApiEventType.SUBMIT_GATEWAY_PLEDGE]: async () => {
-            reset();
-            setSubmitted(true);
-          },
-        };
-        const handleEventType = eventTypeHandleMap[apiEvent.type] || (() => { });
-        handleEventType();
-      },
-      [ApiEventStatus.ERROR]: () => { },
-      [ApiEventStatus.IN_PROGRESS]: () => { },
-      [ApiEventStatus.DEFAULT]: () => { },
-    };
-  };
-
-  const {
-    handleSubmit,
-    reset,
-    formState: { isSubmitting },
-  } = methods;
-
-  const onSubmit = async (data: GatewayPledgeFormData) => {
-    await inquiryService.submitGatewayPledge(data);
+  const onSubmit = (data: GatewayPledgeFormData) => {
+    submitGatewayPledge.mutate(data);
   };
 
   return (
@@ -129,7 +94,7 @@ export const GatewayPledgeSection: React.FC = () => {
                       placeholder=" "
                       isFloating
                       className="input-group"
-                      displayDisabled={isSubmitting}
+                      displayDisabled={submitGatewayPledge.isPending}
                     />
 
                     <FormInput
@@ -138,7 +103,7 @@ export const GatewayPledgeSection: React.FC = () => {
                       placeholder=" "
                       isFloating
                       className="input-group"
-                      displayDisabled={isSubmitting}
+                      displayDisabled={submitGatewayPledge.isPending}
                     />
 
                     <FormInput
@@ -148,7 +113,7 @@ export const GatewayPledgeSection: React.FC = () => {
                       isFloating
                       enableAllowNumbersSpacesPlusDash
                       className="input-group"
-                      displayDisabled={isSubmitting}
+                      displayDisabled={submitGatewayPledge.isPending}
                     />
 
                     <FormInput
@@ -158,11 +123,11 @@ export const GatewayPledgeSection: React.FC = () => {
                       isFloating
                       enableOnlyInteger
                       className="input-group"
-                      displayDisabled={isSubmitting}
+                      displayDisabled={submitGatewayPledge.isPending}
                     />
 
-                    <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                      {isSubmitting ? (
+                    <button type="submit" className="submit-btn" disabled={submitGatewayPledge.isPending}>
+                      {submitGatewayPledge.isPending ? (
                         <i className="pi pi-spin pi-spinner"></i>
                       ) : (
                         <>

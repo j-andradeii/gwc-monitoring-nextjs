@@ -2160,7 +2160,7 @@ The Holy Spirit not only comes with signs but also gives people the ability and 
     date: '2026-03-29',
     duration: '45 min',
     series: 'Vision',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'When God Redirects Your Path',
     description: `**INTRODUCTION**
@@ -2301,6 +2301,146 @@ The ultimate goal of the vision is multiplication—reaching families, communiti
       'Praise invites breakthrough and leads to salvation.'
     ],
     relatedSermons: ['18', '17']
+  },
+  {
+    id: '20',
+    slug: 'signs-of-our-own-resurrection-life',
+    title: 'Signs of Our Own Resurrection Life',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-04-05',
+    duration: '45 min',
+    series: 'Vision',
+    isFeatured: true,
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    excerpt: 'Because Jesus rose from the dead, we can experience our own resurrection life—a transformed life marked by humility, gratitude, and unity with others.',
+    description: `**INTRODUCTION**
+
+The message of the gospel is both plain and profound. It is the good story that brings hope, salvation, and new life to all who believe. The apostle Paul reminds us in 1 Corinthians 15:1–9 of the foundation of our faith—the death, burial, and resurrection of Jesus Christ.
+Because Jesus rose from the dead, we can experience our own resurrection life—a transformed life marked by humility, gratitude, and unity with others.
+
+---
+
+**WHAT IS THE GOSPEL?**
+
+The gospel is simply the good story of salvation through Jesus Christ—the story of how God makes a way for us to be reconciled to Him.
+The word gospel comes from the Old English term gōdspel, which literally means “good story” (gōd meaning good and spel meaning story, message, or news).
+This Old English word was used to translate the Latin word evangelium, which comes from the Koine Greek word euangelion (εὐαγγέλιον), also meaning “good news.” In the New Testament, it refers to the joyful announcement of salvation, the resurrection of Jesus Christ, and the coming Kingdom of God.
+At its heart, the gospel can be expressed in FIVE SIMPLE POWERFUL WORDS:
+**JESUS. DIED. AND. ROSE. AGAIN**.
+
+---
+
+**THE IMPORTANCE OF THE GOSPEL**
+
+These points summarize why the gospel is central to our faith and daily living:
+**1. Christ died for our sins, though He Himself committed no sin** (Hebrews 7:27).
+* Jesus’ sacrifice was once and for all, bringing forgiveness and reconciliation with God.
+
+**2. He was buried** (1 Corinthians 15:4)
+* His burial confirms the reality of His death.
+
+**3. He was raised from the dead** (Romans 4:25; Romans 6:4)
+* The resurrection demonstrates God’s power and authority to give us new life.
+* Jesus is the first fruit of many—His resurrection opens the way for our own resurrection life.
+* Paul was the last of all apostles (1 Corinthians 15:8)
+- Even the last person called by God can participate in this gospel.
+- The gospel is for everyone, regardless of timing, status, or position.
+
+---
+
+**4 SIGNS THAT WE HAVE OUR OWN RESURRECTION LIFE**
+
+According to Paul’s life and testimony, there are clear signs that a person is living in the power of the resurrection. These signs reflect a transformed heart and a life centered on Christ.
+
+**1. Exhibited No Pride**
+1 Corinthians 15:9
+Paul exhibited no pride. This is one of the signs that you have your own resurrection life.
+He openly admitted his unworthiness and refused to compete with his peers. Instead, he recognized his own weakness and depended fully on God.
+Sometimes we may feel overlooked or unrecognized for our contributions, but our goal is not earthly recognition. Our goal is Christ-likeness and multiplication. Every good deed is recorded in heaven, and we have heavenly accountability.
+**Key Truth:** Remove pride and entitlement from your thinking and heart.
+
+**2. A Genuine and Deep Appreciation for God’s Grace**
+1 Corinthians 15:10
+Paul deeply appreciated God's grace and understood that everything he accomplished was because of it.
+It is a serious matter to abuse God's grace. Instead, we are called to respond to grace with gratitude.
+God’s theology is grace, and our response should always be gratitude. Paul attributed everything he had in his life to God's grace.
+You can recognize a person who has found favor with God when they reflect His grace in their actions and relationships.
+**Key Truth:** A grateful heart is evidence of a transformed life.
+
+**3. A Humble Admission of Our Accomplishments**
+1 Corinthians 15:10
+Paul did not deny that he accomplished many things for the Lord, but he approached those accomplishments with humility.
+His life was an open book. He acknowledged what God had done through him, yet he never sought personal recognition.
+Instead, he was quick to point people to the true source of his accomplishments—the Lord.
+**Key Truth:** Give glory to God for every achievement.
+
+**4. Honest Appreciation for Others**
+1 Corinthians 15:11
+Paul emphasized his honest appreciation for others and valued the work of fellow believers.
+A true sign of resurrection life is the ability to honor others sincerely, work together, and maintain unity in the body of Christ.
+We are called to consider others better than ourselves and to serve with humility, unity, and harmony.
+**Key Truth:** Sincere recognition and cooperation reflect the heart of Christ.
+
+---
+
+**CONCLUSION**
+
+The resurrection of Jesus is not only a historical event—it is a living reality that transforms how we think, serve, and relate to others.
+When we truly believe the gospel, it changes our hearts. We become people who walk in humility, appreciate God’s grace, honor others, and live for Christ.
+Resurrection life is visible not only in what we believe, but in how we live.`,
+    tags: ['Resurrection', 'Gospel', 'Humility', 'Grace', 'Gratitude', 'Unity'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/signs_of_ressurection.jpg',
+    scriptures: [
+      {
+        verse: '1 Corinthians 15:1-9',
+        text: 'Moreover, brethren, I declare to you the gospel which I preached to you, which also you received and in which you stand, by which also you are saved, if you hold fast that word which I preached to you—unless you believed in vain. For I delivered to you first of all that which I also received: that Christ died for our sins according to the Scriptures, and that He was buried, and that He rose again the third day according to the Scriptures, and that He was seen by Cephas, then by the twelve. After that He was seen by over five hundred brethren at once, of whom the greater part remain to the present, but some have fallen asleep. After that He was seen by James, then by all the apostles. Then last of all He was seen by me also, as by one born out of due time. For I am the least of the apostles, who am not worthy to be called an apostle, because I persecuted the church of God.'
+      },
+      {
+        verse: 'Romans 1:16',
+        text: 'For I am not ashamed of the gospel of Christ, for it is the power of God to salvation for everyone who believes, for the Jew first and also for the Greek.'
+      },
+      {
+        verse: 'Romans 4:25',
+        text: 'who was delivered up because of our offenses, and was raised because of our justification.'
+      },
+      {
+        verse: 'Romans 6:4',
+        text: 'Therefore we were buried with Him through baptism into death, that just as Christ was raised from the dead by the glory of the Father, even so we also should walk in newness of life.'
+      },
+      {
+        verse: 'Hebrews 7:27',
+        text: 'who does not need daily, as those high priests, to offer up sacrifices, first for His own sins and then for the people’s, for this He did once for all when He offered up Himself.'
+      },
+      {
+        verse: '1 Corinthians 15:4',
+        text: 'and that He was buried, and that He rose again the third day according to the Scriptures,'
+      },
+      {
+        verse: '1 Corinthians 15:8',
+        text: 'Then last of all He was seen by me also, as by one born out of due time.'
+      },
+      {
+        verse: '1 Corinthians 15:9',
+        text: 'For I am the least of the apostles, who am not worthy to be called an apostle, because I persecuted the church of God.'
+      },
+      {
+        verse: '1 Corinthians 15:10',
+        text: 'But by the grace of God I am what I am, and His grace toward me was not in vain; but I labored more abundantly than they all, yet not I, but the grace of God which was with me.'
+      },
+      {
+        verse: '1 Corinthians 15:11',
+        text: 'Therefore, whether it was I or they, so we preach and so you believed.'
+      }
+    ],
+    keyPoints: [
+      'The gospel is the good story that Jesus died and rose again.',
+      'The resurrection of Jesus gives us new life and hope.',
+      'True resurrection life is marked by humility and gratitude.',
+      "Every accomplishment is made possible by God's grace.",
+      'Honest appreciation for others reflects a Christ-like life.'
+    ],
+    relatedSermons: ['19', '18']
   }
 ];
 

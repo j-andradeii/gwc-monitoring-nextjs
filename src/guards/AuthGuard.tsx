@@ -66,7 +66,7 @@ export function AuthGuard({
       // This validates the httpOnly cookie on the server side
       if (!isAuthenticated) {
         setLoading(true);
-        const success = await authService.getSelf(false);
+        const success = await authService.getSelf();
         setLoading(false);
 
         if (!success) {

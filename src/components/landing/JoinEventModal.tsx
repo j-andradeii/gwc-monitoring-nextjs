@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormInput } from '@/components/forms/FormInput';
 import { eventContactSchema, type EventContactFormData } from '@/models/schemas/contact.schema';
-import * as inquiryService from "@/services/inquiry.service";
-import { ApiEvent, ApiEventStatus, ApiEventType, useApiEventStore } from '@/stores';
+import { useMutation } from '@tanstack/react-query';
+import { apiClient } from '@/services/api-client';
 
 interface Props {
     isOpen: boolean;
@@ -16,11 +16,6 @@ interface Props {
 }
 
 export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props) {
-    const apiEventStore = useApiEventStore();
-    const [submitted, setSubmitted] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-
     const methods = useForm<EventContactFormData>({
         resolver: zodResolver(eventContactSchema),
         mode: 'onChange',
@@ -37,13 +32,20 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
 
     const { handleSubmit, reset } = methods;
 
+    const submitEventInquiry = useMutation({
+        mutationFn: (data: EventContactFormData) =>
+            apiClient.post(`/api/event/${eventSlug}`, data),
+        onSuccess: () => {
+            reset();
+        },
+    });
+
     // Prevent body scroll when modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
             // Reset state when opening
-            setSubmitted(false);
-            setError(null);
+            submitEventInquiry.reset();
             reset({
                 name: '',
                 email: '',
@@ -59,63 +61,11 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
         return () => {
             document.body.style.overflow = 'auto';
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen, reset]);
 
-    // Event Listener for API responses
-    useEffect(() => {
-        const cleanup = getApiEvents();
-        return () => {
-            cleanup();
-        };
-    }, []);
-
-    function getApiEvents() {
-        const unsubscribe = apiEventStore.subscribe((event) => {
-            if (!event) return;
-
-            const eventStatusHandleMap = createEventStatusHandleMap(event);
-            const handleEvent = eventStatusHandleMap[event.status] || (() => { });
-            handleEvent();
-        });
-        return () => {
-            unsubscribe();
-        };
-    }
-
-    function createEventStatusHandleMap(
-        apiEvent: ApiEvent,
-    ): { [key in ApiEventStatus]?: () => void } {
-        return {
-            [ApiEventStatus.COMPLETED]: () => {
-                if (apiEvent.type === ApiEventType.SUBMIT_EVENT_INQUIRY) {
-                    setIsSubmitting(false);
-                    setSubmitted(true);
-                    reset();
-                }
-            },
-            [ApiEventStatus.ERROR]: () => {
-                if (apiEvent.type === ApiEventType.SUBMIT_EVENT_INQUIRY) {
-                    setIsSubmitting(false);
-                    setSubmitted(true); // Following ConnectFab pattern
-                    reset();
-                }
-            },
-            [ApiEventStatus.IN_PROGRESS]: () => {
-            },
-            [ApiEventStatus.DEFAULT]: () => {
-            }
-        };
-    };
-
-    const onSubmit = async (data: EventContactFormData) => {
-        setIsSubmitting(true);
-        setError(null);
-        await inquiryService.submitEventInquiry(data, eventSlug);
-    };
-
-    const handleReset = () => {
-        setSubmitted(false);
-        reset();
+    const onSubmit = (data: EventContactFormData) => {
+        submitEventInquiry.mutate(data);
     };
 
     if (!isOpen) return null;
@@ -134,7 +84,7 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
                     <div className="connect-modal-left-content">
                         <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">JOIN EVENT</h2>
                         <p className="text-sm md:text-lg opacity-90">
-                            We're excited to have you join us for <strong>{eventTitle}</strong>. Please fill out the form to register.
+                            We&apos;re excited to have you join us for <strong>{eventTitle}</strong>. Please fill out the form to register.
                         </p>
                     </div>
                 </div>
@@ -146,22 +96,22 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
                         <h3 className="text-xl md:text-2xl font-bold text-navy-900 mb-2 md:mb-4 !mt-1" style={{ color: 'var(--color-navy)' }}>ENTER YOUR DETAILS</h3>
                     </div>
 
-                    {submitted ? (
+                    {submitEventInquiry.isSuccess ? (
                         <div className="contact-success-state">
                             <div className="success-checkmark">
                                 <i className="pi pi-check"></i>
                             </div>
                             <h3>Registration Sent!</h3>
-                            <p>We'll look forward to seeing you there.</p>
+                            <p>We&apos;ll look forward to seeing you there.</p>
                             <button onClick={onClose} className="success-reset">
                                 Close <i className="pi pi-times"></i>
                             </button>
                         </div>
                     ) : (
                         <div>
-                            {error && (
+                            {submitEventInquiry.isError && (
                                 <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
-                                    {error}
+                                    Something went wrong. Please try again.
                                 </div>
                             )}
 
@@ -194,8 +144,8 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
                                         />
                                     </div>
 
-                                    <button type="submit" className="connect-submit-btn mt-4" disabled={isSubmitting}>
-                                        {isSubmitting ? (
+                                    <button type="submit" className="connect-submit-btn mt-4" disabled={submitEventInquiry.isPending}>
+                                        {submitEventInquiry.isPending ? (
                                             <i className="pi pi-spin pi-spinner"></i>
                                         ) : (
                                             <>

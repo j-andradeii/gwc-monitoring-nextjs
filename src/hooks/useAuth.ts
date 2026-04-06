@@ -56,7 +56,7 @@ export const useAuth = () => {
    * Refresh user data
    */
   const refreshUserData = useCallback(async (): Promise<boolean> => {
-    return await authService.getSelf(false);
+    return await authService.getSelf();
   }, []);
 
   /**
