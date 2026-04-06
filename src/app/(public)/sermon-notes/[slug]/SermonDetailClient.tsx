@@ -540,7 +540,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                           <i className="pi pi-play-circle" style={{ color: 'var(--primary-gold-accent)', fontSize: '18px' }} />
                           <div style={{ flex: 1, minWidth: 0 }}>
                             <div style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                              {s.title}
+                              {s.title.length > 25 ? s.title.substring(0, 25) + '...' : s.title}
                             </div>
                             <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
                               {s.speaker}
@@ -608,7 +608,7 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
                               overflow: 'hidden',
                             }}
                           >
-                            {s.title}
+                            {s.title.length > 25 ? s.title.substring(0, 25) + '...' : s.title}
                           </div>
                           <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
                             {s.speaker}
