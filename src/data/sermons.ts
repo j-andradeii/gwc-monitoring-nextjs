@@ -2311,7 +2311,7 @@ The ultimate goal of the vision is multiplication—reaching families, communiti
     date: '2026-04-05',
     duration: '45 min',
     series: 'Vision',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     excerpt: 'Because Jesus rose from the dead, we can experience our own resurrection life—a transformed life marked by humility, gratitude, and unity with others.',
     description: `**INTRODUCTION**
@@ -2441,6 +2441,147 @@ Resurrection life is visible not only in what we believe, but in how we live.`,
       'Honest appreciation for others reflects a Christ-like life.'
     ],
     relatedSermons: ['19', '18']
+  },
+  {
+    id: '21',
+    slug: 'gods-blessings-for-true-worshippers',
+    title: "God's Blessings for True Worshippers",
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-04-13',
+    duration: '45 min',
+    series: 'Worship',
+    isFeatured: true,
+    seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
+    excerpt: 'True worship begins with a heart of reverence for God and His Word. When we honor Him with our first and our best in sincere devotion, God responds with His presence, guidance, peace, joy, and answered prayers.',
+    description: `**GOD'S BLESSINGS FOR TRUE WORSHIPPERS**
+
+Key Verse: Nehemiah 8:5–6
+
+---
+
+**INTRODUCTION**
+
+True worship begins with a heart of reverence for God and His Word. In the time of Nehemiah, when the Book of the Law was opened, the people stood up in honor and worship. This reminds us that worship is not just an action, it is an attitude of respect, humility, and devotion to the Lord.
+It should be our habit to give reverence when reading and hearing the Word of God, recognizing His presence among us.
+
+---
+
+**A BRIEF HISTORY OF GOD'S PRESENCE**
+
+From the very beginning, God designed humanity to live in His presence. The Garden of Eden was described as a delightful place. The word Eden means a delightful spot - a special place made beautiful because of the presence of God. It was more than a location; it was a home where God and man had fellowship.
+Even in the garden, there was already a foreshadowing of atonement. After Adam and Eve sinned, God covered their shame by providing garments made from animal skins. This act pointed to the future sacrifice that would restore humanity to God.
+The first Adam failed, but the second Adam, Jesus Christ came to undo what the first Adam had done. Through Jesus, God's original design for humanity is being restored.
+
+---
+
+**AN IMPORTANT PRINCIPLE: GOD CLAIMS THE FIRST**
+
+Throughout Scripture, we see a consistent principle: God always claims the first. Our attitude matters in how we give our first to the Lord.
+Abel offered his first and best to God, and the Lord was pleased with his offering. In the same way, when we offer the first day of the week to the Lord in worship, we honor Him above all else. When the first is blessed, the rest that follows is also blessed.
+We are reminded not to give God our leftovers including our time, energy, and attention. Cain offered what he wanted rather than what honored God, and his offering was not pleasing to the Lord. True worship requires sincerity, priority, and wholehearted devotion.
+
+---
+
+**GOD'S BLESSINGS FOR TRUE WORSHIPPERS**
+
+God responds to sincere worship with His presence and favor. The Bible reveals several blessings that belong to those who worship Him in spirit and truth.
+
+**1. God Promises to Be with His Worshippers**
+(Matthew 18:20; Revelation 3:20)
+One of the greatest blessings of worship is the presence of God. When believers gather in His name, He promises to be among them. He also desires a close and personal relationship with each of us, inviting us to fellowship with Him daily.
+
+**2. God Guides and Surrounds Them with His Glory**
+(Exodus 40:35; 2 Chronicles 7:1; 1 Peter 4:14)
+When the glory of God comes down, blessings follow. Throughout Scripture, God's presence filled places of worship and guided His people. His glory brings direction, protection, and assurance that He is with us.
+Blessings happen when the glory of God is present in our lives.
+
+**3. God Showers Them with Blessings and Peace**
+(Ezekiel 34:26; Psalm 29:11)
+God delights in blessing His people. Among the greatest blessings He gives is peace. True peace is not merely the absence of trouble, it is found in a Person, Jesus Christ.
+Without God, there is no lasting peace. But when we walk closely with Him, His peace guards our hearts and minds.
+
+**4. God Gives Them Overflowing Joy**
+(Psalm 122:1; John 15:11)
+True worship brings joy that goes beyond circumstances. The joy of the Lord strengthens us in every season of life. It renews our spirit, lifts our hearts, and reminds us of God's goodness.
+We need the joy that comes from the Lord, because the joy of the Lord is our strength.
+
+**5. God Answers Their Prayers Offered in Faith**
+(Mark 11:24; James 5:15)
+God hears and responds to the prayers of sincere worshippers. When we pray with faith, trusting in His power and goodness, He answers according to His will. Scripture teaches that prayers offered in faith bring healing, restoration, and breakthrough.
+Faith-filled prayer connects us to the power of God.
+
+---
+
+**KEY TAKEAWAYS**
+
+* True worship begins with reverence for God and His Word. Our attitude in worship reflects our honor and respect for the Lord.
+* God designed us to live in His presence. What made Eden delightful was not the place itself, but the presence of God.
+* Jesus, the Second Adam, restored what was lost. Through His sacrifice, God's original design for humanity is being renewed.
+* God deserves our first and our best. When we prioritize Him especially with the first day of the week, we invite His blessing into the rest of our lives.
+* We should never give God our leftovers. True worship is wholehearted, sincere, and offered with the right heart.
+* God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers. These blessings flow from a life that honors Him.`,
+    tags: ['Worship', 'Blessing', 'Reverence', 'Prayer', 'Joy', 'Peace', 'Grace'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/true_worshipper.jpeg',
+    scriptures: [
+      {
+        verse: 'Nehemiah 8:5-6',
+        text: 'And Ezra opened the book in the sight of all the people, for he was standing above all the people; and when he opened it, all the people stood up. And Ezra blessed the Lord, the great God. Then all the people answered, "Amen, Amen!" while lifting up their hands. And they bowed their heads and worshiped the Lord with their faces to the ground.'
+      },
+      {
+        verse: 'Matthew 18:20',
+        text: 'For where two or three are gathered together in My name, I am there in the midst of them.'
+      },
+      {
+        verse: 'Revelation 3:20',
+        text: 'Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come in to him and dine with him, and he with Me.'
+      },
+      {
+        verse: 'Exodus 40:35',
+        text: 'And Moses was not able to enter the tabernacle of meeting, because the cloud rested above it, and the glory of the Lord filled the tabernacle.'
+      },
+      {
+        verse: '2 Chronicles 7:1',
+        text: 'When Solomon had finished praying, fire came down from heaven and consumed the burnt offering and the sacrifices; and the glory of the Lord filled the temple.'
+      },
+      {
+        verse: '1 Peter 4:14',
+        text: 'If you are reproached for the name of Christ, blessed are you, for the Spirit of glory and of God rests upon you. On their part He is blasphemed, but on your part He is glorified.'
+      },
+      {
+        verse: 'Ezekiel 34:26',
+        text: 'I will make them and the places all around My hill a blessing; and I will cause showers to come down in their season; there shall be showers of blessing.'
+      },
+      {
+        verse: 'Psalm 29:11',
+        text: 'The Lord will give strength to His people; The Lord will bless His people with peace.'
+      },
+      {
+        verse: 'Psalm 122:1',
+        text: "I was glad when they said to me, 'Let us go into the house of the Lord.'"
+      },
+      {
+        verse: 'John 15:11',
+        text: 'These things I have spoken to you, that My joy may remain in you, and that your joy may be full.'
+      },
+      {
+        verse: 'Mark 11:24',
+        text: 'Therefore I say to you, whatever things you ask when you pray, believe that you receive them, and you will have them.'
+      },
+      {
+        verse: 'James 5:15',
+        text: 'And the prayer of faith will save the sick, and the Lord will raise him up. And if he has committed sins, he will be forgiven.'
+      }
+    ],
+    keyPoints: [
+      'True worship begins with reverence for God and His Word',
+      'God designed us to live in His presence — Eden was delightful because of God',
+      'Jesus, the Second Adam, restored what was lost through the fall',
+      'God deserves our first and our best — when the first is blessed, the rest is blessed',
+      'We should never give God our leftovers — true worship is wholehearted',
+      'God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers'
+    ],
+    relatedSermons: ['20', '17'],
   }
 ];
 
