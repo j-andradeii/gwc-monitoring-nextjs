@@ -97,6 +97,9 @@
   --font-display: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-sans-serif: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-family-headings: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  /* Fraunces serif (sermon detail layout) */
+  --font-serif: var(--font-fraunces), 'Fraunces', Georgia, serif;
 }
 
 /* Dark Mode */

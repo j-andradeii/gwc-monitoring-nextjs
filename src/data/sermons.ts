@@ -29,6 +29,40 @@ export interface Sermon {
   isFeatured?: boolean;
   keyPoints?: string[];
   relatedSermons?: string[];
+
+  // NEW — optional progressive-enhancement fields for the redesigned layout.
+  // Existing sermons that lack these fields fall back to parsing `description` markdown.
+  seriesNumber?: number;
+  subtitle?: {
+    prefix: string;
+    italic: string;
+    suffix?: string;
+  };
+  keyVerse?: string;
+  sections?: Array<{
+    id?: string;
+    kicker?: string;
+    title: string;
+    paragraphs: string[];
+    callout?: string;
+    unnumbered?: boolean;
+    subItems?: Array<{
+      title: string;
+      ref?: string;
+      text: string;
+    }>;
+  }>;
+  blessings?: Array<{
+    title: string;
+    ref: string;
+    text: string;
+  }>;
+  keyTakeaways?: string[];
+  scriptureGroups?: Array<{
+    kicker?: string;
+    verse: string;
+    text: string;
+  }>;
 }
 
 export const sermons: Sermon[] = [
@@ -2295,10 +2329,178 @@ The ultimate goal of the vision is multiplication—reaching families, communiti
     ],
     keyPoints: [
       'God prepares you before He releases the vision.',
-      'Closed doors may be God’s protection or redirection.',
+      'Closed doors may be God\u2019s protection or redirection.',
       'Vision is confirmed when hearts are open to receive the message.',
-      'Opposition does not stop the vision—it strengthens faith.',
+      'Opposition does not stop the vision\u2014it strengthens faith.',
       'Praise invites breakthrough and leads to salvation.'
+    ],
+    keyTakeaways: [
+      'God prepares you before He releases the vision.',
+      'Closed doors may be God\u2019s protection or redirection.',
+      'Vision is confirmed when hearts are open to receive the message.',
+      'Opposition does not stop the vision\u2014it strengthens faith.',
+      'Praise invites breakthrough and leads to salvation.',
+    ],
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Vision Is God\u2019s Given Strategy',
+        unnumbered: true,
+        paragraphs: [
+          'Vision is not simply a good idea\u2014it is God\u2019s given picture and strategy for His people. It lays the foundation for growth, direction, and purpose. A divine vision does not rely on human strength or knowledge but on God\u2019s guidance and timing.',
+          'Sometimes, God will say \u201cno\u201d to our good ideas to lead us to His greater plan. Vision is often birthed in moments of prayer, obedience, and time alone with God, where He speaks clearly and redirects our path.',
+          'As believers, we are reminded that God is our greatest healer, guide, and source of strength, and His vision always leads to growth and transformation.',
+          '**Follow-up Verse:** Matthew 28:19',
+        ],
+      },
+      {
+        id: 'sec-preparation',
+        kicker: 'Principle 1 \u00b7 Preparation',
+        title: 'The Preparation of the Visionary',
+        paragraphs: [
+          '**Acts 16:1\u20135** \u2014 Before God gives a global vision, He often focuses on local faithfulness and leadership multiplication.',
+          'God prepares the person before releasing the vision. Faithfulness in small responsibilities builds the foundation for greater assignments.',
+        ],
+        subItems: [
+          {
+            title: 'The Selection of Timothy',
+            text: 'Paul identified a young leader with a good reputation. This represents the selection phase, where character and faithfulness are recognized before responsibility is given.',
+          },
+          {
+            title: 'The Circumcision of Timothy',
+            text: 'This decision was not about salvation but about removing barriers to reach others. Sometimes we must lay down personal rights or preferences for the sake of the mission.',
+          },
+          {
+            title: 'The Result',
+            text: 'The churches were strengthened in faith and grew in number daily.',
+          },
+        ],
+        callout: 'Vision always leads to growth.',
+      },
+      {
+        id: 'sec-redirection',
+        kicker: 'Principle 2 \u00b7 Redirection',
+        title: 'The Redirection of the Spirit',
+        paragraphs: [
+          '**Acts 16:6\u201310** \u2014 Sometimes God says \u201cno\u201d to a good idea to prepare you for a \u201cGod idea.\u201d',
+          'Closed doors are not failures\u2014they are often God\u2019s protection or preparation for something greater.',
+        ],
+        subItems: [
+          {
+            title: 'The Closed Doors',
+            text: 'The Holy Spirit prevented Paul and his team from preaching in certain regions. This shows that not every opportunity is God\u2019s assignment.',
+          },
+          {
+            title: 'The Macedonian Call',
+            text: 'Paul received a vision of a man asking for help. This moment revealed that vision is often born from the needs of others.',
+          },
+          {
+            title: 'The Immediate Response',
+            text: 'They responded immediately in obedience.',
+          },
+        ],
+        callout: 'True vision requires instant obedience.',
+      },
+      {
+        id: 'sec-firstfruits',
+        kicker: 'Principle 3 \u00b7 Confirmation',
+        title: 'The Firstfruits of the Vision',
+        paragraphs: [
+          '**Acts 16:11\u201315** \u2014 A God-given vision is validated when God opens the hearts of the people meant to hear it.',
+        ],
+        subItems: [
+          {
+            title: 'The Conversion of Lydia',
+            text: 'Paul expected to meet a man but instead encountered a woman. This reminds us that God\u2019s plans may unfold differently than expected.',
+          },
+          {
+            title: 'The Open Heart',
+            text: 'The Lord opened Lydia\u2019s heart to receive the message.',
+          },
+        ],
+        callout: 'Vision depends on God\u2019s sovereignty, not just our strategy.',
+      },
+      {
+        id: 'sec-conflict',
+        kicker: 'Principle 4 \u00b7 Conflict',
+        title: 'The Conflict of the Vision',
+        paragraphs: [
+          '**Acts 16:16\u201324** \u2014 A God-given vision will always be challenged by the enemy.',
+          'Opposition is often a sign that the vision is moving forward and disrupting the status quo.',
+        ],
+        subItems: [
+          {
+            title: 'The Spirit of Divination',
+            text: 'A slave girl mocked the mission using religious-sounding words, showing how deception can oppose truth.',
+          },
+          {
+            title: 'The Cost of Deliverance',
+            text: 'When Paul cast out the spirit, the girl\u2019s owners lost profit and attacked the missionaries.',
+          },
+          {
+            title: 'The Inner Prison',
+            text: 'Paul and Silas were beaten and imprisoned. Vision is often tested in difficult seasons.',
+          },
+        ],
+        callout: 'If you aren\u2019t facing opposition, you might not be moving forward in God\u2019s vision.',
+      },
+      {
+        id: 'sec-breakthrough',
+        kicker: 'Principle 5 \u00b7 Breakthrough',
+        title: 'The Breakthrough of the Vision',
+        paragraphs: [
+          '**Acts 16:25\u201340** \u2014 Victory comes through praise and results in household salvation.',
+          'Breakthrough often happens in the darkest moments when faith and worship remain strong.',
+        ],
+        subItems: [
+          {
+            title: 'Midnight Worship',
+            text: 'Paul and Silas sang hymns in prison. Praise became the key that unlocked the supernatural.',
+          },
+          {
+            title: 'The Earthquake',
+            text: 'God shook the prison\u2019s foundations, bringing freedom not only to them but to others.',
+          },
+          {
+            title: 'The Jailer\u2019s Household',
+            text: 'The jailer and his entire family believed and were saved.',
+          },
+        ],
+        callout: 'The ultimate goal of the vision is multiplication\u2014reaching families, communities, and generations.',
+      },
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Principle 1 \u00b7 Preparation',
+        verse: 'Acts 16:1\u20135',
+        text: 'He came to Derbe and Lystra: and behold, a certain disciple was there, named Timothy, the son of a Jewess who believed; but his father was a Greek. The brothers who were at Lystra and Iconium gave a good testimony about him. Paul wanted to have him go out with him, and he took and circumcised him because of the Jews who were in those parts; for they all knew that his father was a Greek. As they went on their way through the cities, they delivered the decrees to them to keep which had been ordained by the apostles and elders who were at Jerusalem. So the assemblies were strengthened in the faith, and increased in number daily.',
+      },
+      {
+        kicker: 'Principle 2 \u00b7 Redirection',
+        verse: 'Acts 16:6\u201310',
+        text: 'When they had gone through the region of Phrygia and Galatia, they were forbidden by the Holy Spirit to speak the word in Asia. When they had come opposite Mysia, they tried to go into Bithynia, but the Spirit didn\u2019t allow them. Passing by Mysia, they came down to Troas. A vision appeared to Paul in the night. There was a man of Macedonia standing, begging him, and saying, \u201cCome over into Macedonia and help us.\u201d When he had seen the vision, immediately we sought to go out to Macedonia, concluding that the Lord had called us to preach the Good News to them.',
+      },
+      {
+        kicker: 'Principle 3 \u00b7 Confirmation',
+        verse: 'Acts 16:11\u201315',
+        text: 'Setting sail therefore from Troas, we made a straight course to Samothrace, and the day following to Neapolis; and from there to Philippi, which is a city of Macedonia, the foremost of the district, a Roman colony. We were staying some days in this city. On the Sabbath day we went outside of the city by a riverside, where we supposed there was a place of prayer, and we sat down, and spoke to the women who had come together. A certain woman named Lydia, a seller of purple, of the city of Thyatira, one who worshiped God, heard us; whose heart the Lord opened to listen to the things which were spoken by Paul. When she and her household were baptized, she begged us, saying, \u201cIf you have judged me to be faithful to the Lord, come into my house, and stay.\u201d So she persuaded us.',
+      },
+      {
+        kicker: 'Principle 4 \u00b7 Conflict',
+        verse: 'Acts 16:16\u201324',
+        text: 'As we were going to prayer, a certain girl having a spirit of divination met us, who brought her masters much gain by fortune telling. Following Paul and us, she cried out, \u201cThese men are servants of the Most High God, who proclaim to us a way of salvation!\u201d She was doing this for many days. But Paul, becoming greatly annoyed, turned and said to the spirit, \u201cI command you in the name of Jesus Christ to come out of her!\u201d It came out that very hour. But when her masters saw that the hope of their gain was gone, they seized Paul and Silas, and dragged them into the marketplace before the rulers. When they had brought them to the magistrates, they said, \u201cThese men, being Jews, are agitating our city, and advocate customs which it is not lawful for us to accept or to observe, being Romans.\u201d The multitude rose up together against them, and the magistrates tore their clothes from them, and commanded them to be beaten with rods. When they had laid many stripes on them, they threw them into prison, charging the jailer to keep them safely, who, having received such a command, threw them into the inner prison, and secured their feet in the stocks.',
+      },
+      {
+        kicker: 'Principle 5 \u00b7 Breakthrough',
+        verse: 'Acts 16:25\u201340',
+        text: 'But about midnight Paul and Silas were praying and singing hymns to God, and the prisoners were listening to them. Suddenly there was a great earthquake, so that the foundations of the prison were shaken; and immediately all the doors were opened, and everyone\u2019s bonds were loosened. The jailer, being roused out of sleep and seeing the prison doors open, drew his sword and was about to kill himself, supposing that the prisoners had escaped. But Paul cried with a loud voice, saying, \u201cDon\u2019t harm yourself, for we are all here!\u201d He called for lights, sprang in, fell down trembling before Paul and Silas, brought them out, and said, \u201cSirs, what must I do to be saved?\u201d They said, \u201cBelieve in the Lord Jesus Christ, and you will be saved, you and your household.\u201d They spoke the word of the Lord to him, and to all who were in his house. He took them the same hour of the night, and washed their stripes, and was immediately baptized, he and all his household. He brought them up into his house, and set food before them, and rejoiced greatly, with all his household, having believed in God. But when it was day, the magistrates sent the sergeants, saying, \u201cLet those men go.\u201d The jailer reported these words to Paul, saying, \u201cThe magistrates have sent to let you go; now therefore come out, and go in peace.\u201d But Paul said to them, \u201cThey have beaten us publicly, without a trial, men who are Romans, and have cast us into prison! Do they now release us secretly? No, most certainly, but let them come themselves and bring us out!\u201d The sergeants reported these words to the magistrates, and they were afraid when they heard that they were Romans, and they came and begged them. When they had brought them out, they asked them to depart from the city. They went out of the prison, and entered into Lydia\u2019s house. When they had seen the brothers, they encouraged them, and departed.',
+      },
+      {
+        kicker: 'Follow-up Verse',
+        verse: 'Matthew 28:19',
+        text: 'Go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,',
+      },
     ],
     relatedSermons: ['18', '17']
   },
@@ -2334,6 +2536,8 @@ At its heart, the gospel can be expressed in FIVE SIMPLE POWERFUL WORDS:
 **THE IMPORTANCE OF THE GOSPEL**
 
 These points summarize why the gospel is central to our faith and daily living:
+
+
 **1. Christ died for our sins, though He Himself committed no sin** (Hebrews 7:27).
 * Jesus’ sacrifice was once and for all, bringing forgiveness and reconciliation with God.
 
@@ -2582,6 +2786,134 @@ Faith-filled prayer connects us to the power of God.
       'God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers'
     ],
     relatedSermons: ['20', '17'],
+
+    // Redesigned layout opt-in fields (Variation A — Modern Reader)
+    seriesNumber: 7,
+    subtitle: {
+      prefix: "God's Blessings for",
+      italic: 'True',
+      suffix: 'Worshippers',
+    },
+    keyVerse: 'Nehemiah 8:5-6',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'The Heart of True Worship',
+        unnumbered: true,
+        paragraphs: [
+          'True worship begins with a heart of reverence for God and His Word. In the time of Nehemiah, when the Book of the Law was opened, the people stood up in honor and worship. This reminds us that worship is not just an action — it is an attitude of respect, humility, and devotion to the Lord.',
+          'It should be our habit to give reverence when reading and hearing the Word of God, recognizing His presence among us.',
+        ],
+      },
+      {
+        id: 'sec-history',
+        kicker: 'Context',
+        title: "A Brief History of God's Presence",
+        unnumbered: true,
+        paragraphs: [
+          "From the very beginning, God designed humanity to live in His presence. The Garden of Eden was described as a delightful place. The word Eden means a delightful spot — a special place made beautiful because of the presence of God. It was more than a location; it was a home where God and man had fellowship.",
+          'Even in the garden, there was already a foreshadowing of atonement. After Adam and Eve sinned, God covered their shame by providing garments made from animal skins. This act pointed to the future sacrifice that would restore humanity to God.',
+          "Through Jesus, God's original design for humanity is being restored.",
+        ],
+        callout: "The first Adam failed, but the second Adam — Jesus Christ — came to undo what the first Adam had done.",
+      },
+      {
+        id: 'sec-principle',
+        kicker: 'Principle',
+        title: 'God Claims the First',
+        paragraphs: [
+          'Throughout Scripture, we see a consistent principle: God always claims the first. Our attitude matters in how we give our first to the Lord.',
+          'Abel offered his first and best to God, and the Lord was pleased with his offering. In the same way, when we offer the first day of the week to the Lord in worship, we honor Him above all else. When the first is blessed, the rest that follows is also blessed.',
+          'We are reminded not to give God our leftovers — including our time, energy, and attention. Cain offered what he wanted rather than what honored God, and his offering was not pleasing to the Lord. True worship requires sincerity, priority, and wholehearted devotion.',
+        ],
+      },
+      {
+        id: 'sec-blessings',
+        kicker: 'Main Teaching',
+        title: 'Five Blessings for True Worshippers',
+        paragraphs: [
+          'God responds to sincere worship with His presence and favor. The Bible reveals several blessings that belong to those who worship Him in spirit and truth.',
+        ],
+        subItems: [
+          {
+            title: 'God Promises to Be with His Worshippers',
+            ref: 'Matthew 18:20 · Revelation 3:20',
+            text: 'One of the greatest blessings of worship is the presence of God. When believers gather in His name, He promises to be among them. He also desires a close and personal relationship with each of us.',
+          },
+          {
+            title: 'God Guides and Surrounds Them with His Glory',
+            ref: 'Exodus 40:35 · 2 Chronicles 7:1 · 1 Peter 4:14',
+            text: 'When the glory of God comes down, blessings follow. His glory brings direction, protection, and assurance that He is with us. Blessings happen when the glory of God is present in our lives.',
+          },
+          {
+            title: 'God Showers Them with Blessings and Peace',
+            ref: 'Ezekiel 34:26 · Psalm 29:11',
+            text: "God delights in blessing His people. True peace is not merely the absence of trouble — it is found in a Person, Jesus Christ. When we walk closely with Him, His peace guards our hearts and minds.",
+          },
+          {
+            title: 'God Gives Them Overflowing Joy',
+            ref: 'Psalm 122:1 · John 15:11',
+            text: "True worship brings joy that goes beyond circumstances. The joy of the Lord strengthens us in every season of life. It renews our spirit, lifts our hearts, and reminds us of God's goodness.",
+          },
+          {
+            title: 'God Answers Their Prayers Offered in Faith',
+            ref: 'Mark 11:24 · James 5:15',
+            text: 'God hears and responds to the prayers of sincere worshippers. When we pray with faith, trusting in His power and goodness, He answers according to His will. Scripture teaches that prayers offered in faith bring healing, restoration, and breakthrough. Faith-filled prayer connects us to the power of God.',
+          },
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'True worship begins with reverence for God and His Word.',
+      'God designed us to live in His presence — Eden was delightful because of God.',
+      'Jesus, the Second Adam, restored what was lost through the fall.',
+      "God deserves our first and our best — when the first is blessed, the rest is blessed.",
+      'We should never give God our leftovers — true worship is wholehearted.',
+      'God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Nehemiah 8:5-6',
+        text: '"And Ezra opened the book in the sight of all the people... and all the people answered, Amen, Amen, with lifting up their hands."',
+      },
+      {
+        kicker: 'Blessing 1 · Presence',
+        verse: 'Matthew 18:20',
+        text: '"For where two or three are gathered together in my name, there am I in the midst of them."',
+      },
+      {
+        kicker: 'Blessing 1 · Presence',
+        verse: 'Revelation 3:20',
+        text: '"Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him."',
+      },
+      {
+        kicker: 'Blessing 2 · Glory',
+        verse: 'Exodus 40:35',
+        text: '"And Moses was not able to enter into the tent of the congregation, because the cloud abode thereon, and the glory of the Lord filled the tabernacle."',
+      },
+      {
+        kicker: 'Blessing 3 · Peace',
+        verse: 'Ezekiel 34:26',
+        text: '"And I will make them and the places round about my hill a blessing; and I will cause the shower to come down in his season; there shall be showers of blessing."',
+      },
+      {
+        kicker: 'Blessing 4 · Joy',
+        verse: 'Psalm 122:1',
+        text: '"I was glad when they said unto me, Let us go into the house of the Lord."',
+      },
+      {
+        kicker: 'Blessing 4 · Joy',
+        verse: 'John 15:11',
+        text: '"These things have I spoken unto you, that my joy might remain in you, and that your joy might be full."',
+      },
+      {
+        kicker: 'Blessing 5 · Prayer',
+        verse: 'Mark 11:24',
+        text: '"What things soever ye desire, when ye pray, believe that ye receive them, and ye shall have them."',
+      },
+    ],
   }
 ];
 

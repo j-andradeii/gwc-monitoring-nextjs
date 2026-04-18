@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { LandingHeader, LandingFooter, ShareModal } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
-import { ScriptureCard } from '@/components/cards';
 import { Event } from '@/data/events';
-import '@/styles/landing.css';
+import { parseSermonSections, deriveBookBadge, estimateReadingMinutes, slugifySectionId } from '@/lib/sermon-parser';
 
 interface Props {
   sermon: Sermon;
@@ -16,709 +15,789 @@ interface Props {
   upcomingEvents: Event[];
 }
 
-export default function SermonDetailClient({ sermon, relatedSermons, seriesSermons, upcomingEvents }: Props) {
-  const [activeTab, setActiveTab] = useState<'notes' | 'scripture'>('notes');
-  const [showShareModal, setShowShareModal] = useState(false);
+// ---------------------------------------------------------------------------
+// Rich-text renderer: converts **bold** and *italic* markers to React elements.
+// Safe — no dangerouslySetInnerHTML.
+// ---------------------------------------------------------------------------
+function renderRichText(text: string): React.ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith('*') && part.endsWith('*')) {
+      return <em key={i}>{part.slice(1, -1)}</em>;
+    }
+    return part;
+  });
+}
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    });
-  };
+// ---------------------------------------------------------------------------
+// Reading Progress Bar
+// ---------------------------------------------------------------------------
+function ReadingProgressBar() {
+  const fillRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let rafId: number;
+
+    const onScroll = () => {
+      rafId = requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = scrollH > 0 ? Math.min(100, (scrollY / scrollH) * 100) : 0;
+        if (fillRef.current) {
+          fillRef.current.style.setProperty('--progress', `${pct}%`);
+          fillRef.current.style.width = `${pct}%`;
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   return (
-    <div className="landing-page">
-      <LandingHeader />
+    <div className="reading-progress" aria-hidden="true">
+      <div ref={fillRef} className="reading-progress__fill" />
+    </div>
+  );
+}
 
-      {/* Hero Section with Video */}
-      <section
+// ---------------------------------------------------------------------------
+// Breadcrumbs
+// ---------------------------------------------------------------------------
+function SermonBreadcrumbs({ title }: { title: string }) {
+  return (
+    <nav className="sermon-hero__breadcrumbs" aria-label="Breadcrumb">
+      <Link href="/">Home</Link>
+      <span className="sep" aria-hidden="true">/</span>
+      <Link href="/sermon-notes">Sermons</Link>
+      <span className="sep" aria-hidden="true">/</span>
+      <span className="current" aria-current="page">{title}</span>
+    </nav>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Eyebrow (series + sermon number)
+// ---------------------------------------------------------------------------
+function SermonEyebrow({ series, number }: { series: string; number?: number }) {
+  const label = number
+    ? `${series} · Sermon ${String(number).padStart(2, '0')}`
+    : series;
+  return <div className="sermon-hero__eyebrow">{label}</div>;
+}
+
+// ---------------------------------------------------------------------------
+// Hero Title (supports split italic subtitle)
+// ---------------------------------------------------------------------------
+function SermonHeroTitle({ sermon }: { sermon: Sermon }) {
+  if (sermon.subtitle) {
+    const { prefix, italic, suffix } = sermon.subtitle;
+    return (
+      <h1 className="sermon-hero__title">
+        {prefix}
+        {'\u00A0'}
+        <em>{italic}</em>
+        {suffix ? <>{'\u00A0'}{suffix}</> : null}
+      </h1>
+    );
+  }
+  return <h1 className="sermon-hero__title">{sermon.title}</h1>;
+}
+
+// ---------------------------------------------------------------------------
+// Hero Meta Row
+// ---------------------------------------------------------------------------
+function SermonMetaRow({ sermon, readingMinutes }: { sermon: Sermon; readingMinutes: number }) {
+  const formattedDate = new Date(sermon.date).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+  return (
+    <div className="sermon-hero__meta">
+      {/* Speaker */}
+      <div className="sermon-hero__meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span>
+          <strong>{sermon.speaker}</strong>
+          {sermon.speakerRole}
+        </span>
+      </div>
+
+      {/* Date */}
+      <div className="sermon-hero__meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        <span><strong>{formattedDate}</strong></span>
+      </div>
+
+      {/* Duration + reading time */}
+      <div className="sermon-hero__meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+        <span><strong>{sermon.duration}</strong> · {readingMinutes} min read</span>
+      </div>
+
+      {/* Key verse */}
+      {sermon.keyVerse && (
+        <div className="sermon-hero__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
+          <span><strong>{sermon.keyVerse}</strong> Key Verse</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Hero Artwork card
+// ---------------------------------------------------------------------------
+function HeroArtwork({ sermon }: { sermon: Sermon }) {
+  return (
+    <div className="sermon-hero__artwork">
+      <Image
+        src={sermon.image}
+        alt={sermon.title}
+        fill
+        sizes="(max-width: 1023px) 100vw, 320px"
+        className="sermon-hero__artwork-img"
+        priority
+      />
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Section Block
+// ---------------------------------------------------------------------------
+interface SectionSubItem {
+  title: string;
+  ref?: string;
+  text: string;
+}
+
+interface SectionData {
+  id: string;
+  kicker?: string;
+  title: string;
+  paragraphs: string[];
+  callout?: string;
+  unnumbered?: boolean;
+  subItems?: SectionSubItem[];
+}
+
+function SectionBlock({ section, displayNum }: { section: SectionData; displayNum?: number }) {
+  const num = displayNum !== undefined ? String(displayNum).padStart(2, '0') : null;
+  return (
+    <div id={section.id} style={{ scrollMarginTop: '100px' }}>
+      <div className={`section-head${num === null ? ' section-head--unnumbered' : ''}`}>
+        {num !== null && (
+          <div className="section-head__num" aria-hidden="true">{num}</div>
+        )}
+        <div className="section-head__body">
+          {section.kicker && (
+            <div className="section-head__kicker">{section.kicker}</div>
+          )}
+          <h2 className="section-head__title">{section.title}</h2>
+        </div>
+      </div>
+      <div className="prose">
+        {section.paragraphs.map((para, i) => (
+          <p key={i}>{renderRichText(para)}</p>
+        ))}
+        {section.subItems && section.subItems.length > 0 && (
+          <ol className="section-subitems">
+            {section.subItems.map((item, i) => (
+              <li key={i} className="section-subitem">
+                <div className="section-subitem__num" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <div className="section-subitem__body">
+                  <h3 className="section-subitem__title">{item.title}</h3>
+                  {item.ref && <div className="section-subitem__ref">{item.ref}</div>}
+                  <p className="section-subitem__text">{renderRichText(item.text)}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+        {section.callout && (
+          <div className="callout">{section.callout}</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Blessings Grid
+// ---------------------------------------------------------------------------
+function BlessingsGrid({ blessings }: { blessings: NonNullable<Sermon['blessings']> }) {
+  return (
+    <div className="blessings">
+      {blessings.map((b, i) => {
+        const isLast = i === blessings.length - 1;
+        const isOdd = blessings.length % 2 !== 0;
+        return (
+          <div
+            key={i}
+            className="blessing"
+            data-span={isLast && isOdd ? 'full' : undefined}
+          >
+            <div className="blessing__num" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <h3 className="blessing__title">{b.title}</h3>
+            <div className="blessing__ref">{b.ref}</div>
+            <p className="blessing__text">{b.text}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Key Takeaways Card
+// ---------------------------------------------------------------------------
+function TakeawaysCard({ items }: { items: string[] }) {
+  if (items.length === 0) return null;
+  return (
+    <div className="takeaways" id="sec-takeaways" style={{ scrollMarginTop: '100px' }}>
+      <div className="takeaways__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true">
+          <path d="M12 2l2.39 7.36H22l-6.2 4.51 2.39 7.36L12 16.72l-6.19 4.51 2.39-7.36L2 9.36h7.61z" />
+        </svg>
+        Key Takeaways
+      </div>
+      <ul className="takeaways__list">
+        {items.map((item, i) => (
+          <li key={i}>
+            <span className="n" aria-hidden="true">{i + 1}</span>
+            <p>{item}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Tag Row
+// ---------------------------------------------------------------------------
+function TagRow({ tags }: { tags: string[] }) {
+  if (tags.length === 0) return null;
+  return (
+    <div className="tag-row">
+      <span className="tag-row__label">Topics</span>
+      {tags.map((tag) => (
+        <span key={tag} className="sermon-tag">{tag}</span>
+      ))}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Scripture List (Scripture tab)
+// ---------------------------------------------------------------------------
+function ScriptureList({ groups }: { groups: NonNullable<Sermon['scriptureGroups']> }) {
+  return (
+    <>
+      <div className="prose" style={{ marginBottom: '24px' }}>
+        <p style={{ color: 'var(--color-muted, #475569)', fontSize: '14.5px' }}>
+          Every scripture referenced in this sermon, in the order they appear.
+        </p>
+      </div>
+      <div className="scripture-list">
+        {groups.map((g, i) => {
+          const badge = deriveBookBadge(g.verse);
+          const bibleUrl = `https://www.biblegateway.com/passage/?search=${encodeURIComponent(g.verse)}&version=NKJV`;
+          return (
+            <a
+              key={i}
+              className="scripture-item"
+              href={bibleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${g.verse} on Bible Gateway`}
+            >
+              <div className="scripture-badge" aria-hidden="true">{badge}</div>
+              <div className="scripture-item__body">
+                {g.kicker && <strong>{g.kicker}</strong>}
+                <h4>{g.verse}</h4>
+                <p>{g.text}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Table of Contents (aside)
+// ---------------------------------------------------------------------------
+function TableOfContents({
+  sections,
+  displayNums,
+  activeSectionId,
+}: {
+  sections: SectionData[];
+  displayNums: (number | undefined)[];
+  activeSectionId: string;
+}) {
+
+  if (sections.length === 0) return null;
+  return (
+    <nav className="toc" aria-label="Table of contents">
+      <div className="toc__title">In this Sermon</div>
+      <ol className="toc__list">
+        {sections.map((s, i) => {
+          const n = displayNums[i];
+          return (
+            <li key={s.id} className="toc__item">
+              <a
+                href={`#${s.id}`}
+                aria-current={activeSectionId === s.id ? 'location' : undefined}
+              >
+                <span className="toc__num" aria-hidden="true">{n ?? '•'}</span>
+                {s.title}
+              </a>
+            </li>
+          );
+        })}
+        <li className="toc__item">
+          <a
+            href="#sec-takeaways"
+            aria-current={activeSectionId === 'sec-takeaways' ? 'location' : undefined}
+          >
+            <span className="toc__num" aria-hidden="true">★</span>
+            Key Takeaways
+          </a>
+        </li>
+      </ol>
+    </nav>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Speaker Card (aside)
+// ---------------------------------------------------------------------------
+function SpeakerCard({ sermon }: { sermon: Sermon }) {
+  const initials = sermon.speaker
+    .split(' ')
+    .filter((w) => /^[A-Z]/i.test(w))
+    .slice(-2)
+    .map((w) => w[0].toUpperCase())
+    .join('');
+
+  return (
+    <div className="aside-card">
+      <h4>Speaker</h4>
+      <div className="speaker">
+        <div className="speaker__avatar" aria-hidden="true">{initials}</div>
+        <div className="speaker__body">
+          <strong>{sermon.speaker}</strong>
+          <span>
+            {sermon.speakerRole
+              ? `${sermon.speakerRole.charAt(0).toUpperCase()}${sermon.speakerRole.slice(1)} · Gateway Church`
+              : 'Gateway Church'}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Watch Message Card (aside — only when videoUrl present)
+// ---------------------------------------------------------------------------
+function WatchMessageCard({ videoUrl, title }: { videoUrl: string; title: string }) {
+  return (
+    <div className="aside-card">
+      <h4>Watch Message</h4>
+      <div className="video-aside">
+        <iframe
+          src={videoUrl}
+          title={title}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Share Card (aside)
+// ---------------------------------------------------------------------------
+function ShareCard({ onShareClick }: { onShareClick: () => void }) {
+  return (
+    <div className="aside-card">
+      <h4>Share this Sermon</h4>
+      <div style={{ display: 'grid', gap: '8px' }}>
+        <button
+          className="sermon-btn sermon-btn--outline sermon-btn--block"
+          onClick={onShareClick}
+          aria-label="Share this sermon"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" width="14" height="14" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
+          Share Sermon
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Upcoming Events Card (aside)
+// ---------------------------------------------------------------------------
+function UpcomingEventsCard({ events }: { events: Event[] }) {
+  if (events.length === 0) return null;
+
+  return (
+    <div className="aside-card">
+      <h4>Upcoming Events</h4>
+      <div style={{ display: 'grid', gap: '4px' }}>
+        {events.map((event) => {
+          const d = new Date(event.date);
+          const day = d.getDate();
+          const month = d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+          return (
+            <Link
+              key={event.id}
+              href="/events"
+              className="event-row"
+            >
+              <div className="event-date-badge">
+                <strong>{day}</strong>
+                <span>{month}</span>
+              </div>
+              <div className="event-row__body">
+                <strong>{event.title}</strong>
+                <span>{event.day} · {event.time}</span>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+      <Link
+        href="/events"
         style={{
-          position: 'relative',
-          paddingTop: '80px',
-          background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
-          overflow: 'hidden',
+          display: 'block',
+          marginTop: '14px',
+          textAlign: 'center',
+          fontSize: '12px',
+          fontWeight: 700,
+          letterSpacing: '1.5px',
+          textTransform: 'uppercase',
+          color: 'var(--color-primary-dark)',
+          textDecoration: 'none',
         }}
       >
-        {/* Background Pattern */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            opacity: 0.05,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+        View All Events →
+      </Link>
+    </div>
+  );
+}
 
-        <div className="landing-container" style={{ position: 'relative', zIndex: 1 }}>
-          {/* Breadcrumb */}
-          <nav style={{ marginBottom: '24px', paddingTop: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}>
-              <Link
-                href="/"
-                style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}
-              >
-                Home
-              </Link>
-              <i className="pi pi-chevron-right" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)' }} />
-              <Link
-                href="/sermon-notes"
-                style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}
-              >
-                Sermons
-              </Link>
-              <i className="pi pi-chevron-right" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)' }} />
-              <span style={{ color: 'var(--primary-gold-accent)' }}>{sermon.title}</span>
-            </div>
-          </nav>
+// ---------------------------------------------------------------------------
+// Main Component
+// ---------------------------------------------------------------------------
+export default function SermonDetailClient({
+  sermon,
+  // relatedSermons and seriesSermons are accepted from page.tsx but not yet
+  // rendered in the Modern Reader layout (future enhancement).
+  relatedSermons: _relatedSermons, // eslint-disable-line @typescript-eslint/no-unused-vars
+  seriesSermons: _seriesSermons, // eslint-disable-line @typescript-eslint/no-unused-vars
+  upcomingEvents,
+}: Props) {
+  const [activeTab, setActiveTab] = useState<'notes' | 'scripture'>('notes');
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [activeSectionId, setActiveSectionId] = useState('');
+  const notesTabId = 'tab-notes';
+  const scriptureTabId = 'tab-scripture';
+  const notesPanelId = 'panel-notes';
+  const scripturePanelId = 'panel-scripture';
 
-          {/* Video Player */}
-          <div
-            style={{
-              position: 'relative',
-              width: '100%',
-              maxWidth: '1000px',
-              margin: '0 auto',
-              borderRadius: '16px',
-              overflow: 'hidden',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-            }}
-          >
-            <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
-              {sermon.videoUrl ? (
-                <iframe
-                  src={sermon.videoUrl}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    border: 'none',
-                  }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title={sermon.title}
-                />
-              ) : (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                  }}
-                >
-                  <Image
-                    src={sermon.image}
-                    alt={sermon.title}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    unoptimized
-                  />
-                  {/* Gradient overlay for image-only sermons */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%)',
-                    }}
-                  />
-                  {/* Audio/Notes only badge */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '20px',
-                      left: '20px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      padding: '10px 16px',
-                      backgroundColor: 'rgba(0,0,0,0.7)',
-                      backdropFilter: 'blur(8px)',
-                      borderRadius: '8px',
-                      color: 'white',
-                    }}
-                  >
-                    <i className="pi pi-file-edit" style={{ fontSize: '18px', color: 'var(--primary-gold-accent)' }} />
-                    <span style={{ fontSize: '14px', fontWeight: '500' }}>Sermon Notes Available</span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+  // ---- Derive sections ----
+  const sections: SectionData[] = useMemo(() => {
+    if (sermon.sections && sermon.sections.length > 0) {
+      return sermon.sections.map((s, i) => ({
+        id: s.id || slugifySectionId(s.title, i),
+        kicker: s.kicker ?? undefined,
+        title: s.title,
+        paragraphs: s.paragraphs,
+        callout: s.callout,
+        unnumbered: s.unnumbered,
+        subItems: s.subItems,
+      }));
+    }
+    return parseSermonSections(sermon.description).map((s) => ({
+      ...s,
+      kicker: s.kicker || undefined,
+      callout: undefined,
+      unnumbered: true,
+    }));
+  }, [sermon]);
 
-          {/* Sermon Title & Meta */}
-          <div style={{ maxWidth: '1000px', margin: '32px auto 40px', textAlign: 'center' }}>
-            <div
-              style={{
-                display: 'inline-block',
-                padding: '6px 16px',
-                backgroundColor: 'var(--primary-gold-accent)',
-                color: 'white',
-                borderRadius: '20px',
-                fontSize: '12px',
-                fontWeight: '600',
-                marginBottom: '16px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-              }}
-            >
-              {sermon.series}
-            </div>
-            <h1
-              style={{
-                fontSize: 'clamp(28px, 5vw, 44px)',
-                color: '#ffffff',
-                marginBottom: '16px',
-                fontWeight: '700',
-                lineHeight: '1.2',
-              }}
-            >
-              {sermon.title}
-            </h1>
-            <p
-              style={{
-                fontSize: '18px',
-                color: 'rgba(255,255,255,0.8)',
-                maxWidth: '700px',
-                margin: '0 auto 24px',
-                lineHeight: '1.6',
-              }}
-            >
-              {sermon.excerpt}
-            </p>
+  // Running point number — skips sections marked `unnumbered` so intros/context
+  // don't get labeled as "01".
+  const sectionDisplayNums = useMemo(() => {
+    let n = 0;
+    return sections.map((s) => (s.unnumbered ? undefined : ++n));
+  }, [sections]);
 
-            {/* Meta Info */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '24px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                {sermon.speakerImage && (
-                  <Image
-                    src={sermon.speakerImage}
-                    alt={sermon.speaker}
-                    width={40}
-                    height={40}
-                    style={{ borderRadius: '50%' }}
-                    unoptimized
-                  />
-                )}
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ color: '#ffffff', fontWeight: '600', fontSize: '14px' }}>
-                    {sermon.speaker}
-                  </div>
-                  {sermon.speakerRole && (
-                    <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px' }}>
-                      {sermon.speakerRole}
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div style={{ width: '1px', height: '30px', backgroundColor: 'rgba(255,255,255,0.2)' }} />
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.8)', fontSize: '14px' }}>
-                <i className="pi pi-calendar" style={{ color: 'var(--primary-gold-accent)' }} />
-                {formatDate(sermon.date)}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.8)', fontSize: '14px' }}>
-                <i className="pi pi-clock" style={{ color: 'var(--primary-gold-accent)' }} />
-                {sermon.duration}
-              </div>
+  const keyTakeaways = useMemo(
+    () => sermon.keyTakeaways ?? sermon.keyPoints ?? [],
+    [sermon.keyTakeaways, sermon.keyPoints]
+  );
+
+  const blessings = useMemo(
+    () => sermon.blessings ?? [],
+    [sermon.blessings]
+  );
+
+  const scriptureGroups: NonNullable<Sermon['scriptureGroups']> = useMemo(
+    () =>
+      sermon.scriptureGroups ??
+      sermon.scriptures.map((s) => ({
+        kicker: '',
+        verse: s.verse,
+        text: s.text,
+      })),
+    [sermon.scriptureGroups, sermon.scriptures]
+  );
+
+  // ---- Reading minutes (all text combined) ----
+  const readingMinutes = useMemo(() => {
+    const allText = [
+      ...sections.flatMap((s) => [
+        ...s.paragraphs,
+        ...(s.subItems ?? []).map((item) => item.text),
+      ]),
+      ...blessings.map((b) => b.text),
+      ...keyTakeaways,
+    ].join(' ');
+    return estimateReadingMinutes(allText);
+  }, [sections, blessings, keyTakeaways]);
+
+  // ---- Scroll-spy TOC ----
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const setupObserver = useCallback(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    const sectionIds = [...sections.map((s) => s.id), 'sec-takeaways'];
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (elements.length === 0) return;
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((e) => e.isIntersecting);
+        if (visible) {
+          setActiveSectionId(visible.target.id);
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+
+    elements.forEach((el) => observerRef.current?.observe(el));
+  }, [sections]);
+
+  useEffect(() => {
+    setupObserver();
+    return () => {
+      observerRef.current?.disconnect();
+    };
+  }, [setupObserver]);
+
+  return (
+    <div>
+      <ReadingProgressBar />
+      <LandingHeader />
+
+      {/* ======= Hero ======= */}
+      <section className="sermon-hero">
+        <div className="landing-container">
+          <SermonBreadcrumbs title={sermon.title} />
+          <div className="sermon-hero__layout">
+            <div>
+              <SermonEyebrow series={sermon.series} number={sermon.seriesNumber} />
+              <SermonHeroTitle sermon={sermon} />
+              <p className="sermon-hero__deck">{sermon.excerpt}</p>
+              <SermonMetaRow sermon={sermon} readingMinutes={readingMinutes} />
             </div>
+            <HeroArtwork sermon={sermon} />
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <main style={{ background: '#ffffff' }}>
+      {/* ======= Body ======= */}
+      <section className="sermon-body">
         <div className="landing-container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 380px',
-              gap: '48px',
-              padding: '60px 0',
-            }}
-            className="sermon-detail-grid"
-          >
-            {/* Left Column - Main Content */}
-            <div>
+          <div className="sermon-grid">
+
+            {/* ---- Main Article ---- */}
+            <article>
               {/* Tabs */}
               <div
-                style={{
-                  display: 'flex',
-                  gap: '8px',
-                  marginBottom: '32px',
-                  borderBottom: '2px solid var(--border-color)',
-                  paddingBottom: '0',
-                }}
+                className="sermon-tabs"
+                role="tablist"
+                aria-label="Sermon content"
               >
                 <button
+                  id={notesTabId}
+                  className="sermon-tab"
+                  role="tab"
+                  aria-selected={activeTab === 'notes'}
+                  aria-controls={notesPanelId}
                   onClick={() => setActiveTab('notes')}
-                  style={{
-                    padding: '16px 24px',
-                    fontSize: '15px',
-                    fontWeight: '600',
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    color: activeTab === 'notes' ? 'var(--primary-gold-accent)' : 'var(--text-secondary)',
-                    borderBottom: activeTab === 'notes' ? '3px solid var(--primary-gold-accent)' : '3px solid transparent',
-                    marginBottom: '-2px',
-                    transition: 'all 0.3s ease',
-                  }}
                 >
-                  <i className="pi pi-file-edit" style={{ marginRight: '8px' }} />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="8" y1="13" x2="16" y2="13" />
+                    <line x1="8" y1="17" x2="12" y2="17" />
+                  </svg>
                   Sermon Notes
                 </button>
                 <button
+                  id={scriptureTabId}
+                  className="sermon-tab"
+                  role="tab"
+                  aria-selected={activeTab === 'scripture'}
+                  aria-controls={scripturePanelId}
                   onClick={() => setActiveTab('scripture')}
-                  style={{
-                    padding: '16px 24px',
-                    fontSize: '15px',
-                    fontWeight: '600',
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer',
-                    color: activeTab === 'scripture' ? 'var(--primary-gold-accent)' : 'var(--text-secondary)',
-                    borderBottom: activeTab === 'scripture' ? '3px solid var(--primary-gold-accent)' : '3px solid transparent',
-                    marginBottom: '-2px',
-                    transition: 'all 0.3s ease',
-                  }}
                 >
-                  <i className="pi pi-book" style={{ marginRight: '8px' }} />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                  </svg>
                   Scripture
+                  <span
+                    style={{
+                      background: 'var(--color-primary)',
+                      color: '#fff',
+                      padding: '2px 8px',
+                      borderRadius: '20px',
+                      fontSize: '10px',
+                      marginLeft: '4px',
+                      fontWeight: 700,
+                    }}
+                    aria-label={`${scriptureGroups.length} passages`}
+                  >
+                    {scriptureGroups.length}
+                  </span>
                 </button>
               </div>
 
-              {/* Tab Content */}
-              {activeTab === 'notes' && (
-                <div>
-                  {/* Description */}
-                  {sermon.description && (
-                    <div style={{ marginBottom: '40px' }}>
-                      <h2 style={{ fontSize: '28px', marginBottom: '24px', color: 'var(--text-primary)' }}>
-                        About This Message
-                      </h2>
-                      <div
-                        style={{
-                          fontSize: '18px',
-                          lineHeight: '1.9',
-                          color: 'var(--text-primary)',
-                          whiteSpace: 'pre-line',
-                        }}
-                        dangerouslySetInnerHTML={{
-                          __html: sermon.description
-                            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-                        }}
-                      />
-                    </div>
-                  )}
-
-                  {/* Key Points */}
-                  {sermon.keyPoints && sermon.keyPoints.length > 0 && (
-                    <div
-                      style={{
-                        padding: '32px',
-                        backgroundColor: '#fefcf3',
-                        borderRadius: '16px',
-                        border: '1px solid rgba(240, 180, 41, 0.2)',
-                      }}
-                    >
-                      <h3 style={{ fontSize: '22px', marginBottom: '24px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <i className="pi pi-star-fill" style={{ color: 'var(--primary-gold-accent)' }} />
-                        Key Takeaways
-                      </h3>
-                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                        {sermon.keyPoints.map((point, index) => (
-                          <li
-                            key={index}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'flex-start',
-                              gap: '16px',
-                              marginBottom: index < sermon.keyPoints!.length - 1 ? '18px' : 0,
-                              fontSize: '17px',
-                              lineHeight: '1.7',
-                              color: 'var(--text-primary)',
-                            }}
-                          >
-                            <span
-                              style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '30px',
-                                height: '30px',
-                                borderRadius: '50%',
-                                backgroundColor: 'var(--primary-gold-accent)',
-                                color: 'white',
-                                fontSize: '14px',
-                                fontWeight: '700',
-                                flexShrink: 0,
-                              }}
-                            >
-                              {index + 1}
-                            </span>
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {activeTab === 'scripture' && (
-                <div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                    {sermon.scriptures.map((item, index) => (
-                      <ScriptureCard
-                        key={index}
-                        verse={item.verse}
-                        text={item.text}
-                      />
-                    ))}
-                  </div>
-
-                  <div style={{ marginTop: '32px', textAlign: 'center' }}>
-                    <a
-                      href={`https://www.biblegateway.com/passage/?search=${encodeURIComponent(sermon.scriptures[0].verse)}&version=NIV`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="landing-btn landing-btn-outline"
-                    >
-                      <i className="pi pi-external-link" />
-                      Read Full Passage on Bible Gateway
-                    </a>
-                  </div>
-                </div>
-              )}
-
-              {/* Tags */}
-              <div style={{ marginTop: '40px', paddingTop: '32px', borderTop: '1px solid var(--border-color)' }}>
-                <h4 style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  Topics
-                </h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {sermon.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        padding: '8px 16px',
-                        fontSize: '13px',
-                        fontWeight: '500',
-                        backgroundColor: 'rgba(240, 180, 41, 0.12)',
-                        color: '#b8860b',
-                        borderRadius: '20px',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Sidebar */}
-            <aside>
-              {/* Actions Card */}
+              {/* Notes Tab Panel */}
               <div
-                style={{
-                  padding: '24px',
-                  backgroundColor: '#ffffff',
-                  borderRadius: '16px',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  marginBottom: '24px',
-                }}
+                id={notesPanelId}
+                role="tabpanel"
+                aria-labelledby={notesTabId}
+                className={`tab-panel${activeTab === 'notes' ? ' is-active' : ''}`}
               >
-                <h3 style={{ fontSize: '16px', marginBottom: '16px', color: 'var(--text-primary)' }}>
-                  Resources
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {sermon.downloadUrl && (
-                    <a
-                      href={sermon.downloadUrl}
-                      className="landing-btn landing-btn-primary"
-                      style={{ justifyContent: 'center' }}
-                    >
-                      <i className="pi pi-download" />
-                      Download Notes (PDF)
-                    </a>
-                  )}
-                  {sermon.audioUrl && (
-                    <a
-                      href={sermon.audioUrl}
-                      className="landing-btn landing-btn-outline"
-                      style={{ justifyContent: 'center' }}
-                    >
-                      <i className="pi pi-headphones" />
-                      Listen to Audio
-                    </a>
-                  )}
-                  <button
-                    className="landing-btn landing-btn-outline"
-                    style={{ justifyContent: 'center' }}
-                    onClick={async () => {
-                      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                      if (isMobile && typeof navigator !== 'undefined' && navigator.share) {
-                        try {
-                          await navigator.share({
-                            title: sermon.title,
-                            text: sermon.excerpt || `Check out this sermon: ${sermon.title}`,
-                            url: window.location.href,
-                          });
-                        } catch (error) {
-                          console.error('Error sharing:', error);
-                        }
-                      } else {
-                        setShowShareModal(true);
-                      }
-                    }}
-                  >
-                    <i className="pi pi-share-alt" />
-                    Share Sermon
-                  </button>
-                </div>
+                {sections.map((s, i) => (
+                  <SectionBlock key={s.id} section={s} displayNum={sectionDisplayNums[i]} />
+                ))}
+
+                {blessings.length > 0 && (
+                  <BlessingsGrid blessings={blessings} />
+                )}
+
+                {keyTakeaways.length > 0 && (
+                  <TakeawaysCard items={keyTakeaways} />
+                )}
+
+                <TagRow tags={sermon.tags} />
               </div>
 
-              {/* Series Card */}
+              {/* Scripture Tab Panel */}
               <div
-                style={{
-                  padding: '24px',
-                  background: 'linear-gradient(135deg, #fefcf3 0%, #fdf6e3 100%)',
-                  borderRadius: '16px',
-                  border: '1px solid rgba(240, 180, 41, 0.2)',
-                  marginBottom: '24px',
-                }}
+                id={scripturePanelId}
+                role="tabpanel"
+                aria-labelledby={scriptureTabId}
+                className={`tab-panel${activeTab === 'scripture' ? ' is-active' : ''}`}
               >
-                <h3 style={{ fontSize: '16px', marginBottom: '8px', color: 'var(--text-primary)' }}>
-                  {sermon.series}
-                </h3>
-                {sermon.seriesDescription && (
-                  <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: '1.6' }}>
-                    {sermon.seriesDescription}
-                  </p>
-                )}
-                {seriesSermons.length > 0 && (
-                  <div>
-                    <h4 style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                      More in this series
-                    </h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      {seriesSermons.slice(0, 3).map((s) => (
-                        <Link
-                          key={s.id}
-                          href={`/sermon-notes/${s.slug}`}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '12px',
-                            padding: '12px',
-                            backgroundColor: 'white',
-                            borderRadius: '10px',
-                            textDecoration: 'none',
-                            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateX(4px)';
-                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateX(0)';
-                            e.currentTarget.style.boxShadow = 'none';
-                          }}
-                        >
-                          <i className="pi pi-play-circle" style={{ color: 'var(--primary-gold-accent)', fontSize: '18px' }} />
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                              {s.title.length > 25 ? s.title.substring(0, 25) + '...' : s.title}
-                            </div>
-                            <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-                              {s.speaker}
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                <ScriptureList groups={scriptureGroups} />
               </div>
+            </article>
 
-              {/* Related Sermons */}
-              {relatedSermons.length > 0 && (
-                <div
-                  style={{
-                    padding: '24px',
-                    backgroundColor: '#ffffff',
-                    borderRadius: '16px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  }}
-                >
-                  <h3 style={{ fontSize: '16px', marginBottom: '16px', color: 'var(--text-primary)' }}>
-                    You Might Also Like
-                  </h3>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {relatedSermons.map((s) => (
-                      <Link
-                        key={s.id}
-                        href={`/sermon-notes/${s.slug}`}
-                        style={{
-                          display: 'flex',
-                          gap: '12px',
-                          textDecoration: 'none',
-                        }}
-                      >
-                        <div
-                          style={{
-                            position: 'relative',
-                            width: '80px',
-                            height: '50px',
-                            borderRadius: '8px',
-                            overflow: 'hidden',
-                            flexShrink: 0,
-                          }}
-                        >
-                          <Image
-                            src={s.image}
-                            alt={s.title}
-                            fill
-                            style={{ objectFit: 'cover' }}
-                            unoptimized
-                          />
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div
-                            style={{
-                              fontSize: '14px',
-                              fontWeight: '600',
-                              color: 'var(--text-primary)',
-                              marginBottom: '4px',
-                              display: '-webkit-box',
-                              WebkitLineClamp: 2,
-                              WebkitBoxOrient: 'vertical',
-                              overflow: 'hidden',
-                            }}
-                          >
-                            {s.title.length > 25 ? s.title.substring(0, 25) + '...' : s.title}
-                          </div>
-                          <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-                            {s.speaker}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+            {/* ---- Aside ---- */}
+            <aside className="sermon-grid__aside" aria-label="Sermon sidebar">
+              <TableOfContents
+                sections={sections}
+                displayNums={sectionDisplayNums}
+                activeSectionId={activeSectionId}
+              />
+              <SpeakerCard sermon={sermon} />
+              {sermon.videoUrl && (
+                <WatchMessageCard
+                  videoUrl={sermon.videoUrl}
+                  title={sermon.title}
+                />
               )}
-
-              {/* Upcoming Events */}
-              {upcomingEvents.length > 0 && (
-                <div
-                  style={{
-                    padding: '24px',
-                    marginTop: '24px',
-                    backgroundColor: '#ffffff',
-                    borderRadius: '16px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <h3 style={{ fontSize: '16px', color: 'var(--text-primary)', margin: 0 }}>
-                      Upcoming Events
-                    </h3>
-                    <Link
-                      href="/events"
-                      style={{ fontSize: '12px', color: 'var(--primary-gold-accent)', textDecoration: 'none', fontWeight: '600' }}
-                    >
-                      View All
-                    </Link>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {upcomingEvents.map((event) => (
-                      <Link
-                        key={event.id}
-                        href="/events"
-                        style={{
-                          display: 'flex',
-                          gap: '12px',
-                          textDecoration: 'none',
-                        }}
-                      >
-                        <div
-                          style={{
-                            position: 'relative',
-                            width: '80px',
-                            height: '50px',
-                            borderRadius: '8px',
-                            overflow: 'hidden',
-                            flexShrink: 0,
-                          }}
-                        >
-                          <Image
-                            src={event.image}
-                            alt={event.title}
-                            fill
-                            style={{ objectFit: 'cover' }}
-                            unoptimized
-                          />
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div
-                            style={{
-                              fontSize: '14px',
-                              fontWeight: '600',
-                              color: 'var(--text-primary)',
-                              marginBottom: '4px',
-                              display: '-webkit-box',
-                              WebkitLineClamp: 2,
-                              WebkitBoxOrient: 'vertical',
-                              overflow: 'hidden',
-                            }}
-                          >
-                            {event.title}
-                          </div>
-                          <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-                            {event.date}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <ShareCard onShareClick={() => setShowShareModal(true)} />
+              <UpcomingEventsCard events={upcomingEvents} />
             </aside>
+
           </div>
         </div>
+      </section>
 
-        {/* Back to All Sermons */}
-        <section
-          style={{
-            padding: '60px 0',
-            backgroundColor: '#f8fafc',
-            textAlign: 'center',
-          }}
-        >
-          <div className="landing-container">
-            <Link href="/sermon-notes" className="landing-btn landing-btn-outline">
-              <i className="pi pi-arrow-left" />
-              Back to All Sermons
-            </Link>
-          </div>
-        </section>
-      </main>
+      {/* Back to sermons */}
+      <section
+        style={{
+          padding: '40px 0',
+          background: '#ffffff',
+          borderTop: '1px solid var(--border-color-light)',
+          textAlign: 'center',
+        }}
+      >
+        <div className="landing-container">
+          <Link href="/sermon-notes" className="sermon-btn sermon-btn--outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" width="14" height="14" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+            Back to All Sermons
+          </Link>
+        </div>
+      </section>
 
       <LandingFooter />
 
-      {/* Share Modal */}
       <ShareModal
         isOpen={showShareModal}
         onClose={() => setShowShareModal(false)}
@@ -726,15 +805,6 @@ export default function SermonDetailClient({ sermon, relatedSermons, seriesSermo
         excerpt={sermon.excerpt}
         modalTitle="Share Sermon"
       />
-
-      {/* Responsive Styles */}
-      <style jsx>{`
-        @media (max-width: 900px) {
-          .sermon-detail-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }
