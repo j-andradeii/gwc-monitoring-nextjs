@@ -9,7 +9,6 @@
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import '@/styles/landing.css';
 import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider, PageHero } from '@/components/landing';
 import { sermons, getAllSeries, getFeaturedSermon } from '@/data/sermons';
 
