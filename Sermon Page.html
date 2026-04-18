@@ -1,0 +1,1576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>God's Blessings for True Worshippers — Gateway Church</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+/* ========== TOKENS ========== */
+:root{
+  --color-primary:#d4a84b;
+  --color-primary-light:#e5c47a;
+  --color-primary-dark:#b8923f;
+  --color-secondary:#4a3c6e;
+  --color-accent:#6b2c3a;
+  --color-navy:#1a2744;
+  --color-navy-dark:#151e32;
+  --color-cream:#f5f0e6;
+  --color-ivory:#faf8f3;
+  --color-surface:#ffffff;
+  --text-primary:#0d1424;
+  --text-heading:#020617;
+  --text-secondary:#1e293b;
+  --color-muted:#475569;
+  --color-border:#c8bfa8;
+  --border-color-light:#e6dfcc;
+  --gold-shadow-hover:rgba(212,168,75,0.25);
+  --shadow-soft:0 4px 24px rgba(26,39,68,0.08);
+  --shadow-medium:0 12px 32px rgba(26,39,68,0.12);
+  --letter-spacing-tight:-1.5px;
+  --letter-spacing-tighter:-1.8px;
+  --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+  --font-serif:'Fraunces',Georgia,serif;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans);
+  background:var(--color-cream);
+  color:var(--text-primary);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ========== READING PROGRESS BAR ========== */
+.progress-bar{
+  position:fixed;top:0;left:0;right:0;height:3px;
+  background:rgba(26,39,68,0.06);z-index:1100;
+}
+.progress-bar__fill{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--color-primary),var(--color-primary-light));
+  transition:width 0.08s linear;
+  box-shadow:0 0 12px rgba(212,168,75,0.5);
+}
+
+/* ========== HEADER ========== */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(245,240,230,0.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(26,39,68,0.06);
+  height:70px;display:flex;align-items:center;
+}
+.site-header__inner{
+  max-width:1280px;margin:0 auto;padding:0 32px;width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text-heading)}
+.brand__mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));
+  display:grid;place-items:center;color:#fff;font-weight:800;font-style:italic;
+  font-family:var(--font-serif);font-size:20px;
+  box-shadow:0 6px 18px rgba(212,168,75,0.35);
+}
+.brand__name{font-weight:800;letter-spacing:-0.3px;font-size:16px}
+.brand__name small{display:block;font-size:10px;letter-spacing:2.5px;color:var(--color-muted);font-weight:600;text-transform:uppercase;margin-top:1px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{
+  padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--text-secondary);
+  font-weight:600;font-size:14px;transition:all .2s ease;position:relative;
+}
+.nav a:hover{color:var(--text-heading);background:rgba(212,168,75,0.08)}
+.nav a.is-active{color:var(--color-primary-dark)}
+.nav a.is-active::after{
+  content:'';position:absolute;left:14px;right:14px;bottom:4px;height:2px;
+  background:linear-gradient(90deg,var(--color-primary),var(--color-primary-light));border-radius:2px;
+}
+.header-cta{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:50px;
+  background:var(--color-navy);color:#fff;font-size:13px;font-weight:700;letter-spacing:0.6px;
+  text-transform:uppercase;text-decoration:none;transition:all .25s ease;
+}
+.header-cta:hover{background:var(--color-primary);transform:translateY(-1px);box-shadow:0 10px 24px var(--gold-shadow-hover)}
+
+/* ========== VARIATION SWITCHER ========== */
+.var-switcher{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  z-index:1200;
+  background:rgba(26,39,68,0.94);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.12);
+  padding:8px;border-radius:999px;
+  display:flex;gap:4px;align-items:center;
+  box-shadow:0 18px 42px rgba(0,0,0,0.28);
+}
+.var-switcher__label{
+  color:rgba(255,255,255,0.55);font-size:10px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;padding:0 14px 0 12px;
+}
+.var-switcher button{
+  appearance:none;border:0;background:transparent;color:rgba(255,255,255,0.7);
+  font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;
+  padding:10px 18px;border-radius:999px;cursor:pointer;transition:all .25s ease;
+}
+.var-switcher button:hover{color:#fff}
+.var-switcher button.is-active{
+  background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));
+  color:#fff;box-shadow:0 6px 18px var(--gold-shadow-hover);
+}
+
+/* ========== LAYOUT ========== */
+.sermon-hero{background:var(--color-navy);color:#fff;padding:40px 0 64px}
+.container{max-width:1180px;margin:0 auto;padding:0 32px}
+.breadcrumbs{
+  font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:32px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.breadcrumbs a{color:rgba(255,255,255,0.7);text-decoration:none;transition:color .2s}
+.breadcrumbs a:hover{color:var(--color-primary-light)}
+.breadcrumbs .sep{opacity:0.4}
+.breadcrumbs .current{color:var(--color-primary-light);font-weight:600}
+
+/* ========== GRID (for content area) ========== */
+.sermon-body{padding:56px 0 80px;background:var(--color-ivory)}
+.sermon-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start;
+}
+.sermon-grid__aside{position:sticky;top:90px;display:flex;flex-direction:column;gap:20px}
+
+/* ========== TABS ========== */
+.tabs{
+  display:flex;gap:4px;border-bottom:1px solid var(--border-color-light);
+  margin-bottom:32px;
+}
+.tab{
+  appearance:none;background:transparent;border:0;padding:14px 22px 16px;cursor:pointer;
+  font-family:inherit;font-size:14px;font-weight:700;color:var(--color-muted);
+  letter-spacing:0.3px;position:relative;display:inline-flex;align-items:center;gap:10px;
+  transition:color .2s ease;
+}
+.tab:hover{color:var(--text-heading)}
+.tab.is-active{color:var(--color-primary-dark)}
+.tab.is-active::after{
+  content:'';position:absolute;left:16px;right:16px;bottom:-1px;height:3px;
+  background:linear-gradient(90deg,var(--color-primary),var(--color-primary-light));border-radius:3px 3px 0 0;
+}
+.tab svg{width:16px;height:16px}
+
+/* ========== CARDS ========== */
+.card{
+  background:#fff;border:1px solid var(--border-color-light);border-radius:20px;
+  padding:24px;position:relative;overflow:hidden;transition:all .35s ease;
+}
+.card--glass{background:rgba(255,255,255,0.85);backdrop-filter:blur(10px)}
+.card__label{
+  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--color-primary-dark);margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.card__label::before{content:'';width:16px;height:2px;background:var(--color-primary);display:inline-block}
+.card h3{margin:0 0 8px;font-size:17px;font-weight:800;letter-spacing:-0.3px;color:var(--text-heading)}
+.card p{margin:0;color:var(--color-muted);font-size:13.5px;line-height:1.55}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 22px;border-radius:50px;font-weight:700;font-size:13px;letter-spacing:0.6px;
+  text-transform:uppercase;text-decoration:none;cursor:pointer;border:1.5px solid transparent;
+  transition:all .25s cubic-bezier(.4,0,.2,1);font-family:inherit;
+}
+.btn--gold{background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));color:#fff}
+.btn--gold:hover{transform:translateY(-2px);box-shadow:0 14px 32px var(--gold-shadow-hover)}
+.btn--outline{background:transparent;border-color:var(--color-primary);color:var(--color-primary-dark)}
+.btn--outline:hover{background:var(--color-primary);color:#fff;transform:translateY(-2px)}
+.btn--ghost{background:rgba(26,39,68,0.04);color:var(--text-heading);border-color:transparent}
+.btn--ghost:hover{background:rgba(26,39,68,0.08)}
+.btn--block{width:100%}
+.btn svg{width:14px;height:14px}
+
+/* ========== UPCOMING EVENT CARD ========== */
+.event-row{
+  display:flex;gap:14px;align-items:center;padding:12px;border-radius:14px;
+  transition:all .25s ease;text-decoration:none;color:inherit;
+}
+.event-row:hover{background:rgba(212,168,75,0.06)}
+.event-date{
+  flex-shrink:0;width:52px;height:56px;border-radius:12px;
+  background:linear-gradient(135deg,var(--color-navy),var(--color-navy-dark));
+  color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;box-shadow:0 6px 16px rgba(26,39,68,0.25);
+}
+.event-date strong{font-size:18px;font-weight:800;line-height:1}
+.event-date span{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-primary-light);margin-top:4px}
+.event-row__body strong{display:block;font-size:14px;font-weight:700;color:var(--text-heading)}
+.event-row__body span{font-size:12px;color:var(--color-muted)}
+
+/* ========== TAGS ========== */
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tag{
+  display:inline-block;padding:6px 14px;border-radius:50px;
+  background:rgba(212,168,75,0.12);color:var(--color-primary-dark);
+  font-size:12px;font-weight:700;letter-spacing:0.3px;text-decoration:none;
+  transition:all .2s ease;
+}
+.tag:hover{background:var(--color-primary);color:#fff}
+
+/* ========== PROSE (shared reading typography) ========== */
+.prose{color:var(--text-secondary);font-size:16.5px;line-height:1.75}
+.prose p{margin:0 0 16px}
+.prose strong{color:var(--text-heading);font-weight:700}
+.prose h3{
+  font-size:22px;font-weight:800;letter-spacing:-0.6px;color:var(--text-heading);
+  margin:40px 0 16px;line-height:1.25;
+}
+
+.verse-ref{
+  display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:6px;
+  background:rgba(74,60,110,0.08);color:var(--color-secondary);
+  font-family:var(--font-serif);font-style:italic;font-size:14px;font-weight:500;
+  cursor:help;transition:all .2s ease;
+}
+.verse-ref:hover{background:var(--color-secondary);color:#fff}
+
+/* ================================================================
+   VARIATION A — Modern reader: sticky TOC + numbered sections
+   ================================================================ */
+.vA .hero-flex{
+  display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:center;
+}
+.vA .eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--color-primary);margin-bottom:20px;
+}
+.vA .eyebrow::before{content:'';width:28px;height:1.5px;background:var(--color-primary)}
+.vA h1{
+  font-family:var(--font-sans);
+  font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-2px;line-height:1.04;
+  margin:0 0 24px;text-transform:uppercase;
+}
+.vA h1 em{font-style:italic;font-family:var(--font-serif);font-weight:500;text-transform:none;letter-spacing:-1.5px;color:var(--color-primary-light)}
+.vA .hero-deck{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.72);max-width:560px;margin-bottom:28px}
+.vA .hero-meta{
+  display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;
+  padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);
+}
+.vA .hero-meta .meta{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.75);font-size:13.5px}
+.vA .hero-meta .meta svg{width:16px;height:16px;color:var(--color-primary-light)}
+.vA .hero-meta .meta strong{color:#fff;font-weight:700;margin-right:4px}
+.vA .hero-artwork{
+  aspect-ratio:4/5;border-radius:18px;overflow:hidden;position:relative;
+  background:linear-gradient(140deg,#2a5568 0%,#3e6c75 30%,#d47a5a 65%,#b94a2a 100%);
+  box-shadow:0 30px 60px rgba(0,0,0,0.35),0 0 0 1px rgba(255,255,255,0.08);
+}
+.vA .hero-artwork::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(60% 40% at 70% 60%,rgba(222,94,58,0.85),transparent 70%),
+             radial-gradient(40% 30% at 25% 30%,rgba(68,120,130,0.7),transparent 75%);
+}
+.vA .hero-artwork::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,0.5));
+}
+.vA .hero-artwork__title{
+  position:absolute;inset:0;padding:32px;display:flex;flex-direction:column;justify-content:flex-end;
+  color:rgba(255,255,255,0.85);text-transform:uppercase;font-weight:800;
+  font-size:22px;letter-spacing:-0.5px;line-height:1.05;z-index:2;
+}
+.vA .hero-artwork__title small{
+  display:block;font-size:9px;letter-spacing:3px;font-weight:700;opacity:0.7;margin-top:14px;
+}
+
+/* TOC */
+.toc{
+  background:#fff;border:1px solid var(--border-color-light);border-radius:18px;
+  padding:22px;
+}
+.toc__title{
+  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--color-primary-dark);margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.toc__title::before{content:'';width:16px;height:2px;background:var(--color-primary)}
+.toc__list{list-style:none;padding:0;margin:0}
+.toc__item{position:relative}
+.toc__item a{
+  display:flex;align-items:flex-start;gap:12px;padding:9px 10px 9px 12px;
+  border-radius:10px;text-decoration:none;color:var(--color-muted);font-size:13.5px;
+  line-height:1.35;font-weight:500;transition:all .2s ease;border-left:2px solid transparent;
+}
+.toc__item a:hover{color:var(--text-heading);background:rgba(212,168,75,0.06)}
+.toc__item a.is-active{
+  color:var(--text-heading);background:rgba(212,168,75,0.10);border-left-color:var(--color-primary);
+  font-weight:600;
+}
+.toc__num{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  background:rgba(26,39,68,0.08);color:var(--text-heading);
+  font-size:10px;font-weight:800;display:grid;place-items:center;
+}
+.toc__item a.is-active .toc__num{background:var(--color-primary);color:#fff}
+
+/* Section heads (numbered) */
+.section-head{
+  display:flex;align-items:flex-start;gap:20px;margin:56px 0 20px;
+}
+.section-head__num{
+  flex-shrink:0;width:56px;height:56px;border-radius:16px;
+  background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));
+  color:#fff;font-weight:800;font-size:22px;letter-spacing:-0.5px;
+  display:grid;place-items:center;box-shadow:0 12px 24px var(--gold-shadow-hover);
+  font-family:var(--font-serif);
+}
+.section-head__body{flex:1;padding-top:4px}
+.section-head__kicker{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--color-primary-dark);text-transform:uppercase;margin-bottom:6px}
+.section-head__title{
+  font-size:28px;font-weight:800;letter-spacing:-0.8px;line-height:1.15;color:var(--text-heading);
+  margin:0;text-transform:uppercase;
+}
+
+/* Blessings list (numbered) */
+.blessings{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0 32px}
+.blessing{
+  background:#fff;border:1px solid var(--border-color-light);border-radius:16px;padding:22px;
+  position:relative;transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+.blessing:hover{
+  transform:translateY(-4px);border-color:rgba(212,168,75,0.5);
+  box-shadow:0 16px 32px rgba(212,168,75,0.12);
+}
+.blessing__num{
+  font-family:var(--font-serif);font-size:42px;font-weight:500;font-style:italic;
+  color:var(--color-primary);line-height:1;letter-spacing:-2px;
+}
+.blessing__title{
+  font-size:15px;font-weight:800;color:var(--text-heading);margin:8px 0 4px;
+  letter-spacing:-0.3px;line-height:1.25;
+}
+.blessing__ref{font-family:var(--font-serif);font-size:13px;color:var(--color-secondary);font-style:italic;margin-bottom:10px;font-weight:500}
+.blessing__text{font-size:13.5px;color:var(--color-muted);line-height:1.55;margin:0}
+
+/* Key takeaways */
+.takeaways{
+  background:#fff;border-radius:20px;padding:32px;border:1px solid var(--border-color-light);
+  margin:40px 0;position:relative;overflow:hidden;
+}
+.takeaways::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--color-primary),var(--color-primary-light),var(--color-primary));
+}
+.takeaways__title{
+  display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:var(--color-primary-dark);margin-bottom:22px;
+}
+.takeaways__list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.takeaways__list li{
+  display:flex;gap:14px;align-items:flex-start;padding:12px 14px;border-radius:12px;
+  background:rgba(212,168,75,0.04);transition:all .2s ease;
+}
+.takeaways__list li:hover{background:rgba(212,168,75,0.09)}
+.takeaways__list .n{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));
+  color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;margin-top:1px;
+}
+.takeaways__list p{margin:0;font-size:14.5px;line-height:1.5;color:var(--text-secondary)}
+
+.callout{
+  background:linear-gradient(135deg,rgba(74,60,110,0.06),rgba(107,44,58,0.06));
+  border-left:4px solid var(--color-secondary);padding:22px 24px;border-radius:0 14px 14px 0;
+  margin:28px 0;font-family:var(--font-serif);font-size:19px;line-height:1.55;color:var(--text-heading);
+  font-style:italic;font-weight:500;letter-spacing:-0.3px;
+}
+.callout::before{content:'"';font-size:48px;line-height:0;vertical-align:-10px;color:var(--color-primary);margin-right:6px}
+
+/* ================================================================
+   VARIATION B — Study-tool: expandable cards + verse cards
+   ================================================================ */
+.vB .hero-center{text-align:center;max-width:820px;margin:0 auto}
+.vB .eyebrow{
+  display:inline-flex;padding:6px 16px;border-radius:50px;
+  background:rgba(212,168,75,0.15);color:var(--color-primary-light);
+  font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  margin-bottom:24px;border:1px solid rgba(212,168,75,0.3);
+}
+.vB h1{
+  font-family:var(--font-serif);font-weight:500;letter-spacing:-2px;
+  font-size:clamp(44px,6vw,72px);line-height:1.05;margin:0 0 20px;
+}
+.vB h1 strong{font-weight:700;color:var(--color-primary-light);font-style:italic}
+.vB .hero-deck{font-size:18px;line-height:1.55;color:rgba(255,255,255,0.75);max-width:640px;margin:0 auto 32px}
+.vB .hero-meta-row{
+  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;
+}
+.vB .hero-meta-row .meta-item{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  color:rgba(255,255,255,0.65);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
+}
+.vB .hero-meta-row .meta-item strong{color:#fff;font-size:15px;font-weight:700;letter-spacing:-0.3px;text-transform:none}
+
+/* Thumbnail chip strip */
+.vB .thumb-strip{
+  display:flex;align-items:center;gap:16px;justify-content:center;padding:18px;
+  border-radius:14px;background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);max-width:560px;margin:0 auto;
+}
+.vB .thumb-strip__img{
+  flex-shrink:0;width:52px;height:52px;border-radius:10px;
+  background:linear-gradient(135deg,#2a5568,#d47a5a);
+  position:relative;overflow:hidden;
+}
+.vB .thumb-strip__img::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 70% 60%,rgba(222,94,58,0.9),transparent 70%);
+}
+.vB .thumb-strip__body{flex:1;text-align:left;min-width:0}
+.vB .thumb-strip__body strong{display:block;color:#fff;font-weight:700;font-size:13px;letter-spacing:-0.1px}
+.vB .thumb-strip__body span{color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+
+/* Key verse big card */
+.vB .keyverse{
+  background:linear-gradient(135deg,var(--color-navy),var(--color-navy-dark));color:#fff;
+  border-radius:22px;padding:40px 36px;margin-bottom:40px;position:relative;overflow:hidden;
+}
+.vB .keyverse::before{
+  content:'';position:absolute;top:-40px;right:-40px;width:240px;height:240px;
+  background:radial-gradient(circle,rgba(212,168,75,0.25),transparent 70%);
+}
+.vB .keyverse__label{
+  font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--color-primary-light);margin-bottom:12px;position:relative;
+}
+.vB .keyverse__ref{
+  font-family:var(--font-serif);font-size:13px;letter-spacing:1px;text-transform:uppercase;
+  font-weight:600;color:var(--color-primary);margin-bottom:16px;position:relative;
+}
+.vB .keyverse__text{
+  font-family:var(--font-serif);font-weight:500;font-size:22px;line-height:1.5;letter-spacing:-0.3px;
+  margin:0;position:relative;color:rgba(255,255,255,0.92);font-style:italic;
+}
+
+/* Accordion sections */
+.section-accordion{
+  background:#fff;border:1px solid var(--border-color-light);border-radius:18px;
+  margin-bottom:14px;overflow:hidden;transition:all .3s ease;
+}
+.section-accordion.is-open{border-color:rgba(212,168,75,0.5);box-shadow:0 14px 32px rgba(26,39,68,0.06)}
+.section-accordion__head{
+  display:flex;align-items:center;gap:18px;padding:22px 26px;cursor:pointer;
+  background:#fff;width:100%;text-align:left;border:0;font-family:inherit;
+}
+.section-accordion__num{
+  flex-shrink:0;width:40px;height:40px;border-radius:12px;
+  display:grid;place-items:center;font-family:var(--font-serif);
+  font-weight:600;font-size:18px;font-style:italic;letter-spacing:-1px;
+  background:rgba(212,168,75,0.12);color:var(--color-primary-dark);
+  transition:all .3s ease;
+}
+.section-accordion.is-open .section-accordion__num{
+  background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));color:#fff;
+}
+.section-accordion__title{
+  flex:1;font-size:16.5px;font-weight:800;color:var(--text-heading);letter-spacing:-0.3px;line-height:1.3;
+  text-transform:uppercase;
+}
+.section-accordion__title small{
+  display:block;font-size:11px;font-weight:600;color:var(--color-muted);
+  letter-spacing:0.5px;text-transform:none;margin-top:4px;font-family:var(--font-serif);font-style:italic;
+}
+.section-accordion__caret{
+  flex-shrink:0;width:30px;height:30px;border-radius:50%;background:rgba(26,39,68,0.05);
+  display:grid;place-items:center;transition:all .3s ease;color:var(--text-heading);
+}
+.section-accordion.is-open .section-accordion__caret{transform:rotate(180deg);background:var(--color-primary);color:#fff}
+.section-accordion__body{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;
+}
+.section-accordion.is-open .section-accordion__body{max-height:1800px}
+.section-accordion__inner{padding:0 26px 28px 84px}
+
+/* ================================================================
+   VARIATION C — Editorial magazine with drop caps + pull-quotes
+   ================================================================ */
+.vC .hero-center{text-align:center;max-width:880px;margin:0 auto}
+.vC .eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--color-primary);margin-bottom:28px;
+  display:inline-flex;align-items:center;gap:14px;
+}
+.vC .eyebrow::before, .vC .eyebrow::after{
+  content:'';width:36px;height:1px;background:var(--color-primary);opacity:0.6;
+}
+.vC h1{
+  font-family:var(--font-serif);font-weight:400;letter-spacing:-2.5px;
+  font-size:clamp(48px,7vw,96px);line-height:0.98;margin:0 0 28px;
+}
+.vC h1 em{font-style:italic;color:var(--color-primary-light);font-weight:500}
+.vC .hero-sub{
+  font-family:var(--font-serif);font-style:italic;font-size:20px;
+  color:rgba(255,255,255,0.72);font-weight:400;max-width:600px;margin:0 auto 32px;line-height:1.5;
+}
+.vC .hero-meta-inline{
+  display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:700;
+}
+.vC .hero-meta-inline .dot{width:4px;height:4px;border-radius:50%;background:var(--color-primary);opacity:0.7}
+.vC .hero-meta-inline strong{color:#fff;font-weight:700}
+
+/* Editorial prose */
+.vC .editorial{font-size:17.5px;line-height:1.85;color:var(--text-secondary)}
+.vC .editorial p{margin:0 0 18px}
+.vC .editorial h3{
+  font-family:var(--font-serif);font-size:34px;font-weight:500;letter-spacing:-1px;
+  line-height:1.1;color:var(--text-heading);margin:48px 0 10px;
+}
+.vC .editorial h3 + .kicker{
+  font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--color-primary-dark);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.vC .editorial h3 + .kicker::before{content:'';width:20px;height:2px;background:var(--color-primary)}
+.vC .editorial .dropcap::first-letter{
+  font-family:var(--font-serif);font-weight:500;float:left;font-size:78px;line-height:0.85;
+  padding:8px 14px 0 0;color:var(--color-primary);
+}
+.vC .pullquote{
+  font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:30px;line-height:1.35;
+  color:var(--text-heading);letter-spacing:-0.8px;margin:40px -20px;padding:18px 40px;
+  border-left:3px solid var(--color-primary);
+}
+.vC .pullquote cite{
+  display:block;font-style:normal;font-family:var(--font-sans);font-size:12px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--color-primary-dark);font-weight:700;margin-top:14px;
+}
+
+/* Verse cards (vC) */
+.verse-cards{display:grid;grid-template-columns:1fr;gap:0;margin:28px 0 36px;border-top:1px solid var(--border-color-light)}
+.verse-card{
+  padding:22px 0;border-bottom:1px solid var(--border-color-light);
+  display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:baseline;
+}
+.verse-card__num{
+  font-family:var(--font-serif);font-size:52px;font-weight:400;font-style:italic;
+  color:var(--color-primary);line-height:1;letter-spacing:-2px;
+}
+.verse-card__title{
+  font-family:var(--font-serif);font-size:24px;font-weight:500;letter-spacing:-0.5px;
+  color:var(--text-heading);margin:0 0 6px;line-height:1.2;
+}
+.verse-card__ref{
+  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--color-primary-dark);margin-bottom:10px;display:inline-block;
+}
+.verse-card__text{font-size:15px;line-height:1.65;color:var(--color-muted);margin:0}
+
+/* ================================================================
+   SCRIPTURE TAB
+   ================================================================ */
+.scripture-list{display:grid;gap:16px}
+.scripture-item{
+  background:#fff;border:1px solid var(--border-color-light);border-radius:16px;padding:22px 24px;
+  transition:all .25s ease;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;
+}
+.scripture-item:hover{
+  border-color:rgba(212,168,75,0.5);transform:translateX(4px);
+  box-shadow:0 10px 24px rgba(26,39,68,0.06);
+}
+.scripture-item__badge{
+  width:50px;height:50px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--color-secondary),var(--color-secondary));
+  color:#fff;font-weight:800;font-size:14px;letter-spacing:-0.3px;
+  font-family:var(--font-serif);font-style:italic;
+}
+.scripture-item__body strong{
+  display:block;font-size:13px;font-weight:800;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--color-primary-dark);margin-bottom:2px;
+}
+.scripture-item__body h4{
+  margin:0 0 4px;font-size:17px;font-weight:800;color:var(--text-heading);letter-spacing:-0.3px;
+}
+.scripture-item__body p{margin:0;font-size:14px;color:var(--color-muted);line-height:1.55}
+
+/* ================================================================
+   SHARED: aside panels
+   ================================================================ */
+.aside-card{
+  background:#fff;border:1px solid var(--border-color-light);border-radius:18px;padding:22px;
+}
+.aside-card h4{
+  margin:0 0 16px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--color-primary-dark);display:flex;align-items:center;gap:8px;
+}
+.aside-card h4::before{content:'';width:16px;height:2px;background:var(--color-primary)}
+
+/* Speaker card */
+.speaker{
+  display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(212,168,75,0.08),rgba(212,168,75,0.02));
+  border:1px solid rgba(212,168,75,0.15);
+}
+.speaker__avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--color-primary),var(--color-primary-dark));
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;
+  box-shadow:0 6px 16px var(--gold-shadow-hover);flex-shrink:0;
+  font-family:var(--font-serif);
+}
+.speaker__body strong{display:block;font-size:14px;font-weight:800;color:var(--text-heading);letter-spacing:-0.2px}
+.speaker__body span{font-size:12px;color:var(--color-muted);font-weight:500}
+
+/* ========== FOOTER CTA ========== */
+.footer-cta{
+  padding:40px 0 80px;text-align:center;background:var(--color-ivory);
+  border-top:1px solid var(--border-color-light);
+}
+.footer-cta .btn{padding:16px 40px}
+
+/* Hide variations by default */
+.variation{display:none}
+.variation.is-active{display:block}
+
+/* Section observe target styles for progress animations */
+[data-section]{scroll-margin-top:100px}
+
+@media (max-width:960px){
+  .sermon-grid{grid-template-columns:1fr;gap:32px}
+  .sermon-grid__aside{position:static}
+  .vA .hero-flex{grid-template-columns:1fr;gap:32px}
+  .blessings{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .container{padding:0 20px}
+  .nav{display:none}
+  .var-switcher__label{display:none}
+  .var-switcher button{padding:9px 12px;font-size:11px}
+}
+
+/* Tab content transitions */
+.tab-panel{display:none}
+.tab-panel.is-active{display:block;animation:fadeUp 0.4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+</style>
+</head>
+<body>
+
+<!-- Reading progress -->
+<div class="progress-bar"><div class="progress-bar__fill" id="progressFill"></div></div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="#" class="brand">
+      <div class="brand__mark">g</div>
+      <div class="brand__name">Gateway Church<small>His Presence, Our Home</small></div>
+    </a>
+    <nav class="nav">
+      <a href="#">About Us</a>
+      <a href="#" class="is-active">Sermons</a>
+      <a href="#">Ministries</a>
+      <a href="#">Events</a>
+      <a href="#">Give</a>
+    </nav>
+    <a href="#" class="header-cta">Plan a Visit →</a>
+  </div>
+</header>
+
+<!-- Variation switcher (Tweaks-style) -->
+<div class="var-switcher" role="tablist" aria-label="Variation">
+  <span class="var-switcher__label">Variation</span>
+  <button data-var="A" class="is-active">A · Modern Reader</button>
+  <button data-var="B">B · Study Tool</button>
+  <button data-var="C">C · Editorial</button>
+</div>
+
+<!-- =================================================================
+     VARIATION A — Modern reader with sticky TOC & numbered sections
+     ================================================================= -->
+<div class="variation vA is-active" data-variation="A">
+
+  <section class="sermon-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span>
+        <a href="#">Sermons</a><span class="sep">/</span>
+        <span class="current">God's Blessings for True Worshippers</span>
+      </nav>
+
+      <div class="hero-flex">
+        <div>
+          <div class="eyebrow">Worship Series · Sermon 07</div>
+          <h1>God's Blessings<br/>for <em>True</em> Worshippers</h1>
+          <p class="hero-deck">True worship begins with a heart of reverence for God and His Word. When we honor Him with our first and our best in sincere devotion, God responds with His presence, guidance, peace, joy, and answered prayers.</p>
+          <div class="hero-meta">
+            <div class="meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span><strong>Ptr. Jim Baloran</strong>Senior Pastor</span>
+            </div>
+            <div class="meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span><strong>April 13, 2026</strong></span>
+            </div>
+            <div class="meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span><strong>45 min</strong>read · 8 min</span>
+            </div>
+            <div class="meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              <span><strong>Nehemiah 8:5–6</strong>Key Verse</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-artwork" aria-hidden="true">
+          <div class="hero-artwork__title">
+            God's Blessings<br/>for True Worshippers
+            <small>PTR JIMANUEL BALORAN</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sermon-body">
+    <div class="container">
+      <div class="sermon-grid">
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <article>
+
+          <!-- Tabs -->
+          <div class="tabs" role="tablist">
+            <button class="tab is-active" data-tab="notes" role="tab">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+              Sermon Notes
+            </button>
+            <button class="tab" data-tab="scripture" role="tab">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Scripture <span style="background:var(--color-primary);color:#fff;padding:2px 8px;border-radius:20px;font-size:10px;margin-left:4px">8</span>
+            </button>
+          </div>
+
+          <!-- Notes panel -->
+          <div class="tab-panel is-active" data-panel="notes">
+
+            <!-- Intro section -->
+            <div class="section-head" data-section="intro" id="sec-intro">
+              <div class="section-head__num">01</div>
+              <div class="section-head__body">
+                <div class="section-head__kicker">Introduction</div>
+                <h2 class="section-head__title">The Heart of True Worship</h2>
+              </div>
+            </div>
+            <div class="prose">
+              <p>True worship begins with a heart of reverence for God and His Word. In the time of Nehemiah, when the Book of the Law was opened, the people stood up in honor and worship. This reminds us that worship is not just an action — it is an attitude of respect, humility, and devotion to the Lord.</p>
+              <p>It should be our habit to give reverence when reading and hearing the Word of God, recognizing His presence among us.</p>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section-head" data-section="history" id="sec-history">
+              <div class="section-head__num">02</div>
+              <div class="section-head__body">
+                <div class="section-head__kicker">Context</div>
+                <h2 class="section-head__title">A Brief History of God's Presence</h2>
+              </div>
+            </div>
+            <div class="prose">
+              <p>From the very beginning, God designed humanity to live in His presence. The Garden of <strong>Eden</strong> was described as a <em>delightful place</em>. The word Eden means a delightful spot — a special place made beautiful because of the presence of God. It was more than a location; it was a home where God and man had fellowship.</p>
+              <p>Even in the garden, there was already a foreshadowing of atonement. After Adam and Eve sinned, God covered their shame by providing garments made from animal skins. This act pointed to the future sacrifice that would restore humanity to God.</p>
+              <div class="callout">The first Adam failed, but the second Adam — Jesus Christ — came to undo what the first Adam had done.</div>
+              <p>Through Jesus, God's original design for humanity is being restored.</p>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section-head" data-section="principle" id="sec-principle">
+              <div class="section-head__num">03</div>
+              <div class="section-head__body">
+                <div class="section-head__kicker">Principle</div>
+                <h2 class="section-head__title">God Claims the First</h2>
+              </div>
+            </div>
+            <div class="prose">
+              <p>Throughout Scripture, we see a consistent principle: <strong>God always claims the first.</strong> Our attitude matters in how we give our first to the Lord.</p>
+              <p>Abel offered his first and best to God, and the Lord was pleased with his offering. In the same way, when we offer the first day of the week to the Lord in worship, we honor Him above all else. <strong>When the first is blessed, the rest that follows is also blessed.</strong></p>
+              <p>We are reminded not to give God our leftovers — including our time, energy, and attention. Cain offered what he wanted rather than what honored God, and his offering was not pleasing to the Lord. True worship requires sincerity, priority, and wholehearted devotion.</p>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section-head" data-section="blessings" id="sec-blessings">
+              <div class="section-head__num">04</div>
+              <div class="section-head__body">
+                <div class="section-head__kicker">Main Teaching</div>
+                <h2 class="section-head__title">Five Blessings for True Worshippers</h2>
+              </div>
+            </div>
+            <div class="prose">
+              <p>God responds to sincere worship with His presence and favor. The Bible reveals several blessings that belong to those who worship Him in spirit and truth.</p>
+            </div>
+
+            <div class="blessings">
+              <div class="blessing">
+                <div class="blessing__num">01</div>
+                <div class="blessing__title">God Promises to Be with His Worshippers</div>
+                <div class="blessing__ref">Matthew 18:20 · Revelation 3:20</div>
+                <p class="blessing__text">One of the greatest blessings of worship is the presence of God. When believers gather in His name, He promises to be among them. He also desires a close and personal relationship with each of us.</p>
+              </div>
+              <div class="blessing">
+                <div class="blessing__num">02</div>
+                <div class="blessing__title">God Guides and Surrounds Them with His Glory</div>
+                <div class="blessing__ref">Exodus 40:35 · 2 Chronicles 7:1 · 1 Peter 4:14</div>
+                <p class="blessing__text">When the glory of God comes down, blessings follow. His glory brings direction, protection, and assurance that He is with us. Blessings happen when the glory of God is present in our lives.</p>
+              </div>
+              <div class="blessing">
+                <div class="blessing__num">03</div>
+                <div class="blessing__title">God Showers Them with Blessings and Peace</div>
+                <div class="blessing__ref">Ezekiel 34:26 · Psalm 29:11</div>
+                <p class="blessing__text">God delights in blessing His people. True peace is not merely the absence of trouble — it is found in a Person, Jesus Christ. When we walk closely with Him, His peace guards our hearts and minds.</p>
+              </div>
+              <div class="blessing">
+                <div class="blessing__num">04</div>
+                <div class="blessing__title">God Gives Them Overflowing Joy</div>
+                <div class="blessing__ref">Psalm 122:1 · John 15:11</div>
+                <p class="blessing__text">True worship brings joy that goes beyond circumstances. The joy of the Lord strengthens us in every season of life. It renews our spirit, lifts our hearts, and reminds us of God's goodness.</p>
+              </div>
+              <div class="blessing" style="grid-column:1 / -1">
+                <div class="blessing__num">05</div>
+                <div class="blessing__title">God Answers Their Prayers Offered in Faith</div>
+                <div class="blessing__ref">Mark 11:24 · James 5:15</div>
+                <p class="blessing__text">God hears and responds to the prayers of sincere worshippers. When we pray with faith, trusting in His power and goodness, He answers according to His will. Scripture teaches that prayers offered in faith bring healing, restoration, and breakthrough. Faith-filled prayer connects us to the power of God.</p>
+              </div>
+            </div>
+
+            <!-- Takeaways -->
+            <div class="takeaways" data-section="takeaways" id="sec-takeaways">
+              <div class="takeaways__title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true"><path d="M12 2l2.39 7.36H22l-6.2 4.51 2.39 7.36L12 16.72l-6.19 4.51 2.39-7.36L2 9.36h7.61z"/></svg>
+                Key Takeaways
+              </div>
+              <ul class="takeaways__list">
+                <li><span class="n">1</span><p>True worship begins with reverence for God and His Word.</p></li>
+                <li><span class="n">2</span><p>God designed us to live in His presence — Eden was delightful because of God.</p></li>
+                <li><span class="n">3</span><p>Jesus, the Second Adam, restored what was lost through the fall.</p></li>
+                <li><span class="n">4</span><p>God deserves our first and our best — when the first is blessed, the rest is blessed.</p></li>
+                <li><span class="n">5</span><p>We should never give God our leftovers — true worship is wholehearted.</p></li>
+                <li><span class="n">6</span><p>God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers.</p></li>
+              </ul>
+            </div>
+
+            <div class="tag-row">
+              <span style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--color-muted);margin-right:4px;align-self:center">Topics</span>
+              <a class="tag" href="#">Worship</a>
+              <a class="tag" href="#">Blessing</a>
+              <a class="tag" href="#">Reverence</a>
+              <a class="tag" href="#">Prayer</a>
+              <a class="tag" href="#">Joy</a>
+              <a class="tag" href="#">Peace</a>
+              <a class="tag" href="#">Grace</a>
+            </div>
+          </div>
+
+          <!-- Scripture panel -->
+          <div class="tab-panel" data-panel="scripture">
+            <div class="prose" style="margin-bottom:24px">
+              <p style="color:var(--color-muted);font-size:14.5px">Every scripture referenced in this sermon, in the order they appear. Click any reference to open the full passage.</p>
+            </div>
+            <div class="scripture-list">
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">NE</div>
+                <div class="scripture-item__body">
+                  <strong>Key Verse</strong>
+                  <h4>Nehemiah 8:5–6</h4>
+                  <p>"And Ezra opened the book in the sight of all the people… and all the people answered, Amen, Amen, with lifting up their hands."</p>
+                </div>
+              </a>
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">MT</div>
+                <div class="scripture-item__body">
+                  <strong>Blessing 1 · Presence</strong>
+                  <h4>Matthew 18:20</h4>
+                  <p>"For where two or three are gathered together in my name, there am I in the midst of them."</p>
+                </div>
+              </a>
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">RV</div>
+                <div class="scripture-item__body">
+                  <strong>Blessing 1 · Presence</strong>
+                  <h4>Revelation 3:20</h4>
+                  <p>"Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him."</p>
+                </div>
+              </a>
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">EX</div>
+                <div class="scripture-item__body">
+                  <strong>Blessing 2 · Glory</strong>
+                  <h4>Exodus 40:35</h4>
+                  <p>"And Moses was not able to enter into the tent of the congregation, because the cloud abode thereon, and the glory of the Lord filled the tabernacle."</p>
+                </div>
+              </a>
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">EZ</div>
+                <div class="scripture-item__body">
+                  <strong>Blessing 3 · Peace</strong>
+                  <h4>Ezekiel 34:26</h4>
+                  <p>"And I will make them and the places round about my hill a blessing; and I will cause the shower to come down in his season; there shall be showers of blessing."</p>
+                </div>
+              </a>
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">PS</div>
+                <div class="scripture-item__body">
+                  <strong>Blessing 4 · Joy</strong>
+                  <h4>Psalm 122:1</h4>
+                  <p>"I was glad when they said unto me, Let us go into the house of the Lord."</p>
+                </div>
+              </a>
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">JN</div>
+                <div class="scripture-item__body">
+                  <strong>Blessing 4 · Joy</strong>
+                  <h4>John 15:11</h4>
+                  <p>"These things have I spoken unto you, that my joy might remain in you, and that your joy might be full."</p>
+                </div>
+              </a>
+              <a class="scripture-item" href="#">
+                <div class="scripture-item__badge">MK</div>
+                <div class="scripture-item__body">
+                  <strong>Blessing 5 · Prayer</strong>
+                  <h4>Mark 11:24</h4>
+                  <p>"What things soever ye desire, when ye pray, believe that ye receive them, and ye shall have them."</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- ===== ASIDE ===== -->
+        <aside class="sermon-grid__aside">
+
+          <!-- TOC -->
+          <div class="toc">
+            <div class="toc__title">In this Sermon</div>
+            <ol class="toc__list">
+              <li class="toc__item"><a href="#sec-intro" class="is-active"><span class="toc__num">1</span>The Heart of True Worship</a></li>
+              <li class="toc__item"><a href="#sec-history"><span class="toc__num">2</span>A Brief History of God's Presence</a></li>
+              <li class="toc__item"><a href="#sec-principle"><span class="toc__num">3</span>God Claims the First</a></li>
+              <li class="toc__item"><a href="#sec-blessings"><span class="toc__num">4</span>Five Blessings for True Worshippers</a></li>
+              <li class="toc__item"><a href="#sec-takeaways"><span class="toc__num">★</span>Key Takeaways</a></li>
+            </ol>
+          </div>
+
+          <!-- Speaker -->
+          <div class="aside-card">
+            <h4>Speaker</h4>
+            <div class="speaker">
+              <div class="speaker__avatar">JB</div>
+              <div class="speaker__body">
+                <strong>Ptr. Jim Baloran</strong>
+                <span>Senior Pastor · Gateway Church</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Share -->
+          <div class="aside-card">
+            <h4>Share this Sermon</h4>
+            <div style="display:grid;gap:8px">
+              <button class="btn btn--outline btn--block" onclick="this.innerHTML='✓ Link copied'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                Copy Link
+              </button>
+              <div style="display:flex;gap:8px">
+                <button class="btn btn--ghost" style="flex:1" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.57V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.44 8.5L23 22h-6.56l-5.14-6.73L5.4 22H2.3l7.96-9.1L2 2h6.72l4.65 6.15L18.9 2zm-1.15 18h1.7L7.34 4H5.53l12.22 16z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0c-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3c.2.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7 3.9z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming events -->
+          <div class="aside-card">
+            <h4>Upcoming Events</h4>
+            <div style="display:grid;gap:4px">
+              <a class="event-row" href="#">
+                <div class="event-date"><strong>19</strong><span>Apr</span></div>
+                <div class="event-row__body">
+                  <strong>SONday Service</strong>
+                  <span>Sunday · 9:30 AM</span>
+                </div>
+              </a>
+              <a class="event-row" href="#">
+                <div class="event-date"><strong>23</strong><span>Apr</span></div>
+                <div class="event-row__body">
+                  <strong>Worship Night</strong>
+                  <span>Thursday · 7:00 PM</span>
+                </div>
+              </a>
+              <a class="event-row" href="#">
+                <div class="event-date"><strong>26</strong><span>Apr</span></div>
+                <div class="event-row__body">
+                  <strong>Community Gathering</strong>
+                  <span>Sunday · 9:30 AM</span>
+                </div>
+              </a>
+            </div>
+            <a href="#" style="display:block;margin-top:14px;text-align:center;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-primary-dark);text-decoration:none">View All Events →</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =================================================================
+     VARIATION B — Study tool: key verse card + accordion sections
+     ================================================================= -->
+<div class="variation vB" data-variation="B">
+
+  <section class="sermon-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span>
+        <a href="#">Sermons</a><span class="sep">/</span>
+        <span class="current">God's Blessings for True Worshippers</span>
+      </nav>
+
+      <div class="hero-center">
+        <span class="eyebrow">★ Worship Series · Sermon 07</span>
+        <h1>God's Blessings for <strong>True Worshippers</strong></h1>
+        <p class="hero-deck">A study of reverence, priority, and the blessings God pours out on those who worship Him in spirit and truth.</p>
+
+        <div class="hero-meta-row">
+          <div class="meta-item"><strong>Ptr. Jim Baloran</strong>Speaker</div>
+          <div class="meta-item"><strong>April 13, 2026</strong>Date</div>
+          <div class="meta-item"><strong>45 min</strong>Duration</div>
+          <div class="meta-item"><strong>Nehemiah 8:5–6</strong>Key Verse</div>
+          <div class="meta-item"><strong>8 passages</strong>Scripture</div>
+        </div>
+
+        <div class="thumb-strip">
+          <div class="thumb-strip__img"></div>
+          <div class="thumb-strip__body">
+            <strong>God's Blessings for True Worshippers</strong>
+            <span>Sermon Message</span>
+          </div>
+          <button class="btn btn--gold" style="padding:10px 20px">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px"><polygon points="5,3 19,12 5,21"/></svg>
+            Play Audio
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sermon-body">
+    <div class="container">
+      <div class="sermon-grid">
+
+        <article>
+
+          <div class="tabs" role="tablist">
+            <button class="tab is-active" data-tab="notes" role="tab">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Study Outline
+            </button>
+            <button class="tab" data-tab="scripture" role="tab">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Scripture <span style="background:var(--color-primary);color:#fff;padding:2px 8px;border-radius:20px;font-size:10px;margin-left:4px">8</span>
+            </button>
+          </div>
+
+          <div class="tab-panel is-active" data-panel="notes">
+
+            <!-- Key Verse -->
+            <div class="keyverse">
+              <div class="keyverse__label">▸ Anchor Scripture</div>
+              <div class="keyverse__ref">Nehemiah 8 : 5–6</div>
+              <p class="keyverse__text">"And Ezra opened the book in the sight of all the people… and all the people answered, Amen, Amen, with lifting up their hands: and they bowed their heads, and worshipped the Lord with their faces to the ground."</p>
+            </div>
+
+            <!-- Accordion 1 -->
+            <div class="section-accordion is-open">
+              <button class="section-accordion__head">
+                <div class="section-accordion__num">I</div>
+                <div class="section-accordion__title">Introduction<small>The Heart of True Worship</small></div>
+                <div class="section-accordion__caret">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </button>
+              <div class="section-accordion__body"><div class="section-accordion__inner">
+                <div class="prose">
+                  <p>True worship begins with a heart of reverence for God and His Word. In the time of Nehemiah, when the Book of the Law was opened, the people stood up in honor and worship. This reminds us that worship is not just an action — it is an attitude of respect, humility, and devotion to the Lord.</p>
+                  <p>It should be our habit to give reverence when reading and hearing the Word of God, recognizing His presence among us.</p>
+                </div>
+              </div></div>
+            </div>
+
+            <!-- Accordion 2 -->
+            <div class="section-accordion">
+              <button class="section-accordion__head">
+                <div class="section-accordion__num">II</div>
+                <div class="section-accordion__title">Context<small>A Brief History of God's Presence</small></div>
+                <div class="section-accordion__caret">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </button>
+              <div class="section-accordion__body"><div class="section-accordion__inner">
+                <div class="prose">
+                  <p>From the very beginning, God designed humanity to live in His presence. The Garden of Eden was described as a delightful place. The word Eden means a delightful spot — a special place made beautiful because of the presence of God.</p>
+                  <p>Even in the garden, there was already a foreshadowing of atonement. After Adam and Eve sinned, God covered their shame by providing garments made from animal skins. This act pointed to the future sacrifice that would restore humanity to God.</p>
+                  <p>The first Adam failed, but the second Adam, Jesus Christ, came to undo what the first Adam had done. Through Jesus, God's original design for humanity is being restored.</p>
+                </div>
+              </div></div>
+            </div>
+
+            <!-- Accordion 3 -->
+            <div class="section-accordion">
+              <button class="section-accordion__head">
+                <div class="section-accordion__num">III</div>
+                <div class="section-accordion__title">Principle<small>God Claims the First</small></div>
+                <div class="section-accordion__caret">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </button>
+              <div class="section-accordion__body"><div class="section-accordion__inner">
+                <div class="prose">
+                  <p>Throughout Scripture, we see a consistent principle: God always claims the first. Our attitude matters in how we give our first to the Lord.</p>
+                  <p>Abel offered his first and best to God, and the Lord was pleased with his offering. In the same way, when we offer the first day of the week to the Lord in worship, we honor Him above all else. When the first is blessed, the rest that follows is also blessed.</p>
+                  <p>We are reminded not to give God our leftovers including our time, energy, and attention. Cain offered what he wanted rather than what honored God, and his offering was not pleasing to the Lord. True worship requires sincerity, priority, and wholehearted devotion.</p>
+                </div>
+              </div></div>
+            </div>
+
+            <!-- Accordion 4 - The big one -->
+            <div class="section-accordion is-open">
+              <button class="section-accordion__head">
+                <div class="section-accordion__num">IV</div>
+                <div class="section-accordion__title">Main Teaching<small>Five Blessings for True Worshippers</small></div>
+                <div class="section-accordion__caret">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </button>
+              <div class="section-accordion__body"><div class="section-accordion__inner">
+                <div class="prose">
+                  <p>God responds to sincere worship with His presence and favor. The Bible reveals several blessings that belong to those who worship Him in spirit and truth:</p>
+                </div>
+                <div class="blessings" style="margin-top:20px">
+                  <div class="blessing" style="grid-column:1 / -1">
+                    <div class="blessing__num">01</div>
+                    <div class="blessing__title">God Promises to Be with His Worshippers</div>
+                    <div class="blessing__ref">Matthew 18:20 · Revelation 3:20</div>
+                    <p class="blessing__text">One of the greatest blessings of worship is the presence of God. When believers gather in His name, He promises to be among them. He also desires a close and personal relationship with each of us, inviting us to fellowship with Him daily.</p>
+                  </div>
+                  <div class="blessing" style="grid-column:1 / -1">
+                    <div class="blessing__num">02</div>
+                    <div class="blessing__title">God Guides and Surrounds Them with His Glory</div>
+                    <div class="blessing__ref">Exodus 40:35 · 2 Chronicles 7:1 · 1 Peter 4:14</div>
+                    <p class="blessing__text">When the glory of God comes down, blessings follow. Throughout Scripture, God's presence filled places of worship and guided His people. His glory brings direction, protection, and assurance that He is with us.</p>
+                  </div>
+                  <div class="blessing" style="grid-column:1 / -1">
+                    <div class="blessing__num">03</div>
+                    <div class="blessing__title">God Showers Them with Blessings and Peace</div>
+                    <div class="blessing__ref">Ezekiel 34:26 · Psalm 29:11</div>
+                    <p class="blessing__text">God delights in blessing His people. Among the greatest blessings He gives is peace. True peace is not merely the absence of trouble — it is found in a Person, Jesus Christ. Without God, there is no lasting peace. But when we walk closely with Him, His peace guards our hearts and minds.</p>
+                  </div>
+                  <div class="blessing" style="grid-column:1 / -1">
+                    <div class="blessing__num">04</div>
+                    <div class="blessing__title">God Gives Them Overflowing Joy</div>
+                    <div class="blessing__ref">Psalm 122:1 · John 15:11</div>
+                    <p class="blessing__text">True worship brings joy that goes beyond circumstances. The joy of the Lord strengthens us in every season of life. It renews our spirit, lifts our hearts, and reminds us of God's goodness. We need the joy that comes from the Lord, because the joy of the Lord is our strength.</p>
+                  </div>
+                  <div class="blessing" style="grid-column:1 / -1">
+                    <div class="blessing__num">05</div>
+                    <div class="blessing__title">God Answers Their Prayers Offered in Faith</div>
+                    <div class="blessing__ref">Mark 11:24 · James 5:15</div>
+                    <p class="blessing__text">God hears and responds to the prayers of sincere worshippers. When we pray with faith, trusting in His power and goodness, He answers according to His will. Scripture teaches that prayers offered in faith bring healing, restoration, and breakthrough. Faith-filled prayer connects us to the power of God.</p>
+                  </div>
+                </div>
+              </div></div>
+            </div>
+
+            <!-- Takeaways -->
+            <div class="takeaways">
+              <div class="takeaways__title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12 2l2.39 7.36H22l-6.2 4.51 2.39 7.36L12 16.72l-6.19 4.51 2.39-7.36L2 9.36h7.61z"/></svg>
+                Key Takeaways
+              </div>
+              <ul class="takeaways__list">
+                <li><span class="n">1</span><p>True worship begins with reverence for God and His Word.</p></li>
+                <li><span class="n">2</span><p>God designed us to live in His presence — Eden was delightful because of God.</p></li>
+                <li><span class="n">3</span><p>Jesus, the Second Adam, restored what was lost through the fall.</p></li>
+                <li><span class="n">4</span><p>God deserves our first and our best — when the first is blessed, the rest is blessed.</p></li>
+                <li><span class="n">5</span><p>We should never give God our leftovers — true worship is wholehearted.</p></li>
+                <li><span class="n">6</span><p>God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers.</p></li>
+              </ul>
+            </div>
+
+            <div class="tag-row">
+              <span style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--color-muted);margin-right:4px;align-self:center">Topics</span>
+              <a class="tag" href="#">Worship</a>
+              <a class="tag" href="#">Blessing</a>
+              <a class="tag" href="#">Reverence</a>
+              <a class="tag" href="#">Prayer</a>
+              <a class="tag" href="#">Joy</a>
+              <a class="tag" href="#">Peace</a>
+              <a class="tag" href="#">Grace</a>
+            </div>
+
+          </div>
+
+          <!-- B Scripture panel (reuses same) -->
+          <div class="tab-panel" data-panel="scripture">
+            <div class="scripture-list">
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">NE</div><div class="scripture-item__body"><strong>Key Verse</strong><h4>Nehemiah 8:5–6</h4><p>The people stood in honor when the Book of the Law was opened.</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">MT</div><div class="scripture-item__body"><strong>Blessing 1 · Presence</strong><h4>Matthew 18:20</h4><p>"For where two or three are gathered together in my name, there am I."</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">EX</div><div class="scripture-item__body"><strong>Blessing 2 · Glory</strong><h4>Exodus 40:35</h4><p>The glory of the Lord filled the tabernacle.</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">EZ</div><div class="scripture-item__body"><strong>Blessing 3 · Peace</strong><h4>Ezekiel 34:26</h4><p>"There shall be showers of blessing."</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">PS</div><div class="scripture-item__body"><strong>Blessing 4 · Joy</strong><h4>Psalm 122:1</h4><p>"I was glad when they said unto me, Let us go into the house of the Lord."</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">MK</div><div class="scripture-item__body"><strong>Blessing 5 · Prayer</strong><h4>Mark 11:24</h4><p>Believe that ye receive them, and ye shall have them.</p></div></a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- B aside -->
+        <aside class="sermon-grid__aside">
+          <div class="aside-card">
+            <h4>Progress</h4>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px">
+              <div style="position:relative;width:52px;height:52px;flex-shrink:0">
+                <svg viewBox="0 0 36 36" style="width:100%;height:100%;transform:rotate(-90deg)">
+                  <circle cx="18" cy="18" r="16" fill="none" stroke="rgba(26,39,68,0.08)" stroke-width="3"/>
+                  <circle id="progressRing" cx="18" cy="18" r="16" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>
+                </svg>
+                <div id="progressPct" style="position:absolute;inset:0;display:grid;place-items:center;font-size:11px;font-weight:800;color:var(--text-heading)">0%</div>
+              </div>
+              <div>
+                <strong style="display:block;font-size:14px;color:var(--text-heading)">Reading progress</strong>
+                <span style="font-size:12px;color:var(--color-muted)">≈ 8 minute read</span>
+              </div>
+            </div>
+          </div>
+          <div class="aside-card">
+            <h4>Speaker</h4>
+            <div class="speaker">
+              <div class="speaker__avatar">JB</div>
+              <div class="speaker__body">
+                <strong>Ptr. Jim Baloran</strong>
+                <span>Senior Pastor · Gateway Church</span>
+              </div>
+            </div>
+          </div>
+          <div class="aside-card">
+            <h4>Share this Sermon</h4>
+            <div style="display:grid;gap:8px">
+              <button class="btn btn--outline btn--block" onclick="this.innerHTML='✓ Link copied'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                Copy Link
+              </button>
+              <div style="display:flex;gap:8px">
+                <button class="btn btn--ghost" style="flex:1" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.57V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.44 8.5L23 22h-6.56l-5.14-6.73L5.4 22H2.3l7.96-9.1L2 2h6.72l4.65 6.15L18.9 2z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="aside-card">
+            <h4>Upcoming Events</h4>
+            <div style="display:grid;gap:4px">
+              <a class="event-row" href="#"><div class="event-date"><strong>19</strong><span>Apr</span></div><div class="event-row__body"><strong>SONday Service</strong><span>Sunday · 9:30 AM</span></div></a>
+              <a class="event-row" href="#"><div class="event-date"><strong>23</strong><span>Apr</span></div><div class="event-row__body"><strong>Worship Night</strong><span>Thursday · 7:00 PM</span></div></a>
+              <a class="event-row" href="#"><div class="event-date"><strong>26</strong><span>Apr</span></div><div class="event-row__body"><strong>Community Gathering</strong><span>Sunday · 9:30 AM</span></div></a>
+            </div>
+            <a href="#" style="display:block;margin-top:14px;text-align:center;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-primary-dark);text-decoration:none">View All Events →</a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =================================================================
+     VARIATION C — Editorial magazine
+     ================================================================= -->
+<div class="variation vC" data-variation="C">
+
+  <section class="sermon-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="#">Home</a><span class="sep">/</span>
+        <a href="#">Sermons</a><span class="sep">/</span>
+        <span class="current">God's Blessings for True Worshippers</span>
+      </nav>
+
+      <div class="hero-center">
+        <div class="eyebrow">Issue 07 · Worship Series</div>
+        <h1>God's Blessings for <em>true</em><br/>Worshippers</h1>
+        <p class="hero-sub">A meditation on reverence, priority, and the presence of God — drawn from the opening of Nehemiah's Book of the Law.</p>
+        <div class="hero-meta-inline">
+          <span><strong>Ptr. Jim Baloran</strong></span>
+          <span class="dot"></span>
+          <span>April 13, 2026</span>
+          <span class="dot"></span>
+          <span>45 min message</span>
+          <span class="dot"></span>
+          <span>8 min read</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sermon-body">
+    <div class="container">
+      <div class="sermon-grid">
+
+        <article>
+
+          <div class="tabs" role="tablist">
+            <button class="tab is-active" data-tab="notes" role="tab">The Reading</button>
+            <button class="tab" data-tab="scripture" role="tab">Scripture Index · 8</button>
+          </div>
+
+          <div class="tab-panel is-active" data-panel="notes">
+
+            <div class="editorial">
+              <p class="dropcap"><strong>True worship begins</strong> with a heart of reverence for God and His Word. In the time of Nehemiah, when the Book of the Law was opened, the people stood up in honor and worship. This reminds us that worship is not just an action — it is an attitude of respect, humility, and devotion to the Lord. It should be our habit to give reverence when reading and hearing the Word of God, recognizing His presence among us.</p>
+
+              <div class="kicker"></div>
+              <h3>A brief history of God's presence</h3>
+              <p class="kicker">Chapter One</p>
+
+              <p>From the very beginning, God designed humanity to live in His presence. The Garden of Eden was described as a delightful place. The word Eden means a delightful spot — a special place made beautiful because of the presence of God. It was more than a location; it was a home where God and man had fellowship.</p>
+
+              <p>Even in the garden, there was already a foreshadowing of atonement. After Adam and Eve sinned, God covered their shame by providing garments made from animal skins. This act pointed to the future sacrifice that would restore humanity to God.</p>
+
+              <blockquote class="pullquote">
+                The first Adam failed, but the second Adam — Jesus Christ — came to undo what the first Adam had done.
+                <cite>— From the sermon</cite>
+              </blockquote>
+
+              <p>Through Jesus, God's original design for humanity is being restored.</p>
+
+              <h3>God claims the first</h3>
+              <p class="kicker">Chapter Two</p>
+
+              <p>Throughout Scripture, we see a consistent principle: God always claims the first. Our attitude matters in how we give our first to the Lord. Abel offered his first and best to God, and the Lord was pleased with his offering. In the same way, when we offer the first day of the week to the Lord in worship, we honor Him above all else. When the first is blessed, the rest that follows is also blessed.</p>
+
+              <p>We are reminded not to give God our leftovers — including our time, energy, and attention. Cain offered what he wanted rather than what honored God, and his offering was not pleasing to the Lord. True worship requires sincerity, priority, and wholehearted devotion.</p>
+
+              <h3>Five blessings for true worshippers</h3>
+              <p class="kicker">Chapter Three · The main teaching</p>
+
+              <p>God responds to sincere worship with His presence and favor. The Bible reveals several blessings that belong to those who worship Him in spirit and truth.</p>
+
+              <div class="verse-cards">
+                <div class="verse-card">
+                  <div class="verse-card__num">i</div>
+                  <div>
+                    <div class="verse-card__ref">Matthew 18:20 · Revelation 3:20</div>
+                    <h4 class="verse-card__title">God promises to be with His worshippers</h4>
+                    <p class="verse-card__text">One of the greatest blessings of worship is the presence of God. When believers gather in His name, He promises to be among them. He also desires a close and personal relationship with each of us, inviting us to fellowship with Him daily.</p>
+                  </div>
+                </div>
+                <div class="verse-card">
+                  <div class="verse-card__num">ii</div>
+                  <div>
+                    <div class="verse-card__ref">Exodus 40:35 · 2 Chronicles 7:1 · 1 Peter 4:14</div>
+                    <h4 class="verse-card__title">God guides and surrounds them with His glory</h4>
+                    <p class="verse-card__text">When the glory of God comes down, blessings follow. His presence fills places of worship and guides His people. Glory brings direction, protection, and assurance that He is with us.</p>
+                  </div>
+                </div>
+                <div class="verse-card">
+                  <div class="verse-card__num">iii</div>
+                  <div>
+                    <div class="verse-card__ref">Ezekiel 34:26 · Psalm 29:11</div>
+                    <h4 class="verse-card__title">God showers them with blessings and peace</h4>
+                    <p class="verse-card__text">God delights in blessing His people. Among the greatest blessings He gives is peace — not merely the absence of trouble, but found in a Person: Jesus Christ. When we walk closely with Him, His peace guards our hearts and minds.</p>
+                  </div>
+                </div>
+                <div class="verse-card">
+                  <div class="verse-card__num">iv</div>
+                  <div>
+                    <div class="verse-card__ref">Psalm 122:1 · John 15:11</div>
+                    <h4 class="verse-card__title">God gives them overflowing joy</h4>
+                    <p class="verse-card__text">True worship brings joy that goes beyond circumstances. The joy of the Lord strengthens us in every season of life. It renews our spirit, lifts our hearts, and reminds us of God's goodness.</p>
+                  </div>
+                </div>
+                <div class="verse-card">
+                  <div class="verse-card__num">v</div>
+                  <div>
+                    <div class="verse-card__ref">Mark 11:24 · James 5:15</div>
+                    <h4 class="verse-card__title">God answers their prayers offered in faith</h4>
+                    <p class="verse-card__text">God hears and responds to the prayers of sincere worshippers. Prayers offered in faith bring healing, restoration, and breakthrough. Faith-filled prayer connects us to the power of God.</p>
+                  </div>
+                </div>
+              </div>
+
+              <blockquote class="pullquote">
+                God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers. These blessings flow from a life that honors Him.
+                <cite>— Closing thought</cite>
+              </blockquote>
+            </div>
+
+            <!-- Takeaways -->
+            <div class="takeaways">
+              <div class="takeaways__title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12 2l2.39 7.36H22l-6.2 4.51 2.39 7.36L12 16.72l-6.19 4.51 2.39-7.36L2 9.36h7.61z"/></svg>
+                Six Things to Remember
+              </div>
+              <ul class="takeaways__list">
+                <li><span class="n">1</span><p>True worship begins with reverence for God and His Word.</p></li>
+                <li><span class="n">2</span><p>God designed us to live in His presence — Eden was delightful because of God.</p></li>
+                <li><span class="n">3</span><p>Jesus, the Second Adam, restored what was lost through the fall.</p></li>
+                <li><span class="n">4</span><p>God deserves our first and our best — when the first is blessed, the rest is blessed.</p></li>
+                <li><span class="n">5</span><p>We should never give God our leftovers — true worship is wholehearted.</p></li>
+                <li><span class="n">6</span><p>God blesses true worshippers with His presence, guidance, peace, joy, and answered prayers.</p></li>
+              </ul>
+            </div>
+
+            <div class="tag-row">
+              <span style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--color-muted);margin-right:4px;align-self:center">Filed under</span>
+              <a class="tag" href="#">Worship</a>
+              <a class="tag" href="#">Blessing</a>
+              <a class="tag" href="#">Reverence</a>
+              <a class="tag" href="#">Prayer</a>
+              <a class="tag" href="#">Joy</a>
+              <a class="tag" href="#">Peace</a>
+              <a class="tag" href="#">Grace</a>
+            </div>
+
+          </div>
+
+          <div class="tab-panel" data-panel="scripture">
+            <div class="scripture-list">
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">NE</div><div class="scripture-item__body"><strong>Key Verse</strong><h4>Nehemiah 8:5–6</h4><p>The people stood in honor when the Book of the Law was opened.</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">MT</div><div class="scripture-item__body"><strong>Blessing 1 · Presence</strong><h4>Matthew 18:20</h4><p>"For where two or three are gathered together in my name, there am I."</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">EX</div><div class="scripture-item__body"><strong>Blessing 2 · Glory</strong><h4>Exodus 40:35</h4><p>The glory of the Lord filled the tabernacle.</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">EZ</div><div class="scripture-item__body"><strong>Blessing 3 · Peace</strong><h4>Ezekiel 34:26</h4><p>"There shall be showers of blessing."</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">PS</div><div class="scripture-item__body"><strong>Blessing 4 · Joy</strong><h4>Psalm 122:1</h4><p>"I was glad when they said unto me, Let us go into the house of the Lord."</p></div></a>
+              <a class="scripture-item" href="#"><div class="scripture-item__badge">MK</div><div class="scripture-item__body"><strong>Blessing 5 · Prayer</strong><h4>Mark 11:24</h4><p>Believe that ye receive them, and ye shall have them.</p></div></a>
+            </div>
+          </div>
+
+        </article>
+
+        <aside class="sermon-grid__aside">
+          <!-- Minimal editorial aside -->
+          <div class="aside-card" style="background:var(--color-navy);color:#fff;border-color:transparent">
+            <h4 style="color:var(--color-primary-light)">The Reading</h4>
+            <div style="font-family:var(--font-serif);font-size:22px;line-height:1.35;font-weight:500;letter-spacing:-0.4px;margin-bottom:18px;color:#fff">"And the people stood up, and worshipped the Lord with their faces to the ground."</div>
+            <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--color-primary-light)">— Nehemiah 8:5–6</div>
+          </div>
+          <div class="aside-card">
+            <h4>Share</h4>
+            <div style="display:grid;gap:8px">
+              <button class="btn btn--outline btn--block" onclick="this.innerHTML='✓ Link copied'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                Copy Link
+              </button>
+              <div style="display:flex;gap:8px">
+                <button class="btn btn--ghost" style="flex:1" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.57V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.44 8.5L23 22h-6.56l-5.14-6.73L5.4 22H2.3l7.96-9.1L2 2h6.72l4.65 6.15L18.9 2z"/></svg></button>
+                <button class="btn btn--ghost" style="flex:1" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="aside-card">
+            <h4>Upcoming Events</h4>
+            <div style="display:grid;gap:4px">
+              <a class="event-row" href="#"><div class="event-date"><strong>19</strong><span>Apr</span></div><div class="event-row__body"><strong>SONday Service</strong><span>Sunday · 9:30 AM</span></div></a>
+              <a class="event-row" href="#"><div class="event-date"><strong>23</strong><span>Apr</span></div><div class="event-row__body"><strong>Worship Night</strong><span>Thursday · 7:00 PM</span></div></a>
+              <a class="event-row" href="#"><div class="event-date"><strong>26</strong><span>Apr</span></div><div class="event-row__body"><strong>Community Gathering</strong><span>Sunday · 9:30 AM</span></div></a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer CTA -->
+<section class="footer-cta">
+  <div class="container">
+    <a href="#" class="btn btn--outline">← Back to All Sermons</a>
+  </div>
+</section>
+
+<script>
+(function(){
+  // ----- Variation switcher -----
+  const buttons = document.querySelectorAll('.var-switcher button');
+  const variations = document.querySelectorAll('.variation');
+  const KEY = 'gwc-sermon-variation';
+  const saved = localStorage.getItem(KEY) || 'A';
+  setVar(saved);
+  buttons.forEach(b => b.addEventListener('click', () => {
+    setVar(b.dataset.var);
+    localStorage.setItem(KEY, b.dataset.var);
+    window.scrollTo({top:0, behavior:'smooth'});
+  }));
+  function setVar(v){
+    buttons.forEach(b => b.classList.toggle('is-active', b.dataset.var === v));
+    variations.forEach(x => x.classList.toggle('is-active', x.dataset.variation === v));
+  }
+
+  // ----- Tabs (per variation) -----
+  document.addEventListener('click', (e) => {
+    const tab = e.target.closest('.tab');
+    if(!tab) return;
+    const parent = tab.closest('.variation');
+    const name = tab.dataset.tab;
+    parent.querySelectorAll('.tab').forEach(t => t.classList.toggle('is-active', t === tab));
+    parent.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('is-active', p.dataset.panel === name));
+  });
+
+  // ----- Accordions (variation B) -----
+  document.addEventListener('click', (e) => {
+    const head = e.target.closest('.section-accordion__head');
+    if(!head) return;
+    head.closest('.section-accordion').classList.toggle('is-open');
+  });
+
+  // ----- Reading progress -----
+  const fill = document.getElementById('progressFill');
+  const ring = document.getElementById('progressRing');
+  const pct = document.getElementById('progressPct');
+  function onScroll(){
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    const p = total > 0 ? Math.min(100, Math.max(0, (h.scrollTop / total) * 100)) : 0;
+    fill.style.width = p + '%';
+    if(ring){
+      ring.setAttribute('stroke-dashoffset', (100 - p).toFixed(1));
+      pct.textContent = Math.round(p) + '%';
+    }
+    // TOC active state (variation A)
+    const active = document.querySelector('.vA.is-active');
+    if(active){
+      const sections = active.querySelectorAll('[data-section]');
+      let current = null;
+      sections.forEach(s => {
+        if(s.getBoundingClientRect().top < 140) current = s;
+      });
+      if(current){
+        const id = '#sec-' + current.dataset.section;
+        active.querySelectorAll('.toc__item a').forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === id));
+      }
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
