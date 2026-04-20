@@ -4072,7 +4072,7 @@ Resurrection life is visible not only in what we believe, but in how we live.`,
     date: '2026-04-13',
     duration: '45 min',
     series: 'Worship',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
     excerpt: 'True worship begins with a heart of reverence for God and His Word. When we honor Him with our first and our best in sincere devotion, God responds with His presence, guidance, peace, joy, and answered prayers.',
     description: `**GOD'S BLESSINGS FOR TRUE WORSHIPPERS**
@@ -4331,6 +4331,308 @@ Faith-filled prayer connects us to the power of God.
         text: '"What things soever ye desire, when ye pray, believe that ye receive them, and ye shall have them."',
       },
     ],
+  },
+  {
+    id: '22',
+    slug: 'gods-blessings-for-true-worshippers-part-2',
+    title: "God's Blessings for True Worshippers (Part 2)",
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-04-19',
+    duration: '45 min',
+    series: 'Worship',
+    isFeatured: true,
+    seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
+    excerpt: 'Our worship to God benefits us and strengthens our faith. As we continue to honor God in worship, Scripture reveals additional blessings including the infilling of the Holy Spirit, divine guidance, and salvation.',
+    description: `**GOD'S BLESSINGS FOR TRUE WORSHIPPERS (PART 2)**
+
+(Continuation from Last Sunday’s Sermon)
+Key Verse: Psalm 137:1–9
+
+---
+
+**WORSHIP BENEFITS THE WORSHIPPER**
+
+Our worship to God is not only for Him—it is also for our benefit.
+No matter what our situation is, we are worshippers. Worship is not limited to good times or comfortable seasons. True worship continues even in challenges and difficulties.
+
+---
+
+**DO NOT HOLD BACK YOUR PRAISE**
+
+We should not hold back our song. In the Bible, Paul the Apostle and Silas were bound in chains in prison, yet they still praised God. They worshipped Him even in the dungeon. Their situation did not stop them from giving praise to the Lord.
+In the same way, we should not hold back our praise because of what others might think of us. We are called to give our worship fully to the Lord, regardless of our circumstances.
+
+---
+
+**YOU BECOME WHAT YOU WORSHIP**
+
+When you worship, you become your worship. When you worship the true God, your spirit changes because you become who you worship. A true worshipper begins to reflect the character of God.
+Because Paul and Silas did not hold back their worship, God moved powerfully. Lives were changed, and people were delivered. This reminds us that when we worship sincerely, God’s presence works in ways that bring transformation to others.
+
+---
+
+**GOD’S BLESSINGS FOR TRUE WORSHIPPERS (CONTINUATION)**
+
+As we continue to honor God in worship, Scripture reveals additional blessings that flow into the lives of true worshippers.
+
+**6. To Give Them a Fresh Infilling of His Holy Spirit and Boldness to Live for Christ and Tell Others About Him** (Acts 4:31)
+The infilling of the Holy Spirit is not only for our own benefit, but also for others. God empowers His people to live boldly and share the message of Christ.
+We need the infilling of the Holy Spirit every day, because without Him, our efforts remain only human effort.
+
+**7. To Work Among Them in Special and Obvious Ways Through the Holy Spirit** (1 Corinthians 12:7–13)
+God works among His people through the Holy Spirit in special and visible ways. These works demonstrate His power and presence in the church.
+When believers worship sincerely, the Holy Spirit moves among them, bringing unity and transformation in the lives of His people.
+
+**8. To Guide Them Into All Truth Through the Holy Spirit** (John 15:26; 16:13)
+The Holy Spirit guides believers into truth. He testifies to the Word of God and always points us to Jesus Christ.
+True worshippers become more sensitive to His voice and more confident in His direction.
+
+**9. To Purify, Develop, and Set Them Apart for His Purposes Through the Power and Instruction of His Word and the Holy Spirit** (John 17:17–19)
+God uses His Word and the Holy Spirit to purify and develop His people. True worship leads to spiritual growth and maturity.
+As we continue to worship God, He shapes our character and prepares us for His purposes.
+
+**10. To Comfort, Encourage, and Strengthen Them** (Isaiah 40:1; 1 Corinthians 14:26; 2 Corinthians 1:3–4; 1 Thessalonians 5:11)
+God brings comfort, encouragement, and strength to His people when they gather together in worship. His presence renews hearts and strengthens faith.
+God desires that people leave the church not the same as when they came.
+
+**11. To Expose the Reality of Sin, Righteousness, and Judgment** (John 16:8)
+The Spirit of God reveals the truth about sin, righteousness, and judgment. He does not condemn people, but He lovingly convicts them and leads them to repentance.
+Conviction is a sign of God’s grace, drawing people back to Him.
+
+**12. To Spiritually Save People Who Respond in Faith When Their Sinfulness Is Revealed to Them During a Worship Service** (1 Corinthians 14:22–25)
+When God’s people worship, His presence is among them. In His presence, hearts are touched and lives are changed.
+One of the greatest blessings of true worship is salvation, as people respond in faith to the truth of God’s Word.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Our worship to God benefits us and strengthens our faith.
+* No matter what our situation is, we remain worshippers.
+* We should not hold back our praise, even in difficult circumstances.
+* The Holy Spirit fills, guides, and strengthens true worshippers.
+* God comforts and encourages His people when they gather together in worship.
+* The Holy Spirit convicts hearts and leads people to repentance.
+* When we worship God sincerely, His presence brings transformation and salvation.
+* No matter what our situation is, God will put a song in our hearts.`,
+    tags: ['Worship', 'Blessing', 'Holy Spirit', 'Praise', 'Transformation', 'Comfort', 'Salvation'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/true_worshipper.jpeg',
+    scriptures: [
+      {
+        verse: 'Psalm 137:1-9',
+        text: 'By the rivers of Babylon, There we sat down, yea, we wept When we remembered Zion. We hung our harps Upon the willows in the midst of it. For there those who carried us away captive asked of us a song, And those who plundered us requested mirth, Saying, "Sing us one of the songs of Zion!" How shall we sing the Lord\'s song In a foreign land? If I forget you, O Jerusalem, Let my right hand forget its skill! If I do not remember you, Let my tongue cling to the roof of my mouth—If I do not exalt Jerusalem Above my chief joy. Remember, O Lord, against the sons of Edom The day of Jerusalem, Who said, "Raze it, raze it, To its very foundation!" O daughter of Babylon, who are to be destroyed, Happy the one who repays you as you have served us! Happy the one who takes and dashes Your little ones against the rock.'
+      },
+      {
+        verse: 'Acts 4:31',
+        text: 'And when they had prayed, the place where they were assembled together was shaken; and they were all filled with the Holy Spirit, and they spoke the word of God with boldness.'
+      },
+      {
+        verse: '1 Corinthians 12:7-13',
+        text: 'But the manifestation of the Spirit is given to each one for the profit of all: for to one is given the word of wisdom through the Spirit, to another the word of knowledge through the same Spirit, to another faith by the same Spirit, to another gifts of healings by the same Spirit, to another the working of miracles, to another prophecy, to another discerning of spirits, to another different kinds of tongues, to another the interpretation of tongues. But one and the same Spirit works all these things, distributing to each one individually as He wills. For as the body is one and has many members, but all the members of that one body, being many, are one body, so also is Christ. For by one Spirit we were all baptized into one body—whether Jews or Greeks, whether slaves or free—and have all been made to drink into one Spirit.'
+      },
+      {
+        verse: 'John 15:26',
+        text: 'But when the Helper comes, whom I shall send to you from the Father, the Spirit of truth who proceeds from the Father, He will testify of Me.'
+      },
+      {
+        verse: 'John 16:13',
+        text: 'However, when He, the Spirit of truth, has come, He will guide you into all truth; for He will not speak on His own authority, but whatever He hears He will speak; and He will tell you things to come.'
+      },
+      {
+        verse: 'John 17:17-19',
+        text: 'Sanctify them by Your truth. Your word is truth. As You sent Me into the world, I also have sent them into the world. And for their sakes I sanctify Myself, that they also may be sanctified by the truth.'
+      },
+      {
+        verse: 'Isaiah 40:1',
+        text: '"Comfort, yes, comfort My people!" Says your God.'
+      },
+      {
+        verse: '1 Corinthians 14:26',
+        text: 'How is it then, brethren? Whenever you come together, each of you has a psalm, has a teaching, has a tongue, has a revelation, has an interpretation. Let all things be done for edification.'
+      },
+      {
+        verse: '2 Corinthians 1:3-4',
+        text: 'Blessed be the God and Father of our Lord Jesus Christ, the Father of mercies and God of all comfort, who comforts us in all our tribulation, that we may be able to comfort those who are in any trouble, with the comfort with which we ourselves are comforted by God.'
+      },
+      {
+        verse: '1 Thessalonians 5:11',
+        text: 'Therefore comfort each other and edify one another, just as you also are doing.'
+      },
+      {
+        verse: 'John 16:8',
+        text: 'And when He has come, He will convict the world of sin, and of righteousness, and of judgment:'
+      },
+      {
+        verse: '1 Corinthians 14:22-25',
+        text: 'Therefore tongues are for a sign, not to those who believe but to unbelievers; but prophesying is not for unbelievers but for those who believe. Therefore if the whole church comes together in one place, and all speak with tongues, and there come in those who are uninformed or unbelievers, will they not say that you are out of your mind? But if all prophesy, and an unbeliever or an uninformed person comes in, he is convinced by all, he is convicted by all. And thus the secrets of his heart are revealed; and so, falling down on his face, he will worship God and report that God is truly among you.'
+      }
+    ],
+    keyPoints: [
+      'Our worship to God benefits us and strengthens our faith',
+      'No matter what our situation is, we remain worshippers',
+      'We should not hold back our praise, even in difficult circumstances',
+      'The Holy Spirit fills, guides, and strengthens true worshippers',
+      'God comforts and encourages His people when they gather together in worship',
+      'The Holy Spirit convicts hearts and leads people to repentance',
+      'When we worship God sincerely, His presence brings transformation and salvation',
+      'No matter what our situation is, God will put a song in our hearts'
+    ],
+    relatedSermons: ['21', '20'],
+    seriesNumber: 8,
+    subtitle: {
+      prefix: "God's Blessings for",
+      italic: 'True',
+      suffix: 'Worshippers (Part 2)',
+    },
+    keyVerse: 'Psalm 137:1-9',
+    sections: [
+      {
+        id: 'sec-intro',
+        title: 'Worship Benefits the Worshipper',
+        unnumbered: true,
+        paragraphs: [
+          '(Continuation from Last Sunday’s Sermon)',
+          'Our worship to God is not only for Him—it is also for our benefit.',
+          'No matter what our situation is, we are worshippers. Worship is not limited to good times or comfortable seasons. True worship continues even in challenges and difficulties.'
+        ]
+      },
+      {
+        id: 'sec-praise',
+        title: 'Do Not Hold Back Your Praise',
+        unnumbered: true,
+        paragraphs: [
+          'We should not hold back our song. In the Bible, Paul the Apostle and Silas were bound in chains in prison, yet they still praised God. They worshipped Him even in the dungeon. Their situation did not stop them from giving praise to the Lord.',
+          'In the same way, we should not hold back our praise because of what others might think of us. We are called to give our worship fully to the Lord, regardless of our circumstances.'
+        ]
+      },
+      {
+        id: 'sec-become',
+        title: 'You Become What You Worship',
+        unnumbered: true,
+        paragraphs: [
+          'When you worship, you become your worship. When you worship the true God, your spirit changes because you become who you worship. A true worshipper begins to reflect the character of God.',
+          'Because Paul and Silas did not hold back their worship, God moved powerfully. Lives were changed, and people were delivered. This reminds us that when we worship sincerely, God’s presence works in ways that bring transformation to others.'
+        ]
+      },
+      {
+        id: 'sec-blessings',
+        kicker: 'Main Teaching',
+        title: 'God’s Blessings for True Worshippers (Continuation)',
+        paragraphs: [
+          'As we continue to honor God in worship, Scripture reveals additional blessings that flow into the lives of true worshippers.'
+        ],
+        subItems: [
+          {
+            title: 'To Give Them a Fresh Infilling of His Holy Spirit and Boldness to Live for Christ and Tell Others About Him',
+            ref: 'Acts 4:31',
+            text: 'The infilling of the Holy Spirit is not only for our own benefit, but also for others. God empowers His people to live boldly and share the message of Christ. We need the infilling of the Holy Spirit every day, because without Him, our efforts remain only human effort.'
+          },
+          {
+            title: 'To Work Among Them in Special and Obvious Ways Through the Holy Spirit',
+            ref: '1 Corinthians 12:7-13',
+            text: 'God works among His people through the Holy Spirit in special and visible ways. These works demonstrate His power and presence in the church. When believers worship sincerely, the Holy Spirit moves among them, bringing unity and transformation in the lives of His people.'
+          },
+          {
+            title: 'To Guide Them Into All Truth Through the Holy Spirit',
+            ref: 'John 15:26 · 16:13',
+            text: 'The Holy Spirit guides believers into truth. He testifies to the Word of God and always points us to Jesus Christ. True worshippers become more sensitive to His voice and more confident in His direction.'
+          },
+          {
+            title: 'To Purify, Develop, and Set Them Apart for His Purposes Through the Power and Instruction of His Word and the Holy Spirit',
+            ref: 'John 17:17-19',
+            text: 'God uses His Word and the Holy Spirit to purify and develop His people. True worship leads to spiritual growth and maturity. As we continue to worship God, He shapes our character and prepares us for His purposes.'
+          },
+          {
+            title: 'To Comfort, Encourage, and Strengthen Them',
+            ref: 'Isaiah 40:1 · 1 Corinthians 14:26 · 2 Corinthians 1:3-4 · 1 Thessalonians 5:11',
+            text: 'God brings comfort, encouragement, and strength to His people when they gather together in worship. His presence renews hearts and strengthens faith. God desires that people leave the church not the same as when they came.'
+          },
+          {
+            title: 'To Expose the Reality of Sin, Righteousness, and Judgment',
+            ref: 'John 16:8',
+            text: 'The Spirit of God reveals the truth about sin, righteousness, and judgment. He does not condemn people, but He lovingly convicts them and leads them to repentance. Conviction is a sign of God’s grace, drawing people back to Him.'
+          },
+          {
+            title: 'To Spiritually Save People Who Respond in Faith When Their Sinfulness Is Revealed to Them During a Worship Service',
+            ref: '1 Corinthians 14:22-25',
+            text: 'When God’s people worship, His presence is among them. In His presence, hearts are touched and lives are changed. One of the greatest blessings of true worship is salvation, as people respond in faith to the truth of God’s Word.'
+          }
+        ]
+      }
+    ],
+    keyTakeaways: [
+      'Our worship to God benefits us and strengthens our faith.',
+      'No matter what our situation is, we remain worshippers.',
+      'We should not hold back our praise, even in difficult circumstances.',
+      'The Holy Spirit fills, guides, and strengthens true worshippers.',
+      'God comforts and encourages His people when they gather together in worship.',
+      'The Holy Spirit convicts hearts and leads people to repentance.',
+      'When we worship God sincerely, His presence brings transformation and salvation.',
+      'No matter what our situation is, God will put a song in our hearts.'
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Psalm 137:1-9',
+        text: '"By the rivers of Babylon, There we sat down, yea, we wept When we remembered Zion..."'
+      },
+      {
+        kicker: 'Blessing 6 · Infilling',
+        verse: 'Acts 4:31',
+        text: '"And when they had prayed, the place where they were assembled together was shaken..."'
+      },
+      {
+        kicker: 'Blessing 7 · Works',
+        verse: '1 Corinthians 12:7-13',
+        text: '"But the manifestation of the Spirit is given to each one for the profit of all..."'
+      },
+      {
+        kicker: 'Blessing 8 · Truth',
+        verse: 'John 15:26',
+        text: '"But when the Helper comes, whom I shall send to you from the Father..."'
+      },
+      {
+        kicker: 'Blessing 8 · Truth',
+        verse: 'John 16:13',
+        text: '"However, when He, the Spirit of truth, has come, He will guide you into all truth..."'
+      },
+      {
+        kicker: 'Blessing 9 · Set Apart',
+        verse: 'John 17:17-19',
+        text: '"Sanctify them by Your truth. Your word is truth..."'
+      },
+      {
+        kicker: 'Blessing 10 · Comfort',
+        verse: 'Isaiah 40:1',
+        text: '"Comfort, yes, comfort My people! Says your God."'
+      },
+      {
+        kicker: 'Blessing 10 · Comfort',
+        verse: '1 Corinthians 14:26',
+        text: '"How is it then, brethren? Whenever you come together, each of you has a psalm..."'
+      },
+      {
+        kicker: 'Blessing 10 · Comfort',
+        verse: '2 Corinthians 1:3-4',
+        text: '"Blessed be the God and Father of our Lord Jesus Christ, the Father of mercies and God of all comfort..."'
+      },
+      {
+        kicker: 'Blessing 10 · Comfort',
+        verse: '1 Thessalonians 5:11',
+        text: '"Therefore comfort each other and edify one another, just as you also are doing."'
+      },
+      {
+        kicker: 'Blessing 11 · Conviction',
+        verse: 'John 16:8',
+        text: '"And when He has come, He will convict the world of sin, and of righteousness, and of judgment."'
+      },
+      {
+        kicker: 'Blessing 12 · Salvation',
+        verse: '1 Corinthians 14:22-25',
+        text: '"Therefore tongues are for a sign, not to those who believe but to unbelievers..."'
+      }
+    ]
   }
 ];
 
