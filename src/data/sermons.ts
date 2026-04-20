@@ -4417,7 +4417,7 @@ One of the greatest blessings of true worship is salvation, as people respond in
 * When we worship God sincerely, His presence brings transformation and salvation.
 * No matter what our situation is, God will put a song in our hearts.`,
     tags: ['Worship', 'Blessing', 'Holy Spirit', 'Praise', 'Transformation', 'Comfort', 'Salvation'],
-    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/true_worshipper.jpeg',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/true_worshipper_part_2.jpg',
     scriptures: [
       {
         verse: 'Psalm 137:1-9',
