@@ -101,7 +101,7 @@
 
 @media (max-width: 768px) {
   .sermon-hero__title {
-    font-size: clamp(35px, 5vw, 64px);
+    font-size: clamp(32px, 5vw, 64px);
   }
 }
 
