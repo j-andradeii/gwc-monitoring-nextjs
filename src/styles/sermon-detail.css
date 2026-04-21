@@ -1031,7 +1031,6 @@
   .sermon-grid__aside {
     position: static;
     top: auto;
-    order: -1;
   }
 
   .sermon-hero__layout {
