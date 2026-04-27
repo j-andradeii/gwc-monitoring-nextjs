@@ -78,7 +78,7 @@ const heroSlides: HeroSlideData[] = [
     subtitle: latestSermon.excerpt,
     backgroundImage: latestSermon.image,
     overlayGradient: '',
-    is_display_info: false,
+    is_display_info: true,
     cta: {
       label: 'Learn More',
       href: `/sermon-notes/${latestSermon.slug}`,
