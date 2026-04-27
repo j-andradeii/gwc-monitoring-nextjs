@@ -4341,7 +4341,7 @@ Faith-filled prayer connects us to the power of God.
     date: '2026-04-19',
     duration: '45 min',
     series: 'Worship',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
     excerpt: 'Our worship to God benefits us and strengthens our faith. As we continue to honor God in worship, Scripture reveals additional blessings including the infilling of the Holy Spirit, divine guidance, and salvation.',
     description: `**GOD'S BLESSINGS FOR TRUE WORSHIPPERS (PART 2)**
@@ -4633,7 +4633,189 @@ One of the greatest blessings of true worship is salvation, as people respond in
         text: '"Therefore tongues are for a sign, not to those who believe but to unbelievers..."'
       }
     ]
-  }
+  },
+  {
+    id: '23',
+    slug: 'worship-is-a-divine-invitation',
+    title: 'Worship is a Divine Invitation',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-04-26',
+    duration: '45 min',
+    series: 'Worship',
+    isFeatured: true,
+    seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
+    excerpt: 'Worship is not merely a routine or a religious obligation, it is a divine invitation from God Himself. In the parable of the great banquet, Jesus reveals the heart of the Father: He desires His people to come, to gather, and to dwell in His presence with joy.',
+    description: `**WORSHIP IS A DIVINE INVITATION**
+
+Key Verse: Luke 14:16–24
+
+---
+
+**INTRODUCTION**
+
+Worship is not merely a routine or a religious obligation, it is a divine invitation from God Himself. In the parable of the great banquet, Jesus reveals the heart of the Father: He desires His people to come, to gather, and to dwell in His presence with joy.
+From the very beginning, God designed worship as a place of communion, transformation, and restoration. Worship is where we respond to His call, experience His presence, and align our hearts with His will. It is not simply about songs or gatherings, it is about entering into relationship with God.
+
+---
+
+**REMINDERS ABOUT WORSHIP**
+
+"Let my people go, so that they may hold a festival to me in the wilderness." — Exodus 5:1
+
+Worship is entering the feast responding to God's invitation and dwelling in His presence with joy. The heart of the Father is to see everyone at His table, welcomed into fellowship with Him.
+A feast is not just about food; it is about presence. In the same way, worship is not merely about activities or traditions, it is about relationship with God.
+Worship was created so that we may be transformed. When we come into God's presence, He reveals what is in our hearts and aligns us with His truth. In this sense, worship also becomes a form of spiritual diagnosis. Just as diagnosis leads to proper treatment, worship calibrates our hearts and brings us back into alignment with God.
+
+---
+
+**1. WE ARE CREATED IN THE LIKENESS OF GOD**
+
+Before sin brought rebellion and distance, our identity was rooted in God. From the beginning, humanity was designed to reflect His image and live in close relationship with Him.
+We were created for communion with God. We were formed for fellowship, not isolation. True fulfillment is found when we return to the presence of the One who created us. Worship restores us to that original purpose, walking closely with God and living in harmony with Him.
+
+---
+
+**2. WE WERE CREATED WITH THE CAPACITY AND CALLING FOR WORSHIP**
+
+Worship is not an afterthought in the heart of God. It is part of our very design. Every person was created with the capacity to worship and the calling to honor God.
+Our hearts naturally seek something to worship. When directed toward God, worship brings life, peace, and purpose. It reminds us who God is and who we are in Him. Worship connects us to our Creator and keeps our relationship with Him alive and growing.
+
+---
+
+**3. THE INVITATION TO GOD'S FEAST FOR COMMUNION AND FELLOWSHIP**
+
+"Blessed is the one who will eat at the feast in the kingdom of God." — Luke 14:15
+
+A feast represents more than food, it represents presence, fellowship, and relationship. In Scripture, the banquet symbolizes God's invitation to share life with Him.
+- It symbolizes fellowship.
+- It symbolizes covenant relationship.
+- It symbolizes communion with God.
+
+Worship is expressed in celebration. When Jesus spoke of a great feast, He was describing more than a dinner, He was revealing the heart of God, inviting people into joyful, worshipful fellowship with Him.
+God continues to extend this invitation today. The question is not whether the invitation is given, but whether we will respond.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Worship is a divine invitation to experience God's presence.
+* We were created for fellowship with God, not isolation.
+* Worship is part of our design and calling.
+* God's invitation is open to everyone.
+* Worship transforms, restores, and aligns our hearts with Him.`,
+    tags: ['Worship', 'Invitation', 'Communion', 'Fellowship'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
+    scriptures: [
+      {
+        verse: 'Luke 14:16-24',
+        text: 'Then He said to him, "A certain man gave a great supper and invited many, and sent his servant at supper time to say to those who were invited, \'Come, for all things are now ready.\' But they all with one accord began to make excuses. The first said to him, \'I have bought a piece of ground, and I must go and see it. I ask you to have me excused.\' And another said, \'I have bought five yoke of oxen, and I am going to test them. I ask you to have me excused.\' Still another said, \'I have married a wife, and therefore I cannot come.\' So that servant came and reported these things to his master. Then the master of the house, being angry, said to his servant, \'Go out quickly into the streets and lanes of the city, and bring in here the poor and the maimed and the lame and the blind.\' And the servant said, \'Master, it is done as you commanded, and still there is room.\' Then the master said to the servant, \'Go out into the highways and hedges, and compel them to come in, that my house may be filled. For I say to you that none of those men who were invited shall taste my supper.\'"'
+      },
+      {
+        verse: 'Exodus 5:1',
+        text: 'Afterward Moses and Aaron went in and told Pharaoh, "Thus says the Lord God of Israel: \'Let My people go, that they may hold a feast to Me in the wilderness.\'"'
+      },
+      {
+        verse: 'Luke 14:15',
+        text: 'Now when one of those who sat at the table with Him heard these things, he said to Him, "Blessed is he who shall eat bread in the kingdom of God!"'
+      }
+    ],
+    keyPoints: [
+      'Worship is a divine invitation to experience God\'s presence.',
+      'We were created for fellowship with God, not isolation.',
+      'Worship is part of our design and calling.',
+      'God\'s invitation is open to everyone.',
+      'Worship transforms, restores, and aligns our hearts with Him.',
+    ],
+    relatedSermons: ['22', '21'],
+
+    // Redesigned layout opt-in fields (Modern Reader)
+    seriesNumber: 9,
+    subtitle: {
+      prefix: 'Worship is a',
+      italic: 'Divine',
+      suffix: 'Invitation',
+    },
+    keyVerse: 'Luke 14:16–24',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'A Divine Invitation',
+        unnumbered: true,
+        paragraphs: [
+          'Worship is not merely a routine or a religious obligation, it is a divine invitation from God Himself. In the parable of the great banquet, Jesus reveals the heart of the Father: He desires His people to come, to gather, and to dwell in His presence with joy.',
+          'From the very beginning, God designed worship as a place of communion, transformation, and restoration. Worship is where we respond to His call, experience His presence, and align our hearts with His will. It is not simply about songs or gatherings, it is about entering into relationship with God.',
+        ],
+      },
+      {
+        id: 'sec-reminders',
+        kicker: 'Reminders',
+        title: 'Reminders About Worship',
+        unnumbered: true,
+        paragraphs: [
+          '"Let my people go, so that they may hold a festival to me in the wilderness." — Exodus 5:1',
+          'Worship is entering the feast responding to God\'s invitation and dwelling in His presence with joy. The heart of the Father is to see everyone at His table, welcomed into fellowship with Him.',
+          'A feast is not just about food; it is about presence. In the same way, worship is not merely about activities or traditions, it is about relationship with God.',
+          'Worship was created so that we may be transformed. When we come into God\'s presence, He reveals what is in our hearts and aligns us with His truth. In this sense, worship also becomes a form of spiritual diagnosis. Just as diagnosis leads to proper treatment, worship calibrates our hearts and brings us back into alignment with God.',
+        ],
+      },
+      {
+        id: 'sec-likeness',
+        kicker: 'Principle 1 · Likeness',
+        title: 'We are Created in the Likeness of God',
+        paragraphs: [
+          'Before sin brought rebellion and distance, our identity was rooted in God. From the beginning, humanity was designed to reflect His image and live in close relationship with Him.',
+          'We were created for communion with God. We were formed for fellowship, not isolation. True fulfillment is found when we return to the presence of the One who created us. Worship restores us to that original purpose, walking closely with God and living in harmony with Him.',
+        ],
+      },
+      {
+        id: 'sec-calling',
+        kicker: 'Principle 2 · Calling',
+        title: 'We were Created with the Capacity and Calling for Worship',
+        paragraphs: [
+          'Worship is not an afterthought in the heart of God. It is part of our very design. Every person was created with the capacity to worship and the calling to honor God.',
+          'Our hearts naturally seek something to worship. When directed toward God, worship brings life, peace, and purpose. It reminds us who God is and who we are in Him. Worship connects us to our Creator and keeps our relationship with Him alive and growing.',
+        ],
+      },
+      {
+        id: 'sec-invitation',
+        kicker: 'Principle 3 · Invitation',
+        title: "The Invitation to God's Feast for Communion and Fellowship",
+        paragraphs: [
+          '"Blessed is the one who will eat at the feast in the kingdom of God." — Luke 14:15',
+          'A feast represents more than food, it represents presence, fellowship, and relationship. In Scripture, the banquet symbolizes God\'s invitation to share life with Him.',
+          'It symbolizes fellowship. It symbolizes covenant relationship. It symbolizes communion with God.',
+          'Worship is expressed in celebration. When Jesus spoke of a great feast, He was describing more than a dinner, He was revealing the heart of God, inviting people into joyful, worshipful fellowship with Him.',
+          'God continues to extend this invitation today. The question is not whether the invitation is given, but whether we will respond.',
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'Worship is a divine invitation to experience God\'s presence.',
+      'We were created for fellowship with God, not isolation.',
+      'Worship is part of our design and calling.',
+      'God\'s invitation is open to everyone.',
+      'Worship transforms, restores, and aligns our hearts with Him.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Luke 14:16-24',
+        text: '"A certain man gave a great supper and invited many... Go out into the highways and hedges, and compel them to come in, that my house may be filled."',
+      },
+      {
+        kicker: 'Reminders',
+        verse: 'Exodus 5:1',
+        text: '"Thus says the Lord God of Israel: Let My people go, that they may hold a feast to Me in the wilderness."',
+      },
+      {
+        kicker: 'Invitation',
+        verse: 'Luke 14:15',
+        text: '"Blessed is he who shall eat bread in the kingdom of God!"',
+      },
+    ],
+  },
 ];
 
 export const getSermonById = (id: string): Sermon | undefined => {
