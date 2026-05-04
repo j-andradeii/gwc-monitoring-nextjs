@@ -4643,7 +4643,7 @@ One of the greatest blessings of true worship is salvation, as people respond in
     date: '2026-04-26',
     duration: '45 min',
     series: 'Worship',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
     excerpt: 'Worship is not merely a routine or a religious obligation, it is a divine invitation from God Himself. In the parable of the great banquet, Jesus reveals the heart of the Father: He desires His people to come, to gather, and to dwell in His presence with joy.',
     description: `**WORSHIP IS A DIVINE INVITATION**
@@ -4813,6 +4813,232 @@ God continues to extend this invitation today. The question is not whether the i
         kicker: 'Invitation',
         verse: 'Luke 14:15',
         text: '"Blessed is he who shall eat bread in the kingdom of God!"',
+      },
+    ],
+  },
+  {
+    id: '24',
+    slug: 'true-worship',
+    title: 'True Worship',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-05-03',
+    duration: '45 min',
+    series: 'Worship',
+    isFeatured: true,
+    seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
+    excerpt: 'True worship is not defined by outward expression alone, it is revealed through a life fully surrendered to Jesus. In this passage, Mary demonstrates a kind of worship that is deeply personal, costly, and rooted in love.',
+
+    // Legacy fallback — still used for SEO description and legacy layout
+    description: `**True Worship is Costly and Sacrificial**
+
+"Then Mary took about a pint of pure nard, an expensive perfume; she poured it on Jesus' feet…" — John 12:3
+
+Mary's offering was valuable and significant. It was not given out of convenience, but out of deep devotion.
+
+True worship will always cost us something—our time, our pride, our comfort. Yet it is in this place of sacrifice that worship becomes genuine and powerful. When our worship is costly, it carries spiritual weight and can shift atmospheres.
+
+---
+
+**True Worship is Defended by Jesus**
+
+"Leave her alone… It was intended that she should save this perfume for the day of my burial." — John 12:7
+
+While others criticized Mary, Jesus defended her.
+
+This reminds us that sincere worship does not need human approval. When our worship is rooted in love and truth, Jesus Himself honors it. True worship is not performance, it is a response to who He is and what He has done.
+
+---
+
+**Judas Saw the Worth of Money, Mary Saw the Worth of Jesus**
+
+"Why wasn't this perfume sold and the money given to the poor? It was worth a year's wages." — John 12:5
+
+Judas saw monetary value, but Mary saw eternal worth.
+
+This contrast reveals the condition of the heart. When we value things more than Jesus, worship becomes optional. But when we truly see His worth, realizing that our salvation was not something we could earn or buy, our response changes.
+
+Worship becomes natural when Jesus becomes our highest value.
+
+---
+
+**True Worship Leaves a Lasting Impact**
+
+"Truly I tell you, wherever this gospel is preached throughout the world, what she has done will also be told, in memory of her." — Matthew 26:13
+
+Mary's act of worship was not forgotten, it became a testimony.
+
+True worship leaves a lasting spiritual impact. It goes beyond the moment and speaks into eternity. One act of surrender, done in love, can influence lives and shift atmospheres.
+
+Worship is "worth-ship", giving Jesus the honor He deserves.
+
+---
+
+**True Worship is Humble and Surrendered**
+
+"She poured it on Jesus' feet and wiped his feet with her hair." — John 12:3
+
+Mary's posture was one of humility.
+
+True worship is not about being seen, it is about bowing low before Jesus. The highest place we can reach is at His feet. In God's Kingdom, strength is found in surrender.
+
+---
+
+**True worship is not about what we can give, it is about how we see Jesus.**
+When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.`,
+
+    tags: ['Worship', 'Surrender', 'Sacrifice', 'Devotion', 'Mary'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
+    scriptures: [
+      {
+        verse: 'John 12:3',
+        text: 'Then Mary took a pound of very costly oil of spikenard, anointed the feet of Jesus, and wiped His feet with her hair. And the house was filled with the fragrance of the oil.'
+      },
+      {
+        verse: 'John 12:5',
+        text: '"Why was this fragrant oil not sold for three hundred denarii and given to the poor?"'
+      },
+      {
+        verse: 'John 12:7',
+        text: 'But Jesus said, "Let her alone; she has kept this for the day of My burial."'
+      },
+      {
+        verse: 'Matthew 26:13',
+        text: '"Assuredly, I say to you, wherever this gospel is preached in the whole world, what this woman has done will also be told as a memorial to her."'
+      }
+    ],
+    keyPoints: [
+      'True worship is not about what we can give, it is about how we see Jesus.',
+      'When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.',
+      'True worshippers are discerning, know when to listen and when to act, and guard intimacy with God.',
+      'Small acts of obedience and service, when done in love, have widespread and eternal effects.',
+    ],
+    relatedSermons: ['23', '21'],
+
+    // Redesigned layout opt-in fields (Modern Reader)
+    seriesNumber: 10,
+    subtitle: {
+      prefix: 'True',
+      italic: 'Worship',
+    },
+    keyVerse: 'John 12:3',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'A Life Fully Surrendered',
+        unnumbered: true,
+        paragraphs: [
+          'True worship is not defined by outward expression alone, it is revealed through a life fully surrendered to Jesus. In this passage, Mary demonstrates a kind of worship that is deeply personal, costly, and rooted in love. While others questioned her actions, she recognized the worth of Christ and responded without hesitation.',
+          'Her story invites us to examine our own hearts: Do we truly understand the value of Jesus, and does our worship reflect that?',
+        ],
+      },
+      {
+        id: 'sec-point-1',
+        kicker: 'Point 1 · Sacrifice',
+        title: 'True Worship is Costly and Sacrificial',
+        paragraphs: [
+          '"Then Mary took about a pint of pure nard, an expensive perfume; she poured it on Jesus\' feet…" — John 12:3',
+          'Mary\'s offering was valuable and significant. It was not given out of convenience, but out of deep devotion.',
+          'True worship will always cost us something—our time, our pride, our comfort. Yet it is in this place of sacrifice that worship becomes genuine and powerful. When our worship is costly, it carries spiritual weight and can shift atmospheres.',
+        ],
+      },
+      {
+        id: 'sec-point-2',
+        kicker: 'Point 2 · Defense',
+        title: 'True Worship is Defended by Jesus',
+        paragraphs: [
+          '"Leave her alone… It was intended that she should save this perfume for the day of my burial." — John 12:7',
+          'While others criticized Mary, Jesus defended her.',
+          'This reminds us that sincere worship does not need human approval. When our worship is rooted in love and truth, Jesus Himself honors it. True worship is not performance, it is a response to who He is and what He has done.',
+        ],
+      },
+      {
+        id: 'sec-point-3',
+        kicker: 'Point 3 · Worth',
+        title: 'Judas Saw the Worth of Money, Mary Saw the Worth of Jesus',
+        paragraphs: [
+          '"Why wasn\'t this perfume sold and the money given to the poor? It was worth a year\'s wages." — John 12:5',
+          'Judas saw monetary value, but Mary saw eternal worth.',
+          'This contrast reveals the condition of the heart. When we value things more than Jesus, worship becomes optional. But when we truly see His worth, realizing that our salvation was not something we could earn or buy, our response changes.',
+          'Worship becomes natural when Jesus becomes our highest value.',
+        ],
+      },
+      {
+        id: 'sec-point-4',
+        kicker: 'Point 4 · Impact',
+        title: 'True Worship Leaves a Lasting Impact',
+        paragraphs: [
+          '"Truly I tell you, wherever this gospel is preached throughout the world, what she has done will also be told, in memory of her." — Matthew 26:13',
+          "Mary's act of worship was not forgotten, it became a testimony.",
+          'True worship leaves a lasting spiritual impact. It goes beyond the moment and speaks into eternity. One act of surrender, done in love, can influence lives and shift atmospheres.',
+          'Worship is "worth-ship", giving Jesus the honor He deserves.',
+        ],
+      },
+      {
+        id: 'sec-point-5',
+        kicker: 'Point 5 · Humility',
+        title: 'True Worship is Humble and Surrendered',
+        paragraphs: [
+          '"She poured it on Jesus\' feet and wiped his feet with her hair." — John 12:3',
+          "Mary's posture was one of humility.",
+          'True worship is not about being seen, it is about bowing low before Jesus. The highest place we can reach is at His feet. In God\'s Kingdom, strength is found in surrender.',
+        ],
+        subItems: [
+          {
+            title: 'True worshippers are discerning.',
+            text: 'She was perhaps the only one who understood and accepted Jesus\' coming death, choosing to anoint Him while He was still with them.',
+          },
+          {
+            title: 'They know when to listen and when to act.',
+            text: 'True worship flows from hearing God and responding in obedience.',
+          },
+          {
+            title: 'They guard intimacy with God.',
+            text: 'The busyness of serving God can become a barrier to knowing Him personally.',
+          },
+        ],
+        callout: 'Are you so busy planning and running your life that you neglect precious time with Jesus? Or do you respond to Him by listening to His Word and finding ways to worship Him with your life?',
+      },
+      {
+        id: 'sec-application',
+        kicker: 'Application',
+        title: 'Beware of the Drift',
+        unnumbered: true,
+        paragraphs: [
+          'A ministry that grows but no longer prays. A calling that is busy but no longer burns. A platform that increases while intimacy decreases.',
+          'These are signs of a life that has lost the heart of true worship.',
+          '"Small acts of obedience and service, when done in love, have widespread and eternal effects."',
+          'True worship is not about what we can give, it is about how we see Jesus. When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.',
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'True worship is not about what we can give, it is about how we see Jesus.',
+      'When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.',
+      'True worshippers are discerning, know when to listen and when to act, and guard intimacy with God.',
+      '"Small acts of obedience and service, when done in love, have widespread and eternal effects."',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'John 12:3',
+        text: '"Then Mary took a pound of very costly oil of spikenard, anointed the feet of Jesus, and wiped His feet with her hair. And the house was filled with the fragrance of the oil."',
+      },
+      {
+        kicker: 'Point 3 · Worth',
+        verse: 'John 12:5',
+        text: '"Why was this fragrant oil not sold for three hundred denarii and given to the poor?"',
+      },
+      {
+        kicker: 'Point 2 · Defense',
+        verse: 'John 12:7',
+        text: '"Let her alone; she has kept this for the day of My burial."',
+      },
+      {
+        kicker: 'Point 4 · Impact',
+        verse: 'Matthew 26:13',
+        text: '"Assuredly, I say to you, wherever this gospel is preached in the whole world, what this woman has done will also be told as a memorial to her."',
       },
     ],
   },
