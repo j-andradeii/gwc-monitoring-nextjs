@@ -4830,7 +4830,13 @@ God continues to extend this invitation today. The question is not whether the i
     excerpt: 'True worship is not defined by outward expression alone, it is revealed through a life fully surrendered to Jesus. In this passage, Mary demonstrates a kind of worship that is deeply personal, costly, and rooted in love.',
 
     // Legacy fallback — still used for SEO description and legacy layout
-    description: `**True Worship is Costly and Sacrificial**
+    description: `True worship is not defined by outward expression alone, it is revealed through a life fully surrendered to Jesus. In this passage, Mary demonstrates a kind of worship that is deeply personal, costly, and rooted in love. While others questioned her actions, she recognized the worth of Christ and responded without hesitation.
+
+Her story invites us to examine our own hearts: Do we truly understand the value of Jesus, and does our worship reflect that?
+
+---
+
+**1. True Worship is Costly and Sacrificial**
 
 "Then Mary took about a pint of pure nard, an expensive perfume; she poured it on Jesus' feet…" — John 12:3
 
@@ -4840,7 +4846,7 @@ True worship will always cost us something—our time, our pride, our comfort. Y
 
 ---
 
-**True Worship is Defended by Jesus**
+**2. True Worship is Defended by Jesus**
 
 "Leave her alone… It was intended that she should save this perfume for the day of my burial." — John 12:7
 
@@ -4850,7 +4856,7 @@ This reminds us that sincere worship does not need human approval. When our wors
 
 ---
 
-**Judas Saw the Worth of Money, Mary Saw the Worth of Jesus**
+**3. Judas Saw the Worth of Money, Mary Saw the Worth of Jesus**
 
 "Why wasn't this perfume sold and the money given to the poor? It was worth a year's wages." — John 12:5
 
@@ -4862,7 +4868,7 @@ Worship becomes natural when Jesus becomes our highest value.
 
 ---
 
-**True Worship Leaves a Lasting Impact**
+**4. True Worship Leaves a Lasting Impact**
 
 "Truly I tell you, wherever this gospel is preached throughout the world, what she has done will also be told, in memory of her." — Matthew 26:13
 
@@ -4874,7 +4880,7 @@ Worship is "worth-ship", giving Jesus the honor He deserves.
 
 ---
 
-**True Worship is Humble and Surrendered**
+**5. True Worship is Humble and Surrendered**
 
 "She poured it on Jesus' feet and wiped his feet with her hair." — John 12:3
 
@@ -4882,7 +4888,31 @@ Mary's posture was one of humility.
 
 True worship is not about being seen, it is about bowing low before Jesus. The highest place we can reach is at His feet. In God's Kingdom, strength is found in surrender.
 
+Mary's example teaches us what it means to be a true worshipper:
+- **True worshippers are discerning.** She was perhaps the only one who understood and accepted Jesus' coming death, choosing to anoint Him while He was still with them.
+- **They know when to listen and when to act.** True worship flows from hearing God and responding in obedience.
+- **They guard intimacy with God.** The busyness of serving God can become a barrier to knowing Him personally.
+
+Are you so busy planning and running your life that you neglect precious time with Jesus? Or do you respond to Him by listening to His Word and finding ways to worship Him with your life?
+
 ---
+
+**Beware of the Drift**
+
+- A ministry that grows but no longer prays
+- A calling that is busy but no longer burns
+- A platform that increases while intimacy decreases
+
+These are signs of a life that has lost the heart of true worship.
+
+**Key Takeaways:**
+- True worship is costly, sacrificial, and sincere.
+- Worship flows from relationship, not just proximity.
+- When we see the worth of Jesus, surrender becomes our response.
+- True worship leaves a lasting spiritual impact.
+- Humility and surrender are at the heart of genuine worship.
+
+"Small acts of obedience and service, when done in love, have widespread and eternal effects."
 
 **True worship is not about what we can give, it is about how we see Jesus.**
 When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.`,
@@ -4908,10 +4938,11 @@ When we recognize His worth, we will not hold back—we will surrender fully, lo
       }
     ],
     keyPoints: [
-      'True worship is not about what we can give, it is about how we see Jesus.',
-      'When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.',
-      'True worshippers are discerning, know when to listen and when to act, and guard intimacy with God.',
-      'Small acts of obedience and service, when done in love, have widespread and eternal effects.',
+      'True worship is costly, sacrificial, and sincere.',
+      'Worship flows from relationship, not just proximity.',
+      'When we see the worth of Jesus, surrender becomes our response.',
+      'True worship leaves a lasting spiritual impact.',
+      'Humility and surrender are at the heart of genuine worship.',
     ],
     relatedSermons: ['23', '21'],
 
@@ -5005,8 +5036,21 @@ When we recognize His worth, we will not hold back—we will surrender fully, lo
         kicker: 'Application',
         title: 'Beware of the Drift',
         unnumbered: true,
+        subItems: [
+          {
+            title: 'A ministry that grows but no longer prays.',
+            text: '',
+          },
+          {
+            title: 'A calling that is busy but no longer burns.',
+            text: '',
+          },
+          {
+            title: 'A platform that increases while intimacy decreases.',
+            text: '',
+          },
+        ],
         paragraphs: [
-          'A ministry that grows but no longer prays. A calling that is busy but no longer burns. A platform that increases while intimacy decreases.',
           'These are signs of a life that has lost the heart of true worship.',
           '"Small acts of obedience and service, when done in love, have widespread and eternal effects."',
           'True worship is not about what we can give, it is about how we see Jesus. When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.',
@@ -5014,10 +5058,11 @@ When we recognize His worth, we will not hold back—we will surrender fully, lo
       },
     ],
     keyTakeaways: [
-      'True worship is not about what we can give, it is about how we see Jesus.',
-      'When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.',
-      'True worshippers are discerning, know when to listen and when to act, and guard intimacy with God.',
-      '"Small acts of obedience and service, when done in love, have widespread and eternal effects."',
+      'True worship is costly, sacrificial, and sincere.',
+      'Worship flows from relationship, not just proximity.',
+      'When we see the worth of Jesus, surrender becomes our response.',
+      'True worship leaves a lasting spiritual impact.',
+      'Humility and surrender are at the heart of genuine worship.',
     ],
     scriptureGroups: [
       {
