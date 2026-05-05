@@ -4918,7 +4918,7 @@ These are signs of a life that has lost the heart of true worship.
 When we recognize His worth, we will not hold back—we will surrender fully, love deeply, and worship Him wholeheartedly.`,
 
     tags: ['Worship', 'Surrender', 'Sacrifice', 'Devotion', 'Mary'],
-    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/ptr-jim.jpg',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/true-worship.jpg',
     scriptures: [
       {
         verse: 'John 12:3',
