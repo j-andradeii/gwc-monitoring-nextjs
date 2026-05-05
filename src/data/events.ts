@@ -31,15 +31,27 @@ export interface Event {
 }
 
 const getUpcomingSunday = (): string => {
-  const date = new Date();
-  const day = date.getDay();
-  const diff = (7 - day) % 7;
-  date.setDate(date.getDate() + diff);
-  return date.toLocaleDateString('en-US', {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Manila',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'short'
+  }).formatToParts(new Date());
+  const get = (type: string) => parts.find(p => p.type === type)!.value;
+  const dayMap: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  const currentDay = dayMap[get('weekday')];
+  const diff = (7 - currentDay) % 7;
+  const sunday = new Date(Date.UTC(
+    parseInt(get('year')),
+    parseInt(get('month')) - 1,
+    parseInt(get('day')) + diff
+  ));
+  return sunday.toLocaleDateString('en-US', {
     month: 'short',
     day: '2-digit',
     year: 'numeric',
-    timeZone: 'Asia/Manila'
+    timeZone: 'UTC'
   });
 };
 
