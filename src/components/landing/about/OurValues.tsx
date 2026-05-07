@@ -179,7 +179,7 @@ const beliefs: BeliefItem[] = [
 
 export const OurValues: React.FC = () => {
   return (
-    <section id="our-values" className="our-values-section our-values-vibrant animate-on-scroll">
+    <section id="our-values" className="our-values-section our-values-vibrant">
       {/* Decorative background flourishes (gold + navy depth) */}
       <span className="ov-bg-orb ov-bg-orb--gold" aria-hidden="true" />
       <span className="ov-bg-orb ov-bg-orb--navy" aria-hidden="true" />
