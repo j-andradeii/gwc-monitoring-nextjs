@@ -155,7 +155,7 @@ export const gatewayProjectsData = {
   title: 'Gateway Projects',
   subtitle: 'Ministry Center Improvement Project',
   description:
-    'Join us in improving the 8th Floor Golden Peak as our House of Worship. This project will enhance our facilities to better serve our growing congregation and community outreach programs.',
+    'Join us in improving our 8th Floor, Golden Peak Hotel and Suites as our House of Worship. This project will enhance our facilities to better serve our growing congregation and community outreach programs.',
   goalAmount: 1000000,
   currentAmount: 195000,
   milestones: [
@@ -233,7 +233,7 @@ export const gatewayQuickFacts: QuickFact[] = [
   {
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/2.jpg',
     value: '8th Floor',
-    label: 'Golden Peak Tower',
+    label: 'Golden Peak Hotel & Suites',
   },
   {
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/3.jpg',

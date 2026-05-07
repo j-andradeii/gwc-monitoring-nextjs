@@ -38,8 +38,8 @@ export const ChurchServiceSection: React.FC = () => {
             <div className="service-detail-item">
               <i className="pi pi-map-marker"></i>
               <div>
-                <strong>8th Floor, Golden Peak</strong>
-                <span>Gorordo Avenue</span>
+                <strong>8th Floor, Golden Peak Hotel &amp; Suites</strong>
+                <span>Escario St. Gorordo Ave.</span>
               </div>
             </div>
           </div>

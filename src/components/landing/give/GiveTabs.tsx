@@ -121,7 +121,7 @@ const gatewayProjectsData = {
   title: 'Gateway Projects',
   subtitle: 'Ministry Center Improvement Project',
   description:
-    'Join us in improving the 8th Floor Golden Peak as our House of Worship. This project will enhance our facilities to better serve our growing congregation and community outreach programs.',
+    'Join us in improving our 8th Floor, Golden Peak Hotel and Suites as our House of Worship. This project will enhance our facilities to better serve our growing congregation and community outreach programs.',
   goalAmount: 1000000,
   currentAmount: 195000,
   milestones: [

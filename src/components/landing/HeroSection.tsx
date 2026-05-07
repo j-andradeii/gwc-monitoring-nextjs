@@ -61,7 +61,7 @@ const heroSlides: HeroSlideData[] = [
     type: 'welcome',
     badge: 'Welcome to Gateway Church',
     title: 'HIS PRESENCE, OUR HOME',
-    subtitle: 'Sundays 9:30 AM · 8th Floor, Golden Peak, Gorordo Avenue',
+    subtitle: 'Sundays 9:30 AM · 8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave.',
     backgroundImage: '/assets/images/fam-picture.jpg',
     overlayGradient: 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(26, 39, 68, 0.40) 100%)',
     cta: {

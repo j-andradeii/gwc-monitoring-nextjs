@@ -18,7 +18,7 @@ export const AriseAndBuildSection: React.FC = () => {
           <span className="arise-build-label">Worship Center</span>
           <h2 className="arise-build-title">Gateway Projects</h2>
           <p className="arise-build-description">
-            Join us in improving 8th Floor Golden Peak as our House of Worship.
+            Join us in improving our 8th Floor, Golden Peak Hotel and Suites Worship Center.
             Help bring heaven to earth and invest in the future of our community.
           </p>
           <Link
