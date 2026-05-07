@@ -191,7 +191,7 @@ export const OurValues: React.FC = () => {
             What <span className="values-vibrant-accent">Shapes</span> Us
           </h2>
           <p className="values-subtitle">
-            Twelve convictions that fire us up — they shape every cell group, every
+            Twelve core values that drive us — they shape every cell group, every
             service, and every disciple we send out.
           </p>
         </div>

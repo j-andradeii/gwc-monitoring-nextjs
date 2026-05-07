@@ -68,7 +68,7 @@ export const OurPastors: React.FC = () => {
               <div className="pastors-modern-identity">
                 <span className="pastors-modern-identity-eyebrow">
                   <i className="pi pi-star-fill" aria-hidden="true" />
-                  Lead Pastors
+                  Senior Pastors
                 </span>
                 <span className="pastors-modern-identity-name">
                   Ptr. Jim &amp; Ptra. Anna Marie Baloran
