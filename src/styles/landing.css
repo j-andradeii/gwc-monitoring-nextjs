@@ -948,19 +948,53 @@
 }
 
 /* ==========================================
-   PAGE HERO - For internal pages (About, Events, Give, Sermons)
+   PAGE HERO — Sanctuary Glow (modern, bold, animated)
+   For internal pages (About, Events, Give, Sermons)
+   Note: overlay inherited from .hero-section — not overridden here.
    ========================================== */
 .page-hero {
-  min-height: 50vh;
+  min-height: 64vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
+  overflow: hidden;
 }
 
+/* Decorative gold corner brackets — Sanctuary Glow signature. */
+.page-hero-frame {
+  position: absolute;
+  inset: clamp(20px, 3vw, 36px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page-hero-corner {
+  position: absolute;
+  width: clamp(28px, 3.5vw, 44px);
+  height: clamp(28px, 3.5vw, 44px);
+  border-color: rgba(229, 196, 122, 0.5);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0;
+  animation: pageHeroCornerIn 700ms ease-out 200ms forwards;
+}
+
+.page-hero-corner--tl { top: 0; left: 0; border-top-width: 1.5px; border-left-width: 1.5px; }
+.page-hero-corner--tr { top: 0; right: 0; border-top-width: 1.5px; border-right-width: 1.5px; }
+.page-hero-corner--bl { bottom: 0; left: 0; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+.page-hero-corner--br { bottom: 0; right: 0; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+@keyframes pageHeroCornerIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Content stack with rise-and-fade entrance. */
 .page-hero .hero-content {
   position: relative;
-  z-index: 2;
-  max-width: 700px;
+  z-index: 3;
+  max-width: 760px;
   width: 100%;
   margin: 0 auto;
   padding: 0 24px;
@@ -968,28 +1002,136 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 22px;
+  animation: pageHeroContentIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+@keyframes pageHeroContentIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Title — bold uppercase, optional italic gold Fraunces accent line. */
 .page-hero .hero-content h1 {
-  font-size: 42px;
+  font-size: clamp(40px, 5.8vw, 64px);
   color: #ffffff;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -1.6px;
   text-transform: uppercase;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+  text-shadow:
+    0 2px 18px rgba(13, 20, 36, 0.55),
+    0 1px 4px rgba(13, 20, 36, 0.5);
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-hero .hero-content h1.has-accent {
+  gap: 4px;
+}
+
+.page-hero .hero-title-main {
+  display: block;
+}
+
+.page-hero .hero-title-accent {
+  display: block;
+  font-family: var(--font-serif, 'Fraunces', Georgia, serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(58px, 8vw, 104px);
+  line-height: 1;
+  letter-spacing: -0.8px;
+  text-transform: none;
+  color: rgba(229, 196, 122, 1);
+  text-shadow:
+    0 2px 22px rgba(13, 20, 36, 0.55),
+    0 1px 4px rgba(13, 20, 36, 0.5);
+  margin-top: 4px;
 }
 
 .page-hero .hero-content p {
   font-size: 17px;
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 600;
   line-height: 1.6;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-  max-width: 560px;
+  text-shadow:
+    0 1px 14px rgba(13, 20, 36, 0.55),
+    0 1px 3px rgba(13, 20, 36, 0.5);
+  max-width: 580px;
   margin: 0;
+}
+
+/* Refined gold divider with optional italic Fraunces tagline. */
+.page-hero .hero-gold-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 480px);
+  margin: 4px auto 2px;
+  padding: 0 14px;
+}
+
+.page-hero .hero-gold-divider::before,
+.page-hero .hero-gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+      rgba(229, 196, 122, 0) 0%,
+      rgba(229, 196, 122, 0.8) 50%,
+      rgba(229, 196, 122, 0) 100%);
+}
+
+.page-hero .hero-gold-divider[aria-hidden="true"]::before,
+.page-hero .hero-gold-divider[aria-hidden="true"]::after {
+  flex: none;
+  width: 100%;
+}
+
+.page-hero .hero-gold-divider-text {
+  display: inline-block;
+  margin: 0 18px;
+  font-family: var(--font-serif, 'Fraunces', Georgia, serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: rgba(255, 220, 150, 1);
+  text-shadow:
+    0 1px 12px rgba(13, 20, 36, 0.55),
+    0 1px 3px rgba(13, 20, 36, 0.5);
+  white-space: nowrap;
+}
+
+/* Badge — inherits the solid gold pill style from .hero-badge (no override). */
+
+/* Refined glass service-info pill. */
+.page-hero .hero-service-info {
+  background: rgba(13, 20, 36, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  box-shadow: 0 16px 40px rgba(13, 20, 36, 0.2);
+  border-radius: 999px;
+  padding: 12px 26px;
+}
+
+.page-hero .service-info-item {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+
+.page-hero .service-info-item i {
+  color: rgba(229, 196, 122, 1);
+}
+
+.page-hero .service-info-divider {
+  background: rgba(255, 255, 255, 0.18);
 }
 
 /* Page Hero Responsive */
@@ -1021,20 +1163,45 @@
 
   .page-hero .hero-content h1 {
     font-size: 32px;
+    letter-spacing: -1px;
+    gap: 2px;
+  }
+
+  .page-hero .hero-title-accent {
+    font-size: clamp(48px, 14vw, 78px);
   }
 
   .page-hero .hero-content p {
     font-size: 15px;
   }
 
+  .page-hero .hero-gold-divider {
+    width: min(100%, 320px);
+  }
+
+  .page-hero .hero-gold-divider-text {
+    font-size: 13px;
+    margin: 0 12px;
+  }
+
   .page-hero .hero-service-info {
     flex-direction: column;
-    gap: 12px;
-    padding: 16px 24px;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 22px;
   }
 
   .page-hero .service-info-divider {
     display: none;
+  }
+
+  .page-hero-frame {
+    inset: 14px;
+  }
+
+  .page-hero-corner {
+    width: 22px;
+    height: 22px;
   }
 }
 
