@@ -99,10 +99,7 @@ export const OurPastors: React.FC = () => {
               ))}
             </ul>
 
-            <div className="pastors-modern-footnote">
-              <i className="pi pi-map-marker" aria-hidden="true" />
-              <span>Gateway Church Cebu &middot; Serving since 2013</span>
-            </div>
+
           </div>
         </div>
       </div>
