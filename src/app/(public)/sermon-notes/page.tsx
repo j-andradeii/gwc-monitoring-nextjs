@@ -4,6 +4,7 @@
  * Public page displaying sermon notes with landing page consistent design
  */
 
+import '@/styles/landing.css';
 import { Metadata } from 'next';
 import { siteMetadata } from '@/data/site-metadata';
 import SermonNotesClient from './SermonNotesClient';

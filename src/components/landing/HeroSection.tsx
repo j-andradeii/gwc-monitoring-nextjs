@@ -78,7 +78,7 @@ const heroSlides: HeroSlideData[] = [
     subtitle: latestSermon.excerpt,
     backgroundImage: latestSermon.image,
     overlayGradient: '',
-    is_display_info: true,
+    is_display_info: false,
     cta: {
       label: 'Learn More',
       href: `/sermon-notes/${latestSermon.slug}`,
@@ -128,7 +128,7 @@ export const HeroSection: React.FC = () => {
       ))}
 
       <div className="hero-carousel-content-wrapper">
-        <HeroSlideContent slide={heroSlides[activeIndex]} isTransitioning={isTransitioning} />
+        <HeroSlideContent key={heroSlides[activeIndex].id} slide={heroSlides[activeIndex]} isTransitioning={isTransitioning} />
       </div>
 
       {heroSlides.length > 1 && (
