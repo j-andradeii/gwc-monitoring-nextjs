@@ -26,16 +26,6 @@ const AUTH_ROUTES = [
 ];
 
 /**
- * Public routes - no authentication required
- */
-const PUBLIC_ROUTES = [
-  '/',
-  '/sermon-notes',
-  '/about',
-  '/contact',
-];
-
-/**
  * Check if path matches any pattern
  */
 const matchesRoute = (path: string, routes: string[]): boolean => {
@@ -53,25 +43,40 @@ const ROUTE_REDIRECTS: Record<string, string> = {
   // Empty - no redirects needed currently
 };
 
-// Security Headers - Calculated once at module load
-const CSP_HEADER = `
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com;
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-  img-src 'self' blob: data: https://*.vercel-storage.com https://placehold.co https://img.youtube.com https://i.ytimg.com;
-  connect-src 'self' https://*.vercel-storage.com;
-  font-src 'self' https://fonts.gstatic.com;
-  object-src 'none';
-  base-uri 'self';
-  form-action 'self';
-  frame-ancestors 'none';
-  frame-src 'self' https://www.youtube.com https://youtube.com https://player.vimeo.com;
-  upgrade-insecure-requests;
-`;
+// Security Headers - Built at module load (includes env vars for dynamic domains)
+const buildCspHeader = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  // Extract origin from API URL (e.g. https://api.example.com/v1 → https://api.example.com)
+  let apiOrigin = '';
+  try {
+    if (apiUrl && !apiUrl.startsWith('http://localhost')) {
+      apiOrigin = new URL(apiUrl).origin;
+    }
+  } catch {
+    // ignore malformed URL
+  }
 
-const CONTENT_SECURITY_POLICY_HEADER_VALUE = CSP_HEADER
-  .replace(/\s{2,}/g, ' ')
-  .trim();
+  const connectSrcExtra = apiOrigin ? ` ${apiOrigin}` : '';
+
+  return `
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' blob: data: https://*.vercel-storage.com https://placehold.co https://img.youtube.com https://i.ytimg.com;
+    connect-src 'self' https://*.vercel-storage.com${connectSrcExtra};
+    font-src 'self' https://fonts.gstatic.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    frame-src 'self' https://www.youtube.com https://youtube.com https://player.vimeo.com;
+    upgrade-insecure-requests;
+  `
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+};
+
+const CONTENT_SECURITY_POLICY_HEADER_VALUE = buildCspHeader();
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
