@@ -20,7 +20,7 @@ export const AboutHero: React.FC<AboutHeroProps> = ({
       className="about-hero"
       serviceInfo={[
         { icon: 'pi pi-clock', text: 'Sundays 9:30 AM' },
-        { icon: 'pi pi-map-marker', text: '8th Floor, Golden Peak, Gorordo Avenue' },
+        { icon: 'pi pi-map-marker', text: '8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave.' },
       ]}
     />
   );

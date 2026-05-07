@@ -174,7 +174,7 @@ const jsonLd = {
           name: 'What time is the Sunday service at Gateway Church Cebu?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Gateway Church Cebu holds Sunday services starting at 9:30 AM. Gates open at 9:00 AM. We are located at the 8th Floor, Golden Peak Hotel & Suites, Gorordo Avenue, Cebu City.',
+            text: 'Gateway Church Cebu holds Sunday services starting at 9:30 AM. Gates open at 9:00 AM. We are located at the 8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave., Cebu City.',
           },
         },
         {
@@ -182,7 +182,7 @@ const jsonLd = {
           name: 'Where is Gateway Church Cebu located?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Gateway Church Cebu is located at the 8th Floor, Golden Peak Hotel & Suites, Gorordo Avenue, Cebu City 6000, Philippines.',
+            text: 'Gateway Church Cebu is located at the 8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave., Cebu City 6000, Philippines.',
           },
         },
         {

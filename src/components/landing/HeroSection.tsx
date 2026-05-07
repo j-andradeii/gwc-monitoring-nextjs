@@ -61,7 +61,7 @@ const heroSlides: HeroSlideData[] = [
     type: 'welcome',
     badge: 'Welcome to Gateway Church',
     title: 'HIS PRESENCE, OUR HOME',
-    subtitle: 'Sundays 9:30 AM · 8th Floor, Golden Peak, Gorordo Avenue',
+    subtitle: 'Sundays 9:30 AM · 8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave.',
     backgroundImage: '/assets/images/fam-picture.jpg',
     overlayGradient: 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(26, 39, 68, 0.40) 100%)',
     cta: {
@@ -78,7 +78,7 @@ const heroSlides: HeroSlideData[] = [
     subtitle: latestSermon.excerpt,
     backgroundImage: latestSermon.image,
     overlayGradient: '',
-    is_display_info: true,
+    is_display_info: false,
     cta: {
       label: 'Learn More',
       href: `/sermon-notes/${latestSermon.slug}`,
@@ -128,7 +128,7 @@ export const HeroSection: React.FC = () => {
       ))}
 
       <div className="hero-carousel-content-wrapper">
-        <HeroSlideContent slide={heroSlides[activeIndex]} isTransitioning={isTransitioning} />
+        <HeroSlideContent key={heroSlides[activeIndex].id} slide={heroSlides[activeIndex]} isTransitioning={isTransitioning} />
       </div>
 
       {heroSlides.length > 1 && (

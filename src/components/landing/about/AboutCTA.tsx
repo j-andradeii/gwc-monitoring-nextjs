@@ -29,7 +29,7 @@ export const AboutCTA: React.FC = () => {
               <i className="pi pi-map-marker"></i>
               <div>
                 <span className="cta-info-label">Location</span>
-                <span className="cta-info-value">8th Floor, Golden Peak, Gorordo Avenue</span>
+                <span className="cta-info-value">8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave.</span>
               </div>
             </div>
           </div>
