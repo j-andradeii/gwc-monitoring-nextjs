@@ -14,14 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const eventRoutes = events
-    .filter((event) => !event.is_event_finished)
-    .map((event) => ({
-      url: `${siteUrl}/events/${event.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    }));
+  const eventRoutes = events.map((event) => ({
+    url: `${siteUrl}/events/${event.slug}`,
+    lastModified: new Date(event.date),
+    changeFrequency: event.is_event_finished ? ('monthly' as const) : ('weekly' as const),
+    priority: event.is_event_finished ? 0.4 : 0.7,
+  }));
 
   return [
     // Homepage
