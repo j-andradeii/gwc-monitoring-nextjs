@@ -180,10 +180,9 @@ const beliefs: BeliefItem[] = [
 export const OurValues: React.FC = () => {
   return (
     <section id="our-values" className="our-values-section our-values-vibrant animate-on-scroll">
-      {/* Decorative background flourishes */}
+      {/* Decorative background flourishes (gold + navy depth) */}
       <span className="ov-bg-orb ov-bg-orb--gold" aria-hidden="true" />
-      <span className="ov-bg-orb ov-bg-orb--purple" aria-hidden="true" />
-      <span className="ov-bg-orb ov-bg-orb--rose" aria-hidden="true" />
+      <span className="ov-bg-orb ov-bg-orb--navy" aria-hidden="true" />
 
       <div className="landing-container">
         <div className="values-header values-vibrant-header">
@@ -202,7 +201,6 @@ export const OurValues: React.FC = () => {
             <div
               key={index}
               className="value-card value-card-vibrant"
-              data-tone={index % 4}
               style={{
                 ['--value-index' as string]: index,
                 ['--value-delay' as string]: `${index * 60}ms`,
@@ -243,7 +241,7 @@ export const OurValues: React.FC = () => {
                 <AccordionTab
                   key={index}
                   header={
-                    <div className="belief-accordion-header" data-tone={index % 4}>
+                    <div className="belief-accordion-header">
                       <span className="belief-number">{index + 1}</span>
                       <div className="belief-header-content">
                         <span className="belief-title">{belief.title}</span>

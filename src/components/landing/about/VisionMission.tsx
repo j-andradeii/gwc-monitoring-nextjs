@@ -7,14 +7,13 @@ interface TrustChip {
   icon: string;
   label: string;
   value: string;
-  tone: number;
 }
 
 const trustChips: TrustChip[] = [
-  { icon: 'pi pi-compass', label: 'Core Values', value: '12', tone: 0 },
-  { icon: 'pi pi-book', label: 'Fundamental Truths', value: '16', tone: 1 },
-  { icon: 'pi pi-users', label: 'Cell Communities', value: 'Many', tone: 2 },
-  { icon: 'pi pi-bolt', label: 'Spirit-Filled', value: 'Daily', tone: 3 },
+  { icon: 'pi pi-compass', label: 'Core Values', value: '12' },
+  { icon: 'pi pi-book', label: 'Fundamental Truths', value: '16' },
+  { icon: 'pi pi-users', label: 'Cell Communities', value: 'Many' },
+  { icon: 'pi pi-bolt', label: 'Spirit-Filled', value: 'Daily' },
 ];
 
 export const VisionMission: React.FC = () => {
@@ -23,10 +22,9 @@ export const VisionMission: React.FC = () => {
       id="vision-mission"
       className="vision-mission-section vision-mission-vibrant animate-on-scroll"
     >
-      {/* Decorative animated orbs */}
+      {/* Decorative animated orbs (gold + deep navy depth) */}
       <span className="vm-bg-orb vm-bg-orb--gold" aria-hidden="true" />
-      <span className="vm-bg-orb vm-bg-orb--purple" aria-hidden="true" />
-      <span className="vm-bg-orb vm-bg-orb--rose" aria-hidden="true" />
+      <span className="vm-bg-orb vm-bg-orb--navy" aria-hidden="true" />
       <span className="vm-bg-grid" aria-hidden="true" />
 
       <div className="landing-container">
@@ -79,6 +77,7 @@ export const VisionMission: React.FC = () => {
             <span className="vm-card-flourish" aria-hidden="true" />
           </article>
         </div>
+
 
 
         <div className="pillars-section">
