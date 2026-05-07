@@ -179,38 +179,63 @@ const beliefs: BeliefItem[] = [
 
 export const OurValues: React.FC = () => {
   return (
-    <section id="our-values" className="our-values-section animate-on-scroll">
+    <section id="our-values" className="our-values-section our-values-vibrant animate-on-scroll">
+      {/* Decorative background flourishes (gold + navy depth) */}
+      <span className="ov-bg-orb ov-bg-orb--gold" aria-hidden="true" />
+      <span className="ov-bg-orb ov-bg-orb--navy" aria-hidden="true" />
+
       <div className="landing-container">
-        <div className="values-header">
+        <div className="values-header values-vibrant-header">
           <span className="section-label">Our Values</span>
-          <h2>What Shapes Us</h2>
+          <h2>
+            What <span className="values-vibrant-accent">Shapes</span> Us
+          </h2>
           <p className="values-subtitle">
-            These core values guide everything we do and who we are as a community.
+            Twelve convictions that fire us up — they shape every cell group, every
+            service, and every disciple we send out.
           </p>
         </div>
 
-        <div className="values-grid">
+        <div className="values-grid values-grid-vibrant">
           {coreValues.map((value, index) => (
-            <div key={index} className="value-card">
+            <div
+              key={index}
+              className="value-card value-card-vibrant"
+              style={{
+                ['--value-index' as string]: index,
+                ['--value-delay' as string]: `${index * 60}ms`,
+              }}
+            >
+              <span className="value-card-number" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
               <div className="value-icon">
                 <i className={value.icon}></i>
+                <span className="value-icon-pulse" aria-hidden="true" />
               </div>
               <h3>{value.title}</h3>
               <p>{value.description}</p>
+              <span className="value-card-shine" aria-hidden="true" />
             </div>
           ))}
         </div>
 
-        <div id="what-we-believe" className="beliefs-section">
-          <div className="beliefs-header">
+        <div id="what-we-believe" className="beliefs-section beliefs-section-vibrant">
+          <span className="ov-bg-orb ov-bg-orb--purple-soft" aria-hidden="true" />
+
+          <div className="beliefs-header beliefs-vibrant-header">
             <span className="section-label">What We Believe</span>
-            <h2>16 Fundamental Truths</h2>
+            <h2>
+              <span className="beliefs-vibrant-count">16</span>
+              <span className="beliefs-vibrant-divider" aria-hidden="true" />
+              Fundamental Truths
+            </h2>
             <p className="beliefs-subtitle">
               Based on the Assemblies of God Statement of Fundamental Truths
             </p>
           </div>
 
-          <div className="beliefs-accordion">
+          <div className="beliefs-accordion beliefs-accordion-vibrant">
             <Accordion multiple>
               {beliefs.map((belief, index) => (
                 <AccordionTab
