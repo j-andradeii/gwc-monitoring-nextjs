@@ -3,13 +3,42 @@
 import React from 'react';
 import { ProcessSteps } from '../MissionSection';
 
+interface TrustChip {
+  icon: string;
+  label: string;
+  value: string;
+  tone: number;
+}
+
+const trustChips: TrustChip[] = [
+  { icon: 'pi pi-compass', label: 'Core Values', value: '12', tone: 0 },
+  { icon: 'pi pi-book', label: 'Fundamental Truths', value: '16', tone: 1 },
+  { icon: 'pi pi-users', label: 'Cell Communities', value: 'Many', tone: 2 },
+  { icon: 'pi pi-bolt', label: 'Spirit-Filled', value: 'Daily', tone: 3 },
+];
+
 export const VisionMission: React.FC = () => {
   return (
-    <section id="vision-mission" className="vision-mission-section animate-on-scroll">
+    <section
+      id="vision-mission"
+      className="vision-mission-section vision-mission-vibrant animate-on-scroll"
+    >
+      {/* Decorative animated orbs */}
+      <span className="vm-bg-orb vm-bg-orb--gold" aria-hidden="true" />
+      <span className="vm-bg-orb vm-bg-orb--purple" aria-hidden="true" />
+      <span className="vm-bg-orb vm-bg-orb--rose" aria-hidden="true" />
+      <span className="vm-bg-grid" aria-hidden="true" />
+
       <div className="landing-container">
-        <div className="vision-mission-header">
-          <span className="section-label">Vision & Mission</span>
-          <h2>Why We Exist</h2>
+        <div className="vision-mission-header vm-vibrant-header">
+          <span className="section-label">Vision &amp; Mission</span>
+          <h2>
+            Why We <span className="vm-vibrant-title-accent">Exist</span>
+          </h2>
+          <p className="vm-vibrant-subtitle">
+            A church on fire — pursuing God&apos;s presence, multiplying disciples, and
+            shaping the next generation with bold, Spirit-filled purpose.
+          </p>
         </div>
 
         <div className="vision-mission-cards">
@@ -50,6 +79,7 @@ export const VisionMission: React.FC = () => {
             <span className="vm-card-flourish" aria-hidden="true" />
           </article>
         </div>
+
 
         <div className="pillars-section">
           <h3 className="pillars-title">How We Live It Out</h3>
