@@ -29,7 +29,7 @@ export const GiveChannelsSection: React.FC<GiveChannelsSectionProps> = ({ showGi
   const { copiedId, copy } = useCopyToClipboard();
 
   return (
-    <section className="landing-section give-channels-section section-white">
+    <section id="give-channels" className="landing-section give-channels-section section-white">
       <div className="landing-container">
         {showGivingDescription && (
           <div className="section-header-center animate-on-scroll">
