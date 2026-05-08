@@ -45,6 +45,7 @@ export const siteMetadata = {
         region: 'Cebu',
         postalCode: '6000',
         country: 'PH',
+        mapsUrl: 'https://maps.app.goo.gl/krpwvPjwZq6vyoyFA',
     },
     contact: {
         phone: '+639225262508',

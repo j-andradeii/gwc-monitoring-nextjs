@@ -113,7 +113,7 @@ const jsonLd = {
       },
       legalName: 'Gateway Church Cebu',
       foundingDate: '2015',
-      hasMap: 'https://maps.google.com/?q=Golden+Peak+Hotel+Gorordo+Avenue+Cebu+City',
+      hasMap: siteMetadata.address.mapsUrl,
     },
     {
       '@type': 'WebSite',

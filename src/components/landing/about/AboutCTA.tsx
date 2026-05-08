@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { CONTACT_INFO } from '@/data/contact';
 
 export const AboutCTA: React.FC = () => {
   return (
@@ -25,13 +26,19 @@ export const AboutCTA: React.FC = () => {
               </div>
             </div>
             <div className="cta-info-divider"></div>
-            <div className="cta-info-item">
+            <a
+              href={CONTACT_INFO.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-info-item"
+              aria-label="Open church location in Google Maps"
+            >
               <i className="pi pi-map-marker"></i>
               <div>
                 <span className="cta-info-label">Location</span>
                 <span className="cta-info-value">8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave.</span>
               </div>
-            </div>
+            </a>
           </div>
 
           <div className="about-cta-actions">

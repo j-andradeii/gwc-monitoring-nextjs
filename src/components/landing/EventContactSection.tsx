@@ -70,10 +70,16 @@ export const EventContactSection: React.FC<EventContactSectionProps> = ({ eventS
                   <i className="pi pi-phone"></i>
                   <span>{CONTACT_INFO.phone}</span>
                 </a>
-                <div className="contact-detail-item">
+                <a
+                  href={CONTACT_INFO.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-detail-item"
+                  aria-label={`Open ${CONTACT_INFO.address} in Google Maps`}
+                >
                   <i className="pi pi-map-marker"></i>
                   <span>{CONTACT_INFO.address}</span>
-                </div>
+                </a>
               </div>
 
             </div>

@@ -5,6 +5,8 @@ import React from 'react';
 interface ServiceInfoItem {
   icon: string;
   text: string;
+  href?: string;
+  ariaLabel?: string;
 }
 
 interface PageHeroProps {
@@ -74,10 +76,23 @@ export const PageHero: React.FC<PageHeroProps> = ({
             {serviceInfo.map((item, index) => (
               <React.Fragment key={index}>
                 {index > 0 && <div className="service-info-divider"></div>}
-                <div className="service-info-item">
-                  <i className={item.icon}></i>
-                  <span>{item.text}</span>
-                </div>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="service-info-item"
+                    aria-label={item.ariaLabel ?? item.text}
+                  >
+                    <i className={item.icon}></i>
+                    <span>{item.text}</span>
+                  </a>
+                ) : (
+                  <div className="service-info-item">
+                    <i className={item.icon}></i>
+                    <span>{item.text}</span>
+                  </div>
+                )}
               </React.Fragment>
             ))}
           </div>

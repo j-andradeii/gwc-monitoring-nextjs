@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { getNearestSondayService } from '@/data/events';
+import { CONTACT_INFO } from '@/data/contact';
 
 export const ChurchServiceSection: React.FC = () => {
   const nearestService = getNearestSondayService();
@@ -35,13 +36,19 @@ export const ChurchServiceSection: React.FC = () => {
                 <span>Gates open at 9:00 AM</span>
               </div>
             </div>
-            <div className="service-detail-item">
+            <a
+              href={CONTACT_INFO.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="service-detail-item"
+              aria-label="Open church location in Google Maps"
+            >
               <i className="pi pi-map-marker"></i>
               <div>
                 <strong>8th Floor, Golden Peak Hotel &amp; Suites</strong>
                 <span>Escario St. Gorordo Ave.</span>
               </div>
-            </div>
+            </a>
           </div>
 
           <Link href={serviceLink} className="landing-btn landing-btn-light">

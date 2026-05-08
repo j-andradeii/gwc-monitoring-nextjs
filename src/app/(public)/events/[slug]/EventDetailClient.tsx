@@ -6,6 +6,7 @@ import { LandingHeader, LandingFooter, EventContactSection, ScrollAnimationProvi
 import { ProjectGallery } from '@/components/landing/give';
 import { EventDetailHero } from '@/components/landing/events/EventDetailHero';
 import { Event } from '@/data/events';
+import { CONTACT_INFO } from '@/data/contact';
 import '@/styles/landing.css';
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
 export default function EventDetailClient({ event, otherEvents }: Props) {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
+  const isGoldenPeak = event.location?.toLowerCase().includes('golden peak');
   return (
     <div className="landing-page">
       <LandingHeader />
@@ -137,29 +139,61 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '44px',
-                        height: '44px',
-                        borderRadius: '12px',
-                        backgroundColor: 'var(--primary-gold-accent)',
-                        color: 'white',
-                        flexShrink: 0,
-                      }}
+                  {isGoldenPeak ? (
+                    <a
+                      href={CONTACT_INFO.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${event.location} in Google Maps`}
+                      style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', textDecoration: 'none' }}
                     >
-                      <i className="pi pi-map-marker" style={{ fontSize: '18px' }} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Location</div>
-                      <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
-                        {event.location}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '44px',
+                          height: '44px',
+                          borderRadius: '12px',
+                          backgroundColor: 'var(--primary-gold-accent)',
+                          color: 'white',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <i className="pi pi-map-marker" style={{ fontSize: '18px' }} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Location</div>
+                        <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                          {event.location}
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '44px',
+                          height: '44px',
+                          borderRadius: '12px',
+                          backgroundColor: 'var(--primary-gold-accent)',
+                          color: 'white',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <i className="pi pi-map-marker" style={{ fontSize: '18px' }} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Location</div>
+                        <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                          {event.location}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>

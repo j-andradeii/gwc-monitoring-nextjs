@@ -61,7 +61,17 @@ export const LandingFooter: React.FC = () => {
             <div className="footer-contact">
               <h4>Service Times</h4>
               <p><i className="pi pi-calendar"></i> Sundays at 9:30 AM</p>
-              <p><i className="pi pi-map-marker"></i> {CONTACT_INFO.address}</p>
+              <p>
+                <i className="pi pi-map-marker"></i>{' '}
+                <a
+                  href={CONTACT_INFO.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${CONTACT_INFO.address} in Google Maps`}
+                >
+                  {CONTACT_INFO.address}
+                </a>
+              </p>
               <p><i className="pi pi-phone"></i> {CONTACT_INFO.phone}</p>
               <p><i className="pi pi-envelope"></i> {CONTACT_INFO.email}</p>
             </div>
