@@ -7,6 +7,8 @@ import { LandingHeader, LandingFooter, ShareModal } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
 import { Event } from '@/data/events';
 import { parseSermonSections, deriveBookBadge, estimateReadingMinutes, slugifySectionId } from '@/lib/sermon-parser';
+import '@/styles/landing.css';
+import '@/styles/sermon-detail.css';
 
 interface Props {
   sermon: Sermon;

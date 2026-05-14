@@ -1,12 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { Event } from '@/data/events';
+import { CONTACT_INFO } from '@/data/contact';
 
 interface Props {
   event: Event;
 }
 
 export function EventDetailHero({ event }: Props) {
+  const isGoldenPeak = event.location?.toLowerCase().includes('golden peak');
   return (
     <section
       style={{
@@ -140,10 +142,23 @@ export function EventDetailHero({ event }: Props) {
               <i className="pi pi-clock" style={{ color: 'var(--primary-gold-accent)' }} />
               {event.time}
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.8)', fontSize: '16px' }}>
-              <i className="pi pi-map-marker" style={{ color: 'var(--primary-gold-accent)' }} />
-              {event.location}
-            </div>
+            {isGoldenPeak ? (
+              <a
+                href={CONTACT_INFO.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${event.location} in Google Maps`}
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.8)', fontSize: '16px', textDecoration: 'none' }}
+              >
+                <i className="pi pi-map-marker" style={{ color: 'var(--primary-gold-accent)' }} />
+                {event.location}
+              </a>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.8)', fontSize: '16px' }}>
+                <i className="pi pi-map-marker" style={{ color: 'var(--primary-gold-accent)' }} />
+                {event.location}
+              </div>
+            )}
           </div>
         </div>
       </div>

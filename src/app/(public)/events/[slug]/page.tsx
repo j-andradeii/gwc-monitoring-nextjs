@@ -79,6 +79,8 @@ export default async function EventDetailPage({ params }: Props) {
 
   const otherEvents = events.filter(e => e.id !== event.id).slice(0, 3);
 
+  const isGoldenPeakLocation = event.location?.toLowerCase().includes('golden peak');
+
   // Create JSON-LD structured data for the event
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -97,7 +99,8 @@ export default async function EventDetailPage({ params }: Props) {
         postalCode: '6000',
         addressRegion: 'Cebu',
         addressCountry: 'PH'
-      }
+      },
+      ...(isGoldenPeakLocation && { hasMap: siteMetadata.address.mapsUrl })
     },
     image: [event.image.startsWith('http') ? event.image : `${siteUrl}${event.image}`],
     description: event.description,

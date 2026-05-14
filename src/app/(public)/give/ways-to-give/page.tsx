@@ -20,6 +20,7 @@ import {
   GiveHero,
   GiveWhySection,
   GiveChannelsSection,
+  GiveQuickCTA,
 } from '@/components/landing/give';
 
 const siteUrl = siteMetadata.siteUrl;
@@ -124,6 +125,9 @@ export default function WaysToGivePage() {
         <ScrollAnimationProvider>
           {/* Hero Section */}
           <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/give.jpg" />
+
+          {/* Quick CTA: jumps straight to giving channels */}
+          <GiveQuickCTA targetId="give-channels" />
 
           {/* Section 1: Why We Give (Cream background) */}
           <GiveWhySection />
