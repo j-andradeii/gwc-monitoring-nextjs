@@ -4825,7 +4825,7 @@ God continues to extend this invitation today. The question is not whether the i
     date: '2026-05-03',
     duration: '45 min',
     series: 'Worship',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
     excerpt: 'True worship is not defined by outward expression alone, it is revealed through a life fully surrendered to Jesus. In this passage, Mary demonstrates a kind of worship that is deeply personal, costly, and rooted in love.',
 
@@ -5084,6 +5084,289 @@ When we recognize His worth, we will not hold back—we will surrender fully, lo
         kicker: 'Point 4 · Impact',
         verse: 'Matthew 26:13',
         text: '"Assuredly, I say to you, wherever this gospel is preached in the whole world, what this woman has done will also be told as a memorial to her."',
+      },
+    ],
+  },
+  {
+    id: '25',
+    slug: 'together-through-it-all',
+    title: 'Together Through It All',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-05-10',
+    duration: '45 min',
+    series: 'Worship',
+    isFeatured: true,
+    seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
+    excerpt: 'True strength in difficult seasons is not found in avoiding pain, but in choosing to remain faithful and united through it all.',
+
+    // Legacy fallback — still used for SEO description and legacy layout
+    description: `**Together Through It All**
+
+(Job 2:9–10)
+
+True strength in difficult seasons is not found in avoiding pain, but in choosing to remain faithful and united through it all. The story of Job reminds us that trials can either divide relationships or deepen them. Even in suffering, God calls families, marriages, and communities to stay together, endure together, heal together, and rebuild together.
+
+In moments of hardship, we are often tempted to isolate ourselves, blame one another, or lose hope. Yet God honors those who remain steadfast and continue trusting Him despite life’s challenges.
+
+This message reminds us that healing, restoration, and breakthrough are possible when we keep God at the center and refuse to give up on one another.
+
+---
+
+**1. Stay Together**
+
+“There is a blessing when you stay.”
+
+Difficult seasons often reveal the true condition of relationships. Pain can either strengthen unity or create division. Families sometimes magnify fear and frustration more than faith, but God calls us to remain committed even during hardship.
+
+Staying does not mean pretending everything is perfect. It means choosing faithfulness when things become difficult. Sometimes the breakthrough comes not from escaping the trial, but from enduring it together.
+
+When we remain with God through suffering, we begin to know Him more deeply. Knowing God is greater than having every question answered.
+
+Scripture Reference: John 10:10
+
+---
+
+**2. Endure Together**
+
+“What you endure together can strengthen you together.”
+
+Pain can affect even the closest relationships. Sometimes the person who once brought comfort may also become a source of frustration. The people closest to us often have the greatest ability to hurt us.
+
+Yet despite everything Job experienced, he maintained his faith and spiritual leadership.
+
+Scripture Reference: Job 2:9–10
+
+Endurance produces strength when we choose grace, patience, and prayer over blame and bitterness. Instead of fighting each other, we are called to fight the problem together.
+
+True unity is tested not during easy seasons, but during moments of pressure and pain.
+
+---
+
+**3. Heal Together**
+
+“Healing often begins with humility and apology.”
+
+Every season of suffering has an end, and God desires restoration for broken hearts and relationships. However, healing requires humility. Pride keeps wounds open, while humility creates space for restoration.
+
+Many times, healing begins with a sincere apology, forgiveness, and choosing reconciliation over resentment.
+
+Scripture Reference: Job 42:7–9
+
+God often uses people within the home, especially mothers, as instruments of healing:
+
+- A mother comforts.
+- A mother restores.
+- A mother encourages.
+
+Prayer and unity invite God’s healing presence into our homes and relationships.
+
+---
+
+**4. Rebuild Together**
+
+“The Lord restored Job and gave him twice as much as before.”
+
+God is not only able to heal, He is also able to restore and rebuild. After Job’s suffering, God restored what had been lost and blessed him abundantly.
+
+Scripture Reference: Job 42:10–13
+
+Restoration does not erase the pain of the past, but it reveals God’s faithfulness through it. What was once broken can become a testimony of His goodness and grace.
+
+God specializes in rebuilding lives, families, marriages, and faith when people continue trusting Him together.
+
+---
+
+**Key Takeaways:**
+
+- Trials can either unite or divide a family.
+- God honors those who remain faithful during difficult times.
+- Pray together instead of blaming one another.
+- Do not isolate yourself during hardship.
+- Fight the problem, not each other.
+- Healing requires humility, forgiveness, and reconciliation.
+- God is able to restore and rebuild what was broken.
+- Our mission remains the same: winning souls and making disciples.
+
+“Small acts of faithfulness during difficult seasons can lead to lasting restoration and deeper relationships.”
+
+True faith is not proven when life is easy, but when we continue trusting God and staying together through every season.
+
+---
+
+**Call to Action:**
+
+Take time this week to strengthen unity in your home and relationships.
+
+⦿ Pray together as a family.
+⦿ Choose encouragement over criticism.
+⦿ Reach out instead of isolating yourself.
+⦿ Be an instrument of healing and restoration.
+⦿ Trust God even when you do not understand the process.
+
+When we stay faithful together through trials, God brings healing, restoration, and renewed strength in His perfect time.`,
+
+    tags: ['Worship', 'Faithfulness', 'Unity', 'Restoration', 'Family', 'Healing', 'Endurance'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/together_through_it_all.jpg',
+    scriptures: [
+      {
+        verse: 'Job 2:9-10',
+        text: 'Then his wife said to him, "Do you still hold fast to your integrity? Curse God and die!" But he said to her, "You speak as one of the foolish women speaks. Shall we indeed accept good from God, and shall we not accept adversity?" In all this Job did not sin with his lips.'
+      },
+      {
+        verse: 'John 10:10',
+        text: 'The thief does not come except to steal, and to kill, and to destroy. I have come that they may have life, and that they may have it more abundantly.'
+      },
+      {
+        verse: 'Job 42:7-9',
+        text: 'And so it was, after the Lord had spoken these words to Job, that the Lord said to Eliphaz the Temanite, "My wrath is aroused against you and your two friends, for you have not spoken of Me what is right, as My servant Job has. Now therefore, take for yourselves seven bulls and seven rams, go to My servant Job, and offer up for yourselves a burnt offering; and My servant Job shall pray for you. For I will accept him, lest I deal with you according to your folly; because you have not spoken of Me what is right, as My servant Job has." So Eliphaz the Temanite and Bildad the Shuhite and Zophar the Naamathite went and did as the Lord commanded them; for the Lord had accepted Job.'
+      },
+      {
+        verse: 'Job 42:10-13',
+        text: 'And the Lord restored Job’s losses when he prayed for his friends. Indeed the Lord gave Job twice as much as he had before. Then all his brothers, all his sisters, and all those who had been his acquaintances before, came to him and ate food with him in his house; and they consoled him and comforted him for all the adversity that the Lord had brought upon him. Each one gave him a piece of silver and each a ring of gold. Now the Lord blessed the latter days of Job more than his beginning; for he had fourteen thousand sheep, six thousand camels, one thousand yoke of oxen, and one thousand female donkeys. He also had seven sons and three daughters.'
+      },
+    ],
+    keyPoints: [
+      'Trials can either unite or divide a family.',
+      'God honors those who remain faithful during difficult times.',
+      'Pray together instead of blaming one another.',
+      'Do not isolate yourself during hardship.',
+      'Fight the problem, not each other.',
+      'Healing requires humility, forgiveness, and reconciliation.',
+      'God is able to restore and rebuild what was broken.',
+      'Our mission remains the same: winning souls and making disciples.',
+    ],
+    relatedSermons: ['24', '23'],
+
+    // Redesigned layout opt-in fields (Modern Reader)
+    seriesNumber: 11,
+    subtitle: {
+      prefix: 'Together',
+      italic: 'Through',
+      suffix: 'It All',
+    },
+    keyVerse: 'Job 2:9-10',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Together Through It All',
+        unnumbered: true,
+        paragraphs: [
+          'True strength in difficult seasons is not found in avoiding pain, but in choosing to remain faithful and united through it all. The story of Job reminds us that trials can either divide relationships or deepen them. Even in suffering, God calls families, marriages, and communities to stay together, endure together, heal together, and rebuild together.',
+          'In moments of hardship, we are often tempted to isolate ourselves, blame one another, or lose hope. Yet God honors those who remain steadfast and continue trusting Him despite life’s challenges.',
+          'This message reminds us that healing, restoration, and breakthrough are possible when we keep God at the center and refuse to give up on one another.',
+        ],
+      },
+      {
+        id: 'sec-stay-together',
+        kicker: 'Point 1 · Stay',
+        title: 'Stay Together',
+        paragraphs: [
+          'Difficult seasons often reveal the true condition of relationships. Pain can either strengthen unity or create division. Families sometimes magnify fear and frustration more than faith, but God calls us to remain committed even during hardship.',
+          'Staying does not mean pretending everything is perfect. It means choosing faithfulness when things become difficult. Sometimes the breakthrough comes not from escaping the trial, but from enduring it together.',
+          'When we remain with God through suffering, we begin to know Him more deeply. Knowing God is greater than having every question answered.',
+          'Scripture Reference: John 10:10',
+        ],
+        callout: '“There is a blessing when you stay.”',
+      },
+      {
+        id: 'sec-endure-together',
+        kicker: 'Point 2 · Endure',
+        title: 'Endure Together',
+        paragraphs: [
+          'Pain can affect even the closest relationships. Sometimes the person who once brought comfort may also become a source of frustration. The people closest to us often have the greatest ability to hurt us.',
+          'Yet despite everything Job experienced, he maintained his faith and spiritual leadership.',
+          'Scripture Reference: Job 2:9–10',
+          'Endurance produces strength when we choose grace, patience, and prayer over blame and bitterness. Instead of fighting each other, we are called to fight the problem together.',
+          'True unity is tested not during easy seasons, but during moments of pressure and pain.',
+        ],
+        callout: '“What you endure together can strengthen you together.”',
+      },
+      {
+        id: 'sec-heal-together',
+        kicker: 'Point 3 · Heal',
+        title: 'Heal Together',
+        paragraphs: [
+          'Every season of suffering has an end, and God desires restoration for broken hearts and relationships. However, healing requires humility. Pride keeps wounds open, while humility creates space for restoration.',
+          'Many times, healing begins with a sincere apology, forgiveness, and choosing reconciliation over resentment.',
+          'Scripture Reference: Job 42:7–9',
+          'God often uses people within the home, especially mothers, as instruments of healing:',
+          '- A mother comforts.',
+          '- A mother restores.',
+          '- A mother encourages.',
+          'Prayer and unity invite God’s healing presence into our homes and relationships.',
+        ],
+        callout: '“Healing often begins with humility and apology.”',
+      },
+      {
+        id: 'sec-rebuild-together',
+        kicker: 'Point 4 · Rebuild',
+        title: 'Rebuild Together',
+        paragraphs: [
+          'God is not only able to heal, He is also able to restore and rebuild. After Job’s suffering, God restored what had been lost and blessed him abundantly.',
+          'Scripture Reference: Job 42:10–13',
+          'Restoration does not erase the pain of the past, but it reveals God’s faithfulness through it. What was once broken can become a testimony of His goodness and grace.',
+          'God specializes in rebuilding lives, families, marriages, and faith when people continue trusting Him together.',
+        ],
+        callout: '“The Lord restored Job and gave him twice as much as before.”',
+      },
+      {
+        id: 'sec-key-takeaways',
+        kicker: 'Key Takeaways',
+        title: 'Key Takeaways',
+        unnumbered: true,
+        paragraphs: [
+          '“Small acts of faithfulness during difficult seasons can lead to lasting restoration and deeper relationships.”',
+          'True faith is not proven when life is easy, but when we continue trusting God and staying together through every season.',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Strengthen Unity',
+        unnumbered: true,
+        paragraphs: [
+          'Take time this week to strengthen unity in your home and relationships.',
+          '⦿ Pray together as a family.',
+          '⦿ Choose encouragement over criticism.',
+          '⦿ Reach out instead of isolating yourself.',
+          '⦿ Be an instrument of healing and restoration.',
+          '⦿ Trust God even when you do not understand the process.',
+          'When we stay faithful together through trials, God brings healing, restoration, and renewed strength in His perfect time.',
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'Trials can either unite or divide a family.',
+      'God honors those who remain faithful during difficult times.',
+      'Pray together instead of blaming one another.',
+      'Do not isolate yourself during hardship.',
+      'Fight the problem, not each other.',
+      'Healing requires humility, forgiveness, and reconciliation.',
+      'God is able to restore and rebuild what was broken.',
+      'Our mission remains the same: winning souls and making disciples.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Job 2:9-10',
+        text: 'Then his wife said to him, "Do you still hold fast to your integrity? Curse God and die!" But he said to her, "You speak as one of the foolish women speaks. Shall we indeed accept good from God, and shall we not accept adversity?" In all this Job did not sin with his lips.',
+      },
+      {
+        kicker: 'Point 1 · Stay',
+        verse: 'John 10:10',
+        text: 'The thief does not come except to steal, and to kill, and to destroy. I have come that they may have life, and that they may have it more abundantly.',
+      },
+      {
+        kicker: 'Point 3 · Heal',
+        verse: 'Job 42:7-9',
+        text: 'And so it was, after the Lord had spoken these words to Job, that the Lord said to Eliphaz the Temanite, "My wrath is aroused against you and your two friends, for you have not spoken of Me what is right, as My servant Job has. Now therefore, take for yourselves seven bulls and seven rams, go to My servant Job, and offer up for yourselves a burnt offering; and My servant Job shall pray for you. For I will accept him, lest I deal with you according to your folly; because you have not spoken of Me what is right, as My servant Job has." So Eliphaz the Temanite and Bildad the Shuhite and Zophar the Naamathite went and did as the Lord commanded them; for the Lord had accepted Job.',
+      },
+      {
+        kicker: 'Point 4 · Rebuild',
+        verse: 'Job 42:10-13',
+        text: 'And the Lord restored Job’s losses when he prayed for his friends. Indeed the Lord gave Job twice as much as he had before. Then all his brothers, all his sisters, and all those who had been his acquaintances before, came to him and ate food with him in his house; and they consoled him and comforted him for all the adversity that the Lord had brought upon him. Each one gave him a piece of silver and each a ring of gold. Now the Lord blessed the latter days of Job more than his beginning; for he had fourteen thousand sheep, six thousand camels, one thousand yoke of oxen, and one thousand female donkeys. He also had seven sons and three daughters.',
       },
     ],
   },
