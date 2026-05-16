@@ -6,10 +6,11 @@ import React from 'react';
 export interface ProjectBannerProps {
   title: string;
   eyebrow?: string;
+  badge?: string;
+  icon?: string;
   targetId?: string | null;
   route?: string | null;
   href?: string;
-  icon?: string;
   buttonLabel?: string;
   buttonAriaLabel?: string;
   ariaLabel?: string;
@@ -19,10 +20,11 @@ export interface ProjectBannerProps {
 export const ProjectBanner: React.FC<ProjectBannerProps> = ({
   title,
   eyebrow,
+  badge = 'Live',
+  icon,
   targetId,
   route,
   href,
-  icon = 'pi pi-bookmark-fill',
   buttonLabel = 'Learn More',
   buttonAriaLabel,
   ariaLabel,
@@ -44,9 +46,17 @@ export const ProjectBanner: React.FC<ProjectBannerProps> = ({
       <div className="landing-container">
         <div className="project-banner">
           <div className="project-banner__content">
-            <span className="project-banner__icon" aria-hidden="true">
-              <i className={icon} aria-hidden="true" />
-            </span>
+            {icon ? (
+              <span className="project-banner__icon" aria-hidden="true">
+                <i className={icon} aria-hidden="true" />
+              </span>
+            ) : (
+              <span className="project-banner__badge" aria-hidden="true">
+                <span className="project-banner__badge-dot" />
+                <span className="project-banner__badge-text">{badge}</span>
+              </span>
+            )}
+
             <div className="project-banner__text">
               {eyebrow && (
                 <span className="project-banner__eyebrow">{eyebrow}</span>

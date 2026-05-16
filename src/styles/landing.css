@@ -13379,6 +13379,67 @@
   font-size: 15px;
 }
 
+.project-banner__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px 9px 14px;
+  border-radius: 999px;
+  background: #10224a;
+  color: var(--primary-gold-accent);
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  flex: 0 0 auto;
+  -webkit-font-smoothing: antialiased;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 6px 14px -6px rgba(16, 34, 74, 0.45);
+}
+
+.project-banner__badge-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.project-banner__badge-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--primary-gold-accent);
+  flex: 0 0 auto;
+}
+
+.project-banner__badge-dot::before,
+.project-banner__badge-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--primary-gold-accent);
+  pointer-events: none;
+  animation: project-banner-badge-pulse 2s ease-out infinite;
+}
+
+.project-banner__badge-dot::after {
+  animation-delay: 1s;
+}
+
+@keyframes project-banner-badge-pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
 .project-banner__text {
   display: flex;
   flex-direction: column;
@@ -13504,6 +13565,12 @@
     width: 16px;
   }
 
+  .project-banner__badge {
+    padding: 8px 14px 8px 12px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
   .project-banner__btn {
     font-size: 11.5px;
     letter-spacing: 0.22em;
@@ -13521,12 +13588,24 @@
 
   .project-banner__content {
     width: 100%;
-    gap: 14px;
+    gap: 12px;
   }
 
   .project-banner__icon {
     width: 38px;
     height: 38px;
+  }
+
+  .project-banner__badge {
+    padding: 7px 12px 7px 10px;
+    gap: 8px;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+  }
+
+  .project-banner__badge-dot {
+    width: 6px;
+    height: 6px;
   }
 
   .project-banner__text {
@@ -13543,7 +13622,7 @@
   }
 
   .project-banner__btn {
-    margin-left: 52px;
+    margin-left: 0;
     font-size: 11px;
     letter-spacing: 0.2em;
   }
@@ -13554,5 +13633,11 @@
   .project-banner__btn-arrow,
   .project-banner__btn-label::after {
     transition: none;
+  }
+
+  .project-banner__badge-dot::before,
+  .project-banner__badge-dot::after {
+    animation: none;
+    opacity: 0;
   }
 }

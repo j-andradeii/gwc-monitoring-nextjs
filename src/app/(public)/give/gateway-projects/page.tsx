@@ -110,8 +110,8 @@ export default function GatewayProjectsPage() {
 
           {/* Quick CTA: jumps straight to the Give section */}
           <ProjectBanner
+            badge='Sow'
             targetId="gateway-give"
-            icon="pi pi-heart-fill"
             title="Build the future of Gateway with us."
             buttonLabel="Give to Gateway Projects"
             buttonAriaLabel="Jump to Give to Gateway Projects section"
