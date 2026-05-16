@@ -15,6 +15,7 @@ import {
   LandingFooter,
   ScrollAnimationProvider,
   PageHero,
+  ProjectBanner,
 } from '@/components/landing';
 
 import {
@@ -26,7 +27,6 @@ import {
   GatewayBuildingProgressSection,
   GatewayGiveSection,
   GatewayPledgeSection,
-  GiveQuickCTA,
 } from '@/components/landing/give';
 
 const siteUrl = siteMetadata.siteUrl;
@@ -109,25 +109,13 @@ export default function GatewayProjectsPage() {
           />
 
           {/* Quick CTA: jumps straight to the Give section */}
-          <GiveQuickCTA
+          <ProjectBanner
             targetId="gateway-give"
-            eyebrow="Partner With Us"
-            eyebrowIcon="pi pi-heart-fill"
+            icon="pi pi-heart-fill"
             title="Build the future of Gateway with us."
-            subtitle={
-              <>
-                Your gift fuels the Ministry Center Improvement Project &mdash;
-                expanded space for worship, ministry, and community impact.
-                Give in seconds through your preferred channel.
-              </>
-            }
             buttonLabel="Give to Gateway Projects"
             buttonAriaLabel="Jump to Give to Gateway Projects section"
-            chips={[
-              { icon: 'pi pi-wallet', label: 'GoTyme' },
-              { icon: 'pi pi-mobile', label: 'GCash' },
-              { icon: 'pi pi-credit-card', label: 'Bank Transfer' },
-            ]}
+            ariaLabel="Partner With Us"
           />
 
           {/* Section 1: Pastor's Vision Narrative (Cream background) */}
