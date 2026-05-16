@@ -126,8 +126,12 @@ export default function WaysToGivePage() {
           {/* Hero Section */}
           <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/give.jpg" />
 
-          {/* Quick CTA: jumps straight to giving channels */}
-          <GiveQuickCTA targetId="give-channels" />
+          {/* Project banner CTA */}
+          <GiveQuickCTA
+            targetId="give-channels"
+            buttonLabel="View Giving Channels"
+            buttonAriaLabel="Jump to Giving Channels section"
+          />
 
           {/* Section 1: Why We Give (Cream background) */}
           <GiveWhySection />
