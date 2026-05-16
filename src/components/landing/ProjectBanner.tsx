@@ -5,6 +5,7 @@ import React from 'react';
 
 export interface ProjectBannerProps {
   title: string;
+  eyebrow?: string;
   targetId?: string | null;
   route?: string | null;
   href?: string;
@@ -17,6 +18,7 @@ export interface ProjectBannerProps {
 
 export const ProjectBanner: React.FC<ProjectBannerProps> = ({
   title,
+  eyebrow,
   targetId,
   route,
   href,
@@ -45,10 +47,13 @@ export const ProjectBanner: React.FC<ProjectBannerProps> = ({
             <span className="project-banner__icon" aria-hidden="true">
               <i className={icon} aria-hidden="true" />
             </span>
-            <h2 className="project-banner__title">{title}</h2>
+            <div className="project-banner__text">
+              {eyebrow && (
+                <span className="project-banner__eyebrow">{eyebrow}</span>
+              )}
+              <h2 className="project-banner__title">{title}</h2>
+            </div>
           </div>
-
-          <span className="project-banner__separator" aria-hidden="true" />
 
           <Link
             href={ctaHref}

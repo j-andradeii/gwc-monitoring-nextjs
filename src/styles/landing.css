@@ -13333,6 +13333,7 @@
 
 /* ===========================================
    PROJECT BANNER — full-width gold band
+   modern text layout: eyebrow + headline
    =========================================== */
 .project-banner-section {
   position: relative;
@@ -13344,24 +13345,24 @@
 
 .project-banner {
   min-height: 88px;
-  padding: 18px 0;
+  padding: 16px 0;
   color: #10224a;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 28px;
+  justify-content: space-between;
+  gap: 32px;
 }
 
 .project-banner__content {
   min-width: 0;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .project-banner__icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 999px;
   background: #10224a;
   color: var(--primary-gold-accent);
@@ -13370,54 +13371,76 @@
   justify-content: center;
   flex: 0 0 auto;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 4px 10px -4px rgba(16, 34, 74, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 6px 14px -6px rgba(16, 34, 74, 0.45);
 }
 
 .project-banner__icon i {
   font-size: 15px;
 }
 
-.project-banner__title {
-  margin: 0;
-  color: #10224a;
-  font-size: 19px;
+.project-banner__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.project-banner__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(16, 34, 74, 0.72);
+  font-size: 10.5px;
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
-  text-rendering: optimizeLegibility;
+  line-height: 1;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
 }
 
-.project-banner__separator {
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
+.project-banner__eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1.5px;
   background: rgba(16, 34, 74, 0.55);
   flex: 0 0 auto;
 }
 
+.project-banner__title {
+  margin: 0;
+  color: #10224a;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+  font-variant-numeric: tabular-nums;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: balance;
+}
+
 .project-banner__btn {
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  align-items: baseline;
+  gap: 12px;
   color: #10224a !important;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   flex: 0 0 auto;
   -webkit-font-smoothing: antialiased;
-  transition: gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: gap 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-banner__btn:hover {
   color: #10224a !important;
-  gap: 14px;
+  gap: 16px;
 }
 
 .project-banner__btn-label {
@@ -13430,12 +13453,12 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -4px;
+  bottom: -5px;
   height: 1.5px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: right center;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-banner__btn:hover .project-banner__btn-label::after {
@@ -13444,12 +13467,13 @@
 }
 
 .project-banner__btn-arrow {
-  font-size: 14px;
+  font-size: 13.5px;
+  transform: translateY(1px);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-banner__btn:hover .project-banner__btn-arrow {
-  transform: translateX(3px);
+  transform: translateY(1px) translateX(3px);
 }
 
 .project-banner__btn:focus-visible {
@@ -13460,21 +13484,29 @@
 
 @media (max-width: 900px) {
   .project-banner {
-    justify-content: flex-start;
-    gap: 20px;
+    gap: 24px;
   }
 
   .project-banner__content {
-    gap: 16px;
+    gap: 14px;
   }
 
   .project-banner__title {
-    font-size: 17px;
+    font-size: 17.5px;
+  }
+
+  .project-banner__eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .project-banner__eyebrow::before {
+    width: 16px;
   }
 
   .project-banner__btn {
-    font-size: 12px;
-    letter-spacing: 0.2em;
+    font-size: 11.5px;
+    letter-spacing: 0.22em;
   }
 }
 
@@ -13493,23 +13525,27 @@
   }
 
   .project-banner__icon {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .project-banner__text {
+    gap: 4px;
+  }
+
+  .project-banner__eyebrow::before {
+    width: 14px;
   }
 
   .project-banner__title {
-    font-size: 15.5px;
+    font-size: 16px;
     line-height: 1.35;
   }
 
-  .project-banner__separator {
-    display: none;
-  }
-
   .project-banner__btn {
-    margin-left: 50px;
-    font-size: 11.5px;
-    letter-spacing: 0.18em;
+    margin-left: 52px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
   }
 }
 
