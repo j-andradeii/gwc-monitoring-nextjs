@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/site-metadata';
-import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, MinistryFeatureSection, ContactSection, ConnectFab } from '@/components/landing';
+import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, MinistryFeatureSection, ContactSection, ConnectFab, ProjectBanner } from '@/components/landing';
 import { ministries } from '@/data/ministries';
 // @ts-ignore
 import '@/styles/landing.css';
@@ -73,6 +73,15 @@ export default function CommunityPage() {
                             title="Community"
                             subtitle="Doing Life Together"
                             backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg"
+                        />
+
+                 <ProjectBanner
+                            badge="Belong"
+                            title="There's a seat saved for you."
+                            buttonLabel="Join us this Sunday"
+                            buttonAriaLabel="Join us this Sunday"
+                            ariaLabel="Join us this Sunday"
+                            route={'/events/sonday-service'}
                         />
 
                         <section className="landing-section" style={{ paddingBottom: 0 }}>
