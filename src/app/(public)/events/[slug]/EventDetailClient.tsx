@@ -79,37 +79,67 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
               {/* Event Details Card */}
               <div
                 style={{
-                  padding: '32px',
-                  backgroundColor: '#fefcf3',
-                  borderRadius: '16px',
-                  border: '1px solid rgba(240, 180, 41, 0.2)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  padding: '36px',
+                  background: 'linear-gradient(135deg, #fffef8 0%, #fdf6e3 100%)',
+                  borderRadius: '20px',
+                  border: '1px solid rgba(240, 180, 41, 0.18)',
+                  boxShadow: '0 4px 24px rgba(240, 180, 41, 0.08), 0 1px 0 rgba(255, 255, 255, 0.9) inset',
                 }}
               >
-                <h3 style={{ fontSize: '20px', marginBottom: '24px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '4px',
+                    background:
+                      'linear-gradient(90deg, var(--primary-gold-accent) 0%, rgba(240, 180, 41, 0.35) 60%, transparent 100%)',
+                  }}
+                />
+                <h3
+                  style={{
+                    fontSize: '20px',
+                    marginBottom: '28px',
+                    color: 'var(--text-primary)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '-0.3px',
+                  }}
+                >
                   <i className="pi pi-info-circle" style={{ color: 'var(--primary-gold-accent)' }} />
                   Event Details
                 </h3>
 
-                <div style={{ display: 'grid', gap: '20px' }}>
+                <div style={{ display: 'grid', gap: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '44px',
-                        height: '44px',
-                        borderRadius: '12px',
-                        backgroundColor: 'var(--primary-gold-accent)',
-                        color: 'white',
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '14px',
+                        background:
+                          'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
+                        border: '1px solid rgba(240, 180, 41, 0.35)',
+                        color: 'var(--primary-gold-accent)',
+                        boxShadow:
+                          '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
                         flexShrink: 0,
                       }}
                     >
                       <i className="pi pi-calendar" style={{ fontSize: '18px' }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Date</div>
-                      <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                      <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Date</div>
+                      <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
                         {event.day}, {event.displayDate || event.date}
                       </div>
                     </div>
@@ -121,19 +151,23 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '44px',
-                        height: '44px',
-                        borderRadius: '12px',
-                        backgroundColor: 'var(--primary-gold-accent)',
-                        color: 'white',
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '14px',
+                        background:
+                          'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
+                        border: '1px solid rgba(240, 180, 41, 0.35)',
+                        color: 'var(--primary-gold-accent)',
+                        boxShadow:
+                          '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
                         flexShrink: 0,
                       }}
                     >
                       <i className="pi pi-clock" style={{ fontSize: '18px' }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Time</div>
-                      <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                      <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Time</div>
+                      <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
                         {event.time}
                       </div>
                     </div>
@@ -152,19 +186,23 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          width: '44px',
-                          height: '44px',
-                          borderRadius: '12px',
-                          backgroundColor: 'var(--primary-gold-accent)',
-                          color: 'white',
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '14px',
+                          background:
+                            'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
+                          border: '1px solid rgba(240, 180, 41, 0.35)',
+                          color: 'var(--primary-gold-accent)',
+                          boxShadow:
+                            '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
                           flexShrink: 0,
                         }}
                       >
                         <i className="pi pi-map-marker" style={{ fontSize: '18px' }} />
                       </div>
                       <div>
-                        <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Location</div>
-                        <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Location</div>
+                        <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
                           {event.location}
                         </div>
                       </div>
@@ -176,19 +214,23 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          width: '44px',
-                          height: '44px',
-                          borderRadius: '12px',
-                          backgroundColor: 'var(--primary-gold-accent)',
-                          color: 'white',
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '14px',
+                          background:
+                            'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
+                          border: '1px solid rgba(240, 180, 41, 0.35)',
+                          color: 'var(--primary-gold-accent)',
+                          boxShadow:
+                            '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
                           flexShrink: 0,
                         }}
                       >
                         <i className="pi pi-map-marker" style={{ fontSize: '18px' }} />
                       </div>
                       <div>
-                        <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '4px' }}>Location</div>
-                        <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Location</div>
+                        <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
                           {event.location}
                         </div>
                       </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/site-metadata';
-import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, InProgressSection } from '@/components/landing';
+import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, InProgressSection, ProjectBanner } from '@/components/landing';
 import '@/styles/landing.css';
 
 const siteUrl = siteMetadata.siteUrl;
@@ -71,6 +71,14 @@ export default function ServePage() {
                             title="Serve"
                             subtitle="Made to Make a Difference"
                             backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/serve.jpg"
+                        />
+                        <ProjectBanner
+                            badge="Belong"
+                            title="There's a seat saved for you."
+                            buttonLabel="Join us this Sunday"
+                            buttonAriaLabel="Join us this Sunday"
+                            ariaLabel="Join us this Sunday"
+                            route={'/events/sonday-service'}
                         />
                         <InProgressSection />
                     </ScrollAnimationProvider>
