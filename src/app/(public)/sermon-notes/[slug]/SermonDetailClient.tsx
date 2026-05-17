@@ -7,8 +7,6 @@ import { LandingHeader, LandingFooter, ShareModal, ProjectBanner } from '@/compo
 import { Sermon } from '@/data/sermons';
 import { Event } from '@/data/events';
 import { parseSermonSections, deriveBookBadge, estimateReadingMinutes, slugifySectionId } from '@/lib/sermon-parser';
-import '@/styles/landing.css';
-import '@/styles/sermon-detail.css';
 
 interface Props {
   sermon: Sermon;
@@ -674,7 +672,7 @@ export default function SermonDetailClient({
       {/* ======= Body ======= */}
       <section className="sermon-body">
         <div className="landing-container">
-          <div className="sermon-grid">
+          <div className="sermon-reader-grid">
 
             {/* ---- Main Article ---- */}
             <article>
@@ -764,7 +762,7 @@ export default function SermonDetailClient({
             </article>
 
             {/* ---- Aside ---- */}
-            <aside className="sermon-grid__aside" aria-label="Sermon sidebar">
+            <aside className="sermon-reader-grid__aside" aria-label="Sermon sidebar">
               <TableOfContents
                 sections={sections}
                 displayNums={sectionDisplayNums}

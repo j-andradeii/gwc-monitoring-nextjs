@@ -4,8 +4,6 @@
  * Displays a single sermon with video player, notes, and related content
  */
 
-import '@/styles/landing.css';
-import '@/styles/sermon-detail.css';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { sermons, getSermonBySlug, getRelatedSermons, getSermonsBySeries } from '@/data/sermons';
