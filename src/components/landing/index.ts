@@ -25,4 +25,6 @@ export { InProgressSection } from './InProgressSection';
 export { ShareModal } from './ShareModal';
 export { ConnectFab } from './ConnectFab';
 export { JoinEventModal } from './JoinEventModal';
+export { ProjectBanner } from './ProjectBanner';
+export type { ProjectBannerProps } from './ProjectBanner';
 

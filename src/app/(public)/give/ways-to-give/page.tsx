@@ -14,6 +14,7 @@ import {
   LandingFooter,
   ScrollAnimationProvider,
   ContactSection,
+  ProjectBanner,
 } from '@/components/landing';
 
 import {
@@ -126,8 +127,16 @@ export default function WaysToGivePage() {
           {/* Hero Section */}
           <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/give.jpg" />
 
-          {/* Quick CTA: jumps straight to giving channels */}
-          <GiveQuickCTA targetId="give-channels" />
+          {/* Project banner CTA */}
+       
+           <ProjectBanner
+                      badge='Sow'
+                      targetId="give-channels"
+                      title="Build the future of Gateway with us."
+                      buttonLabel="Give to Gateway Projects"
+                      buttonAriaLabel="Jump to Give to Gateway Projects section"
+                      ariaLabel="Partner With Us"
+                    />
 
           {/* Section 1: Why We Give (Cream background) */}
           <GiveWhySection />

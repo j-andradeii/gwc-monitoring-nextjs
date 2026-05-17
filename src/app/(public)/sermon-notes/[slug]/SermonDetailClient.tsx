@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { LandingHeader, LandingFooter, ShareModal } from '@/components/landing';
+import { LandingHeader, LandingFooter, ShareModal, ProjectBanner } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
 import { Event } from '@/data/events';
 import { parseSermonSections, deriveBookBadge, estimateReadingMinutes, slugifySectionId } from '@/lib/sermon-parser';
@@ -663,7 +663,14 @@ export default function SermonDetailClient({
           </div>
         </div>
       </section>
-
+ <ProjectBanner
+                            badge="Belong"
+                            title="There's a seat saved for you."
+                            buttonLabel="Join us this Sunday"
+                            buttonAriaLabel="Join us this Sunday"
+                            ariaLabel="Join us this Sunday"
+                            route={'/events/sonday-service'}
+                        />
       {/* ======= Body ======= */}
       <section className="sermon-body">
         <div className="landing-container">
