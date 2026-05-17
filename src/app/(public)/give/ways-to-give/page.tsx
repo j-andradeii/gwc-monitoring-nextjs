@@ -132,10 +132,10 @@ export default function WaysToGivePage() {
            <ProjectBanner
                       badge='Sow'
                       targetId="give-channels"
-                      title="Build the future of Gateway with us."
-                      buttonLabel="Give to Gateway Projects"
-                      buttonAriaLabel="Jump to Give to Gateway Projects section"
-                      ariaLabel="Partner With Us"
+                      title="Honor God with Your Giving"
+                      buttonLabel="Giving channels"
+                      buttonAriaLabel="Giving channels"
+                      ariaLabel="Giving channels"
                     />
 
           {/* Section 1: Why We Give (Cream background) */}
