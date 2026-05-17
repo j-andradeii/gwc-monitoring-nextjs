@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 
 import '@/styles/landing.css';
 import { siteMetadata } from '@/data/site-metadata';
-import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero, ConnectFab } from '@/components/landing';
+import { LandingHeader, LandingFooter, EventsCardGrid, FeaturedEventCard, PageHero, ConnectFab, ProjectBanner } from '@/components/landing';
 import { MonthlyCalendar } from '@/components/events/MonthlyCalendar';
 import { events, getFeaturedEvent } from '@/data/events';
 import { EventsShareButton } from './EventsShareButton';
@@ -90,6 +90,8 @@ export default function EventsPage() {
         backgroundImage="/assets/images/community.jpg"
         className="events-hero"
       />
+
+  
 
       <MonthlyCalendar imageSrc={CALENDAR_IMAGE_URL} />
 

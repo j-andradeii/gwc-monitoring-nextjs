@@ -9,7 +9,7 @@
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider, PageHero } from '@/components/landing';
+import { LandingHeader, LandingFooter, ContactSection, ScrollAnimationProvider, PageHero, ProjectBanner } from '@/components/landing';
 import { sermons, getAllSeries, getFeaturedSermon } from '@/data/sermons';
 
 export default function SermonNotesClient() {
@@ -56,6 +56,14 @@ export default function SermonNotesClient() {
                 subtitle="Dive deeper into God's Word with notes from our recent sermons. Use these resources for personal study, small group discussions, and spiritual growth."
                 backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/notes.jpg"
                 className="sermons-hero"
+            />
+            <ProjectBanner
+                badge="Belong"
+                title="There's a seat saved for you."
+                buttonLabel="Join us this Sunday"
+                buttonAriaLabel="Join us this Sunday"
+                ariaLabel="Join us this Sunday"
+                route={'/events/sonday-service'}
             />
 
             {/* Main Content */}

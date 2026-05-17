@@ -60,6 +60,7 @@ import {
   ScrollAnimationProvider,
   ContactSection,
   ConnectFab,
+  ProjectBanner,
 } from '@/components/landing';
 
 import {
@@ -143,6 +144,14 @@ export default function AboutPage() {
       <main className="landing-main">
         <ScrollAnimationProvider>
           <AboutHero />
+          <ProjectBanner
+                badge="Belong"
+                title="There's a seat saved for you."
+                buttonLabel="Join us this Sunday"
+                buttonAriaLabel="Join us this Sunday"
+                ariaLabel="Join us this Sunday"
+                route={'/events/sonday-service'}
+            />
           <AboutTabs />
           <OurStory />
           <VisionMission />
