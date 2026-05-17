@@ -180,14 +180,14 @@
   background: #ffffff;
 }
 
-.sermon-grid {
+.sermon-reader-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
   gap: 56px;
   align-items: start;
 }
 
-.sermon-grid__aside {
+.sermon-reader-grid__aside {
   position: sticky;
   top: 90px;
   display: flex;
@@ -1024,11 +1024,11 @@
    BREAKPOINTS
    ================================================================ */
 @media (max-width: 1023px) {
-  .sermon-grid {
+  .sermon-reader-grid {
     grid-template-columns: 1fr;
   }
 
-  .sermon-grid__aside {
+  .sermon-reader-grid__aside {
     position: static;
     top: auto;
   }
@@ -1053,7 +1053,7 @@
     padding: 40px 0 64px;
   }
 
-  .sermon-grid {
+  .sermon-reader-grid {
     gap: 40px;
   }
 

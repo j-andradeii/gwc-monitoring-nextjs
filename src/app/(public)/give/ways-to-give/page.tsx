@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/give/ways-to-give`,
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/giving.jpeg',
         width: 1200,
         height: 630,
         alt: 'Ways to Give - Gateway Church',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: 'Ways to Give | Gateway Church',
     description:
       'Support Gateway Church through your tithes and offerings.',
-    images: ['/og-image.jpg'],
+    images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/giving.jpeg'],
   },
 };
 
@@ -125,7 +125,7 @@ export default function WaysToGivePage() {
       <main className="landing-main">
         <ScrollAnimationProvider>
           {/* Hero Section */}
-          <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/give.jpg" />
+          <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/giving.jpeg" />
 
           {/* Project banner CTA */}
        
