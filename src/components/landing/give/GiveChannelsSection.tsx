@@ -87,7 +87,7 @@ export const GiveChannelsSection: React.FC<GiveChannelsSectionProps> = ({
               <span>
                 Important — include the correct keyword in the
                 {' '}<strong>message / details / reference</strong>{' '}
-                field so we can record your gift accurately.
+                field so we can record your giving accurately.
               </span>
             </div>
             <div className="give-keyword-cards-grid">
