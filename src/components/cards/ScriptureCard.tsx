@@ -6,10 +6,27 @@ interface ScriptureCardProps {
     verse: string;
     text: string;
     className?: string;
+    /**
+     * When set, the verse text is visually clamped to this many lines using
+     * `-webkit-line-clamp` and the card link continues out to BibleGateway
+     * for the full passage. Omit (or 0) to render the full text inline.
+     */
+    maxLines?: number;
 }
 
-export const ScriptureCard: React.FC<ScriptureCardProps> = ({ verse, text, className = '' }) => {
+export const ScriptureCard: React.FC<ScriptureCardProps> = ({ verse, text, className = '', maxLines }) => {
     const bibleGatewayUrl = `https://www.biblegateway.com/passage/?search=${encodeURIComponent(verse)}&version=NKJV`;
+
+    const clamp = maxLines && maxLines > 0;
+    const quoteStyle: React.CSSProperties = clamp
+        ? {
+              display: '-webkit-box',
+              WebkitLineClamp: maxLines,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+          }
+        : {};
 
     return (
         <a
@@ -31,7 +48,11 @@ export const ScriptureCard: React.FC<ScriptureCardProps> = ({ verse, text, class
                     <i className="pi pi-external-link" style={{ fontSize: '12px' }} />
                 </span>
             </div>
-            <blockquote className="scripture-quote">
+            <blockquote
+                className="scripture-quote"
+                style={quoteStyle}
+                title={clamp ? text : undefined}
+            >
                 &ldquo;{text}&rdquo;
             </blockquote>
             <div style={{ marginTop: '20px', fontSize: '12px', opacity: 0.6, fontStyle: 'italic', textAlign: 'right' }}>

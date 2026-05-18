@@ -69,7 +69,7 @@ const buildCspHeader = () => {
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
-    frame-src 'self' https://www.youtube.com https://youtube.com https://player.vimeo.com;
+    frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com;
     upgrade-insecure-requests;
   `
     .replace(/\s{2,}/g, ' ')

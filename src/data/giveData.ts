@@ -5,14 +5,43 @@ export const scriptures = [
     text: 'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.',
   },
   {
-    verse: 'Proverbs 3:9-10',
-    text: 'Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing.',
+    verse: 'Malachi 3:10',
+    text: 'Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this, says the Lord Almighty, and see if I will not throw open the floodgates of heaven and pour out so much blessing that there will not be room enough to store it.',
   },
   {
     verse: 'Luke 6:38',
     text: 'Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap.',
   },
 ];
+
+// Scripture data for the Firstfruits section
+export const firstfruitsScriptures = [
+  {
+    verse: 'Proverbs 3:9-10',
+    text: 'Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine.',
+  },
+  {
+    verse: 'Exodus 23:19',
+    text: 'Bring the best of the firstfruits of your soil to the house of the Lord your God.',
+  },
+  {
+    verse: 'Deuteronomy 26:10',
+    text: 'And now I bring the firstfruits of the soil that you, Lord, have given me. Place the basket before the Lord your God and bow down before him.',
+  },
+];
+
+// Intro paragraphs for each themed section
+export const tithesAndOfferingIntro =
+  'Tithes and offerings are an act of worship — returning to God the first ten percent ' +
+  'of what He has entrusted to us, plus offerings given as the Spirit leads. Your ' +
+  'consistent generosity sustains the day-to-day ministry of Gateway Church: weekly ' +
+  'worship, discipleship, outreach, and pastoral care for the church family.';
+
+export const firstfruitsIntro =
+  'Firstfruits is the practice of dedicating the first portion of every new increase — ' +
+  'a new job, a fresh paycheck cycle, a new business, a year-opening blessing — back ' +
+  'to the Lord before anything else is spent. It is a prophetic act that sets the ' +
+  'tone for the season ahead and invites God’s favor over everything that follows.';
 
 // Giving channel interface
 export interface GivingChannel {

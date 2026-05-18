@@ -5862,6 +5862,81 @@
   margin: 0 auto 50px;
 }
 
+/* Learn-more CTA beneath the scriptures grid */
+.give-why-cta {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.give-why-cta-caption {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary, #6b7280);
+  max-width: 480px;
+}
+
+.give-why-cta-btn {
+  text-decoration: none;
+}
+
+/* Rich intro — paragraphs + bulleted list (used for Firstfruits) */
+.give-why-intro--rich {
+  text-align: left;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.give-why-intro--rich > p {
+  margin: 0 0 18px 0;
+  color: var(--text-primary);
+}
+
+.give-why-intro--rich > p:last-child {
+  margin-bottom: 0;
+}
+
+.give-why-intro--rich em {
+  font-style: italic;
+  color: var(--color-navy, #1a2744);
+  font-weight: 500;
+}
+
+.give-why-intro--rich ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.give-why-intro--rich ul li {
+  position: relative;
+  padding: 6px 0 6px 28px;
+  color: var(--text-primary);
+}
+
+.give-why-intro--rich ul li::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--primary-gold-accent, #d4a84b);
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 4px rgba(212, 168, 75, 0.18);
+}
+
+@media (max-width: 640px) {
+  .give-why-intro--rich {
+    font-size: 16px;
+  }
+}
+
 /* Giving Channels Section - White Background */
 .give-channels-section {
   padding: 50px 0;
@@ -5899,6 +5974,511 @@
 
 .give-channels-section .section-header-center p {
   color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Keyword instructions block — header note + 2-up card grid */
+.give-keyword-instructions {
+  max-width: 880px;
+  margin: 32px auto 36px;
+  padding: 22px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(212, 168, 75, 0.10) 0%, rgba(212, 168, 75, 0.04) 100%);
+  border: 1px solid rgba(212, 168, 75, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.give-keyword-instructions-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 0 4px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.give-keyword-instructions-header i.pi {
+  color: var(--primary-gold-accent, #d4a84b);
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.give-keyword-instructions-header strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.give-keyword-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.give-keyword-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 18px 20px;
+  border-radius: 14px;
+  background: rgba(11, 19, 32, 0.55);
+  border: 1px solid rgba(212, 168, 75, 0.22);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.give-keyword-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 168, 75, 0.55);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.give-keyword-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.give-keyword-card-top i.pi {
+  color: var(--primary-gold-accent, #d4a84b);
+  font-size: 18px;
+}
+
+.give-keyword-card-label {
+  line-height: 1.2;
+}
+
+.give-keyword-card-badge {
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--primary-gold-accent, #d4a84b);
+  color: #1a2744;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  font-family: 'Inter', system-ui, sans-serif;
+  white-space: nowrap;
+}
+
+.give-keyword-card-helper {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.compact-instructions ol .keyword-step {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  font-weight: 600;
+}
+
+.compact-instructions ol .keyword-step strong {
+  color: var(--color-navy, #1a2744);
+}
+
+@media (max-width: 640px) {
+  .give-keyword-instructions {
+    padding: 16px;
+    border-radius: 14px;
+  }
+  .give-keyword-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .give-keyword-card-badge {
+    font-size: 15px;
+  }
+}
+
+/* Firstfruits theming variant for GiveWhySection */
+.give-why-section--firstfruits {
+  background: linear-gradient(180deg, #fffaf0 0%, #f5f0e6 100%);
+}
+
+.give-why-section--default {
+  background: white !important;
+}
+/* Video Testimony Section */
+.give-video-testimony-section {
+  padding: 50px 0;
+  background-color: var(--color-cream, #f5f0e6);
+}
+
+.give-video-testimony-section.section-white {
+  background-color: #ffffff;
+}
+
+.give-video-testimony-frame {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 32px auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(26, 39, 68, 0.18);
+  background: #0b1320;
+}
+
+.give-video-testimony-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.give-video-testimony-fallback {
+  max-width: 960px;
+  margin: 14px auto 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary, #6b7280);
+}
+
+.give-video-testimony-fallback a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-gold-accent, #d4a84b);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(212, 168, 75, 0.35);
+  padding-bottom: 1px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.give-video-testimony-fallback a:hover {
+  color: var(--color-navy, #1a2744);
+  border-bottom-color: var(--color-navy, #1a2744);
+}
+
+.give-video-testimony-fallback i.pi {
+  font-size: 11px;
+}
+
+/* ============================================================
+   VIDEO TESTIMONY — THUMBNAIL GRID + LIGHTBOX
+   Sermon-card aesthetic, scoped to the testimony section.
+   ============================================================ */
+
+.give-video-testimony-section .give-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  max-width: 1120px;
+  margin: 36px auto 0;
+}
+
+/* Single video — centered, narrower card */
+.give-video-testimony-section .give-video-grid--single {
+  grid-template-columns: minmax(0, 460px);
+  justify-content: center;
+}
+
+/* Two videos — explicit 2-column, centered */
+.give-video-testimony-section .give-video-grid--duo {
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .give-video-testimony-section .give-video-grid--duo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.give-video-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s ease;
+}
+
+.give-video-card:hover,
+.give-video-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.10),
+    0 0 0 1px rgba(212, 168, 75, 0.32);
+  border-color: rgba(212, 168, 75, 0.4);
+  outline: none;
+}
+
+.give-video-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-gold-accent, #d4a84b), #f9d976);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+.give-video-card:hover::after,
+.give-video-card:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Thumbnail */
+.give-video-card-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a2744 0%, #2a3a5a 100%);
+}
+
+.give-video-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.give-video-card:hover .give-video-card-thumb img,
+.give-video-card:focus-visible .give-video-card-thumb img {
+  transform: scale(1.05);
+}
+
+.give-video-card-thumb-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 40px;
+}
+
+/* Center play button */
+.give-video-card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 39, 68, 0.55);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  transform: translate(-50%, -50%) scale(0.92);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.give-video-card-play i {
+  font-size: 20px;
+  margin-left: 3px; /* visual centering for play triangle */
+}
+
+.give-video-card:hover .give-video-card-play,
+.give-video-card:focus-visible .give-video-card-play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  background: var(--primary-gold-accent, #d4a84b);
+  color: #1a2744;
+}
+
+/* Duration pill (bottom-right) */
+.give-video-card-duration {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+/* Body */
+.give-video-card-body {
+  padding: 16px 18px 18px;
+}
+
+.give-video-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--text-primary, #1a2744);
+  margin: 0 0 8px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.give-video-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-secondary, #6b7280);
+}
+
+.give-video-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.give-video-card-meta i.pi {
+  font-size: 11px;
+  color: var(--primary-gold-accent, #d4a84b);
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+
+.give-video-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 14, 28, 0.78);
+  backdrop-filter: blur(8px);
+  animation: giveVideoFade 0.2s ease;
+}
+
+@keyframes giveVideoFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.give-video-lightbox-content {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: giveVideoRise 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes giveVideoRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.give-video-lightbox-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.give-video-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.give-video-lightbox-close i {
+  font-size: 14px;
+}
+
+.give-video-lightbox-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0b1320;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.give-video-lightbox-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.give-video-lightbox-meta {
+  text-align: center;
+  color: #ffffff;
+}
+
+.give-video-lightbox-meta h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.give-video-lightbox-meta p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 640px) {
+  .give-video-testimony-section .give-video-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .give-video-lightbox {
+    padding: 16px;
+  }
+
+  .give-video-lightbox-close {
+    top: -40px;
+    width: 32px;
+    height: 32px;
+  }
 }
 
 /* Gateway Projects Overview Section - Gallery Showcase */
