@@ -2,6 +2,7 @@ export { GiveHero } from './GiveHero';
 export { GiveTabs } from './GiveTabs';
 export { GiveWhySection } from './GiveWhySection';
 export { GiveChannelsSection } from './GiveChannelsSection';
+export { GiveVideoTestimony } from './GiveVideoTestimony';
 export { GiveQuickCTA } from './GiveQuickCTA';
 export { GatewayProjectsSection } from './GatewayProjectsSection';
 export { GatewayProgressSection } from './GatewayProgressSection';

@@ -5901,6 +5901,164 @@
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
+/* Keyword instructions block — header note + 2-up card grid */
+.give-keyword-instructions {
+  max-width: 880px;
+  margin: 32px auto 36px;
+  padding: 22px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(212, 168, 75, 0.10) 0%, rgba(212, 168, 75, 0.04) 100%);
+  border: 1px solid rgba(212, 168, 75, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.give-keyword-instructions-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 0 4px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.give-keyword-instructions-header i.pi {
+  color: var(--primary-gold-accent, #d4a84b);
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.give-keyword-instructions-header strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.give-keyword-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.give-keyword-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 18px 20px;
+  border-radius: 14px;
+  background: rgba(11, 19, 32, 0.55);
+  border: 1px solid rgba(212, 168, 75, 0.22);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.give-keyword-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 168, 75, 0.55);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.give-keyword-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.give-keyword-card-top i.pi {
+  color: var(--primary-gold-accent, #d4a84b);
+  font-size: 18px;
+}
+
+.give-keyword-card-label {
+  line-height: 1.2;
+}
+
+.give-keyword-card-badge {
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--primary-gold-accent, #d4a84b);
+  color: #1a2744;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  font-family: 'Inter', system-ui, sans-serif;
+  white-space: nowrap;
+}
+
+.give-keyword-card-helper {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.compact-instructions ol .keyword-step {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  font-weight: 600;
+}
+
+.compact-instructions ol .keyword-step strong {
+  color: var(--color-navy, #1a2744);
+}
+
+@media (max-width: 640px) {
+  .give-keyword-instructions {
+    padding: 16px;
+    border-radius: 14px;
+  }
+  .give-keyword-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .give-keyword-card-badge {
+    font-size: 15px;
+  }
+}
+
+/* Firstfruits theming variant for GiveWhySection */
+.give-why-section--firstfruits {
+  background: linear-gradient(180deg, #fffaf0 0%, #f5f0e6 100%);
+}
+
+/* Video Testimony Section */
+.give-video-testimony-section {
+  padding: 50px 0;
+  background-color: var(--color-cream, #f5f0e6);
+}
+
+.give-video-testimony-section.section-white {
+  background-color: #ffffff;
+}
+
+.give-video-testimony-frame {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 32px auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(26, 39, 68, 0.18);
+  background: #0b1320;
+}
+
+.give-video-testimony-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 /* Gateway Projects Overview Section - Gallery Showcase */
 .gateway-projects-section {
   padding: 50px 0;
