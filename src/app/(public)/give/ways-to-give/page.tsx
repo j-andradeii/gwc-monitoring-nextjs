@@ -30,15 +30,28 @@ import {
   scriptures,
   firstfruitsScriptures,
   tithesAndOfferingIntro,
-  firstfruitsIntro,
 } from '@/data/giveData';
+
+const firstfruitsIntro = `Proverbs 3:9–10 says: "Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing…"
+
+When we give our first fruits:
+
+- We honor God.
+
+- We acknowledge that everything comes from Him.
+
+- We demonstrate obedience and trust.
+
+This principle is not about the result — it is about obedience. The blessing is a byproduct; obedience is the priority.
+
+When you give your first fruit to God, He stands on it. He stands guard over what you entrust to Him.`;
 
 const siteUrl = siteMetadata.siteUrl;
 
 // Optional video testimonies — set to a YouTube/Vimeo embed URL (or direct .mp4)
 // to surface a testimony in that section. Leave as undefined to hide.
 const TITHES_VIDEO_URL: string | undefined = undefined;
-const FIRSTFRUITS_VIDEO_URL: string | undefined = undefined;
+const FIRSTFRUITS_VIDEO_URL: string = 'https://www.youtube.com/watch?v=HpJBLkLw3Uc'; 
 
 const giveKeywords: GiveKeywordInstruction[] = [
   {
@@ -183,6 +196,7 @@ export default function WaysToGivePage() {
             sectionLabel="Generosity"
             title="Tithes & Offering"
             intro={tithesAndOfferingIntro}
+            variantClassName="give-why-section--default"
             scriptures={scriptures}
           />
 
@@ -204,10 +218,26 @@ export default function WaysToGivePage() {
             intro={firstfruitsIntro}
             scriptures={firstfruitsScriptures}
             variantClassName="give-why-section--firstfruits"
+            learnMoreHref="/sermon-notes/first-fruit-sunday"
+            learnMoreLabel="Learn more about Firstfruits"
+            learnMoreCaption="Dive deeper into the heart behind Firstfruits Sunday."
           />
 
           <GiveVideoTestimony
             videoUrl={FIRSTFRUITS_VIDEO_URL}
+            videos={[
+              {
+                url: FIRSTFRUITS_VIDEO_URL,
+                title: 'Firstfruits Testimony',
+                speaker: 'Doc Vince & Arian Araneta',
+              },
+              {
+                url: `https://www.youtube.com/watch?v=uSE1AlFt6Bw`,
+                title: 'Firstfruits Testimony',
+                speaker: 'Justin & Amae Tariman',
+              },
+        
+            ]}
             sectionId="firstfruits-testimony"
             sectionLabel="Testimony"
             title="Firstfruits Testimony"

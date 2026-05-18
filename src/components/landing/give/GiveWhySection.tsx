@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ScriptureCard } from '@/components/cards';
 import { scriptures as defaultScriptures } from '@/data/giveData';
 
@@ -16,8 +17,8 @@ export interface GiveWhySectionProps {
   sectionLabel?: string;
   /** Section heading */
   title?: string;
-  /** Intro paragraph */
-  intro?: string;
+  /** Intro paragraph — string for simple cases, ReactNode for multi-paragraph / lists */
+  intro?: React.ReactNode;
   /** Scripture cards to render. If empty/undefined, falls back to the default set. */
   scriptures?: GiveScripture[];
   /** Extra modifier class for theming (e.g. "give-why-section--firstfruits") */
@@ -29,6 +30,12 @@ export interface GiveWhySectionProps {
    * Pass 0 to disable clamping.
    */
   scriptureMaxLines?: number;
+  /** When set, renders a "Learn more" CTA beneath the scriptures pointing at this route. */
+  learnMoreHref?: string;
+  /** CTA label (defaults to "Learn more") */
+  learnMoreLabel?: string;
+  /** Optional helper line shown above the CTA */
+  learnMoreCaption?: string;
 }
 
 const DEFAULT_INTRO =
@@ -45,6 +52,9 @@ export const GiveWhySection: React.FC<GiveWhySectionProps> = ({
   scriptures,
   variantClassName,
   scriptureMaxLines = 8,
+  learnMoreHref,
+  learnMoreLabel = 'Learn more',
+  learnMoreCaption,
 }) => {
   const cards = scriptures && scriptures.length > 0 ? scriptures : defaultScriptures;
 
@@ -60,7 +70,11 @@ export const GiveWhySection: React.FC<GiveWhySectionProps> = ({
         </div>
 
         <div className="give-why-content animate-on-scroll">
-          <p className="give-why-intro">{intro}</p>
+          {typeof intro === 'string' ? (
+            <p className="give-why-intro">{intro}</p>
+          ) : (
+            <div className="give-why-intro give-why-intro--rich">{intro}</div>
+          )}
 
           <div className="scriptures-grid">
             {cards.map((scripture, index) => (
@@ -72,6 +86,22 @@ export const GiveWhySection: React.FC<GiveWhySectionProps> = ({
               />
             ))}
           </div>
+
+          {learnMoreHref && (
+            <div className="give-why-cta animate-on-scroll">
+              {learnMoreCaption && (
+                <p className="give-why-cta-caption">{learnMoreCaption}</p>
+              )}
+              <Link
+                href={learnMoreHref}
+                className="landing-btn landing-btn-outline give-why-cta-btn"
+                aria-label={learnMoreLabel}
+              >
+                <span>{learnMoreLabel}</span>
+                <i className="pi pi-arrow-right" aria-hidden="true"></i>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>
