@@ -5096,7 +5096,7 @@ When we recognize His worth, we will not hold back—we will surrender fully, lo
     date: '2026-05-10',
     duration: '45 min',
     series: 'Worship',
-    isFeatured: true,
+    isFeatured: false,
     seriesDescription: 'Discovering what it means to worship God in spirit and truth, and the blessings that flow from a life of genuine worship.',
     excerpt: 'True strength in difficult seasons is not found in avoiding pain, but in choosing to remain faithful and united through it all.',
 
@@ -5367,6 +5367,319 @@ When we stay faithful together through trials, God brings healing, restoration, 
         kicker: 'Point 4 · Rebuild',
         verse: 'Job 42:10-13',
         text: 'And the Lord restored Job’s losses when he prayed for his friends. Indeed the Lord gave Job twice as much as he had before. Then all his brothers, all his sisters, and all those who had been his acquaintances before, came to him and ate food with him in his house; and they consoled him and comforted him for all the adversity that the Lord had brought upon him. Each one gave him a piece of silver and each a ring of gold. Now the Lord blessed the latter days of Job more than his beginning; for he had fourteen thousand sheep, six thousand camels, one thousand yoke of oxen, and one thousand female donkeys. He also had seven sons and three daughters.',
+      },
+    ],
+  },
+  {
+    id: '26',
+    slug: 'faithfulness-in-every-season',
+    title: 'Faithfulness in Every Season',
+    speaker: 'Rachel Bañas',
+    speakerRole: 'guest',
+    date: '2026-05-24',
+    duration: '45 min',
+    series: 'Faithfulness',
+    isFeatured: true,
+    excerpt: 'Faithfulness in every season means trusting God not only during difficult times but also in seasons of security and abundance.',
+
+    // Legacy fallback — still used for SEO description and legacy layout
+    description: `**Faithfulness in Every Season**
+
+(Matthew 4:1–11)
+
+Faithfulness in every season means trusting God not only during difficult times but also in seasons of security and abundance. Jesus Himself was tested in the wilderness, yet He remained fully surrendered to the will of the Father.
+
+Our lives will go through different seasons, moments of need, comfort, success, and blessing. In each one, God desires for us to remain faithful, obedient, and dependent on Him. True faithfulness is revealed not only when we lack something, but also when we have everything we need.
+
+This message reminds us that our confidence should never rest in temporary circumstances but in the unchanging character of God.
+
+---
+
+**1. Testing in Times of Need**
+
+In seasons of lack, uncertainty, or weakness, we are often tempted to doubt God’s provision and timing. The enemy tried to tempt Jesus to satisfy His hunger apart from God’s will, but Jesus responded with the Word of God.
+
+Scripture References:
+Matthew 4:4
+Matthew 6:33
+Matthew 8:26
+Matthew 11:28
+
+Times of need teach us dependence on God. When resources are limited and answers seem unclear, faith calls us to seek God first instead of allowing fear to take control.
+
+Need is not meant to destroy us, it is often where God strengthens our trust in Him.
+
+---
+
+**2. Testing in Times of Security**
+
+Sometimes the greatest test comes not during hardship, but during comfort and stability. When life feels secure, it becomes easy to rely on our own strength rather than God.
+
+Jesus was tempted to test God’s protection and prioritize earthly relationships and comfort over obedience to the Father.
+
+Scripture References:
+Matthew 4:5–7
+Matthew 12:46
+Matthew 8:20
+Matthew 10:34
+
+Seasons of security can slowly lead people into spiritual complacency. Faithfulness means continuing to pursue God even when life is comfortable and stable.
+
+True security is not found in possessions, relationships, or status, but in remaining close to God.
+
+---
+
+**3. Testing in Times of Abundance**
+
+Abundance can either deepen our worship or distract us from God. The enemy offered Jesus power and glory in exchange for worship, but Jesus chose obedience over temporary gain.
+
+Scripture References:
+Matthew 4:8–10
+2 Corinthians 9:8
+
+Blessings and success are not wrong, but they become dangerous when they replace God as the center of our lives.
+
+Faithfulness in abundance means remaining humble, generous, and fully surrendered to God. Everything we have is a gift from Him and should be used for His glory.
+
+---
+
+**Key Takeaways:**
+
+- Faithfulness is tested in every season of life.
+- Seasons of need teach us dependence on God.
+- Seasons of security reveal whether we still seek God wholeheartedly.
+- Seasons of abundance test our humility and worship.
+- Jesus remained faithful through every temptation and challenge.
+- True faith is rooted in God’s Word, not in circumstances.
+- Our confidence should be in God, not in what we have or lack.
+
+Faithfulness is not determined by the season we are in, but by our willingness to trust and obey God in every season.
+
+---
+
+**Call to Action:**
+
+Take time to reflect on the season you are currently in.
+
+- In times of need, choose to trust God instead of fear.
+- In times of security, continue seeking God wholeheartedly.
+- In times of abundance, remain humble and generous.
+- Stay rooted in God’s Word and prayer daily.
+- Surrender every season of your life to Jesus.
+
+No matter what season you are facing today, God remains faithful. As we continue to trust and follow Him, He will strengthen us to remain faithful in every season.`,
+
+    tags: ['Faithfulness', 'Trust', 'Obedience', 'Temptation', 'Seasons', 'Need', 'Abundance'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/faithful_in_every_season.webp',
+    scriptures: [
+      {
+        verse: 'Matthew 4:1-11',
+        text: 'Then Jesus was led up by the Spirit into the wilderness to be tempted by the devil. And when He had fasted forty days and forty nights, afterward He was hungry. Now when the tempter came to Him, he said, "If You are the Son of God, command that these stones become bread." But He answered and said, "It is written, ‘Man shall not live by bread alone, but by every word that proceeds from the mouth of God.’" Then the devil took Him up into the holy city, set Him on the pinnacle of the temple, and said to Him, "If You are the Son of God, throw Yourself down. For it is written: ‘He shall give His angels charge over you,’ and, ‘In their hands they shall bear you up, lest you dash your foot against a stone.’" Jesus said to him, "It is written again, ‘You shall not tempt the Lord your God.’" Again, the devil took Him up on an exceedingly high mountain, and showed Him all the kingdoms of the world and their glory. And he said to Him, "All these things I will give You if You will fall down and worship me." Then Jesus said to him, "Away with you, Satan! For it is written, ‘You shall worship the Lord your God, and Him only you shall serve.’" Then the devil left Him, and behold, angels came and ministered to Him.',
+      },
+      {
+        verse: 'Matthew 4:4',
+        text: 'But He answered and said, "It is written, ‘Man shall not live by bread alone, but by every word that proceeds from the mouth of God.’"',
+      },
+      {
+        verse: 'Matthew 6:33',
+        text: 'But seek first the kingdom of God and His righteousness, and all these things shall be added to you.',
+      },
+      {
+        verse: 'Matthew 8:26',
+        text: 'But He said to them, "Why are you fearful, O you of little faith?" Then He arose and rebuked the winds and the sea, and there was a great calm.',
+      },
+      {
+        verse: 'Matthew 11:28',
+        text: 'Come to Me, all you who labor and are heavy laden, and I will give you rest.',
+      },
+      {
+        verse: 'Matthew 4:5-7',
+        text: 'Then the devil took Him up into the holy city, set Him on the pinnacle of the temple, and said to Him, "If You are the Son of God, throw Yourself down. For it is written: ‘He shall give His angels charge over you,’ and, ‘In their hands they shall bear you up, lest you dash your foot against a stone.’" Jesus said to him, "It is written again, ‘You shall not tempt the Lord your God.’"',
+      },
+      {
+        verse: 'Matthew 12:46',
+        text: 'While He was still talking to the multitudes, behold, His mother and brothers stood outside, seeking to speak with Him.',
+      },
+      {
+        verse: 'Matthew 8:20',
+        text: 'And Jesus said to him, "Foxes have holes and birds of the air have nests, but the Son of Man has nowhere to lay His head."',
+      },
+      {
+        verse: 'Matthew 10:34',
+        text: 'Do not think that I came to bring peace on earth. I did not come to bring peace but a sword.',
+      },
+      {
+        verse: 'Matthew 4:8-10',
+        text: 'Again, the devil took Him up on an exceedingly high mountain, and showed Him all the kingdoms of the world and their glory. And he said to Him, "All these things I will give You if You will fall down and worship me." Then Jesus said to him, "Away with you, Satan! For it is written, ‘You shall worship the Lord your God, and Him only you shall serve.’"',
+      },
+      {
+        verse: '2 Corinthians 9:8',
+        text: 'And God is able to make all grace abound toward you, that you, always having all sufficiency in all things, may have an abundance for every good work.',
+      },
+    ],
+    keyPoints: [
+      'Faithfulness is tested in every season of life.',
+      'Seasons of need teach us dependence on God.',
+      'Seasons of security reveal whether we still seek God wholeheartedly.',
+      'Seasons of abundance test our humility and worship.',
+      'Jesus remained faithful through every temptation and challenge.',
+      'True faith is rooted in God’s Word, not in circumstances.',
+      'Our confidence should be in God, not in what we have or lack.',
+    ],
+    relatedSermons: ['25', '24'],
+
+    // Redesigned layout opt-in fields (Modern Reader)
+    subtitle: {
+      prefix: 'Faithfulness in',
+      italic: 'Every',
+      suffix: 'Season',
+    },
+    keyVerse: 'Matthew 4:1–11',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Faithfulness in Every Season',
+        unnumbered: true,
+        paragraphs: [
+          'Faithfulness in every season means trusting God not only during difficult times but also in seasons of security and abundance. Jesus Himself was tested in the wilderness, yet He remained fully surrendered to the will of the Father.',
+          'Our lives will go through different seasons, moments of need, comfort, success, and blessing. In each one, God desires for us to remain faithful, obedient, and dependent on Him. True faithfulness is revealed not only when we lack something, but also when we have everything we need.',
+          'This message reminds us that our confidence should never rest in temporary circumstances but in the unchanging character of God.',
+        ],
+      },
+      {
+        id: 'sec-testing-need',
+        kicker: 'Point 1 · Need',
+        title: 'Testing in Times of Need',
+        paragraphs: [
+          'In seasons of lack, uncertainty, or weakness, we are often tempted to doubt God’s provision and timing. The enemy tried to tempt Jesus to satisfy His hunger apart from God’s will, but Jesus responded with the Word of God.',
+          'Scripture References:',
+          'Matthew 4:4',
+          'Matthew 6:33',
+          'Matthew 8:26',
+          'Matthew 11:28',
+          'Times of need teach us dependence on God. When resources are limited and answers seem unclear, faith calls us to seek God first instead of allowing fear to take control.',
+          'Need is not meant to destroy us, it is often where God strengthens our trust in Him.',
+        ],
+      },
+      {
+        id: 'sec-testing-security',
+        kicker: 'Point 2 · Security',
+        title: 'Testing in Times of Security',
+        paragraphs: [
+          'Sometimes the greatest test comes not during hardship, but during comfort and stability. When life feels secure, it becomes easy to rely on our own strength rather than God.',
+          'Jesus was tempted to test God’s protection and prioritize earthly relationships and comfort over obedience to the Father.',
+          'Scripture References:',
+          'Matthew 4:5–7',
+          'Matthew 12:46',
+          'Matthew 8:20',
+          'Matthew 10:34',
+          'Seasons of security can slowly lead people into spiritual complacency. Faithfulness means continuing to pursue God even when life is comfortable and stable.',
+          'True security is not found in possessions, relationships, or status, but in remaining close to God.',
+        ],
+      },
+      {
+        id: 'sec-testing-abundance',
+        kicker: 'Point 3 · Abundance',
+        title: 'Testing in Times of Abundance',
+        paragraphs: [
+          'Abundance can either deepen our worship or distract us from God. The enemy offered Jesus power and glory in exchange for worship, but Jesus chose obedience over temporary gain.',
+          'Scripture References:',
+          'Matthew 4:8–10',
+          '2 Corinthians 9:8',
+          'Blessings and success are not wrong, but they become dangerous when they replace God as the center of our lives.',
+          'Faithfulness in abundance means remaining humble, generous, and fully surrendered to God. Everything we have is a gift from Him and should be used for His glory.',
+        ],
+      },
+      {
+        id: 'sec-point',
+        kicker: 'Key Point',
+        title: 'Key Point',
+        unnumbered: true,
+        paragraphs: [
+          'Faithfulness is not determined by the season we are in, but by our willingness to trust and obey God in every season.',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Reflect on Your Season',
+        unnumbered: true,
+        paragraphs: [
+          'Take time to reflect on the season you are currently in.',
+          '- In times of need, choose to trust God instead of fear.',
+          '- In times of security, continue seeking God wholeheartedly.',
+          '- In times of abundance, remain humble and generous.',
+          '- Stay rooted in God’s Word and prayer daily.',
+          '- Surrender every season of your life to Jesus.',
+          'No matter what season you are facing today, God remains faithful. As we continue to trust and follow Him, He will strengthen us to remain faithful in every season.',
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'Faithfulness is tested in every season of life.',
+      'Seasons of need teach us dependence on God.',
+      'Seasons of security reveal whether we still seek God wholeheartedly.',
+      'Seasons of abundance test our humility and worship.',
+      'Jesus remained faithful through every temptation and challenge.',
+      'True faith is rooted in God’s Word, not in circumstances.',
+      'Our confidence should be in God, not in what we have or lack.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Matthew 4:1-11',
+        text: 'Then Jesus was led up by the Spirit into the wilderness to be tempted by the devil. And when He had fasted forty days and forty nights, afterward He was hungry. Now when the tempter came to Him, he said, "If You are the Son of God, command that these stones become bread." But He answered and said, "It is written, ‘Man shall not live by bread alone, but by every word that proceeds from the mouth of God.’" Then the devil took Him up into the holy city, set Him on the pinnacle of the temple, and said to Him, "If You are the Son of God, throw Yourself down. For it is written: ‘He shall give His angels charge over you,’ and, ‘In their hands they shall bear you up, lest you dash your foot against a stone.’" Jesus said to him, "It is written again, ‘You shall not tempt the Lord your God.’" Again, the devil took Him up on an exceedingly high mountain, and showed Him all the kingdoms of the world and their glory. And he said to Him, "All these things I will give You if You will fall down and worship me." Then Jesus said to him, "Away with you, Satan! For it is written, ‘You shall worship the Lord your God, and Him only you shall serve.’" Then the devil left Him, and behold, angels came and ministered to Him.',
+      },
+      {
+        kicker: 'Point 1 · Need',
+        verse: 'Matthew 4:4',
+        text: 'But He answered and said, "It is written, ‘Man shall not live by bread alone, but by every word that proceeds from the mouth of God.’"',
+      },
+      {
+        kicker: 'Point 1 · Need',
+        verse: 'Matthew 6:33',
+        text: 'But seek first the kingdom of God and His righteousness, and all these things shall be added to you.',
+      },
+      {
+        kicker: 'Point 1 · Need',
+        verse: 'Matthew 8:26',
+        text: 'But He said to them, "Why are you fearful, O you of little faith?" Then He arose and rebuked the winds and the sea, and there was a great calm.',
+      },
+      {
+        kicker: 'Point 1 · Need',
+        verse: 'Matthew 11:28',
+        text: 'Come to Me, all you who labor and are heavy laden, and I will give you rest.',
+      },
+      {
+        kicker: 'Point 2 · Security',
+        verse: 'Matthew 4:5-7',
+        text: 'Then the devil took Him up into the holy city, set Him on the pinnacle of the temple, and said to Him, "If You are the Son of God, throw Yourself down. For it is written: ‘He shall give His angels charge over you,’ and, ‘In their hands they shall bear you up, lest you dash your foot against a stone.’" Jesus said to him, "It is written again, ‘You shall not tempt the Lord your God.’"',
+      },
+      {
+        kicker: 'Point 2 · Security',
+        verse: 'Matthew 12:46',
+        text: 'While He was still talking to the multitudes, behold, His mother and brothers stood outside, seeking to speak with Him.',
+      },
+      {
+        kicker: 'Point 2 · Security',
+        verse: 'Matthew 8:20',
+        text: 'And Jesus said to him, "Foxes have holes and birds of the air have nests, but the Son of Man has nowhere to lay His head."',
+      },
+      {
+        kicker: 'Point 2 · Security',
+        verse: 'Matthew 10:34',
+        text: 'Do not think that I came to bring peace on earth. I did not come to bring peace but a sword.',
+      },
+      {
+        kicker: 'Point 3 · Abundance',
+        verse: 'Matthew 4:8-10',
+        text: 'Again, the devil took Him up on an exceedingly high mountain, and showed Him all the kingdoms of the world and their glory. And he said to Him, "All these things I will give You if You will fall down and worship me." Then Jesus said to him, "Away with you, Satan! For it is written, ‘You shall worship the Lord your God, and Him only you shall serve.’"',
+      },
+      {
+        kicker: 'Point 3 · Abundance',
+        verse: '2 Corinthians 9:8',
+        text: 'And God is able to make all grace abound toward you, that you, always having all sufficiency in all things, may have an abundance for every good work.',
       },
     ],
   },
