@@ -75,7 +75,7 @@ export default function CommunityPage() {
                             backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community.jpg"
                         />
 
-                 <ProjectBanner
+                        <ProjectBanner
                             badge="Belong"
                             title="There's a seat saved for you."
                             buttonLabel="Join us this Sunday"

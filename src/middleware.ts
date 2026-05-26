@@ -13,7 +13,7 @@ import { CONST, ROUTES } from '@/core/constants';
  * Protected routes that require authentication
  */
 const PROTECTED_ROUTES = [
-  '/church-campus-admin',
+  '/testing',
 ];
 
 /**

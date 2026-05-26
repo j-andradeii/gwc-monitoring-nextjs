@@ -1,3 +1,301 @@
-.p-menuitem-content {
-    padding: 0.5rem;
+/**
+ * Admin Header styles
+ *
+ * Scoped under `.admin-header-*` and `.admin-user-menu` to avoid global bleed.
+ */
+
+/* ---------- Header bar ---------- */
+
+.admin-header {
+  background: linear-gradient(135deg, #0a0a0f 0%, #0d1525 50%, #0d1a2d 100%);
+  width: 100%;
+  height: 64px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 100;
+}
+
+.admin-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.admin-header-left,
+.admin-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.admin-header-left {
+  gap: 12px;
+}
+
+.admin-header-right {
+  gap: 8px;
+}
+
+/* Hamburger button */
+.admin-header-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: background 0.2s ease;
+}
+
+.admin-header-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-header-menu-toggle .line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s ease;
+}
+
+.admin-header-menu-toggle:hover .line {
+  background: #c0a067;
+}
+
+.admin-header-menu-toggle.is-open .line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: #c0a067;
+}
+
+.admin-header-menu-toggle.is-open .line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.admin-header-menu-toggle.is-open .line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: #c0a067;
+}
+
+/* Logo */
+.admin-header-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.admin-header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #c0a067 0%, #a8894f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(192, 160, 103, 0.3);
+}
+
+/* Action buttons (search, bell) */
+.admin-header-action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.admin-header-action:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.admin-header-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  box-shadow: 0 0 0 2px #0d1525;
+}
+
+.admin-header-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 8px;
+}
+
+/* User trigger */
+.admin-header-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+
+.admin-header-user:hover,
+.admin-header-user:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+
+.admin-header-user .p-avatar {
+  background: linear-gradient(145deg, #c0a067 0%, #a8894f 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.admin-header-user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1px;
+}
+
+.admin-header-user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.admin-header-user-role {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: capitalize;
+}
+
+.admin-header-user-chevron {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+/* ---------- User dropdown menu (scoped) ---------- */
+
+.admin-user-menu.p-menu {
+  margin-top: 8px;
+  min-width: 220px;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.admin-user-menu .p-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0;
+}
+
+.admin-user-menu .p-menuitem-content {
+  padding: 0;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.admin-user-menu .p-menuitem-content:hover {
+  background: rgba(192, 160, 103, 0.1);
+}
+
+.admin-user-menu .p-menuitem-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.admin-user-menu .p-menuitem-link:hover {
+  color: #1f2937;
+}
+
+.admin-user-menu .p-menuitem-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 13px;
+  margin: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.admin-user-menu .p-menuitem-content:hover .p-menuitem-icon {
+  background: rgba(192, 160, 103, 0.15);
+  color: #c0a067;
+}
+
+.admin-user-menu .p-menuitem-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Separator */
+.admin-user-menu .p-menu-separator,
+.admin-user-menu .p-menuitem-separator {
+  border-top: 1px solid #f1f3f5;
+  margin: 6px 4px;
+}
+
+/* Logout (last item) — danger accent */
+.admin-user-menu .p-menu-list > li:last-child .p-menuitem-link {
+  color: #b91c1c;
+}
+
+.admin-user-menu .p-menu-list > li:last-child .p-menuitem-icon {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.admin-user-menu .p-menu-list > li:last-child .p-menuitem-content:hover {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.admin-user-menu .p-menu-list > li:last-child .p-menuitem-content:hover .p-menuitem-icon {
+  background: #fecaca;
+  color: #991b1b;
 }
