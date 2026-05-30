@@ -1,6 +1,7 @@
 export { GiveHero } from './GiveHero';
 export { GiveTabs } from './GiveTabs';
 export { GiveWhySection } from './GiveWhySection';
+export { GiveScriptureList } from './GiveScriptureList';
 export { GiveChannelsSection } from './GiveChannelsSection';
 export { GiveVideoTestimony } from './GiveVideoTestimony';
 export { GiveQuickCTA } from './GiveQuickCTA';

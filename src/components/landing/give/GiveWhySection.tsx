@@ -2,13 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ScriptureCard } from '@/components/cards';
+import { GiveScriptureList, type GiveScriptureListItem } from './GiveScriptureList';
 import { scriptures as defaultScriptures } from '@/data/giveData';
 
-export interface GiveScripture {
-  verse: string;
-  text: string;
-}
+export type GiveScripture = GiveScriptureListItem;
 
 export interface GiveWhySectionProps {
   /** Anchor id for the section (e.g. "ways-to-give", "firstfruits") */
@@ -24,10 +21,8 @@ export interface GiveWhySectionProps {
   /** Extra modifier class for theming (e.g. "give-why-section--firstfruits") */
   variantClassName?: string;
   /**
-   * Visually clamp each scripture card's text to this many lines.
-   * Defaults to 4 so long passages (e.g. Malachi 3:10) stay uniform with
-   * shorter ones. Card link still opens BibleGateway for the full passage.
-   * Pass 0 to disable clamping.
+   * Deprecated compatibility prop from the previous card grid.
+   * The sermon-note list renders the full scripture text.
    */
   scriptureMaxLines?: number;
   /** When set, renders a "Learn more" CTA beneath the scriptures pointing at this route. */
@@ -51,7 +46,6 @@ export const GiveWhySection: React.FC<GiveWhySectionProps> = ({
   intro = DEFAULT_INTRO,
   scriptures,
   variantClassName,
-  scriptureMaxLines = 8,
   learnMoreHref,
   learnMoreLabel = 'Learn more',
   learnMoreCaption,
@@ -76,16 +70,11 @@ export const GiveWhySection: React.FC<GiveWhySectionProps> = ({
             <div className="give-why-intro give-why-intro--rich">{intro}</div>
           )}
 
-          <div className="scriptures-grid">
-            {cards.map((scripture, index) => (
-              <ScriptureCard
-                key={`${scripture.verse}-${index}`}
-                verse={scripture.verse}
-                text={scripture.text}
-                maxLines={scriptureMaxLines}
-              />
-            ))}
-          </div>
+          <GiveScriptureList
+            items={cards}
+            description={`Scripture foundations for ${title.toLowerCase()}.`}
+            ariaLabel={`${title} scriptures`}
+          />
 
           {learnMoreHref && (
             <div className="give-why-cta animate-on-scroll">

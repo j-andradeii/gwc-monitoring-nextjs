@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScriptureCard } from '@/components/cards';
+import { GiveScriptureList } from './GiveScriptureList';
 import { ProjectGallery } from './ProjectGallery';
 import { gatewayProjectsData } from '@/data/giveData';
 
@@ -17,9 +17,17 @@ export const GatewayProjectsSection: React.FC = () => {
         <div className="gateway-projects-layout animate-on-scroll">
           {/* Accent sidebar: Scripture card + scroll prompt */}
           <div className="gateway-projects-sidebar">
-            <ScriptureCard
-              verse="Haggai 1:8"
-              text="Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord."
+            <GiveScriptureList
+              className="gateway-projects-scripture-list"
+              description="The scripture behind this building project."
+              ariaLabel="Gateway Projects scripture"
+              items={[
+                {
+                  kicker: 'Build His House',
+                  verse: 'Haggai 1:8',
+                  text: 'Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored, says the Lord.',
+                },
+              ]}
             />
 
             <div className="gateway-projects-scroll-cta">
