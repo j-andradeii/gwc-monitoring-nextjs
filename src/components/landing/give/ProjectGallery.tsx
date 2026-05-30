@@ -20,6 +20,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
     const [previewIndex, setPreviewIndex] = useState<number | null>(null);
     const [scale, setScale] = useState(1);
     const [dragY, setDragY] = useState(0);
+    const [isDraggingState, setIsDraggingState] = useState(false);
     const touchStart = useRef<number | null>(null);
     const isDragging = useRef(false);
 
@@ -46,10 +47,13 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
     useEffect(() => {
         if (previewIndex !== null) {
             document.body.style.overflow = 'hidden';
-            setScale(1);
-        } else {
-            document.body.style.overflow = '';
+            const t = setTimeout(() => setScale(1), 0);
+            return () => {
+                clearTimeout(t);
+                document.body.style.overflow = '';
+            };
         }
+        document.body.style.overflow = '';
         return () => {
             document.body.style.overflow = '';
         };
@@ -97,6 +101,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                         if (isZoomed) return;
                         touchStart.current = e.touches[0].clientY;
                         isDragging.current = true;
+                        setIsDraggingState(true);
                     }}
                     onTouchMove={(e) => {
                         if (!isDragging.current || isZoomed || touchStart.current === null) return;
@@ -108,6 +113,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                     }}
                     onTouchEnd={() => {
                         isDragging.current = false;
+                        setIsDraggingState(false);
                         touchStart.current = null;
                         if (dragY > 150) {
                             setPreviewIndex(null);
@@ -118,6 +124,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                         if (isZoomed) return;
                         touchStart.current = e.clientY;
                         isDragging.current = true;
+                        setIsDraggingState(true);
                     }}
                     onMouseMove={(e) => {
                         if (!isDragging.current || isZoomed || touchStart.current === null) return;
@@ -129,6 +136,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                     }}
                     onMouseUp={() => {
                         isDragging.current = false;
+                        setIsDraggingState(false);
                         touchStart.current = null;
                         if (dragY > 150) {
                             setPreviewIndex(null);
@@ -143,7 +151,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                             inset: 0,
                             backgroundColor: 'black',
                             opacity: Math.max(0, 1 - dragY / 400),
-                            transition: isDragging.current ? 'none' : 'opacity 0.3s ease-out'
+                            transition: isDraggingState ? 'none' : 'opacity 0.3s ease-out'
                         }}
                     />
 
@@ -228,7 +236,7 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images }) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             transform: `translateY(${dragY}px)`,
-                            transition: isDragging.current ? 'none' : 'transform 0.3s ease-out',
+                            transition: isDraggingState ? 'none' : 'transform 0.3s ease-out',
                         }}
                     >
                         <TransformWrapper

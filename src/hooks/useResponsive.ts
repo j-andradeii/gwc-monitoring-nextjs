@@ -230,11 +230,13 @@ export const useMediaQuery = (query: string) => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(query);
-    setMatches(mediaQuery.matches);
 
     const handler = (event: MediaQueryListEvent) => {
       setMatches(event.matches);
     };
+
+    // Defer initial state read to avoid synchronous setState-in-effect
+    handler({ matches: mediaQuery.matches } as MediaQueryListEvent);
 
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);

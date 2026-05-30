@@ -157,7 +157,7 @@ export function Footer({ className = '', isAdmin = false }: FooterProps) {
               <ul>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/services">Our Services</a></li>
-                <li><a href="/events">Events</a></li>
+                <li><Link href="/events">Events</Link></li>
                 <li><a href="/sermons">Sermons</a></li>
               </ul>
             </div>

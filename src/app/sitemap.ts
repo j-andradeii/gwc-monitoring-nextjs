@@ -38,6 +38,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
 
+    // Connect
+    {
+      url: `${siteUrl}/connect`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
     // Sermon Notes
     {
       url: `${siteUrl}/sermon-notes`,

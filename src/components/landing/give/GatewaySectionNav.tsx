@@ -15,8 +15,12 @@ export const GatewaySectionNav: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Defer initial call to avoid synchronous setState in effect
+    const t = setTimeout(handleScroll, 0);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [handleScroll]);
 
   // Intersection Observer for active section tracking

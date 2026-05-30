@@ -25,7 +25,7 @@ export const EventsCardGrid: React.FC<EventsCardGridProps> = ({
 }) => {
   // Filter out SONDAY_SERVICE events unless showAll is true
   const displayEvents = useMemo(() => {
-    let filtered = showAll
+    const filtered = showAll
       ? events
       : events.filter(event => event.type !== GatewayEventType.SONDAY_SERVICE);
 

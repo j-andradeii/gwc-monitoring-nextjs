@@ -14,6 +14,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
     const [scale, setScale] = useState(1);
     const contentRef = useRef<HTMLDivElement>(null);
     const [dragY, setDragY] = useState(0);
+    const [isDraggingState, setIsDraggingState] = useState(false);
     const touchStart = useRef<number | null>(null);
     const isDragging = useRef(false);
 
@@ -23,10 +24,13 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
-            setScale(1);
-        } else {
-            document.body.style.overflow = '';
+            const t = setTimeout(() => setScale(1), 0);
+            return () => {
+                clearTimeout(t);
+                document.body.style.overflow = '';
+            };
         }
+        document.body.style.overflow = '';
         return () => {
             document.body.style.overflow = '';
         };
@@ -74,6 +78,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                         if (isZoomed) return;
                         touchStart.current = e.touches[0].clientY;
                         isDragging.current = true;
+                        setIsDraggingState(true);
                     }}
                     onTouchMove={(e) => {
                         if (!isDragging.current || isZoomed || touchStart.current === null) return;
@@ -85,6 +90,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                     }}
                     onTouchEnd={() => {
                         isDragging.current = false;
+                        setIsDraggingState(false);
                         touchStart.current = null;
                         if (dragY > 150) {
                             setIsOpen(false);
@@ -120,7 +126,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                             inset: 0,
                             backgroundColor: 'black',
                             opacity: Math.max(0, 1 - dragY / 400),
-                            transition: isDragging.current ? 'none' : 'opacity 0.3s ease-out'
+                            transition: isDraggingState ? 'none' :'opacity 0.3s ease-out'
                         }}
                     />
 
@@ -158,7 +164,7 @@ export const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                             alignItems: 'center',
                             justifyContent: 'center',
                             transform: `translateY(${dragY}px)`,
-                            transition: isDragging.current ? 'none' : 'transform 0.3s ease-out',
+                            transition: isDraggingState ? 'none' :'transform 0.3s ease-out',
                         }}
                     >
                         <TransformWrapper

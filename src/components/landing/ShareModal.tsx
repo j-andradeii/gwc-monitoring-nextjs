@@ -26,12 +26,11 @@ interface ShareModalProps {
 }
 
 export function ShareModal({ isOpen, onClose, title, excerpt, modalTitle = 'Share' }: ShareModalProps) {
-    if (!isOpen) return null;
-
-    const APP_URI = config.app.url;
-
     const pathname = usePathname();
-    const shareUrl = `${config.app.url}${pathname}`;
+    const APP_URI = config.app.url;
+    const shareUrl = `${APP_URI}${pathname}`;
+
+    if (!isOpen) return null;
 
     return (
         <div
