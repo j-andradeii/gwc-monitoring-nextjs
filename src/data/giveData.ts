@@ -1,14 +1,17 @@
 // Scripture data for Why We Give section
 export const scriptures = [
   {
+    kicker: 'Cheerful Giving',
     verse: '2 Corinthians 9:7',
     text: 'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.',
   },
   {
+    kicker: 'The Tithe',
     verse: 'Malachi 3:10',
     text: 'Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this, says the Lord Almighty, and see if I will not throw open the floodgates of heaven and pour out so much blessing that there will not be room enough to store it.',
   },
   {
+    kicker: 'Generous Measure',
     verse: 'Luke 6:38',
     text: 'Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap.',
   },
@@ -17,14 +20,17 @@ export const scriptures = [
 // Scripture data for the Firstfruits section
 export const firstfruitsScriptures = [
   {
+    kicker: 'Honor God First',
     verse: 'Proverbs 3:9-10',
     text: 'Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine.',
   },
   {
+    kicker: 'Bring the Best',
     verse: 'Exodus 23:19',
     text: 'Bring the best of the firstfruits of your soil to the house of the Lord your God.',
   },
   {
+    kicker: 'Worshipful Offering',
     verse: 'Deuteronomy 26:10',
     text: 'And now I bring the firstfruits of the soil that you, Lord, have given me. Place the basket before the Lord your God and bow down before him.',
   },

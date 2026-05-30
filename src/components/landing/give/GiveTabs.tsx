@@ -3,7 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { ScriptureCard } from '@/components/cards';
+import { GiveScriptureList } from './GiveScriptureList';
 import { ProjectGallery } from './ProjectGallery';
 
 type TabType = 'ways-to-give' | 'gateway-projects';
@@ -34,14 +34,17 @@ const useCopyToClipboard = () => {
 // Scripture data
 const scriptures = [
   {
+    kicker: 'Cheerful Giving',
     verse: '2 Corinthians 9:7',
     text: 'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.',
   },
   {
+    kicker: 'Firstfruits',
     verse: 'Proverbs 3:9-10',
     text: 'Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing.',
   },
   {
+    kicker: 'Generous Measure',
     verse: 'Luke 6:38',
     text: 'Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap.',
   },
@@ -188,15 +191,11 @@ const WaysToGiveTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) => {
             serve our community, and equip believers for Kingdom work.
           </p>
 
-          <div className="scriptures-grid">
-            {scriptures.map((scripture, index) => (
-              <ScriptureCard
-                key={index}
-                verse={scripture.verse}
-                text={scripture.text}
-              />
-            ))}
-          </div>
+          <GiveScriptureList
+            items={scriptures}
+            description="Scripture foundations for giving."
+            ariaLabel="Ways to Give scriptures"
+          />
         </div>
       </div>
 
@@ -286,9 +285,16 @@ const GatewayProjectsTab: React.FC<CopyToClipboardProps> = ({ copiedId, copy }) 
 
         {/* Project Scripture */}
         <div className="project-scripture">
-          <ScriptureCard
-            verse="Haggai 1:8"
-            text="Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored,&rdquo; says the Lord."
+          <GiveScriptureList
+            description="The scripture behind this building project."
+            ariaLabel="Gateway Projects scripture"
+            items={[
+              {
+                kicker: 'Build His House',
+                verse: 'Haggai 1:8',
+                text: 'Go up into the mountains and bring down timber and build my house, so that I may take pleasure in it and be honored, says the Lord.',
+              },
+            ]}
           />
         </div>
 

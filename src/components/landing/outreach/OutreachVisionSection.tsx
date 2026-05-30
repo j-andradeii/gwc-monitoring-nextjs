@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { GiveScriptureList } from '@/components/landing/give/GiveScriptureList';
 import { outreachVisionData } from '@/data/outreachData';
 
 export const OutreachVisionSection: React.FC = () => {
@@ -18,15 +19,6 @@ export const OutreachVisionSection: React.FC = () => {
                 className="gateway-vision-photo"
                 unoptimized
               />
-              {/* Scripture overlay on image */}
-              <div className="gateway-vision-scripture">
-                <p className="gateway-vision-scripture-text">
-                  {outreachVisionData.scripture.text}
-                </p>
-                <span className="gateway-vision-scripture-verse">
-                  {outreachVisionData.scripture.verse}
-                </span>
-              </div>
             </div>
           </div>
 
@@ -40,6 +32,19 @@ export const OutreachVisionSection: React.FC = () => {
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
+
+            <GiveScriptureList
+              className="outreach-vision-scripture-list"
+              description="The scripture behind this outreach call."
+              ariaLabel="Gateway Outreach scripture"
+              items={[
+                {
+                  kicker: outreachVisionData.sectionLabel,
+                  verse: outreachVisionData.scripture.verse,
+                  text: outreachVisionData.scripture.text,
+                },
+              ]}
+            />
 
             {/* Pastor attribution */}
             {/* <div className="gateway-vision-attribution">
