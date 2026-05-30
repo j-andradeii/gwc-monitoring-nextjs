@@ -6,7 +6,7 @@ interface SheetResult {
   message: string;
 }
 
-async function appendToGoogleSheet(data: any): Promise<SheetResult> {
+async function appendToGoogleSheet(data: Record<string, unknown>): Promise<SheetResult> {
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
   const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;

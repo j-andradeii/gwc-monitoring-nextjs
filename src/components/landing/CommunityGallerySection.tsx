@@ -39,9 +39,10 @@ export const CommunityGallerySection: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Shuffle images on client
+  // Shuffle images on client (deferred to avoid synchronous setState in effect)
   useEffect(() => {
-    setImages(shuffleArray(galleryImages));
+    const t = setTimeout(() => setImages(shuffleArray(galleryImages)), 0);
+    return () => clearTimeout(t);
   }, []);
 
   // Scroll Animation Observer - Scoped to this component

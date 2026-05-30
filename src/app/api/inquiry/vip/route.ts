@@ -6,7 +6,7 @@ interface SheetResult {
   message: string;
 }
 
-async function appendToGoogleSheet(data: any): Promise<SheetResult> {
+async function appendToGoogleSheet(data: Record<string, unknown>): Promise<SheetResult> {
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
   const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_VIP_ID;
@@ -38,7 +38,7 @@ async function appendToGoogleSheet(data: any): Promise<SheetResult> {
     // Format Birthday
     let birthdayStr = '';
     if (data.birthdate) {
-      const bd = new Date(data.birthdate);
+      const bd = new Date(data.birthdate as string | number | Date);
       birthdayStr = bd.toLocaleDateString('en-US');
     }
 
@@ -46,8 +46,8 @@ async function appendToGoogleSheet(data: any): Promise<SheetResult> {
     let socialsStr = '';
     if (Array.isArray(data.socialMedia)) {
       socialsStr = data.socialMedia
-        .filter((s: any) => s.platform && s.handle)
-        .map((s: any) => `${s.platform}: ${s.handle}`)
+        .filter((s: { platform?: string; handle?: string }) => s.platform && s.handle)
+        .map((s: { platform?: string; handle?: string }) => `${s.platform}: ${s.handle}`)
         .join('\n');
     }
 

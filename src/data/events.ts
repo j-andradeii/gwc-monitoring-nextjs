@@ -66,20 +66,34 @@ export const events: Event[] = [
     time: '9:00 AM',
     location: '8th Floor, Golden Peak Hotel and Suites',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sunday_poster.jpg',
-    description: `Church isn’t just a place — it’s people.
-Join us this Sunday at Gateway Church as we worship and grow together.
+    description: `The church is not the building. The church is the people.
+It’s found in every prayer lifted, every worship song sung, every embrace, every conversation, and every heart surrendered to God.
 
-🕘 9:00 AM
-📍8F Golden Peak Hotel & Suites, Escario St. Gorordo Ave.
+The church is a family growing together in faith, loving one another, and pointing people back to Jesus. 
+And we can’t wait to worship with you again this Sunday.
 
-We’ve saved you a seat. 🤍
+📍 8F Golden Peak Hotel and Suites
+🚪 Doors open: 9:00 AM
+⏰ Service starts: 9:30 AM
 
-#GatewayChurchCebu #SundayService #ChurchFamily`,
+Invite someone and come experience community with us.
+
+#GatewayChurchCebu #ThisIsTheChurch #ChurchFamily #JesusAtTheCenter #SundayService`,
     category: 'SONDAY SERVICE',
     isFeatured: false,
     type: GatewayEventType.SONDAY_SERVICE,
-    is_event_finished: false
+    is_event_finished: false,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/1.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/2.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/3.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/4.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/5.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/6.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/7.webp',
+    ]
   },
+  
   {
     id: 2,
     slug: 'gateway-marketplace-x-axis',
@@ -268,7 +282,7 @@ Everyone is invited. See you there! 🫶✨`,
     day: 'Sunday',
     time: '2:00 PM',
     location: '8th Floor, Golden Peak Hotel and Suites',
-    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis.png',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/axis.webp',
     description: `
 You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering—together.
 Everyone is invited. See you there! 🫶✨`,
@@ -277,6 +291,9 @@ Everyone is invited. See you there! 🫶✨`,
     type: GatewayEventType.FELLOWSHIP,
     is_event_finished: false,
     gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/1.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/2.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/3.webp',
     ]
   },
 ];

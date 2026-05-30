@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/site-metadata';
 import { LandingHeader, LandingFooter, PageHero, ScrollAnimationProvider, MinistryFeatureSection, ContactSection, ConnectFab, ProjectBanner } from '@/components/landing';
 import { ministries } from '@/data/ministries';
-// @ts-ignore
 import '@/styles/landing.css';
 
 const siteUrl = siteMetadata.siteUrl;

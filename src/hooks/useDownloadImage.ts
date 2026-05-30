@@ -29,9 +29,9 @@ export const useDownloadImage = () => {
 
             // Clean up
             window.URL.revokeObjectURL(blobUrl);
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error('Download failed:', err);
-            setError(err.message || 'Failed to download image');
+            setError(err instanceof Error ? err.message : 'Failed to download image');
 
             // Fallback: Try to open in new tab/download directly
             // This helps if CORS blocks fetch but direct access is allowed
