@@ -29,6 +29,8 @@ export interface Sermon {
   isFeatured?: boolean;
   keyPoints?: string[];
   relatedSermons?: string[];
+  /** When true, the speaker card omits the "· Gateway Church" suffix (e.g. guest / missionary speakers). Defaults to showing it. */
+  hideChurchName?: boolean;
 
   // NEW — optional progressive-enhancement fields for the redesigned layout.
   // Existing sermons that lack these fields fall back to parsing `description` markdown.
@@ -5375,11 +5377,12 @@ When we stay faithful together through trials, God brings healing, restoration, 
     slug: 'faithfulness-in-every-season',
     title: 'Faithfulness in Every Season',
     speaker: 'Rachel Bañas',
-    speakerRole: 'guest',
+    speakerRole: 'doulos missionary',
     date: '2026-05-24',
     duration: '45 min',
     series: 'Faithfulness',
     isFeatured: false,
+    hideChurchName: true,
     excerpt: 'Faithfulness in every season means trusting God not only during difficult times but also in seasons of security and abundance.',
 
     // Legacy fallback — still used for SEO description and legacy layout
@@ -5694,6 +5697,7 @@ No matter what season you are facing today, God remains faithful. As we continue
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     isFeatured: true,
+    hideChurchName: true,
     excerpt: 'God did not create us merely to survive or maintain the status quo, He designed us to multiply.',
 
     // Legacy fallback — still used for SEO description and legacy layout
