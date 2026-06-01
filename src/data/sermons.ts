@@ -29,6 +29,8 @@ export interface Sermon {
   isFeatured?: boolean;
   keyPoints?: string[];
   relatedSermons?: string[];
+  /** When true, the speaker card omits the "· Gateway Church" suffix (e.g. guest / missionary speakers). Defaults to showing it. */
+  hideChurchName?: boolean;
 
   // NEW — optional progressive-enhancement fields for the redesigned layout.
   // Existing sermons that lack these fields fall back to parsing `description` markdown.
@@ -5375,11 +5377,12 @@ When we stay faithful together through trials, God brings healing, restoration, 
     slug: 'faithfulness-in-every-season',
     title: 'Faithfulness in Every Season',
     speaker: 'Rachel Bañas',
-    speakerRole: 'guest',
+    speakerRole: 'doulos missionary',
     date: '2026-05-24',
     duration: '45 min',
     series: 'Faithfulness',
-    isFeatured: true,
+    isFeatured: false,
+    hideChurchName: true,
     excerpt: 'Faithfulness in every season means trusting God not only during difficult times but also in seasons of security and abundance.',
 
     // Legacy fallback — still used for SEO description and legacy layout
@@ -5680,6 +5683,270 @@ No matter what season you are facing today, God remains faithful. As we continue
         kicker: 'Point 3 · Abundance',
         verse: '2 Corinthians 9:8',
         text: 'And God is able to make all grace abound toward you, that you, always having all sufficiency in all things, may have an abundance for every good work.',
+      },
+    ],
+  },
+  {
+    id: '27',
+    slug: 'designed-to-multiply',
+    title: 'Designed to Multiply',
+    speaker: 'Karl Nicholas Lisondra',
+    speakerRole: 'doulos missionary',
+    date: '2026-05-31',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    hideChurchName: true,
+    excerpt: 'God did not create us merely to survive or maintain the status quo, He designed us to multiply.',
+
+    // Legacy fallback — still used for SEO description and legacy layout
+    description: `**Designed to Multiply**
+
+Key verse: John 6:1–14
+
+God did not create us merely to survive or maintain the status quo, He designed us to multiply. In the story of the feeding of the five thousand, Jesus demonstrates that multiplication begins not with abundance, but with surrender, obedience, and faithfulness.
+
+Too often, we focus on what we lack, compare ourselves to others, or become discouraged by our circumstances. Yet God uses the very resources, experiences, and situations we already have to accomplish His greater purpose.
+
+This message reminds us that when we faithfully offer what we have to God, He can multiply it beyond what we could ever imagine.
+
+---
+
+**1. Shift Your Perspective**
+
+"Where shall we buy bread for these people to eat?" (John 6:5)
+
+When faced with a challenge, our natural tendency is to focus on the problem. However, God invites us to see beyond our limitations and trust His greater purpose.
+
+Jesus already knew what He was going to do, but He asked the question to challenge His disciples' perspective. Instead of being consumed by obstacles, we are called to seek God and trust His plan.
+
+God's purpose is often greater than the outcome we desire. When we shift our perspective, we begin to see opportunities for God's power and provision to be revealed.
+
+---
+
+**2. Realign Your Focus**
+
+"What do you have?"
+
+One of the questions God repeatedly asks throughout Scripture is not, "What do you lack?" but rather, "What do you have?"
+
+Scripture Reference: John 6:6–7
+
+God has given each of us unique resources, gifts, experiences, and assignments. The key is not how much we possess, but whether we are willing to use what God has already placed in our hands.
+
+Comparing our lives to others will never help us fulfill our God-given assignment. Faithfulness begins when we recognize what God has entrusted to us and offer it back to Him.
+
+---
+
+**3. Make Room for Order**
+
+"Jesus said, 'Have the people sit down.'" (John 6:10)
+
+Before the miracle took place, Jesus established order.
+
+The act of sitting down was more than a practical instruction; it was a call to preparation and alignment. God often brings order before He brings multiplication.
+
+When our lives, priorities, and families are aligned with God's purpose, we are better positioned to persevere through challenges and receive what God wants to do.
+
+Order creates an environment where growth and multiplication can happen.
+
+---
+
+**4. Take a Leap of Faith**
+
+"Jesus then took the loaves, gave thanks, and distributed to those who were seated" (John 6:11–12)
+
+The miracle happened when obedience met faith.
+
+The small offering of bread and fish seemed insignificant compared to the need, yet it became more than enough when placed in Jesus' hands.
+
+Multiplication is often found on the other side of obedience. God does not ask us to understand everything before we act, He asks us to trust Him and take the next step.
+
+Faith unlocks the opportunity for God to demonstrate His power and provision.
+
+---
+
+**Key Takeaways:**
+
+- You are designed by God to multiply and fulfill His purpose.
+- Comparing yourself to others will distract you from your God-given assignment.
+- God often uses your current circumstances as the foundation for future multiplication.
+- Faithfulness with what you already have is the starting point for growth.
+- Multiplication begins when we shift our perspective from problems to God's purpose.
+- God is more concerned with what you have than what you lack.
+- Order creates room for God's blessings and provision.
+- Obedience and faith are the keys that unlock multiplication.
+
+"God does not ask for what you don't have. He asks for what you are willing to place in His hands."
+
+---
+
+**Call to Action:**
+
+Take time this week to evaluate what God has already entrusted to you.
+
+- Shift your perspective from limitations to God's possibilities.
+- Stop comparing your journey to someone else's.
+- Identify the gifts, resources, and opportunities God has placed in your hands.
+- Bring order to areas of your life that need alignment.
+- Take a step of faith and obey what God is asking you to do.
+
+When we faithfully surrender what we have to God, He can accomplish far more than we could ever achieve on our own. You were not designed merely to maintain, you were designed to multiply.`,
+
+    tags: ['Vision', 'Multiplication', 'Faith', 'Obedience', 'Surrender', 'Faithfulness'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/Gateway%20Church%20Sunday%20Service%20-%20053126.webp',
+    scriptures: [
+      {
+        verse: 'John 6:1-14',
+        text: 'After these things Jesus went over the Sea of Galilee, which is the Sea of Tiberias. Then a great multitude followed Him, because they saw His signs which He performed on those who were diseased. And Jesus went up on the mountain, and there He sat with His disciples. Now the Passover, a feast of the Jews, was near. Then Jesus lifted up His eyes, and seeing a great multitude coming toward Him, He said to Philip, "Where shall we buy bread, that these may eat?" But this He said to test him, for He Himself knew what He would do. Philip answered Him, "Two hundred denarii worth of bread is not sufficient for them, that every one of them may have a little." One of His disciples, Andrew, Simon Peter\'s brother, said to Him, "There is a lad here who has five barley loaves and two small fish, but what are they among so many?" Then Jesus said, "Make the people sit down." Now there was much grass in the place. So the men sat down, in number about five thousand. And Jesus took the loaves, and when He had given thanks He distributed them to the disciples, and the disciples to those sitting down; and likewise of the fish, as much as they wanted. So when they were filled, He said to His disciples, "Gather up the fragments that remain, so that nothing is lost." Therefore they gathered them up, and filled twelve baskets with the fragments of the five barley loaves which were left over by those who had eaten. Then those men, when they had seen the sign that Jesus did, said, "This is truly the Prophet who is to come into the world."',
+      },
+      {
+        verse: 'John 6:5',
+        text: 'Then Jesus lifted up His eyes, and seeing a great multitude coming toward Him, He said to Philip, "Where shall we buy bread, that these may eat?"',
+      },
+      {
+        verse: 'John 6:6-7',
+        text: 'But this He said to test him, for He Himself knew what He would do. Philip answered Him, "Two hundred denarii worth of bread is not sufficient for them, that every one of them may have a little."',
+      },
+      {
+        verse: 'John 6:10',
+        text: 'Then Jesus said, "Make the people sit down." Now there was much grass in the place. So the men sat down, in number about five thousand.',
+      },
+      {
+        verse: 'John 6:11-12',
+        text: 'And Jesus took the loaves, and when He had given thanks He distributed them to the disciples, and the disciples to those sitting down; and likewise of the fish, as much as they wanted. So when they were filled, He said to His disciples, "Gather up the fragments that remain, so that nothing is lost."',
+      },
+    ],
+    keyPoints: [
+      'You are designed by God to multiply and fulfill His purpose.',
+      'Comparing yourself to others will distract you from your God-given assignment.',
+      'God often uses your current circumstances as the foundation for future multiplication.',
+      'Faithfulness with what you already have is the starting point for growth.',
+      'Multiplication begins when we shift our perspective from problems to God’s purpose.',
+      'God is more concerned with what you have than what you lack.',
+      'Order creates room for God’s blessings and provision.',
+      'Obedience and faith are the keys that unlock multiplication.',
+    ],
+    relatedSermons: ['20', '19'],
+
+    // Redesigned layout opt-in fields (Modern Reader)
+    subtitle: {
+      prefix: 'Designed to',
+      italic: 'Multiply',
+    },
+    keyVerse: 'John 6:1–14',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Designed to Multiply',
+        unnumbered: true,
+        paragraphs: [
+          'God did not create us merely to survive or maintain the status quo, He designed us to multiply. In the story of the feeding of the five thousand, Jesus demonstrates that multiplication begins not with abundance, but with surrender, obedience, and faithfulness.',
+          'Too often, we focus on what we lack, compare ourselves to others, or become discouraged by our circumstances. Yet God uses the very resources, experiences, and situations we already have to accomplish His greater purpose.',
+          'This message reminds us that when we faithfully offer what we have to God, He can multiply it beyond what we could ever imagine.',
+        ],
+      },
+      {
+        id: 'sec-perspective',
+        kicker: 'Point 1 · Perspective',
+        title: 'Shift Your Perspective',
+        paragraphs: [
+          '"Where shall we buy bread for these people to eat?" (John 6:5)',
+          'When faced with a challenge, our natural tendency is to focus on the problem. However, God invites us to see beyond our limitations and trust His greater purpose.',
+          'Jesus already knew what He was going to do, but He asked the question to challenge His disciples’ perspective. Instead of being consumed by obstacles, we are called to seek God and trust His plan.',
+          'God’s purpose is often greater than the outcome we desire. When we shift our perspective, we begin to see opportunities for God’s power and provision to be revealed.',
+        ],
+      },
+      {
+        id: 'sec-focus',
+        kicker: 'Point 2 · Focus',
+        title: 'Realign Your Focus',
+        paragraphs: [
+          '"What do you have?"',
+          'One of the questions God repeatedly asks throughout Scripture is not, "What do you lack?" but rather, "What do you have?"',
+          'Scripture Reference: John 6:6–7',
+          'God has given each of us unique resources, gifts, experiences, and assignments. The key is not how much we possess, but whether we are willing to use what God has already placed in our hands.',
+          'Comparing our lives to others will never help us fulfill our God-given assignment. Faithfulness begins when we recognize what God has entrusted to us and offer it back to Him.',
+        ],
+      },
+      {
+        id: 'sec-order',
+        kicker: 'Point 3 · Order',
+        title: 'Make Room for Order',
+        paragraphs: [
+          '"Jesus said, ‘Have the people sit down.’" (John 6:10)',
+          'Before the miracle took place, Jesus established order.',
+          'The act of sitting down was more than a practical instruction; it was a call to preparation and alignment. God often brings order before He brings multiplication.',
+          'When our lives, priorities, and families are aligned with God’s purpose, we are better positioned to persevere through challenges and receive what God wants to do.',
+          'Order creates an environment where growth and multiplication can happen.',
+        ],
+      },
+      {
+        id: 'sec-faith',
+        kicker: 'Point 4 · Faith',
+        title: 'Take a Leap of Faith',
+        paragraphs: [
+          '"Jesus then took the loaves, gave thanks, and distributed to those who were seated" (John 6:11–12)',
+          'The miracle happened when obedience met faith.',
+          'The small offering of bread and fish seemed insignificant compared to the need, yet it became more than enough when placed in Jesus’ hands.',
+          'Multiplication is often found on the other side of obedience. God does not ask us to understand everything before we act, He asks us to trust Him and take the next step.',
+          'Faith unlocks the opportunity for God to demonstrate His power and provision.',
+        ],
+        callout: 'God does not ask for what you don’t have. He asks for what you are willing to place in His hands.',
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Take time this week to evaluate what God has already entrusted to you.',
+          '- Shift your perspective from limitations to God’s possibilities.',
+          '- Stop comparing your journey to someone else’s.',
+          '- Identify the gifts, resources, and opportunities God has placed in your hands.',
+          '- Bring order to areas of your life that need alignment.',
+          '- Take a step of faith and obey what God is asking you to do.',
+          'When we faithfully surrender what we have to God, He can accomplish far more than we could ever achieve on our own. You were not designed merely to maintain, you were designed to multiply.',
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'You are designed by God to multiply and fulfill His purpose.',
+      'Comparing yourself to others will distract you from your God-given assignment.',
+      'God often uses your current circumstances as the foundation for future multiplication.',
+      'Faithfulness with what you already have is the starting point for growth.',
+      'Multiplication begins when we shift our perspective from problems to God’s purpose.',
+      'God is more concerned with what you have than what you lack.',
+      'Order creates room for God’s blessings and provision.',
+      'Obedience and faith are the keys that unlock multiplication.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'John 6:1-14',
+        text: 'After these things Jesus went over the Sea of Galilee, which is the Sea of Tiberias. Then a great multitude followed Him, because they saw His signs which He performed on those who were diseased. And Jesus went up on the mountain, and there He sat with His disciples. Now the Passover, a feast of the Jews, was near. Then Jesus lifted up His eyes, and seeing a great multitude coming toward Him, He said to Philip, "Where shall we buy bread, that these may eat?" But this He said to test him, for He Himself knew what He would do. Philip answered Him, "Two hundred denarii worth of bread is not sufficient for them, that every one of them may have a little." One of His disciples, Andrew, Simon Peter\'s brother, said to Him, "There is a lad here who has five barley loaves and two small fish, but what are they among so many?" Then Jesus said, "Make the people sit down." Now there was much grass in the place. So the men sat down, in number about five thousand. And Jesus took the loaves, and when He had given thanks He distributed them to the disciples, and the disciples to those sitting down; and likewise of the fish, as much as they wanted. So when they were filled, He said to His disciples, "Gather up the fragments that remain, so that nothing is lost." Therefore they gathered them up, and filled twelve baskets with the fragments of the five barley loaves which were left over by those who had eaten. Then those men, when they had seen the sign that Jesus did, said, "This is truly the Prophet who is to come into the world."',
+      },
+      {
+        kicker: 'Point 1 · Perspective',
+        verse: 'John 6:5',
+        text: 'Then Jesus lifted up His eyes, and seeing a great multitude coming toward Him, He said to Philip, "Where shall we buy bread, that these may eat?"',
+      },
+      {
+        kicker: 'Point 2 · Focus',
+        verse: 'John 6:6-7',
+        text: 'But this He said to test him, for He Himself knew what He would do. Philip answered Him, "Two hundred denarii worth of bread is not sufficient for them, that every one of them may have a little."',
+      },
+      {
+        kicker: 'Point 3 · Order',
+        verse: 'John 6:10',
+        text: 'Then Jesus said, "Make the people sit down." Now there was much grass in the place. So the men sat down, in number about five thousand.',
+      },
+      {
+        kicker: 'Point 4 · Faith',
+        verse: 'John 6:11-12',
+        text: 'And Jesus took the loaves, and when He had given thanks He distributed them to the disciples, and the disciples to those sitting down; and likewise of the fish, as much as they wanted. So when they were filled, He said to His disciples, "Gather up the fragments that remain, so that nothing is lost."',
       },
     ],
   },

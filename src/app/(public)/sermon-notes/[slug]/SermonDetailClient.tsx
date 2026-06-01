@@ -411,6 +411,14 @@ function SpeakerCard({ sermon }: { sermon: Sermon }) {
     .map((w) => w[0].toUpperCase())
     .join('');
 
+  // Speaker subtitle: role (capitalized) and/or the church name, joined by a dot.
+  // `hideChurchName` opts a sermon out of the "Gateway Church" suffix (e.g. guest/missionary speakers).
+  const role = sermon.speakerRole
+    ? `${sermon.speakerRole.charAt(0).toUpperCase()}${sermon.speakerRole.slice(1)}`
+    : '';
+  const churchName = sermon.hideChurchName ? '' : 'Gateway Church';
+  const speakerSubtitle = [role, churchName].filter(Boolean).join(' · ');
+
   return (
     <div className="aside-card">
       <h4>Speaker</h4>
@@ -418,11 +426,7 @@ function SpeakerCard({ sermon }: { sermon: Sermon }) {
         <div className="speaker__avatar" aria-hidden="true">{initials}</div>
         <div className="speaker__body">
           <strong>{sermon.speaker}</strong>
-          <span>
-            {sermon.speakerRole
-              ? `${sermon.speakerRole.charAt(0).toUpperCase()}${sermon.speakerRole.slice(1)} · Gateway Church`
-              : 'Gateway Church'}
-          </span>
+          {speakerSubtitle && <span>{speakerSubtitle}</span>}
         </div>
       </div>
     </div>
