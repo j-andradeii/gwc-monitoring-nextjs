@@ -32,7 +32,7 @@ const HeroSlideContent: React.FC<HeroSlideContentProps> = ({ slide, isTransition
   const shouldDisplayInfo = slide.is_display_info !== false;
 
   return (
-    <div className={`hero-slide-content ${isTransitioning ? 'transitioning' : ''}`}>
+    <div className={`hero-slide-content ${!shouldDisplayInfo ? 'hero-slide-content--cta-only' : ''} ${isTransitioning ? 'transitioning' : ''}`}>
       {shouldDisplayInfo && (
         <>
           <span className={`hero-badge ${badgeClass}`}>{slide.badge}</span>

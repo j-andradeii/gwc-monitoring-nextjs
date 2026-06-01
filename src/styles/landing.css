@@ -849,6 +849,15 @@
   gap: 16px;
 }
 
+/* CTA-only hero slide: the slide's background image already carries its title
+   (e.g. the latest-sermon artwork). With badge/title/subtitle hidden, the lone
+   CTA would otherwise sit dead-centre on top of the baked-in title. Drop it to
+   the lower third so it never overlaps the artwork's heading. */
+.hero-slide-content--cta-only {
+  align-self: flex-end;
+  margin-bottom: 84px;
+}
+
 .hero-slide-content.transitioning {
   pointer-events: none;
 }
@@ -1313,6 +1322,10 @@
 
   .hero-slide-content {
     text-align: center;
+  }
+
+  .hero-slide-content--cta-only {
+    margin-bottom: 96px;
   }
 }
 
