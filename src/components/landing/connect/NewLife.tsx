@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { MinistryFeatureSection } from '@/components/landing/MinistryFeatureSection';
 import type { Ministry } from '@/data/ministries';
@@ -51,6 +51,24 @@ const newLifeSections: Ministry[] = [
 ];
 
 export const NewLife: React.FC = () => {
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // This panel mounts inside the ConnectTabs content-switcher AFTER initial page load,
+  // so ScrollAnimationProvider's one-time observer never sees these cards and they stay
+  // at opacity:0 (blank panel on tab-switch). Reveal them on mount. Mount-reveal — not a
+  // fresh observer — because the cards sit below the fold on switch, so a scroll-triggered
+  // reveal would never fire. See memory: scroll-animation-remount.
+  useEffect(() => {
+    const container = listRef.current;
+    if (!container) return;
+    const animated = container.querySelectorAll('.animate-on-scroll');
+    if (animated.length === 0) return;
+    const raf = requestAnimationFrame(() => {
+      animated.forEach((el) => el.classList.add('animate-visible'));
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   return (
     <>
       <section className="landing-section" style={{ paddingBottom: 0 }}>
@@ -66,7 +84,7 @@ export const NewLife: React.FC = () => {
         </div>
       </section>
 
-      <div className="ministries-list-container">
+      <div className="ministries-list-container" ref={listRef}>
         {newLifeSections.map((section, index) => (
           <MinistryFeatureSection
             key={section.id}
