@@ -65,7 +65,7 @@ export const MinistryFeatureSection: React.FC<MinistryFeatureSectionProps> = ({
                                     style={{
                                         margin: 0,
                                         color: 'var(--text-primary)',
-                                        fontSize: '15px',
+                                        fontSize: '18px',
                                         fontWeight: 500,
                                         lineHeight: 1.7,
                                     }}

@@ -41,7 +41,7 @@ export const Lifestyle: React.FC = () => {
       </h2>
       <p
         style={{
-          fontSize: '16px',
+          fontSize: '18px',
           fontWeight: 500,
           color: 'var(--text-secondary)',
           maxWidth: '600px',
@@ -97,7 +97,7 @@ export const Lifestyle: React.FC = () => {
             </h3>
             <p
               style={{
-                fontSize: '14px',
+                fontSize: '16px',
                 fontWeight: 500,
                 color: 'var(--text-secondary)',
                 lineHeight: 1.65,
