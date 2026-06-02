@@ -3,19 +3,6 @@
 import React from 'react';
 import { ProcessSteps } from '../MissionSection';
 
-interface TrustChip {
-  icon: string;
-  label: string;
-  value: string;
-}
-
-const trustChips: TrustChip[] = [
-  { icon: 'pi pi-compass', label: 'Core Values', value: '12' },
-  { icon: 'pi pi-book', label: 'Fundamental Truths', value: '16' },
-  { icon: 'pi pi-users', label: 'Cell Communities', value: 'Many' },
-  { icon: 'pi pi-bolt', label: 'Spirit-Filled', value: 'Daily' },
-];
-
 export const VisionMission: React.FC = () => {
   return (
     <section
@@ -78,11 +65,25 @@ export const VisionMission: React.FC = () => {
           </article>
         </div>
 
+        <div className="vm-pathway-section">
+          <div className="mission-layout vm-pathway-layout">
+            <div className="mission-content vm-pathway-content">
+              <span className="section-label">How we live it out</span>
+              <h3>Win. Consolidate. Disciple. Send.</h3>
+              {/* <p>
+                This is how our vision becomes a lived pathway: people are reached,
+                cared for, formed as disciples, and released to lead with purpose.
+              </p> */}
+            </div>
+{/* 
+            <aside className="mission-pathway-card vm-pathway-card" aria-label="Discipleship pathway summary">
+              <span className="mission-pathway-label">Discipleship Pathway</span>
+              <strong>4</strong>
+              <span>intentional steps that move people from encounter to commissioned leadership.</span>
+            </aside> */}
+          </div>
 
-
-        <div className="pillars-section">
-          <h3 className="pillars-title">How We Live It Out</h3>
-          <ProcessSteps />
+          <ProcessSteps className="mission-process-steps vm-process-steps" showConnectors={false} />
         </div>
       </div>
     </section>
