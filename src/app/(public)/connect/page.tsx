@@ -65,7 +65,7 @@ import {
   ProjectBanner,
 } from '@/components/landing';
 
-import { ConnectHero, ConnectTabs } from '@/components/landing/connect';
+import { ConnectHero, ConnectTabs, ConnectTabsProvider } from '@/components/landing/connect';
 
 const connectJsonLd = {
   '@context': 'https://schema.org',
@@ -120,17 +120,19 @@ export default function ConnectPage() {
 
       <main className="landing-main">
         <ScrollAnimationProvider>
-          
-          <ConnectHero />
-             <ProjectBanner
-                      badge="Belong"
-                      title="There's a seat saved for you."
-                      buttonLabel="Join us this Sunday"
-                      buttonAriaLabel="Join us this Sunday"
-                      ariaLabel="Join us this Sunday"
-                      route={'/events/sonday-service'}
-                  />
-          <ConnectTabs />
+          {/* Provider shares the active tab so the hero background swaps per tab */}
+          <ConnectTabsProvider>
+            <ConnectHero />
+            <ProjectBanner
+              badge="Belong"
+              title="There's a seat saved for you."
+              buttonLabel="Join us this Sunday"
+              buttonAriaLabel="Join us this Sunday"
+              ariaLabel="Join us this Sunday"
+              route={'/events/sonday-service'}
+            />
+            <ConnectTabs />
+          </ConnectTabsProvider>
         </ScrollAnimationProvider>
       </main>
 
