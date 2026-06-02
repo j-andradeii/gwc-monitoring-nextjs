@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Ministry } from '@/data/ministries';
 
 interface MinistryFeatureSectionProps {
@@ -30,18 +29,67 @@ export const MinistryFeatureSection: React.FC<MinistryFeatureSectionProps> = ({
                     {/* Card Content */}
                     <div className="ministry-feature-card animate-on-scroll">
                         <h2 className="ministry-feature-title">{ministry.title}</h2>
-                        <div
-                            style={{
-                                fontSize: '18px',
-                                lineHeight: '1.9',
-                                color: 'var(--text-primary)',
-                                whiteSpace: 'pre-line',
-                            }}
-                            dangerouslySetInnerHTML={{
-                                __html: ministry.description
-                                    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-                            }}
-                        />
+                        {ministry.scripture && (
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '10px',
+                                    marginBottom: '18px',
+                                    padding: '16px 18px',
+                                    borderLeft: '3px solid var(--primary-gold-accent)',
+                                    background: 'rgba(212, 168, 75, 0.1)',
+                                    color: 'var(--text-heading)',
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        color: 'var(--text-heading)',
+                                        fontSize: '14px',
+                                        fontWeight: 800,
+                                        letterSpacing: '0.8px',
+                                        textTransform: 'uppercase',
+                                    }}
+                                >
+                                    <i
+                                        className="pi pi-book"
+                                        style={{ color: 'var(--primary-gold-accent)' }}
+                                        aria-hidden="true"
+                                    />
+                                    {ministry.scripture.reference}
+                                </span>
+                                <p
+                                    style={{
+                                        margin: 0,
+                                        color: 'var(--text-primary)',
+                                        fontSize: '15px',
+                                        fontWeight: 500,
+                                        lineHeight: 1.7,
+                                    }}
+                                >
+                                    {ministry.scripture.verse}
+                                </p>
+                            </div>
+                        )}
+                        {ministry.description && (
+                            <div
+                                style={{
+                                    fontSize: '18px',
+                                    lineHeight: '1.9',
+                                    color: 'var(--text-primary)',
+                                    whiteSpace: 'pre-line',
+                                }}
+                                dangerouslySetInnerHTML={{
+                                    __html: ministry.description.replace(
+                                        /\*\*([^*]+)\*\*/g,
+                                        '<strong>$1</strong>'
+                                    ),
+                                }}
+                            />
+                        )}
                         <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
                             {ministry.social?.facebook && (
                                 <a

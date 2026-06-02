@@ -8,7 +8,11 @@ export interface Ministry {
     id: string;
     title: string;
     image: string;
-    description: string;
+    scripture?: {
+        reference: string;
+        verse: string;
+    };
+    description?: string;
     social?: {
         facebook?: string;
         instagram?: string;
