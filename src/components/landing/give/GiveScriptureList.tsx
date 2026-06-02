@@ -50,9 +50,11 @@ export const GiveScriptureList: React.FC<GiveScriptureListProps> = ({
                 {deriveBookBadge(item.verse)}
               </div>
               <div className="give-scripture-item__body">
-                {item.kicker && <strong>{item.kicker}</strong>}
+                {item.kicker && <span className="give-scripture-kicker">{item.kicker}</span>}
                 <h3>{item.verse}</h3>
-                <p>{item.text}</p>
+                <blockquote className="give-scripture-quote">
+                  <p>{item.text}</p>
+                </blockquote>
               </div>
             </a>
           );
