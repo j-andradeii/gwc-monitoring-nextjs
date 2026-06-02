@@ -322,12 +322,12 @@ function TagRow({ tags }: { tags: string[] }) {
 function ScriptureList({ groups }: { groups: NonNullable<Sermon['scriptureGroups']> }) {
   return (
     <>
-      <div className="prose" style={{ marginBottom: '24px' }}>
-        <p style={{ color: 'var(--color-muted, #475569)', fontSize: '14.5px' }}>
+      <div className="scripture-list-intro">
+        <p>
           Every scripture referenced in this sermon, in the order they appear.
         </p>
       </div>
-      <div className="scripture-list">
+      <div className="scripture-list" role="list">
         {groups.map((g, i) => {
           const badge = deriveBookBadge(g.verse);
           const bibleUrl = `https://www.biblegateway.com/passage/?search=${encodeURIComponent(g.verse)}&version=NKJV`;
@@ -338,13 +338,16 @@ function ScriptureList({ groups }: { groups: NonNullable<Sermon['scriptureGroups
               href={bibleUrl}
               target="_blank"
               rel="noopener noreferrer"
+              role="listitem"
               aria-label={`Open ${g.verse} on Bible Gateway`}
             >
               <div className="scripture-badge" aria-hidden="true">{badge}</div>
               <div className="scripture-item__body">
-                {g.kicker && <strong>{g.kicker}</strong>}
+                {g.kicker && <span className="scripture-kicker">{g.kicker}</span>}
                 <h4>{g.verse}</h4>
-                <p>{g.text}</p>
+                <blockquote className="scripture-quote">
+                  <p>{g.text}</p>
+                </blockquote>
               </div>
             </a>
           );
