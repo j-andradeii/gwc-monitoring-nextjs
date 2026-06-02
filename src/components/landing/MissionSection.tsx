@@ -34,27 +34,29 @@ export const defaultProcessSteps: ProcessStepItem[] = [
 interface ProcessStepsProps {
   items?: ProcessStepItem[];
   className?: string;
+  showConnectors?: boolean;
 }
 
 export const ProcessSteps: React.FC<ProcessStepsProps> = ({
   items = defaultProcessSteps,
   className = '',
+  showConnectors = true,
 }) => {
   return (
     <div className={`process-steps-container ${className}`}>
       {items.map((item, index) => (
         <React.Fragment key={index}>
-          <div className="process-step-card">
+          <article className="process-step-card">
             <div className="step-number">
               <span>{index + 1}</span>
             </div>
             <div className="step-icon">
-              <i className={item.icon}></i>
+              <i className={item.icon} aria-hidden="true"></i>
             </div>
             <h3 className="step-title">{item.title}</h3>
             <p className="step-description">{item.description}</p>
-          </div>
-          {index < items.length - 1 && (
+          </article>
+          {showConnectors && index < items.length - 1 && (
             <div className="step-connector">
               <div className="connector-line"></div>
               <i className="pi pi-arrow-right connector-arrow"></i>
@@ -70,10 +72,24 @@ export const MissionSection: React.FC = () => {
   return (
     <section className="quick-info-section animate-on-scroll">
       <div className="landing-container">
-        <div className='mission-content'>
-          <span className="section-label">How we live it out</span>
+        <div className="mission-layout">
+          <div className="mission-content">
+            <span className="section-label">How we live it out</span>
+            <h2>Win. Consolidate. Disciple. Send.</h2>
+            {/* <p>
+              Our discipleship ladder of success helps people encounter Jesus, grow in
+              community, become mature disciples, and step into their calling.
+            </p> */}
+          </div>
+
+          {/* <aside className="mission-pathway-card" aria-label="Discipleship pathway summary">
+            <span className="mission-pathway-label">Discipleship Pathway</span>
+            <strong>4</strong>
+            <span>clear next steps from first connection to commissioned leadership.</span>
+          </aside> */}
         </div>
-        <ProcessSteps />
+
+        <ProcessSteps className="mission-process-steps" showConnectors={false} />
       </div>
     </section>
   );
