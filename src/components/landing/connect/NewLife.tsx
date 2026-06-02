@@ -1,124 +1,109 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { MinistryFeatureSection } from '@/components/landing/MinistryFeatureSection';
+import type { Ministry } from '@/data/ministries';
 
-const features = [
+const placeholderImage = '/assets/images/event-placeholder.svg';
+
+const newLifeSections: Ministry[] = [
   {
-    icon: 'pi pi-heart',
-    title: 'Salvation Decision',
-    description:
-      'Made a decision to follow Jesus? We want to celebrate with you and help you take your very next step.',
+    id: 'salvation-decision',
+    title: 'YOU ARE FORGIVEN',
+    image: placeholderImage,
+    scripture: {
+      reference: 'Romans 10:9',
+      verse:
+        'If you will confess with your mouth that Jesus is Lord, and believe in your heart that God raised him from the dead, you will be saved.',
+    },
   },
   {
-    icon: 'pi pi-send',
-    title: 'Water Baptism',
-    description:
-      'Publicly declare your faith through baptism — a meaningful step of obedience that marks a new beginning.',
+    id: 'water-baptism',
+    title: 'YOU ARE NOW A CHILD OF GOD',
+    image: placeholderImage,
+    scripture: {
+      reference: 'Romans 6:4',
+      verse:
+        'We were buried therefore with him through baptism into death, that just as Christ was raised from the dead through the glory of the Father, so we also might walk in newness of life.',
+    },
   },
   {
-    icon: 'pi pi-star',
-    title: 'Encounter Weekend',
-    description:
-      'A transformative two-day experience designed to help new believers encounter the presence of God and begin their faith journey.',
+    id: 'encounter-weekend',
+    title: 'YOU ARE NOW A NEW CREATION',
+    image: placeholderImage,
+    scripture: {
+      reference: 'James 4:8',
+      verse:
+        'Draw near to God, and he will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded.',
+    },
+  },
+  {
+    id: 'eternal-life',
+    title: 'YOU HAVE NOW ETERNAL LIFE',
+    image: placeholderImage,
+    scripture: {
+      reference: 'James 4:8',
+      verse:
+        'Draw near to God, and he will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded.',
+    },
   },
 ];
 
 export const NewLife: React.FC = () => {
-  return (
-    <section className="connect-panel landing-container" style={{ padding: '48px 24px' }}>
-      <span className="section-label">New Life</span>
-      <h2
-        style={{
-          fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-          fontWeight: 800,
-          color: 'var(--text-heading)',
-          letterSpacing: 'var(--letter-spacing-tight)',
-          marginBottom: '12px',
-        }}
-      >
-        Your Journey Starts Here
-      </h2>
-      <p
-        style={{
-          fontSize: '16px',
-          fontWeight: 500,
-          color: 'var(--text-secondary)',
-          maxWidth: '600px',
-          lineHeight: 1.7,
-          marginBottom: '36px',
-        }}
-      >
-        Whether you just made a decision for Christ or you&apos;re curious about faith,
-        Gateway Church is ready to walk alongside you. You are not alone in this.
-      </p>
+  const listRef = useRef<HTMLDivElement>(null);
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '20px',
-          marginBottom: '36px',
-        }}
-      >
-        {features.map((feature) => (
-          <div
-            key={feature.title}
-            className="premium-glass-card"
-            style={{ padding: '28px 24px' }}
-          >
-            <div
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '12px',
-                background: 'rgba(212, 168, 75, 0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '16px',
-              }}
-            >
-              <i
-                className={feature.icon}
-                style={{ fontSize: '20px', color: 'var(--primary-gold-accent)' }}
-                aria-hidden="true"
-              />
-            </div>
-            <h3
-              style={{
-                fontSize: '17px',
-                fontWeight: 700,
-                color: 'var(--text-heading)',
-                marginBottom: '8px',
-              }}
-            >
-              {feature.title}
-            </h3>
-            <p
-              style={{
-                fontSize: '14px',
-                fontWeight: 500,
-                color: 'var(--text-secondary)',
-                lineHeight: 1.65,
-                margin: 0,
-              }}
-            >
-              {feature.description}
+  // This panel mounts inside the ConnectTabs content-switcher AFTER initial page load,
+  // so ScrollAnimationProvider's one-time observer never sees these cards and they stay
+  // at opacity:0 (blank panel on tab-switch). Reveal them on mount. Mount-reveal — not a
+  // fresh observer — because the cards sit below the fold on switch, so a scroll-triggered
+  // reveal would never fire. See memory: scroll-animation-remount.
+  useEffect(() => {
+    const container = listRef.current;
+    if (!container) return;
+    const animated = container.querySelectorAll('.animate-on-scroll');
+    if (animated.length === 0) return;
+    const raf = requestAnimationFrame(() => {
+      animated.forEach((el) => el.classList.add('animate-visible'));
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return (
+    <>
+      <section className="landing-section" style={{ paddingBottom: 0 }}>
+        <div className="landing-container">
+          <div className="section-header-center" style={{ paddingTop: '40px' }}>
+            <span className="section-label">New Beginning</span>
+            <h2>ROMANS 10:9</h2>
+            <p>
+              If you declare with your mouth, &quot;Jesus is Lord,&quot; and believe
+              in your heart that God raised him from the dead, you will be saved.
             </p>
           </div>
+        </div>
+      </section>
+
+      <div className="ministries-list-container" ref={listRef}>
+        {newLifeSections.map((section, index) => (
+          <MinistryFeatureSection
+            key={section.id}
+            ministry={section}
+            reverse={index % 2 !== 0}
+            alternateBackground={index % 2 !== 0}
+          />
         ))}
       </div>
 
-      <Link
-        href="/events/sonday-service"
-        className="landing-btn landing-btn-primary"
-        style={{ alignSelf: 'flex-start' }}
-      >
-        <i className="pi pi-map-marker" aria-hidden="true" />
-        Plan Your Visit
-      </Link>
-    </section>
+      {/* <section className="landing-section" style={{ paddingTop: 0 }}>
+        <div className="landing-container">
+          <Link href="/events/sonday-service" className="landing-btn landing-btn-primary">
+            <i className="pi pi-map-marker" aria-hidden="true" />
+            Plan Your Visit
+          </Link>
+        </div>
+      </section> */}
+    </>
   );
 };
 

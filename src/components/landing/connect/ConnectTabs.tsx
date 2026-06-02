@@ -5,6 +5,7 @@ import { NewLife } from './NewLife';
 import { ConnectGroup } from './ConnectGroup';
 import { Lifestyle } from './Lifestyle';
 import { Growth } from './Growth';
+import { CONNECT_TABS, useConnectTabs } from './ConnectTabsContext';
 
 interface NavItem {
   id: string;
@@ -12,15 +13,23 @@ interface NavItem {
   Component: ComponentType;
 }
 
-const navItems: NavItem[] = [
-  { id: 'new-life', label: 'New Life', Component: NewLife },
-  { id: 'connect-group', label: 'Connect Group', Component: ConnectGroup },
-  { id: 'lifestyle', label: 'Lifestyle', Component: Lifestyle },
-  { id: 'growth', label: 'Growth', Component: Growth },
-];
+// Panel component for each tab id; order/labels come from CONNECT_TABS so the
+// hero background map and the tab bar stay in sync from one source of truth.
+const PANEL_COMPONENTS: Record<string, ComponentType> = {
+  'new-life': NewLife,
+  'connect-group': ConnectGroup,
+  lifestyle: Lifestyle,
+  growth: Growth,
+};
+
+const navItems: NavItem[] = CONNECT_TABS.map((tab) => ({
+  id: tab.id,
+  label: tab.label,
+  Component: PANEL_COMPONENTS[tab.id],
+}));
 
 export const ConnectTabs: React.FC = () => {
-  const [activeId, setActiveId] = useState<string>('new-life');
+  const { activeId, setActiveId } = useConnectTabs();
   const [mounted, setMounted] = useState(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -39,7 +48,7 @@ export const ConnectTabs: React.FC = () => {
       }
     }, 0);
     return () => clearTimeout(timer);
-  }, []);
+  }, [setActiveId]);
 
   // Update hash when tab changes (after mount only)
   useEffect(() => {
@@ -64,7 +73,7 @@ export const ConnectTabs: React.FC = () => {
 
   const handleTabClick = useCallback((id: string) => {
     setActiveId(id);
-  }, []);
+  }, [setActiveId]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
@@ -87,7 +96,7 @@ export const ConnectTabs: React.FC = () => {
         tabRefs.current[nextIndex]?.focus();
       }
     },
-    []
+    [setActiveId]
   );
 
   return (

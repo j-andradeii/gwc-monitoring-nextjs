@@ -2010,6 +2010,10 @@
   line-height: 1.65;
 }
 
+.connect-page .mission-process-steps .step-description {
+  font-size: 18px;
+}
+
 @media (max-width: 1024px) {
   .mission-layout {
     grid-template-columns: 1fr;
@@ -7904,7 +7908,8 @@
 .give-why-section .section-header-center p,
 .give-channels-section .section-header-center p,
 .gateway-milestones-section .section-header-center p,
-.gateway-give-section .section-header-center p {
+.gateway-give-section .section-header-center p,
+.connect-page .section-header-center p {
   font-size: 18px;
   color: var(--text-primary);
   max-width: 600px;
