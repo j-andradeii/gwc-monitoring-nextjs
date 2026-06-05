@@ -67,25 +67,25 @@ export function EventDetailHero({ event }: Props) {
           }}
         >
           {/* Date Badge */}
-          <div
+          {/* <div
             style={{
               position: 'absolute',
-              top: '20px',
+              top: '15px',
               left: '20px',
               backgroundColor: 'var(--primary-gold-accent)',
               color: 'white',
-              padding: '10px 12px',
+              padding: '8px 8px',
               borderRadius: '12px',
               textAlign: 'center',
             }}
           >
-            <span style={{ display: 'block', fontSize: '22px', fontWeight: '700', lineHeight: '1' }}>
+            <span style={{ display: 'block', fontSize: '20px', fontWeight: '700', lineHeight: '1' }}>
               {(event.displayDate || event.date).split(' ')[1]}
             </span>
             <span style={{ display: 'block', fontSize: '12px', fontWeight: '600', textTransform: 'uppercase' }}>
               {(event.displayDate || event.date).split(' ')[0]}
             </span>
-          </div>
+          </div> */}
 
           {/* Category Badge */}
           {event.category && (
