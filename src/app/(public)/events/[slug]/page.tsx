@@ -5,8 +5,8 @@
  */
 
 import { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
-import { events, getEventBySlug } from '@/data/events';
+import { redirect } from 'next/navigation';
+import { events, getEventBySlug, isEventUpcoming } from '@/data/events';
 import { siteMetadata } from '@/data/site-metadata';
 import EventDetailClient from './EventDetailClient';
 
@@ -77,7 +77,10 @@ export default async function EventDetailPage({ params }: Props) {
     redirect('/events');
   }
 
-  const otherEvents = events.filter(e => e.id !== event.id).slice(0, 3);
+  const otherEvents = events
+    .filter((relatedEvent) => relatedEvent.id !== event.id && !relatedEvent.is_event_finished && isEventUpcoming(relatedEvent))
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .slice(0, 3);
 
   const isGoldenPeakLocation = event.location?.toLowerCase().includes('golden peak');
 

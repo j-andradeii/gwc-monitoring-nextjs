@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { LandingHeader, LandingFooter, EventContactSection, ScrollAnimationProvider, ShareModal, JoinEventModal, ContactSection } from '@/components/landing';
+import { LandingHeader, LandingFooter, ScrollAnimationProvider, ShareModal, JoinEventModal, ContactSection } from '@/components/landing';
 import { ProjectGallery } from '@/components/landing/give';
 import { EventDetailHero } from '@/components/landing/events/EventDetailHero';
 import { Event } from '@/data/events';
@@ -14,369 +14,179 @@ interface Props {
   otherEvents: Event[];
 }
 
+interface DetailItemProps {
+  icon: string;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+function getDateParts(event: Event) {
+  const dateLabel = event.displayDate || event.date;
+  const [month = '', day = ''] = dateLabel.replace(',', '').split(' ');
+
+  return {
+    dateLabel,
+    month,
+    day,
+  };
+}
+
+function DetailItem({ icon, label, value, href }: DetailItemProps) {
+  const content = (
+    <>
+      <i className={`pi ${icon}`} aria-hidden="true" />
+      <span>
+        <strong>{label}</strong>
+        {value}
+      </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a className="event-detail-info-row" href={href} target="_blank" rel="noopener noreferrer">
+        {content}
+      </a>
+    );
+  }
+
+  return <div className="event-detail-info-row">{content}</div>;
+}
+
 export default function EventDetailClient({ event, otherEvents }: Props) {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
   const isGoldenPeak = event.location?.toLowerCase().includes('golden peak');
+  const descriptionParagraphs = event.description
+    ?.split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const handleShare = async () => {
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: event.title,
+          text: event.description || `Join us for ${event.title} at Gateway Church`,
+          url: window.location.href,
+        });
+        return;
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
+    }
+
+    setShowShareModal(true);
+  };
+
   return (
-    <div className="landing-page">
+    <div className="landing-page event-detail-page">
       <LandingHeader />
 
-      {/* Hero Section */}
-      <EventDetailHero event={event} />
+      <EventDetailHero
+        event={event}
+        onJoinEvent={() => setShowJoinModal(true)}
+        onShareEvent={handleShare}
+      />
 
-      {/* Main Content */}
-      <main style={{ background: '#ffffff' }}>
-        <div className="landing-container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 380px',
-              gap: '48px',
-              padding: '60px 0',
-            }}
-            className="event-detail-grid"
-          >
-            {/* Left Column - Main Content */}
-            <div>
-              {/* Description */}
-              {event.description && (
-                <div style={{ marginBottom: '40px' }}>
-                  {/* Event Gallery */}
-                  {event.gallery && event.gallery.length > 0 && (
-                    <div style={{ marginBottom: '40px' }}>
-                      <ProjectGallery
-                        images={event.gallery.map((src, index) => ({
-                          id: index + 1,
-                          src,
-                          alt: `${event.title} - Photo ${index + 1}`,
-                          caption: `${event.title} - Photo ${index + 1}`,
-                        }))}
-                      />
-                    </div>
-                  )}
-
-                  <h2 style={{ fontSize: '24px', marginBottom: '20px', color: 'var(--text-primary)' }}>
-                    About This Event
-                  </h2>
-
-
-                  <div
-                    style={{
-                      fontSize: '18px',
-                      lineHeight: '1.8',
-                      color: 'var(--text-primary)',
-                      whiteSpace: 'pre-line',
-                    }}
-                  >
-                    {event.description}
-                  </div>
-                </div>
-              )}
-
-
-
-              {/* Event Details Card */}
-              <div
-                style={{
-                  position: 'relative',
-                  overflow: 'hidden',
-                  padding: '36px',
-                  background: 'linear-gradient(135deg, #fffef8 0%, #fdf6e3 100%)',
-                  borderRadius: '20px',
-                  border: '1px solid rgba(240, 180, 41, 0.18)',
-                  boxShadow: '0 4px 24px rgba(240, 180, 41, 0.08), 0 1px 0 rgba(255, 255, 255, 0.9) inset',
-                }}
-              >
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background:
-                      'linear-gradient(90deg, var(--primary-gold-accent) 0%, rgba(240, 180, 41, 0.35) 60%, transparent 100%)',
-                  }}
-                />
-                <h3
-                  style={{
-                    fontSize: '20px',
-                    marginBottom: '28px',
-                    color: 'var(--text-primary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    fontWeight: 700,
-                    letterSpacing: '-0.3px',
-                  }}
-                >
-                  <i className="pi pi-info-circle" style={{ color: 'var(--primary-gold-accent)' }} />
-                  Event Details
-                </h3>
-
-                <div style={{ display: 'grid', gap: '24px' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: '14px',
-                        background:
-                          'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
-                        border: '1px solid rgba(240, 180, 41, 0.35)',
-                        color: 'var(--primary-gold-accent)',
-                        boxShadow:
-                          '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <i className="pi pi-calendar" style={{ fontSize: '18px' }} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Date</div>
-                      <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
-                        {event.day}, {event.displayDate || event.date}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: '14px',
-                        background:
-                          'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
-                        border: '1px solid rgba(240, 180, 41, 0.35)',
-                        color: 'var(--primary-gold-accent)',
-                        boxShadow:
-                          '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <i className="pi pi-clock" style={{ fontSize: '18px' }} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Time</div>
-                      <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
-                        {event.time}
-                      </div>
-                    </div>
-                  </div>
-
-                  {isGoldenPeak ? (
-                    <a
-                      href={CONTACT_INFO.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Open ${event.location} in Google Maps`}
-                      style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', textDecoration: 'none' }}
-                    >
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: '14px',
-                          background:
-                            'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
-                          border: '1px solid rgba(240, 180, 41, 0.35)',
-                          color: 'var(--primary-gold-accent)',
-                          boxShadow:
-                            '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
-                          flexShrink: 0,
-                        }}
-                      >
-                        <i className="pi pi-map-marker" style={{ fontSize: '18px' }} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Location</div>
-                        <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
-                          {event.location}
-                        </div>
-                      </div>
-                    </a>
-                  ) : (
-                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: '14px',
-                          background:
-                            'linear-gradient(135deg, rgba(240, 180, 41, 0.16) 0%, rgba(240, 180, 41, 0.04) 100%)',
-                          border: '1px solid rgba(240, 180, 41, 0.35)',
-                          color: 'var(--primary-gold-accent)',
-                          boxShadow:
-                            '0 2px 8px rgba(240, 180, 41, 0.10), 0 0 0 4px rgba(240, 180, 41, 0.04)',
-                          flexShrink: 0,
-                        }}
-                      >
-                        <i className="pi pi-map-marker" style={{ fontSize: '18px' }} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary-gold-accent)', marginBottom: '6px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Location</div>
-                        <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.3px', lineHeight: 1.4 }}>
-                          {event.location}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Sidebar */}
-            <aside>
-              {/* Actions Card */}
-              <div
-                style={{
-                  padding: '24px',
-                  backgroundColor: '#ffffff',
-                  borderRadius: '16px',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  marginBottom: '24px',
-                }}
-              >
-                <h3 style={{ fontSize: '16px', marginBottom: '16px', color: 'var(--text-primary)' }}>
-                  Actions
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <button
-                    className="landing-btn landing-btn-primary"
-                    style={{ justifyContent: 'center' }}
-                    onClick={() => setShowJoinModal(true)}
-                  >
-                    <i className="pi pi-user-plus" />
-                    Join Event
-                  </button>
-                  <button
-                    className="landing-btn landing-btn-outline"
-                    style={{ justifyContent: 'center' }}
-                    onClick={async () => {
-                      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                      if (isMobile && typeof navigator !== 'undefined' && navigator.share) {
-                        try {
-                          await navigator.share({
-                            title: event.title,
-                            text: event.description || `Join us for ${event.title} at Gateway Church`,
-                            url: window.location.href,
-                          });
-                        } catch (error) {
-                          console.error('Error sharing:', error);
-                        }
-                      } else {
-                        setShowShareModal(true);
-                      }
-                    }}
-                  >
-                    <i className="pi pi-share-alt" />
-                    Share Event
-                  </button>
-                </div>
-              </div>
-
-              {/* Other Events */}
-              {otherEvents.length > 0 && (
-                <div
-                  style={{
-                    padding: '24px',
-                    background: 'linear-gradient(135deg, #fefcf3 0%, #fdf6e3 100%)',
-                    borderRadius: '16px',
-                    border: '1px solid rgba(240, 180, 41, 0.2)',
-                  }}
-                >
-                  <h3 style={{ fontSize: '16px', marginBottom: '16px', color: 'var(--text-primary)' }}>
-                    Other Upcoming Events
-                  </h3>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                    {otherEvents.map((e) => (
-                      <Link
-                        key={e.id}
-                        href={`/events/${e.slug}`}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          padding: '12px',
-                          backgroundColor: 'white',
-                          borderRadius: '10px',
-                          textDecoration: 'none',
-                          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                        }}
-                        onMouseEnter={(ev) => {
-                          ev.currentTarget.style.transform = 'translateX(4px)';
-                          ev.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
-                        }}
-                        onMouseLeave={(ev) => {
-                          ev.currentTarget.style.transform = 'translateX(0)';
-                          ev.currentTarget.style.boxShadow = 'none';
-                        }}
-                      >
-                        <div
-                          style={{
-                            backgroundColor: 'var(--primary-gold-accent)',
-                            color: 'white',
-                            padding: '8px 10px',
-                            borderRadius: '8px',
-                            textAlign: 'center',
-                            minWidth: '50px',
-                          }}
-                        >
-                          <span style={{ display: 'block', fontSize: '16px', fontWeight: '700', lineHeight: '1' }}>
-                            {(e.displayDate || e.date).split(' ')[1]}
-                          </span>
-                          <span style={{ display: 'block', fontSize: '10px', fontWeight: '600', textTransform: 'uppercase' }}>
-                            {(e.displayDate || e.date).split(' ')[0]}
-                          </span>
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                            {e.title}
-                          </div>
-                          <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-                            {e.time} | {e.location}
-                          </div>
-                        </div>
-                      </Link>
+      <main className="event-detail-main">
+        <section className="event-detail-content-section">
+          <div className="landing-container event-detail-layout">
+            <article className="event-detail-article">
+              {descriptionParagraphs && descriptionParagraphs.length > 0 && (
+                <section className="event-detail-section">
+                  <span className="event-detail-section-label">About this event</span>
+                  <h2>{event.title}</h2>
+                  <div className="event-detail-prose">
+                    {descriptionParagraphs.map((paragraph, index) => (
+                      <p key={`${event.slug}-description-${index}`}>{paragraph}</p>
                     ))}
                   </div>
-                </div>
+                </section>
               )}
+
+              {event.gallery && event.gallery.length > 0 && (
+                <section className="event-detail-section">
+                  <span className="event-detail-section-label">Moments</span>
+                  <h2>Photos from the gathering</h2>
+                  <div className="event-detail-gallery">
+                    <ProjectGallery
+                      images={event.gallery.map((src, index) => ({
+                        id: index + 1,
+                        src,
+                        alt: `${event.title} - Photo ${index + 1}`,
+                        caption: `${event.title} - Photo ${index + 1}`,
+                      }))}
+                    />
+                  </div>
+                </section>
+              )}
+            </article>
+
+            <aside className="event-detail-aside" aria-label="Event details">
+              <div className="event-detail-panel">
+                <h2>Event details</h2>
+                <div className="event-detail-info-list">
+                  <DetailItem icon="pi-calendar" label="Date" value={`${event.day}, ${event.displayDate || event.date}`} />
+                  <DetailItem icon="pi-clock" label="Time" value={event.time} />
+                  <DetailItem
+                    icon="pi-map-marker"
+                    label="Location"
+                    value={event.location}
+                    href={isGoldenPeak ? CONTACT_INFO.mapsUrl : undefined}
+                  />
+                </div>
+              </div>
             </aside>
           </div>
-        </div>
+        </section>
+
+        {otherEvents.length > 0 && (
+          <section className="event-detail-related-section">
+            <div className="landing-container">
+              <div className="event-detail-related-header">
+                <span className="event-detail-section-label">More gatherings</span>
+                <h2>Upcoming at Gateway</h2>
+              </div>
+
+              <div className="event-detail-related-grid">
+                {otherEvents.map((relatedEvent) => {
+                  const { month, day, dateLabel } = getDateParts(relatedEvent);
+
+                  return (
+                    <Link
+                      key={relatedEvent.id}
+                      href={`/events/${relatedEvent.slug}`}
+                      className="event-detail-related-card"
+                    >
+                      <span className="event-detail-related-date" aria-hidden="true">
+                        <strong>{day}</strong>
+                        {month}
+                      </span>
+                      <span className="event-detail-related-body">
+                        <strong>{relatedEvent.title}</strong>
+                        <span>{relatedEvent.day}, {dateLabel}</span>
+                        <span>{relatedEvent.time}</span>
+                      </span>
+                      <i className="pi pi-arrow-right" aria-hidden="true" />
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
 
         <ScrollAnimationProvider>
           <ContactSection />
         </ScrollAnimationProvider>
 
-        {/* Back to All Events */}
-        <section
-          style={{
-            padding: '60px 0',
-            backgroundColor: '#f8fafc',
-            textAlign: 'center',
-          }}
-        >
+        <section className="event-detail-back-section">
           <div className="landing-container">
-            <Link href="/events" className="landing-btn landing-btn-outline">
-              <i className="pi pi-arrow-left" />
-              Back to All Events
+            <Link href="/events" className="event-detail-back-link">
+              <i className="pi pi-arrow-left" aria-hidden="true" />
+              Back to all events
             </Link>
           </div>
         </section>
@@ -397,15 +207,6 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
         eventSlug={event.slug}
         eventTitle={event.title}
       />
-
-      {/* Responsive Styles */}
-      <style jsx>{`
-        @media (max-width: 900px) {
-          .event-detail-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }
