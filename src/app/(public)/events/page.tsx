@@ -14,7 +14,7 @@ import { events, getFeaturedEvent } from '@/data/events';
 import { EventsShareButton } from './EventsShareButton';
 
 const siteUrl = siteMetadata.siteUrl;
-const CALENDAR_IMAGE_URL = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/calendar.webp';
+const CALENDAR_IMAGE_URL = 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/gateway_june_events.webp';
 
 export const metadata: Metadata = {
   title: 'Events | Gateway Church',
