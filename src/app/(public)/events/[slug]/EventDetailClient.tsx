@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LandingHeader, LandingFooter, ScrollAnimationProvider, ShareModal, JoinEventModal, ContactSection } from '@/components/landing';
@@ -73,9 +73,22 @@ function formatSermonDate(dateString: string) {
   });
 }
 
+function supportsNativeShare(): boolean {
+  if (typeof navigator === 'undefined' || typeof navigator.share !== 'function') {
+    return false;
+  }
+  // The native share sheet is only the better UX on touch / mobile devices;
+  // desktop browsers fall back to the in-page ShareModal.
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    return window.matchMedia('(pointer: coarse)').matches;
+  }
+  return false;
+}
+
 export default function EventDetailClient({ event, otherEvents, latestSermons }: Props) {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
+  const isSharingRef = useRef(false);
   const isGoldenPeak = event.location?.toLowerCase().includes('golden peak');
   const descriptionParagraphs = event.description
     ?.split('\n')
@@ -83,16 +96,30 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
     .filter(Boolean);
 
   const handleShare = async () => {
-    if (typeof navigator !== 'undefined' && navigator.share) {
+    const shareData = {
+      title: event.title,
+      text: event.description || `Join us for ${event.title} at Gateway Church`,
+      url: typeof window !== 'undefined' ? window.location.href : '',
+    };
+
+    const canShareNatively =
+      supportsNativeShare() &&
+      (typeof navigator.canShare !== 'function' || navigator.canShare(shareData));
+
+    if (canShareNatively) {
+      // Guard against "An earlier share has not yet completed" on rapid taps.
+      if (isSharingRef.current) return;
+      isSharingRef.current = true;
       try {
-        await navigator.share({
-          title: event.title,
-          text: event.description || `Join us for ${event.title} at Gateway Church`,
-          url: window.location.href,
-        });
+        await navigator.share(shareData);
         return;
       } catch (error) {
-        console.error('Error sharing:', error);
+        // User dismissed the native sheet (AbortError) — expected, not an error
+        // to surface, and we must NOT fall through to the in-page modal.
+        if (error instanceof Error && error.name === 'AbortError') return;
+        // Any other failure falls through to the in-page modal below.
+      } finally {
+        isSharingRef.current = false;
       }
     }
 
