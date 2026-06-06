@@ -20,6 +20,7 @@ export function ConnectFab() {
     const [submitted, setSubmitted] = useState(false);
     const [activeTab, setActiveTab] = useState<'prayer' | 'join'>('prayer');
     const pathname = usePathname();
+    const isEventDetailRoute = pathname.startsWith('/events/') && pathname !== '/events/vip-form';
 
     const methods = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
@@ -145,7 +146,7 @@ export function ConnectFab() {
     return (
         <>
             <button
-                className="connect-fab-btn"
+                className={`connect-fab-btn${isEventDetailRoute ? ' connect-fab-btn--event-detail-hidden' : ''}`}
                 onClick={toggleModal}
                 aria-label="Connect with us"
                 style={{ minWidth: '140px', justifyContent: 'center' }}
