@@ -226,41 +226,6 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
           </div>
         </section>
 
-        {otherEvents.length > 0 && (
-          <section className="event-detail-related-section">
-            <div className="landing-container">
-              <div className="event-detail-related-header">
-                <span className="event-detail-section-label">More gatherings</span>
-                <h2>Upcoming at Gateway</h2>
-              </div>
-
-              <div className="event-detail-related-grid">
-                {otherEvents.map((relatedEvent) => {
-                  const { month, day, dateLabel } = getDateParts(relatedEvent);
-
-                  return (
-                    <Link
-                      key={relatedEvent.id}
-                      href={`/events/${relatedEvent.slug}`}
-                      className="event-detail-related-card"
-                    >
-                      <span className="event-detail-related-date" aria-hidden="true">
-                        <strong>{day}</strong>
-                        {month}
-                      </span>
-                      <span className="event-detail-related-body">
-                        <strong>{relatedEvent.title}</strong>
-                        <span>{relatedEvent.day}, {dateLabel}</span>
-                        <span>{relatedEvent.time}</span>
-                      </span>
-                      <i className="pi pi-arrow-right" aria-hidden="true" />
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        )}
 
         <ScrollAnimationProvider>
           <ContactSection />
