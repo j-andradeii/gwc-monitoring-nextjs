@@ -230,7 +230,7 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Retreat',
     isFeatured: false,
     type: GatewayEventType.RETREAT,
-    is_event_finished: false
+    is_event_finished: true
   },
   {
     id: 9,
@@ -246,7 +246,7 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Training',
     isFeatured: false,
     type: GatewayEventType.TRAINING,
-    is_event_finished: false
+    is_event_finished: true
   },
   {
     id: 10,
@@ -262,7 +262,7 @@ Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
-    is_event_finished: false,
+    is_event_finished: true,
     gallery: [
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women_gathering/women_march_promotional.jpg',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men_women_gathering/men_march_28.png',
@@ -281,6 +281,29 @@ Everyone is invited. See you there! 🫶✨`,
     time: '2:00 PM',
     location: '8th Floor, Golden Peak Hotel and Suites',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/axis.webp',
+    description: `
+You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering—together.
+Everyone is invited. See you there! 🫶✨`,
+    category: 'Fellowship',
+    isFeatured: false,
+    type: GatewayEventType.FELLOWSHIP,
+    is_event_finished: true,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/1.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/2.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/3.webp',
+    ]
+  },
+  {
+    id: 12,
+    slug: 'gateway-axis-june-2026',
+    title: 'GATEWAY AXIS',
+    date: 'June 28, 2026',
+    displayDate: 'June 28',
+    day: 'Sunday',
+    time: '2:00 PM',
+    location: '8th Floor, Golden Peak Hotel and Suites',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/axis_june_7.webp',
     description: `
 You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering—together.
 Everyone is invited. See you there! 🫶✨`,
