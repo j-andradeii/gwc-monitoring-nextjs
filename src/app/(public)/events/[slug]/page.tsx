@@ -7,6 +7,7 @@
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { events, getEventBySlug, isEventUpcoming } from '@/data/events';
+import { sermons } from '@/data/sermons';
 import { siteMetadata } from '@/data/site-metadata';
 import EventDetailClient from './EventDetailClient';
 
@@ -82,6 +83,11 @@ export default async function EventDetailPage({ params }: Props) {
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .slice(0, 3);
 
+  const latestSermons = [...sermons]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3)
+    .map(({ slug, title, speaker, date, image, duration }) => ({ slug, title, speaker, date, image, duration }));
+
   const isGoldenPeakLocation = event.location?.toLowerCase().includes('golden peak');
 
   // Create JSON-LD structured data for the event
@@ -137,6 +143,7 @@ export default async function EventDetailPage({ params }: Props) {
       <EventDetailClient
         event={event}
         otherEvents={otherEvents}
+        latestSermons={latestSermons}
       />
     </>
   );

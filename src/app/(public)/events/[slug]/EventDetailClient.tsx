@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { LandingHeader, LandingFooter, ScrollAnimationProvider, ShareModal, JoinEventModal, ContactSection } from '@/components/landing';
 import { ProjectGallery } from '@/components/landing/give';
 import { EventDetailHero } from '@/components/landing/events/EventDetailHero';
@@ -9,9 +10,19 @@ import { Event } from '@/data/events';
 import { CONTACT_INFO } from '@/data/contact';
 import '@/styles/landing.css';
 
+interface LatestSermon {
+  slug: string;
+  title: string;
+  speaker: string;
+  date: string;
+  image: string;
+  duration: string;
+}
+
 interface Props {
   event: Event;
   otherEvents: Event[];
+  latestSermons: LatestSermon[];
 }
 
 interface DetailItemProps {
@@ -54,7 +65,15 @@ function DetailItem({ icon, label, value, href }: DetailItemProps) {
   return <div className="event-detail-info-row">{content}</div>;
 }
 
-export default function EventDetailClient({ event, otherEvents }: Props) {
+function formatSermonDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
+export default function EventDetailClient({ event, otherEvents, latestSermons }: Props) {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showJoinModal, setShowJoinModal] = useState(false);
   const isGoldenPeak = event.location?.toLowerCase().includes('golden peak');
@@ -138,6 +157,44 @@ export default function EventDetailClient({ event, otherEvents }: Props) {
                   />
                 </div>
               </div>
+
+              {latestSermons.length > 0 && (
+                <div className="event-detail-sermons-panel">
+                  <div className="event-detail-sermons-header">
+                    <h2>Latest Sermons</h2>
+                    <Link href="/sermon-notes" className="event-detail-sermons-view-all">
+                      View all <i className="pi pi-arrow-right" aria-hidden="true" />
+                    </Link>
+                  </div>
+                  <div className="event-detail-sermons-list">
+                    {latestSermons.map((sermon, index) => (
+                      <React.Fragment key={sermon.slug}>
+                        {index > 0 && <div className="event-detail-sermons-divider" />}
+                        <Link
+                          href={`/sermon-notes/${sermon.slug}`}
+                          className="event-detail-sermon-link"
+                          aria-label={`${sermon.title} — ${sermon.speaker}`}
+                        >
+                          <div className="event-detail-sermon-thumb">
+                            <Image
+                              src={sermon.image}
+                              alt={sermon.title}
+                              fill
+                              sizes="68px"
+                              unoptimized
+                              style={{ objectFit: 'cover' }}
+                            />
+                          </div>
+                          <div className="event-detail-sermon-body">
+                            <span className="event-detail-sermon-title">{sermon.title}</span>
+                            <span className="event-detail-sermon-meta">{formatSermonDate(sermon.date)}</span>
+                          </div>
+                        </Link>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              )}
             </aside>
           </div>
         </section>
