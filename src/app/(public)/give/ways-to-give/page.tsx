@@ -248,8 +248,8 @@ export default function WaysToGivePage() {
           {/* ===========================================
               SHARED — GIVING CHANNELS
               One block serves both Tithes & Offering and Firstfruits.
-              Keyword cards tell givers which keyword to put in the
-              message / details / reference field per gift type.
+              The keyword to put in the message / details / reference
+              field is surfaced as the final "How to Send" step per card.
               =========================================== */}
           <GiveChannelsSection
             sectionId="give-channels"
