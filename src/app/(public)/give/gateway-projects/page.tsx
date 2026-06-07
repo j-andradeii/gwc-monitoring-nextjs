@@ -13,16 +13,13 @@ import { siteMetadata } from '@/data/site-metadata';
 import {
   LandingHeader,
   LandingFooter,
-  ScrollAnimationProvider,
   PageHero,
   ProjectBanner,
 } from '@/components/landing';
 
 import {
-  GatewaySectionNav,
   GatewayVisionSection,
   GatewayProjectsSection,
-  GatewayQuickFactsSection,
   GatewayTestimonialsSection,
   GatewayBuildingProgressSection,
   GatewayGiveSection,
@@ -93,54 +90,52 @@ export default function GatewayProjectsPage() {
       <LandingHeader />
 
       <main className="landing-main">
-        <ScrollAnimationProvider>
-          {/* Hero Section */}
-          <PageHero
-            id="gateway-projects-top"
-            badge="Gateway Projects"
-            title="Building for the Future"
-            subtitle="Ministry Center Improvement Project"
-            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg"
-            className="give-hero gateway-projects-hero"
-            serviceInfo={[
-              { icon: 'pi pi-building', text: 'Ministry Center' },
-              { icon: 'pi pi-users', text: 'Community Impact' },
-            ]}
-          />
+        {/* Hero Section */}
+        <PageHero
+          id="gateway-projects-top"
+          badge="Gateway Projects"
+          title="Building for the Future"
+          subtitle="Ministry Center Improvement Project"
+          backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/community/1.jpg"
+          className="give-hero gateway-projects-hero"
+          serviceInfo={[
+            { icon: 'pi pi-building', text: 'Ministry Center' },
+            { icon: 'pi pi-users', text: 'Community Impact' },
+          ]}
+        />
 
-          {/* Quick CTA: jumps straight to the Give section */}
-          <ProjectBanner
-            badge='Sow'
-            targetId="gateway-give"
-            title="Build the future of Gateway with us."
-            buttonLabel="Give to Gateway Projects"
-            buttonAriaLabel="Jump to Give to Gateway Projects section"
-            ariaLabel="Partner With Us"
-          />
+        {/* Quick CTA: jumps straight to the Give section */}
+        <ProjectBanner
+          badge='Sow'
+          targetId="gateway-give"
+          title="Build the future of Gateway with us."
+          buttonLabel="Give to Gateway Projects"
+          buttonAriaLabel="Jump to Give to Gateway Projects section"
+          ariaLabel="Partner With Us"
+        />
 
-          {/* Section 1: Pastor's Vision Narrative (Cream background) */}
-          <GatewayVisionSection />
+        {/* Section 1: Pastor's Vision Narrative (Cream background) */}
+        <GatewayVisionSection />
 
-          {/* Section 2: Gateway Projects Overview (Cream background) */}
-          <GatewayProjectsSection />
+        {/* Section 2: Gateway Projects Overview (Cream background) */}
+        <GatewayProjectsSection />
 
-          {/* Section 3: Quick Facts / Project Specs (Navy background) */}
-          {/* <GatewayQuickFactsSection /> */}
+        {/* Section 3: Quick Facts / Project Specs (Navy background) */}
+        {/* <GatewayQuickFactsSection /> */}
 
-          {/* Section 4: Leader Testimonials (Cream background) */}
+        {/* Section 4: Leader Testimonials (Cream background) */}
 
-          {/* Section 5: Building Progress with Milestones (Dark/Navy background) */}
-          <GatewayBuildingProgressSection />
+        {/* Section 5: Building Progress with Milestones (Dark/Navy background) */}
+        <GatewayBuildingProgressSection />
 
-          <GatewayTestimonialsSection />
+        <GatewayTestimonialsSection />
 
 
-          {/* Section 6: Give to Gateway Projects (Cream background) */}
-          <GatewayGiveSection />
+        {/* Section 6: Give to Gateway Projects (Cream background) */}
+        <GatewayGiveSection />
 
-          {/* Pledge Section */}
-          <GatewayPledgeSection />
-        </ScrollAnimationProvider>
+        {/* Pledge Section */}
+        <GatewayPledgeSection />
       </main>
 
       <LandingFooter />

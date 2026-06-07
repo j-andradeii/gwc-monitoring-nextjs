@@ -4688,6 +4688,13 @@
   will-change: auto;
 }
 
+.give-page .animate-on-scroll {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
 /* Staggered animations for cards */
 .sermon-card.animate-visible:nth-child(1),
 .ministry-card.animate-visible:nth-child(1),
