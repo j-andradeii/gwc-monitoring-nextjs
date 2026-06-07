@@ -80,33 +80,6 @@ export const GiveChannelsSection: React.FC<GiveChannelsSectionProps> = ({
           </div>
         )}
 
-        {hasKeywords && (
-          <div className="give-keyword-instructions animate-on-scroll" role="note" aria-label="Keyword instructions">
-            <div className="give-keyword-instructions-header">
-              <i className="pi pi-tag" aria-hidden="true"></i>
-              <span>
-                Important — include the correct keyword in the
-                {' '}<strong>message / details / reference</strong>{' '}
-                field so we can record your giving accurately.
-              </span>
-            </div>
-            <div className="give-keyword-cards-grid">
-              {keywords!.map((k) => (
-                <div key={k.keyword} className="give-keyword-card">
-                  <div className="give-keyword-card-top">
-                    <i className={k.icon ?? 'pi pi-bookmark'} aria-hidden="true"></i>
-                    <span className="give-keyword-card-label">{k.label}</span>
-                  </div>
-                  <div className="give-keyword-card-badge" aria-label={`Use the keyword ${k.keyword}`}>
-                    {k.keyword}
-                  </div>
-                  {k.helper && <p className="give-keyword-card-helper">{k.helper}</p>}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         <div className="giving-channels-grid compact-grid animate-on-scroll">
           {givingChannels.map((channel) => {
             const cardId = `${instanceKey}-${channel.id}`;
