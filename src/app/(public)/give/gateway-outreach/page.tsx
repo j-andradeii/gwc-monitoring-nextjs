@@ -13,14 +13,12 @@ import { siteMetadata } from '@/data/site-metadata';
 import {
   LandingHeader,
   LandingFooter,
-  ScrollAnimationProvider,
   PageHero,
   ContactSection,
 } from '@/components/landing';
 
 import {
   OutreachVisionSection,
-  OutreachInitiativesSection,
   OutreachImpactSection,
   OutreachGallerySection,
   OutreachTestimonialsSection,
@@ -94,45 +92,42 @@ export default function GatewayOutreachPage() {
       <LandingHeader />
 
       <main className="landing-main">
-        <ScrollAnimationProvider>
-          {/* Hero Section */}
-          <PageHero
-            id="gateway-outreach-top"
-            badge="Gateway Outreach"
-            title="Community Outreach Ministry"
-            subtitle=""
-            backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/team.jpg"
-            className="give-hero gateway-outreach-hero"
+        {/* Hero Section */}
+        <PageHero
+          id="gateway-outreach-top"
+          badge="Gateway Outreach"
+          title="Community Outreach Ministry"
+          subtitle=""
+          backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/team.jpg"
+          className="give-hero gateway-outreach-hero"
           // serviceInfo={[
           //   { icon: 'pi pi-heart', text: 'Community Relief' },
           //   { icon: 'pi pi-users', text: 'Disaster Response' },
           // ]}
-          />
+        />
 
-          {/* Section 1: Pastor's Vision for Disaster Response */}
-          <OutreachVisionSection />
+        {/* Section 1: Pastor's Vision for Disaster Response */}
+        <OutreachVisionSection />
 
-          {/* Section 2: Our Disaster Response Initiatives */}
-          {/* <OutreachInitiativesSection /> */}
+        {/* Section 2: Our Disaster Response Initiatives */}
+        {/* <OutreachInitiativesSection /> */}
 
-          {/* Section 3: Impact Statistics (Navy background) */}
-          <OutreachImpactSection />
+        {/* Section 3: Impact Statistics (Navy background) */}
+        <OutreachImpactSection />
 
-          {/* Section 4: Gallery — Outreach in Action */}
-          <OutreachGallerySection />
+        {/* Section 4: Gallery — Outreach in Action */}
+        <OutreachGallerySection />
 
-          {/* Section 5: Community Testimonials */}
-          <OutreachTestimonialsSection />
+        {/* Section 5: Community Testimonials */}
+        <OutreachTestimonialsSection />
 
-          {/* Section 6: Support Our Outreach — Giving Channels */}
-          <OutreachGiveSection />
+        {/* Section 6: Support Our Outreach — Giving Channels */}
+        <OutreachGiveSection />
 
-          {/* Section 7: Drop Off Donations */}
-          <OutreachDonationDropoffSection />
+        {/* Section 7: Drop Off Donations */}
+        <OutreachDonationDropoffSection />
 
-          <ContactSection />
-
-        </ScrollAnimationProvider>
+        <ContactSection />
       </main>
 
       <LandingFooter />

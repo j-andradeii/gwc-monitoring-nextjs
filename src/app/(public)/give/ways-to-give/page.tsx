@@ -12,7 +12,6 @@ import { siteMetadata } from '@/data/site-metadata';
 import {
   LandingHeader,
   LandingFooter,
-  ScrollAnimationProvider,
   ContactSection,
   ProjectBanner,
 } from '@/components/landing';
@@ -174,93 +173,90 @@ export default function WaysToGivePage() {
       <LandingHeader />
 
       <main className="landing-main">
-        <ScrollAnimationProvider>
-          {/* Hero Section */}
-          <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/giving.jpeg" />
+        {/* Hero Section */}
+        <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/giving.jpeg" />
 
-          {/* Project banner CTA */}
-          <ProjectBanner
-            badge="Sow"
-            targetId="give-channels"
-            title="Honor God with Your Giving"
-            buttonLabel="Giving channels"
-            buttonAriaLabel="Giving channels"
-            ariaLabel="Giving channels"
-          />
+        {/* Project banner CTA */}
+        <ProjectBanner
+          badge="Sow"
+          targetId="give-channels"
+          title="Honor God with Your Giving"
+          buttonLabel="Giving channels"
+          buttonAriaLabel="Giving channels"
+          ariaLabel="Giving channels"
+        />
 
-          {/* ===========================================
-              SECTION 1 — TITHES & OFFERING
-              =========================================== */}
-          <GiveWhySection
-            sectionId="tithes-offering"
-            sectionLabel="Generosity"
-            title="Tithes & Offering"
-            intro={tithesAndOfferingIntro}
-            variantClassName="give-why-section--default"
-            scriptures={scriptures}
-          />
+        {/* ===========================================
+            SECTION 1 — TITHES & OFFERING
+            =========================================== */}
+        <GiveWhySection
+          sectionId="tithes-offering"
+          sectionLabel="Generosity"
+          title="Tithes & Offering"
+          intro={tithesAndOfferingIntro}
+          variantClassName="give-why-section--default"
+          scriptures={scriptures}
+        />
 
-          <GiveVideoTestimony
-            videoUrl={TITHES_VIDEO_URL}
-            sectionId="tithes-offering-testimony"
-            sectionLabel="Testimony"
-            title="Stories of Faithful Giving"
-            description="Hear how tithes and offerings have moved the ministry forward."
-          />
+        <GiveVideoTestimony
+          videoUrl={TITHES_VIDEO_URL}
+          sectionId="tithes-offering-testimony"
+          sectionLabel="Testimony"
+          title="Stories of Faithful Giving"
+          description="Hear how tithes and offerings have moved the ministry forward."
+        />
 
-          {/* ===========================================
-              SECTION 2 — FIRSTFRUITS
-              =========================================== */}
-          <GiveWhySection
-            sectionId="firstfruits"
-            sectionLabel="Firstfruits"
-            title="Firstfruits"
-            intro={firstfruitsIntro}
-            scriptures={firstfruitsScriptures}
-            variantClassName="give-why-section--firstfruits"
-            learnMoreHref="/sermon-notes/first-fruit-sunday"
-            learnMoreLabel="Learn more about Firstfruits"
-            learnMoreCaption="Dive deeper into the heart behind Firstfruits Sunday."
-          />
+        {/* ===========================================
+            SECTION 2 — FIRSTFRUITS
+            =========================================== */}
+        <GiveWhySection
+          sectionId="firstfruits"
+          sectionLabel="Firstfruits"
+          title="Firstfruits"
+          intro={firstfruitsIntro}
+          scriptures={firstfruitsScriptures}
+          variantClassName="give-why-section--firstfruits"
+          learnMoreHref="/sermon-notes/first-fruit-sunday"
+          learnMoreLabel="Learn more about Firstfruits"
+          learnMoreCaption="Dive deeper into the heart behind Firstfruits Sunday."
+        />
 
-          <GiveVideoTestimony
-            videoUrl={FIRSTFRUITS_VIDEO_URL}
-            videos={[
-              {
-                url: FIRSTFRUITS_VIDEO_URL,
-                title: 'Firstfruits Testimony',
-                speaker: 'Doc Vince & Arian Araneta',
-              },
-              {
-                url: `https://www.youtube.com/watch?v=uSE1AlFt6Bw`,
-                title: 'Firstfruits Testimony',
-                speaker: 'Justin & Amae Tariman',
-              },
-        
-            ]}
-            sectionId="firstfruits-testimony"
-            sectionLabel="Testimony"
-            title="Firstfruits Testimony"
-            description="A story of God’s faithfulness when His people give the first."
-            invert
-          />
+        <GiveVideoTestimony
+          videoUrl={FIRSTFRUITS_VIDEO_URL}
+          videos={[
+            {
+              url: FIRSTFRUITS_VIDEO_URL,
+              title: 'Firstfruits Testimony',
+              speaker: 'Doc Vince & Arian Araneta',
+            },
+            {
+              url: `https://www.youtube.com/watch?v=uSE1AlFt6Bw`,
+              title: 'Firstfruits Testimony',
+              speaker: 'Justin & Amae Tariman',
+            },
+          ]}
+          sectionId="firstfruits-testimony"
+          sectionLabel="Testimony"
+          title="Firstfruits Testimony"
+          description="A story of God’s faithfulness when His people give the first."
+          invert
+        />
 
-          {/* ===========================================
-              SHARED — GIVING CHANNELS
-              One block serves both Tithes & Offering and Firstfruits.
-              The keyword to put in the message / details / reference
-              field is surfaced as the final "How to Send" step per card.
-              =========================================== */}
-          <GiveChannelsSection
-            sectionId="give-channels"
-            sectionLabel="Channels"
-            title="How to Give"
-            keywords={giveKeywords}
-          />
+        {/* ===========================================
+            SHARED — GIVING CHANNELS
+            One block serves both Tithes & Offering and Firstfruits.
+            The keyword to put in the message / details / reference
+            field is surfaced as the final "How to Send" step per card.
+            =========================================== */}
+        <GiveChannelsSection
+          sectionId="give-channels"
+          sectionLabel="Channels"
+          title="How to Give"
+          keywords={giveKeywords}
+        />
 
-          {/* Contact Section */}
-          <ContactSection />
-        </ScrollAnimationProvider>
+        {/* Contact Section */}
+        <ContactSection />
       </main>
 
       <LandingFooter />
