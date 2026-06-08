@@ -5,3 +5,4 @@ export { OutreachGallerySection } from './OutreachGallerySection';
 export { OutreachTestimonialsSection } from './OutreachTestimonialsSection';
 export { OutreachGiveSection } from './OutreachGiveSection';
 export { OutreachDonationDropoffSection } from './OutreachDonationDropoffSection';
+export { OutreachReliefFundSection } from './OutreachReliefFundSection';

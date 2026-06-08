@@ -8,7 +8,7 @@ export const OutreachVisionSection: React.FC = () => {
     <section id="outreach-vision" className="landing-section outreach-vision-section">
       <div className="landing-container">
         <div className="gateway-vision-grid">
-          {/* Left Column: Pastor portrait image */}
+          {/* Left Column: Pastor portrait image + scripture beneath */}
           <div className="gateway-vision-image animate-on-scroll">
             <div className="gateway-vision-image-wrapper">
               <Image
@@ -19,18 +19,6 @@ export const OutreachVisionSection: React.FC = () => {
                 className="gateway-vision-photo"
                 unoptimized
               />
-            </div>
-          </div>
-
-          {/* Right Column: Vision narrative text */}
-          <div className="gateway-vision-content animate-on-scroll">
-            <span className="section-label">{outreachVisionData.sectionLabel}</span>
-            <h2 className="gateway-vision-heading">{outreachVisionData.heading}</h2>
-
-            <div className="gateway-vision-text">
-              {outreachVisionData.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
             </div>
 
             <GiveScriptureList
@@ -45,6 +33,18 @@ export const OutreachVisionSection: React.FC = () => {
                 },
               ]}
             />
+          </div>
+
+          {/* Right Column: Vision narrative text */}
+          <div className="gateway-vision-content animate-on-scroll">
+            <span className="section-label">{outreachVisionData.sectionLabel}</span>
+            <h2 className="gateway-vision-heading">{outreachVisionData.heading}</h2>
+
+            <div className="gateway-vision-text">
+              {outreachVisionData.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
 
             {/* Pastor attribution */}
             {/* <div className="gateway-vision-attribution">

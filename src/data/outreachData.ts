@@ -29,9 +29,8 @@ export const outreachVisionData: VisionData = {
   sectionLabel: 'Our Calling',
   heading: 'Bringing Hope When Disaster Strikes',
   paragraphs: [
-    'When calamity visits our communities, Gateway Church believes that the body of Christ must be the first to respond — not just with prayers but with hands and feet. Our Gateway Outreach ministry was born out of a deep conviction that the Church is God\'s instrument of restoration in times of crisis.',
-    'Over the years, we have seen how typhoons, floods, and other disasters have devastated families across Cebu and the Visayas. Each time, we hear the same call: go, serve, and bring hope. We have answered that call by building disaster response teams, distributing relief goods, and walking alongside communities in their long road to recovery.',
-    'This is not just charity work — it is the Gospel in action. When we serve a family in need, we are demonstrating the love of Christ in the most tangible way. We invite you to partner with us so that together, we can reach farther, respond faster, and rebuild stronger.',
+    'When disaster strikes, Gateway Church believes the body of Christ must be the first to respond — not with prayers alone, but with hands and feet. Gateway Outreach was born from one conviction: the Church is God\'s instrument of restoration in times of crisis.',
+    'Across Cebu and the Visayas, we\'ve answered that call — mobilizing relief teams, distributing goods, and walking with families on the long road to recovery. This is the Gospel in action, and we invite you to partner with us so we can reach farther, respond faster, and rebuild stronger.',
   ],
   pastorName: 'Pastor Jimanuel Baloran',
   pastorRole: 'Senior Pastor, Gateway Church Cebu',
@@ -189,4 +188,33 @@ export const outreachGalleryImages: GalleryImage[] = [
     alt: 'Church volunteers in community prayer',
     caption: 'Prayer and Community Care',
   },
+];
+
+// -------------------------------------------
+// Relief Fund — Fundraising Goal + Items
+// -------------------------------------------
+export interface OutreachReliefItem {
+  icon: string;        // PrimeIcons class
+  label: string;
+  unitCost: number;    // PHP
+  description: string;
+}
+
+export const outreachReliefFund = {
+  label: 'Relief Fund',
+  heading: 'Fuel the Next Relief Operation',
+  description:
+    'When the next storm hits, we need to move fast. Your gift to the Gateway Outreach relief fund lets our teams pre-position food, water, and emergency supplies so help arrives within hours — not days.',
+  goalCaption: 'to fund the next wave of relief operations across Cebu and the Visayas',
+  goalAmount: 300000,
+  currentAmount: 96000,
+};
+
+export const outreachReliefItems: OutreachReliefItem[] = [
+  { icon: 'pi pi-shopping-bag', label: 'Family Food Pack', unitCost: 750, description: 'Rice, canned goods, and dry staples to feed one family for a week.' },
+  { icon: 'pi pi-heart-fill', label: 'Hygiene Kit', unitCost: 350, description: 'Soap, toothbrush, towels, and sanitary essentials for a household.' },
+  { icon: 'pi pi-inbox', label: 'Clean Water (10L)', unitCost: 120, description: 'Safe drinking water for families cut off after a disaster.' },
+  { icon: 'pi pi-home', label: 'Emergency Shelter Tarp', unitCost: 800, description: 'Heavy-duty tarpaulin to shelter a family who lost their roof.' },
+  { icon: 'pi pi-box', label: 'Blanket & Sleeping Mat', unitCost: 600, description: 'Warmth and rest for those sheltering in evacuation centers.' },
+  { icon: 'pi pi-shield', label: 'First-Aid & Medicine Kit', unitCost: 450, description: 'Basic medical supplies to treat minor injuries on the ground.' },
 ];

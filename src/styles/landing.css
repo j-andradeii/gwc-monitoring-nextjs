@@ -7019,11 +7019,21 @@
 
 .outreach-vision-scripture-list {
   max-width: 100%;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .outreach-vision-scripture-list .give-scripture-item {
   align-items: start;
+}
+
+/* Outreach vision: scripture sits BENEATH the image, so the image is
+   shorter here to keep the band compact + the two columns balanced.
+   Scoped to outreach (shared GatewayVisionSection keeps its 600px image)
+   and desktop-only (mobile image heights from the base rules are kept). */
+@media (min-width: 901px) {
+  .outreach-vision-section .gateway-vision-image-wrapper {
+    height: 440px;
+  }
 }
 
 /* Learn-more CTA beneath the scriptures grid */
@@ -14252,7 +14262,7 @@
 
 /* Stat value */
 .outreach-impact-value {
-  font-size: 46px;
+  font-size: 50px;
   font-weight: 900;
   letter-spacing: -1.5px;
   line-height: 1;
@@ -14260,11 +14270,14 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Gold glow via filter (avoids text-shadow conflict with gradient clip) */
+  filter: drop-shadow(0 2px 10px rgba(212, 168, 75, 0.38));
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
 }
 
 .outreach-impact-card:hover .outreach-impact-value {
-  transform: scale(1.04);
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 16px rgba(212, 168, 75, 0.55));
 }
 
 /* Gold accent bar */
@@ -14285,7 +14298,7 @@
 .outreach-impact-label {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
   letter-spacing: 1.8px;
   margin-top: 2px;
@@ -14344,7 +14357,7 @@
   }
 
   .outreach-impact-value {
-    font-size: 36px;
+    font-size: 40px;
     letter-spacing: -1.2px;
   }
 
@@ -14452,16 +14465,51 @@
 }
 
 /* -------------------------------------------
-   Outreach Give Section
+   Outreach Give Section — NAVY-BLUE band
+   Distinct COOL-BLUE tinted navy (vs the Impact section's
+   WARM gold+purple navy) so the page alternates with hard
+   contrast on both edges:
+     Testimonials (cream) → Give (navy-blue) → Dropoff (cream)
+   Idiom: keep the base var(--color-navy) and push the blue
+   tint via translucent rgba overlays — no new token / raw-hex
+   base — exactly how Impact tints its navy warm.
    ------------------------------------------- */
 .outreach-give-section {
-  background: #ffffff;
-  padding: 50px 0;
+  background: var(--color-navy, #1a2744);
+  padding: 64px 0 76px;
+  position: relative;
+  overflow: hidden;
+}
 
+/* Cool-blue wash + glows — the warm/cool hue split is what
+   differentiates this band from the Impact navy above it. */
+.outreach-give-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(28, 72, 165, 0.16), rgba(16, 44, 120, 0.20)),
+    radial-gradient(ellipse at 22% 26%, rgba(40, 100, 215, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 74%, rgba(18, 48, 130, 0.24) 0%, transparent 52%);
+  pointer-events: none;
+}
+
+/* Cool-blue top hairline (Impact uses a gold one) */
+.outreach-give-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(96, 156, 255, 0.50), transparent);
+  pointer-events: none;
 }
 
 .outreach-give-header {
   padding-bottom: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* Ensure the header is always visible regardless of scroll-animation state */
@@ -14481,29 +14529,50 @@
 .outreach-give-title {
   font-size: 36px !important;
   font-weight: 800 !important;
-  color: var(--text-heading, #020617) !important;
+  color: #ffffff !important;
   letter-spacing: -0.5px;
 }
 
 .outreach-give-subtitle {
   font-size: 18px !important;
-  color: var(--text-secondary, #1e293b) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
   font-weight: 500;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Override the give-channels-section background within outreach context */
+/* Let the navy-blue band show through the channels block */
 .outreach-give-section .give-channels-section {
-  background: #ffffff;
-  padding: 10px 0px !important;
+  background: transparent !important;
+  padding: 14px 0 0 !important;
+  position: relative;
+  z-index: 1;
 }
 
+/* White channel cards: a navy-tinted border/shadow vanishes on navy,
+   so give them a visible white rim + a deeper shadow. Scoped to the
+   give section only — shared .compact-* on white pages stay untouched
+   (see [[shared-compact-card-scoping]]); base rules use !important so
+   these must too. */
+.outreach-give-section .compact-card {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.32) !important;
+}
 
+.outreach-give-section .compact-card:hover {
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.42),
+    0 0 0 2px rgba(212, 168, 75, 0.45) !important;
+  border-color: rgba(212, 168, 75, 0.55) !important;
+}
 
 @media (max-width: 768px) {
+  .outreach-give-section {
+    padding: 56px 0 64px;
+  }
+
   .outreach-give-header {
-    padding-top: 60px;
+    padding-top: 4px;
   }
 
   .outreach-give-title {
@@ -14563,81 +14632,6 @@
   line-height: 1.7;
 }
 
-/* ── Infographic Timeline ── */
-.outreach-dropoff-timeline {
-  margin-top: 56px;
-  display: flex;
-  flex-direction: column;
-}
-
-.outreach-dropoff-timeline-row {
-  display: grid;
-  grid-template-columns: 1fr 80px 1fr;
-  align-items: flex-start;
-  position: relative;
-}
-
-/* Center node column */
-.outreach-dropoff-timeline-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.outreach-dropoff-timeline-number {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary, #d4a84b), var(--color-primary-dark, #b8923f));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 16px rgba(212, 168, 75, 0.28);
-  flex-shrink: 0;
-}
-
-.outreach-dropoff-timeline-connector {
-  width: 2px;
-  height: 64px;
-  background: linear-gradient(to bottom, var(--color-primary, #d4a84b), rgba(212, 168, 75, 0.20));
-  margin-top: 0;
-}
-
-/* Content columns */
-.outreach-dropoff-timeline-content {
-  padding: 12px 28px 52px;
-  min-height: 56px;
-}
-
-.outreach-dropoff-timeline-content-left {
-  text-align: right;
-}
-
-.outreach-dropoff-timeline-content-right {
-  text-align: left;
-}
-
-.outreach-dropoff-timeline-label {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--text-heading, #020617);
-  margin: 0 0 6px;
-  letter-spacing: -0.3px;
-}
-
-.outreach-dropoff-timeline-description {
-  font-size: 15px;
-  color: var(--text-secondary, #1e293b);
-  font-weight: 500;
-  line-height: 1.65;
-  margin: 0;
-}
 
 /* ── Location Bar ── */
 .outreach-dropoff-location-wrapper {
@@ -14719,15 +14713,14 @@
 }
 
 /* ===========================================
-   DROPOFF — ACCEPTED ITEMS CARD GRID
-   Editorial 4-column layout with serif numerals,
-   status pills, cream icon panels, tag chips.
+   DROPOFF — ACCEPTED ITEMS CARD GRID (minimal)
+   4 cols → 2 cols (≤1100) → 1 col (≤600)
    =========================================== */
 .outreach-dropoff-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 22px;
-  margin: 56px 0 44px;
+  margin: 48px 0 44px;
 }
 
 .outreach-dropoff-card {
@@ -14735,21 +14728,23 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   background: #ffffff;
-  border: 1px solid rgba(26, 39, 68, 0.08);
+  border: 1px solid rgba(26, 39, 68, 0.10);
   border-radius: 16px;
-  padding: 24px 24px 26px;
+  padding: 28px 26px 30px;
   box-shadow:
     0 2px 6px rgba(26, 39, 68, 0.04),
-    0 12px 32px rgba(26, 39, 68, 0.05);
+    0 8px 24px rgba(26, 39, 68, 0.06);
   opacity: 0;
-  transform: translateY(20px);
-  animation: dropoffCardEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(var(--dropoff-card-index) * 90ms);
+  transform: translateY(16px);
+  animation: dropoffCardEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--dropoff-card-index) * 80ms);
   transition:
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.5s ease,
-    border-color 0.5s ease;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
 }
 
 @keyframes dropoffCardEnter {
@@ -14758,184 +14753,55 @@
 
 .outreach-dropoff-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(212, 168, 75, 0.40);
+  border-color: rgba(212, 168, 75, 0.45);
   box-shadow:
-    0 6px 14px rgba(26, 39, 68, 0.06),
-    0 24px 48px rgba(212, 168, 75, 0.16);
+    0 6px 16px rgba(26, 39, 68, 0.06),
+    0 20px 44px rgba(212, 168, 75, 0.14);
 }
 
-.outreach-dropoff-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.outreach-dropoff-card-number {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 1;
-  color: var(--primary-gold-accent);
-  letter-spacing: -0.5px;
-  font-variant-numeric: tabular-nums;
-}
-
-.outreach-dropoff-card-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(26, 39, 68, 0.05);
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  color: rgba(26, 39, 68, 0.72);
-  white-space: nowrap;
-}
-
-.outreach-dropoff-card-status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.outreach-dropoff-card-status--steady {
-  background: rgba(212, 168, 75, 0.14);
-  color: #a17a2a;
-}
-.outreach-dropoff-card-status--steady .outreach-dropoff-card-status-dot {
-  background: var(--primary-gold-accent);
-  box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.20);
-}
-
-.outreach-dropoff-card-status--critical {
-  background: rgba(199, 70, 80, 0.10);
-  color: #b03d47;
-}
-.outreach-dropoff-card-status--critical .outreach-dropoff-card-status-dot {
-  background: #d04855;
-  box-shadow: 0 0 0 3px rgba(199, 70, 80, 0.18);
-}
-
-.outreach-dropoff-card-status--stocked {
-  background: rgba(48, 138, 88, 0.10);
-  color: #2d7a4d;
-}
-.outreach-dropoff-card-status--stocked .outreach-dropoff-card-status-dot {
-  background: #36a065;
-  box-shadow: 0 0 0 3px rgba(48, 138, 88, 0.18);
-}
-
-.outreach-dropoff-card-visual {
-  position: relative;
-  height: 168px;
+/* Minimal icon — gold-tinted circle */
+.outreach-dropoff-card-icon-wrap {
+  width: 48px;
+  height: 48px;
   border-radius: 12px;
-  background:
-    radial-gradient(120% 80% at 50% 50%, rgba(212, 168, 75, 0.18) 0%, rgba(212, 168, 75, 0.04) 70%, transparent 100%),
-    linear-gradient(180deg, #fcf4e0 0%, #f6ebcf 100%);
+  background: rgba(212, 168, 75, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  margin-bottom: 22px;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.outreach-dropoff-card:hover .outreach-dropoff-card-visual {
-  transform: translateY(-2px) scale(1.01);
+.outreach-dropoff-card-icon-wrap i {
+  font-size: 20px;
+  color: var(--color-primary-dark, #b8923f);
+  transition: color 0.3s ease;
 }
 
-/* Hairline corner brackets in gold */
-.outreach-dropoff-card-bracket {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: rgba(212, 168, 75, 0.55);
-  border-style: solid;
-  border-width: 0;
-  pointer-events: none;
-}
-.outreach-dropoff-card-bracket--tl {
-  top: 10px; left: 10px;
-  border-top-width: 1.5px; border-left-width: 1.5px;
-  border-top-left-radius: 4px;
-}
-.outreach-dropoff-card-bracket--tr {
-  top: 10px; right: 10px;
-  border-top-width: 1.5px; border-right-width: 1.5px;
-  border-top-right-radius: 4px;
-}
-.outreach-dropoff-card-bracket--bl {
-  bottom: 10px; left: 10px;
-  border-bottom-width: 1.5px; border-left-width: 1.5px;
-  border-bottom-left-radius: 4px;
-}
-.outreach-dropoff-card-bracket--br {
-  bottom: 10px; right: 10px;
-  border-bottom-width: 1.5px; border-right-width: 1.5px;
-  border-bottom-right-radius: 4px;
+.outreach-dropoff-card:hover .outreach-dropoff-card-icon-wrap {
+  background: rgba(212, 168, 75, 0.20);
+  transform: scale(1.08);
 }
 
-.outreach-dropoff-card-icon {
-  font-size: 64px;
-  color: #1a2744;
-  transition:
-    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-    color 0.4s ease;
-}
-
-.outreach-dropoff-card:hover .outreach-dropoff-card-icon {
-  transform: scale(1.10) rotate(-4deg);
+.outreach-dropoff-card:hover .outreach-dropoff-card-icon-wrap i {
+  color: var(--color-primary, #d4a84b);
 }
 
 .outreach-dropoff-card-title {
-  font-size: 18px;
-  font-weight: 900;
-  color: #1a2744;
-  letter-spacing: -0.3px;
-  text-transform: uppercase;
-  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-navy, #1a2744);
+  letter-spacing: -0.2px;
+  margin: 0;
   line-height: 1.2;
 }
 
 .outreach-dropoff-card-description {
   font-size: 14px;
-  line-height: 1.6;
-  color: #4a5468;
-  margin: 0 0 18px;
-}
-
-.outreach-dropoff-card-tags {
-  list-style: none;
-  margin: auto 0 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.outreach-dropoff-card-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 11px;
-  border-radius: 999px;
-  background: rgba(26, 39, 68, 0.05);
-  font-size: 12px;
-  font-weight: 600;
-  color: #4a5468;
-  letter-spacing: 0.1px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.outreach-dropoff-card:hover .outreach-dropoff-card-tag {
-  background: rgba(212, 168, 75, 0.14);
-  color: #1a2744;
+  line-height: 1.65;
+  color: var(--text-secondary, #1e293b);
+  font-weight: 500;
+  margin: 0;
 }
 
 @media (max-width: 1100px) {
@@ -14943,9 +14809,7 @@
 }
 
 @media (max-width: 600px) {
-  .outreach-dropoff-grid { grid-template-columns: 1fr; gap: 16px; }
-  .outreach-dropoff-card-visual { height: 148px; }
-  .outreach-dropoff-card-icon { font-size: 56px; }
+  .outreach-dropoff-grid { grid-template-columns: 1fr; gap: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -14964,50 +14828,6 @@
 
   .outreach-dropoff-subtitle {
     font-size: 16px;
-  }
-
-  /* Collapse timeline to single column on mobile */
-  .outreach-dropoff-timeline-row {
-    grid-template-columns: 48px 1fr;
-    grid-template-rows: auto;
-  }
-
-  .outreach-dropoff-timeline-content-left,
-  .outreach-dropoff-timeline-content-right {
-    display: none;
-  }
-
-  /* Both left and right content map to the single right column on mobile */
-  .outreach-dropoff-timeline-row.timeline-row-left .outreach-dropoff-timeline-content-left,
-  .outreach-dropoff-timeline-row.timeline-row-right .outreach-dropoff-timeline-content-right {
-    display: block;
-    grid-column: 2;
-    grid-row: 1;
-    text-align: left;
-    padding: 8px 0 40px 20px;
-  }
-
-  .outreach-dropoff-timeline-node {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .outreach-dropoff-timeline-number {
-    width: 44px;
-    height: 44px;
-    font-size: 13px;
-  }
-
-  .outreach-dropoff-timeline-connector {
-    height: 52px;
-  }
-
-  .outreach-dropoff-timeline-label {
-    font-size: 16px;
-  }
-
-  .outreach-dropoff-timeline-description {
-    font-size: 14px;
   }
 
   /* Location bar stacks on mobile */
@@ -15775,5 +15595,460 @@
   .give-channels-section .compact-account-box.copyable:hover {
     transform: none;
     transition: none;
+  }
+}
+
+/* ===========================================
+   OUTREACH RELIEF FUND SECTION
+   White band between cream Testimonials and
+   navy-blue Give channels band.
+   All classes scoped under .outreach-relief-*
+   to avoid touching shared .compact-* / .premium-glass-card.
+   =========================================== */
+
+/* ── Scroll anchor offset ── */
+#outreach-relief-fund {
+  scroll-margin-top: 90px;
+}
+
+/* ── Section shell ── */
+.outreach-relief-section {
+  background: #ffffff;
+  padding: 56px 0;
+  position: relative;
+}
+
+/* ── Section header ── */
+.outreach-relief-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-heading, #020617);
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.outreach-relief-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-secondary, #1e293b);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Goal card — navy gradient panel ── */
+.outreach-relief-goal-card {
+  background: linear-gradient(135deg, var(--color-navy, #1a2744), var(--color-navy-dark, #151e32));
+  border-radius: 24px;
+  padding: 36px 40px;
+  color: #ffffff;
+  box-shadow:
+    0 20px 60px rgba(26, 39, 68, 0.30),
+    0 8px 24px rgba(26, 39, 68, 0.18);
+  position: relative;
+  overflow: hidden;
+  margin-top: 36px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Soft gold radial glow */
+.outreach-relief-goal-blur {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(ellipse at center, rgba(212, 168, 75, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Goal top row: headline left + percentage right ── */
+.outreach-relief-goal-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.outreach-relief-goal-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.outreach-relief-goal-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--color-primary, #d4a84b);
+}
+
+.outreach-relief-goal-amount {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--color-primary-light, #e5c47a);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+  line-height: 1.05;
+}
+
+.outreach-relief-goal-caption {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.66);
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+.outreach-relief-goal-pct {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.outreach-relief-goal-pct-value {
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.outreach-relief-goal-pct-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary, #d4a84b);
+}
+
+/* ── Progress bar ── */
+.outreach-relief-progress {
+  margin-top: 24px;
+}
+
+.outreach-relief-progress-track {
+  height: 12px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.outreach-relief-progress-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--color-primary, #d4a84b), var(--color-primary-light, #e5c47a));
+  box-shadow: 0 0 12px rgba(212, 168, 75, 0.45);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtle shimmer — only for users who are OK with motion */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes outreach-relief-shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+  }
+
+  .outreach-relief-progress-fill {
+    background-size: 200% auto;
+    background-image: linear-gradient(
+      90deg,
+      var(--color-primary, #d4a84b) 0%,
+      var(--color-primary-light, #e5c47a) 40%,
+      var(--color-primary, #d4a84b) 80%
+    );
+    animation: outreach-relief-shimmer 2.4s linear infinite;
+  }
+}
+
+/* ── Stats row ── */
+.outreach-relief-goal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.outreach-relief-stat {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.outreach-relief-stat-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(212, 168, 75, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary, #d4a84b);
+  font-size: 16px;
+}
+
+.outreach-relief-stat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.outreach-relief-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.outreach-relief-stat-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* ── Items sub-header ── */
+.outreach-relief-items-head {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.outreach-relief-items-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-heading, #020617);
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+
+.outreach-relief-items-sub {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary, #1e293b);
+}
+
+/* ── Items grid ── */
+.outreach-relief-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* ── Single item card ── */
+.outreach-relief-item-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color-light, #ddd5c4);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold bottom accent bar — scaleX on hover */
+.outreach-relief-item-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary, #d4a84b), var(--color-primary-light, #e5c47a));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.outreach-relief-item-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 168, 75, 0.5);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(212, 168, 75, 0.12);
+}
+
+.outreach-relief-item-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* Icon tile */
+.outreach-relief-item-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: rgba(212, 168, 75, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary, #d4a84b);
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.outreach-relief-item-card:hover .outreach-relief-item-icon {
+  border-radius: 50%;
+  background: rgba(212, 168, 75, 0.18);
+  transform: rotate(-10deg) scale(1.1);
+}
+
+/* Body */
+.outreach-relief-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.outreach-relief-item-label {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-heading, #020617);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.outreach-relief-item-desc {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary, #1e293b);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Cost pill */
+.outreach-relief-item-cost {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.outreach-relief-item-cost-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-primary-dark, #b8923f);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.outreach-relief-item-cost-unit {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-secondary, #1e293b);
+}
+
+/* ── CTA ── */
+.outreach-relief-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.outreach-relief-cta-btn {
+  /* Inherits .landing-btn-primary — override only the touch target floor */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Responsive: tablet ≤ 900px — 2-col items, stat grid stacks ── */
+@media (max-width: 900px) {
+  .outreach-relief-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .outreach-relief-goal-amount {
+    font-size: 38px;
+  }
+
+  .outreach-relief-goal-pct-value {
+    font-size: 32px;
+  }
+}
+
+/* ── Responsive: ≤ 768px — stacks fully ── */
+@media (max-width: 768px) {
+  .outreach-relief-section {
+    padding: 44px 0;
+  }
+
+  .outreach-relief-goal-card {
+    padding: 28px 24px;
+    margin-top: 28px;
+  }
+
+  .outreach-relief-goal-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .outreach-relief-goal-pct {
+    align-items: flex-start;
+  }
+
+  .outreach-relief-goal-amount {
+    font-size: 34px;
+  }
+
+  .outreach-relief-goal-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .outreach-relief-title {
+    font-size: 28px;
+  }
+}
+
+/* ── Responsive: ≤ 560px — 1-col items ── */
+@media (max-width: 560px) {
+  .outreach-relief-items-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .outreach-relief-item-cost {
+    align-items: flex-start;
+  }
+}
+
+/* ── Reduced motion: disable item-card hover transforms + shimmer ── */
+@media (prefers-reduced-motion: reduce) {
+  .outreach-relief-item-card,
+  .outreach-relief-item-card:hover,
+  .outreach-relief-item-card .outreach-relief-item-icon,
+  .outreach-relief-item-card:hover .outreach-relief-item-icon {
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .outreach-relief-progress-fill {
+    animation: none;
   }
 }
