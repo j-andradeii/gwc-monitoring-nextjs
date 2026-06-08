@@ -29,9 +29,8 @@ export const outreachVisionData: VisionData = {
   sectionLabel: 'Our Calling',
   heading: 'Bringing Hope When Disaster Strikes',
   paragraphs: [
-    'When calamity visits our communities, Gateway Church believes that the body of Christ must be the first to respond — not just with prayers but with hands and feet. Our Gateway Outreach ministry was born out of a deep conviction that the Church is God\'s instrument of restoration in times of crisis.',
-    'Over the years, we have seen how typhoons, floods, and other disasters have devastated families across Cebu and the Visayas. Each time, we hear the same call: go, serve, and bring hope. We have answered that call by building disaster response teams, distributing relief goods, and walking alongside communities in their long road to recovery.',
-    'This is not just charity work — it is the Gospel in action. When we serve a family in need, we are demonstrating the love of Christ in the most tangible way. We invite you to partner with us so that together, we can reach farther, respond faster, and rebuild stronger.',
+    'When disaster strikes, Gateway Church believes the body of Christ must be the first to respond — not with prayers alone, but with hands and feet. Gateway Outreach was born from one conviction: the Church is God\'s instrument of restoration in times of crisis.',
+    'Across Cebu and the Visayas, we\'ve answered that call — mobilizing relief teams, distributing goods, and walking with families on the long road to recovery. This is the Gospel in action, and we invite you to partner with us so we can reach farther, respond faster, and rebuild stronger.',
   ],
   pastorName: 'Pastor Jimanuel Baloran',
   pastorRole: 'Senior Pastor, Gateway Church Cebu',
