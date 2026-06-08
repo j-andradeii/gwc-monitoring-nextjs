@@ -71,6 +71,7 @@ export const givingChannels: GivingChannel[] = [
     accountNumber: '0928-252-4463',
     icon: 'pi pi-mobile',
     color: '#007DFE',
+    qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/gcash.webp',
     instructions: [
       'Open your GCash app',
       'Tap "Send Money"',

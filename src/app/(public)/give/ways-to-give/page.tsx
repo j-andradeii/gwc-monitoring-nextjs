@@ -194,8 +194,9 @@ export default function WaysToGivePage() {
           sectionLabel="Generosity"
           title="Tithes & Offering"
           intro={tithesAndOfferingIntro}
-          variantClassName="give-why-section--default"
+          variantClassName="give-why-section--default give-why-section--compact"
           scriptures={scriptures}
+          scriptureMaxLines={4}
         />
 
         <GiveVideoTestimony
@@ -215,7 +216,8 @@ export default function WaysToGivePage() {
           title="Firstfruits"
           intro={firstfruitsIntro}
           scriptures={firstfruitsScriptures}
-          variantClassName="give-why-section--firstfruits"
+          variantClassName="give-why-section--firstfruits give-why-section--compact"
+          scriptureMaxLines={4}
           learnMoreHref="/sermon-notes/first-fruit-sunday"
           learnMoreLabel="Learn more about Firstfruits"
           learnMoreCaption="Dive deeper into the heart behind Firstfruits Sunday."

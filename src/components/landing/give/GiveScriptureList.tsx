@@ -14,6 +14,7 @@ interface GiveScriptureListProps {
   description?: string;
   className?: string;
   ariaLabel?: string;
+  maxLines?: number;
 }
 
 export const GiveScriptureList: React.FC<GiveScriptureListProps> = ({
@@ -21,11 +22,15 @@ export const GiveScriptureList: React.FC<GiveScriptureListProps> = ({
   description,
   className = '',
   ariaLabel = 'Giving scriptures',
+  maxLines,
 }) => {
   if (items.length === 0) return null;
 
   return (
-    <div className={`give-scripture-list-wrap${className ? ` ${className}` : ''}`}>
+    <div
+      className={`give-scripture-list-wrap${maxLines ? ' give-scripture-list-wrap--clamped' : ''}${className ? ` ${className}` : ''}`}
+      style={maxLines ? ({ '--give-scripture-max-lines': maxLines } as React.CSSProperties) : undefined}
+    >
       {description && (
         <div className="give-scripture-list-intro">
           <p>{description}</p>

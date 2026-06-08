@@ -83,11 +83,13 @@ export const GiveChannelsSection: React.FC<GiveChannelsSectionProps> = ({
         <div className="giving-channels-grid compact-grid animate-on-scroll">
           {givingChannels.map((channel) => {
             const cardId = `${instanceKey}-${channel.id}`;
+            const channelStyle = { '--channel-color': channel.color } as React.CSSProperties;
+
             return (
-              <div key={cardId} className="giving-channel-card compact-card">
-                <div className="card-accent" style={{ backgroundColor: channel.color }}></div>
+              <div key={cardId} className="giving-channel-card compact-card" style={channelStyle}>
+                <div className="card-accent"></div>
                 <div className="compact-card-header">
-                  <div className="channel-logo-compact" style={{ backgroundColor: channel.color }}>
+                  <div className="channel-logo-compact">
                     <i className={channel.icon}></i>
                   </div>
                   <div className="channel-title-wrap">
@@ -139,24 +141,30 @@ export const GiveChannelsSection: React.FC<GiveChannelsSectionProps> = ({
 
                 <div className="compact-qr">
                   {channel.qrCode ? (
-                    <div className="qr-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                    <div className="compact-qr-wrapper">
                       <img
                         src={channel.qrCode}
                         alt={`${channel.name} QR Code`}
-                        style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px' }}
+                        className="compact-qr-image"
                       />
                       <DownloadQRButton
                         qrCodeUrl={channel.qrCode!}
                         filename={`${channel.name}-qrcode.jpg`}
                         color={channel.color}
-                        style={{ fontSize: '0.8rem' }}
+                        className="compact-qr-download"
+                        style={{
+                          marginTop: 0,
+                          padding: '0.4rem 0.7rem',
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                        }}
                       />
                     </div>
                   ) : (
-                    <>
+                    <div className="compact-qr-empty">
                       <i className="pi pi-qrcode"></i>
-                      <span>QR Coming Soon</span>
-                    </>
+                      <span>Manual transfer</span>
+                    </div>
                   )}
                 </div>
               </div>
