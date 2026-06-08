@@ -20,10 +20,7 @@ export interface GiveWhySectionProps {
   scriptures?: GiveScripture[];
   /** Extra modifier class for theming (e.g. "give-why-section--firstfruits") */
   variantClassName?: string;
-  /**
-   * Deprecated compatibility prop from the previous card grid.
-   * The sermon-note list renders the full scripture text.
-   */
+  /** Optional line clamp for compact scripture layouts. */
   scriptureMaxLines?: number;
   /** When set, renders a "Learn more" CTA beneath the scriptures pointing at this route. */
   learnMoreHref?: string;
@@ -46,6 +43,7 @@ export const GiveWhySection: React.FC<GiveWhySectionProps> = ({
   intro = DEFAULT_INTRO,
   scriptures,
   variantClassName,
+  scriptureMaxLines,
   learnMoreHref,
   learnMoreLabel = 'Learn more',
   learnMoreCaption,
@@ -74,6 +72,7 @@ export const GiveWhySection: React.FC<GiveWhySectionProps> = ({
             items={cards}
             description={`Scripture foundations for ${title.toLowerCase()}.`}
             ariaLabel={`${title} scriptures`}
+            maxLines={scriptureMaxLines}
           />
 
           {learnMoreHref && (
