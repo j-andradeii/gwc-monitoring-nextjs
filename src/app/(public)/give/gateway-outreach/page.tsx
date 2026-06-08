@@ -22,6 +22,7 @@ import {
   OutreachImpactSection,
   OutreachGallerySection,
   OutreachTestimonialsSection,
+  OutreachReliefFundSection,
   OutreachGiveSection,
   OutreachDonationDropoffSection,
 } from '@/components/landing/outreach';
@@ -97,7 +98,7 @@ export default function GatewayOutreachPage() {
           id="gateway-outreach-top"
           badge="Gateway Outreach"
           title="Community Outreach Ministry"
-          subtitle=""
+          subtitle="Relief, recovery, and lasting hope for families in crisis"
           backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/team.jpg"
           className="give-hero gateway-outreach-hero"
           // serviceInfo={[
@@ -121,7 +122,10 @@ export default function GatewayOutreachPage() {
         {/* Section 5: Community Testimonials */}
         <OutreachTestimonialsSection />
 
-        {/* Section 6: Support Our Outreach — Giving Channels */}
+        {/* Section 6: Relief Fund — fundraising goal + items to buy */}
+        <OutreachReliefFundSection />
+
+        {/* Section 7: Support Our Outreach — Giving Channels */}
         <OutreachGiveSection />
 
         {/* Section 7: Drop Off Donations */}

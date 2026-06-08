@@ -190,3 +190,32 @@ export const outreachGalleryImages: GalleryImage[] = [
     caption: 'Prayer and Community Care',
   },
 ];
+
+// -------------------------------------------
+// Relief Fund — Fundraising Goal + Items
+// -------------------------------------------
+export interface OutreachReliefItem {
+  icon: string;        // PrimeIcons class
+  label: string;
+  unitCost: number;    // PHP
+  description: string;
+}
+
+export const outreachReliefFund = {
+  label: 'Relief Fund',
+  heading: 'Fuel the Next Relief Operation',
+  description:
+    'When the next storm hits, we need to move fast. Your gift to the Gateway Outreach relief fund lets our teams pre-position food, water, and emergency supplies so help arrives within hours — not days.',
+  goalCaption: 'to fund the next wave of relief operations across Cebu and the Visayas',
+  goalAmount: 300000,
+  currentAmount: 96000,
+};
+
+export const outreachReliefItems: OutreachReliefItem[] = [
+  { icon: 'pi pi-shopping-bag', label: 'Family Food Pack', unitCost: 750, description: 'Rice, canned goods, and dry staples to feed one family for a week.' },
+  { icon: 'pi pi-heart-fill', label: 'Hygiene Kit', unitCost: 350, description: 'Soap, toothbrush, towels, and sanitary essentials for a household.' },
+  { icon: 'pi pi-inbox', label: 'Clean Water (10L)', unitCost: 120, description: 'Safe drinking water for families cut off after a disaster.' },
+  { icon: 'pi pi-home', label: 'Emergency Shelter Tarp', unitCost: 800, description: 'Heavy-duty tarpaulin to shelter a family who lost their roof.' },
+  { icon: 'pi pi-box', label: 'Blanket & Sleeping Mat', unitCost: 600, description: 'Warmth and rest for those sheltering in evacuation centers.' },
+  { icon: 'pi pi-shield', label: 'First-Aid & Medicine Kit', unitCost: 450, description: 'Basic medical supplies to treat minor injuries on the ground.' },
+];
