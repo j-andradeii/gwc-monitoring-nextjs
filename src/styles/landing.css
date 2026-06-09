@@ -3937,6 +3937,14 @@
   font-weight: 800;
 }
 
+.event-detail-info-row .event-detail-info-sublabel {
+  margin-left: 6px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: none;
+}
+
 .event-detail-related-section {
   padding: 68px 0;
   background: var(--background-main);
@@ -13916,52 +13924,259 @@
 }
 
 /* Page-scoped alternating bands for Gateway Outreach */
-.gateway-outreach-page .project-banner-section,
-.gateway-outreach-page .outreach-gallery-section,
-.gateway-outreach-page .outreach-dropoff-section {
-  background: var(--color-cream, #f5f0e6);
-}
-
+/* White bands */
 .gateway-outreach-page .outreach-vision-section,
-.gateway-outreach-page .outreach-give-section,
+.gateway-outreach-page .outreach-impact-section,
 .gateway-outreach-page .outreach-testimonials-section {
   background: var(--background-section, #ffffff);
 }
 
-.gateway-outreach-page .outreach-relief-section {
+/* Warm cream bands (alternate) — enriched with a soft warm gold wash
+   (translucent-rgba-over-base idiom, same as the navy sections) so the
+   cream reads clearly warmer/deeper than the adjacent white bands. */
+.gateway-outreach-page .outreach-gallery-section,
+.gateway-outreach-page .outreach-relief-section,
+.gateway-outreach-page .outreach-dropoff-section {
   background:
-    radial-gradient(circle at 12% 8%, rgba(212, 168, 75, 0.14), transparent 34%),
-    radial-gradient(circle at 88% 86%, rgba(74, 60, 110, 0.22), transparent 36%),
-    linear-gradient(180deg, #0d1424 0%, var(--color-navy-dark, #151e32) 54%, var(--color-navy, #1a2744) 100%);
+    linear-gradient(180deg, rgba(212, 168, 75, 0.09) 0%, rgba(212, 168, 75, 0.18) 100%),
+    var(--color-cream, #f5f0e6);
+}
+
+/* Optional Relief Fund toggle (page.tsx `SHOW_RELIEF_FUND = false`).
+   With Relief hidden, Vision(white) would sit directly above Impact — so swap
+   Impact→cream and Gallery→white to preserve the white⇄cream alternation:
+     hidden → Vision(w) · Impact(c) · Gallery(w) · Give(navy) · Dropoff(c) · Testimonials(w)
+   Higher specificity (.gateway-outreach-page.relief-fund-hidden) beats the
+   default white/cream assignments above. The card + text contrast treatments
+   are band-agnostic, so nothing else needs to change. */
+.gateway-outreach-page.relief-fund-hidden .outreach-impact-section {
+  background:
+    linear-gradient(180deg, rgba(212, 168, 75, 0.09) 0%, rgba(212, 168, 75, 0.18) 100%),
+    var(--color-cream, #f5f0e6);
+}
+
+.gateway-outreach-page.relief-fund-hidden .outreach-gallery-section {
+  background: var(--background-section, #ffffff);
+}
+
+/* Crisp top hairline divider on each light band so every section boundary
+   is explicit even where two light tones meet (e.g. cream → white). */
+.gateway-outreach-page .outreach-impact-section,
+.gateway-outreach-page .outreach-gallery-section,
+.gateway-outreach-page .outreach-relief-section,
+.gateway-outreach-page .outreach-dropoff-section,
+.gateway-outreach-page .outreach-testimonials-section,
+.gateway-outreach-page .contact-section {
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+.gateway-outreach-page .outreach-give-section {
+  background: linear-gradient(180deg, var(--color-navy, #1a2744) 0%, var(--color-navy-dark, #151e32) 100%);
 }
 
 .gateway-outreach-page .outreach-give-section::before {
   background:
-    radial-gradient(ellipse at 20% 20%, rgba(212, 168, 75, 0.08) 0%, transparent 46%),
-    radial-gradient(ellipse at 82% 76%, rgba(74, 60, 110, 0.08) 0%, transparent 44%);
+    linear-gradient(180deg, rgba(28, 72, 165, 0.14), rgba(16, 44, 120, 0.20)),
+    radial-gradient(ellipse at 22% 26%, rgba(40, 100, 215, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 74%, rgba(18, 48, 130, 0.24) 0%, transparent 52%);
 }
 
 .gateway-outreach-page .outreach-give-section::after {
-  background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.45), transparent);
 }
 
-.gateway-outreach-page .outreach-give-title {
+.gateway-outreach-page .gateway-vision-heading,
+.gateway-outreach-page .outreach-impact-title,
+.gateway-outreach-page .outreach-gallery-title,
+.gateway-outreach-page .outreach-relief-title,
+.gateway-outreach-page .outreach-dropoff-title,
+.gateway-outreach-page .outreach-testimonials-title {
   color: var(--text-heading, #020617) !important;
 }
 
-.gateway-outreach-page .outreach-give-subtitle {
+.gateway-outreach-page .gateway-vision-text p,
+.gateway-outreach-page .outreach-impact-subtitle,
+.gateway-outreach-page .outreach-gallery-subtitle,
+.gateway-outreach-page .outreach-relief-subtitle,
+.gateway-outreach-page .outreach-dropoff-subtitle,
+.gateway-outreach-page .outreach-testimonials-subtitle {
   color: var(--text-secondary, #1e293b) !important;
 }
 
+.gateway-outreach-page .outreach-give-title {
+  color: var(--color-contrast-light, #ffffff) !important;
+}
+
+.gateway-outreach-page .outreach-give-subtitle {
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+
+/* Darken gold eyebrow labels on light (white/cream) bands for more presence */
+.gateway-outreach-page .outreach-vision-section .section-label,
+.gateway-outreach-page .outreach-impact-section .section-label,
+.gateway-outreach-page .outreach-gallery-section .section-label,
+.gateway-outreach-page .outreach-relief-section .section-label,
+.gateway-outreach-page .outreach-dropoff-section .section-label,
+.gateway-outreach-page .outreach-testimonials-section .section-label {
+  color: var(--color-primary-dark, #b8923f) !important;
+}
+.gateway-outreach-page .outreach-vision-section .section-label::before,
+.gateway-outreach-page .outreach-impact-section .section-label::before,
+.gateway-outreach-page .outreach-gallery-section .section-label::before,
+.gateway-outreach-page .outreach-relief-section .section-label::before,
+.gateway-outreach-page .outreach-dropoff-section .section-label::before,
+.gateway-outreach-page .outreach-testimonials-section .section-label::before {
+  background: var(--color-primary-dark, #b8923f) !important;
+}
+
+.gateway-outreach-page .outreach-vision-section .gateway-vision-image-wrapper {
+  border-color: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 20px 50px rgba(26, 39, 68, 0.18),
+    0 0 0 1px rgba(212, 168, 75, 0.26);
+}
+
+.gateway-outreach-page .outreach-vision-section .give-scripture-item,
+.gateway-outreach-page .outreach-relief-goal-card,
+.gateway-outreach-page .outreach-relief-items-grid,
+.gateway-outreach-page .outreach-dropoff-card,
+.gateway-outreach-page .outreach-testimonials-section .gateway-testimonial-card {
+  border: 1.5px solid rgba(212, 168, 75, 0.60);
+  /* Crisp neutral contact ring (defines the edge even on same-tone bands)
+     + layered ambient lift so light cards clearly separate from light bands. */
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.07),
+    0 3px 8px rgba(26, 39, 68, 0.10),
+    0 20px 44px rgba(26, 39, 68, 0.16);
+}
+
+.gateway-outreach-page .outreach-vision-section .give-scripture-item:hover,
+.gateway-outreach-page .outreach-relief-goal-card:hover,
+.gateway-outreach-page .outreach-dropoff-card:hover,
+.gateway-outreach-page .outreach-testimonials-section .gateway-testimonial-card:hover {
+  border-color: rgba(212, 168, 75, 0.80);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 75, 0.24),
+    0 4px 10px rgba(26, 39, 68, 0.10),
+    0 24px 52px rgba(26, 39, 68, 0.18);
+}
+
+/* Impact is now a warm cream band (light). Convert its dark-glass stat cards
+   to the same light card system used by gallery items: solid white panel,
+   gold border, neutral contact ring + ambient navy lift. Big count-up numbers
+   go navy (matching the Relief Fund stat tiles) for maximum readability; gold
+   stays in the icon badge, accent bar, and eyebrow. */
+.gateway-outreach-page .outreach-impact-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 168, 75, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.06),
+    0 3px 8px rgba(26, 39, 68, 0.09),
+    0 16px 36px rgba(26, 39, 68, 0.14);
+}
+
+.gateway-outreach-page .outreach-impact-card:hover {
+  border-color: rgba(212, 168, 75, 0.80);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 75, 0.22),
+    0 18px 42px rgba(26, 39, 68, 0.18);
+}
+
+/* Drop the navy-era section glow + gold top-hairline — border-top now draws
+   the divider and the cream gold-wash supplies the warmth (matches the other
+   plain cream bands: gallery/dropoff). */
+.gateway-outreach-page .outreach-impact-section::before,
+.gateway-outreach-page .outreach-impact-section::after {
+  display: none;
+}
+
+/* Count-up numbers: solid navy on the white card (overrides the gold gradient
+   text-clip from the base rule) — same house style as the relief stat tiles. */
+.gateway-outreach-page .outreach-impact-value {
+  background: none;
+  -webkit-text-fill-color: var(--text-heading, #020617);
+  color: var(--text-heading, #020617);
+  filter: none;
+}
+
+.gateway-outreach-page .outreach-impact-card:hover .outreach-impact-value {
+  filter: none;
+}
+
+/* Stat label → dark on light; hover → dark gold */
+.gateway-outreach-page .outreach-impact-label {
+  color: var(--text-secondary, #1e293b);
+}
+
+.gateway-outreach-page .outreach-impact-card:hover .outreach-impact-label {
+  color: var(--color-primary-dark, #b8923f);
+}
+
+/* Eyebrow heart icon → match the darkened gold eyebrow text */
+.gateway-outreach-page .outreach-impact-label-icon {
+  color: var(--color-primary-dark, #b8923f);
+}
+
+.gateway-outreach-page .outreach-gallery-section .gallery-item {
+  border: 1.5px solid rgba(212, 168, 75, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.06),
+    0 3px 8px rgba(26, 39, 68, 0.09),
+    0 16px 36px rgba(26, 39, 68, 0.14);
+}
+
+.gateway-outreach-page .outreach-gallery-section .gallery-item:hover {
+  border-color: rgba(212, 168, 75, 0.80);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 75, 0.22),
+    0 18px 42px rgba(26, 39, 68, 0.18);
+}
+
 .gateway-outreach-page .outreach-give-section .compact-card {
-  border-color: rgba(26, 39, 68, 0.10) !important;
-  box-shadow: 0 8px 24px rgba(26, 39, 68, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.32) !important;
 }
 
 .gateway-outreach-page .outreach-give-section .compact-card:hover {
+  border-color: rgba(212, 168, 75, 0.58) !important;
   box-shadow:
-    0 14px 34px rgba(26, 39, 68, 0.12),
-    0 0 0 1px rgba(212, 168, 75, 0.24) !important;
+    0 20px 50px rgba(0, 0, 0, 0.42),
+    0 0 0 2px rgba(212, 168, 75, 0.45) !important;
+}
+
+/* Relief "What Your Gift Provides" panel — solid white panel (the page-scoped
+   border + ring + shadow above lift it off the white band) with internal
+   hairline dividers so the 6 relief items read as a structured grid rather
+   than text floating on white. */
+.gateway-outreach-page .outreach-relief-items-grid {
+  background: #ffffff;
+}
+
+.gateway-outreach-page .outreach-relief-items-grid .outreach-relief-item-card {
+  border-bottom: 1px solid rgba(26, 39, 68, 0.09);
+}
+
+/* Vertical divider between the two columns (2-col layout) */
+.gateway-outreach-page .outreach-relief-items-grid .outreach-relief-item-card:nth-child(even) {
+  border-left: 1px solid rgba(26, 39, 68, 0.09);
+}
+
+/* Drop the bottom hairline on the final row so it doesn't float above padding */
+.gateway-outreach-page .outreach-relief-items-grid .outreach-relief-item-card:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+/* 1-col stack (≤560px): no column divider; only the very last item is borderless */
+@media (max-width: 560px) {
+  .gateway-outreach-page .outreach-relief-items-grid .outreach-relief-item-card:nth-child(even) {
+    border-left: 0;
+  }
+  .gateway-outreach-page .outreach-relief-items-grid .outreach-relief-item-card:nth-last-child(-n + 2):not(:last-child) {
+    border-bottom: 1px solid rgba(26, 39, 68, 0.09);
+  }
+  .gateway-outreach-page .outreach-relief-items-grid .outreach-relief-item-card:last-child {
+    border-bottom: 0;
+  }
 }
 
 /* -------------------------------------------
@@ -14501,6 +14716,19 @@
   font-weight: 500;
   max-width: 580px;
   margin: 0 auto;
+}
+
+.outreach-testimonials-section .gateway-testimonial-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid rgba(212, 168, 75, 0.42);
+  box-shadow: 0 0 0 1px rgba(26, 39, 68, 0.04);
+}
+
+.outreach-testimonials-section .gateway-testimonial-card:hover {
+  border-color: rgba(212, 168, 75, 0.62);
+  box-shadow:
+    0 10px 28px rgba(26, 39, 68, 0.10),
+    0 0 0 1px rgba(212, 168, 75, 0.18);
 }
 
 @media (max-width: 900px) {
@@ -15661,87 +15889,73 @@
 }
 
 .outreach-relief-section {
-  background:
-    radial-gradient(circle at 12% 8%, rgba(212, 168, 75, 0.14), transparent 34%),
-    radial-gradient(circle at 88% 86%, rgba(74, 60, 110, 0.22), transparent 36%),
-    linear-gradient(180deg, #0d1424 0%, var(--color-navy-dark, #151e32) 54%, var(--color-navy, #1a2744) 100%);
-  padding: 72px 0;
+  background: linear-gradient(180deg, var(--color-ivory, #faf8f3) 0%, var(--color-cream, #f5f0e6) 100%);
+  padding: 40px 0 42px;
   position: relative;
-  color: var(--color-contrast-light, #ffffff);
+  color: var(--text-primary, #0d1424);
   overflow: hidden;
 }
 
 .outreach-relief-title {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 800;
-  color: var(--color-contrast-light, #ffffff);
+  color: var(--text-heading, #020617);
   letter-spacing: 0;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   line-height: 1.1;
 }
 
 .outreach-relief-section .outreach-relief-title {
-  color: var(--color-contrast-light, #ffffff);
+  color: var(--text-heading, #020617);
   letter-spacing: 0;
 }
 
 .outreach-relief-subtitle {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 640px;
+  color: var(--text-secondary, #1e293b);
+  max-width: 620px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .outreach-relief-section .outreach-relief-subtitle {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--text-secondary, #1e293b);
 }
 
 .outreach-relief-goal-card {
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 24px;
-  padding: 36px 40px;
-  color: var(--color-contrast-light, #ffffff);
-  box-shadow:
-    0 24px 60px rgba(26, 39, 68, 0.30),
-    0 8px 24px rgba(26, 39, 68, 0.18);
+  border: 1px solid rgba(212, 168, 75, 0.22);
+  border-radius: 8px;
+  padding: 22px 26px;
+  color: var(--text-primary, #0d1424);
+  box-shadow: none;
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  margin-top: 36px;
-  max-width: 960px;
+  margin-top: 22px;
+  max-width: 920px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .outreach-relief-goal-card:hover {
-  background: rgba(255, 255, 255, 0.11);
-  box-shadow:
-    0 24px 60px rgba(26, 39, 68, 0.34),
-    0 8px 24px rgba(26, 39, 68, 0.20);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: none;
 }
 
 .outreach-relief-goal-blur {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 42%),
-    radial-gradient(circle at 12% 18%, rgba(212, 168, 75, 0.20) 0%, rgba(212, 168, 75, 0) 36%),
-    radial-gradient(circle at 90% 14%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 30%);
-  pointer-events: none;
-  z-index: -1;
+  display: none;
 }
 
 .outreach-relief-goal-top {
   display: grid;
   grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
   align-items: stretch;
-  gap: 24px;
+  gap: 28px;
   position: relative;
   z-index: 1;
 }
@@ -15750,14 +15964,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 240px;
-  padding: 30px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, var(--color-primary-light, #e5c47a), var(--color-primary, #d4a84b));
-  color: var(--color-navy-dark, #151e32);
-  box-shadow:
-    0 22px 48px rgba(212, 168, 75, 0.20),
-    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  min-height: 0;
+  padding: 2px 0 2px 20px;
+  border-left: 3px solid var(--color-primary, #d4a84b);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-heading, #020617);
+  box-shadow: none;
 }
 
 .outreach-relief-target-eyebrow {
@@ -15765,21 +15978,22 @@
   font-weight: 900;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: rgba(21, 30, 50, 0.72);
+  color: var(--color-primary, #d4a84b);
 }
 
 .outreach-relief-target-number {
-  margin-top: 14px;
-  font-size: 86px;
+  margin-top: 8px;
+  font-size: 60px;
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.9;
+  color: var(--color-primary-dark, #b8923f);
   font-variant-numeric: tabular-nums;
 }
 
 .outreach-relief-target-unit {
   margin-top: 8px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.1;
@@ -15788,10 +16002,10 @@
 
 .outreach-relief-target-caption {
   max-width: 280px;
-  margin-top: 14px;
-  color: rgba(21, 30, 50, 0.78);
+  margin-top: 10px;
+  color: var(--text-secondary, #1e293b);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.45;
 }
 
@@ -15820,22 +16034,22 @@
   font-weight: 800;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--color-primary, #d4a84b);
+  color: var(--color-primary-dark, #b8923f);
 }
 
 .outreach-relief-goal-amount {
-  font-size: 44px;
+  font-size: 32px;
   font-weight: 800;
-  color: var(--color-primary-light, #e5c47a);
+  color: var(--text-heading, #020617);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0;
   line-height: 1.05;
 }
 
 .outreach-relief-goal-caption {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.66);
+  color: var(--text-secondary, #1e293b);
   max-width: 420px;
   line-height: 1.5;
 }
@@ -15849,9 +16063,9 @@
 }
 
 .outreach-relief-goal-pct-value {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 800;
-  color: var(--color-contrast-light, #ffffff);
+  color: var(--text-heading, #020617);
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
@@ -15865,15 +16079,15 @@
 }
 
 .outreach-relief-progress {
-  margin-top: 24px;
+  margin-top: 18px;
   position: relative;
   z-index: 1;
 }
 
 .outreach-relief-progress-track {
-  height: 12px;
+  height: 6px;
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(26, 39, 68, 0.12);
   overflow: hidden;
 }
 
@@ -15881,61 +16095,43 @@
   height: 100%;
   border-radius: 50px;
   background: linear-gradient(90deg, var(--color-primary, #d4a84b), var(--color-primary-light, #e5c47a));
-  box-shadow: 0 0 12px rgba(212, 168, 75, 0.45);
+  box-shadow: none;
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Subtle shimmer — only for users who are OK with motion */
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes outreach-relief-shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position:  200% center; }
-  }
-
-  .outreach-relief-progress-fill {
-    background-size: 200% auto;
-    background-image: linear-gradient(
-      90deg,
-      var(--color-primary, #d4a84b) 0%,
-      var(--color-primary-light, #e5c47a) 40%,
-      var(--color-primary, #d4a84b) 80%
-    );
-    animation: outreach-relief-shimmer 2.4s linear infinite;
-  }
 }
 
 .outreach-relief-goal-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 24px;
+  margin-top: 18px;
   position: relative;
   z-index: 1;
 }
 
 .outreach-relief-stat {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 16px;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(26, 39, 68, 0.12);
+  border-radius: 0;
+  padding: 12px 0 0;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
 }
 
 .outreach-relief-stat-icon {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
-  border-radius: 10px;
-  background: rgba(212, 168, 75, 0.18);
+  border-radius: 6px;
+  background: rgba(212, 168, 75, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary, #d4a84b);
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .outreach-relief-stat-text {
@@ -15950,13 +16146,13 @@
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(13, 20, 36, 0.58);
 }
 
 .outreach-relief-stat-value {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
-  color: var(--color-contrast-light, #ffffff);
+  color: var(--text-heading, #020617);
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
@@ -15964,19 +16160,19 @@
 .outreach-relief-stat-note {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.60);
+  color: var(--text-secondary, #1e293b);
   line-height: 1.35;
 }
 
 .outreach-relief-items-head {
   text-align: center;
-  margin-top: 52px;
+  margin-top: 26px;
 }
 
 .outreach-relief-items-title {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
-  color: var(--color-contrast-light, #ffffff);
+  color: var(--text-heading, #020617);
   text-transform: uppercase;
   letter-spacing: 0;
   margin-bottom: 8px;
@@ -15985,7 +16181,7 @@
 .outreach-relief-items-sub {
   font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--text-secondary, #1e293b);
 }
 
 /* ── Items grid ── */
@@ -15993,26 +16189,26 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
-  margin-top: 24px;
-  padding: 12px;
-  max-width: 960px;
+  margin-top: 14px;
+  padding: 8px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 18px;
-  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.20);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(212, 168, 75, 0.22);
+  border-radius: 8px;
+  box-shadow: none;
 }
 
 .outreach-relief-item-card {
   background: transparent;
   border: 0;
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 6px;
+  padding: 10px 12px;
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) auto;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
   box-shadow: none;
   transition: background 0.25s ease;
   position: relative;
@@ -16029,16 +16225,16 @@
 
 /* Icon tile */
 .outreach-relief-item-icon {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
-  border-radius: 8px;
-  background: rgba(212, 168, 75, 0.12);
+  border-radius: 6px;
+  background: rgba(212, 168, 75, 0.10);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary, #d4a84b);
-  font-size: 16px;
+  font-size: 13px;
   transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -16053,7 +16249,7 @@
 }
 
 .outreach-relief-item-label {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
   color: var(--text-heading, #020617);
   margin-bottom: 4px;
@@ -16078,7 +16274,7 @@
 }
 
 .outreach-relief-item-cost-value {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--color-primary-dark, #b8923f);
   font-variant-numeric: tabular-nums;
@@ -16096,7 +16292,7 @@
 /* ── CTA ── */
 .outreach-relief-cta {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 22px;
 }
 
 .outreach-relief-cta-btn {
@@ -16104,6 +16300,7 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  box-shadow: none;
 }
 
 @media (max-width: 900px) {
@@ -16120,11 +16317,11 @@
   }
 
   .outreach-relief-goal-amount {
-    font-size: 38px;
+    font-size: 32px;
   }
 
   .outreach-relief-goal-pct-value {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .outreach-relief-target-hero {
@@ -16135,12 +16332,12 @@
 /* ── Responsive: ≤ 768px — stacks fully ── */
 @media (max-width: 768px) {
   .outreach-relief-section {
-    padding: 56px 0;
+    padding: 34px 0 38px;
   }
 
   .outreach-relief-goal-card {
-    padding: 28px 24px;
-    margin-top: 28px;
+    padding: 20px;
+    margin-top: 18px;
   }
 
   .outreach-relief-goal-summary-top {
@@ -16153,15 +16350,15 @@
   }
 
   .outreach-relief-goal-amount {
-    font-size: 34px;
+    font-size: 30px;
   }
 
   .outreach-relief-target-number {
-    font-size: 58px;
+    font-size: 50px;
   }
 
   .outreach-relief-target-unit {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .outreach-relief-goal-stats {
@@ -16169,7 +16366,7 @@
   }
 
   .outreach-relief-title {
-    font-size: 28px;
+    font-size: 25px;
   }
 }
 

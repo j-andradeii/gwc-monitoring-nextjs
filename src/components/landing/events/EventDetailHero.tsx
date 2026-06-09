@@ -46,6 +46,8 @@ export function EventDetailHero({ event, onJoinEvent, onShareEvent }: Props) {
               <div className="event-detail-hero__meta-item">
                 <i className="pi pi-clock" aria-hidden="true" />
                 <span><strong>{event.time}</strong>Time</span>
+                {event.time_sub_label && <span><strong>({event.time_sub_label})</strong></span>}
+
               </div>
               {isGoldenPeak ? (
                 <a

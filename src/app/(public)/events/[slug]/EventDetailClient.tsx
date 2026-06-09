@@ -29,6 +29,7 @@ interface DetailItemProps {
   icon: string;
   label: string;
   value: string;
+  subLabel?: string;
   href?: string;
 }
 
@@ -43,12 +44,15 @@ function getDateParts(event: Event) {
   };
 }
 
-function DetailItem({ icon, label, value, href }: DetailItemProps) {
+function DetailItem({ icon, label, value, subLabel, href }: DetailItemProps) {
   const content = (
     <>
       <i className={`pi ${icon}`} aria-hidden="true" />
       <span>
-        <strong>{label}</strong>
+        <strong>
+          {label}
+          {subLabel ? <span className="event-detail-info-sublabel">{subLabel}</span> : null}
+        </strong>
         {value}
       </span>
     </>
@@ -175,7 +179,6 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
                 <h2>Event details</h2>
                 <div className="event-detail-info-list">
                   <DetailItem icon="pi-calendar" label="Date" value={`${event.day}, ${event.displayDate || event.date}`} />
-                  <DetailItem icon="pi-clock" label="Time" value={event.time} />
                   <DetailItem
                     icon="pi-map-marker"
                     label="Location"

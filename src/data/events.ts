@@ -20,6 +20,7 @@ export interface Event {
   displayDate?: string; // Optional display date for date ranges (e.g., "Jan 24-25")
   day: string;
   time: string;
+  time_sub_label?: string; // Optional note shown next to the Time label (e.g. "Doors open 1:00 PM")
   location: string;
   image: string;
   description?: string;
@@ -301,12 +302,20 @@ Everyone is invited. See you there! 🫶✨`,
     date: 'June 28, 2026',
     displayDate: 'June 28',
     day: 'Sunday',
-    time: '2:00 PM',
+    time: '1:30 PM',
+    time_sub_label: 'doors open',
     location: '8th Floor, Golden Peak Hotel and Suites',
-    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/axis_june_7.webp',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/axis_june_updated.webp',
     description: `
-You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering—together.
-Everyone is invited. See you there! 🫶✨`,
+🎬✨ Your next movie hangout is on us!
+
+Grab your friends and enjoy an afternoon filled with great films, good company, and delicious movie snacks—all for FREE! 🍿🍟
+
+📍 8F, Golden Peak Hotel
+🕜 Doors Open: 1:30 PM
+📅 June 28 & July 26
+
+Tag your movie buddy, scan the QR code, and save your seat. We can’t wait to see you there! 🎥🔥`,
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
