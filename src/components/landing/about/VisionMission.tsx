@@ -9,11 +9,6 @@ export const VisionMission: React.FC = () => {
       id="vision-mission"
       className="vision-mission-section vision-mission-vibrant animate-on-scroll"
     >
-      {/* Decorative animated orbs (gold + deep navy depth) */}
-      <span className="vm-bg-orb vm-bg-orb--gold" aria-hidden="true" />
-      <span className="vm-bg-orb vm-bg-orb--navy" aria-hidden="true" />
-      <span className="vm-bg-grid" aria-hidden="true" />
-
       <div className="landing-container">
         <div className="vision-mission-header vm-vibrant-header">
           <span className="section-label">Vision &amp; Mission</span>
@@ -31,29 +26,22 @@ export const VisionMission: React.FC = () => {
             className="vision-card vm-card vm-card--light"
             style={{ ['--vm-index' as string]: 0 }}
           >
-            <span className="vm-card-watermark" aria-hidden="true">01</span>
-            <span className="vm-card-eyebrow">A Vision</span>
             <div className="vision-card-icon vm-card-icon">
               <i className="pi pi-eye" aria-hidden="true"></i>
-              <span className="vm-card-icon-glow" aria-hidden="true" />
             </div>
             <h3>Our Vision</h3>
             <p>
               To be a community where people encounter God&apos;s presence and discover
               their purpose, becoming everything He created them to be.
             </p>
-            <span className="vm-card-flourish" aria-hidden="true" />
           </article>
 
           <article
             className="mission-card vm-card vm-card--dark"
             style={{ ['--vm-index' as string]: 1 }}
           >
-            <span className="vm-card-watermark" aria-hidden="true">02</span>
-            <span className="vm-card-eyebrow">A Mission</span>
             <div className="mission-card-icon vm-card-icon">
               <i className="pi pi-compass" aria-hidden="true"></i>
-              <span className="vm-card-icon-glow" aria-hidden="true" />
             </div>
             <h3>Our Mission</h3>
             <p>
@@ -61,7 +49,6 @@ export const VisionMission: React.FC = () => {
               authentic worship, meaningful community, biblical teaching, and
               compassionate service.
             </p>
-            <span className="vm-card-flourish" aria-hidden="true" />
           </article>
         </div>
 
@@ -75,7 +62,7 @@ export const VisionMission: React.FC = () => {
                 cared for, formed as disciples, and released to lead with purpose.
               </p> */}
             </div>
-{/* 
+{/*
             <aside className="mission-pathway-card vm-pathway-card" aria-label="Discipleship pathway summary">
               <span className="mission-pathway-label">Discipleship Pathway</span>
               <strong>4</strong>

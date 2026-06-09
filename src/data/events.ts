@@ -65,6 +65,7 @@ export const events: Event[] = [
     get displayDate() { return getUpcomingSunday().split(',')[0]; },
     day: 'Sunday',
     time: '9:00 AM',
+    time_sub_label: 'doors open',
     location: '8th Floor, Golden Peak Hotel and Suites',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sunday_poster.jpg',
     description: `The church is not the building. The church is the people.
@@ -89,7 +90,7 @@ Invite someone and come experience community with us.
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_2.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_3.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_4.webp',
-      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_5.webp',
+      // 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_5.webp',
     ]
   },
   

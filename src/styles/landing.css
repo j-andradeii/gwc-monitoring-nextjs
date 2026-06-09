@@ -5405,8 +5405,8 @@
 .vision-mission-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-bottom: 60px;
+  gap: 24px;
+  margin-bottom: 40px;
 }
 
 /* Shared modern card */
@@ -5414,8 +5414,8 @@
   --vm-index: 0;
   --vm-delay: calc(var(--vm-index) * 140ms);
   position: relative;
-  padding: 48px 40px 44px;
-  border-radius: 24px;
+  padding: 32px 30px;
+  border-radius: 16px;
   overflow: hidden;
   isolation: isolate;
   display: flex;
@@ -5437,59 +5437,16 @@
   }
 }
 
-.vm-card-watermark {
-  position: absolute;
-  top: 12px;
-  right: 22px;
-  font-size: 110px;
-  font-weight: 900;
-  letter-spacing: -4px;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
-}
-
-.vm-card:hover .vm-card-watermark {
-  transform: translate(-6px, 4px) scale(1.04);
-}
-
-.vm-card-eyebrow {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  width: max-content;
-  margin-bottom: 24px;
-}
-
-.vm-card-eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 10px currentColor;
-}
 
 .vm-card-icon {
   position: relative;
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   z-index: 1;
   transition:
     transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -5503,56 +5460,29 @@
 }
 
 .vm-card-icon i {
-  font-size: 28px;
+  font-size: 22px;
   position: relative;
   z-index: 1;
 }
 
-.vm-card-icon-glow {
-  position: absolute;
-  inset: -10px;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.5s ease, transform 0.6s ease;
-  pointer-events: none;
-}
-
-.vm-card:hover .vm-card-icon-glow {
-  opacity: 1;
-  transform: scale(1.05);
-}
 
 .vm-card h3 {
   position: relative;
   z-index: 1;
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   letter-spacing: -0.3px;
 }
 
 .vm-card p {
   position: relative;
   z-index: 1;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.7;
   margin: 0;
 }
 
-.vm-card-flourish {
-  position: absolute;
-  left: 40px;
-  bottom: 28px;
-  width: 56px;
-  height: 3px;
-  border-radius: 999px;
-  z-index: 1;
-  transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.vm-card:hover .vm-card-flourish {
-  width: 96px;
-}
 
 /* Light variant — Vision */
 .vm-card--light {
@@ -5562,15 +5492,15 @@
   border: 1px solid rgba(212, 168, 75, 0.22);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 12px 28px rgba(26, 39, 68, 0.08),
-    0 28px 60px rgba(212, 168, 75, 0.10);
+    0 8px 20px rgba(26, 39, 68, 0.06),
+    0 18px 40px rgba(212, 168, 75, 0.08);
 }
 
 .vm-card--light::after {
   content: '';
   position: absolute;
   inset: -1px;
-  border-radius: 24px;
+  border-radius: 16px;
   padding: 1px;
   background: linear-gradient(135deg,
       rgba(212, 168, 75, 0.7) 0%,
@@ -5589,25 +5519,16 @@
 }
 
 .vm-card--light:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 18px 36px rgba(26, 39, 68, 0.10),
-    0 40px 80px rgba(212, 168, 75, 0.22);
+    0 12px 28px rgba(26, 39, 68, 0.08),
+    0 24px 50px rgba(212, 168, 75, 0.14);
   border-color: rgba(212, 168, 75, 0.45);
 }
 
 .vm-card--light:hover::after {
   opacity: 1;
-}
-
-.vm-card--light .vm-card-watermark {
-  color: rgba(212, 168, 75, 0.10);
-}
-
-.vm-card--light .vm-card-eyebrow {
-  color: var(--primary-gold-accent);
-  background: rgba(212, 168, 75, 0.10);
 }
 
 .vm-card--light .vm-card-icon {
@@ -5621,10 +5542,6 @@
   color: #ffffff;
 }
 
-.vm-card--light .vm-card-icon-glow {
-  background: radial-gradient(circle, rgba(212, 168, 75, 0.45) 0%, transparent 70%);
-}
-
 .vm-card--light h3 {
   color: var(--text-primary);
 }
@@ -5633,29 +5550,24 @@
   color: var(--text-secondary);
 }
 
-.vm-card--light .vm-card-flourish {
-  background: linear-gradient(90deg, var(--primary-gold-accent) 0%, #c9973f 100%);
-}
-
 /* Dark variant — Mission */
 .vm-card--dark {
   background:
-    radial-gradient(120% 100% at 100% 100%, rgba(140, 82, 165, 0.25) 0%, transparent 55%),
-    radial-gradient(80% 100% at 0% 0%, rgba(212, 168, 75, 0.18) 0%, transparent 55%),
-    linear-gradient(135deg, #0c1620 0%, #0a1018 100%);
+    radial-gradient(80% 100% at 0% 0%, rgba(212, 168, 75, 0.08) 0%, transparent 55%),
+    linear-gradient(135deg, #0f1a2c 0%, #0c1422 100%);
   border: 1px solid rgba(212, 168, 75, 0.22);
   color: rgba(255, 255, 255, 0.86);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 18px 40px rgba(8, 14, 22, 0.35),
-    0 30px 60px rgba(140, 82, 165, 0.18);
+    0 10px 24px rgba(8, 14, 22, 0.28),
+    0 20px 44px rgba(8, 14, 22, 0.18);
 }
 
 .vm-card--dark::after {
   content: '';
   position: absolute;
   inset: -1px;
-  border-radius: 24px;
+  border-radius: 16px;
   padding: 1px;
   background: linear-gradient(135deg,
       rgba(212, 168, 75, 0.85) 0%,
@@ -5674,25 +5586,16 @@
 }
 
 .vm-card--dark:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 24px 50px rgba(8, 14, 22, 0.45),
-    0 40px 80px rgba(140, 82, 165, 0.30);
+    0 16px 36px rgba(8, 14, 22, 0.36),
+    0 28px 56px rgba(8, 14, 22, 0.24);
   border-color: rgba(212, 168, 75, 0.45);
 }
 
 .vm-card--dark:hover::after {
   opacity: 1;
-}
-
-.vm-card--dark .vm-card-watermark {
-  color: rgba(212, 168, 75, 0.14);
-}
-
-.vm-card--dark .vm-card-eyebrow {
-  color: var(--primary-gold-accent);
-  background: rgba(212, 168, 75, 0.14);
 }
 
 .vm-card--dark .vm-card-icon {
@@ -5706,23 +5609,12 @@
   color: #0a1018;
 }
 
-.vm-card--dark .vm-card-icon-glow {
-  background: radial-gradient(circle, rgba(212, 168, 75, 0.55) 0%, transparent 70%);
-}
-
 .vm-card--dark h3 {
   color: #ffffff;
 }
 
 .vm-card--dark p {
   color: rgba(255, 255, 255, 0.76);
-}
-
-.vm-card--dark .vm-card-flourish {
-  background: linear-gradient(90deg,
-      var(--primary-gold-accent) 0%,
-      rgba(140, 82, 165, 0.85) 100%);
-  box-shadow: 0 0 14px rgba(212, 168, 75, 0.45);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5736,8 +5628,8 @@
 .vm-pathway-section {
   position: relative;
   z-index: 1;
-  margin-top: 58px;
-  padding-top: 46px;
+  margin-top: 40px;
+  padding-top: 32px;
   border-top: 1px solid rgba(26, 39, 68, 0.10);
 }
 
@@ -5758,9 +5650,9 @@
 
 .vm-pathway-content h3 {
   color: #1a2744;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.4rem, 2.5vw, 1.875rem);
   line-height: 1.25;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0;
   margin: 0 0 16px;
 }
@@ -6526,17 +6418,6 @@
     padding: 36px 28px 36px;
   }
 
-  .vm-card-watermark {
-    font-size: 88px;
-    top: 8px;
-    right: 16px;
-  }
-
-  .vm-card-flourish {
-    left: 28px;
-    bottom: 22px;
-  }
-
   .vm-card h3 {
     font-size: 1.4rem;
   }
@@ -6835,7 +6716,8 @@
 
   .about-page .our-story-section,
   .about-page .vision-mission-section,
-  .about-page .our-values-section {
+  .about-page .our-values-section,
+  .about-page .beliefs-section {
     padding: 70px 0 !important;
   }
 }
@@ -10864,40 +10746,10 @@
    =========================================== */
 .vision-mission-section.vision-mission-vibrant {
   padding: 120px 0 100px;
-  background:
-    radial-gradient(120% 80% at 0% 0%, rgba(212, 168, 75, 0.12) 0%, transparent 55%),
-    radial-gradient(100% 80% at 100% 100%, rgba(26, 39, 68, 0.08) 0%, transparent 55%),
-    linear-gradient(180deg, #fffaf0 0%, #fdf3df 100%) !important;
+  background: linear-gradient(180deg, #ffffff 0%, #fdf8ef 100%) !important;
   overflow: hidden;
 }
 
-.vision-mission-vibrant .vm-bg-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-  animation: vmOrbFloat 20s ease-in-out infinite;
-}
-
-.vision-mission-vibrant .vm-bg-orb--gold {
-  width: 460px;
-  height: 460px;
-  top: -140px;
-  left: -140px;
-  background: radial-gradient(circle, rgba(212, 168, 75, 0.50) 0%, transparent 70%);
-  opacity: 0.65;
-}
-
-.vision-mission-vibrant .vm-bg-orb--navy {
-  width: 400px;
-  height: 400px;
-  bottom: -120px;
-  right: -120px;
-  background: radial-gradient(circle, rgba(26, 39, 68, 0.30) 0%, transparent 70%);
-  animation-delay: -8s;
-  opacity: 0.5;
-}
 
 @keyframes vmOrbFloat {
 
@@ -10915,19 +10767,6 @@
   }
 }
 
-.vision-mission-vibrant .vm-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(26, 39, 68, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26, 39, 68, 0.06) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 30%, transparent 80%);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
-}
 
 .vision-mission-vibrant .landing-container {
   position: relative;
@@ -10936,7 +10775,7 @@
 
 .vm-vibrant-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   position: relative;
 }
 
@@ -10945,12 +10784,12 @@
 }
 
 .vm-vibrant-header h2 {
-  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   line-height: 1;
-  font-weight: 900;
+  font-weight: 800;
   color: #1a2744;
-  letter-spacing: -2px;
-  margin: 10px 0 18px;
+  letter-spacing: -0.5px;
+  margin: 8px 0 14px;
   text-transform: none;
 }
 
@@ -10965,7 +10804,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: vmAccentShift 6s ease-in-out infinite;
   font-style: italic;
 }
 
@@ -10981,26 +10819,13 @@
   }
 }
 
-.vm-vibrant-title-accent::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -10px;
-  height: 8px;
-  background: linear-gradient(90deg,
-      var(--primary-gold-accent) 0%,
-      transparent 100%);
-  border-radius: 4px;
-  opacity: 0.5;
-}
 
 .vm-vibrant-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.7;
   color: #4a5468;
-  max-width: 680px;
-  margin: 0 auto 36px;
+  max-width: 620px;
+  margin: 0 auto;
   font-weight: 500;
 }
 
@@ -11176,8 +11001,8 @@
   }
 
   .vm-vibrant-header h2 {
-    font-size: 2.25rem;
-    letter-spacing: -1px;
+    font-size: 1.75rem;
+    letter-spacing: -0.5px;
   }
 }
 
@@ -11195,7 +11020,6 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .vm-bg-orb,
   .vm-vibrant-title-accent,
   .vm-vibrant-marquee,
   .vm-trust-chip {
@@ -11534,9 +11358,8 @@
 /* ============ Beliefs — vibrant (gold + navy) ============ */
 .beliefs-section-vibrant {
   position: relative;
-  padding: 50px 0 0 !important;
-  background: transparent !important;
-  overflow: visible;
+  padding: 50px 0 !important;
+  overflow: hidden;
 }
 
 .beliefs-section-vibrant>.ov-bg-orb--purple-soft {
@@ -16410,4 +16233,124 @@
   .outreach-relief-progress-fill {
     animation: none;
   }
+}
+
+/* ===========================================
+   ABOUT PAGE — alternating section bands
+   Mirrors the Gateway Outreach band system: a clean white ⇄ warm-cream
+   alternation + explicit top-hairline dividers so every section boundary
+   reads even where two light tones meet. No navy anchor (the ProjectBanner
+   near the top is the page's dark accent). Triple-class selectors + !important
+   intentionally out-specify the per-section vibrant/modern background rules.
+   =========================================== */
+
+/* White bands — Our Story, Our Values, Our Pastors */
+.about-page .our-story-section,
+.about-page .our-values-section.our-values-vibrant,
+.about-page .our-pastors-section.pastors-modern {
+  background: var(--background-section, #ffffff) !important;
+}
+
+/* Warm cream bands (alternate) — Vision & Mission, What We Believe.
+   Warm gold wash over cream (translucent-rgba-over-base idiom, same as the
+   outreach cream bands) so cream reads clearly warmer/deeper than the white. */
+.about-page .vision-mission-section.vision-mission-vibrant,
+.about-page .beliefs-section-vibrant {
+  background:
+    linear-gradient(180deg, rgba(212, 168, 75, 0.09) 0%, rgba(212, 168, 75, 0.18) 100%),
+    var(--color-cream, #f5f0e6) !important;
+}
+
+/* Crisp top hairline on every band below the first (Our Story is the first
+   band so it gets none — matches outreach where Vision has no hairline). */
+.about-page .vision-mission-section,
+.about-page .our-values-section,
+.about-page .beliefs-section,
+.about-page .our-pastors-section,
+.about-page .contact-section {
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+/* Darken gold eyebrow labels on the light bands for more presence
+   (same treatment as the outreach light bands). */
+.about-page .our-story-section .section-label,
+.about-page .vision-mission-section .section-label,
+.about-page .our-values-section .section-label,
+.about-page .beliefs-section .section-label,
+.about-page .our-pastors-section .section-label {
+  color: var(--color-primary-dark, #b8923f) !important;
+}
+.about-page .our-story-section .section-label::before,
+.about-page .vision-mission-section .section-label::before,
+.about-page .our-values-section .section-label::before,
+.about-page .beliefs-section .section-label::before,
+.about-page .our-pastors-section .section-label::before {
+  background: var(--color-primary-dark, #b8923f) !important;
+}
+
+/* ===========================================
+   ABOUT PAGE — card readability + borders
+   Every card unified to the gold-border + neutral-navy
+   contact-ring system (same idiom as the outreach light-band
+   cards) so each card edge reads clearly on its band — most
+   importantly white cards on the white bands and white cards
+   on the cream Vision & Mission band. Body copy darkened to the
+   dark text tier for legibility. Scoped to .about-page so the
+   shared card classes are untouched elsewhere.
+   =========================================== */
+
+/* What Shapes Us — value cards (white card on WHITE band) */
+.about-page .value-card-vibrant {
+  border: 1.5px solid rgba(212, 168, 75, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.06),
+    0 3px 8px rgba(26, 39, 68, 0.09),
+    0 16px 36px rgba(26, 39, 68, 0.10);
+}
+.about-page .value-card-vibrant:hover {
+  border-color: rgba(212, 168, 75, 0.80);
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.07),
+    0 12px 28px rgba(26, 39, 68, 0.12),
+    0 32px 60px rgba(212, 168, 75, 0.22);
+}
+.about-page .value-card-vibrant p {
+  color: var(--text-secondary, #1e293b);
+}
+
+/* Fundamental Truths — accordion tabs (white card on WHITE band) */
+.about-page .beliefs-accordion-vibrant .p-accordion-tab {
+  border: 1.5px solid rgba(212, 168, 75, 0.50) !important;
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.05),
+    0 3px 8px rgba(26, 39, 68, 0.07),
+    0 14px 30px rgba(26, 39, 68, 0.08) !important;
+}
+
+/* Vision (light) card + Win/Consolidate/Disciple/Send process cards
+   (white cards on the CREAM Vision & Mission band) */
+.about-page .vm-card--light,
+.about-page .vm-process-steps .process-step-card {
+  border: 1.5px solid rgba(212, 168, 75, 0.55) !important;
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.06),
+    0 3px 8px rgba(26, 39, 68, 0.09),
+    0 16px 36px rgba(26, 39, 68, 0.12) !important;
+}
+.about-page .vm-card--light:hover,
+.about-page .vm-process-steps .process-step-card:hover {
+  border-color: rgba(212, 168, 75, 0.80) !important;
+}
+.about-page .vm-process-steps .step-description {
+  color: var(--text-secondary, #1e293b);
+}
+
+/* Mission (dark navy) card on the cream band — keep dark, firm the gold edge */
+.about-page .vm-card--dark {
+  border: 1.5px solid rgba(212, 168, 75, 0.45) !important;
+}
+
+/* Pastor bios stay a timeline list (not cards) — just darken the gold eyebrow on the cream band */
+.about-page .pastors-modern-bio-eyebrow {
+  color: var(--color-primary-dark, #b8923f);
 }

@@ -179,50 +179,54 @@ const beliefs: BeliefItem[] = [
 
 export const OurValues: React.FC = () => {
   return (
-    <section id="our-values" className="our-values-section our-values-vibrant">
-      {/* Decorative background flourishes (gold + navy depth) */}
-      <span className="ov-bg-orb ov-bg-orb--gold" aria-hidden="true" />
-      <span className="ov-bg-orb ov-bg-orb--navy" aria-hidden="true" />
+    <>
+      <section id="our-values" className="our-values-section our-values-vibrant">
+        {/* Decorative background flourishes (gold + navy depth) */}
+        <span className="ov-bg-orb ov-bg-orb--gold" aria-hidden="true" />
+        <span className="ov-bg-orb ov-bg-orb--navy" aria-hidden="true" />
 
-      <div className="landing-container">
-        <div className="values-header values-vibrant-header">
-          <span className="section-label">Our Values</span>
-          <h2>
-            What <span className="values-vibrant-accent">Shapes</span> Us
-          </h2>
-          <p className="values-subtitle">
-            Twelve core values that drive us — they shape every cell group, every
-            service, and every disciple we send out.
-          </p>
-        </div>
+        <div className="landing-container">
+          <div className="values-header values-vibrant-header">
+            <span className="section-label">Our Values</span>
+            <h2>
+              What <span className="values-vibrant-accent">Shapes</span> Us
+            </h2>
+            <p className="values-subtitle">
+              Twelve core values that drive us — they shape every cell group, every
+              service, and every disciple we send out.
+            </p>
+          </div>
 
-        <div className="values-grid values-grid-vibrant">
-          {coreValues.map((value, index) => (
-            <div
-              key={index}
-              className="value-card value-card-vibrant"
-              style={{
-                ['--value-index' as string]: index,
-                ['--value-delay' as string]: `${index * 60}ms`,
-              }}
-            >
-              <span className="value-card-number" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <div className="value-icon">
-                <i className={value.icon}></i>
-                <span className="value-icon-pulse" aria-hidden="true" />
+          <div className="values-grid values-grid-vibrant">
+            {coreValues.map((value, index) => (
+              <div
+                key={index}
+                className="value-card value-card-vibrant"
+                style={{
+                  ['--value-index' as string]: index,
+                  ['--value-delay' as string]: `${index * 60}ms`,
+                }}
+              >
+                <span className="value-card-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div className="value-icon">
+                  <i className={value.icon}></i>
+                  <span className="value-icon-pulse" aria-hidden="true" />
+                </div>
+                <h3>{value.title}</h3>
+                <p>{value.description}</p>
+                <span className="value-card-shine" aria-hidden="true" />
               </div>
-              <h3>{value.title}</h3>
-              <p>{value.description}</p>
-              <span className="value-card-shine" aria-hidden="true" />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div id="what-we-believe" className="beliefs-section beliefs-section-vibrant">
-          <span className="ov-bg-orb ov-bg-orb--purple-soft" aria-hidden="true" />
+      <section id="what-we-believe" className="beliefs-section beliefs-section-vibrant">
+        <span className="ov-bg-orb ov-bg-orb--purple-soft" aria-hidden="true" />
 
+        <div className="landing-container">
           <div className="beliefs-header beliefs-vibrant-header">
             <span className="section-label">What We Believe</span>
             <h2>
@@ -258,8 +262,8 @@ export const OurValues: React.FC = () => {
             </Accordion>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
