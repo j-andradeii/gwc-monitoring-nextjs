@@ -15,6 +15,7 @@ import {
   LandingFooter,
   PageHero,
   ContactSection,
+  ProjectBanner,
 } from '@/components/landing';
 
 import {
@@ -25,6 +26,7 @@ import {
   OutreachReliefFundSection,
   OutreachGiveSection,
   OutreachDonationDropoffSection,
+  OutreachInitiativesSection,
 } from '@/components/landing/outreach';
 
 const siteUrl = siteMetadata.siteUrl;
@@ -83,16 +85,34 @@ const breadcrumbJsonLd = {
   ],
 };
 
+/**
+ * Toggle for the OPTIONAL Relief Fund fundraising section.
+ *
+ * Flip to `false` to hide <OutreachReliefFundSection />. Doing so also adds a
+ * `relief-fund-hidden` class to the page root, which re-balances the
+ * alternating section backgrounds so the white⇄cream rhythm stays intact in
+ * BOTH states:
+ *   • shown  → Vision(w) · Relief(c) · Impact(w) · Gallery(c) · Give(navy) · …
+ *   • hidden → Vision(w) ·            Impact(c) · Gallery(w) · Give(navy) · …
+ * The Impact↔Gallery band swap lives in the `.relief-fund-hidden` overrides in
+ * `landing.css` (page-scoped band block). No other section needs to change.
+ */
+const SHOW_RELIEF_FUND = true;
+
 export default function GatewayOutreachPage() {
   return (
-    <div className="landing-page give-page gateway-outreach-page">
+    <div
+      className={`landing-page give-page gateway-outreach-page${
+        SHOW_RELIEF_FUND ? '' : ' relief-fund-hidden'
+      }`}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <LandingHeader />
 
-      <main className="landing-main">
+      <main className="landing-main gateway-outreach-main">
         {/* Hero Section */}
         <PageHero
           id="gateway-outreach-top"
@@ -107,29 +127,43 @@ export default function GatewayOutreachPage() {
           // ]}
         />
 
-        {/* Section 1: Pastor's Vision for Disaster Response */}
+        <ProjectBanner
+          badge='Support'
+          targetId="outreach-give"
+          title="Help us in reaching more communities in need"
+          buttonLabel="Partner with Us"
+          buttonAriaLabel="Jump to Give to Gateway Projects section"
+          ariaLabel="Partner with Us"
+        />
+        
+
+        {/* Section 1: Pastor's Vision for Disaster Response (white band) */}
         <OutreachVisionSection />
 
-        {/* Section 2: Our Disaster Response Initiatives */}
+        {/* Section 2: Relief Fund — OPTIONAL fundraising band (cream when shown).
+            Toggle via SHOW_RELIEF_FUND above; hiding it flips Impact→cream and
+            Gallery→white through the `.relief-fund-hidden` class so the
+            alternating backgrounds stay balanced. */}
+        {SHOW_RELIEF_FUND && <OutreachReliefFundSection />}
+
+        {/* Our Disaster Response Initiatives (built, intentionally disabled) */}
         {/* <OutreachInitiativesSection /> */}
 
-        {/* Section 3: Impact Statistics (Navy background) */}
+        {/* Section 3: Impact Statistics (white band, light stat cards) */}
         <OutreachImpactSection />
 
-        {/* Section 4: Gallery — Outreach in Action */}
+        {/* Section 4: Gallery — Outreach in Action (cream band) */}
         <OutreachGallerySection />
 
-        {/* Section 5: Community Testimonials */}
-        <OutreachTestimonialsSection />
-
-        {/* Section 6: Relief Fund — fundraising goal + items to buy */}
-        <OutreachReliefFundSection />
-
-        {/* Section 7: Support Our Outreach — Giving Channels */}
+        {/* Section 5: Support Our Outreach — Giving Channels (navy anchor) */}
         <OutreachGiveSection />
 
-        {/* Section 7: Drop Off Donations */}
+        {/* Section 6: Drop Off Donations (cream band) */}
         <OutreachDonationDropoffSection />
+
+        {/* Section 7: Community Testimonials (white band) */}
+        <OutreachTestimonialsSection />
+
 
         <ContactSection />
       </main>

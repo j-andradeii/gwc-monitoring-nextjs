@@ -95,7 +95,7 @@ export const OutreachImpactSection: React.FC = () => {
 
       <div className="landing-container">
         <div className="section-header-center animate-on-scroll">
-          <span className="section-label-light">
+          <span className="section-label">
             <i className="pi pi-heart-fill outreach-impact-label-icon" />
             Our Impact
           </span>

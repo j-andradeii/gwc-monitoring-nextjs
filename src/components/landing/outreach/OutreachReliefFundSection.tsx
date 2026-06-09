@@ -2,8 +2,16 @@ import React from 'react';
 import { outreachReliefFund, outreachReliefItems } from '@/data/outreachData';
 
 export const OutreachReliefFundSection: React.FC = () => {
-  const { goalAmount, currentAmount, label, heading, description, goalCaption } =
-    outreachReliefFund;
+  const {
+    goalAmount,
+    currentAmount,
+    targetFamilies,
+    targetFamiliesCaption,
+    label,
+    heading,
+    description,
+    goalCaption,
+  } = outreachReliefFund;
   const pct = Math.min(100, Math.round((currentAmount / goalAmount) * 100));
   const remaining = Math.max(0, goalAmount - currentAmount);
 
@@ -20,36 +28,61 @@ export const OutreachReliefFundSection: React.FC = () => {
           <p className="outreach-relief-subtitle">{description}</p>
         </div>
 
-        {/* Navy goal panel */}
-        <div className="outreach-relief-goal-card animate-on-scroll">
+        {/* Design-system dark glass goal panel */}
+        <div className="premium-stat-card outreach-relief-goal-card animate-on-scroll">
           <div className="outreach-relief-goal-blur" aria-hidden="true" />
           <div className="outreach-relief-goal-top">
-            <div className="outreach-relief-goal-headline">
-              <span className="outreach-relief-goal-eyebrow">Our Goal</span>
-              <span className="outreach-relief-goal-amount">
-                &#8369;{goalAmount.toLocaleString()}
+            <div
+              className="outreach-relief-target-hero"
+              aria-label={`Target ${targetFamilies.toLocaleString()} families`}
+            >
+              <span className="outreach-relief-target-eyebrow">
+                Target Families
               </span>
-              <span className="outreach-relief-goal-caption">{goalCaption}</span>
+              <span className="outreach-relief-target-number">
+                {targetFamilies.toLocaleString()}
+              </span>
+              <span className="outreach-relief-target-unit">families</span>
+              <span className="outreach-relief-target-caption">
+                {targetFamiliesCaption}
+              </span>
             </div>
-            <div className="outreach-relief-goal-pct">
-              <span className="outreach-relief-goal-pct-value">{pct}%</span>
-              <span className="outreach-relief-goal-pct-label">Raised</span>
-            </div>
-          </div>
 
-          <div
-            className="outreach-relief-progress"
-            role="progressbar"
-            aria-valuenow={pct}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label={`Relief fund ${pct} percent raised`}
-          >
-            <div className="outreach-relief-progress-track">
+            <div className="outreach-relief-goal-summary">
+              <div className="outreach-relief-goal-summary-top">
+                <div className="outreach-relief-goal-headline">
+                  <span className="outreach-relief-goal-eyebrow">
+                    Relief Fund Goal
+                  </span>
+                  <span className="outreach-relief-goal-amount">
+                    &#8369;{goalAmount.toLocaleString()}
+                  </span>
+                  <span className="outreach-relief-goal-caption">
+                    {goalCaption}
+                  </span>
+                </div>
+
+                <div className="outreach-relief-goal-pct">
+                  <span className="outreach-relief-goal-pct-value">{pct}%</span>
+                  <span className="outreach-relief-goal-pct-label">Raised</span>
+                </div>
+              </div>
+
               <div
-                className="outreach-relief-progress-fill"
-                style={{ width: `${pct}%` }}
-              />
+                className="outreach-relief-progress"
+                role="progressbar"
+                aria-valuenow={pct}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`Relief fund ${pct} percent raised toward ${targetFamilies.toLocaleString()} target families`}
+              >
+                <div className="outreach-relief-progress-track">
+                  <div
+                    className="outreach-relief-progress-fill"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
