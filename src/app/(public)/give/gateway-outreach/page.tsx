@@ -93,7 +93,7 @@ export default function GatewayOutreachPage() {
       />
       <LandingHeader />
 
-      <main className="landing-main">
+      <main className="landing-main gateway-outreach-main">
         {/* Hero Section */}
         <PageHero
           id="gateway-outreach-top"
@@ -130,8 +130,6 @@ export default function GatewayOutreachPage() {
         {/* Section 4: Gallery — Outreach in Action */}
         <OutreachGallerySection />
 
-        {/* Section 5: Community Testimonials */}
-        <OutreachTestimonialsSection />
 
         {/* Section 6: Relief Fund — fundraising goal + items to buy */}
         <OutreachReliefFundSection />
@@ -141,6 +139,10 @@ export default function GatewayOutreachPage() {
 
         {/* Section 7: Drop Off Donations */}
         <OutreachDonationDropoffSection />
+
+        {/* Section 5: Community Testimonials */}
+        <OutreachTestimonialsSection />
+
 
         <ContactSection />
       </main>

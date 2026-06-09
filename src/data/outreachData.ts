@@ -208,6 +208,8 @@ export const outreachReliefFund = {
   goalCaption: 'to fund the next wave of relief operations across Cebu and the Visayas',
   goalAmount: 300000,
   currentAmount: 96000,
+  targetFamilies: 400,
+  targetFamiliesCaption: 'families targeted for immediate food relief',
 };
 
 export const outreachReliefItems: OutreachReliefItem[] = [

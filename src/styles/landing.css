@@ -13915,6 +13915,55 @@
   pointer-events: none;
 }
 
+/* Page-scoped alternating bands for Gateway Outreach */
+.gateway-outreach-page .project-banner-section,
+.gateway-outreach-page .outreach-gallery-section,
+.gateway-outreach-page .outreach-dropoff-section {
+  background: var(--color-cream, #f5f0e6);
+}
+
+.gateway-outreach-page .outreach-vision-section,
+.gateway-outreach-page .outreach-give-section,
+.gateway-outreach-page .outreach-testimonials-section {
+  background: var(--background-section, #ffffff);
+}
+
+.gateway-outreach-page .outreach-relief-section {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(212, 168, 75, 0.14), transparent 34%),
+    radial-gradient(circle at 88% 86%, rgba(74, 60, 110, 0.22), transparent 36%),
+    linear-gradient(180deg, #0d1424 0%, var(--color-navy-dark, #151e32) 54%, var(--color-navy, #1a2744) 100%);
+}
+
+.gateway-outreach-page .outreach-give-section::before {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(212, 168, 75, 0.08) 0%, transparent 46%),
+    radial-gradient(ellipse at 82% 76%, rgba(74, 60, 110, 0.08) 0%, transparent 44%);
+}
+
+.gateway-outreach-page .outreach-give-section::after {
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.35), transparent);
+}
+
+.gateway-outreach-page .outreach-give-title {
+  color: var(--text-heading, #020617) !important;
+}
+
+.gateway-outreach-page .outreach-give-subtitle {
+  color: var(--text-secondary, #1e293b) !important;
+}
+
+.gateway-outreach-page .outreach-give-section .compact-card {
+  border-color: rgba(26, 39, 68, 0.10) !important;
+  box-shadow: 0 8px 24px rgba(26, 39, 68, 0.08) !important;
+}
+
+.gateway-outreach-page .outreach-give-section .compact-card:hover {
+  box-shadow:
+    0 14px 34px rgba(26, 39, 68, 0.12),
+    0 0 0 1px rgba(212, 168, 75, 0.24) !important;
+}
+
 /* -------------------------------------------
    Outreach Initiatives Section
    ------------------------------------------- */
@@ -15611,69 +15660,153 @@
   scroll-margin-top: 90px;
 }
 
-/* ── Section shell ── */
 .outreach-relief-section {
-  background: #ffffff;
-  padding: 56px 0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(212, 168, 75, 0.14), transparent 34%),
+    radial-gradient(circle at 88% 86%, rgba(74, 60, 110, 0.22), transparent 36%),
+    linear-gradient(180deg, #0d1424 0%, var(--color-navy-dark, #151e32) 54%, var(--color-navy, #1a2744) 100%);
+  padding: 72px 0;
   position: relative;
+  color: var(--color-contrast-light, #ffffff);
+  overflow: hidden;
 }
 
-/* ── Section header ── */
 .outreach-relief-title {
   font-size: 36px;
   font-weight: 800;
-  color: var(--text-heading, #020617);
-  letter-spacing: -0.5px;
+  color: var(--color-contrast-light, #ffffff);
+  letter-spacing: 0;
   text-transform: uppercase;
   margin-bottom: 16px;
   line-height: 1.1;
 }
 
+.outreach-relief-section .outreach-relief-title {
+  color: var(--color-contrast-light, #ffffff);
+  letter-spacing: 0;
+}
+
 .outreach-relief-subtitle {
   font-size: 18px;
   font-weight: 500;
-  color: var(--text-secondary, #1e293b);
+  color: rgba(255, 255, 255, 0.78);
   max-width: 640px;
   margin: 0 auto;
   line-height: 1.7;
 }
 
-/* ── Goal card — navy gradient panel ── */
+.outreach-relief-section .outreach-relief-subtitle {
+  color: rgba(255, 255, 255, 0.78);
+}
+
 .outreach-relief-goal-card {
-  background: linear-gradient(135deg, var(--color-navy, #1a2744), var(--color-navy-dark, #151e32));
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 24px;
   padding: 36px 40px;
-  color: #ffffff;
+  color: var(--color-contrast-light, #ffffff);
   box-shadow:
-    0 20px 60px rgba(26, 39, 68, 0.30),
+    0 24px 60px rgba(26, 39, 68, 0.30),
     0 8px 24px rgba(26, 39, 68, 0.18);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   margin-top: 36px;
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Soft gold radial glow */
-.outreach-relief-goal-blur {
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(ellipse at center, rgba(212, 168, 75, 0.14) 0%, transparent 70%);
-  pointer-events: none;
+.outreach-relief-goal-card:hover {
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow:
+    0 24px 60px rgba(26, 39, 68, 0.34),
+    0 8px 24px rgba(26, 39, 68, 0.20);
 }
 
-/* ── Goal top row: headline left + percentage right ── */
+.outreach-relief-goal-blur {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 42%),
+    radial-gradient(circle at 12% 18%, rgba(212, 168, 75, 0.20) 0%, rgba(212, 168, 75, 0) 36%),
+    radial-gradient(circle at 90% 14%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 30%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 .outreach-relief-goal-top {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.outreach-relief-target-hero {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 240px;
+  padding: 30px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--color-primary-light, #e5c47a), var(--color-primary, #d4a84b));
+  color: var(--color-navy-dark, #151e32);
+  box-shadow:
+    0 22px 48px rgba(212, 168, 75, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.outreach-relief-target-eyebrow {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(21, 30, 50, 0.72);
+}
+
+.outreach-relief-target-number {
+  margin-top: 14px;
+  font-size: 86px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.outreach-relief-target-unit {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.outreach-relief-target-caption {
+  max-width: 280px;
+  margin-top: 14px;
+  color: rgba(21, 30, 50, 0.78);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.outreach-relief-goal-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.outreach-relief-goal-summary-top {
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  flex-wrap: wrap;
 }
 
 .outreach-relief-goal-headline {
@@ -15691,11 +15824,11 @@
 }
 
 .outreach-relief-goal-amount {
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 800;
   color: var(--color-primary-light, #e5c47a);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -1px;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -15718,7 +15851,7 @@
 .outreach-relief-goal-pct-value {
   font-size: 40px;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--color-contrast-light, #ffffff);
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
@@ -15731,9 +15864,10 @@
   color: var(--color-primary, #d4a84b);
 }
 
-/* ── Progress bar ── */
 .outreach-relief-progress {
   margin-top: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .outreach-relief-progress-track {
@@ -15770,23 +15904,25 @@
   }
 }
 
-/* ── Stats row ── */
 .outreach-relief-goal-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-top: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .outreach-relief-stat {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 16px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
+  min-width: 0;
 }
 
 .outreach-relief-stat-icon {
@@ -15820,101 +15956,94 @@
 .outreach-relief-stat-value {
   font-size: 18px;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--color-contrast-light, #ffffff);
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
 
-/* ── Items sub-header ── */
+.outreach-relief-stat-note {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.60);
+  line-height: 1.35;
+}
+
 .outreach-relief-items-head {
   text-align: center;
-  margin-top: 48px;
+  margin-top: 52px;
 }
 
 .outreach-relief-items-title {
   font-size: 26px;
   font-weight: 800;
-  color: var(--text-heading, #020617);
+  color: var(--color-contrast-light, #ffffff);
   text-transform: uppercase;
-  letter-spacing: -0.3px;
+  letter-spacing: 0;
   margin-bottom: 8px;
 }
 
 .outreach-relief-items-sub {
   font-size: 15px;
   font-weight: 500;
-  color: var(--text-secondary, #1e293b);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 /* ── Items grid ── */
 .outreach-relief-items-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
   margin-top: 24px;
+  padding: 12px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 18px;
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.20);
 }
 
-/* ── Single item card ── */
 .outreach-relief-item-card {
-  background: #ffffff;
-  border: 1px solid var(--border-color-light, #ddd5c4);
-  border-radius: 16px;
-  padding: 24px;
-  display: flex;
-  flex-direction: row;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
   align-items: flex-start;
-  gap: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 14px;
+  box-shadow: none;
+  transition: background 0.25s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* Gold bottom accent bar — scaleX on hover */
 .outreach-relief-item-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary, #d4a84b), var(--color-primary-light, #e5c47a));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
+  display: none;
 }
 
 .outreach-relief-item-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(212, 168, 75, 0.5);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.08),
-    0 4px 12px rgba(212, 168, 75, 0.12);
-}
-
-.outreach-relief-item-card:hover::after {
-  transform: scaleX(1);
+  background: rgba(212, 168, 75, 0.10);
 }
 
 /* Icon tile */
 .outreach-relief-item-icon {
-  width: 52px;
-  height: 52px;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
-  border-radius: 16px;
+  border-radius: 8px;
   background: rgba(212, 168, 75, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary, #d4a84b);
-  font-size: 20px;
-  transition: all 0.3s ease;
+  font-size: 16px;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .outreach-relief-item-card:hover .outreach-relief-item-icon {
-  border-radius: 50%;
   background: rgba(212, 168, 75, 0.18);
-  transform: rotate(-10deg) scale(1.1);
 }
 
 /* Body */
@@ -15924,18 +16053,18 @@
 }
 
 .outreach-relief-item-label {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 800;
   color: var(--text-heading, #020617);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   line-height: 1.2;
 }
 
 .outreach-relief-item-desc {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary, #1e293b);
-  line-height: 1.55;
+  line-height: 1.45;
   margin: 0;
 }
 
@@ -15949,7 +16078,7 @@
 }
 
 .outreach-relief-item-cost-value {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--color-primary-dark, #b8923f);
   font-variant-numeric: tabular-nums;
@@ -15957,7 +16086,7 @@
 }
 
 .outreach-relief-item-cost-unit {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.6px;
@@ -15977,10 +16106,17 @@
   align-items: center;
 }
 
-/* ── Responsive: tablet ≤ 900px — 2-col items, stat grid stacks ── */
 @media (max-width: 900px) {
+  .outreach-relief-goal-top {
+    grid-template-columns: 1fr;
+  }
+
+  .outreach-relief-goal-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .outreach-relief-items-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .outreach-relief-goal-amount {
@@ -15990,12 +16126,16 @@
   .outreach-relief-goal-pct-value {
     font-size: 32px;
   }
+
+  .outreach-relief-target-hero {
+    min-height: 0;
+  }
 }
 
 /* ── Responsive: ≤ 768px — stacks fully ── */
 @media (max-width: 768px) {
   .outreach-relief-section {
-    padding: 44px 0;
+    padding: 56px 0;
   }
 
   .outreach-relief-goal-card {
@@ -16003,7 +16143,7 @@
     margin-top: 28px;
   }
 
-  .outreach-relief-goal-top {
+  .outreach-relief-goal-summary-top {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -16014,6 +16154,14 @@
 
   .outreach-relief-goal-amount {
     font-size: 34px;
+  }
+
+  .outreach-relief-target-number {
+    font-size: 58px;
+  }
+
+  .outreach-relief-target-unit {
+    font-size: 18px;
   }
 
   .outreach-relief-goal-stats {
@@ -16029,11 +16177,25 @@
 @media (max-width: 560px) {
   .outreach-relief-items-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 0;
+    padding: 10px;
   }
 
   .outreach-relief-item-cost {
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .outreach-relief-item-card {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .outreach-relief-item-cost {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
   }
 }
 
