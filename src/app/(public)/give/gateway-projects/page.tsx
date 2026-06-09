@@ -108,7 +108,7 @@ export default function GatewayProjectsPage() {
         <ProjectBanner
           badge='Sow'
           targetId="gateway-give"
-          title="Build the future of Gateway with us."
+          title="Build the future of Gateway with us"
           buttonLabel="Give to Gateway Projects"
           buttonAriaLabel="Jump to Give to Gateway Projects section"
           ariaLabel="Partner With Us"

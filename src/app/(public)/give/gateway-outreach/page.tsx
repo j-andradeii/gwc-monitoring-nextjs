@@ -15,6 +15,7 @@ import {
   LandingFooter,
   PageHero,
   ContactSection,
+  ProjectBanner,
 } from '@/components/landing';
 
 import {
@@ -106,6 +107,16 @@ export default function GatewayOutreachPage() {
           //   { icon: 'pi pi-users', text: 'Disaster Response' },
           // ]}
         />
+
+        <ProjectBanner
+          badge='Support'
+          targetId="outreach-give"
+          title="Help us in reaching more communities in need"
+          buttonLabel="Partner with Us"
+          buttonAriaLabel="Jump to Give to Gateway Projects section"
+          ariaLabel="Partner with Us"
+        />
+        
 
         {/* Section 1: Pastor's Vision for Disaster Response */}
         <OutreachVisionSection />
