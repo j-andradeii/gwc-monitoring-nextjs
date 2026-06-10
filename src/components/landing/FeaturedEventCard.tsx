@@ -17,7 +17,7 @@ export const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({ event }) =
   return (
     <section style={{
       padding: '60px 0',
-      background: '#ffffff',
+      background: 'var(--color-ivory)',
       position: 'relative',
     }}>
       <div className="landing-container">
@@ -36,18 +36,21 @@ export const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({ event }) =
               alignItems: 'center',
               background: '#ffffff',
               borderRadius: '16px',
+              border: '1px solid var(--border-color)',
               overflow: 'hidden',
-              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.08)',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '0 10px 30px var(--shadow-color-soft)',
+              transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
             }}
             className="featured-event-grid"
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.12)';
+              e.currentTarget.style.borderColor = 'var(--primary-gold-accent)';
+              e.currentTarget.style.boxShadow = '0 18px 42px var(--shadow-color-medium), 0 0 0 1px rgba(212, 168, 75, 0.28)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.08)';
+              e.currentTarget.style.borderColor = 'var(--border-color)';
+              e.currentTarget.style.boxShadow = '0 10px 30px var(--shadow-color-soft)';
             }}
           >
             <div

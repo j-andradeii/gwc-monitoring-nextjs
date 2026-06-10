@@ -68,44 +68,47 @@ export default function SermonNotesClient() {
 
             {/* Main Content */}
             <main className="landing-main" style={{ paddingTop: 0 }}>
-                {/* Featured Sermon - White with subtle gold accent */}
+                {/* Featured Sermon - warm surface with design-system border contrast */}
                 {featuredSermon && selectedSeries === 'All Series' && searchQuery === '' && (
                     <section style={{
-                        padding: '60px 0',
-                        background: '#ffffff',
+                        padding: '48px 0',
+                        background: 'var(--color-ivory)',
                         position: 'relative',
                     }}>
                         <div className="landing-container">
-                            <div style={{ marginBottom: '24px' }}>
+                            <div style={{ marginBottom: '18px' }}>
                                 <span className="section-label">Latest Message</span>
                             </div>
                             <Link
                                 href={`/sermon-notes/${featuredSermon.slug}`}
-                                style={{ textDecoration: 'none', display: 'block' }}
+                                style={{ textDecoration: 'none', display: 'block', maxWidth: '1040px', margin: '0 auto' }}
                             >
                                 <div
                                     style={{
                                         display: 'grid',
                                         gridTemplateColumns: '1fr 1fr',
-                                        gap: '40px',
+                                        gap: '32px',
                                         alignItems: 'center',
                                         background: '#ffffff',
-                                        borderRadius: '16px',
+                                        borderRadius: '14px',
+                                        border: '1px solid var(--border-color)',
                                         overflow: 'hidden',
-                                        boxShadow: '0 10px 40px rgba(0, 0, 0, 0.08)',
-                                        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                        boxShadow: '0 10px 30px var(--shadow-color-soft)',
+                                        transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
                                     }}
                                     className="featured-sermon-grid"
                                     onMouseEnter={(e) => {
                                         e.currentTarget.style.transform = 'translateY(-4px)';
-                                        e.currentTarget.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.12)';
+                                        e.currentTarget.style.borderColor = 'var(--primary-gold-accent)';
+                                        e.currentTarget.style.boxShadow = '0 18px 42px var(--shadow-color-medium), 0 0 0 1px rgba(212, 168, 75, 0.28)';
                                     }}
                                     onMouseLeave={(e) => {
                                         e.currentTarget.style.transform = 'translateY(0)';
-                                        e.currentTarget.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.08)';
+                                        e.currentTarget.style.borderColor = 'var(--border-color)';
+                                        e.currentTarget.style.boxShadow = '0 10px 30px var(--shadow-color-soft)';
                                     }}
                                 >
-                                    <div style={{ position: 'relative', aspectRatio: '4/3' }}>
+                                    <div style={{ position: 'relative', aspectRatio: '16/10' }}>
                                         <Image
                                             src={featuredSermon.image}
                                             alt={featuredSermon.title}
@@ -126,20 +129,20 @@ export default function SermonNotesClient() {
                                             }}
                                             className="play-overlay"
                                         >
-                                            <i className="pi pi-play-circle" style={{ fontSize: '64px', color: 'white' }} />
+                                            <i className="pi pi-play-circle" style={{ fontSize: '54px', color: 'white' }} />
                                         </div>
                                     </div>
-                                    <div style={{ padding: '40px 40px 40px 0' }} className="featured-sermon-content">
+                                    <div style={{ padding: '32px 34px 32px 0' }} className="featured-sermon-content">
                                         <div
                                             style={{
                                                 display: 'inline-block',
-                                                padding: '6px 16px',
+                                                padding: '6px 14px',
                                                 backgroundColor: 'var(--primary-gold-accent)',
                                                 color: 'white',
                                                 borderRadius: '20px',
-                                                fontSize: '12px',
+                                                fontSize: '11px',
                                                 fontWeight: '600',
-                                                marginBottom: '16px',
+                                                marginBottom: '14px',
                                                 textTransform: 'uppercase',
                                                 letterSpacing: '0.5px',
                                             }}
@@ -151,10 +154,10 @@ export default function SermonNotesClient() {
                                         </h2>
                                         <p
                                             style={{
-                                                fontSize: '16px',
+                                                fontSize: '15px',
                                                 color: 'var(--text-secondary)',
-                                                marginBottom: '20px',
-                                                lineHeight: '1.7',
+                                                marginBottom: '18px',
+                                                lineHeight: '1.65',
                                             }}
                                         >
                                             {featuredSermon.excerpt}
@@ -163,8 +166,8 @@ export default function SermonNotesClient() {
                                             style={{
                                                 display: 'flex',
                                                 alignItems: 'center',
-                                                gap: '24px',
-                                                marginBottom: '20px',
+                                                gap: '18px',
+                                                marginBottom: '18px',
                                                 flexWrap: 'wrap',
                                             }}
                                         >
@@ -172,8 +175,8 @@ export default function SermonNotesClient() {
                                                 style={{
                                                     display: 'flex',
                                                     alignItems: 'center',
-                                                    gap: '8px',
-                                                    fontSize: '14px',
+                                                    gap: '7px',
+                                                    fontSize: '13px',
                                                     color: 'var(--text-secondary)',
                                                 }}
                                             >
@@ -184,8 +187,8 @@ export default function SermonNotesClient() {
                                                 style={{
                                                     display: 'flex',
                                                     alignItems: 'center',
-                                                    gap: '8px',
-                                                    fontSize: '14px',
+                                                    gap: '7px',
+                                                    fontSize: '13px',
                                                     color: 'var(--text-secondary)',
                                                 }}
                                             >
@@ -196,8 +199,8 @@ export default function SermonNotesClient() {
                                                 style={{
                                                     display: 'flex',
                                                     alignItems: 'center',
-                                                    gap: '8px',
-                                                    fontSize: '14px',
+                                                    gap: '7px',
+                                                    fontSize: '13px',
                                                     color: 'var(--text-secondary)',
                                                 }}
                                             >
@@ -402,18 +405,20 @@ export default function SermonNotesClient() {
                     </div>
                 </section>
 
-                {/* Sermon Notes Grid - Warm Cream Background */}
+                {/* Sermon Notes Grid - warm surface with higher-contrast cards */}
                 <section style={{
-                    padding: '60px 0',
-                    background: '#fff',
+                    padding: '52px 0',
+                    background: 'var(--color-ivory)',
                 }}>
                     <div className="landing-container">
                         {regularSermons.length > 0 ? (
                             <div
                                 style={{
                                     display: 'grid',
-                                    gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-                                    gap: '24px',
+                                    gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
+                                    gap: '20px',
+                                    maxWidth: '1040px',
+                                    margin: '0 auto',
                                 }}
                             >
                                 {regularSermons.map((sermon) => (
@@ -425,23 +430,26 @@ export default function SermonNotesClient() {
                                         <article
                                             style={{
                                                 backgroundColor: '#ffffff',
-                                                borderRadius: '16px',
+                                                borderRadius: '14px',
+                                                border: '1px solid var(--border-color)',
                                                 overflow: 'hidden',
-                                                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08)',
-                                                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                                boxShadow: '0 8px 24px var(--shadow-color-soft)',
+                                                transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
                                                 height: '100%',
                                             }}
                                             onMouseEnter={(e) => {
                                                 e.currentTarget.style.transform = 'translateY(-4px)';
-                                                e.currentTarget.style.boxShadow = '0 24px 50px rgba(0, 0, 0, 0.18), 0 8px 20px rgba(0, 0, 0, 0.12)';
+                                                e.currentTarget.style.borderColor = 'var(--primary-gold-accent)';
+                                                e.currentTarget.style.boxShadow = '0 16px 36px var(--shadow-color-medium), 0 0 0 1px rgba(212, 168, 75, 0.24)';
                                             }}
                                             onMouseLeave={(e) => {
                                                 e.currentTarget.style.transform = 'translateY(0)';
-                                                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08)';
+                                                e.currentTarget.style.borderColor = 'var(--border-color)';
+                                                e.currentTarget.style.boxShadow = '0 8px 24px var(--shadow-color-soft)';
                                             }}
                                         >
                                             {/* Card Image */}
-                                            <div style={{ position: 'relative', aspectRatio: '16/10' }}>
+                                            <div style={{ position: 'relative', aspectRatio: '16/9' }}>
                                                 <Image
                                                     src={sermon.image}
                                                     alt={sermon.title}
@@ -462,18 +470,18 @@ export default function SermonNotesClient() {
                                                     }}
                                                     className="card-play-overlay"
                                                 >
-                                                    <i className="pi pi-play-circle" style={{ fontSize: '48px', color: 'white' }} />
+                                                    <i className="pi pi-play-circle" style={{ fontSize: '40px', color: 'white' }} />
                                                 </div>
                                                 <div
                                                     style={{
                                                         position: 'absolute',
-                                                        top: '16px',
-                                                        left: '16px',
-                                                        padding: '6px 14px',
+                                                        top: '12px',
+                                                        left: '12px',
+                                                        padding: '5px 12px',
                                                         backgroundColor: 'var(--primary-gold-accent)',
                                                         color: 'white',
                                                         borderRadius: '20px',
-                                                        fontSize: '11px',
+                                                        fontSize: '10px',
                                                         fontWeight: '700',
                                                         textTransform: 'uppercase',
                                                         letterSpacing: '0.5px',
@@ -484,13 +492,13 @@ export default function SermonNotesClient() {
                                                 <div
                                                     style={{
                                                         position: 'absolute',
-                                                        bottom: '16px',
-                                                        right: '16px',
+                                                        bottom: '12px',
+                                                        right: '12px',
                                                         padding: '4px 10px',
                                                         backgroundColor: 'rgba(0,0,0,0.7)',
                                                         color: 'white',
                                                         borderRadius: '4px',
-                                                        fontSize: '12px',
+                                                        fontSize: '11px',
                                                         fontWeight: '600',
                                                     }}
                                                 >
@@ -499,11 +507,11 @@ export default function SermonNotesClient() {
                                             </div>
 
                                             {/* Card Content */}
-                                            <div style={{ padding: '24px' }}>
+                                            <div style={{ padding: '20px' }}>
                                                 <h3
                                                     style={{
-                                                        fontSize: '20px',
-                                                        marginBottom: '12px',
+                                                        fontSize: '18px',
+                                                        marginBottom: '10px',
                                                         color: 'var(--text-primary)',
                                                         lineHeight: '1.3',
                                                         fontWeight: 'bold'
@@ -514,10 +522,10 @@ export default function SermonNotesClient() {
 
                                                 <p
                                                     style={{
-                                                        fontSize: '14px',
+                                                        fontSize: '13.5px',
                                                         color: 'var(--text-secondary)',
-                                                        marginBottom: '16px',
-                                                        lineHeight: '1.6',
+                                                        marginBottom: '14px',
+                                                        lineHeight: '1.55',
                                                         display: '-webkit-box',
                                                         WebkitLineClamp: 2,
                                                         WebkitBoxOrient: 'vertical',
@@ -533,10 +541,10 @@ export default function SermonNotesClient() {
                                                         display: 'inline-flex',
                                                         alignItems: 'center',
                                                         gap: '6px',
-                                                        padding: '6px 12px',
+                                                        padding: '5px 10px',
                                                         backgroundColor: 'rgba(192, 160, 103, 0.1)',
                                                         borderRadius: '6px',
-                                                        marginBottom: '16px',
+                                                        marginBottom: '14px',
                                                     }}
                                                 >
                                                     <i
@@ -559,10 +567,10 @@ export default function SermonNotesClient() {
                                                     style={{
                                                         display: 'flex',
                                                         alignItems: 'center',
-                                                        gap: '16px',
-                                                        fontSize: '13px',
+                                                        gap: '14px',
+                                                        fontSize: '12.5px',
                                                         color: 'var(--text-secondary)',
-                                                        marginBottom: '16px',
+                                                        marginBottom: '14px',
                                                         flexWrap: 'wrap',
                                                     }}
                                                 >
@@ -595,7 +603,7 @@ export default function SermonNotesClient() {
                                                             key={tag}
                                                             style={{
                                                                 padding: '4px 10px',
-                                                                fontSize: '11px',
+                                                                fontSize: '10.5px',
                                                                 fontWeight: '500',
                                                                 backgroundColor: 'rgba(240, 180, 41, 0.12)',
                                                                 color: '#b8860b',

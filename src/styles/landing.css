@@ -3257,7 +3257,7 @@
    =========================================== */
 .events-grid-section {
   padding: 50px 0;
-  background: #fff;
+  background: var(--color-ivory);
 }
 
 .events-grid-header {
@@ -3318,15 +3318,15 @@
   overflow: hidden;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px var(--shadow-color-soft);
+  border: 1px solid var(--border-color);
   position: relative;
 }
 
 .event-grid-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(212, 168, 75, 0.15);
-  border-color: rgba(212, 168, 75, 0.3);
+  box-shadow: 0 18px 42px var(--shadow-color-medium), 0 0 0 1px rgba(212, 168, 75, 0.28);
+  border-color: var(--primary-gold-accent);
 }
 
 .event-grid-card::after {

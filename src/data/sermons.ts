@@ -5696,7 +5696,7 @@ No matter what season you are facing today, God remains faithful. As we continue
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     hideChurchName: true,
     excerpt: 'God did not create us merely to survive or maintain the status quo, He designed us to multiply.',
 
@@ -5947,6 +5947,203 @@ When we faithfully surrender what we have to God, He can accomplish far more tha
         kicker: 'Point 4 · Faith',
         verse: 'John 6:11-12',
         text: 'And Jesus took the loaves, and when He had given thanks He distributed them to the disciples, and the disciples to those sitting down; and likewise of the fish, as much as they wanted. So when they were filled, He said to His disciples, "Gather up the fragments that remain, so that nothing is lost."',
+      },
+    ],
+  },
+  {
+    id: '28',
+    slug: 'the-good-shepherd',
+    title: 'The Good Shepherd',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-06-07',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'Jesus is the Good Shepherd who knows His sheep, protects them, guides them, and lovingly redirects them when they wander.',
+
+    // Legacy fallback — still used for SEO description and legacy layout
+    description: `The Good Shepherd
+Key Verse: John 10:18–19
+
+
+Jesus is the Good Shepherd who knows His sheep, protects them, guides them, and lovingly redirects them when they wander. Unlike the hired hand who runs away when danger comes, He remains faithful, sacrificial, and committed to the care of His flock.
+
+As believers, we are called to recognize and follow the voice of our Shepherd. Left on our own, we tend to wander and follow our own desires, but God lovingly leads us back to the path that brings life, purpose, and peace.
+
+This message reminds us that the Good Shepherd not only protects us from danger but also directs our steps and corrects us in love.
+
+
+1. The Good Shepherd Protects His Sheep
+
+A shepherd's protection comes through relationship. The sheep are able to recognize and trust the voice of their shepherd because they know him personally.
+
+Within the sheepfold, there is safety, security, and belonging. God desires more than occasional encounters with us, He desires a relationship with us.
+
+The human heart is naturally prone to wander, but the Good Shepherd watches over His flock and protects them from harm. Unlike the hired hand who runs away when danger comes, Jesus remains faithful and sacrificial in His care for His people.
+
+Protection is found in staying close to the Shepherd and cultivating a relationship with Him.
+
+
+2. The Good Shepherd Gives Direction
+
+Without a shepherd, sheep become scattered and lost.
+
+God knows what is best for us. While we often desire to go our own way, the Shepherd lovingly guides us toward His purpose and plan.
+
+God is continually transforming us, from people who were once lost and wandering into individuals who can influence and lead others toward Him. This transformation does not happen through our own effort or striving, but through His strength working in our lives.
+
+The more we listen to His voice, the more clearly we understand the direction He has for us.
+
+Purpose is discovered when we follow the direction of the Good Shepherd rather than our own understanding.
+
+
+3. The Good Shepherd Corrects in Love
+
+A shepherd's rod and staff are not only tools of protection but also instruments of guidance and inspection.
+
+God's correction is never intended to harm us. Instead, it is a loving act that redirects us when we begin to drift away from His will.
+
+Our own path often leads to destruction, confusion, and spiritual separation. However, the Good Shepherd sees what we cannot see and gently leads us back to the right path.
+
+Because He knows us personally, His correction is always motivated by love and a desire to help us grow.
+
+God's correction is evidence of His care and commitment to our spiritual growth.
+
+
+Takeaways:
+
+* Jesus is the Good Shepherd who knows His sheep personally.
+* The Shepherd protects His flock and willingly sacrifices Himself for them.
+* Relationship with God is essential to recognizing His voice.
+* Without the Shepherd, we are prone to wander and become scattered.
+* God knows what is best for our lives and provides direction for our journey.
+* True transformation happens through God's strength, not our own striving.
+* God's correction is an act of love designed to guide us back to the right path.
+* The Good Shepherd guides, protects, corrects, and cares for His people faithfully.
+
+
+"The safest place for a sheep is near the Shepherd, listening to His voice and following His lead."
+
+
+Call to Action:
+
+This week, make a conscious decision to draw closer to the Good Shepherd.
+* Spend time listening to God's voice through prayer and His Word.
+* Trust His direction, even when you do not fully understand the path ahead.
+* Allow His correction to shape and strengthen your character.
+* Stay connected to the community of believers and avoid isolation.
+* Follow the Shepherd daily, knowing that He leads with wisdom, love, and purpose.
+
+
+When we stay close to the Good Shepherd, we find protection, direction, and correction that lead us into the abundant life He has prepared for us.`,
+
+    tags: ['Vision', 'Good Shepherd', 'Protection', 'Direction', 'Correction', 'Relationship', 'Obedience'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/good_shepherd.webp',
+    scriptures: [
+      {
+        verse: 'John 10:18-19',
+        text: 'No one takes it from Me, but I lay it down of Myself. I have power to lay it down, and I have power to take it again. This command I have received from My Father. Therefore there was a division again among the Jews because of these sayings.',
+      },
+    ],
+    keyPoints: [
+      'Jesus is the Good Shepherd who knows His sheep personally.',
+      'The Shepherd protects His flock and willingly sacrifices Himself for them.',
+      'Relationship with God is essential to recognizing His voice.',
+      'Without the Shepherd, we are prone to wander and become scattered.',
+      'God knows what is best for our lives and provides direction for our journey.',
+      'True transformation happens through God\'s strength, not our own striving.',
+      'God\'s correction is an act of love designed to guide us back to the right path.',
+      'The Good Shepherd guides, protects, corrects, and cares for His people faithfully.',
+    ],
+    relatedSermons: ['27', '19'],
+
+    // Redesigned layout opt-in fields (Modern Reader)
+    subtitle: {
+      prefix: 'The Good',
+      italic: 'Shepherd',
+    },
+    keyVerse: 'John 10:18–19',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'The Good Shepherd',
+        unnumbered: true,
+        paragraphs: [
+          'Jesus is the Good Shepherd who knows His sheep, protects them, guides them, and lovingly redirects them when they wander. Unlike the hired hand who runs away when danger comes, He remains faithful, sacrificial, and committed to the care of His flock.',
+          'As believers, we are called to recognize and follow the voice of our Shepherd. Left on our own, we tend to wander and follow our own desires, but God lovingly leads us back to the path that brings life, purpose, and peace.',
+          'This message reminds us that the Good Shepherd not only protects us from danger but also directs our steps and corrects us in love.',
+        ],
+      },
+      {
+        id: 'sec-protects',
+        kicker: 'Point 1 · Protection',
+        title: 'The Good Shepherd Protects His Sheep',
+        paragraphs: [
+          'A shepherd\'s protection comes through relationship. The sheep are able to recognize and trust the voice of their shepherd because they know him personally.',
+          'Within the sheepfold, there is safety, security, and belonging. God desires more than occasional encounters with us, He desires a relationship with us.',
+          'The human heart is naturally prone to wander, but the Good Shepherd watches over His flock and protects them from harm. Unlike the hired hand who runs away when danger comes, Jesus remains faithful and sacrificial in His care for His people.',
+          'Protection is found in staying close to the Shepherd and cultivating a relationship with Him.',
+        ],
+      },
+      {
+        id: 'sec-direction',
+        kicker: 'Point 2 · Direction',
+        title: 'The Good Shepherd Gives Direction',
+        paragraphs: [
+          'Without a shepherd, sheep become scattered and lost.',
+          'God knows what is best for us. While we often desire to go our own way, the Shepherd lovingly guides us toward His purpose and plan.',
+          'God is continually transforming us, from people who were once lost and wandering into individuals who can influence and lead others toward Him. This transformation does not happen through our own effort or striving, but through His strength working in our lives.',
+          'The more we listen to His voice, the more clearly we understand the direction He has for us.',
+          'Purpose is discovered when we follow the direction of the Good Shepherd rather than our own understanding.',
+        ],
+      },
+      {
+        id: 'sec-correction',
+        kicker: 'Point 3 · Correction',
+        title: 'The Good Shepherd Corrects in Love',
+        paragraphs: [
+          'A shepherd\'s rod and staff are not only tools of protection but also instruments of guidance and inspection.',
+          'God\'s correction is never intended to harm us. Instead, it is a loving act that redirects us when we begin to drift away from His will.',
+          'Our own path often leads to destruction, confusion, and spiritual separation. However, the Good Shepherd sees what we cannot see and gently leads us back to the right path.',
+          'Because He knows us personally, His correction is always motivated by love and a desire to help us grow.',
+          'God\'s correction is evidence of His care and commitment to our spiritual growth.',
+        ],
+        callout: 'The safest place for a sheep is near the Shepherd, listening to His voice and following His lead.',
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'This week, make a conscious decision to draw closer to the Good Shepherd.',
+          '- Spend time listening to God\'s voice through prayer and His Word.',
+          '- Trust His direction, even when you do not fully understand the path ahead.',
+          '- Allow His correction to shape and strengthen your character.',
+          '- Stay connected to the community of believers and avoid isolation.',
+          '- Follow the Shepherd daily, knowing that He leads with wisdom, love, and purpose.',
+          'When we stay close to the Good Shepherd, we find protection, direction, and correction that lead us into the abundant life He has prepared for us.',
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'Jesus is the Good Shepherd who knows His sheep personally.',
+      'The Shepherd protects His flock and willingly sacrifices Himself for them.',
+      'Relationship with God is essential to recognizing His voice.',
+      'Without the Shepherd, we are prone to wander and become scattered.',
+      'God knows what is best for our lives and provides direction for our journey.',
+      'True transformation happens through God\'s strength, not our own striving.',
+      'God\'s correction is an act of love designed to guide us back to the right path.',
+      'The Good Shepherd guides, protects, corrects, and cares for His people faithfully.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'John 10:18-19',
+        text: 'No one takes it from Me, but I lay it down of Myself. I have power to lay it down, and I have power to take it again. This command I have received from My Father. Therefore there was a division again among the Jews because of these sayings.',
       },
     ],
   },
