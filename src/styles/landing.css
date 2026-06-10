@@ -5974,13 +5974,14 @@
 
 /* Beliefs Accordion Styling */
 .beliefs-accordion {
-  max-width: 900px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
 .beliefs-accordion .p-accordion {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 14px;
 }
 
@@ -6470,6 +6471,10 @@
 
   .beliefs-accordion .p-accordion-content {
     padding: 4px 20px 24px 72px !important;
+  }
+
+  .beliefs-accordion .p-accordion {
+    grid-template-columns: 1fr;
   }
 
   .beliefs-accordion .p-accordion-header-link {

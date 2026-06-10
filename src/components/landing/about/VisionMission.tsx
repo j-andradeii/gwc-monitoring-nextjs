@@ -31,8 +31,11 @@ export const VisionMission: React.FC = () => {
             </div>
             <h3>Our Vision</h3>
             <p>
-              To be a community where people encounter God&apos;s presence and discover
-              their purpose, becoming everything He created them to be.
+              <strong>Love God Love People</strong><br/>
+              Then Jesus came to them and said, “All authority in heaven and on earth has been given to me. 
+              Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, 
+              and teaching them to obey everything I have commanded you. And surely I am with you always, to the very end of the age.” <br/> <br/>
+              - Matthew 28:18-20
             </p>
           </article>
 
@@ -45,9 +48,9 @@ export const VisionMission: React.FC = () => {
             </div>
             <h3>Our Mission</h3>
             <p>
-              Gateway Church exists to connect people to God and each other through
-              authentic worship, meaningful community, biblical teaching, and
-              compassionate service.
+            <strong>Make every Believer a Leader of Leaders</strong><br/>
+             And the things you have heard me say in the presence of many witnesses entrust to reliable people who will also be qualified to teach others.<br/> <br/>
+              - 2 Timothy 2:2
             </p>
           </article>
         </div>
