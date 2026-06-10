@@ -5965,7 +5965,7 @@ When we faithfully surrender what we have to God, He can accomplish far more tha
 
     // Legacy fallback — still used for SEO description and legacy layout
     description: `The Good Shepherd
-Key Verse: John 10:18–19
+Key Verse: John 10:9–19
 
 
 Jesus is the Good Shepherd who knows His sheep, protects them, guides them, and lovingly redirects them when they wander. Unlike the hired hand who runs away when danger comes, He remains faithful, sacrificial, and committed to the care of His flock.
@@ -6043,8 +6043,8 @@ When we stay close to the Good Shepherd, we find protection, direction, and corr
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/good_shepherd.webp',
     scriptures: [
       {
-        verse: 'John 10:18-19',
-        text: 'No one takes it from Me, but I lay it down of Myself. I have power to lay it down, and I have power to take it again. This command I have received from My Father. Therefore there was a division again among the Jews because of these sayings.',
+        verse: 'John 10:9-19',
+        text: 'I am the door. If anyone enters by Me, he will be saved, and will go in and out and find pasture. The thief does not come except to steal, and to kill, and to destroy. I have come that they may have life, and that they may have it more abundantly. I am the good shepherd. The good shepherd gives His life for the sheep. But a hireling, he who is not the shepherd, one who does not own the sheep, sees the wolf coming and leaves the sheep and flees; and the wolf catches the sheep and scatters them. The hireling flees because he is a hireling and does not care about the sheep. I am the good shepherd; and I know My sheep, and am known by My own. As the Father knows Me, even so I know the Father; and I lay down My life for the sheep. And other sheep I have which are not of this fold; them also I must bring, and they will hear My voice; and there will be one flock and one shepherd. Therefore My Father loves Me, because I lay down My life that I may take it again. No one takes it from Me, but I lay it down of Myself. I have power to lay it down, and I have power to take it again. This command I have received from My Father. Therefore there was a division again among the Jews because of these sayings.',
       },
     ],
     keyPoints: [
@@ -6064,7 +6064,7 @@ When we stay close to the Good Shepherd, we find protection, direction, and corr
       prefix: 'The Good',
       italic: 'Shepherd',
     },
-    keyVerse: 'John 10:18–19',
+    keyVerse: 'John 10:9–19',
     sections: [
       {
         id: 'sec-intro',
@@ -6142,8 +6142,8 @@ When we stay close to the Good Shepherd, we find protection, direction, and corr
     scriptureGroups: [
       {
         kicker: 'Key Verse',
-        verse: 'John 10:18-19',
-        text: 'No one takes it from Me, but I lay it down of Myself. I have power to lay it down, and I have power to take it again. This command I have received from My Father. Therefore there was a division again among the Jews because of these sayings.',
+        verse: 'John 10:9-19',
+        text: 'I am the door. If anyone enters by Me, he will be saved, and will go in and out and find pasture. The thief does not come except to steal, and to kill, and to destroy. I have come that they may have life, and that they may have it more abundantly. I am the good shepherd. The good shepherd gives His life for the sheep. But a hireling, he who is not the shepherd, one who does not own the sheep, sees the wolf coming and leaves the sheep and flees; and the wolf catches the sheep and scatters them. The hireling flees because he is a hireling and does not care about the sheep. I am the good shepherd; and I know My sheep, and am known by My own. As the Father knows Me, even so I know the Father; and I lay down My life for the sheep. And other sheep I have which are not of this fold; them also I must bring, and they will hear My voice; and there will be one flock and one shepherd. Therefore My Father loves Me, because I lay down My life that I may take it again. No one takes it from Me, but I lay it down of Myself. I have power to lay it down, and I have power to take it again. This command I have received from My Father. Therefore there was a division again among the Jews because of these sayings.',
       },
     ],
   },
