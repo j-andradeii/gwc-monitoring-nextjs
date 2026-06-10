@@ -5393,7 +5393,7 @@
 
 .vision-mission-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 34px;
 }
 
 .vision-mission-header h2 {
@@ -5405,8 +5405,8 @@
 .vision-mission-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 40px;
+  gap: 18px;
+  margin-bottom: 26px;
 }
 
 /* Shared modern card */
@@ -5414,8 +5414,8 @@
   --vm-index: 0;
   --vm-delay: calc(var(--vm-index) * 140ms);
   position: relative;
-  padding: 32px 30px;
-  border-radius: 16px;
+  padding: 24px 24px;
+  border-radius: 14px;
   overflow: hidden;
   isolation: isolate;
   display: flex;
@@ -5440,13 +5440,13 @@
 
 .vm-card-icon {
   position: relative;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   z-index: 1;
   transition:
     transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -5460,7 +5460,7 @@
 }
 
 .vm-card-icon i {
-  font-size: 22px;
+  font-size: 18px;
   position: relative;
   z-index: 1;
 }
@@ -5469,10 +5469,11 @@
 .vm-card h3 {
   position: relative;
   z-index: 1;
-  font-size: 1.25rem;
+  font-size: 1.12rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
   letter-spacing: -0.3px;
+  line-height: 1.25;
 }
 
 .vm-card p {
@@ -5481,6 +5482,59 @@
   font-size: 15px;
   line-height: 1.7;
   margin: 0;
+}
+
+.vm-card-eyebrow {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.vm-card-eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.vm-card-verse {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.62;
+}
+
+.vm-card-cite {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 14px;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.vm-card-cite::before {
+  content: '';
+  width: 14px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  opacity: 0.85;
 }
 
 
@@ -5500,7 +5554,7 @@
   content: '';
   position: absolute;
   inset: -1px;
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 1px;
   background: linear-gradient(135deg,
       rgba(212, 168, 75, 0.7) 0%,
@@ -5550,6 +5604,15 @@
   color: var(--text-secondary);
 }
 
+.vm-card--light .vm-card-eyebrow,
+.vm-card--light .vm-card-cite {
+  color: var(--color-primary-dark, #b8923f);
+}
+
+.vm-card--light .vm-card-verse {
+  color: var(--text-secondary);
+}
+
 /* Dark variant — Mission */
 .vm-card--dark {
   background:
@@ -5567,7 +5630,7 @@
   content: '';
   position: absolute;
   inset: -1px;
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 1px;
   background: linear-gradient(135deg,
       rgba(212, 168, 75, 0.85) 0%,
@@ -5617,6 +5680,15 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
+.vm-card--dark .vm-card-eyebrow,
+.vm-card--dark .vm-card-cite {
+  color: var(--primary-gold-accent);
+}
+
+.vm-card--dark .vm-card-verse {
+  color: rgba(255, 255, 255, 0.80);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .vm-card {
     animation: none !important;
@@ -5628,8 +5700,8 @@
 .vm-pathway-section {
   position: relative;
   z-index: 1;
-  margin-top: 40px;
-  padding-top: 32px;
+  margin-top: 30px;
+  padding-top: 26px;
   border-top: 1px solid rgba(26, 39, 68, 0.10);
 }
 
@@ -5637,7 +5709,7 @@
   grid-template-columns: minmax(0, 1fr) 300px;
   align-items: end;
   gap: 44px;
-  margin-bottom: 34px;
+  margin-bottom: 26px;
 }
 
 .vm-pathway-content {
@@ -5650,11 +5722,11 @@
 
 .vm-pathway-content h3 {
   color: #1a2744;
-  font-size: clamp(1.4rem, 2.5vw, 1.875rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   line-height: 1.25;
   font-weight: 800;
   letter-spacing: 0;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 .vm-pathway-content p {
@@ -6416,11 +6488,11 @@
 
   .vision-card,
   .mission-card {
-    padding: 36px 28px 36px;
+    padding: 24px 22px;
   }
 
   .vm-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.05rem;
   }
 
   .pillars-grid {
@@ -10780,7 +10852,7 @@
 
 .vm-vibrant-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 26px;
   position: relative;
 }
 
@@ -10789,12 +10861,12 @@
 }
 
 .vm-vibrant-header h2 {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(1.55rem, 2.6vw, 2.05rem);
   line-height: 1;
   font-weight: 800;
   color: #1a2744;
   letter-spacing: -0.5px;
-  margin: 8px 0 14px;
+  margin: 6px 0 12px;
   text-transform: none;
 }
 
@@ -10826,10 +10898,10 @@
 
 
 .vm-vibrant-subtitle {
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
   color: #4a5468;
-  max-width: 620px;
+  max-width: 560px;
   margin: 0 auto;
   font-weight: 500;
 }
