@@ -97,7 +97,7 @@ const breadcrumbJsonLd = {
  * The Impact↔Gallery band swap lives in the `.relief-fund-hidden` overrides in
  * `landing.css` (page-scoped band block). No other section needs to change.
  */
-const SHOW_RELIEF_FUND = true;
+const SHOW_RELIEF_FUND = false;
 
 export default function GatewayOutreachPage() {
   return (
