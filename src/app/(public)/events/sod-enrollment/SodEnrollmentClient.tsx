@@ -32,6 +32,14 @@ const SOD_CLASS_OPTIONS = [
   { label: 'School of Destiny 2', value: 'School of Destiny 2' },
 ];
 
+// Server-side body ceiling. The proof image is POSTed THROUGH the route
+// (multipart), so it must stay under Vercel's ~4.5 MB serverless body limit —
+// exceeding it returns an opaque HTML "A server error occurred" page, not our
+// JSON error. The client converter downscales every upload well below this; the
+// guard below catches the rare case where decoding failed and the original
+// (e.g. a multi-MB iPhone HEIC) was returned untouched.
+const SOD_UPLOAD_SAFE_BYTES = 4 * 1024 * 1024; // 4 MB
+
 // Client-side form schema = enrollment fields + the optional proof-of-payment File.
 // (The server route validates the fields + the resulting Blob URL instead.)
 const proofOfPaymentSchema = z
@@ -568,6 +576,21 @@ export default function SodEnrollmentClient() {
                                     } catch {
                                       finalFile = stable; // the server re-encodes to WebP; never lose the upload
                                     }
+
+                                    // Safety net for the rare device where decoding failed and the original
+                                    // was returned untouched. A still-HEIC file can't render in the preview
+                                    // and the server can't decode it; an oversized file blows past Vercel's
+                                    // body limit → opaque "server error". In both cases, guide the user to a
+                                    // working format instead of letting the submit fail cryptically.
+                                    const stillUndecodable = /image\/(heic|heif)/i.test(finalFile.type);
+                                    if (stillUndecodable || finalFile.size > SOD_UPLOAD_SAFE_BYTES) {
+                                      setUploadError(
+                                        'We couldn’t process that photo on your device. Please take a screenshot of it (or save a copy as JPG) and upload that instead.'
+                                      );
+                                      field.onChange(undefined);
+                                      return;
+                                    }
+
                                     field.onChange(finalFile);
                                   } catch {
                                     setUploadError('We couldn’t read that file. If you dragged a screenshot preview, save it to your device first, then upload it.');
