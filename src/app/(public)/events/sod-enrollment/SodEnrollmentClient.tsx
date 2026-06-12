@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useState, useId } from 'react';
+import { useState, useId, useRef, useEffect } from 'react';
 import { useForm, FormProvider, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Checkbox } from 'primereact/checkbox';
 import { RadioButton } from 'primereact/radiobutton';
 import { LandingHeader, LandingFooter, PageHero } from '@/components/landing';
 import { FormInput, FormCalendar, FormSelect, CalendarViewType } from '@/components/forms';
-import { sodEnrollmentSchema, type SodEnrollmentData } from '@/models/schemas/sod.schema';
+import { sodEnrollmentSchema, SOD_PROOF_MAX_BYTES, SOD_PROOF_ACCEPT } from '@/models/schemas/sod.schema';
 import { useMutation } from '@tanstack/react-query';
-import { apiClient } from '@/services/api-client';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
@@ -28,13 +28,29 @@ const SOD_CLASS_OPTIONS = [
   { label: 'School of Destiny 2', value: 'School of Destiny 2' },
 ];
 
+// Client-side form schema = enrollment fields + the proof-of-payment File.
+// (The server route validates the fields + the resulting Blob URL instead.)
+const proofOfPaymentSchema = z
+  .instanceof(File, { message: 'Please upload your proof of payment' })
+  .refine((file) => file.size > 0, 'Please upload your proof of payment')
+  .refine((file) => file.size <= SOD_PROOF_MAX_BYTES, 'File must be 10 MB or smaller')
+  .refine((file) => file.type.startsWith('image/'), 'Please upload an image file');
+
+const sodEnrollmentFormSchema = sodEnrollmentSchema.extend({
+  proofOfPayment: proofOfPaymentSchema,
+});
+
+type SodEnrollmentFormData = z.infer<typeof sodEnrollmentFormSchema>;
+
 export default function SodEnrollmentClient() {
   const [enrolledName, setEnrolledName] = useState<string | null>(null);
   const checkboxGroupId = useId();
   const radioGroupId = useId();
 
-  const methods = useForm<SodEnrollmentData>({
-    resolver: zodResolver(sodEnrollmentSchema),
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const methods = useForm<SodEnrollmentFormData>({
+    resolver: zodResolver(sodEnrollmentFormSchema),
     mode: 'onChange',
     defaultValues: {
       surname: '',
@@ -46,14 +62,56 @@ export default function SodEnrollmentClient() {
       classToEnroll: undefined,
       category: undefined,
       status: [],
+      amountSent: '',
+      proofOfPayment: undefined,
     },
   });
 
   const { handleSubmit, reset } = methods;
 
+  // Live preview for the selected proof-of-payment image.
+  // eslint-disable-next-line react-hooks/incompatible-library
+  const proofFile = methods.watch('proofOfPayment') as File | undefined;
+  const [proofPreview, setProofPreview] = useState<string | null>(null);
+  useEffect(() => {
+    if (proofFile instanceof File) {
+      const objectUrl = URL.createObjectURL(proofFile);
+      setProofPreview(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
+    }
+    setProofPreview(null);
+  }, [proofFile]);
+
   const submitSodEnrollment = useMutation({
-    mutationFn: (data: SodEnrollmentData) =>
-      apiClient.post('/api/inquiry/sod-enrollment', data),
+    mutationFn: async (data: SodEnrollmentFormData) => {
+      // Send everything (incl. the proof image) as multipart/form-data so the
+      // route can upload the file straight to Google Drive and embed it in the
+      // ENROLLEES sheet via =IMAGE(). apiClient is JSON-only, so we use fetch.
+      const formData = new FormData();
+      formData.append('surname', data.surname);
+      formData.append('givenName', data.givenName);
+      formData.append('middleName', data.middleName);
+      formData.append('mobileNumber', data.mobileNumber);
+      formData.append('birthdate', data.birthdate ? data.birthdate.toISOString() : '');
+      formData.append('cellLeader', data.cellLeader);
+      formData.append('classToEnroll', data.classToEnroll);
+      formData.append('category', data.category);
+      formData.append('status', JSON.stringify(data.status));
+      formData.append('amountSent', data.amountSent);
+      formData.append('proofOfPayment', data.proofOfPayment);
+
+      const response = await fetch('/api/events/sod-enrollment', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.error || err.message || 'Submission failed');
+      }
+
+      return response.json();
+    },
     onSuccess: () => {
       reset();
       window.scrollTo({
@@ -63,13 +121,13 @@ export default function SodEnrollmentClient() {
     },
   });
 
-  const onSubmit = (data: SodEnrollmentData) => {
+  const onSubmit = (data: SodEnrollmentFormData) => {
     setEnrolledName(`${data.givenName} ${data.surname}`);
     submitSodEnrollment.mutate(data);
   };
 
   return (
-    <div className="landing-page" style={{ background: '#fcfcfd' }}>
+    <div className="landing-page sod-enrollment-page" style={{ background: '#fcfcfd' }}>
       <LandingHeader />
 
       <PageHero
@@ -165,6 +223,8 @@ export default function SodEnrollmentClient() {
                         classToEnroll: undefined,
                         category: undefined,
                         status: [],
+                        amountSent: '',
+                        proofOfPayment: undefined,
                       });
                       setEnrolledName(null);
                     }}
@@ -238,14 +298,9 @@ export default function SodEnrollmentClient() {
                           calendarView={CalendarViewType.DATE}
                           format="mm/dd/yy"
                         />
-                        <FormInput
-                          name="cellLeader"
-                          label="Cell Leader Name"
-                          placeholder="Name of your cell leader"
-                          showRequired
-                          className="modern-field"
-                        />
                       </div>
+
+               
                     </div>
 
                     {/* Section 02: Enrollment Details */}
@@ -253,6 +308,16 @@ export default function SodEnrollmentClient() {
                       <div className="section-title">
                         <span className="section-number">02</span>
                         <h4>Enrollment Details</h4>
+                      </div>
+
+                      <div className="form-row sod-form-row-1col mt-3 mb-3">
+                        <FormInput
+                          name="cellLeader"
+                          label="Cell Leader Name"
+                          placeholder="Name of your cell leader"
+                          showRequired
+                          className="modern-field"
+                        />
                       </div>
 
                       <FormSelect
@@ -263,7 +328,7 @@ export default function SodEnrollmentClient() {
                         options={SOD_CLASS_OPTIONS}
                       />
 
-                      <div style={{ marginTop: '20px' }}>
+                      <div style={{ marginTop: '16px' }}>
                         <Controller
                           name="category"
                           control={methods.control}
@@ -372,6 +437,160 @@ export default function SodEnrollmentClient() {
                           </fieldset>
                         )}
                       />
+                    </div>
+
+                    {/* Section 04: Proof of Payment */}
+                    <div className="form-section sod-payment-section">
+                      <div className="section-title">
+                        <span className="section-number">04</span>
+                        <h4>Proof of Payment</h4>
+                      </div>
+
+                      <p className="sod-payment-intro">
+                        Pay the <strong>₱500</strong> enrollment fee by scanning either QR
+                        code below, then upload your proof of payment to confirm your slot.
+                      </p>
+
+                      <div className="sod-payment-grid">
+                        <div className="sod-payment-card">
+                          <span className="sod-payment-bank">
+                            <i className="pi pi-credit-card"></i>
+                            BPI
+                          </span>
+                          <span className="sod-payment-qr-frame">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
+                              alt="BPI payment QR code for School of Destiny enrollment"
+                              className="sod-payment-qr"
+                              loading="lazy"
+                            />
+                          </span>
+                          <span className="sod-payment-scan">
+                            <i className="pi pi-qrcode"></i>
+                            Scan to pay
+                          </span>
+                        </div>
+
+                        <div className="sod-payment-card">
+                          <span className="sod-payment-bank">
+                            <i className="pi pi-wallet"></i>
+                            GCash
+                          </span>
+                          <span className="sod-payment-qr-frame">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
+                              alt="GCash payment QR code for School of Destiny enrollment"
+                              className="sod-payment-qr"
+                              loading="lazy"
+                            />
+                          </span>
+                          <span className="sod-payment-scan">
+                            <i className="pi pi-qrcode"></i>
+                            Scan to pay
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="sod-amount-field">
+                        <FormInput
+                          name="amountSent"
+                          label="Payment Amount Sent"
+                          placeholder="e.g. 500"
+                          showRequired
+                          className="modern-field"
+                        />
+                      </div>
+
+                      <div className="sod-upload-field">
+                        <span className="sod-upload-label">
+                          Upload proof of payment
+                          <span className="form-required" aria-hidden="true">*</span>
+                        </span>
+                        <span className="sod-upload-sublabel">Upload 1 supported image. Max 10 MB.</span>
+
+                        <Controller
+                          name="proofOfPayment"
+                          control={methods.control}
+                          render={({ field, fieldState }) => (
+                            <div className="sod-upload">
+                              <input
+                                ref={fileInputRef}
+                                type="file"
+                                accept={SOD_PROOF_ACCEPT}
+                                className="sod-upload-input"
+                                onChange={(e) => {
+                                  field.onChange(e.target.files?.[0] ?? undefined);
+                                  field.onBlur();
+                                  e.target.value = '';
+                                }}
+                              />
+
+                              {proofPreview ? (
+                                <div className="sod-upload-preview">
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img
+                                    src={proofPreview}
+                                    alt="Proof of payment preview"
+                                    className="sod-upload-thumb"
+                                  />
+                                  <div className="sod-upload-meta">
+                                    <span className="sod-upload-filename">{proofFile?.name}</span>
+                                    <span className="sod-upload-size">
+                                      {((proofFile?.size ?? 0) / (1024 * 1024)).toFixed(2)} MB
+                                    </span>
+                                    <div className="sod-upload-actions">
+                                      <button
+                                        type="button"
+                                        className="sod-upload-change"
+                                        onClick={() => fileInputRef.current?.click()}
+                                      >
+                                        Change
+                                      </button>
+                                      <button
+                                        type="button"
+                                        className="sod-upload-remove"
+                                        onClick={() => {
+                                          field.onChange(undefined);
+                                          field.onBlur();
+                                        }}
+                                      >
+                                        Remove
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <button
+                                  type="button"
+                                  className="sod-upload-dropzone"
+                                  onClick={() => fileInputRef.current?.click()}
+                                >
+                                  <i className="pi pi-cloud-upload"></i>
+                                  <span className="sod-upload-cta">Add file</span>
+                                  <span className="sod-upload-hint">Tap to upload a screenshot · Max 10 MB</span>
+                                </button>
+                              )}
+
+                              {fieldState.invalid && fieldState.error?.message && (
+                                <p className="sod-radio-error" role="alert">
+                                  <i className="pi pi-exclamation-circle"></i>
+                                  {fieldState.error.message}
+                                </p>
+                              )}
+                            </div>
+                          )}
+                        />
+                      </div>
+
+                      <p className="sod-payment-note">
+                        <i className="pi pi-info-circle"></i>
+                        <span>
+                          Your enrollment is confirmed once we verify your payment. Questions?
+                          Message <strong>KC</strong>.
+                        </span>
+                      </p>
                     </div>
 
                     <div className="form-actions">

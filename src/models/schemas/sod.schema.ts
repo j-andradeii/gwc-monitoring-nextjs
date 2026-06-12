@@ -10,6 +10,14 @@ export const sodEnrollmentSchema = z.object({
   classToEnroll: z.enum(['School of Destiny 1', 'School of Destiny 2'], { message: 'Please select which class to enroll' }),
   category: z.enum(['Student', 'Working Professional', 'Parent'], { message: 'Please select your category' }),
   status: z.array(z.string()).min(1, 'Please choose at least one status'),
+  amountSent: z.string().min(1, 'Please enter the amount you sent'),
 });
 
 export type SodEnrollmentData = z.infer<typeof sodEnrollmentSchema>;
+
+/**
+ * Proof-of-payment upload constraints — shared by the client-side file
+ * validation and the server route that uploads the image to Google Drive.
+ */
+export const SOD_PROOF_MAX_BYTES = 10 * 1024 * 1024; // 10 MB
+export const SOD_PROOF_ACCEPT = 'image/*';

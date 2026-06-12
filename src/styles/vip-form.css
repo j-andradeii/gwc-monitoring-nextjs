@@ -308,6 +308,13 @@
     }
 }
 
+/* Single-column row — explicit, tight gap so the Enrollment Details
+   fields keep an even rhythm around the bare select. */
+.sod-form-row-1col {
+    grid-template-columns: 1fr;
+    margin-bottom: 16px;
+}
+
 /* ---- Welcome card polish (scoped to .sod-welcome-card, no .vip-* edits) ---- */
 
 /* Let the richer content define the height instead of clipping at 600px */
@@ -702,5 +709,298 @@
 
     .sod-radio-input .p-radiobutton-box {
         transition: none;
+    }
+}
+
+/* ============================================================
+   SOD ENROLLMENT — page-scoped polish
+   Everything below is scoped under .sod-enrollment-page so the
+   SHARED VIP form (vip-form/VipFormClient) is left untouched:
+   tighter vertical rhythm, bolder labels + required indicator,
+   the Step 04 payment-QR section, and a tighter mobile layout.
+   ============================================================ */
+
+/* --- Tighter vertical rhythm (was 40 / 25 / 20 / 40) --- */
+.sod-enrollment-page .form-header {
+    margin-bottom: 22px;
+}
+
+.sod-enrollment-page .form-section {
+    margin-bottom: 26px;
+}
+
+.sod-enrollment-page .section-title {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+}
+
+.sod-enrollment-page .form-row {
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* --- Bolder field labels + stronger required indicator --- */
+.sod-enrollment-page .advanced-vip-form label:not(.sod-radio-option):not(.sod-status-option) {
+    font-weight: 600;
+}
+
+.sod-enrollment-page .sod-radio-legend,
+.sod-enrollment-page .sod-status-legend {
+    font-weight: 700;
+}
+
+.sod-enrollment-page .form-required {
+    font-weight: 800;
+    font-size: 1.05em;
+    margin-left: 5px;
+}
+
+/* --- Step 04: Proof of Payment --- */
+.sod-payment-intro {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary, #475569);
+}
+
+.sod-payment-intro strong {
+    color: var(--text-heading, #0f172a);
+    font-weight: 700;
+}
+
+.sod-payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* Payment amount the enrollee sent — sits between the QR grid and the upload field */
+.sod-amount-field {
+    margin-top: 20px;
+}
+
+.sod-payment-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1.5px solid rgba(212, 168, 75, 0.55);
+    background: #ffffff;
+    box-shadow: 0 0 0 1px rgba(26, 39, 68, 0.06),
+                0 3px 8px rgba(26, 39, 68, 0.09),
+                0 16px 36px rgba(26, 39, 68, 0.14);
+}
+
+.sod-payment-bank {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-heading, #0f172a);
+}
+
+.sod-payment-bank i {
+    font-size: 18px;
+    color: var(--primary-gold-accent, #d4a84b);
+}
+
+.sod-payment-qr-frame {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
+    padding: 8px;
+    background: #ffffff;
+    border: 1px solid var(--border-color-light, #ddd5c4);
+    border-radius: 12px;
+}
+
+.sod-payment-qr {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.sod-payment-scan {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: var(--color-primary-dark, #b8923f);
+}
+
+.sod-payment-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 168, 75, 0.30);
+    background: rgba(212, 168, 75, 0.08);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary, #475569);
+}
+
+.sod-payment-note i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-primary-dark, #b8923f);
+}
+
+.sod-payment-note strong {
+    color: var(--text-heading, #0f172a);
+    font-weight: 700;
+}
+
+/* --- Proof-of-payment upload field --- */
+.sod-upload-field {
+    margin-top: 20px;
+}
+
+.sod-upload-label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-heading, #0f172a);
+}
+
+.sod-upload-sublabel {
+    display: block;
+    margin: 2px 0 10px;
+    font-size: 12px;
+    color: var(--text-secondary, #64748b);
+}
+
+.sod-upload-input {
+    display: none;
+}
+
+.sod-upload-dropzone {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 22px 16px;
+    border-radius: 14px;
+    border: 1.5px dashed rgba(212, 168, 75, 0.6);
+    background: rgba(212, 168, 75, 0.05);
+    color: var(--color-primary-dark, #b8923f);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.sod-upload-dropzone:hover {
+    border-color: var(--primary-gold-accent, #d4a84b);
+    background: rgba(212, 168, 75, 0.1);
+}
+
+.sod-upload-dropzone i {
+    font-size: 24px;
+}
+
+.sod-upload-cta {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.sod-upload-hint {
+    font-size: 12px;
+    color: var(--text-secondary, #64748b);
+}
+
+.sod-upload-preview {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(212, 168, 75, 0.55);
+    background: #ffffff;
+    box-shadow: 0 0 0 1px rgba(26, 39, 68, 0.06),
+                0 3px 8px rgba(26, 39, 68, 0.09);
+}
+
+.sod-upload-thumb {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+.sod-upload-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.sod-upload-filename {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-heading, #0f172a);
+    word-break: break-word;
+}
+
+.sod-upload-size {
+    font-size: 12px;
+    color: var(--text-secondary, #64748b);
+}
+
+.sod-upload-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.sod-upload-change,
+.sod-upload-remove {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sod-upload-change {
+    color: var(--color-primary-dark, #b8923f);
+}
+
+.sod-upload-remove {
+    color: var(--velvet, #DA4453);
+}
+
+/* --- Mobile: tighter side padding + stacked QRs --- */
+@media (max-width: 640px) {
+    .sod-enrollment-page .landing-container {
+        padding: 0 12px;
+    }
+
+    .sod-enrollment-page .vip-form-container {
+        padding: 24px 16px;
+        border-radius: 22px;
+    }
+
+    .sod-payment-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .sod-payment-qr-frame {
+        max-width: 220px;
     }
 }
