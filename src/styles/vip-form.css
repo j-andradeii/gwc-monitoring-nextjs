@@ -862,6 +862,14 @@
     font-weight: 700;
 }
 
+/* --- QR download button (SOD-scoped; base .download-qr-btn is shared — do NOT touch it) --- */
+.sod-enrollment-page .sod-payment-download {
+    width: 100%;
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* --- Proof-of-payment upload field --- */
 .sod-upload-field {
     margin-top: 20px;
