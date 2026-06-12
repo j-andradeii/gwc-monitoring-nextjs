@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { put } from '@vercel/blob';
+import sharp from 'sharp';
 import { sodEnrollmentSchema, SOD_PROOF_MAX_BYTES } from '@/models/schemas/sod.schema';
 
 export const runtime = 'nodejs';
@@ -27,17 +28,47 @@ interface SheetResult {
 }
 
 /**
+ * Guarantee the proof image is stored as WebP. The client already converts most
+ * uploads (canvas), but that is best-effort — older browsers, decode errors, and
+ * HEIC photos can slip through as the original format. This re-encodes server-side
+ * with sharp so the stored Blob is always WebP for any decodable raster image.
+ * On any failure (e.g. HEIC without libheif) it returns the ORIGINAL bytes so the
+ * upload is never lost.
+ */
+async function ensureWebp(
+  proof: Blob
+): Promise<{ buffer: Buffer; mime: string; ext: string }> {
+  const inputBuffer = Buffer.from(await proof.arrayBuffer());
+  const originalMime = proof.type || 'image/png';
+
+  // Already WebP (e.g. the client conversion succeeded) — no re-encode needed.
+  if (originalMime === 'image/webp') {
+    return { buffer: inputBuffer, mime: 'image/webp', ext: 'webp' };
+  }
+
+  try {
+    // .rotate() with no args auto-orients from EXIF before the orientation tag is
+    // dropped in the WebP output (important for phone-camera proof photos).
+    const webpBuffer = await sharp(inputBuffer).rotate().webp({ quality: 90 }).toBuffer();
+    return { buffer: webpBuffer, mime: 'image/webp', ext: 'webp' };
+  } catch (conversionError) {
+    console.error('Server-side WebP conversion failed; storing original:', conversionError);
+    const ext = (originalMime.split('/')[1] || 'png').split('+')[0].replace('jpeg', 'jpg');
+    return { buffer: inputBuffer, mime: originalMime, ext };
+  }
+}
+
+/**
  * Upload the proof image to Vercel Blob and return its public URL (used by the
  * sheet's =IMAGE() cell). Reads `BLOB_READ_WRITE_TOKEN` from the environment —
  * auto-injected on Vercel when the Blob store is linked to the project; add it
  * to `.env.local` (e.g. via `vercel env pull`) for local development.
  */
 async function uploadProofToBlob(proof: Blob, surname: string): Promise<string> {
-  const mime = proof.type || 'image/png';
-  const ext = (mime.split('/')[1] || 'png').split('+')[0].replace('jpeg', 'jpg');
+  const { buffer, mime, ext } = await ensureWebp(proof);
   const safeBase = `${surname || 'enrollee'}`.replace(/[^a-zA-Z0-9._-]/g, '_');
 
-  const blob = await put(`sod-proofs/${safeBase}.${ext}`, proof, {
+  const blob = await put(`sod-proofs/${safeBase}.${ext}`, buffer, {
     access: 'public',
     addRandomSuffix: true,
     contentType: mime,
