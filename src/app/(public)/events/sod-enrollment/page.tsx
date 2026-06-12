@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/SOD-ENROLLMENT.webp',
         width: 1200,
         height: 630,
         alt: 'School of Destiny Enrollment - Gateway Church',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'School of Destiny Enrollment | Gateway Church',
     description: 'Enroll in School of Destiny at Gateway Church. A discipleship program to train and equip cell leaders and consolidators.',
-    images: ['/og-image.jpg'],
+    images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/SOD-ENROLLMENT.webp'],
   },
 };
 
