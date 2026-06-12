@@ -12,6 +12,7 @@ import { FormInput, FormSelect } from '@/components/forms';
 import { sodEnrollmentSchema, SOD_PROOF_MAX_BYTES, SOD_PROOF_ACCEPT } from '@/models/schemas/sod.schema';
 import { useMutation } from '@tanstack/react-query';
 import { convertImageToWebp } from '@/lib/image-to-webp';
+import { resolveImageMime, ensureExtension, mimeFromFilename } from '@/lib/image-mime';
 import DownloadQRButton from '@/components/ui/DownloadQRButton';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
@@ -36,7 +37,10 @@ const SOD_CLASS_OPTIONS = [
 const proofOfPaymentSchema = z
   .instanceof(File)
   .refine((file) => file.size <= SOD_PROOF_MAX_BYTES, 'File must be 10 MB or smaller')
-  .refine((file) => file.type.startsWith('image/'), 'Please upload an image file')
+  .refine(
+    (file) => file.type.startsWith('image/') || mimeFromFilename(file.name) !== null,
+    'Please upload an image file'
+  )
   .optional();
 
 const sodEnrollmentFormSchema = sodEnrollmentSchema.extend({
@@ -48,6 +52,7 @@ type SodEnrollmentFormData = z.infer<typeof sodEnrollmentFormSchema>;
 export default function SodEnrollmentClient() {
   const [enrolledName, setEnrolledName] = useState<string | null>(null);
   const [isConverting, setIsConverting] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const checkboxGroupId = useId();
   const radioGroupId = useId();
 
@@ -529,6 +534,7 @@ export default function SodEnrollmentClient() {
                                 onChange={async (e) => {
                                   const picked = e.target.files?.[0];
                                   e.target.value = ''; // reset early so re-picking the same file fires change
+                                  setUploadError(null);
                                   if (!picked) {
                                     field.onChange(undefined);
                                     field.onBlur();
@@ -536,10 +542,36 @@ export default function SodEnrollmentClient() {
                                   }
                                   setIsConverting(true);
                                   try {
-                                    const webp = await convertImageToWebp(picked);
-                                    field.onChange(webp);
+                                    // Capture the bytes IMMEDIATELY. A macOS screenshot dragged from its
+                                    // floating thumbnail lives in a temp file the OS may delete moments later,
+                                    // and often arrives with an empty File.type — reading now gives us stable,
+                                    // owned bytes and lets us recover the real image type by sniffing.
+                                    const buffer = await picked.arrayBuffer();
+                                    const mime = resolveImageMime(new Uint8Array(buffer), picked.type || '', picked.name);
+
+                                    if (!mime) {
+                                      setUploadError('That file isn’t a supported image. Please upload a PNG, JPG, or a saved screenshot.');
+                                      field.onChange(undefined);
+                                      return;
+                                    }
+
+                                    // Stable in-memory File with a correct type + extension — works even if the
+                                    // original temp file disappears before the form is submitted.
+                                    const stable = new File([buffer], ensureExtension(picked.name, mime), {
+                                      type: mime,
+                                      lastModified: picked.lastModified,
+                                    });
+
+                                    let finalFile: File = stable;
+                                    try {
+                                      finalFile = await convertImageToWebp(stable);
+                                    } catch {
+                                      finalFile = stable; // the server re-encodes to WebP; never lose the upload
+                                    }
+                                    field.onChange(finalFile);
                                   } catch {
-                                    field.onChange(picked); // never lose the upload
+                                    setUploadError('We couldn’t read that file. If you dragged a screenshot preview, save it to your device first, then upload it.');
+                                    field.onChange(undefined);
                                   } finally {
                                     setIsConverting(false);
                                     field.onBlur();
@@ -576,6 +608,7 @@ export default function SodEnrollmentClient() {
                                         className="sod-upload-remove"
                                         disabled={isConverting}
                                         onClick={() => {
+                                          setUploadError(null);
                                           field.onChange(undefined);
                                           field.onBlur();
                                         }}
@@ -611,6 +644,12 @@ export default function SodEnrollmentClient() {
                                 <p className="sod-radio-error" role="alert">
                                   <i className="pi pi-exclamation-circle"></i>
                                   {fieldState.error.message}
+                                </p>
+                              )}
+                              {uploadError && (
+                                <p className="sod-radio-error" role="alert">
+                                  <i className="pi pi-exclamation-circle"></i>
+                                  {uploadError}
                                 </p>
                               )}
                             </div>
