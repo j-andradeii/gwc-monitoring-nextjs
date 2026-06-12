@@ -93,7 +93,7 @@ export function ConnectFab() {
     // Close modal on route change
     useEffect(() => {
         if (isOpen) {
-            setIsOpen(false);
+            setTimeout(() => setIsOpen(false), 0);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname]);

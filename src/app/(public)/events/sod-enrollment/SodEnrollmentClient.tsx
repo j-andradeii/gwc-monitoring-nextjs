@@ -2,14 +2,16 @@
 
 import { useState, useId, useRef, useEffect } from 'react';
 import { useForm, FormProvider, Controller } from 'react-hook-form';
+import SodBirthdateField from './SodBirthdateField';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Checkbox } from 'primereact/checkbox';
 import { RadioButton } from 'primereact/radiobutton';
 import { LandingHeader, LandingFooter, PageHero } from '@/components/landing';
-import { FormInput, FormCalendar, FormSelect, CalendarViewType } from '@/components/forms';
+import { FormInput, FormSelect } from '@/components/forms';
 import { sodEnrollmentSchema, SOD_PROOF_MAX_BYTES, SOD_PROOF_ACCEPT } from '@/models/schemas/sod.schema';
 import { useMutation } from '@tanstack/react-query';
+import { convertImageToWebp } from '@/lib/image-to-webp';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
@@ -28,13 +30,13 @@ const SOD_CLASS_OPTIONS = [
   { label: 'School of Destiny 2', value: 'School of Destiny 2' },
 ];
 
-// Client-side form schema = enrollment fields + the proof-of-payment File.
+// Client-side form schema = enrollment fields + the optional proof-of-payment File.
 // (The server route validates the fields + the resulting Blob URL instead.)
 const proofOfPaymentSchema = z
-  .instanceof(File, { message: 'Please upload your proof of payment' })
-  .refine((file) => file.size > 0, 'Please upload your proof of payment')
+  .instanceof(File)
   .refine((file) => file.size <= SOD_PROOF_MAX_BYTES, 'File must be 10 MB or smaller')
-  .refine((file) => file.type.startsWith('image/'), 'Please upload an image file');
+  .refine((file) => file.type.startsWith('image/'), 'Please upload an image file')
+  .optional();
 
 const sodEnrollmentFormSchema = sodEnrollmentSchema.extend({
   proofOfPayment: proofOfPaymentSchema,
@@ -44,6 +46,7 @@ type SodEnrollmentFormData = z.infer<typeof sodEnrollmentFormSchema>;
 
 export default function SodEnrollmentClient() {
   const [enrolledName, setEnrolledName] = useState<string | null>(null);
+  const [isConverting, setIsConverting] = useState(false);
   const checkboxGroupId = useId();
   const radioGroupId = useId();
 
@@ -90,15 +93,17 @@ export default function SodEnrollmentClient() {
       const formData = new FormData();
       formData.append('surname', data.surname);
       formData.append('givenName', data.givenName);
-      formData.append('middleName', data.middleName);
+      formData.append('middleName', data.middleName ?? '');
       formData.append('mobileNumber', data.mobileNumber);
       formData.append('birthdate', data.birthdate ? data.birthdate.toISOString() : '');
       formData.append('cellLeader', data.cellLeader);
       formData.append('classToEnroll', data.classToEnroll);
       formData.append('category', data.category);
       formData.append('status', JSON.stringify(data.status));
-      formData.append('amountSent', data.amountSent);
-      formData.append('proofOfPayment', data.proofOfPayment);
+      formData.append('amountSent', data.amountSent ?? '');
+      if (data.proofOfPayment) {
+        formData.append('proofOfPayment', data.proofOfPayment);
+      }
 
       const response = await fetch('/api/events/sod-enrollment', {
         method: 'POST',
@@ -138,12 +143,7 @@ export default function SodEnrollmentClient() {
         displayBadge={false}
       />
 
-      <main style={{
-        padding: '80px 0 120px',
-        marginTop: '-60px',
-        position: 'relative',
-        zIndex: 10
-      }}>
+      <main className="sod-main">
         <div className="landing-container">
           <div className="vip-layout-grid">
 
@@ -275,9 +275,8 @@ export default function SodEnrollmentClient() {
                       <div className="form-row sod-form-row-2col">
                         <FormInput
                           name="middleName"
-                          label="Middle Name"
+                          label="Middle Name (optional)"
                           placeholder="e.g. Dela Cruz"
-                          showRequired
                           className="modern-field"
                         />
                         <FormInput
@@ -290,17 +289,10 @@ export default function SodEnrollmentClient() {
                       </div>
 
                       <div className="form-row sod-form-row-2col">
-                        <FormCalendar
-                          name="birthdate"
-                          label="Birthdate"
-                          placeholder="mm/dd/yyyy"
-                          showRequired
-                          calendarView={CalendarViewType.DATE}
-                          format="mm/dd/yy"
-                        />
+                        <SodBirthdateField />
                       </div>
 
-               
+
                     </div>
 
                     {/* Section 02: Enrollment Details */}
@@ -496,9 +488,8 @@ export default function SodEnrollmentClient() {
                       <div className="sod-amount-field">
                         <FormInput
                           name="amountSent"
-                          label="Payment Amount Sent"
+                          label="Payment Amount Sent (optional)"
                           placeholder="e.g. 500"
-                          showRequired
                           className="modern-field"
                         />
                       </div>
@@ -506,7 +497,7 @@ export default function SodEnrollmentClient() {
                       <div className="sod-upload-field">
                         <span className="sod-upload-label">
                           Upload proof of payment
-                          <span className="form-required" aria-hidden="true">*</span>
+                          <span className="sod-upload-optional">(optional)</span>
                         </span>
                         <span className="sod-upload-sublabel">Upload 1 supported image. Max 10 MB.</span>
 
@@ -520,10 +511,24 @@ export default function SodEnrollmentClient() {
                                 type="file"
                                 accept={SOD_PROOF_ACCEPT}
                                 className="sod-upload-input"
-                                onChange={(e) => {
-                                  field.onChange(e.target.files?.[0] ?? undefined);
-                                  field.onBlur();
-                                  e.target.value = '';
+                                onChange={async (e) => {
+                                  const picked = e.target.files?.[0];
+                                  e.target.value = ''; // reset early so re-picking the same file fires change
+                                  if (!picked) {
+                                    field.onChange(undefined);
+                                    field.onBlur();
+                                    return;
+                                  }
+                                  setIsConverting(true);
+                                  try {
+                                    const webp = await convertImageToWebp(picked);
+                                    field.onChange(webp);
+                                  } catch {
+                                    field.onChange(picked); // never lose the upload
+                                  } finally {
+                                    setIsConverting(false);
+                                    field.onBlur();
+                                  }
                                 }}
                               />
 
@@ -538,12 +543,15 @@ export default function SodEnrollmentClient() {
                                   <div className="sod-upload-meta">
                                     <span className="sod-upload-filename">{proofFile?.name}</span>
                                     <span className="sod-upload-size">
-                                      {((proofFile?.size ?? 0) / (1024 * 1024)).toFixed(2)} MB
+                                      {isConverting
+                                        ? 'Optimizing…'
+                                        : `${((proofFile?.size ?? 0) / (1024 * 1024)).toFixed(2)} MB`}
                                     </span>
                                     <div className="sod-upload-actions">
                                       <button
                                         type="button"
                                         className="sod-upload-change"
+                                        disabled={isConverting}
                                         onClick={() => fileInputRef.current?.click()}
                                       >
                                         Change
@@ -551,6 +559,7 @@ export default function SodEnrollmentClient() {
                                       <button
                                         type="button"
                                         className="sod-upload-remove"
+                                        disabled={isConverting}
                                         onClick={() => {
                                           field.onChange(undefined);
                                           field.onBlur();
@@ -565,11 +574,21 @@ export default function SodEnrollmentClient() {
                                 <button
                                   type="button"
                                   className="sod-upload-dropzone"
-                                  onClick={() => fileInputRef.current?.click()}
+                                  disabled={isConverting}
+                                  onClick={() => !isConverting && fileInputRef.current?.click()}
                                 >
-                                  <i className="pi pi-cloud-upload"></i>
-                                  <span className="sod-upload-cta">Add file</span>
-                                  <span className="sod-upload-hint">Tap to upload a screenshot · Max 10 MB</span>
+                                  {isConverting ? (
+                                    <>
+                                      <i className="pi pi-spin pi-spinner"></i>
+                                      <span className="sod-upload-cta">Optimizing image&hellip;</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <i className="pi pi-cloud-upload"></i>
+                                      <span className="sod-upload-cta">Add file</span>
+                                      <span className="sod-upload-hint">Tap to upload a screenshot · Max 10 MB</span>
+                                    </>
+                                  )}
                                 </button>
                               )}
 

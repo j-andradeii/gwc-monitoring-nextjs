@@ -48,7 +48,8 @@ async function uploadProofToBlob(proof: Blob, surname: string): Promise<string> 
 
 async function appendToGoogleSheet(
   data: Record<string, unknown>,
-  proofUrl: string
+  proofUrl: string,
+  proofProvided: boolean
 ): Promise<SheetResult> {
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
   const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
@@ -85,10 +86,11 @@ async function appendToGoogleSheet(
       : '';
 
     // Embed the uploaded proof image inline via =IMAGE() (USER_ENTERED evaluates
-    // the formula). Falls back to a note if the Blob upload didn't return a URL.
+    // the formula). Falls back to a note if the Blob upload failed; blank if no
+    // proof was provided by the enrollee (proof is optional).
     const proofCell = proofUrl
       ? `=IMAGE("${proofUrl}")`
-      : 'Proof upload failed — please follow up with the enrollee';
+      : (proofProvided ? 'Proof upload failed — please follow up with the enrollee' : '');
 
     const row = [
       timestamp,                  // A  Timestamp
@@ -160,39 +162,41 @@ export async function POST(request: Request) {
     }
 
     const proof = formData.get('proofOfPayment');
-    if (!(proof instanceof Blob) || proof.size === 0) {
-      return NextResponse.json(
-        { error: 'Proof of payment image is required' },
-        { status: 400 }
-      );
-    }
-    if (proof.size > SOD_PROOF_MAX_BYTES) {
-      return NextResponse.json(
-        { error: 'Proof of payment must be 10 MB or smaller' },
-        { status: 400 }
-      );
-    }
-    if (!proof.type.startsWith('image/')) {
-      return NextResponse.json(
-        { error: 'Proof of payment must be an image file' },
-        { status: 400 }
-      );
+    const proofProvided = proof instanceof Blob && proof.size > 0;
+
+    // Validate only when a proof file was actually sent.
+    if (proofProvided) {
+      if ((proof as Blob).size > SOD_PROOF_MAX_BYTES) {
+        return NextResponse.json(
+          { error: 'Proof of payment must be 10 MB or smaller' },
+          { status: 400 }
+        );
+      }
+      if (!(proof as Blob).type.startsWith('image/')) {
+        return NextResponse.json(
+          { error: 'Proof of payment must be an image file' },
+          { status: 400 }
+        );
+      }
     }
 
     // Upload to Vercel Blob (best-effort — the enrollment is still recorded
     // even if the image upload fails, so no submission is lost).
     let proofUrl = '';
-    try {
-      proofUrl = await uploadProofToBlob(proof, validationResult.data.surname);
-    } catch (blobError) {
-      console.error('Vercel Blob upload failed:', blobError);
+    if (proofProvided) {
+      try {
+        proofUrl = await uploadProofToBlob(proof as Blob, validationResult.data.surname);
+      } catch (blobError) {
+        console.error('Vercel Blob upload failed:', blobError);
+      }
     }
 
     console.log('SOD Enrollee received:', validationResult.data);
 
     const result = await appendToGoogleSheet(
       validationResult.data as unknown as Record<string, unknown>,
-      proofUrl
+      proofUrl,
+      proofProvided
     );
 
     return NextResponse.json({
