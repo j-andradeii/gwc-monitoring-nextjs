@@ -12,6 +12,7 @@ import { FormInput, FormSelect } from '@/components/forms';
 import { sodEnrollmentSchema, SOD_PROOF_MAX_BYTES, SOD_PROOF_ACCEPT } from '@/models/schemas/sod.schema';
 import { useMutation } from '@tanstack/react-query';
 import { convertImageToWebp } from '@/lib/image-to-webp';
+import DownloadQRButton from '@/components/ui/DownloadQRButton';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
@@ -462,6 +463,13 @@ export default function SodEnrollmentClient() {
                             <i className="pi pi-qrcode"></i>
                             Scan to pay
                           </span>
+                          <DownloadQRButton
+                            qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
+                            filename="gateway-sod-bpi-qr.png"
+                            color="var(--color-primary)"
+                            className="sod-payment-download"
+                            style={{ marginTop: '0.25rem', padding: '0.45rem 0.9rem', fontSize: '0.78rem', fontWeight: 700 }}
+                          />
                         </div>
 
                         <div className="sod-payment-card">
@@ -482,6 +490,13 @@ export default function SodEnrollmentClient() {
                             <i className="pi pi-qrcode"></i>
                             Scan to pay
                           </span>
+                          <DownloadQRButton
+                            qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
+                            filename="gateway-sod-gcash-qr.png"
+                            color="var(--color-primary)"
+                            className="sod-payment-download"
+                            style={{ marginTop: '0.25rem', padding: '0.45rem 0.9rem', fontSize: '0.78rem', fontWeight: 700 }}
+                          />
                         </div>
                       </div>
 
