@@ -26,6 +26,11 @@
  *  staying well under iOS canvas limits and the serverless request-body limit. */
 const MAX_DIMENSION = 1600;
 
+/** Cap for the memory-safe RESIZED decode fallback (used only when a full-res
+ *  decode fails, e.g. a 48 MP iPhone photo exhausting iOS memory). Kept a little
+ *  above MAX_DIMENSION so the final canvas downscale still has detail to work with. */
+const MAX_DECODE_DIMENSION = 2048;
+
 /** Promise wrapper around canvas.toBlob. */
 function toBlobAsync(canvas: HTMLCanvasElement, type: string, quality: number): Promise<Blob | null> {
   return new Promise((resolve) => canvas.toBlob((b) => resolve(b), type, quality));
@@ -60,12 +65,39 @@ export async function convertImageToWebp(file: File, quality = 0.85): Promise<Fi
   let objectUrl: string | null = null;
 
   try {
-    // --- Decode the image ---
+    // --- Decode the image (memory-safe) ---
+    // Try a full-resolution decode first — it is correct for typical images and
+    // yields the true dimensions. iPhone photos are 12–48 MP; decoding one at full
+    // resolution can exhaust memory on iOS (the decode fails, or the tab is killed),
+    // which the user experiences as a failed/blocked "error uploading" the photo.
+    // If the full-res decode fails, retry with a capped RESIZED decode that never
+    // materializes the entire photo in memory.
     if (typeof createImageBitmap === 'function') {
       try {
         bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
       } catch {
-        bitmap = null; // fall through to Image() fallback (decodes HEIC on Safari)
+        try {
+          // Some browsers reject the imageOrientation option but decode fine without it.
+          bitmap = await createImageBitmap(file);
+        } catch {
+          bitmap = null;
+        }
+      }
+
+      if (!bitmap) {
+        try {
+          // Resized decode: passing only resizeWidth preserves aspect ratio and
+          // decodes straight to a small bitmap, sidestepping the memory/pixel
+          // limit. This runs only after a full-res decode failed (an oversized
+          // image), so it can never upscale a small one.
+          bitmap = await createImageBitmap(file, {
+            resizeWidth: MAX_DECODE_DIMENSION,
+            resizeQuality: 'high',
+            imageOrientation: 'from-image',
+          });
+        } catch {
+          bitmap = null; // fall through to Image() fallback (decodes HEIC on Safari)
+        }
       }
     }
 
