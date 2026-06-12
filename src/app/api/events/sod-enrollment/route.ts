@@ -203,7 +203,7 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
-      if (!(proof as Blob).type.startsWith('image/')) {
+      if ((proof as Blob).type && !(proof as Blob).type.startsWith('image/')) {
         return NextResponse.json(
           { error: 'Proof of payment must be an image file' },
           { status: 400 }
