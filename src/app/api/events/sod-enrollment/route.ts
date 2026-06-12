@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { put } from '@vercel/blob';
-import sharp from 'sharp';
 import { sodEnrollmentSchema, SOD_PROOF_MAX_BYTES } from '@/models/schemas/sod.schema';
+import { resolveImageMime } from '@/lib/image-mime';
 
 export const runtime = 'nodejs';
 
@@ -32,21 +32,25 @@ interface SheetResult {
  * uploads (canvas), but that is best-effort — older browsers, decode errors, and
  * HEIC photos can slip through as the original format. This re-encodes server-side
  * with sharp so the stored Blob is always WebP for any decodable raster image.
- * On any failure (e.g. HEIC without libheif) it returns the ORIGINAL bytes so the
- * upload is never lost.
+ *
+ * sharp is imported LAZILY (inside the try) on purpose: a top-level
+ * `import sharp` that fails to load its native binary at runtime (a known
+ * sharp + serverless fragility) would crash the whole route and turn every
+ * enrollment into a 500. Loading it here means a missing/broken binary simply
+ * falls back to storing the client's already-optimized image (WebP on Chrome,
+ * JPEG on Safari — both render in the sheet) instead of losing the submission.
  */
 async function ensureWebp(
-  proof: Blob
+  inputBuffer: Buffer,
+  originalMime: string
 ): Promise<{ buffer: Buffer; mime: string; ext: string }> {
-  const inputBuffer = Buffer.from(await proof.arrayBuffer());
-  const originalMime = proof.type || 'image/png';
-
   // Already WebP (e.g. the client conversion succeeded) — no re-encode needed.
   if (originalMime === 'image/webp') {
     return { buffer: inputBuffer, mime: 'image/webp', ext: 'webp' };
   }
 
   try {
+    const sharp = (await import('sharp')).default;
     // .rotate() with no args auto-orients from EXIF before the orientation tag is
     // dropped in the WebP output (important for phone-camera proof photos).
     const webpBuffer = await sharp(inputBuffer).rotate().webp({ quality: 90 }).toBuffer();
@@ -64,8 +68,12 @@ async function ensureWebp(
  * auto-injected on Vercel when the Blob store is linked to the project; add it
  * to `.env.local` (e.g. via `vercel env pull`) for local development.
  */
-async function uploadProofToBlob(proof: Blob, surname: string): Promise<string> {
-  const { buffer, mime, ext } = await ensureWebp(proof);
+async function uploadProofToBlob(
+  inputBuffer: Buffer,
+  originalMime: string,
+  surname: string
+): Promise<string> {
+  const { buffer, mime, ext } = await ensureWebp(inputBuffer, originalMime);
   const safeBase = `${surname || 'enrollee'}`.replace(/[^a-zA-Z0-9._-]/g, '_');
 
   const blob = await put(`sod-proofs/${safeBase}.${ext}`, buffer, {
@@ -195,28 +203,41 @@ export async function POST(request: Request) {
     const proof = formData.get('proofOfPayment');
     const proofProvided = proof instanceof Blob && proof.size > 0;
 
-    // Validate only when a proof file was actually sent.
+    let proofUrl = '';
     if (proofProvided) {
-      if ((proof as Blob).size > SOD_PROOF_MAX_BYTES) {
+      const proofBlob = proof as Blob;
+
+      if (proofBlob.size > SOD_PROOF_MAX_BYTES) {
         return NextResponse.json(
           { error: 'Proof of payment must be 10 MB or smaller' },
           { status: 400 }
         );
       }
-      if ((proof as Blob).type && !(proof as Blob).type.startsWith('image/')) {
+
+      // Recover the REAL image type from the bytes — do NOT trust the multipart
+      // Content-Type. A file picked with an empty MIME (e.g. a macOS screenshot
+      // dragged from its floating thumbnail) is serialized as
+      // `application/octet-stream`, which a naive `startsWith('image/')` check
+      // would wrongly reject with a 400 ("error in submitting"). Sniffing the
+      // magic bytes accepts any genuine image regardless of how it was labelled.
+      const proofBytes = Buffer.from(await proofBlob.arrayBuffer());
+      const realMime = resolveImageMime(
+        proofBytes,
+        proofBlob.type || '',
+        (proofBlob as File).name || ''
+      );
+
+      if (!realMime) {
         return NextResponse.json(
           { error: 'Proof of payment must be an image file' },
           { status: 400 }
         );
       }
-    }
 
-    // Upload to Vercel Blob (best-effort — the enrollment is still recorded
-    // even if the image upload fails, so no submission is lost).
-    let proofUrl = '';
-    if (proofProvided) {
+      // Upload to Vercel Blob (best-effort — the enrollment is still recorded
+      // even if the image upload fails, so no submission is lost).
       try {
-        proofUrl = await uploadProofToBlob(proof as Blob, validationResult.data.surname);
+        proofUrl = await uploadProofToBlob(proofBytes, realMime, validationResult.data.surname);
       } catch (blobError) {
         console.error('Vercel Blob upload failed:', blobError);
       }
