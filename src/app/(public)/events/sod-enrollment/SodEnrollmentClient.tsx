@@ -288,17 +288,13 @@ export default function SodEnrollmentClient() {
 
                       <div className="form-row sod-form-row-2col">
                         <FormInput
-                          name="middleName"
-                          label="Middle Name (optional)"
-                          placeholder="e.g. Dela Cruz"
-                          className="modern-field"
-                        />
-                        <FormInput
                           name="mobileNumber"
                           label="Mobile Number"
                           placeholder="0917 XXX XXXX"
                           showRequired
                           className="modern-field"
+                          type="tel"
+                          inputMode="tel"
                         />
                       </div>
 
