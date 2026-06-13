@@ -475,7 +475,7 @@
     font-size: 14px;
     font-weight: 600;
     color: var(--text-secondary, #1e293b);
-    margin-bottom: 16px;
+    margin-bottom: 2px;
     display: block;
 }
 
@@ -599,7 +599,7 @@
     font-size: 14px;
     font-weight: 600;
     color: var(--text-secondary, #1e293b);
-    margin-bottom: 16px;
+    margin-bottom: 2px;
     display: block;
 }
 
