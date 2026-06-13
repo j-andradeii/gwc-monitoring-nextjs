@@ -269,7 +269,7 @@ export default function SodEnrollmentClient() {
                         <h4>Personal Information</h4>
                       </div>
 
-                      <div className="form-row sod-form-row-2col">
+                      <div className="form-row sod-form-row-1col">
                         <FormInput
                           name="givenName"
                           label="Given Name"
@@ -286,7 +286,7 @@ export default function SodEnrollmentClient() {
                         />
                       </div>
 
-                      <div className="form-row sod-form-row-2col">
+                      <div className="form-row sod-form-row-1col">
                         <FormInput
                           name="mobileNumber"
                           label="Mobile Number"
@@ -298,7 +298,7 @@ export default function SodEnrollmentClient() {
                         />
                       </div>
 
-                      <div className="form-row sod-form-row-2col">
+                      <div className="form-row sod-form-row-1col">
                         <SodBirthdateField />
                       </div>
 
