@@ -13,9 +13,9 @@ const newLifeSections: Ministry[] = [
     title: 'YOU ARE FORGIVEN',
     image: placeholderImage,
     scripture: {
-      reference: 'Romans 10:9',
+      reference: '1 John 1:9',
       verse:
-        'If you will confess with your mouth that Jesus is Lord, and believe in your heart that God raised him from the dead, you will be saved.',
+        'If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.',
     },
   },
   {
@@ -23,9 +23,9 @@ const newLifeSections: Ministry[] = [
     title: 'YOU ARE NOW A CHILD OF GOD',
     image: placeholderImage,
     scripture: {
-      reference: 'Romans 6:4',
+      reference: 'John 1:12',
       verse:
-        'We were buried therefore with him through baptism into death, that just as Christ was raised from the dead through the glory of the Father, so we also might walk in newness of life.',
+        'Yet to all who did receive him, to those who believed in his name, he gave the right to become children of God',
     },
   },
   {
@@ -33,9 +33,9 @@ const newLifeSections: Ministry[] = [
     title: 'YOU ARE NOW A NEW CREATION',
     image: placeholderImage,
     scripture: {
-      reference: 'James 4:8',
+      reference: '2 Corinthians 5:17',
       verse:
-        'Draw near to God, and he will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded.',
+        'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!',
     },
   },
   {
@@ -43,9 +43,9 @@ const newLifeSections: Ministry[] = [
     title: 'YOU HAVE NOW ETERNAL LIFE',
     image: placeholderImage,
     scripture: {
-      reference: 'James 4:8',
+      reference: 'John 3:16',
       verse:
-        'Draw near to God, and he will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded.',
+        'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.',
     },
   },
 ];
