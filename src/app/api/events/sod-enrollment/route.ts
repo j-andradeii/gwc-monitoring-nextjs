@@ -6,21 +6,38 @@ import { resolveImageMime } from '@/lib/image-mime';
 export const runtime = 'nodejs';
 
 /**
- * School of Destiny ENROLLEES sheet.
- * The owner supplied the target spreadsheet + tab; env var wins if provided.
+ * School of Destiny enrollees spreadsheet.
+ * The owner supplied the target spreadsheet; env var wins if provided.
  */
 const SPREADSHEET_ID =
   process.env.GOOGLE_SPREADSHEET_ENROLLEES_ID || '1Ao-sETldYrk4LgzOGWwtn3jZzK4hnFlcqdtOm18XBOU';
-const SHEET_TAB = 'ENROLLEES';
 
 /**
+ * Each enrollment is routed to a tab by the class chosen on the form:
+ *   "School of Destiny 1" → SOD-1 tab
+ *   "School of Destiny 2" → SOD-2 tab
+ * Anything unexpected falls back to ENROLLEES so a submission is never lost.
+ *
  * Column order is derived from the enrollment form fields. Set these headers
- * on the ENROLLEES tab (row 1) so the appended rows line up:
+ * on row 1 of each tab so the appended rows line up:
  *   A Timestamp | B Given Name | C Surname | D Middle Name | E Mobile Number |
  *   F Birthdate | G Cell Leader | H Category | I Class to Enroll | J Status |
  *   K Proof of Payment | L Payment Amount Sent
  */
-const SHEET_RANGE = `${SHEET_TAB}!A:L`;
+function resolveSheetTab(classToEnroll: unknown): string {
+  switch (String(classToEnroll ?? '').trim()) {
+    case 'School of Destiny 1':
+      return 'SOD-1';
+    case 'School of Destiny 2':
+      return 'SOD-2';
+    default:
+      return 'ENROLLEES';
+  }
+}
+
+// Wrap in single quotes so tab names with special chars (e.g. the hyphen in
+// "SOD-1") are valid A1 notation.
+const sheetRangeForTab = (tab: string) => `'${tab}'!A:L`;
 
 interface SheetResult {
   success: boolean;
@@ -90,6 +107,7 @@ async function appendToGoogleSheet(
   proofUrl: string,
   proofProvided: boolean
 ): Promise<SheetResult> {
+  const sheetTab = resolveSheetTab(data.classToEnroll);
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
   const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
 
@@ -148,14 +166,14 @@ async function appendToGoogleSheet(
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: SHEET_RANGE,
+      range: sheetRangeForTab(sheetTab),
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],
       },
     });
 
-    return { success: true, message: 'Added to Google Sheets' };
+    return { success: true, message: `Added to Google Sheets (${sheetTab})` };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
       return { success: true, message: 'Logged locally (googleapis not installed)' };

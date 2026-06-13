@@ -131,6 +131,8 @@ interface FormInputProps {
   inputClassName?: string; // Input element custom class
   labelClassName?: string; // Label custom class
   isFloating?: boolean; // Enable floating label mode
+  type?: React.HTMLInputTypeAttribute; // Native input type (e.g. 'tel' for phone numbers)
+  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode']; // Virtual-keyboard hint (e.g. 'tel', 'numeric')
 }
 
 export const FormInput = React.memo<FormInputProps>(({
@@ -150,6 +152,8 @@ export const FormInput = React.memo<FormInputProps>(({
   inputClassName = '',
   labelClassName = '',
   isFloating = false,
+  type = 'text',
+  inputMode,
 }) => {
   const { control, formState: { errors } } = useFormContext();
 
@@ -224,6 +228,8 @@ export const FormInput = React.memo<FormInputProps>(({
                 readOnly={readonly}
                 id={uniqueId}
                 name={uniqueId}
+                type={type}
+                inputMode={inputMode}
                 autoComplete="off"
               />
               {isFloating && label && (

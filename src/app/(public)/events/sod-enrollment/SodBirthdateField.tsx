@@ -120,6 +120,17 @@ export default function SodBirthdateField() {
     });
   };
 
+  // Tapping/clicking the masked field would otherwise drop the caret wherever the
+  // pointer landed inside the "dd/mm/yyyy" template. Since the mask is append-only,
+  // force the caret to the next-digit position — which is the far left (0) while the
+  // field is still empty — so typing always begins from the start.
+  const moveCaretToAppend = () => {
+    const el = inputRef.current;
+    if (!el) return;
+    const pos = caretAfter(digits.length);
+    el.setSelectionRange(pos, pos);
+  };
+
   if (!isMobile) {
     return (
       <FormCalendar
@@ -150,6 +161,8 @@ export default function SodBirthdateField() {
           aria-label="Birthdate, day slash month slash year"
           className={`p-inputtext w-full${birthdateError ? ' p-invalid' : ''}`}
           value={buildDisplay(digits)}
+          onFocus={moveCaretToAppend}
+          onClick={moveCaretToAppend}
           onKeyDown={(e) => {
             if (e.key === 'Backspace') {
               e.preventDefault();
