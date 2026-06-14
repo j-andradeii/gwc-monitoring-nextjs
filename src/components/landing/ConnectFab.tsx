@@ -21,6 +21,7 @@ export function ConnectFab() {
     const [activeTab, setActiveTab] = useState<'prayer' | 'join'>('prayer');
     const pathname = usePathname();
     const isEventDetailRoute = pathname.startsWith('/events/') && pathname !== '/events/vip-form';
+    const isFabHiddenRoute = pathname === '/give/ways-to-give';
 
     const methods = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
@@ -142,6 +143,11 @@ export function ConnectFab() {
         submitCellGroupJoin.reset();
         reset();
     };
+
+    // Some pages (e.g. Ways to Give) opt out of the floating Connect button entirely.
+    if (isFabHiddenRoute) {
+        return null;
+    }
 
     return (
         <>
