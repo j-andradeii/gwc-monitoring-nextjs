@@ -5960,7 +5960,7 @@ When we faithfully surrender what we have to God, He can accomplish far more tha
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'Jesus is the Good Shepherd who knows His sheep, protects them, guides them, and lovingly redirects them when they wander.',
 
     // Legacy fallback — still used for SEO description and legacy layout
@@ -6144,6 +6144,354 @@ When we stay close to the Good Shepherd, we find protection, direction, and corr
         kicker: 'Key Verse',
         verse: 'John 10:9-19',
         text: 'I am the door. If anyone enters by Me, he will be saved, and will go in and out and find pasture. The thief does not come except to steal, and to kill, and to destroy. I have come that they may have life, and that they may have it more abundantly. I am the good shepherd. The good shepherd gives His life for the sheep. But a hireling, he who is not the shepherd, one who does not own the sheep, sees the wolf coming and leaves the sheep and flees; and the wolf catches the sheep and scatters them. The hireling flees because he is a hireling and does not care about the sheep. I am the good shepherd; and I know My sheep, and am known by My own. As the Father knows Me, even so I know the Father; and I lay down My life for the sheep. And other sheep I have which are not of this fold; them also I must bring, and they will hear My voice; and there will be one flock and one shepherd. Therefore My Father loves Me, because I lay down My life that I may take it again. No one takes it from Me, but I lay it down of Myself. I have power to lay it down, and I have power to take it again. This command I have received from My Father. Therefore there was a division again among the Jews because of these sayings.',
+      },
+    ],
+  },
+  {
+    id: '29',
+    slug: 'to-know-and-be-known',
+    title: 'To Know and Be Known',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-06-14',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'One of the deepest desires of the human heart is to know and be known. To know God and to be known by Him is the sweetest and purest form of relationship we can experience.',
+
+    // Legacy fallback — still used for SEO description and legacy layout
+    description: `**TO KNOW AND BE KNOWN**
+
+Scripture Reference: Psalm 23:1–6
+
+---
+
+**INTRODUCTION**
+
+One of the deepest desires of the human heart is to know and be known. Psalm 23 reveals the beauty of a relationship with God as our Shepherd, a relationship built not merely on provision or blessings but on intimacy.
+
+To know God and to be known by Him is the sweetest and purest form of relationship we can experience. Before God gives us His gifts, He desires that we first encounter the Giver. Before He provides for our needs, He wants us to know Him as our Provider. Throughout Scripture, God continually reveals Himself through His names, each one displaying a different aspect of His character and His love for His people.
+
+When we truly know our Shepherd, worry gives way to trust, fear gives way to peace, and uncertainty gives way to confidence in His care.
+
+---
+
+**1. Jehovah-Ra'ah - The Lord My Shepherd**
+
+"The Lord is my shepherd; I shall not want" (Psalm 23:1)
+
+Everything begins with recognizing God as our Shepherd. A shepherd leads, protects, provides for, and cares for his flock.
+
+The question is not whether God is a Shepherd, but whether He is your Shepherd. We make the Lord our Shepherd when we surrender our lives to His leadership and allow Him to be Lord over every area of our lives.
+
+When we know our Shepherd, we can rest in His guidance and trust His plans for us.
+
+---
+
+**2. Jehovah-Jireh - The Lord My Provider**
+
+"So Abraham called that place The Lord Will Provide" (Genesis 22:14)
+
+God revealed Himself to Abraham as Jehovah-Jireh, the God who provides.
+
+Before God provided the sacrifice, He first revealed Himself to Abraham. This teaches us that God's greatest desire is not merely to meet our needs but to draw us into a deeper relationship with Him.
+
+When we know God as our Provider, we stop placing our trust in circumstances and begin trusting the One who holds every resource in His hands.
+
+---
+
+**3. Jehovah-Shalom - The Lord Our Peace**
+
+"The Lord is Peace" (Judges 6:24)
+
+True peace is not the absence of problems but the presence of God.
+
+Life will bring challenges, uncertainty, and difficulties, but knowing God as Jehovah-Shalom allows us to remain secure even in the midst of life's storms.
+
+The Shepherd brings peace to the hearts of those who trust Him.
+
+---
+
+**4. Jehovah-Rapha - The Lord My Healer**
+
+"I am the Lord who heals you" (Exodus 15:26)
+
+God is not only concerned with physical healing but also with the restoration of the soul.
+
+Psalm 23 reminds us that the Shepherd restores our souls. He mends what is broken, heals what is wounded, and brings wholeness to every area of our lives.
+
+Just as a shepherd carefully tends an injured sheep, God lovingly restores us through His grace.
+
+When a shepherd corrects an injured sheep, the process of healing often requires the shepherd to keep the sheep close. In the same way, God's correction is never meant to push us away, it is designed to draw us nearer to Him.
+
+---
+
+**5. Jehovah-Tsidkenu - The Lord Our Righteousness**
+
+"The Lord Our Righteous Savior" (Jeremiah 23:6)
+
+The Shepherd leads His sheep along the right paths.
+
+Without Jesus guiding our lives, what appears right to us can often lead to destruction. Our own wisdom is limited, but God's ways are always good and trustworthy.
+
+Because of Christ, we can walk confidently in righteousness and security, knowing that He leads us according to His perfect will.
+
+---
+
+**6. Jehovah-Shammah - The Lord, Ever-Present**
+
+"The Lord is there" (Ezekiel 48:35)
+
+One of God's greatest promises is His presence.
+
+No matter what season we face, we never walk alone. The Shepherd remains with His sheep through every valley, challenge, and victory.
+
+Knowing God means recognizing that He is always present, always near, and always faithful.
+
+---
+
+**7. Jehovah-Nissi - The Lord Our Banner**
+
+"Moses built an altar and called it The Lord is my Banner" (Exodus 17:15)
+
+A banner represents identity, belonging, and victory.
+
+When God is our banner, our identity is no longer defined by our failures, fears, achievements, or circumstances. Our identity is found in Him.
+
+The Shepherd gives His people a new identity and a new purpose.
+
+Just as Jacob was transformed after receiving God's correction, his identity changed from Jacob to Israel. His encounter with God changed not only his name but also his destiny.
+
+---
+
+**KEY TAKEAWAYS**
+
+* To know God and be known by Him is the deepest form of intimacy.
+* Before God gives His gifts, He desires that we know the Giver.
+* Before God provides, He reveals Himself as the Provider.
+* Knowing God's names helps us understand His character and His heart for us.
+* God's correction is an expression of His love and desire to restore us.
+* When we know our Shepherd, worry is replaced by trust.
+* Our identity is found in God, not in our circumstances.
+* The Shepherd guides, provides, heals, protects, and remains present with His people.
+
+"God's greatest gift is not what He gives us, it is the opportunity to know Him personally."
+
+---
+
+**CALL TO ACTION**
+
+This week, take time to deepen your relationship with the Shepherd.
+
+* Spend time meditating on the names of God and what they reveal about His character.
+* Trust God as your Shepherd in areas where you are tempted to worry.
+* Allow His correction to draw you closer rather than push you away.
+* Seek the Giver before seeking the gift.
+* Find your identity in God's presence and promises.
+
+As we grow in knowing God and allowing ourselves to be known by Him, we discover the peace, security, and intimacy that can only be found in the care of the Good Shepherd.`,
+    tags: ['Intimacy', 'Names of God', 'Shepherd', 'Trust', 'Identity', 'Peace'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/to_know_and_be_known.webp',
+    scriptures: [
+      {
+        verse: 'Psalm 23:1-6',
+        text: "The Lord is my shepherd; I shall not want. He makes me to lie down in green pastures; He leads me beside the still waters. He restores my soul; He leads me in the paths of righteousness for His name's sake. Yea, though I walk through the valley of the shadow of death, I will fear no evil; for You are with me; Your rod and Your staff, they comfort me. You prepare a table before me in the presence of my enemies; You anoint my head with oil; my cup runs over. Surely goodness and mercy shall follow me all the days of my life; and I will dwell in the house of the Lord forever."
+      },
+      {
+        verse: 'Genesis 22:14',
+        text: "And Abraham called the name of the place, The-Lord-Will-Provide; as it is said to this day, 'In the Mount of the Lord it shall be provided.'"
+      },
+      {
+        verse: 'Judges 6:24',
+        text: 'So Gideon built an altar there to the Lord, and called it The-Lord-Is-Peace. To this day it is still in Ophrah of the Abiezrites.'
+      },
+      {
+        verse: 'Exodus 15:26',
+        text: "and said, 'If you diligently heed the voice of the Lord your God and do what is right in His sight, give ear to His commandments and keep all His statutes, I will put none of the diseases on you which I have brought on the Egyptians. For I am the Lord who heals you.'"
+      },
+      {
+        verse: 'Jeremiah 23:6',
+        text: 'In His days Judah will be saved, and Israel will dwell safely; now this is His name by which He will be called: THE LORD OUR RIGHTEOUSNESS.'
+      },
+      {
+        verse: 'Ezekiel 48:35',
+        text: 'All the way around shall be eighteen thousand cubits; and the name of the city from that day shall be: THE LORD IS THERE.'
+      },
+      {
+        verse: 'Exodus 17:15',
+        text: 'And Moses built an altar and called its name, The-Lord-Is-My-Banner;'
+      }
+    ],
+    keyPoints: [
+      "Jehovah-Ra'ah — The Lord My Shepherd",
+      'Jehovah-Jireh — The Lord My Provider',
+      'Jehovah-Shalom — The Lord Our Peace',
+      'Jehovah-Rapha — The Lord My Healer',
+      'Jehovah-Tsidkenu — The Lord Our Righteousness',
+      'Jehovah-Shammah — The Lord, Ever-Present',
+      'Jehovah-Nissi — The Lord Our Banner'
+    ],
+    relatedSermons: ['28', '27'],
+
+    // Redesigned layout opt-in fields (Modern Reader)
+    subtitle: {
+      prefix: 'To Know and Be',
+      italic: 'Known',
+    },
+    keyVerse: 'Psalm 23:1-6',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'To Know and Be Known',
+        unnumbered: true,
+        paragraphs: [
+          'One of the deepest desires of the human heart is to know and be known. Psalm 23 reveals the beauty of a relationship with God as our Shepherd, a relationship built not merely on provision or blessings but on intimacy.',
+          'To know God and to be known by Him is the sweetest and purest form of relationship we can experience. Before God gives us His gifts, He desires that we first encounter the Giver. Before He provides for our needs, He wants us to know Him as our Provider. Throughout Scripture, God continually reveals Himself through His names, each one displaying a different aspect of His character and His love for His people.',
+          'When we truly know our Shepherd, worry gives way to trust, fear gives way to peace, and uncertainty gives way to confidence in His care.',
+        ],
+      },
+      {
+        id: 'sec-shepherd',
+        kicker: "Jehovah-Ra'ah",
+        title: 'The Lord My Shepherd',
+        paragraphs: [
+          '**Psalm 23:1** — "The Lord is my shepherd; I shall not want."',
+          'Everything begins with recognizing God as our Shepherd. A shepherd leads, protects, provides for, and cares for his flock.',
+          'The question is not whether God is a Shepherd, but whether He is your Shepherd. We make the Lord our Shepherd when we surrender our lives to His leadership and allow Him to be Lord over every area of our lives.',
+          'When we know our Shepherd, we can rest in His guidance and trust His plans for us.',
+        ],
+      },
+      {
+        id: 'sec-provider',
+        kicker: 'Jehovah-Jireh',
+        title: 'The Lord My Provider',
+        paragraphs: [
+          '**Genesis 22:14** — "So Abraham called that place The Lord Will Provide."',
+          'God revealed Himself to Abraham as Jehovah-Jireh, the God who provides.',
+          "Before God provided the sacrifice, He first revealed Himself to Abraham. This teaches us that God's greatest desire is not merely to meet our needs but to draw us into a deeper relationship with Him.",
+          'When we know God as our Provider, we stop placing our trust in circumstances and begin trusting the One who holds every resource in His hands.',
+        ],
+      },
+      {
+        id: 'sec-peace',
+        kicker: 'Jehovah-Shalom',
+        title: 'The Lord Our Peace',
+        paragraphs: [
+          '**Judges 6:24** — "The Lord is Peace."',
+          'True peace is not the absence of problems but the presence of God.',
+          "Life will bring challenges, uncertainty, and difficulties, but knowing God as Jehovah-Shalom allows us to remain secure even in the midst of life's storms.",
+          'The Shepherd brings peace to the hearts of those who trust Him.',
+        ],
+      },
+      {
+        id: 'sec-healer',
+        kicker: 'Jehovah-Rapha',
+        title: 'The Lord My Healer',
+        paragraphs: [
+          '**Exodus 15:26** — "I am the Lord who heals you."',
+          'God is not only concerned with physical healing but also with the restoration of the soul.',
+          'Psalm 23 reminds us that the Shepherd restores our souls. He mends what is broken, heals what is wounded, and brings wholeness to every area of our lives.',
+          'Just as a shepherd carefully tends an injured sheep, God lovingly restores us through His grace.',
+          "When a shepherd corrects an injured sheep, the process of healing often requires the shepherd to keep the sheep close. In the same way, God's correction is never meant to push us away, it is designed to draw us nearer to Him.",
+        ],
+      },
+      {
+        id: 'sec-righteousness',
+        kicker: 'Jehovah-Tsidkenu',
+        title: 'The Lord Our Righteousness',
+        paragraphs: [
+          '**Jeremiah 23:6** — "The Lord Our Righteous Savior."',
+          'The Shepherd leads His sheep along the right paths.',
+          "Without Jesus guiding our lives, what appears right to us can often lead to destruction. Our own wisdom is limited, but God's ways are always good and trustworthy.",
+          'Because of Christ, we can walk confidently in righteousness and security, knowing that He leads us according to His perfect will.',
+        ],
+      },
+      {
+        id: 'sec-present',
+        kicker: 'Jehovah-Shammah',
+        title: 'The Lord, Ever-Present',
+        paragraphs: [
+          '**Ezekiel 48:35** — "The Lord is there."',
+          "One of God's greatest promises is His presence.",
+          'No matter what season we face, we never walk alone. The Shepherd remains with His sheep through every valley, challenge, and victory.',
+          'Knowing God means recognizing that He is always present, always near, and always faithful.',
+        ],
+      },
+      {
+        id: 'sec-banner',
+        kicker: 'Jehovah-Nissi',
+        title: 'The Lord Our Banner',
+        paragraphs: [
+          '**Exodus 17:15** — "Moses built an altar and called it The Lord is my Banner."',
+          'A banner represents identity, belonging, and victory.',
+          'When God is our banner, our identity is no longer defined by our failures, fears, achievements, or circumstances. Our identity is found in Him.',
+          'The Shepherd gives His people a new identity and a new purpose.',
+          "Just as Jacob was transformed after receiving God's correction, his identity changed from Jacob to Israel. His encounter with God changed not only his name but also his destiny.",
+        ],
+      },
+      {
+        id: 'sec-application',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'This week, take time to deepen your relationship with the Shepherd.',
+          'Spend time meditating on the names of God and what they reveal about His character.',
+          'Trust God as your Shepherd in areas where you are tempted to worry.',
+          'Allow His correction to draw you closer rather than push you away.',
+          'Seek the Giver before seeking the gift.',
+          "Find your identity in God's presence and promises.",
+          'As we grow in knowing God and allowing ourselves to be known by Him, we discover the peace, security, and intimacy that can only be found in the care of the Good Shepherd.',
+        ],
+        callout: "God's greatest gift is not what He gives us, it is the opportunity to know Him personally.",
+      },
+    ],
+    keyTakeaways: [
+      'To know God and be known by Him is the deepest form of intimacy.',
+      'Before God gives His gifts, He desires that we know the Giver.',
+      'Before God provides, He reveals Himself as the Provider.',
+      "Knowing God's names helps us understand His character and His heart for us.",
+      "God's correction is an expression of His love and desire to restore us.",
+      'When we know our Shepherd, worry is replaced by trust.',
+      'Our identity is found in God, not in our circumstances.',
+      'The Shepherd guides, provides, heals, protects, and remains present with His people.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse · The Shepherd',
+        verse: 'Psalm 23:1-6',
+        text: "The Lord is my shepherd; I shall not want. He makes me to lie down in green pastures; He leads me beside the still waters. He restores my soul; He leads me in the paths of righteousness for His name's sake. Yea, though I walk through the valley of the shadow of death, I will fear no evil; for You are with me; Your rod and Your staff, they comfort me. You prepare a table before me in the presence of my enemies; You anoint my head with oil; my cup runs over. Surely goodness and mercy shall follow me all the days of my life; and I will dwell in the house of the Lord forever.",
+      },
+      {
+        kicker: 'Jehovah-Jireh · Provider',
+        verse: 'Genesis 22:14',
+        text: "And Abraham called the name of the place, The-Lord-Will-Provide; as it is said to this day, 'In the Mount of the Lord it shall be provided.'",
+      },
+      {
+        kicker: 'Jehovah-Shalom · Peace',
+        verse: 'Judges 6:24',
+        text: 'So Gideon built an altar there to the Lord, and called it The-Lord-Is-Peace. To this day it is still in Ophrah of the Abiezrites.',
+      },
+      {
+        kicker: 'Jehovah-Rapha · Healer',
+        verse: 'Exodus 15:26',
+        text: "and said, 'If you diligently heed the voice of the Lord your God and do what is right in His sight, give ear to His commandments and keep all His statutes, I will put none of the diseases on you which I have brought on the Egyptians. For I am the Lord who heals you.'",
+      },
+      {
+        kicker: 'Jehovah-Tsidkenu · Righteousness',
+        verse: 'Jeremiah 23:6',
+        text: 'In His days Judah will be saved, and Israel will dwell safely; now this is His name by which He will be called: THE LORD OUR RIGHTEOUSNESS.',
+      },
+      {
+        kicker: 'Jehovah-Shammah · Ever-Present',
+        verse: 'Ezekiel 48:35',
+        text: 'All the way around shall be eighteen thousand cubits; and the name of the city from that day shall be: THE LORD IS THERE.',
+      },
+      {
+        kicker: 'Jehovah-Nissi · Banner',
+        verse: 'Exodus 17:15',
+        text: 'And Moses built an altar and called its name, The-Lord-Is-My-Banner;',
       },
     ],
   },
