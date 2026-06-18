@@ -6,6 +6,33 @@ import { events } from '@/data/events';
 
 const siteUrl = siteMetadata.siteUrl;
 
+/**
+ * Stable "last significant content update" date for the largely-static marketing
+ * pages (home chrome, about, connect, give, ministries, forms).
+ *
+ * IMPORTANT: bump this ONLY when you make a meaningful content change to those
+ * pages. Do NOT wire it back to `new Date()` / build time. A sitemap whose
+ * <lastmod> changes for every page on every deploy trains Google to distrust —
+ * and ultimately ignore — the lastmod signal, which weakens re-crawl
+ * prioritisation and contributes to "Crawled - currently not indexed".
+ * Listing pages below derive their lastmod from real sermon/event content dates.
+ */
+const STATIC_CONTENT_LASTMOD = new Date('2026-06-14');
+
+const safeTime = (value: string): number => {
+  const t = new Date(value).getTime();
+  return Number.isNaN(t) ? 0 : t;
+};
+
+const latestSermonTime = sermons.reduce((max, s) => Math.max(max, safeTime(s.date)), 0);
+const latestEventTime = events.reduce((max, e) => Math.max(max, safeTime(e.date)), 0);
+
+const sermonsListingLastMod = latestSermonTime ? new Date(latestSermonTime) : STATIC_CONTENT_LASTMOD;
+const eventsListingLastMod = latestEventTime ? new Date(latestEventTime) : STATIC_CONTENT_LASTMOD;
+const homeLastMod = new Date(
+  Math.max(latestSermonTime, latestEventTime, STATIC_CONTENT_LASTMOD.getTime()),
+);
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const sermonRoutes = sermons.map((sermon) => ({
     url: `${siteUrl}/sermon-notes/${sermon.slug}`,
@@ -25,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Homepage
     {
       url: siteUrl,
-      lastModified: new Date(),
+      lastModified: homeLastMod,
       changeFrequency: 'weekly',
       priority: 1,
     },
@@ -33,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // About
     {
       url: `${siteUrl}/about`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -41,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Connect
     {
       url: `${siteUrl}/connect`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -49,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Sermon Notes
     {
       url: `${siteUrl}/sermon-notes`,
-      lastModified: new Date(),
+      lastModified: sermonsListingLastMod,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
@@ -58,13 +85,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Ministries
     {
       url: `${siteUrl}/ministries/community`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${siteUrl}/ministries/serve`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -72,20 +99,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Events
     {
       url: `${siteUrl}/events`,
-      lastModified: new Date(),
+      lastModified: eventsListingLastMod,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     ...eventRoutes,
     {
       url: `${siteUrl}/events/vip-form`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${siteUrl}/events/sod-enrollment`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
@@ -93,19 +120,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Give
     {
       url: `${siteUrl}/give/ways-to-give`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${siteUrl}/give/gateway-projects`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${siteUrl}/give/gateway-outreach`,
-      lastModified: new Date(),
+      lastModified: STATIC_CONTENT_LASTMOD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },

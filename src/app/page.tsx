@@ -68,7 +68,7 @@ const jsonLd = {
       name: siteMetadata.name,
       description: `${siteMetadata.description} Our discipleship process: ${siteMetadata.discipleshipProcess.join('; ')}.`,
       url: siteUrl,
-      logo: `${siteUrl}/logo.png`,
+      logo: `${siteUrl}/assets/images/gwc-logo-gold.png`,
       image: `${siteUrl}/assets/images/fam-picture.jpg`,
       slogan: siteMetadata.slogan,
       knowsAbout: siteMetadata.discipleshipProcess,
