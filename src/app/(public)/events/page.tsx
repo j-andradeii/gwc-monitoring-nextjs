@@ -74,6 +74,14 @@ export default function EventsPage() {
     .filter((e) => !e.isFeatured && !e.is_event_finished)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
+  // Past events were previously rendered nowhere, leaving their detail pages
+  // orphaned (no internal links → discoverable only via the sitemap, a leading
+  // cause of "Crawled - currently not indexed"). Surfacing them in an archive
+  // grid gives every finished-event page an internal link.
+  const pastEvents = events
+    .filter((e) => e.is_event_finished)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return (
     <div className="landing-page">
       <script
@@ -124,6 +132,25 @@ export default function EventsPage() {
             <EventsCardGrid events={regularEvents} showDescription={true} showAll={true} limit={0} />
           </div>
         </section>
+
+        {/* Past Events archive — gives finished-event detail pages an internal link */}
+        {pastEvents.length > 0 && (
+          <section className="events-grid-section events-past-section">
+            <div className="landing-container">
+              <div
+                className="section-header-center"
+                style={{ textAlign: 'left', marginBottom: '32px' }}
+              >
+                <span className="section-label">Recently Held</span>
+                <h2>Past Events</h2>
+                <p style={{ color: 'var(--text-secondary)', maxWidth: '560px', marginTop: '8px' }}>
+                  Look back on what God has been doing in our community through recent gatherings.
+                </p>
+              </div>
+              <EventsCardGrid events={pastEvents} showDescription={true} showAll={true} limit={0} />
+            </div>
+          </section>
+        )}
       </main>
 
       <LandingFooter />

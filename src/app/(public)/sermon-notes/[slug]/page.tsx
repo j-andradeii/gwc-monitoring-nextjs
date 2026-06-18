@@ -85,6 +85,11 @@ export default async function SermonDetailPage({ params }: Props) {
   const seriesSermons = getSermonsBySeries(sermon.series).filter(s => s.id !== sermon.id);
   const upcomingEvents = events.filter(isEventUpcoming).slice(0, 3);
 
+  const sermonUrl = `${siteUrl}/sermon-notes/${sermon.slug}`;
+  const imageUrl = sermon.image.startsWith('http') ? sermon.image : `${siteUrl}${sermon.image}`;
+  const publishedIso = new Date(sermon.date).toISOString();
+  const sermonKeywords = sermon.tags.length > 0 ? sermon.tags : [sermon.series, 'sermon', 'Gateway Church'];
+
   const sermonJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -95,6 +100,27 @@ export default async function SermonDetailPage({ params }: Props) {
           { '@type': 'ListItem', position: 2, name: 'Sermon Notes', item: `${siteUrl}/sermon-notes` },
           { '@type': 'ListItem', position: 3, name: sermon.title },
         ],
+      },
+      // Content-type schema present on EVERY sermon (not gated on video), so Google
+      // gets a clear "this is a substantive article" signal for the written notes.
+      {
+        '@type': 'Article',
+        headline: sermon.title,
+        description: sermon.excerpt,
+        datePublished: publishedIso,
+        dateModified: publishedIso,
+        inLanguage: 'en',
+        articleSection: sermon.series,
+        keywords: sermonKeywords.join(', '),
+        image: [imageUrl],
+        mainEntityOfPage: { '@type': 'WebPage', '@id': sermonUrl },
+        author: { '@type': 'Person', name: sermon.speaker },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Gateway Church Cebu',
+          url: siteUrl,
+          logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/images/gwc-logo-gold.png` },
+        },
       },
       ...(sermon.videoUrl
         ? [
