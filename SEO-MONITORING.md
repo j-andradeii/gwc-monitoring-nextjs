@@ -11,7 +11,7 @@ work Google Search Console + build authority + be patient** (re-indexing 40+ pag
 
 ## 1. Run the automated monitor
 ```bash
-node scripts/seo-index-check.mjs
+node scripts/seo-inxdex-check.mjs
 ```
 Read-only. Tells you (a) how many of the 4 fixes are **live on production** yet, and (b) per-URL health
 (status / canonical / robots). It can NOT read GSC — that's the manual half below.

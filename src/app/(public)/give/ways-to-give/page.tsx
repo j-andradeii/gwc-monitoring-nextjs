@@ -240,7 +240,7 @@ export default function WaysToGivePage() {
           sectionId="firstfruits-testimony"
           sectionLabel="Testimony"
           title="Firstfruits Testimony"
-          description="A story of God’s faithfulness when His people give the first."
+          description="A story of God’s faithfulness when His people honor the first."
           invert
         />
 
