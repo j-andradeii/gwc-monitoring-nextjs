@@ -180,7 +180,7 @@ export const LandingHeader: React.FC = () => {
             </li>
           </ul>
 
-          {/* <div className="header-actions">
+          <div className="header-actions">
             <Link
               href="/signin"
               className="landing-btn landing-btn-primary"
@@ -188,7 +188,7 @@ export const LandingHeader: React.FC = () => {
             >
               Sign In
             </Link>
-          </div> */}
+          </div>
         </div>
       </nav>
     </header>

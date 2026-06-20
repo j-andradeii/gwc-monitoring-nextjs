@@ -33,14 +33,14 @@ export const getMembers = (
   });
 
   const endpoint = `members${queryParams ? `?${queryParams}` : ''}`;
-  return apiClient.get<MemberListResponseDto>(endpoint);
+  return apiClient.get<MemberListResponseDto>(endpoint, { target: 'api' });
 };
 
 /**
  * Get single member by ID
  */
 export const getMemberById = (id: string): Promise<MemberResponseDto> =>
-  apiClient.get<MemberResponseDto>(`members/${id}`);
+  apiClient.get<MemberResponseDto>(`members/${id}`, { target: 'api' });
 
 /**
  * Create new member
@@ -48,7 +48,7 @@ export const getMemberById = (id: string): Promise<MemberResponseDto> =>
 export const createMember = (
   data: MemberCreationDto
 ): Promise<MemberResponseDto> =>
-  apiClient.post<MemberResponseDto>('members', data);
+  apiClient.post<MemberResponseDto>('members', data, { target: 'api' });
 
 /**
  * Create cell member
@@ -56,7 +56,9 @@ export const createMember = (
 export const createCellMember = (
   data: MemberCreationDto
 ): Promise<MemberResponseDto> =>
-  apiClient.post<MemberResponseDto>('members/cell-member', data);
+  apiClient.post<MemberResponseDto>('members/cell-member', data, {
+    target: 'api',
+  });
 
 /**
  * Update existing member
@@ -65,13 +67,13 @@ export const updateMember = (
   id: string,
   data: Partial<MemberCreationDto>
 ): Promise<MemberResponseDto> =>
-  apiClient.patch<MemberResponseDto>(`members/${id}`, data);
+  apiClient.patch<MemberResponseDto>(`members/${id}`, data, { target: 'api' });
 
 /**
  * Delete member
  */
 export const deleteMember = (id: string): Promise<unknown> =>
-  apiClient.delete(`members/${id}`);
+  apiClient.delete(`members/${id}`, { target: 'api' });
 
 // Export as service object
 export const memberService = {

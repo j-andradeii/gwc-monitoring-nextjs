@@ -13,7 +13,7 @@ import { ChurchDto, ChurchListResponseDto } from '@/models/church.types';
  * Get all churches
  */
 export const getChurches = (): Promise<ChurchListResponseDto> =>
-  apiClient.get<ChurchListResponseDto>('churches');
+  apiClient.get<ChurchListResponseDto>('churches', { target: 'api' });
 
 /**
  * Get single church by ID
@@ -21,7 +21,9 @@ export const getChurches = (): Promise<ChurchListResponseDto> =>
 export const getChurchById = (
   id: string
 ): Promise<{ statusCode: number; data: ChurchDto }> =>
-  apiClient.get<{ statusCode: number; data: ChurchDto }>(`churches/${id}`);
+  apiClient.get<{ statusCode: number; data: ChurchDto }>(`churches/${id}`, {
+    target: 'api',
+  });
 
 // Export as service object
 export const churchService = {

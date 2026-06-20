@@ -19,7 +19,9 @@ import {
 export const getChurchCampusById = (
   id: string
 ): Promise<ChurchCampusResponseDto> =>
-  apiClient.get<ChurchCampusResponseDto>(`church-campuses/${id}`);
+  apiClient.get<ChurchCampusResponseDto>(`church-campuses/${id}`, {
+    target: 'api',
+  });
 
 /**
  * Get church campus staffs
@@ -28,7 +30,8 @@ export const getChurchCampusStaffs = (
   id: string
 ): Promise<ChurchCampusStaffListResponseDto> =>
   apiClient.get<ChurchCampusStaffListResponseDto>(
-    `church-campuses/${id}/staffs`
+    `church-campuses/${id}/staffs`,
+    { target: 'api' }
   );
 
 /**
@@ -38,7 +41,9 @@ export const updateChurchCampus = (
   id: string,
   data: ChurchCampusUpdateDto
 ): Promise<ChurchCampusResponseDto> =>
-  apiClient.patch<ChurchCampusResponseDto>(`church-campuses/${id}`, data);
+  apiClient.patch<ChurchCampusResponseDto>(`church-campuses/${id}`, data, {
+    target: 'api',
+  });
 
 // Export as service object
 export const churchCampusService = {

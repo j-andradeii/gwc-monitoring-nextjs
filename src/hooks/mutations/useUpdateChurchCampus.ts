@@ -17,7 +17,9 @@ export const useUpdateChurchCampus = () => {
       id: string;
       data: ChurchCampusUpdateDto;
     }) =>
-      apiClient.patch<ChurchCampusResponseDto>(`church-campuses/${id}`, data),
+      apiClient.patch<ChurchCampusResponseDto>(`church-campuses/${id}`, data, {
+        target: 'api',
+      }),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({
         queryKey: QUERY_KEYS.churchCampus(variables.id),

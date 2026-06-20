@@ -19,7 +19,7 @@ export const useMembers = (params: MemberPaginationParams) => {
         civil_status: params.civil_status,
       });
       const endpoint = `members${queryString ? `?${queryString}` : ''}`;
-      return apiClient.get<MemberListResponseDto>(endpoint);
+      return apiClient.get<MemberListResponseDto>(endpoint, { target: 'api' });
     },
     enabled: true,
   });

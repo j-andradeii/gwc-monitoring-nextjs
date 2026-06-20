@@ -46,10 +46,13 @@ const ROUTE_REDIRECTS: Record<string, string> = {
 // Security Headers - Built at module load (includes env vars for dynamic domains)
 const buildCspHeader = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
-  // Extract origin from API URL (e.g. https://api.example.com/v1 → https://api.example.com)
+  // Extract origin from API URL (e.g. https://api.example.com/v1 → https://api.example.com).
+  // Include localhost too: the external API runs on a different port than the dev
+  // server, so it is cross-origin and must be allowed in connect-src. 'self' already
+  // covers the same-origin case, so adding the API origin is harmless when they match.
   let apiOrigin = '';
   try {
-    if (apiUrl && !apiUrl.startsWith('http://localhost')) {
+    if (apiUrl) {
       apiOrigin = new URL(apiUrl).origin;
     }
   } catch {

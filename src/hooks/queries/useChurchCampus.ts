@@ -10,7 +10,9 @@ export const useChurchCampus = (id: string) => {
   return useQuery({
     queryKey: QUERY_KEYS.churchCampus(id),
     queryFn: () =>
-      apiClient.get<ChurchCampusResponseDto>(`church-campuses/${id}`),
+      apiClient.get<ChurchCampusResponseDto>(`church-campuses/${id}`, {
+        target: 'api',
+      }),
     enabled: !!id,
   });
 };
@@ -20,7 +22,8 @@ export const useChurchCampusStaffs = (id: string) => {
     queryKey: QUERY_KEYS.churchCampusStaffs(id),
     queryFn: () =>
       apiClient.get<ChurchCampusStaffListResponseDto>(
-        `church-campuses/${id}/staffs`
+        `church-campuses/${id}/staffs`,
+        { target: 'api' }
       ),
     enabled: !!id,
   });

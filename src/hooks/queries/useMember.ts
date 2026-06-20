@@ -6,7 +6,8 @@ import type { MemberResponseDto } from '@/models/member.types';
 export const useMember = (id: string) => {
   return useQuery({
     queryKey: QUERY_KEYS.member(id),
-    queryFn: () => apiClient.get<MemberResponseDto>(`members/${id}`),
+    queryFn: () =>
+      apiClient.get<MemberResponseDto>(`members/${id}`, { target: 'api' }),
     enabled: !!id,
   });
 };

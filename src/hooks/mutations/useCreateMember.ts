@@ -8,7 +8,7 @@ export const useCreateMember = () => {
 
   return useMutation({
     mutationFn: (data: MemberCreationDto) =>
-      apiClient.post<MemberResponseDto>('members', data),
+      apiClient.post<MemberResponseDto>('members', data, { target: 'api' }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.members() });
     },
@@ -20,7 +20,9 @@ export const useCreateCellMember = () => {
 
   return useMutation({
     mutationFn: (data: MemberCreationDto) =>
-      apiClient.post<MemberResponseDto>('members/cell-member', data),
+      apiClient.post<MemberResponseDto>('members/cell-member', data, {
+        target: 'api',
+      }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.members() });
     },
