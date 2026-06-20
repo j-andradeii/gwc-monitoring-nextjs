@@ -1,11 +1,3 @@
-/**
- * Admin Layout
- *
- * Layout for protected admin pages
- */
-
-'use client';
-
 import React from 'react';
 
 export default function MenNetworkLayout({
@@ -13,10 +5,5 @@ export default function MenNetworkLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div>
-        <p style={{color:'black'}}>HELLO</p>
-        {children}
-    </div>
-  );
+  return <>{children}</>;
 }
