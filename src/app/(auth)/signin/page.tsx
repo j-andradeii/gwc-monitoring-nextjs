@@ -86,12 +86,12 @@ function SigninForm() {
             </span>
             <span>
               <strong>Gateway Church</strong>
-              <small>Team Portal</small>
+              <small></small>
             </span>
           </Link>
 
           <div className="signin-branding-main">
-            <p className="signin-eyebrow signin-reveal">Gateway Church Team Portal</p>
+            <p className="signin-eyebrow signin-reveal">Gateway Church</p>
             <h1 className="signin-reveal">Welcome back</h1>
             <p className="signin-branding-copy signin-reveal">
               Sign in to pick up right where you left off.
