@@ -191,8 +191,8 @@
 .signin-form-wrapper {
   position: relative;
   width: 100%;
-  max-width: 430px;
-  padding: 36px;
+  max-width: 528px;
+  padding: 48px 52px;
   border: 1px solid rgba(200, 191, 168, 0.78);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.88);
@@ -357,7 +357,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 .signin-field {
@@ -387,8 +387,8 @@
 .signin-field .p-password input {
   width: 100% !important;
   box-sizing: border-box;
-  min-height: 50px;
-  padding: 13px 15px;
+  min-height: 52px;
+  padding: 14px 16px;
   border: 1px solid var(--border-color-light);
   border-radius: 10px;
   background: #ffffff;
@@ -610,7 +610,7 @@
    ============================================ */
 @media (min-width: 992px) {
   .signin-page {
-    grid-template-columns: minmax(0, 0.92fr) minmax(440px, 1.08fr);
+    grid-template-columns: minmax(0, 0.86fr) minmax(540px, 1.14fr);
   }
 
   .signin-branding {
