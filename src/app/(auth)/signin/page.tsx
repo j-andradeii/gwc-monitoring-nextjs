@@ -28,7 +28,6 @@ function SigninForm() {
   const { login, isLoading } = useAuth();
   const [loginError, setLoginError] = useState<string | null>(null);
 
-
   /**
    * SUBSCRIBES TO AUTH STATE CHANGES
    * Redirects to dashboard if already authenticated
@@ -36,7 +35,10 @@ function SigninForm() {
    */
   useRedirectIfAuthenticated();
 
-  const returnUrl = searchParams.get('returnUrl') || ROUTES.DASHBOARD;
+  const requestedReturnUrl = searchParams.get('returnUrl');
+  const returnUrl = requestedReturnUrl?.startsWith('/') && !requestedReturnUrl.startsWith('//')
+    ? requestedReturnUrl
+    : ROUTES.DASHBOARD;
 
   const methods = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -53,69 +55,41 @@ function SigninForm() {
   } = methods;
 
   const onSubmit = async (data: LoginFormData) => {
-    const success = await login(data);
-    // setLoginError(null);
+    setLoginError(null);
 
-    // try {
-    //   if (success) {
-    //     router.push(returnUrl);
-    //   } else {
-    //     setLoginError('Invalid email or password. Please try again.');
-    //   }
-    // } catch {
-    //   setLoginError('An error occurred. Please try again later.');
-    // }
+    try {
+      const success = await login(data);
+
+      if (success) {
+        router.push(returnUrl);
+      } else {
+        setLoginError('Invalid email or password. Please try again.');
+      }
+    } catch {
+      setLoginError('We could not sign you in. Please check your details and try again.');
+    }
   };
 
   return (
     <div className="signin-page">
-      {/* Left Side - Branding */}
+      {/* Left Side - Welcome */}
       <div className="signin-branding">
-        <div className="signin-branding-decor" aria-hidden="true" />
         <div className="signin-branding-content">
-          <Link href="/" className="signin-logo">
+          <Link href="/" className="signin-logo signin-reveal" aria-label="Gateway Church home">
             <Image
-              src="/images/church-logo-transparent.png"
-              alt="Gateway Church Logo"
-              width={80}
-              height={80}
+              src="/assets/images/gwc-logo-gold.png"
+              alt="Gateway Church mark"
+              width={74}
+              height={58}
               priority
             />
           </Link>
-          <h1>Gateway Church</h1>
-          <p>A community growing in faith, hope, and love.</p>
 
-          <div className="signin-features">
-            <div className="signin-feature">
-              <div className="signin-feature-icon">
-                <i className="pi pi-users"></i>
-              </div>
-              <div>
-                <h3>Member Management</h3>
-                <p>Track and manage your church community effectively.</p>
-              </div>
-            </div>
-
-            <div className="signin-feature">
-              <div className="signin-feature-icon">
-                <i className="pi pi-calendar"></i>
-              </div>
-              <div>
-                <h3>Event Planning</h3>
-                <p>Organize services, events, and gatherings seamlessly.</p>
-              </div>
-            </div>
-
-            <div className="signin-feature">
-              <div className="signin-feature-icon">
-                <i className="pi pi-chart-bar"></i>
-              </div>
-              <div>
-                <h3>Analytics & Reports</h3>
-                <p>Gain insights to help your ministry grow.</p>
-              </div>
-            </div>
-          </div>
+          <p className="signin-eyebrow signin-reveal">Gateway Church Team Portal</p>
+          <h1 className="signin-reveal">Welcome back</h1>
+          <p className="signin-branding-copy signin-reveal">
+            Sign in to pick up right where you left off.
+          </p>
         </div>
 
         <div className="signin-branding-footer">
@@ -136,10 +110,10 @@ function SigninForm() {
           <div className="signin-mobile-logo">
             <Link href="/">
               <Image
-                src="/images/church-logo-transparent.png"
-                alt="Gateway Church Logo"
-                width={70}
-                height={70}
+                src="/assets/images/gwc-logo-gold.png"
+                alt="Gateway Church mark"
+                width={72}
+                height={56}
                 priority
               />
             </Link>
@@ -147,13 +121,13 @@ function SigninForm() {
           </div>
 
           <div className="signin-form-header">
-            <h2>Welcome Back</h2>
-            <p>Sign in to access your church management portal</p>
+            <h2>Sign in</h2>
+            <p>Use your Gateway Church account to continue.</p>
           </div>
 
           {loginError && (
-            <div className="signin-error">
-              <i className="pi pi-exclamation-circle"></i>
+            <div className="signin-error" role="alert" aria-live="assertive">
+              <i className="pi pi-exclamation-circle" aria-hidden="true"></i>
               <span>{loginError}</span>
             </div>
           )}
@@ -164,7 +138,7 @@ function SigninForm() {
                 <FormInput
                   name="email"
                   label="Email Address"
-                  placeholder="Enter your email"
+                  placeholder="you@example.com"
                   showRequired
                   displayDisabled={isSubmitting || isLoading}
                 />
@@ -204,27 +178,16 @@ function SigninForm() {
                 ) : (
                   <>
                     <i className="pi pi-sign-in"></i>
-                    <span>Sign In</span>
+                    <span>Sign in</span>
                   </>
                 )}
               </button>
             </form>
           </FormProvider>
 
-          <div className="signin-divider">
-            <span>or</span>
-          </div>
-
-          <div className="signin-social">
-            <button className="signin-social-btn google" type="button">
-              <i className="pi pi-google"></i>
-              <span>Continue with Google</span>
-            </button>
-          </div>
-
           <div className="signin-footer">
             <p>
-              Need help? <Link href="/#contact">Contact Support</Link>
+              Need access or having trouble? <Link href="/#contact">Contact Support</Link>
             </p>
           </div>
         </div>

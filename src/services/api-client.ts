@@ -58,11 +58,7 @@ const builAppdUrl = (endpoint: string): string => {
   return `${baseUrl}/${cleanEndpoint}`;
 };
 
-const builApidUrl = (endpoint: string): string => {
-  const baseUrl = config.api.url;
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
-  return `${baseUrl}/${cleanEndpoint}`;
-};
+
 
 const buildHeaders = async (
   endpoint: string,

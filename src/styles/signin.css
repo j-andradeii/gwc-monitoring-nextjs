@@ -1,279 +1,331 @@
 /**
  * Signin Page Styles
- * Modern authentication page with enhanced visuals
+ * Restrained, editorial authentication page aligned with Gateway Church public design tokens.
  */
 
 /* ============================================
    PAGE LAYOUT
    ============================================ */
 .signin-page {
-  display: flex;
+  display: grid;
   min-height: 100vh;
+  background: var(--background-main);
+  color: var(--text-primary);
   font-family: var(--font-family-sans-serif);
 }
 
 /* ============================================
-   LEFT SIDE - BRANDING PANEL
+   LEFT SIDE - WELCOME PANEL
    ============================================ */
 .signin-branding {
   display: none;
-  width: 50%;
-  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #a8894f 50%, #8b7340 100%);
-  padding: 60px;
-  color: white;
   position: relative;
   overflow: hidden;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(212, 168, 75, 0.22) 0%, rgba(212, 168, 75, 0) 36%),
+    linear-gradient(145deg, var(--color-navy) 0%, #22375f 56%, var(--color-secondary-dark) 100%);
 }
 
-/* Decorative background patterns */
+/* Faint grid cross-hatch */
 .signin-branding::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.65), transparent 78%);
   pointer-events: none;
-  animation: float 20s ease-in-out infinite;
-}
-
-.signin-branding::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -30%;
-  width: 80%;
-  height: 80%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-  pointer-events: none;
-  animation: float 15s ease-in-out infinite reverse;
-}
-
-/* Additional decorative element */
-.signin-branding-decor {
-  position: absolute;
-  top: 50%;
-  right: -20%;
-  width: 60%;
-  height: 120%;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  transform: translateY(-50%) rotate(15deg);
-  opacity: 0.5;
-  pointer-events: none;
+  z-index: 0;
 }
 
 .signin-branding-content {
   position: relative;
   z-index: 1;
-  height: 100%;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
+  justify-content: center;
+  padding: 64px 64px 118px;
 }
 
+/* ============================================
+   BRANDING LOGO
+   ============================================ */
 .signin-logo {
-  display: inline-block;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
+  display: inline-flex;
+  width: 84px;
+  height: 84px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
 .signin-logo:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.16);
 }
 
+.signin-logo:focus-visible {
+  outline: 2px solid var(--primary-gold-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px var(--gold-shadow-hover), 0 18px 48px rgba(0, 0, 0, 0.18);
+}
+
+/* ============================================
+   EYEBROW LABEL
+   ============================================ */
+.signin-eyebrow {
+  margin: 0;
+  color: var(--primary-gold-accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.signin-eyebrow {
+  margin-top: 48px;
+  color: var(--color-primary-light);
+}
+
+/* ============================================
+   BRANDING H1 — Solid white, confident
+   ============================================ */
 .signin-branding h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  letter-spacing: -0.5px;
+  max-width: 540px;
+  margin: 14px 0 0;
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.04;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
-.signin-branding > .signin-branding-content > p {
-  font-size: 18px;
-  opacity: 0.9;
-  margin-bottom: 50px;
-  max-width: 400px;
-  line-height: 1.6;
+/* ============================================
+   BRANDING BODY COPY
+   ============================================ */
+.signin-branding-copy {
+  max-width: 520px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.7;
 }
 
-/* Feature List */
-.signin-features {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.signin-feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.signin-feature:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(5px);
-}
-
-.signin-feature-icon {
-  width: 54px;
-  height: 54px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.signin-feature h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  letter-spacing: -0.3px;
-}
-
-.signin-feature p {
-  font-size: 14px;
-  opacity: 0.85;
-  line-height: 1.5;
-}
-
+/* ============================================
+   BRANDING FOOTER
+   ============================================ */
 .signin-branding-footer {
-  position: relative;
+  position: absolute;
+  right: 64px;
+  bottom: 36px;
+  left: 64px;
   z-index: 1;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .signin-branding-footer p {
-  font-size: 14px;
-  opacity: 0.7;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ============================================
+   SINGLE GENTLE REVEAL — branding content
+   One quiet entrance fade, no cascade.
+   ============================================ */
+.signin-reveal {
+  animation: fadeInUp 0.5s ease-out both;
+  animation-delay: 0.08s;
 }
 
 /* ============================================
    RIGHT SIDE - FORM CONTAINER
    ============================================ */
 .signin-form-container {
-  flex: 1;
+  position: relative;
   display: flex;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background: var(--background-main);
-  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, var(--background-main) 0%, var(--color-ivory) 100%),
+    var(--background-main);
 }
 
-/* Subtle pattern background */
 .signin-form-container::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c0a067' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  background:
+    linear-gradient(90deg, rgba(212, 168, 75, 0.12) 0%, transparent 30%),
+    linear-gradient(270deg, rgba(74, 60, 110, 0.08) 0%, transparent 34%);
   pointer-events: none;
 }
 
+/* ============================================
+   FORM CARD WRAPPER — solid, opaque panel
+   ============================================ */
 .signin-form-wrapper {
-  width: 100%;
-  max-width: 420px;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: 34px;
+  border: 1px solid var(--border-color-light);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 8px 40px rgba(26, 39, 68, 0.12);
+  backdrop-filter: blur(4px);
+  animation: fadeInUp 0.5s ease-out;
+  transition: box-shadow 0.4s ease;
 }
 
-/* Mobile Logo */
+.signin-form-wrapper:focus-within {
+  box-shadow:
+    0 12px 48px rgba(26, 39, 68, 0.14),
+    0 0 0 1px rgba(212, 168, 75, 0.18);
+}
+
+/* ============================================
+   MOBILE LOGO
+   ============================================ */
 .signin-mobile-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .signin-mobile-logo a {
-  transition: transform 0.3s ease;
+  display: inline-flex;
+  width: 76px;
+  height: 76px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 168, 75, 0.28);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 14px 38px rgba(26, 39, 68, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .signin-mobile-logo a:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(26, 39, 68, 0.16);
+}
+
+.signin-mobile-logo a:focus-visible {
+  outline: 2px solid var(--primary-gold-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--gold-shadow-hover), 0 14px 38px rgba(26, 39, 68, 0.12);
 }
 
 .signin-mobile-logo h2 {
-  font-size: 24px;
-  font-weight: 700;
+  margin: 14px 0 0;
   color: var(--text-primary);
-  margin-top: 15px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
 }
 
-/* Back to Home Link */
+/* ============================================
+   BACK TO HOME LINK
+   ============================================ */
 .signin-back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  margin-bottom: 24px;
   color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
   text-decoration: none;
-  margin-bottom: 25px;
-  transition: all 0.3s ease;
+  transition: color 0.25s ease;
 }
 
 .signin-back-link:hover {
   color: var(--primary-gold-accent);
 }
 
+.signin-back-link:focus-visible {
+  outline: 2px solid var(--primary-gold-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px var(--gold-shadow-hover);
+}
+
 .signin-back-link i {
-  transition: transform 0.3s ease;
+  font-size: 13px;
+  transition: transform 0.25s ease;
 }
 
 .signin-back-link:hover i {
   transform: translateX(-3px);
 }
 
-/* Form Header */
+/* ============================================
+   FORM HEADER
+   ============================================ */
 .signin-form-header {
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
+  text-align: left;
 }
 
 .signin-form-header h2 {
-  font-size: 28px;
+  margin: 0 0 10px;
+  color: var(--text-heading);
+  font-size: 32px;
   font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
+  letter-spacing: 0;
+  line-height: 1.14;
 }
 
 .signin-form-header p {
-  font-size: 15px;
+  margin: 0;
   color: var(--text-secondary);
-  line-height: 1.5;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
-/* Error Message */
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
 .signin-error {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px;
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  margin-bottom: 24px;
+  padding: 14px 16px;
   border: 1px solid #fecaca;
-  border-radius: 12px;
-  color: #dc2626;
-  margin-bottom: 25px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  color: #b91c1c;
   font-size: 14px;
+  font-weight: 600;
   animation: shake 0.5s ease-in-out;
 }
 
 .signin-error i {
-  font-size: 20px;
   flex-shrink: 0;
+  font-size: 20px;
 }
 
 /* ============================================
@@ -281,9 +333,9 @@
    ============================================ */
 .signin-form {
   display: flex;
-  flex-direction: column;
-  gap: 22px;
   width: 100%;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .signin-field {
@@ -291,20 +343,18 @@
   width: 100%;
 }
 
-/* Ensure form field wrappers take full width */
 .signin-field > div {
   width: 100%;
 }
 
 .signin-field label {
   display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
   margin-bottom: 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
 }
 
-/* PrimeReact input wrapper full width */
 .signin-field .p-inputtext,
 .signin-field .p-password,
 .signin-field .p-password input,
@@ -317,19 +367,22 @@
 .signin-field .p-inputtext,
 .signin-field .p-password input {
   width: 100% !important;
-  padding: 14px 16px;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  background: white;
   box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color-light);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 10px 28px rgba(26, 39, 68, 0.06);
+  color: var(--text-primary);
+  font-size: 15px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .signin-field .p-inputtext:focus,
 .signin-field .p-password input:focus {
   border-color: var(--primary-gold-accent);
-  box-shadow: 0 0 0 4px var(--gold-shadow-hover);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px var(--gold-shadow-hover), 0 14px 34px rgba(26, 39, 68, 0.08);
   outline: none;
 }
 
@@ -338,59 +391,121 @@
   border-color: var(--color-primary-light);
 }
 
-/* Field Icons */
-.signin-field-icon {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-secondary);
-  font-size: 18px;
-  pointer-events: none;
-  transition: color 0.3s ease;
+.signin-field .p-inputtext::placeholder,
+.signin-field .p-password input::placeholder {
+  color: #6b7280;
 }
 
-.signin-field:focus-within .signin-field-icon {
-  color: var(--primary-gold-accent);
-}
-
-/* Options Row */
+/* ============================================
+   OPTIONS ROW
+   ============================================ */
 .signin-options {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
+/* ============================================
+   CUSTOM CHECKBOX — gold check, smooth transition
+   Pure CSS on the existing markup: <label class="signin-remember"><input type="checkbox"><span>
+   ============================================ */
 .signin-remember {
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
-  font-size: 14px;
   color: var(--text-secondary);
-  transition: color 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.25s ease;
 }
 
 .signin-remember:hover {
   color: var(--text-primary);
 }
 
+/* Hide native checkbox; keep accessible */
 .signin-remember input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--primary-gold-accent);
-  cursor: pointer;
-  border-radius: 4px;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
+/* Custom checkbox box via ::before on the span */
+.signin-remember span {
+  position: relative;
+  padding-left: 28px;
+  line-height: 1.5;
+}
+
+.signin-remember span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 5px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Custom checkmark via ::after on the span */
+.signin-remember span::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-60%) rotate(45deg) scale(0);
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Checked state */
+.signin-remember input[type="checkbox"]:checked + span::before {
+  background: var(--primary-gold-accent);
+  border-color: var(--primary-gold-accent);
+  box-shadow: 0 2px 8px var(--gold-shadow-hover);
+}
+
+.signin-remember input[type="checkbox"]:checked + span::after {
+  transform: translateY(-60%) rotate(45deg) scale(1);
+}
+
+/* Hover state on the box */
+.signin-remember:hover input[type="checkbox"]:not(:checked) + span::before {
+  border-color: var(--primary-gold-accent);
+}
+
+/* Focus-visible ring on the checkbox */
+.signin-remember input[type="checkbox"]:focus-visible + span::before {
+  outline: 2px solid var(--primary-gold-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--gold-shadow-hover);
+}
+
+/* ============================================
+   FORGOT PASSWORD LINK
+   ============================================ */
 .signin-forgot {
-  font-size: 14px;
   color: var(--primary-gold-accent);
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.25s ease;
+  border-radius: 4px;
 }
 
 .signin-forgot:hover {
@@ -398,46 +513,39 @@
   text-decoration: underline;
 }
 
-/* Submit Button */
+.signin-forgot:focus-visible {
+  outline: 2px solid var(--primary-gold-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px var(--gold-shadow-hover);
+}
+
+/* ============================================
+   SUBMIT BUTTON — clean hover lift + active press
+   ============================================ */
 .signin-submit {
-  width: 100%;
+  position: relative;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-top: 8px;
   padding: 16px 24px;
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.signin-submit::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.signin-submit:hover:not(:disabled)::before {
-  left: 100%;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .signin-submit:disabled {
-  opacity: 0.7;
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .signin-submit:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(192, 160, 103, 0.35);
+  box-shadow: 0 12px 30px rgba(212, 168, 75, 0.32);
 }
 
 .signin-submit:active:not(:disabled) {
@@ -445,94 +553,29 @@
 }
 
 /* ============================================
-   DIVIDER
-   ============================================ */
-.signin-divider {
-  display: flex;
-  align-items: center;
-  margin: 28px 0;
-}
-
-.signin-divider::before,
-.signin-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--border-color), transparent);
-}
-
-.signin-divider span {
-  padding: 0 18px;
-  font-size: 13px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* ============================================
-   SOCIAL LOGIN
-   ============================================ */
-.signin-social {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.signin-social-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 14px 24px;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  background: white;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.signin-social-btn:hover {
-  border-color: var(--primary-gold-accent);
-  background: var(--background-main);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.signin-social-btn i {
-  font-size: 20px;
-}
-
-.signin-social-btn.google i {
-  background: linear-gradient(135deg, #4285f4, #ea4335, #fbbc05, #34a853);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ============================================
    FOOTER
    ============================================ */
 .signin-footer {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color-light);
   text-align: center;
-  margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid var(--border-color);
 }
 
 .signin-footer p {
-  font-size: 14px;
+  margin: 0;
   color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 .signin-footer a {
   color: var(--primary-gold-accent);
-  font-weight: 600;
+  font-weight: 800;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.25s ease;
+  border-radius: 4px;
 }
 
 .signin-footer a:hover {
@@ -540,17 +583,15 @@
   text-decoration: underline;
 }
 
+.signin-footer a:focus-visible {
+  outline: 2px solid var(--primary-gold-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--gold-shadow-hover);
+}
+
 /* ============================================
    ANIMATIONS
    ============================================ */
-@keyframes float {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-20px, 20px);
-  }
-}
 
 @keyframes shake {
   0%, 100% {
@@ -567,7 +608,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -575,25 +616,20 @@
   }
 }
 
-.signin-form-wrapper {
-  animation: fadeInUp 0.6s ease-out;
-}
-
 /* ============================================
    RESPONSIVE STYLES
    ============================================ */
 @media (min-width: 992px) {
+  .signin-page {
+    grid-template-columns: minmax(0, 1.05fr) minmax(430px, 0.95fr);
+  }
+
   .signin-branding {
-    display: flex;
-    flex-direction: column;
+    display: block;
   }
 
   .signin-mobile-logo {
     display: none;
-  }
-
-  .signin-form-container {
-    width: 50%;
   }
 
   .signin-back-link {
@@ -603,30 +639,80 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
   .signin-form-wrapper {
-    max-width: 450px;
+    max-width: 460px;
   }
 }
 
 @media (max-width: 767px) {
+  .signin-page,
   .signin-form-container {
-    padding: 30px 20px;
+    min-height: 100svh;
+  }
+
+  .signin-form-container {
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+
+  .signin-form-wrapper {
+    padding: 26px 22px;
+    border-radius: 22px;
   }
 
   .signin-form-header h2 {
-    font-size: 24px;
-  }
-
-  .signin-submit {
-    padding: 14px 20px;
+    font-size: 27px;
   }
 
   .signin-options {
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 14px;
   }
 
   .signin-forgot {
     align-self: flex-end;
+  }
+
+  .signin-submit {
+    padding: 15px 20px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION — disable / neutralise ALL
+   animations on this page for users who prefer it.
+   Covers: fadeInUp entrance, shake error, and
+   all hover transforms.
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  /* Form wrapper entrance */
+  .signin-form-wrapper {
+    animation: none;
+  }
+
+  /* Branding content reveal */
+  .signin-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Error shake */
+  .signin-error {
+    animation: none;
+  }
+
+  /* Hover transforms — remove all translateY / translateX motion */
+  .signin-logo:hover,
+  .signin-back-link:hover i,
+  .signin-mobile-logo a:hover,
+  .signin-submit:hover:not(:disabled),
+  .signin-submit:active:not(:disabled) {
+    transform: none;
+  }
+
+  /* Back-link arrow slide */
+  .signin-back-link i {
+    transition: none;
   }
 }
