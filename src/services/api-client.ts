@@ -30,6 +30,12 @@ export interface FetchOptions extends Omit<RequestInit, 'body'> {
   skipAuth?: boolean;
   skipEncryption?: boolean;
   body?: unknown;
+  /**
+   * Which base URL to target:
+   * - 'app' (default): Next.js API routes (config.app.url)
+   * - 'api': external backend API (config.api.url)
+   */
+  target?: 'app' | 'api';
 }
 
 interface RetryConfig {
@@ -58,10 +64,19 @@ const builAppdUrl = (endpoint: string): string => {
   return `${baseUrl}/${cleanEndpoint}`;
 };
 
+//API URL is the external backend api
+const builApidUrl = (endpoint: string): string => {
+  const baseUrl = config.api.url;
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+  return `${baseUrl}/${cleanEndpoint}`;
+};
 
+// Pick the URL builder based on the request target (defaults to the Next.js app api)
+const buildUrl = (endpoint: string, target: FetchOptions['target']): string =>
+  target === 'api' ? builApidUrl(endpoint) : builAppdUrl(endpoint);
 
 const buildHeaders = async (
-  endpoint: string,
+  _endpoint: string,
   options?: FetchOptions
 ): Promise<HeadersInit> => {
   const headers: Record<string, string> = {
@@ -171,7 +186,7 @@ const makeRequest = async (
   incrementRequests();
 
   try {
-    const url = builAppdUrl(endpoint);
+    const url = buildUrl(endpoint, options?.target);
     const headers = await buildHeaders(endpoint, options);
     const body = options?.body ? JSON.stringify(options.body) : undefined;
 

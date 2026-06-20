@@ -30,7 +30,7 @@ export const authenticate = async (
     const response = await apiClient.post<AuthenticatedTokenResponse>('auth', {
       email: credentials.email.trim(),
       password: encryptedPassword,
-    });
+    }, {target: 'api'});
 
     if (response.data) {
       // Note: Tokens are stored as httpOnly cookies by the backend

@@ -72,24 +72,31 @@ function SigninForm() {
 
   return (
     <div className="signin-page">
-      {/* Left Side - Welcome */}
       <div className="signin-branding">
         <div className="signin-branding-content">
-          <Link href="/" className="signin-logo signin-reveal" aria-label="Gateway Church home">
-            <Image
-              src="/assets/images/gwc-logo-gold.png"
-              alt="Gateway Church mark"
-              width={74}
-              height={58}
-              priority
-            />
+          <Link href="/" className="signin-brand-lockup signin-reveal" aria-label="Gateway Church home">
+            <span className="signin-logo">
+              <Image
+                src="/assets/images/gwc-logo-gold.png"
+                alt="Gateway Church mark"
+                width={64}
+                height={52}
+                priority
+              />
+            </span>
+            <span>
+              <strong>Gateway Church</strong>
+              <small>Team Portal</small>
+            </span>
           </Link>
 
-          <p className="signin-eyebrow signin-reveal">Gateway Church Team Portal</p>
-          <h1 className="signin-reveal">Welcome back</h1>
-          <p className="signin-branding-copy signin-reveal">
-            Sign in to pick up right where you left off.
-          </p>
+          <div className="signin-branding-main">
+            <p className="signin-eyebrow signin-reveal">Gateway Church Team Portal</p>
+            <h1 className="signin-reveal">Welcome back</h1>
+            <p className="signin-branding-copy signin-reveal">
+              Sign in to pick up right where you left off.
+            </p>
+          </div>
         </div>
 
         <div className="signin-branding-footer">
@@ -97,23 +104,23 @@ function SigninForm() {
         </div>
       </div>
 
-      {/* Right Side - Login Form */}
       <div className="signin-form-container">
         <div className="signin-form-wrapper">
-          {/* Back to Home Link (mobile only) */}
-          <Link href="/" className="signin-back-link">
-            <i className="pi pi-arrow-left"></i>
-            <span>Back to Home</span>
-          </Link>
+          <div className="signin-form-topbar">
+            <Link href="/" className="signin-back-link">
+              <i className="pi pi-arrow-left" aria-hidden="true"></i>
+              <span>Home</span>
+            </Link>
+            <span className="signin-access-pill">Private access</span>
+          </div>
 
-          {/* Mobile Logo */}
           <div className="signin-mobile-logo">
             <Link href="/">
               <Image
                 src="/assets/images/gwc-logo-gold.png"
                 alt="Gateway Church mark"
-                width={72}
-                height={56}
+                width={64}
+                height={52}
                 priority
               />
             </Link>
@@ -121,6 +128,7 @@ function SigninForm() {
           </div>
 
           <div className="signin-form-header">
+            <p className="signin-form-kicker">Account access</p>
             <h2>Sign in</h2>
             <p>Use your Gateway Church account to continue.</p>
           </div>
@@ -137,7 +145,7 @@ function SigninForm() {
               <div className="signin-field">
                 <FormInput
                   name="email"
-                  label="Email Address"
+                  label="Email"
                   placeholder="you@example.com"
                   showRequired
                   displayDisabled={isSubmitting || isLoading}
