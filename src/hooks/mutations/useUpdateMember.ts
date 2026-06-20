@@ -13,7 +13,10 @@ export const useUpdateMember = () => {
     }: {
       id: string;
       data: Partial<MemberCreationDto>;
-    }) => apiClient.patch<MemberResponseDto>(`members/${id}`, data),
+    }) =>
+      apiClient.patch<MemberResponseDto>(`members/${id}`, data, {
+        target: 'api',
+      }),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.members() });
       queryClient.invalidateQueries({

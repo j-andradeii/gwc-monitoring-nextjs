@@ -6,6 +6,6 @@ import type { ChurchListResponseDto } from '@/models/church.types';
 export const useChurches = () => {
   return useQuery({
     queryKey: QUERY_KEYS.churches(),
-    queryFn: () => apiClient.get<ChurchListResponseDto>('churches'),
+    queryFn: () => apiClient.get<ChurchListResponseDto>('churches', { target: 'api' }),
   });
 };

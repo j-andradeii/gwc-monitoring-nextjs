@@ -57,7 +57,9 @@ export const authenticate = async (
  */
 export const getSelf = async (): Promise<boolean> => {
   try {
-    const response = await apiClient.get<SelfInformationResponseDto>('self');
+    const response = await apiClient.get<SelfInformationResponseDto>('self', {
+      target: 'api',
+    });
 
     if (response.data) {
       // Store user info
@@ -83,7 +85,7 @@ export const getSelf = async (): Promise<boolean> => {
 export const logout = async (): Promise<void> => {
   try {
     // Call backend to clear httpOnly cookies
-    await apiClient.post('auth/logout', {});
+    await apiClient.post('auth/logout', {}, { target: 'api' });
   } catch {
     // Continue with logout even if API call fails
   }
