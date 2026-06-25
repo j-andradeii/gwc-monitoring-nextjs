@@ -14,6 +14,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FormInput } from '@/components/forms/FormInput';
 import { FormPassword } from '@/components/forms/FormPassword';
+import { useScrollToFirstError } from '@/components/forms';
 import { ToastProvider } from '@/components/ui/Toast';
 import { Spinner } from '@/components/ui/Spinner';
 import { useAuth, useRedirectIfAuthenticated } from '@/hooks/useAuth';
@@ -53,6 +54,7 @@ function SigninForm() {
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
+  const scrollToError = useScrollToFirstError();
 
   const onSubmit = async (data: LoginFormData) => {
     setLoginError(null);
@@ -141,7 +143,7 @@ function SigninForm() {
           )}
 
           <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
+            <form onSubmit={handleSubmit(onSubmit, scrollToError)} className="signin-form">
               <div className="signin-field">
                 <FormInput
                   name="email"

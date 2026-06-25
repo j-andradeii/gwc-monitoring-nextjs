@@ -7,6 +7,7 @@ import { eventContactSchema, type EventContactFormData } from '@/models/schemas/
 import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
 import { FormSelect } from '@/components/forms/FormSelect';
+import { useScrollToFirstError } from '@/components/forms';
 import { GENDER_OPTIONS } from '@/models/enums';
 import { CONTACT_INFO } from '@/data/contact';
 import { useMutation } from '@tanstack/react-query';
@@ -35,6 +36,7 @@ export const EventContactSection: React.FC<EventContactSectionProps> = ({ eventS
   });
 
   const { handleSubmit, reset } = methods;
+  const scrollToError = useScrollToFirstError();
 
   const submitEventInquiry = useMutation({
     mutationFn: (data: EventContactFormData) =>
@@ -99,7 +101,7 @@ export const EventContactSection: React.FC<EventContactSectionProps> = ({ eventS
                 </div>
               ) : (
                 <FormProvider {...methods}>
-                  <form onSubmit={handleSubmit(onSubmit)} className="contact-form-minimal">
+                  <form onSubmit={handleSubmit(onSubmit, scrollToError)} className="contact-form-minimal">
                     <FormInput
                       name="name"
                       label="Name"

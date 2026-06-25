@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormInput } from '@/components/forms/FormInput';
+import { useScrollToFirstError } from '@/components/forms';
 import { eventContactSchema, type EventContactFormData } from '@/models/schemas/contact.schema';
 import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '@/services/api-client';
@@ -31,6 +32,7 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
     });
 
     const { handleSubmit, reset } = methods;
+    const scrollToError = useScrollToFirstError();
 
     const submitEventInquiry = useMutation({
         mutationFn: (data: EventContactFormData) =>
@@ -116,7 +118,7 @@ export function JoinEventModal({ isOpen, onClose, eventSlug, eventTitle }: Props
                             )}
 
                             <FormProvider {...methods}>
-                                <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
+                                <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit, scrollToError)}>
                                     <div className="grid grid-cols-1 gap-3 !mt-3">
                                         <FormInput
                                             name="name"

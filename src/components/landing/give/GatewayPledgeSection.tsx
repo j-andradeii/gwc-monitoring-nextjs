@@ -5,6 +5,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { gatewayPledgeSchema, type GatewayPledgeFormData } from '@/models/schemas/contact.schema';
 import { FormInput } from '@/components/forms/FormInput';
+import { useScrollToFirstError } from '@/components/forms';
 import { CONTACT_INFO } from '@/data/contact';
 import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '@/services/api-client';
@@ -24,6 +25,7 @@ export const GatewayPledgeSection: React.FC = () => {
   });
 
   const { handleSubmit, reset } = methods;
+  const scrollToError = useScrollToFirstError();
 
   const submitGatewayPledge = useMutation({
     mutationFn: (data: GatewayPledgeFormData) =>
@@ -87,7 +89,7 @@ export const GatewayPledgeSection: React.FC = () => {
                 </div>
               ) : (
                 <FormProvider {...methods}>
-                  <form onSubmit={handleSubmit(onSubmit)} className="contact-form-minimal">
+                  <form onSubmit={handleSubmit(onSubmit, scrollToError)} className="contact-form-minimal">
                     <FormInput
                       name="name"
                       label="Name"

@@ -28,7 +28,7 @@ export interface ConnectTabMeta {
  * /public/assets/images.
  */
 export const CONNECT_TABS: ConnectTabMeta[] = [
-  { id: 'new-life', label: 'New Life', background: '/assets/images/community.jpg' },
+  { id: 'new-life', label: 'New Beginning', background: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/vip_2.jpg' },
   { id: 'connect-group', label: 'Connect Group', background: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/cell_group_2.png' },
   // {
   //   id: 'lifestyle',

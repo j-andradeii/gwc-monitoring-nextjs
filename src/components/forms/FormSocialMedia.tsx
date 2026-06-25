@@ -93,7 +93,7 @@ export const FormSocialMedia: React.FC<FormSocialMediaProps> = ({
                 ))}
             </div>
 
-            {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
+            {error && <div className="text-red-500 text-sm mt-2" data-form-error>{error}</div>}
 
             <div className="!mt-2">
                 <Button
