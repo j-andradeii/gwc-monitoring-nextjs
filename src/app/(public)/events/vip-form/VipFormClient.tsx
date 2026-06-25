@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LandingHeader, LandingFooter, PageHero } from '@/components/landing';
-import { FormInput, FormCalendar, FormSocialMedia, CalendarViewType } from '@/components/forms';
+import { FormInput, FormCalendar, FormSocialMedia, CalendarViewType, useScrollToFirstError } from '@/components/forms';
 import { vipFormSchema, type VipFormData } from '@/models/schemas/vip.schema';
 import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '@/services/api-client';
@@ -28,6 +28,7 @@ export default function VipFormClient() {
     });
 
     const { handleSubmit, reset } = methods;
+    const scrollToError = useScrollToFirstError();
 
     const submitVipForm = useMutation({
         mutationFn: (data: VipFormData) =>
@@ -129,7 +130,7 @@ export default function VipFormClient() {
                                 </div>
                             ) : (
                                 <FormProvider {...methods}>
-                                    <form onSubmit={handleSubmit(onSubmit)} className="advanced-vip-form">
+                                    <form onSubmit={handleSubmit(onSubmit, scrollToError)} className="advanced-vip-form">
                                         <div className="form-header">
                                             <span className="step-label">Registration Form</span>
                                             <h3 className="form-main-title">Share your story with us</h3>

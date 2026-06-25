@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { Checkbox } from 'primereact/checkbox';
 import { RadioButton } from 'primereact/radiobutton';
 import { LandingHeader, LandingFooter, PageHero } from '@/components/landing';
-import { FormInput, FormSelect } from '@/components/forms';
+import { FormInput, FormSelect, useScrollToFirstError } from '@/components/forms';
 import { sodEnrollmentSchema, SOD_PROOF_MAX_BYTES, SOD_PROOF_ACCEPT } from '@/models/schemas/sod.schema';
 import { useMutation } from '@tanstack/react-query';
 import { convertImageToWebp } from '@/lib/image-to-webp';
@@ -84,7 +84,7 @@ export default function SodEnrollmentClient() {
     },
   });
 
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit, reset,  } = methods;
 
   // Live preview for the selected proof-of-payment image.
   // eslint-disable-next-line react-hooks/incompatible-library
@@ -144,6 +144,9 @@ export default function SodEnrollmentClient() {
     setEnrolledName(`${data.givenName} ${data.surname}`);
     submitSodEnrollment.mutate(data);
   };
+
+  // On a failed submit, scroll the first invalid field into view (mobile + desktop).
+  const onError = useScrollToFirstError();
 
   return (
     <div className="landing-page sod-enrollment-page" style={{ background: '#fcfcfd' }}>
@@ -249,7 +252,7 @@ export default function SodEnrollmentClient() {
                 </div>
               ) : (
                 <FormProvider {...methods}>
-                  <form onSubmit={handleSubmit(onSubmit)} className="advanced-vip-form" aria-busy={submitSodEnrollment.isPending}>
+                  <form onSubmit={handleSubmit(onSubmit, onError)} className="advanced-vip-form" aria-busy={submitSodEnrollment.isPending}>
                     <div className="form-header">
                       <span className="step-label">Enrollment Form</span>
                       <h3 className="form-main-title">School of Destiny</h3>
@@ -335,7 +338,7 @@ export default function SodEnrollmentClient() {
                           name="category"
                           control={methods.control}
                           render={({ field, fieldState }) => (
-                            <fieldset className="sod-radio-fieldset" aria-required="true">
+                            <fieldset className="sod-radio-fieldset" aria-required="true" data-form-error={fieldState.invalid ? '' : undefined}>
                               <legend className="sod-radio-legend">
                                 Category
                                 <span className="form-required" aria-hidden="true">*</span>
@@ -393,7 +396,7 @@ export default function SodEnrollmentClient() {
                         name="status"
                         control={methods.control}
                         render={({ field, fieldState }) => (
-                          <fieldset className="sod-status-fieldset" aria-required="true">
+                          <fieldset className="sod-status-fieldset" aria-required="true" data-form-error={fieldState.invalid ? '' : undefined}>
                             <legend className="sod-status-legend">
                               Choose the status that applies to you
                               <span className="form-required" aria-hidden="true">*</span>
@@ -529,7 +532,7 @@ export default function SodEnrollmentClient() {
                           name="proofOfPayment"
                           control={methods.control}
                           render={({ field, fieldState }) => (
-                            <div className="sod-upload">
+                            <div className="sod-upload" data-form-error={fieldState.invalid ? '' : undefined}>
                               <input
                                 ref={fileInputRef}
                                 type="file"

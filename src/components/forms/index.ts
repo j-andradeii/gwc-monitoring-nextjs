@@ -12,3 +12,4 @@ export { FormCheckbox } from './FormCheckbox';
 export { FormRadioButton } from './FormRadioButton';
 export { FormSocialMedia } from './FormSocialMedia';
 export { default as FormError } from './FormError';
+export { useScrollToFirstError, scrollToFirstError } from './useScrollToFirstError';

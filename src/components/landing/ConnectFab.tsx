@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextarea';
 import { FormSelect } from '@/components/forms/FormSelect';
+import { useScrollToFirstError } from '@/components/forms';
 import { contactSchema, type ContactFormData } from '@/models/schemas/contact.schema';
 import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '@/services/api-client';
@@ -36,6 +37,7 @@ export function ConnectFab() {
     });
 
     const { handleSubmit, reset, clearErrors } = methods;
+    const scrollToError = useScrollToFirstError();
 
     const handleTabChange = (tab: 'prayer' | 'join') => {
         setActiveTab(tab);
@@ -240,7 +242,7 @@ export function ConnectFab() {
                                 </div>
 
                                 <FormProvider {...methods}>
-                                    <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
+                                    <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit, scrollToError)}>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 !mt-3">
                                             <FormInput
                                                 name="name"
