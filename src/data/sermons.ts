@@ -6157,7 +6157,7 @@ When we stay close to the Good Shepherd, we find protection, direction, and corr
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'One of the deepest desires of the human heart is to know and be known. To know God and to be known by Him is the sweetest and purest form of relationship we can experience.',
 
     // Legacy fallback — still used for SEO description and legacy layout
@@ -6492,6 +6492,204 @@ As we grow in knowing God and allowing ourselves to be known by Him, we discover
         kicker: 'Jehovah-Nissi · Banner',
         verse: 'Exodus 17:15',
         text: 'And Moses built an altar and called its name, The-Lord-Is-My-Banner;',
+      },
+    ],
+  },
+  {
+    id: '30',
+    slug: 'the-monuments-men',
+    title: "The Monuments' Men",
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-06-21',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: "God established the family as part of His divine plan, and because of this, families often become a target of spiritual opposition. God has entrusted us to guard what He has given — to stand firm, take responsibility, and become builders and restorers of our homes, our church, and future generations.",
+
+    description: `**THE MONUMENTS' MEN**
+
+Scripture Reference: Genesis 2:20–24
+
+---
+
+**INTRODUCTION**
+
+From the very beginning, God established the family as part of His divine plan for humanity. The union of a man and a woman was designed to reflect His love, build godly generations, and fulfill His purpose on the earth. Because of this, families often become a target of spiritual opposition.
+
+This message reminds us that God has entrusted us with the responsibility to guard what He has given us. We are called to stand firm, take responsibility, and faithfully carry out the mission He has placed before us. Rather than remaining passive, God calls us to become builders and restorers who help strengthen our homes, our church, and future generations.
+
+---
+
+**1. There Is a Warfare**
+
+"Now the serpent was more cunning than any beast of the field which the Lord God had made." (Genesis 3:1)
+
+Every family that seeks to honor God will face spiritual opposition. From the beginning, the enemy's strategy has been to disrupt God's design by attacking relationships, creating confusion, and causing people to question God's Word.
+
+Adam had been entrusted with God's command, yet when temptation came, silence and inaction opened the door for sin. The enemy often works through distraction, compromise, and omission causing believers to neglect the responsibilities God has given them.
+
+As followers of Christ, we are not called to be passive or silent leaders. God has commissioned us to influence our homes, disciple the next generation, and protect what He has entrusted to us. When we neglect our calling, our commission can become an omission.
+
+Even in spiritual battles, we can have confidence that when God calls us to a new level, He walks with us every step of the way.
+
+Follow-up Scriptures: Ezekiel 22:30; Nehemiah 4:14
+
+---
+
+**2. Choose Responsibility Over Fault**
+
+"Then the man said, 'The woman whom You gave to be with me, she gave me of the tree, and I ate.'" (Genesis 3:12)
+
+After sin entered the world, Adam and Eve responded by shifting blame instead of taking responsibility. Rather than acknowledging their own choices, each pointed to someone else.
+
+God calls His people to live differently. Healthy families and strong communities are built when people choose accountability over excuses.
+
+Taking responsibility begins with guarding our character, rejecting influences that seek to divide homes, and choosing restoration instead of blame. We are called to step into broken situations, recover what has been lost, and partner with God in rebuilding lives and relationships.
+
+Just as God gathered the broken pieces of humanity through His plan of redemption, He continues to restore those who turn to Him with humble and willing hearts.
+
+---
+
+**KEY TAKEAWAYS**
+
+* God designed the family to reflect His purpose and build godly generations.
+* Every family seeking to honor God will face spiritual opposition.
+* The enemy seeks to distract, divide relationships, and create doubt about God's Word.
+* God has commissioned us to lead with courage, not remain silent.
+* Our commission should never become an omission.
+* Responsibility brings restoration, while blame delays healing.
+* Guard your character and protect the relationships God has entrusted to you.
+* God is still in the business of restoring broken lives, families, and generations.
+
+God doesn't call us to stand by while things fall apart. He calls us to stand in the gap, protect what matters, and help restore what has been broken.
+
+---
+
+**CALL TO ACTION**
+
+Ask God to reveal where He is calling you to take responsibility.
+
+* Stand firm in prayer for your family and relationships.
+* Refuse to remain passive when God has called you to lead.
+* Take ownership of your actions instead of shifting blame.
+* Guard your home, your character, and your walk with God.
+* Become someone who restores, encourages, and builds others up.
+
+As we faithfully embrace God's calling, we become people who preserve His truth, strengthen our families, and leave a lasting legacy of faith for the generations to come.`,
+    tags: ['Family', 'Spiritual Warfare', 'Responsibility', 'Restoration', 'Legacy', 'Leadership'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/monuments_men.webp',
+    scriptures: [
+      {
+        verse: 'Genesis 2:20-24',
+        text: "So Adam gave names to all cattle, to the birds of the air, and to every beast of the field. But for Adam there was not found a helper comparable to him. And the Lord God caused a deep sleep to fall on Adam, and he slept; and He took one of his ribs, and closed up the flesh in its place. Then the rib which the Lord God had taken from man He made into a woman, and He brought her to the man. And Adam said: 'This is now bone of my bones and flesh of my flesh; she shall be called Woman, because she was taken out of Man.' Therefore a man shall leave his father and mother and be joined to his wife, and they shall become one flesh.",
+      },
+      {
+        verse: 'Genesis 3:1',
+        text: "Now the serpent was more cunning than any beast of the field which the Lord God had made. And he said to the woman, 'Has God indeed said, You shall not eat of every tree of the garden?'",
+      },
+      {
+        verse: 'Genesis 3:12',
+        text: "Then the man said, 'The woman whom You gave to be with me, she gave me of the tree, and I ate.'",
+      },
+      {
+        verse: 'Ezekiel 22:30',
+        text: 'So I sought for a man among them who would make a wall, and stand in the gap before Me on behalf of the land, that I should not destroy it; but I found no one.',
+      },
+      {
+        verse: 'Nehemiah 4:14',
+        text: "And I looked, and arose and said to the nobles, to the leaders, and to the rest of the people, 'Do not be afraid of them. Remember the Lord, great and awesome, and fight for your brethren, your sons, your daughters, your wives, and your houses.'",
+      },
+    ],
+    keyPoints: ['There Is a Warfare', 'Choose Responsibility Over Fault'],
+    relatedSermons: ['29', '28'],
+    subtitle: { prefix: "The Monuments'", italic: 'Men' },
+    keyVerse: 'Genesis 2:20-24',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: "The Monuments' Men",
+        unnumbered: true,
+        paragraphs: [
+          'From the very beginning, God established the family as part of His divine plan for humanity. The union of a man and a woman was designed to reflect His love, build godly generations, and fulfill His purpose on the earth. Because of this, families often become a target of spiritual opposition.',
+          'This message reminds us that God has entrusted us with the responsibility to guard what He has given us. We are called to stand firm, take responsibility, and faithfully carry out the mission He has placed before us. Rather than remaining passive, God calls us to become builders and restorers who help strengthen our homes, our church, and future generations.',
+        ],
+      },
+      {
+        id: 'sec-warfare',
+        title: 'There Is a Warfare',
+        paragraphs: [
+          '**Genesis 3:1** — "Now the serpent was more cunning than any beast of the field which the Lord God had made."',
+          "Every family that seeks to honor God will face spiritual opposition. From the beginning, the enemy's strategy has been to disrupt God's design by attacking relationships, creating confusion, and causing people to question God's Word.",
+          "Adam had been entrusted with God's command, yet when temptation came, silence and inaction opened the door for sin. The enemy often works through distraction, compromise, and omission causing believers to neglect the responsibilities God has given them.",
+          "As followers of Christ, we are not called to be passive or silent leaders. God has commissioned us to influence our homes, disciple the next generation, and protect what He has entrusted to us. When we neglect our calling, our commission can become an omission.",
+          'Even in spiritual battles, we can have confidence that when God calls us to a new level, He walks with us every step of the way.',
+        ],
+      },
+      {
+        id: 'sec-responsibility',
+        title: 'Choose Responsibility Over Fault',
+        paragraphs: [
+          '**Genesis 3:12** — "Then the man said, \'The woman whom You gave to be with me, she gave me of the tree, and I ate.\'"',
+          'After sin entered the world, Adam and Eve responded by shifting blame instead of taking responsibility. Rather than acknowledging their own choices, each pointed to someone else.',
+          'God calls His people to live differently. Healthy families and strong communities are built when people choose accountability over excuses.',
+          'Taking responsibility begins with guarding our character, rejecting influences that seek to divide homes, and choosing restoration instead of blame. We are called to step into broken situations, recover what has been lost, and partner with God in rebuilding lives and relationships.',
+          'Just as God gathered the broken pieces of humanity through His plan of redemption, He continues to restore those who turn to Him with humble and willing hearts.',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Ask God to reveal where He is calling you to take responsibility.',
+          'Stand firm in prayer for your family and relationships.',
+          'Refuse to remain passive when God has called you to lead.',
+          'Take ownership of your actions instead of shifting blame.',
+          'Guard your home, your character, and your walk with God.',
+          'Become someone who restores, encourages, and builds others up.',
+          'As we faithfully embrace God\'s calling, we become people who preserve His truth, strengthen our families, and leave a lasting legacy of faith for the generations to come.',
+        ],
+        callout: "God doesn't call us to stand by while things fall apart. He calls us to stand in the gap, protect what matters, and help restore what has been broken.",
+      },
+    ],
+    keyTakeaways: [
+      'God designed the family to reflect His purpose and build godly generations.',
+      'Every family seeking to honor God will face spiritual opposition.',
+      "The enemy seeks to distract, divide relationships, and create doubt about God's Word.",
+      'God has commissioned us to lead with courage, not remain silent.',
+      'Our commission should never become an omission.',
+      'Responsibility brings restoration, while blame delays healing.',
+      'Guard your character and protect the relationships God has entrusted to you.',
+      'God is still in the business of restoring broken lives, families, and generations.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Genesis 2:20-24',
+        text: "So Adam gave names to all cattle, to the birds of the air, and to every beast of the field. But for Adam there was not found a helper comparable to him. And the Lord God caused a deep sleep to fall on Adam, and he slept; and He took one of his ribs, and closed up the flesh in its place. Then the rib which the Lord God had taken from man He made into a woman, and He brought her to the man. And Adam said: 'This is now bone of my bones and flesh of my flesh; she shall be called Woman, because she was taken out of Man.' Therefore a man shall leave his father and mother and be joined to his wife, and they shall become one flesh.",
+      },
+      {
+        kicker: 'There Is a Warfare',
+        verse: 'Genesis 3:1',
+        text: "Now the serpent was more cunning than any beast of the field which the Lord God had made. And he said to the woman, 'Has God indeed said, You shall not eat of every tree of the garden?'",
+      },
+      {
+        kicker: 'Follow-up Scripture',
+        verse: 'Ezekiel 22:30',
+        text: 'So I sought for a man among them who would make a wall, and stand in the gap before Me on behalf of the land, that I should not destroy it; but I found no one.',
+      },
+      {
+        kicker: 'Follow-up Scripture',
+        verse: 'Nehemiah 4:14',
+        text: "And I looked, and arose and said to the nobles, to the leaders, and to the rest of the people, 'Do not be afraid of them. Remember the Lord, great and awesome, and fight for your brethren, your sons, your daughters, your wives, and your houses.'",
+      },
+      {
+        kicker: 'Choose Responsibility Over Fault',
+        verse: 'Genesis 3:12',
+        text: "Then the man said, 'The woman whom You gave to be with me, she gave me of the tree, and I ate.'",
       },
     ],
   },
