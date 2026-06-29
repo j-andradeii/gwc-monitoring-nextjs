@@ -29,7 +29,8 @@ export interface Event {
   isFeatured?: boolean;
   type: GatewayEventType;
   is_event_finished?: boolean;
-  gallery?: string[]; // Optional array of image URLs for the event gallery
+  gallery?: string[]; // Optional array of image URLs for the event gallery,
+  has_payment?: boolean
 }
 
 const getUpcomingSunday = (): string => {
@@ -385,7 +386,8 @@ We will go and make disciples! We are ready to give our all! 🔥
     is_event_finished: false,
     gallery: [
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/theme.webp'
-    ]
+    ],
+    has_payment: true
   },
 ];
 

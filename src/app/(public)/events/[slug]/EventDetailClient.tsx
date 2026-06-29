@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LandingHeader, LandingFooter, ScrollAnimationProvider, ShareModal, JoinEventModal, ContactSection } from '@/components/landing';
+import EventRegistrationSection from '@/components/landing/events/EventRegistrationSection';
 import { ProjectGallery } from '@/components/landing/give';
 import { EventDetailHero } from '@/components/landing/events/EventDetailHero';
 import { Event } from '@/data/events';
@@ -136,7 +137,14 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
 
       <EventDetailHero
         event={event}
-        onJoinEvent={() => setShowJoinModal(true)}
+        onJoinEvent={() => {
+          if (event.has_payment) {
+            const el = document.getElementById('event-register');
+            el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            setShowJoinModal(true);
+          }
+        }}
         onShareEvent={handleShare}
       />
 
@@ -230,9 +238,13 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
         </section>
 
 
-        <ScrollAnimationProvider>
-          <ContactSection />
-        </ScrollAnimationProvider>
+        {event.has_payment ? (
+          <EventRegistrationSection event={event} />
+        ) : (
+          <ScrollAnimationProvider>
+            <ContactSection />
+          </ScrollAnimationProvider>
+        )}
 
         <section className="event-detail-back-section">
           <div className="landing-container">
@@ -253,12 +265,14 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
         excerpt={event.description || `Join us for ${event.title} at Gateway Church`}
       />
 
-      <JoinEventModal
-        isOpen={showJoinModal}
-        onClose={() => setShowJoinModal(false)}
-        eventSlug={event.slug}
-        eventTitle={event.title}
-      />
+      {!event.has_payment && (
+        <JoinEventModal
+          isOpen={showJoinModal}
+          onClose={() => setShowJoinModal(false)}
+          eventSlug={event.slug}
+          eventTitle={event.title}
+        />
+      )}
     </div>
   );
 }

@@ -1096,3 +1096,59 @@
     font-size: 0.82em;
     margin-left: 4px;
 }
+
+/* ============================================================
+   EVENT REGISTRATION SECTION (.event-register-section)
+   Scoped block for the paid-event registration form injected
+   into the event detail page in place of ContactSection.
+   Reuses all existing .vip-layout-grid, .vip-welcome-card,
+   .vip-form-container, .sod-payment-* and .sod-upload-* rules.
+   ============================================================ */
+
+/* Section scroll target — leave room for the sticky LandingHeader (70 px)
+   plus a comfortable 20 px buffer so the heading is never clipped. */
+#event-register {
+    scroll-margin-top: 90px;
+}
+
+/* Alternate (warm cream) background — this section follows the white
+   .event-detail-main, so it alternates per DESIGN_SYSTEM.md §8 to give the
+   page rhythm and let the white form card stand out. */
+.event-register-section {
+    padding: 50px 0;
+    background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-cream) 100%);
+}
+
+/* The welcome card was removed — center the lone form card and cap its width
+   so it doesn't stretch full-bleed on desktop. */
+.event-register-form-wrap {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* Card floats on the alternate background via elevation — NO border
+   (DESIGN_SYSTEM.md §8: cards on an alternate background use shadow, not a
+   border). Layered ambient + soft gold glow matches the premium-glass-card feel. */
+.event-register-section .vip-form-container {
+    border: none;
+    box-shadow:
+        0 2px 6px rgba(26, 39, 68, 0.05),
+        0 26px 60px rgba(26, 39, 68, 0.14),
+        0 40px 90px rgba(212, 168, 75, 0.10);
+}
+
+/* On very small viewports the section padding compresses to match SOD. */
+@media (max-width: 640px) {
+    .event-register-section {
+        padding: 32px 0 50px;
+    }
+}
+
+/* Reduced-motion: pulse-ring inside the success state has no transition
+   already handled by vip-form.css @keyframes pulse — keep for completeness. */
+@media (prefers-reduced-motion: reduce) {
+    .event-register-section .pulse-ring {
+        animation: none;
+    }
+}

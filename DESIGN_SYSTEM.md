@@ -536,6 +536,19 @@ Companions: `.btn-contrast-outline`, `.btn-contrast-light`, `.btn-gold-border` (
 | Compact | `50px 0` | `40px 0` | `32px 0` |
 | `.section-padding` (Tailwind) | `py-20` | `py-16` | `py-12` |
 
+### Section Background Alternation
+Stacked full-width sections must **alternate background tones** to create visual rhythm and separation — never place two same-coloured sections back-to-back.
+
+| Tone | Token | Hex | Use |
+|------|-------|-----|-----|
+| Base | `--background-section` | `#ffffff` | Default / primary sections |
+| Alternate (light) | `--color-ivory` / `--color-cream` | `#faf8f3` / `#f5f0e6` | The next section in the stack (`.section-alternate-bg`) |
+| Alternate (dark) | `--color-navy` / `#000` | `#1a2744` | High-contrast break (`.section-dark` / `.section-black`, §9) |
+
+**Rules:**
+1. When a section sits directly after a white (`#ffffff`) section, give it an alternate (ivory/cream or dark) background — and vice-versa.
+2. A **card placed on an alternate background floats via elevation (shadow), not a border.** Drop the 1px border and lean on the §7 layered shadow so the card reads as raised against the tint. (Applied example: the paid-event registration section — `.event-register-section` is cream, its `.vip-form-container` is borderless + elevated.)
+
 ---
 
 ## 9. High-Contrast Sections
