@@ -35,11 +35,14 @@ async function appendToGoogleSheet(data: Record<string, unknown>): Promise<Sheet
     // Format Name
     const fullName = `${data.firstName || ''} ${data.familyName || ''}`.trim();
 
-    // Format Birthday
+    // Format Birthday — in Asia/Manila (same zone as the timestamp; the client
+    // posts a UTC ISO string, so this avoids an off-by-one day for PH inquirers)
+    // and prefix with an apostrophe so USER_ENTERED stores it as plain text
+    // instead of coercing "MM/DD/YYYY" into an unreadable date serial number.
     let birthdayStr = '';
     if (data.birthdate) {
       const bd = new Date(data.birthdate as string | number | Date);
-      birthdayStr = bd.toLocaleDateString('en-US');
+      birthdayStr = `'${bd.toLocaleDateString('en-US', { timeZone: 'Asia/Manila' })}`;
     }
 
     // Format Socials

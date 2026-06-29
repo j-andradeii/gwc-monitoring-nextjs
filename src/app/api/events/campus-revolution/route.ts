@@ -115,11 +115,20 @@ async function appendToGoogleSheet(
     // Timestamp in Asia/Manila timezone.
     const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
 
-    // Birthdate — formatted as local US string for readability.
+    // Birthdate — formatted as a readable US date.
+    //
+    // Two fixes are baked in here:
+    //  1. Timezone: the client sends the birthdate as a UTC ISO string, so we
+    //     format it in Asia/Manila (same zone the timestamp above uses) to avoid
+    //     an off-by-one day for PH registrants.
+    //  2. Leading apostrophe: under USER_ENTERED, Google Sheets coerces
+    //     "MM/DD/YYYY" into a date *serial number* (e.g. 34679). Column E has no
+    //     date number-format, so the bare serial rendered as an unreadable
+    //     integer. The apostrophe forces the cell to plain text and is not shown.
     let birthdateStr = '';
     if (data.birthdate) {
       const bd = new Date(data.birthdate as string | number | Date);
-      birthdateStr = bd.toLocaleDateString('en-US');
+      birthdateStr = `'${bd.toLocaleDateString('en-US', { timeZone: 'Asia/Manila' })}`;
     }
 
     // Social handles — one "Platform: @handle" per line.
