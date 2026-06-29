@@ -187,6 +187,21 @@ export default function WaysToGivePage() {
         />
 
         {/* ===========================================
+            GIVING CHANNELS — lead section
+            Placed first so the giving channels are immediately
+            accessible to the user. One block serves both Tithes &
+            Offering and Firstfruits; the keyword for the message /
+            details / reference field is surfaced as the final
+            "How to Send" step per card.
+            =========================================== */}
+        <GiveChannelsSection
+          sectionId="give-channels"
+          sectionLabel="Channels"
+          title="How to Give"
+          keywords={giveKeywords}
+        />
+
+        {/* ===========================================
             SECTION 1 — TITHES & OFFERING
             =========================================== */}
         <GiveWhySection
@@ -194,7 +209,7 @@ export default function WaysToGivePage() {
           sectionLabel="Generosity"
           title="Tithes & Offering"
           intro={tithesAndOfferingIntro}
-          variantClassName="give-why-section--default give-why-section--compact"
+          variantClassName="give-why-section--compact"
           scriptures={scriptures}
           scriptureMaxLines={4}
         />
@@ -216,7 +231,7 @@ export default function WaysToGivePage() {
           title="Firstfruits"
           intro={firstfruitsIntro}
           scriptures={firstfruitsScriptures}
-          variantClassName="give-why-section--firstfruits give-why-section--compact"
+          variantClassName="give-why-section--default give-why-section--compact"
           scriptureMaxLines={4}
           learnMoreHref="/sermon-notes/first-fruit-sunday"
           learnMoreLabel="Learn more about Firstfruits"
@@ -241,20 +256,6 @@ export default function WaysToGivePage() {
           sectionLabel="Testimony"
           title="Firstfruits Testimony"
           description="A story of God’s faithfulness when His people honor the first."
-          invert
-        />
-
-        {/* ===========================================
-            SHARED — GIVING CHANNELS
-            One block serves both Tithes & Offering and Firstfruits.
-            The keyword to put in the message / details / reference
-            field is surfaced as the final "How to Send" step per card.
-            =========================================== */}
-        <GiveChannelsSection
-          sectionId="give-channels"
-          sectionLabel="Channels"
-          title="How to Give"
-          keywords={giveKeywords}
         />
 
         {/* Contact Section */}
