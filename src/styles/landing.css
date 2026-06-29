@@ -7226,6 +7226,55 @@
   }
 }
 
+/* ===========================================
+   Ways to Give — giving channels on a WHITE band (THIS PAGE ONLY)
+   The shared .give-channels-section is the NAVY dark anchor on the
+   gateway-outreach / gateway-projects give pages. On Ways to Give the owner
+   wants the channels to lead on a clean WHITE band, so re-tier the navy
+   treatment to a light band here only: white bg, no dark-bg glow, dark
+   heading/subtitle (overriding the white !important navy rules), a darkened
+   gold eyebrow for light-band contrast, and a defined edge on the white
+   channel cards (the navy-era faint white rim is invisible on white).
+   Scoped to .ways-to-give-page so the other give pages keep their navy band.
+   =========================================== */
+.ways-to-give-page .give-channels-section {
+  background: var(--background-section, #ffffff);
+}
+
+.ways-to-give-page .give-channels-section::before {
+  display: none;
+}
+
+.ways-to-give-page .give-channels-section .section-header-center h2 {
+  color: var(--text-heading) !important;
+}
+
+.ways-to-give-page .give-channels-section .section-header-center p {
+  color: var(--text-primary) !important;
+}
+
+.ways-to-give-page .give-channels-section .section-label {
+  color: var(--color-primary-dark, #b8923f) !important;
+}
+
+/* Clearly defined edges on the white channel cards — gold border + soft navy
+   lift (the house light-band card style, matching the gateway-outreach /
+   gateway-projects light-band cards). The navy-era faint white rim is invisible
+   on white, so the card edge needs an explicit indication here. */
+.ways-to-give-page .give-channels-section .compact-card {
+  border: 1.5px solid rgba(212, 168, 75, 0.55) !important;
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.05),
+    0 6px 22px rgba(26, 39, 68, 0.1) !important;
+}
+
+.ways-to-give-page .give-channels-section .compact-card:hover {
+  border-color: rgba(212, 168, 75, 0.85) !important;
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 75, 0.3),
+    0 14px 34px rgba(26, 39, 68, 0.17) !important;
+}
+
 /* Firstfruits theming variant for GiveWhySection */
 .give-why-section--firstfruits {
   background: linear-gradient(180deg, #fffaf0 0%, #f5f0e6 100%);
