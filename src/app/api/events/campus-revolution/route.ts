@@ -8,9 +8,15 @@ export const runtime = 'nodejs';
 
 /**
  * G12 Campus Revolution (and future campus events) spreadsheet.
- * GOOGLE_SPREADSHEET_G12_EVENTS is set in .env / Vercel environment variables.
+ * The owner-supplied target Sheet ID is hardcoded as a fallback so the route
+ * still writes even when GOOGLE_SPREADSHEET_G12_EVENTS isn't set in the Vercel
+ * environment; the env var wins when present. (Without this fallback, a missing
+ * env var silently hit the "not configured" branch below and returned a FALSE
+ * `success: true` — the registrant saw "successful" but nothing reached the
+ * sheet. Same pattern as the SOD enrollees route.)
  */
-const SPREADSHEET_ID = process.env.GOOGLE_SPREADSHEET_G12_EVENTS;
+const SPREADSHEET_ID =
+  process.env.GOOGLE_SPREADSHEET_G12_EVENTS || '1RZRZAV0s3X-zoq_lxfx7uLspSk7XtdrEigYmz2SZEew';
 
 /**
  * Map event slug → Google Sheets tab name.

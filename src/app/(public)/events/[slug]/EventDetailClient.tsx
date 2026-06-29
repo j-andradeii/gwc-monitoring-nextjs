@@ -131,8 +131,63 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
     setShowShareModal(true);
   };
 
+  const eventAside = (
+    <aside className="event-detail-aside" aria-label="Event details">
+      <div className="event-detail-panel">
+        <h2>Event details</h2>
+        <div className="event-detail-info-list">
+          <DetailItem icon="pi-calendar" label="Date" value={`${event.day}, ${event.displayDate || event.date}`} />
+          <DetailItem
+            icon="pi-map-marker"
+            label="Location"
+            value={event.location}
+            href={isGoldenPeak ? CONTACT_INFO.mapsUrl : undefined}
+          />
+        </div>
+      </div>
+
+      {latestSermons.length > 0 && (
+        <div className="event-detail-sermons-panel">
+          <div className="event-detail-sermons-header">
+            <h2>Latest Sermons</h2>
+            <Link href="/sermon-notes" className="event-detail-sermons-view-all">
+              View all <i className="pi pi-arrow-right" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="event-detail-sermons-list">
+            {latestSermons.map((sermon, index) => (
+              <React.Fragment key={sermon.slug}>
+                {index > 0 && <div className="event-detail-sermons-divider" />}
+                <Link
+                  href={`/sermon-notes/${sermon.slug}`}
+                  className="event-detail-sermon-link"
+                  aria-label={`${sermon.title} — ${sermon.speaker}`}
+                >
+                  <div className="event-detail-sermon-thumb">
+                    <Image
+                      src={sermon.image}
+                      alt={sermon.title}
+                      fill
+                      sizes="68px"
+                      unoptimized
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="event-detail-sermon-body">
+                    <span className="event-detail-sermon-title">{sermon.title}</span>
+                    <span className="event-detail-sermon-meta">{formatSermonDate(sermon.date)}</span>
+                  </div>
+                </Link>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      )}
+    </aside>
+  );
+
   return (
-    <div className="landing-page event-detail-page">
+    <div className={`landing-page event-detail-page${event.has_payment ? ' event-detail-page--has-payment' : ''}`}>
       <LandingHeader />
 
       <EventDetailHero
@@ -182,58 +237,11 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
               )}
             </article>
 
-            <aside className="event-detail-aside" aria-label="Event details">
-              <div className="event-detail-panel">
-                <h2>Event details</h2>
-                <div className="event-detail-info-list">
-                  <DetailItem icon="pi-calendar" label="Date" value={`${event.day}, ${event.displayDate || event.date}`} />
-                  <DetailItem
-                    icon="pi-map-marker"
-                    label="Location"
-                    value={event.location}
-                    href={isGoldenPeak ? CONTACT_INFO.mapsUrl : undefined}
-                  />
-                </div>
-              </div>
-
-              {latestSermons.length > 0 && (
-                <div className="event-detail-sermons-panel">
-                  <div className="event-detail-sermons-header">
-                    <h2>Latest Sermons</h2>
-                    <Link href="/sermon-notes" className="event-detail-sermons-view-all">
-                      View all <i className="pi pi-arrow-right" aria-hidden="true" />
-                    </Link>
-                  </div>
-                  <div className="event-detail-sermons-list">
-                    {latestSermons.map((sermon, index) => (
-                      <React.Fragment key={sermon.slug}>
-                        {index > 0 && <div className="event-detail-sermons-divider" />}
-                        <Link
-                          href={`/sermon-notes/${sermon.slug}`}
-                          className="event-detail-sermon-link"
-                          aria-label={`${sermon.title} — ${sermon.speaker}`}
-                        >
-                          <div className="event-detail-sermon-thumb">
-                            <Image
-                              src={sermon.image}
-                              alt={sermon.title}
-                              fill
-                              sizes="68px"
-                              unoptimized
-                              style={{ objectFit: 'cover' }}
-                            />
-                          </div>
-                          <div className="event-detail-sermon-body">
-                            <span className="event-detail-sermon-title">{sermon.title}</span>
-                            <span className="event-detail-sermon-meta">{formatSermonDate(sermon.date)}</span>
-                          </div>
-                        </Link>
-                      </React.Fragment>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </aside>
+            {/* Desktop: aside sits in the grid as a sticky sidebar. On mobile it is
+                hidden here and re-rendered after the registration/contact block below. */}
+            <div className="event-detail-aside-slot event-detail-aside-slot--inline">
+              {eventAside}
+            </div>
           </div>
         </section>
 
@@ -244,6 +252,16 @@ export default function EventDetailClient({ event, otherEvents, latestSermons }:
           <ScrollAnimationProvider>
             <ContactSection />
           </ScrollAnimationProvider>
+        )}
+
+        {/* Mobile + has_payment only: aside moves below the registration block.
+            For non-payment events the inline aside above keeps its original spot. */}
+        {event.has_payment && (
+          <section className="event-detail-aside-mobile-section">
+            <div className="landing-container event-detail-aside-slot event-detail-aside-slot--mobile">
+              {eventAside}
+            </div>
+          </section>
         )}
 
         <section className="event-detail-back-section">
