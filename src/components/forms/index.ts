@@ -13,3 +13,5 @@ export { FormRadioButton } from './FormRadioButton';
 export { FormSocialMedia } from './FormSocialMedia';
 export { default as FormError } from './FormError';
 export { useScrollToFirstError, scrollToFirstError } from './useScrollToFirstError';
+export { default as FormMaskedDate } from './FormMaskedDate';
+export { default as ProofOfPaymentField } from './ProofOfPaymentField';

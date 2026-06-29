@@ -9,7 +9,8 @@ export enum GatewayEventType {
   TRAINING = 'TRAINING',
   FELLOWSHIP = 'FELLOWSHIP',
   CONFERENCE = 'CONFERENCE',
-  RETREAT = 'RETREAT'
+  RETREAT = 'RETREAT',
+  G12_CONFERENCE = 'G12_CONFERENCE'
 }
 
 export interface Event {
@@ -28,7 +29,8 @@ export interface Event {
   isFeatured?: boolean;
   type: GatewayEventType;
   is_event_finished?: boolean;
-  gallery?: string[]; // Optional array of image URLs for the event gallery
+  gallery?: string[]; // Optional array of image URLs for the event gallery,
+  has_payment?: boolean
 }
 
 const getUpcomingSunday = (): string => {
@@ -320,12 +322,72 @@ Tag your movie buddy, scan the QR code, and save your seat. We can’t wait to s
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
+    is_event_finished: true,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/1.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/2.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/3.webp',
+    ]
+  },
+  {
+    id: 13,
+    slug: 'gateway-axis-july-2026',
+    title: 'GATEWAY AXIS',
+    date: 'July 26, 2026',
+    displayDate: 'July 26',
+    day: 'Sunday',
+    time: '1:30 PM',
+    time_sub_label: 'doors open',
+    location: '8th Floor, Golden Peak Hotel and Suites',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/axis_june_updated.webp',
+    description: `
+🎬✨ Your next movie hangout is on us!
+
+Grab your friends and enjoy an afternoon filled with great films, good company, and delicious movie snacks—all for FREE! 🍿🍟
+
+📍 8F, Golden Peak Hotel
+🕜 Doors Open: 1:30 PM
+📅 July 26
+
+Tag your movie buddy, scan the QR code, and save your seat. We can’t wait to see you there! 🎥🔥`,
+    category: 'Fellowship',
+    isFeatured: false,
+    type: GatewayEventType.FELLOWSHIP,
     is_event_finished: false,
     gallery: [
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/1.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/2.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/3.webp',
     ]
+  },
+  {
+    id: 14,
+    slug: 'g12-campus-rev-cebu-2026',
+    title: 'G12 CAMPUS REVOLUTION',
+    date: 'August 6, 2026',
+    displayDate: 'Aug 6',
+    day: 'Saturday',
+    time: '9:00 AM',
+    location: 'IEC Convention Center of Cebu, Cebu City',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/campus_leaders.webp',
+    description: `
+God intentionally chose us to reach the youth of this generation. So, let's rise up, campus leaders! Let nothing stop us from winning our campuses for Jesus! 🔥
+
+The fire within us will not be extinguished. It will continue to burn brightly as we pursue God's purpose and share His love with this generation.
+Don't miss this opportunity to receive fresh fire, revelation, and empowerment from God. Invite your friends, classmates, fellow campus leaders, and disciples. Together, let's believe for a generation set ablaze for Christ!
+"For this reason I remind you to fan into flame the gift of God, which is in you through the laying on of my hands." (2 Timothy 1:6)
+
+We will go and make disciples! We are ready to give our all! 🔥
+
+#G12PHCampusLeadersRevo2026 #G12PHFlamesOfFire`,
+    category: 'Training',
+    isFeatured: false,
+    type: GatewayEventType.G12_CONFERENCE,
+    is_event_finished: false,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/theme.webp'
+    ],
+    has_payment: true
   },
 ];
 
