@@ -3768,6 +3768,16 @@
   top: 96px;
 }
 
+/* Desktop: the inline slot is transparent to layout so the aside acts as the
+   grid's sticky sidebar exactly as before. The mobile copy is hidden. */
+.event-detail-aside-slot--inline {
+  display: contents;
+}
+
+.event-detail-aside-mobile-section {
+  display: none;
+}
+
 .event-detail-panel {
   border: 1px solid var(--border-color-light);
   border-radius: 8px;
@@ -4084,6 +4094,18 @@
 
   .event-detail-aside {
     position: static;
+  }
+
+  /* Mobile, payment events only: drop the in-grid aside and surface its copy
+     below the registration block instead. Non-payment events keep the inline
+     aside in its original position above the contact section. */
+  .event-detail-page--has-payment .event-detail-aside-slot--inline {
+    display: none;
+  }
+
+  .event-detail-page--has-payment .event-detail-aside-mobile-section {
+    display: block;
+    padding: 48px 0 54px;
   }
 
   .event-detail-related-grid {
