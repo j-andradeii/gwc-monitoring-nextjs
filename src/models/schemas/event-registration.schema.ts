@@ -6,7 +6,7 @@ export const eventRegistrationSchema = z.object({
   cellLeader: z.string().min(1, 'Cell leader name is required'),
   birthdate: z.date({ message: 'Date of birth is required' }),
   email: z.string().email('Invalid email').optional().or(z.literal('')),
-  phone: z.string().min(1, 'Phone number is required'),
+  phone: z.string().optional(),
   socialMedia: z
     .array(
       z.object({

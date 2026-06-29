@@ -139,6 +139,7 @@ export default function EventRegistrationSection({ event }: Props) {
                       cellLeader: '',
                       birthdate: undefined,
                       email: '',
+                      phone: '',
                       socialMedia: [{ platform: 'Facebook', handle: '' }],
                       amountSent: '',
                       proofOfPayment: undefined,
@@ -169,175 +170,180 @@ export default function EventRegistrationSection({ event }: Props) {
                     </div>
                   )}
 
-                  {/* Section 01: Personal Information */}
-                  <div className="form-section">
-                    <div className="section-title">
-                      <span className="section-number">01</span>
-                      <h4>Personal Information</h4>
-                    </div>
+                  {/* Two-column on desktop (info | payment), single column on mobile */}
+                  <div className="event-register-columns">
+                    {/* ── Left column: applicant details ───────────────── */}
+                    <div className="event-register-col">
+                      {/* Section 01: Personal Information */}
+                      <div className="form-section">
+                        <div className="section-title">
+                          <span className="section-number">01</span>
+                          <h4>Personal Information</h4>
+                        </div>
 
-                    <div className="form-row">
-                      <FormInput
-                        name="firstName"
-                        label="First Name"
-                        showRequired
-                        className="modern-field"
-                      />
-                      <FormInput
-                        name="lastName"
-                        label="Last Name"
-                        showRequired
-                        className="modern-field"
-                      />
-                    </div>
-
-                    <div className="form-row sod-form-row-1col">
-                      <FormMaskedDate
-                        name="birthdate"
-                        label="Date of Birth"
-                        showRequired
-                      />
-                    </div>
-
-                    <div className="form-row sod-form-row-1col">
-                      <FormInput
-                        name="email"
-                        label="Email (optional)"
-                        placeholder="you@email.com"
-                        className="modern-field"
-                      />
-                    </div>
-
-                    <div className="form-row sod-form-row-1col">
-                      <FormInput
-                        name="phone"
-                        label="Phone Number"
-                        placeholder="0917 XXX XXXX"
-                        showRequired
-                        className="modern-field"
-                        type="tel"
-                        inputMode="tel"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Section 02: Connectivity */}
-                  <div className="form-section">
-                    <div className="section-title">
-                      <span className="section-number">02</span>
-                      <h4>Connectivity</h4>
-                    </div>
-
-                    <div className="form-row sod-form-row-1col">
-                      <FormInput
-                        name="cellLeader"
-                        label="Cell Leader Name"
-                        showRequired
-                        className="modern-field"
-                      />
-                    </div>
-
-                    <FormSocialMedia
-                      name="socialMedia"
-                      label="Social Handles"
-                      showRequired
-                    />
-                  </div>
-
-                  {/* Section 03: Proof of Payment */}
-                  <div className="form-section sod-payment-section">
-                    <div className="section-title">
-                      <span className="section-number">03</span>
-                      <h4>Proof of Payment</h4>
-                    </div>
-
-                    <p className="sod-payment-intro">
-                      Pay the registration fee by scanning either QR code below, then
-                      upload your proof of payment to confirm your slot.
-                    </p>
-
-                    <div className="sod-payment-grid">
-                      <div className="sod-payment-card">
-                        <span className="sod-payment-bank">
-                          <i className="pi pi-credit-card" aria-hidden="true"></i>
-                          BPI
-                        </span>
-                        <span className="sod-payment-qr-frame">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
-                            alt="BPI payment QR code for Gateway event registration"
-                            className="sod-payment-qr"
-                            loading="lazy"
+                        <div className="form-row sod-form-row-2col">
+                          <FormInput
+                            name="firstName"
+                            label="First Name"
+                            showRequired
+                            className="modern-field"
                           />
-                        </span>
-                        <span className="sod-payment-scan">
-                          <i className="pi pi-qrcode" aria-hidden="true"></i>
-                          Scan to pay
-                        </span>
-                        <DownloadQRButton
-                          qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
-                          filename="gateway-event-bpi-qr.png"
-                          color="var(--color-primary)"
-                          className="sod-payment-download"
-                          style={{
-                            marginTop: '0.25rem',
-                            padding: '0.45rem 0.9rem',
-                            fontSize: '0.78rem',
-                            fontWeight: 700,
-                          }}
-                        />
+                          <FormInput
+                            name="lastName"
+                            label="Last Name"
+                            showRequired
+                            className="modern-field"
+                          />
+                        </div>
+
+                        <div className="form-row sod-form-row-2col">
+                          <FormMaskedDate
+                            name="birthdate"
+                            label="Date of Birth"
+                            showRequired
+                          />
+                          <FormInput
+                            name="email"
+                            label="Email (optional)"
+                            placeholder="you@email.com"
+                            className="modern-field"
+                          />
+                        </div>
+
+                        <div className="form-row sod-form-row-1col">
+                          <FormInput
+                            name="phone"
+                            label="Phone Number (optional)"
+                            placeholder="0917 XXX XXXX"
+                            className="modern-field"
+                            type="tel"
+                            inputMode="tel"
+                          />
+                        </div>
                       </div>
 
-                      <div className="sod-payment-card">
-                        <span className="sod-payment-bank">
-                          <i className="pi pi-wallet" aria-hidden="true"></i>
-                          GCash
-                        </span>
-                        <span className="sod-payment-qr-frame">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
-                            alt="GCash payment QR code for Gateway event registration"
-                            className="sod-payment-qr"
-                            loading="lazy"
+                      {/* Section 02: Connectivity */}
+                      <div className="form-section">
+                        <div className="section-title">
+                          <span className="section-number">02</span>
+                          <h4>Connectivity</h4>
+                        </div>
+
+                        <div className="form-row sod-form-row-1col">
+                          <FormInput
+                            name="cellLeader"
+                            label="Cell Leader Name"
+                            showRequired
+                            className="modern-field"
                           />
-                        </span>
-                        <span className="sod-payment-scan">
-                          <i className="pi pi-qrcode" aria-hidden="true"></i>
-                          Scan to pay
-                        </span>
-                        <DownloadQRButton
-                          qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
-                          filename="gateway-event-gcash-qr.png"
-                          color="var(--color-primary)"
-                          className="sod-payment-download"
-                          style={{
-                            marginTop: '0.25rem',
-                            padding: '0.45rem 0.9rem',
-                            fontSize: '0.78rem',
-                            fontWeight: 700,
-                          }}
+                        </div>
+
+                        <FormSocialMedia
+                          name="socialMedia"
+                          label="Social Handles"
+                          showRequired
                         />
                       </div>
                     </div>
 
-                    <div className="sod-amount-field">
-                      <FormInput
-                        name="amountSent"
-                        label="Payment Amount Sent (optional)"
-                        className="modern-field"
-                      />
+                    {/* ── Right column: proof of payment ───────────────── */}
+                    <div className="event-register-col">
+                      {/* Section 03: Proof of Payment */}
+                      <div className="form-section sod-payment-section">
+                        <div className="section-title">
+                          <span className="section-number">03</span>
+                          <h4>Proof of Payment</h4>
+                        </div>
+
+                        <p className="sod-payment-intro">
+                          Pay the registration fee by scanning either QR code below, then
+                          upload your proof of payment to confirm your slot.
+                        </p>
+
+                        <div className="sod-payment-grid">
+                          <div className="sod-payment-card">
+                            <span className="sod-payment-bank">
+                              <i className="pi pi-credit-card" aria-hidden="true"></i>
+                              BPI
+                            </span>
+                            <span className="sod-payment-qr-frame">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
+                                alt="BPI payment QR code for Gateway event registration"
+                                className="sod-payment-qr"
+                                loading="lazy"
+                              />
+                            </span>
+                            <span className="sod-payment-scan">
+                              <i className="pi pi-qrcode" aria-hidden="true"></i>
+                              Scan to pay
+                            </span>
+                            <DownloadQRButton
+                              qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
+                              filename="gateway-event-bpi-qr.png"
+                              color="var(--color-primary)"
+                              className="sod-payment-download"
+                              style={{
+                                marginTop: '0.25rem',
+                                padding: '0.45rem 0.9rem',
+                                fontSize: '0.78rem',
+                                fontWeight: 700,
+                              }}
+                            />
+                          </div>
+
+                          <div className="sod-payment-card">
+                            <span className="sod-payment-bank">
+                              <i className="pi pi-wallet" aria-hidden="true"></i>
+                              GCash
+                            </span>
+                            <span className="sod-payment-qr-frame">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
+                                alt="GCash payment QR code for Gateway event registration"
+                                className="sod-payment-qr"
+                                loading="lazy"
+                              />
+                            </span>
+                            <span className="sod-payment-scan">
+                              <i className="pi pi-qrcode" aria-hidden="true"></i>
+                              Scan to pay
+                            </span>
+                            <DownloadQRButton
+                              qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
+                              filename="gateway-event-gcash-qr.png"
+                              color="var(--color-primary)"
+                              className="sod-payment-download"
+                              style={{
+                                marginTop: '0.25rem',
+                                padding: '0.45rem 0.9rem',
+                                fontSize: '0.78rem',
+                                fontWeight: 700,
+                              }}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sod-amount-field">
+                          <FormInput
+                            name="amountSent"
+                            label="Payment Amount Sent (optional)"
+                            className="modern-field"
+                          />
+                        </div>
+
+                        <ProofOfPaymentField />
+
+                        <p className="sod-payment-note">
+                          <i className="pi pi-info-circle" aria-hidden="true"></i>
+                          <span>
+                            Your slot is confirmed once we verify your payment.
+                          </span>
+                        </p>
+                      </div>
                     </div>
-
-                    <ProofOfPaymentField />
-
-                    <p className="sod-payment-note">
-                      <i className="pi pi-info-circle" aria-hidden="true"></i>
-                      <span>
-                        Your slot is confirmed once we verify your payment.
-                      </span>
-                    </p>
                   </div>
 
                   {/* Submit */}

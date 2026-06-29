@@ -142,11 +142,13 @@ async function appendToGoogleSheet(
       ? (data.status as string[]).join('\n')
       : '';
 
-    // Embed the uploaded proof image inline via =IMAGE() (USER_ENTERED evaluates
-    // the formula). Falls back to a note if the Blob upload failed; blank if no
-    // proof was provided by the enrollee (proof is optional).
+    // Embed the uploaded proof image inline AND make it clickable via
+    // =HYPERLINK(url, IMAGE(url)) (USER_ENTERED evaluates the formula): the cell
+    // renders the thumbnail and links straight to the full-size Blob image.
+    // Falls back to a note if the Blob upload failed; blank if no proof was
+    // provided by the enrollee (proof is optional).
     const proofCell = proofUrl
-      ? `=IMAGE("${proofUrl}")`
+      ? `=HYPERLINK("${proofUrl}", IMAGE("${proofUrl}"))`
       : (proofProvided ? 'Proof upload failed — please follow up with the enrollee' : '');
 
     const row = [

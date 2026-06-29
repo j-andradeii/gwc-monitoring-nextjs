@@ -1117,7 +1117,11 @@
 .event-register-section {
     padding: 50px 0;
     background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-cream) 100%);
+
+    
 }
+
+
 
 /* The welcome card was removed — center the lone form card and cap its width
    so it doesn't stretch full-bleed on desktop. */
@@ -1136,6 +1140,42 @@
         0 2px 6px rgba(26, 39, 68, 0.05),
         0 26px 60px rgba(26, 39, 68, 0.14),
         0 40px 90px rgba(212, 168, 75, 0.10);
+}
+
+/* The columns wrapper is a plain block by default → fields stack in one column
+   on tablet/mobile. */
+.event-register-columns {
+    display: block;
+}
+
+/* Desktop: widen the card to fill the section and split the form into two
+   columns — applicant details (left) | proof of payment (right) — so it spreads
+   across the section and isn't excessively tall. */
+@media (min-width: 992px) {
+
+  
+    /* Widen the section content to 1400px on desktop. .landing-container caps at
+       1100px by default, so override it within this section, then let the form
+       wrap fill that width. */
+    .event-register-section .landing-container {
+        max-width: 1400px;
+    }
+
+    .event-register-form-wrap {
+        max-width: 1400px;
+    }
+
+    .event-register-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 48px;
+        align-items: start;
+    }
+
+    /* Prevent grid children from overflowing (FormSocialMedia's inner grid). */
+    .event-register-col {
+        min-width: 0;
+    }
 }
 
 /* On very small viewports the section padding compresses to match SOD. */
