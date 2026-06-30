@@ -6505,7 +6505,6 @@ As we grow in knowing God and allowing ourselves to be known by Him, we discover
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
     excerpt: "God established the family as part of His divine plan, and because of this, families often become a target of spiritual opposition. God has entrusted us to guard what He has given — to stand firm, take responsibility, and become builders and restorers of our homes, our church, and future generations.",
 
     description: `**THE MONUMENTS' MEN**
@@ -6690,6 +6689,280 @@ As we faithfully embrace God's calling, we become people who preserve His truth,
         kicker: 'Choose Responsibility Over Fault',
         verse: 'Genesis 3:12',
         text: "Then the man said, 'The woman whom You gave to be with me, she gave me of the tree, and I ate.'",
+      },
+    ],
+  },
+  {
+    id: '31',
+    slug: 'designed-by-the-master',
+    title: 'Designed by the Master: Discovering Your True Worth in a Filtered World',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-06-28',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: "In a world that constantly tells us to define ourselves by appearance, achievements, or the approval of others, God offers a different perspective. Our identity is not something we create, it is something we receive from Him.",
+
+    description: `**DESIGNED BY THE MASTER: DISCOVERING YOUR TRUE WORTH IN A FILTERED WORLD**
+
+Key Verse: Ephesians 2:10
+
+---
+
+**INTRODUCTION**
+
+In a world that constantly tells us to define ourselves by appearance, achievements, or the approval of others, God offers a different perspective. Our identity is not something we create, it is something we receive from Him.
+
+Paul reminds us in Ephesians 2:10 that we are God's workmanship, carefully crafted with purpose and intention. Before God calls us to do anything, He first establishes who we are. Our value is not based on our performance but on the One who created and redeemed us.
+
+This reminds us that we are God's masterpiece, created by His grace, shaped by His purpose, and called to reflect His glory in every area of life.
+
+---
+
+**1. We Are His**
+
+"For we are His workmanship…" — Ephesians 2:10
+
+**The Abandoned Self**
+
+Many people live with the belief that they have been forgotten, rejected, or abandoned. They search for acceptance in relationships, achievements, or the approval of others because they feel they do not truly belong.
+
+Before we understand what we are called to do, we must first understand whose we are.
+
+The Greek phrase Autou gar esmen poiēma emphasizes that believers belong to God. In the Roman world, a person's identity was closely connected to the family or household they belonged to. Likewise, our primary identity is found in belonging to God.
+
+Our identity is rooted in relationship before it is expressed through activity. We are not defined by our accomplishments, failures, or titles, but by the God who calls us His own.
+
+When we know we belong to God, we no longer have to live with the fear of being abandoned.
+
+---
+
+**2. Wonderfully Made for His Glory**
+
+"We are His workmanship."
+
+**The Inadequate Self**
+
+In a culture of constant comparison, it's easy to believe that we are not enough. Many struggle with feelings of insecurity, believing they lack the talent, beauty, intelligence, or ability to make a difference.
+
+The Greek word poiēma means "masterpiece," "work of art," or "carefully crafted creation."
+
+Paul intentionally contrasts the lifeless idols made by human craftsmen with the living people created by God. Unlike objects shaped by human hands, believers are intentionally designed by the Master Craftsman Himself.
+
+Every person has been uniquely created to display God's wisdom, beauty, and glory. Your life is not an accident, it is God's intentional design.
+
+When we understand our worth as God's masterpiece, comparison loses its power because our value comes from our Creator, not from the opinions of others.
+
+---
+
+**3. Created in Christ Jesus**
+
+"Created in Christ Jesus…"
+
+**The Self-Made Self**
+
+The world teaches us to create our own identity, define our own truth, and prove our worth through personal achievement. Yet Scripture reminds us that our identity is received, not manufactured.
+
+The phrase Ktisthentes en Christō Iēsou reminds us that our spiritual identity is entirely God's work.
+
+The new life we receive in Christ is not something we achieve through our own effort. It is a completed work accomplished by God through His grace.
+
+Our identity is not self-given but God-given. In Christ, we are recreated, shaped, and equipped for His purposes.
+
+Because our identity comes from Him, we no longer need to build our lives around the pressure of proving ourselves.
+
+---
+
+**4. Created for Good Works**
+
+"Created in Christ Jesus for good works…"
+
+**The Purposeless Self**
+
+Many people spend their lives asking, "Why am I here?" Without understanding God's purpose, life can feel empty, aimless, or driven only by temporary success.
+
+The phrase Epi ergois agathois points to God's purpose for every believer.
+
+We are not saved by good works, we are saved by grace. However, genuine salvation produces a life that reflects God's goodness.
+
+Grace comes first; purpose follows.
+
+Good works are not the basis of our salvation but the evidence of a transformed life. God calls every believer to live with purpose, serving others and reflecting Christ wherever they are.
+
+Every believer has been given a unique calling and assignment to fulfill.
+
+When we discover God's purpose for our lives, we stop living merely to exist and begin living with eternal significance.
+
+---
+
+**5. Walking in His Way**
+
+"Which God prepared beforehand, that we should walk in them."
+
+**The Directionless Self**
+
+Even people with purpose can feel uncertain about where to go next. Without God's guidance, we often wander, relying on our own understanding instead of His wisdom.
+
+The word Proētoimasen means "prepared beforehand." Before we ever took our first step, God had already prepared a path for our lives.
+
+The word Peripatēsōmen refers to our daily conduct and lifestyle. While God prepares the path, we are responsible for walking in obedience and faith.
+
+God takes the initiative in designing His purpose for our lives, but we choose each day whether we will follow His leading.
+
+As we faithfully walk with Him, His purpose becomes evident through our everyday lives. We don't have to fear the future because the One who designed us has already prepared the way.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Your identity is God-given, not self-created.
+* Your worth is rooted in belonging to God, not in your performance.
+* You are God's masterpiece, intentionally created to reflect His glory.
+* Every believer has a unique purpose and calling.
+* Salvation is by grace alone, and good works are the fruit of a transformed life.
+* God prepares the path, and we are called to walk in faithful obedience.
+* Knowing your identity protects you from seeking validation in the world.
+* Your belonging is received by grace, not earned through performance.
+
+"You don't discover your worth by looking at the world, you discover it by looking at the One who designed you."
+
+---
+
+**CALL TO ACTION**
+
+Choose to see yourself through God's eyes instead of the world's standards.
+
+* If you feel abandoned, remember that you belong to God.
+* If you feel inadequate, remember that you are His masterpiece.
+* If you've been trying to define yourself, surrender your identity to Christ.
+* If you feel purposeless, seek the good works God has prepared specifically for you.
+* If you feel directionless, trust the path God has already prepared and walk faithfully with Him.
+
+When we understand that we are God's masterpiece, we stop striving for acceptance and begin living with confidence, purpose, and the assurance that our true worth has always been found in Him.`,
+    tags: ['Identity', 'Worth', 'Grace', 'Purpose', 'Masterpiece', 'Calling'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/designed_by_the_master.webp',
+    scriptures: [
+      {
+        verse: 'Ephesians 2:10',
+        text: 'For we are His workmanship, created in Christ Jesus for good works, which God prepared beforehand that we should walk in them.',
+      },
+    ],
+    keyPoints: ['We Are His', 'Wonderfully Made for His Glory', 'Created in Christ Jesus', 'Created for Good Works', 'Walking in His Way'],
+    relatedSermons: ['30', '29'],
+    subtitle: { prefix: 'Designed by the', italic: 'Master' },
+    keyVerse: 'Ephesians 2:10',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Discovering Your True Worth in a Filtered World',
+        unnumbered: true,
+        paragraphs: [
+          'In a world that constantly tells us to define ourselves by appearance, achievements, or the approval of others, God offers a different perspective. Our identity is not something we create, it is something we receive from Him.',
+          "Paul reminds us in Ephesians 2:10 that we are God's workmanship, carefully crafted with purpose and intention. Before God calls us to do anything, He first establishes who we are. Our value is not based on our performance but on the One who created and redeemed us.",
+          "This reminds us that we are God's masterpiece, created by His grace, shaped by His purpose, and called to reflect His glory in every area of life.",
+        ],
+      },
+      {
+        id: 'sec-we-are-his',
+        title: 'We Are His',
+        paragraphs: [
+          '"For we are His workmanship…" — Ephesians 2:10',
+          '**The Abandoned Self**',
+          'Many people live with the belief that they have been forgotten, rejected, or abandoned. They search for acceptance in relationships, achievements, or the approval of others because they feel they do not truly belong.',
+          'Before we understand what we are called to do, we must first understand whose we are.',
+          "The Greek phrase *Autou gar esmen poiēma* emphasizes that believers belong to God. In the Roman world, a person's identity was closely connected to the family or household they belonged to. Likewise, our primary identity is found in belonging to God.",
+          'Our identity is rooted in relationship before it is expressed through activity. We are not defined by our accomplishments, failures, or titles, but by the God who calls us His own.',
+          'When we know we belong to God, we no longer have to live with the fear of being abandoned.',
+        ],
+      },
+      {
+        id: 'sec-wonderfully-made',
+        title: 'Wonderfully Made for His Glory',
+        paragraphs: [
+          '"We are His workmanship."',
+          '**The Inadequate Self**',
+          "In a culture of constant comparison, it's easy to believe that we are not enough. Many struggle with feelings of insecurity, believing they lack the talent, beauty, intelligence, or ability to make a difference.",
+          'The Greek word *poiēma* means "masterpiece," "work of art," or "carefully crafted creation."',
+          'Paul intentionally contrasts the lifeless idols made by human craftsmen with the living people created by God. Unlike objects shaped by human hands, believers are intentionally designed by the Master Craftsman Himself.',
+          "Every person has been uniquely created to display God's wisdom, beauty, and glory. Your life is not an accident, it is God's intentional design.",
+          "When we understand our worth as God's masterpiece, comparison loses its power because our value comes from our Creator, not from the opinions of others.",
+        ],
+      },
+      {
+        id: 'sec-created-in-christ',
+        title: 'Created in Christ Jesus',
+        paragraphs: [
+          '"Created in Christ Jesus…"',
+          '**The Self-Made Self**',
+          'The world teaches us to create our own identity, define our own truth, and prove our worth through personal achievement. Yet Scripture reminds us that our identity is received, not manufactured.',
+          "The phrase *Ktisthentes en Christō Iēsou* reminds us that our spiritual identity is entirely God's work.",
+          'The new life we receive in Christ is not something we achieve through our own effort. It is a completed work accomplished by God through His grace.',
+          'Our identity is not self-given but God-given. In Christ, we are recreated, shaped, and equipped for His purposes.',
+          'Because our identity comes from Him, we no longer need to build our lives around the pressure of proving ourselves.',
+        ],
+      },
+      {
+        id: 'sec-created-for-good-works',
+        title: 'Created for Good Works',
+        paragraphs: [
+          '"Created in Christ Jesus for good works…"',
+          '**The Purposeless Self**',
+          'Many people spend their lives asking, "Why am I here?" Without understanding God\'s purpose, life can feel empty, aimless, or driven only by temporary success.',
+          "The phrase *Epi ergois agathois* points to God's purpose for every believer.",
+          "We are not saved by good works, we are saved by grace. However, genuine salvation produces a life that reflects God's goodness.",
+          'Grace comes first; purpose follows.',
+          'Good works are not the basis of our salvation but the evidence of a transformed life. God calls every believer to live with purpose, serving others and reflecting Christ wherever they are.',
+          'Every believer has been given a unique calling and assignment to fulfill.',
+          "When we discover God's purpose for our lives, we stop living merely to exist and begin living with eternal significance.",
+        ],
+      },
+      {
+        id: 'sec-walking-in-his-way',
+        title: 'Walking in His Way',
+        paragraphs: [
+          '"Which God prepared beforehand, that we should walk in them."',
+          '**The Directionless Self**',
+          "Even people with purpose can feel uncertain about where to go next. Without God's guidance, we often wander, relying on our own understanding instead of His wisdom.",
+          'The word *Proētoimasen* means "prepared beforehand." Before we ever took our first step, God had already prepared a path for our lives.',
+          'The word *Peripatēsōmen* refers to our daily conduct and lifestyle. While God prepares the path, we are responsible for walking in obedience and faith.',
+          'God takes the initiative in designing His purpose for our lives, but we choose each day whether we will follow His leading.',
+          "As we faithfully walk with Him, His purpose becomes evident through our everyday lives. We don't have to fear the future because the One who designed us has already prepared the way.",
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          "Choose to see yourself through God's eyes instead of the world's standards.",
+          'If you feel abandoned, remember that you belong to God.',
+          'If you feel inadequate, remember that you are His masterpiece.',
+          "If you've been trying to define yourself, surrender your identity to Christ.",
+          'If you feel purposeless, seek the good works God has prepared specifically for you.',
+          'If you feel directionless, trust the path God has already prepared and walk faithfully with Him.',
+          "When we understand that we are God's masterpiece, we stop striving for acceptance and begin living with confidence, purpose, and the assurance that our true worth has always been found in Him.",
+        ],
+        callout: "You don't discover your worth by looking at the world, you discover it by looking at the One who designed you.",
+      },
+    ],
+    keyTakeaways: [
+      'Your identity is God-given, not self-created.',
+      'Your worth is rooted in belonging to God, not in your performance.',
+      "You are God's masterpiece, intentionally created to reflect His glory.",
+      'Every believer has a unique purpose and calling.',
+      'Salvation is by grace alone, and good works are the fruit of a transformed life.',
+      'God prepares the path, and we are called to walk in faithful obedience.',
+      'Knowing your identity protects you from seeking validation in the world.',
+      'Your belonging is received by grace, not earned through performance.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Ephesians 2:10',
+        text: 'For we are His workmanship, created in Christ Jesus for good works, which God prepared beforehand that we should walk in them.',
       },
     ],
   },
