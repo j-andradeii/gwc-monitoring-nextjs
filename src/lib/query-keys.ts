@@ -18,4 +18,7 @@ export const QUERY_KEYS = {
 
   // Auth
   self: () => ['self'],
+
+  // Lyrics (LRCLIB)
+  lyricsSearch: (params: Record<string, string>) => ['lyrics', 'search', params],
 } as const;
