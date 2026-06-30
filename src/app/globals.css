@@ -280,29 +280,87 @@ body {
   @apply border-t border-border bg-transparent;
 }
 
-/* Toast */
+/* Toast — solid on-brand backgrounds with high-contrast text + icons.
+   (The old rules set a mid-tone background but left lara's dark default text on
+   it → unreadable. Status surfaces must pair a solid bg with explicit text color.
+   See DESIGN.md "Contrast" + "Status surfaces".) */
 .p-toast {
   opacity: 1;
 }
-
-.p-toast-message-success {
-  background-color: var(--color-success-light);
-  border-left: 4px solid var(--color-success);
+.p-toast .p-toast-message {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(16, 24, 40, 0.22);
+}
+.p-toast .p-toast-message-content {
+  padding: 1rem 1.1rem;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.p-toast .p-toast-summary {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.p-toast .p-toast-detail {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+/* Default: white text + icons on the dark severities */
+.p-toast .p-toast-message .p-toast-summary,
+.p-toast .p-toast-message .p-toast-detail,
+.p-toast .p-toast-message .p-toast-message-icon,
+.p-toast .p-toast-message .p-toast-icon-close,
+.p-toast .p-toast-message .p-toast-icon-close-icon {
+  color: #ffffff !important;
+}
+.p-toast .p-toast-message .p-toast-message-icon svg,
+.p-toast .p-toast-message .p-toast-icon-close svg {
+  fill: #ffffff;
+}
+.p-toast .p-toast-message .p-toast-detail {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.p-toast .p-toast-icon-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.p-toast .p-toast-message-success {
+  background: #15803d !important;
+  border-left: 5px solid rgba(255, 255, 255, 0.4);
+}
+.p-toast .p-toast-message-error {
+  background: var(--color-error, #6b2c3a) !important;
+  border-left: 5px solid rgba(255, 255, 255, 0.4);
+}
+.p-toast .p-toast-message-info {
+  background: var(--color-secondary, #4a3c6e) !important;
+  border-left: 5px solid rgba(255, 255, 255, 0.4);
+}
+/* Warn uses the gold brand colour → needs DARK navy text/icons for contrast */
+.p-toast .p-toast-message-warn {
+  background: var(--color-primary, #d4a84b) !important;
+  border-left: 5px solid rgba(26, 39, 68, 0.35);
+}
+.p-toast .p-toast-message-warn .p-toast-summary,
+.p-toast .p-toast-message-warn .p-toast-detail,
+.p-toast .p-toast-message-warn .p-toast-message-icon,
+.p-toast .p-toast-message-warn .p-toast-icon-close,
+.p-toast .p-toast-message-warn .p-toast-icon-close-icon {
+  color: #1a2744 !important;
+}
+.p-toast .p-toast-message-warn .p-toast-message-icon svg,
+.p-toast .p-toast-message-warn .p-toast-icon-close svg {
+  fill: #1a2744;
+}
+.p-toast .p-toast-message-warn .p-toast-detail {
+  color: rgba(26, 39, 68, 0.85) !important;
 }
 
-.p-toast-message-error {
-  background-color: var(--color-error-light);
-  border-left: 4px solid var(--color-error);
-}
-
-.p-toast-message-warn {
-  background-color: var(--color-warning-light);
-  border-left: 4px solid var(--color-warning);
-}
-
-.p-toast-message-info {
-  background-color: var(--color-info-light);
-  border-left: 4px solid var(--color-info);
+/* InputSwitch — Tailwind v4 preflight resets `::before { margin: 0 }`, which kills
+   lara's vertical-centering offset, so the knob overflows the bottom of the track
+   (renders as a notch). Restore the centering offset. */
+.p-inputswitch .p-inputswitch-slider::before {
+  margin-top: -0.625rem;
 }
 
 /* Dialog */

@@ -16535,3 +16535,520 @@
 .about-page .pastors-modern-bio-eyebrow {
   color: var(--color-primary-dark, #b8923f);
 }
+
+/* ============================================================
+   Lyric Formatter (/lyric-formatter) — scoped worship tool page.
+   Dialogs are portaled to <body>, so their .lf-* rules are global
+   (the unique lf- prefix keeps them collision-free).
+   ============================================================ */
+.lyric-formatter-page {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(212, 168, 75, 0.05), rgba(255, 255, 255, 0) 320px),
+    #ffffff;
+  color: var(--text-heading, #020617);
+}
+
+.lf-hero {
+  padding: 120px 1.5rem 2.5rem;
+  background: linear-gradient(160deg, var(--color-navy, #1a2744) 0%, #24345a 100%);
+  color: #fff;
+}
+.lf-hero-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.lf-eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary, #d4a84b);
+  margin-bottom: 0.5rem;
+}
+.lf-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0;
+}
+.lf-title-accent {
+  color: var(--color-primary, #d4a84b);
+}
+.lf-subtitle {
+  margin: 0.75rem 0 0;
+  max-width: 540px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.lf-settings-btn.p-button.p-button-outlined {
+  padding: 0.6rem 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.lf-settings-btn.p-button.p-button-outlined .p-button-icon-left {
+  margin-right: 0.5rem;
+}
+.lf-settings-btn.p-button.p-button-outlined:hover {
+  background: rgba(212, 168, 75, 0.22);
+  border-color: var(--color-primary, #d4a84b);
+  color: #fff;
+}
+
+.lf-search {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.lf-search-form {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 0.8fr auto;
+  gap: 0.9rem;
+  align-items: end;
+}
+.lf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.lf-field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary, #475569);
+}
+.lf-field .p-inputtext {
+  width: 100%;
+}
+.lf-search-btn.p-button {
+  padding: 0.75rem 1.6rem;
+  font-weight: 700;
+  color: #1a2744;
+  background: var(--color-primary, #d4a84b);
+  border: 1px solid var(--color-primary, #d4a84b);
+  border-radius: 9px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(212, 168, 75, 0.35);
+  transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.lf-search-btn.p-button .p-button-icon-left {
+  margin-right: 0.5rem;
+}
+.lf-search-btn.p-button:hover {
+  background: var(--color-primary-dark, #b8923f);
+  border-color: var(--color-primary-dark, #b8923f);
+  box-shadow: 0 4px 12px rgba(184, 146, 63, 0.45);
+  transform: translateY(-1px);
+}
+.lf-search-btn.p-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(184, 146, 63, 0.4);
+}
+.lf-hint {
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.5;
+}
+
+.lf-results {
+  margin-top: 2rem;
+}
+.lf-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-secondary, #64748b);
+  padding: 1.5rem 0;
+}
+.lf-status-error {
+  color: #b91c1c;
+}
+.lf-empty-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #94a3b8;
+  padding: 2.5rem 0;
+}
+.lf-result-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.lf-result-card {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border: 1.5px solid rgba(212, 168, 75, 0.45);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.05),
+    0 3px 8px rgba(26, 39, 68, 0.06),
+    0 12px 28px rgba(26, 39, 68, 0.08);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.lf-result-card:hover {
+  border-color: var(--color-primary, #d4a84b);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.07),
+    0 6px 16px rgba(26, 39, 68, 0.12),
+    0 18px 38px rgba(26, 39, 68, 0.16);
+}
+.lf-result-card:focus-visible {
+  outline: 3px solid rgba(212, 168, 75, 0.5);
+  outline-offset: 2px;
+}
+.lf-result-title {
+  flex: 1 1 auto;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-heading, #1a2744);
+}
+.lf-result-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  color: var(--text-secondary, #64748b);
+  font-size: 0.85rem;
+  text-align: right;
+}
+.lf-result-album {
+  font-style: italic;
+}
+.lf-result-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.lf-result-open {
+  color: var(--color-primary, #d4a84b);
+  font-size: 1.1rem;
+}
+
+/* Song dialog (portaled — global lf- scope) */
+.lf-song-dialog .p-dialog-header {
+  background: var(--color-navy, #1a2744);
+  color: #fff;
+}
+.lf-song-dialog .p-dialog-header .p-dialog-title {
+  font-weight: 700;
+}
+.lf-song-dialog .p-dialog-header .p-dialog-header-icon {
+  color: #fff;
+}
+.lf-song-dialog .p-dialog-content {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.lf-song {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.lf-song-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.lf-song-hint {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #64748b);
+}
+.lf-song-toolbar-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.lf-lines-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary, #64748b);
+}
+.lf-lines-select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: #fff;
+  font-size: 0.85rem;
+  color: var(--text-heading, #1a2744);
+  cursor: pointer;
+}
+.lf-lines-select:focus-visible {
+  outline: 2px solid rgba(212, 168, 75, 0.5);
+  outline-offset: 1px;
+  border-color: var(--color-primary, #d4a84b);
+}
+.lf-editor .ql-editor {
+  min-height: 240px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.lf-editor .ql-editor strong {
+  color: var(--color-primary-dark, #b8923f);
+}
+.lf-editor-loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary, #64748b);
+}
+.lf-song-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  min-height: 280px;
+  height: 46vh;
+  color: var(--text-secondary, #64748b);
+  font-size: 0.95rem;
+}
+.lf-song-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.lf-song-actions .p-button {
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9px;
+}
+.lf-song-actions .p-button .p-button-icon-left {
+  margin-right: 0.5rem;
+}
+.lf-song-actions .p-button.p-button-outlined {
+  color: var(--color-navy, #1a2744);
+  border-color: rgba(26, 39, 68, 0.35);
+  background: transparent;
+}
+.lf-song-actions .p-button.p-button-outlined:hover {
+  color: var(--color-navy, #1a2744);
+  border-color: var(--color-navy, #1a2744);
+  background: rgba(26, 39, 68, 0.06);
+}
+.lf-song-actions .p-button:not(.p-button-outlined) {
+  color: #1a2744;
+  background: var(--color-primary, #d4a84b);
+  border-color: var(--color-primary, #d4a84b);
+}
+.lf-song-actions .p-button:not(.p-button-outlined):hover {
+  background: var(--color-primary-dark, #b8923f);
+  border-color: var(--color-primary-dark, #b8923f);
+}
+/* Re-detect (toolbar text button) — on-brand accent, not lara blue */
+.lf-song-toolbar-right .p-button.p-button-text {
+  color: var(--color-primary-dark, #b8923f);
+}
+.lf-song-toolbar-right .p-button.p-button-text .p-button-icon-left {
+  margin-right: 0.4rem;
+}
+.lf-song-toolbar-right .p-button.p-button-text:hover {
+  background: rgba(212, 168, 75, 0.12);
+}
+
+/* Label settings dialog */
+.lf-settings-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+.lf-settings-section-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-heading, #1a2744);
+}
+.lf-settings-sub {
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: var(--text-secondary, #64748b);
+}
+.lf-settings-dialog .p-inputswitch.p-highlight .p-inputswitch-slider {
+  background: var(--color-primary, #d4a84b) !important;
+}
+.lf-settings-dialog .p-inputswitch.p-highlight:hover .p-inputswitch-slider {
+  background: var(--color-primary-dark, #b8923f) !important;
+}
+.lf-settings-divider {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 0 0 1rem;
+}
+.lf-settings-subhead {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-heading, #1a2744);
+}
+.lf-settings-help {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #475569);
+  line-height: 1.55;
+}
+.lf-settings-help code {
+  background: rgba(26, 39, 68, 0.06);
+  padding: 0.05rem 0.3rem;
+  border-radius: 4px;
+  font-size: 0.82em;
+}
+.lf-settings-grid-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2.5rem;
+  gap: 0.6rem;
+  padding: 0 0.1rem 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+.lf-settings-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 45vh;
+  overflow-y: auto;
+  padding: 0.1rem;
+}
+.lf-settings-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2.5rem;
+  gap: 0.6rem;
+  align-items: center;
+}
+.lf-settings-row .p-inputtext {
+  width: 100%;
+}
+.lf-settings-empty {
+  padding: 1rem 0;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+.lf-settings-add {
+  margin-top: 0.75rem;
+}
+.lf-settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+.lf-settings-footer-actions {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+/* On-brand dialog chrome + buttons (override lara-light-blue defaults) */
+.lf-settings-dialog .p-dialog-header {
+  background: var(--color-navy, #1a2744);
+  color: #fff;
+}
+.lf-settings-dialog .p-dialog-header .p-dialog-title {
+  font-weight: 700;
+}
+.lf-settings-dialog .p-dialog-header .p-dialog-header-icon {
+  color: #fff;
+}
+.lf-settings-row .p-button.p-button-icon-only {
+  width: 2.4rem;
+  color: #b91c1c;
+  background: transparent;
+  border-color: transparent;
+}
+.lf-settings-row .p-button.p-button-icon-only:hover {
+  background: rgba(185, 28, 28, 0.1);
+}
+.lf-settings-add.p-button.p-button-text {
+  color: var(--color-primary-dark, #b8923f);
+}
+.lf-settings-footer .p-button.p-button-text {
+  color: var(--text-secondary, #475569);
+  background: transparent;
+}
+.lf-settings-footer .p-button:not(.p-button-text) {
+  color: #1a2744;
+  background: var(--color-primary, #d4a84b);
+  border-color: var(--color-primary, #d4a84b);
+}
+.lf-settings-footer .p-button:not(.p-button-text):hover {
+  background: var(--color-primary-dark, #b8923f);
+  border-color: var(--color-primary-dark, #b8923f);
+}
+/* Settings dialog UI polish — header close, footer separation, button gaps/size */
+.lf-settings-dialog .p-dialog-header {
+  padding: 1rem 1.5rem;
+}
+.lf-settings-dialog .p-dialog-content {
+  padding: 1.5rem 1.5rem 0.75rem;
+}
+.lf-settings-dialog .p-dialog-header .p-dialog-header-close-icon,
+.lf-settings-dialog .p-dialog-header .p-dialog-header-icon {
+  color: #fff;
+}
+.lf-settings-dialog .p-dialog-header .p-dialog-header-icon:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+.lf-settings-dialog .p-dialog-footer {
+  margin: 0;
+  padding: 0.9rem 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+.lf-settings-dialog .p-button .p-button-icon-left {
+  margin-right: 0.5rem;
+}
+.lf-settings-footer {
+  flex-wrap: wrap;
+}
+.lf-settings-footer .p-button {
+  padding: 0.55rem 1.15rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .lf-hero {
+    padding-top: 96px;
+  }
+  .lf-search-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lf-search-btn.p-button {
+    grid-column: 1 / -1;
+  }
+  .lf-result-card {
+    flex-wrap: wrap;
+  }
+  .lf-result-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
