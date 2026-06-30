@@ -21,4 +21,5 @@ export const QUERY_KEYS = {
 
   // Lyrics (LRCLIB)
   lyricsSearch: (params: Record<string, string>) => ['lyrics', 'search', params],
+  lyricsIdentify: (lyrics: string) => ['lyrics', 'identify', lyrics],
 } as const;
