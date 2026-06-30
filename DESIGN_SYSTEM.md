@@ -77,9 +77,31 @@ CSS custom properties are mapped into Tailwind utilities via `@theme inline`, so
 
 ---
 
+### Scoping & Portaled Styles
+
+- **Page styles:** gate everything under a unique page-root class (e.g. `.lyric-formatter-page .…`). Avoid generic class names — cascade-order collisions between the two public stylesheets have caused client-nav bugs. Use a unique prefix.
+- **Portaled DOM** (dialogs, toasts, dropdown panels) renders at `<body>` and can't be reached from a page-scoped root — put those styles in `globals.css` with a unique prefix (e.g. `.lf-…`) passed via the component's `className`.
+- `globals.css` is imported **after** the PrimeReact theme in `layout.tsx`, so equal-specificity overrides there win.
+
+---
+
 ## 3. Color Palette
 
 > Values below are the **source of truth** as defined in `:root` of `globals.css`.
+
+### Contrast — The #1 Rule
+
+**Never put text on a background of the same or near tone.** Every coloured surface must declare **both** its `background` **and** its text/icon `color` together — never set one and inherit the other (the most common failure here is overriding PrimeReact's `lara-light-blue` theme halfway).
+
+| Surface | Text + icons | Notes |
+|---|---|---|
+| **Dark** (navy `#1a2744`, burgundy `#6b2c3a`, purple `#4a3c6e`) | **white** | |
+| **Gold** (`#d4a84b`) | **navy** (`#1a2744`) | **White-on-gold ≈ 1.9:1 — fails. Never use it.** |
+| **Mid "light" tints** (e.g. `--color-error-light` `#8e4a5a`) | — | Not safe with white *or* dark text — don't use as a text background. |
+
+Targets: WCAG AA — **≥ 4.5:1** body text, **≥ 3:1** large/bold text.
+
+---
 
 ### Primary Colors (Warm Gold / Sanctuary Lighting)
 | Name | Variable | Hex | Usage |
@@ -419,6 +441,8 @@ Buttons come in two families: **landing pill buttons** (rounded, gold) and **Tai
 }
 ```
 
+> **⚠️ Contrast deviation (known).** `.landing-btn-primary` ships `color:#ffffff` on the gold gradient (`#d4a84b → #c9973f`) ≈ 1.9–2.1:1, which **violates the navy-on-gold contrast rule above**; the Tailwind `.btn-primary` (`bg-primary text-white`) has the same problem. The canonical rule for any gold surface is **navy text** — both are flagged for migration to `color: var(--color-navy)` and are **not** the pattern to copy for new gold buttons.
+
 ### Utility Buttons (`globals.css`, Tailwind `@apply`)
 | Class | Composition |
 |-------|-------------|
@@ -441,6 +465,16 @@ Buttons come in two families: **landing pill buttons** (rounded, gold) and **Tai
 .btn-contrast:hover { background: var(--color-contrast-light); color: var(--color-contrast-dark); transform: translateY(-2px); }
 ```
 Companions: `.btn-contrast-outline`, `.btn-contrast-light`, `.btn-gold-border` (transparent → gold fill).
+
+### PrimeReact Button Rules
+
+lara defaults to blue and jams the icon against the label. For every styled PrimeReact `<Button>`:
+
+- **Icon gap:** `.scope .p-button .p-button-icon-left { margin-right: 0.5rem; }` (lara leaves none).
+- **On-brand colours:** primary = gold bg + **navy** text; outline = **navy** border + navy text (never lara blue); text/link = gold (`--color-primary-dark`).
+- **Comfortable size:** `padding: 0.6rem 1.1rem; border-radius: 8–9px; font-weight: 600`.
+- **No fixed `height`** on buttons meant to align with inputs — match height via vertical `padding` and let the row's `align-items` align them (a fixed height ends up shorter than the inputs).
+- **Always** provide a hover state.
 
 ### Button Variant Summary
 | Class | Default | Hover |
@@ -818,6 +852,40 @@ The PrimeReact password show/hide icon is absolutely centered at `right: 12px; t
 ```
 
 > **RHF + Zod gotchas:** use `z.date({ message: '...' })` (Zod 4), default date fields to `undefined` (not `null`), and call `showSuccess()`/`showError()` explicitly in mutation callbacks (the `Toast` wrapper is now passive).
+
+---
+
+### Radio Buttons
+
+A generic PrimeReact `<RadioButton>` renders lara **blue** when checked — off-brand. Brand it gold (the SOD enrollment form is the reference — `.sod-radio-input` in `vip-form.css`). Apply your scope class to the `<RadioButton className="my-radio" …>`:
+
+```css
+/* unchecked: white box, navy hairline */
+.my-radio .p-radiobutton-box {
+  border: 2px solid rgba(26, 39, 68, 0.45);
+  background: #fff;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+/* checked — .p-highlight is lara's checked class, NOT .p-radiobutton-checked */
+.my-radio.p-highlight .p-radiobutton-box {
+  background: var(--color-primary);   /* gold */
+  border-color: var(--color-primary);
+}
+.my-radio.p-highlight .p-radiobutton-icon { background: #fff; }  /* inner dot */
+/* keyboard focus ring */
+.my-radio .p-radiobutton-box:focus-visible,
+.my-radio .p-radiobutton-box.p-focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.25);
+}
+```
+
+Rules:
+- **Checked = gold fill + gold border + white inner dot.** Never leave it lara blue.
+- **Label** is clickable via `htmlFor`/`inputId` and aligned to the control with flex `align-items:center` — not a `position:relative; top:Npx` nudge. Don't pin the row to a tiny fixed `height` (e.g. `20px`): it crops the label and drops the hit area below the 44–48px touch-target guidance.
+- **Reduced motion:** drop the box transition under `prefers-reduced-motion`.
+- Checked class is **`.p-highlight`** (same gotcha as InputSwitch), not `.p-radiobutton-checked`.
 
 ---
 
@@ -1287,6 +1355,22 @@ The admin sidebar is **off-canvas by default** and slides in (`transform: transl
 .p-steps .p-steps-item.p-highlight .p-steps-number { @apply bg-primary text-white; }
 ```
 
+### Dialog / Modal
+
+PrimeReact dialogs are **portaled to `<body>`**, so overrides can't live under a page-scoped root — style them globally with a **unique class prefix** passed via the dialog's `className` (e.g. `.lf-song-dialog`).
+
+Anatomy:
+- **Header:** navy bg + **white** title. The close ✕ must be **white** — lara leaves it dark on a dark header: `.your-dialog .p-dialog-header .p-dialog-header-icon { color:#fff; }`.
+- **Header corner radius must match the dialog frame.** The global override sets `.p-dialog { border-radius:12px }` (`rounded-xl`) but lara keeps the header at `border-top-*-radius: 6px`, so a navy header's corners don't follow the frame and the title looks clipped at the top-left. Fix per dialog: `overflow:hidden` on the frame **and** match the header's top radii to the frame (12px).
+- **Restore the header padding — Tailwind v4 preflight zeroes it.** Because `@import "tailwindcss"` (preflight) loads after the lara theme, the header's `padding: 1.5rem` collapses to **0** in this app, so the title jams into the rounded corner and the bar shrinks. Set it explicitly on your scoped header rule — `padding: 1.25rem 1.5rem` (the `1.5rem` horizontal aligns the title with the `1.5rem` content inset) — plus `gap: 0.75rem` so a truncated title never butts the ✕. Truncate long titles with `min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap` on `.p-dialog-title`.
+- **Content:** real padding (`≈1.25rem 1.5rem`). Long content scrolls **inside** the dialog (`max-height ≈ 45vh; overflow:auto`), never by growing the dialog past the viewport.
+- **Footer / actions:** separate with `border-top`, pad it, size + space the buttons. **Primary action = gold, on the right.**
+
+### InputSwitch & Tailwind v4 Preflight
+
+- Tailwind v4 preflight resets `::before/::after` to `margin:0`, which breaks the InputSwitch knob (it overflows the track as a "notch"). Global fix (already in `globals.css`): `.p-inputswitch .p-inputswitch-slider::before { margin-top:-0.625rem; }`.
+- The checked-state class is **`.p-highlight`** (not `.p-inputswitch-checked`). Brand the "on" colour: `.scope .p-inputswitch.p-highlight .p-inputswitch-slider { background: var(--color-primary); }`.
+
 ### Toast Notifications (semantic light tints)
 ```css
 .p-toast { opacity: 1; }
@@ -1295,6 +1379,8 @@ The admin sidebar is **off-canvas by default** and slides in (`transform: transl
 .p-toast-message-warn    { background: var(--color-warning-light); border-left: 4px solid var(--color-warning); }
 .p-toast-message-info    { background: var(--color-info-light);    border-left: 4px solid var(--color-info); }
 ```
+
+> Whatever the severity background, declare its text/icon colour **explicitly** (icons may render as SVG → set both `color` **and** `fill`). The **warn/gold** toast uses **navy** text + icons — never white (white-on-gold fails contrast).
 
 ### Invalid Inputs
 ```css
@@ -1345,6 +1431,12 @@ Both `globals` and `sermon-detail` honor reduced motion:
 
 ### Focus Visibility
 Interactive reader/admin elements use `:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2-3px; }`. The sermon TOC marks the current section with `aria-current="location"`; tabs use `aria-selected`.
+
+---
+
+### Verify Visually (every UI change)
+
+CSS / lint / tsc won't catch contrast or cramped spacing. Run the dev server (`pnpm dev` → **port 3100**; Next 16 allows only one `next dev`) and screenshot with Playwright at **desktop** and a **narrow (~540px)** width before calling any UI change done.
 
 ---
 

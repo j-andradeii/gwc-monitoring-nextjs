@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
 import { Dialog } from 'primereact/dialog';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import type { EditorTextChangeEvent } from 'primereact/editor';
@@ -36,6 +37,8 @@ const Editor = dynamic(() => import('primereact/editor').then((module) => module
   ssr: false,
   loading: () => <div className="lf-editor-loading">Loading editor…</div>,
 });
+
+type SearchTab = 'details' | 'lyrics';
 
 interface SearchForm {
   title: string;
@@ -99,8 +102,13 @@ function LyricFormatter() {
   const { labels, setLabels, resetSettings, linesPerSlide, setLinesPerSlide, useAi, setUseAi } =
     useLyricLabels();
 
+  const [activeTab, setActiveTab] = useState<SearchTab>('details');
+
   const [form, setForm] = useState<SearchForm>(EMPTY_FORM);
   const [committed, setCommitted] = useState<SearchForm | null>(null);
+
+  const [lyricInput, setLyricInput] = useState('');
+  const [lyricCommitted, setLyricCommitted] = useState<string | null>(null);
 
   const [selectedTrack, setSelectedTrack] = useState<LrclibTrack | null>(null);
   const [originalPlain, setOriginalPlain] = useState('');
@@ -127,7 +135,12 @@ function LyricFormatter() {
     return params.toString();
   }, [committed]);
 
-  const { data, isFetching, isError, error } = useQuery({
+  const {
+    data,
+    isFetching: detailsFetching,
+    isError: detailsIsError,
+    error: detailsError,
+  } = useQuery({
     queryKey: QUERY_KEYS.lyricsSearch({ q: searchQuery }),
     queryFn: async (): Promise<LyricsSearchResponse> => {
       const response = await fetch(`/api/lyrics/search?${searchQuery}`);
@@ -142,7 +155,43 @@ function LyricFormatter() {
     staleTime: 60_000,
   });
 
-  const results = useMemo(() => (data?.results ?? []).slice(0, 3), [data]);
+  // Lyric search: a snippet is sent to /api/lyrics/identify, which uses Gemini to
+  // resolve the song, then queries LRCLIB and returns the matching versions.
+  const lyricQuery = lyricCommitted?.trim() ?? '';
+  const {
+    data: lyricData,
+    isFetching: lyricFetching,
+    isError: lyricIsError,
+    error: lyricError,
+  } = useQuery({
+    queryKey: QUERY_KEYS.lyricsIdentify(lyricQuery),
+    queryFn: async (): Promise<LyricsSearchResponse> => {
+      const response = await fetch('/api/lyrics/identify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lyrics: lyricQuery }),
+      });
+      if (!response.ok) {
+        const body: unknown = await response.json().catch(() => ({}));
+        const message = (body as { error?: string }).error ?? 'Search failed.';
+        throw new Error(message);
+      }
+      return response.json() as Promise<LyricsSearchResponse>;
+    },
+    enabled: lyricQuery.length > 0,
+    staleTime: 60_000,
+  });
+
+  const detailResults = useMemo(() => (data?.results ?? []).slice(0, 3), [data]);
+  const lyricResults = useMemo(() => (lyricData?.results ?? []).slice(0, 10), [lyricData]);
+
+  // Unify the two searches so the results area + modal serve whichever tab is active.
+  const isLyricTab = activeTab === 'lyrics';
+  const results = isLyricTab ? lyricResults : detailResults;
+  const isFetching = isLyricTab ? lyricFetching : detailsFetching;
+  const isError = isLyricTab ? lyricIsError : detailsIsError;
+  const error = isLyricTab ? lyricError : detailsError;
+  const hasCommitted = isLyricTab ? lyricCommitted !== null : committed !== null;
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -152,6 +201,16 @@ function LyricFormatter() {
       return;
     }
     setCommitted({ ...form });
+  };
+
+  const handleLyricSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const text = lyricInput.trim();
+    if (text.length < 4) {
+      showError('Enter more lyrics', 'Type or paste a line or two from the song.');
+      return;
+    }
+    setLyricCommitted(text);
   };
 
   const renderSections = useCallback(
@@ -278,64 +337,123 @@ function LyricFormatter() {
         </section>
 
         <section className="lf-search">
-          <form className="lf-search-form" onSubmit={handleSubmit}>
-            <div className="lf-field">
-              <label htmlFor="lf-title">Song title</label>
-              <InputText
-                id="lf-title"
-                value={form.title}
-                onChange={(event) => setForm((prev) => ({ ...prev, title: event.target.value }))}
-                placeholder="e.g. Goodness of God"
-              />
-            </div>
-            <div className="lf-field">
-              <label htmlFor="lf-artist">Artist</label>
-              <InputText
-                id="lf-artist"
-                value={form.artist}
-                onChange={(event) => setForm((prev) => ({ ...prev, artist: event.target.value }))}
-                placeholder="e.g. Bethel Music"
-              />
-            </div>
-            <div className="lf-field">
-              <label htmlFor="lf-album">Album</label>
-              <InputText
-                id="lf-album"
-                value={form.album}
-                onChange={(event) => setForm((prev) => ({ ...prev, album: event.target.value }))}
-                placeholder="optional"
-              />
-            </div>
-            <div className="lf-field lf-field-year">
-              <label htmlFor="lf-year">Year</label>
-              <InputText
-                id="lf-year"
-                value={form.year}
-                inputMode="numeric"
-                onChange={(event) => setForm((prev) => ({ ...prev, year: event.target.value }))}
-                placeholder="optional"
-              />
-            </div>
-            <Button
-              type="submit"
-              icon="pi pi-search"
-              label="Search"
-              className="lf-search-btn"
-              loading={isFetching}
-            />
-          </form>
+          <div className="lf-tabs" role="tablist" aria-label="Search mode">
+            <button
+              type="button"
+              role="tab"
+              id="lf-tab-details"
+              aria-selected={!isLyricTab}
+              aria-controls="lf-search-panel"
+              className={`lf-tab${!isLyricTab ? ' is-active' : ''}`}
+              onClick={() => setActiveTab('details')}
+            >
+              <i className="pi pi-list lf-tab-icon" aria-hidden="true" />
+              <span>By song details</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="lf-tab-lyrics"
+              aria-selected={isLyricTab}
+              aria-controls="lf-search-panel"
+              className={`lf-tab${isLyricTab ? ' is-active' : ''}`}
+              onClick={() => setActiveTab('lyrics')}
+            >
+              <i className="pi pi-sparkles lf-tab-icon" aria-hidden="true" />
+              <span>By lyrics</span>
+            </button>
+          </div>
+
+          <div
+            id="lf-search-panel"
+            role="tabpanel"
+            aria-labelledby={isLyricTab ? 'lf-tab-lyrics' : 'lf-tab-details'}
+          >
+            {isLyricTab ? (
+              <form className="lf-lyric-form" onSubmit={handleLyricSubmit}>
+                <div className="lf-field">
+                  <label htmlFor="lf-lyric">Lyrics or a memorable line</label>
+                  <InputTextarea
+                    id="lf-lyric"
+                    value={lyricInput}
+                    onChange={(event) => setLyricInput(event.target.value)}
+                    rows={4}
+                    autoResize
+                    className="lf-lyric-input"
+                    placeholder={'e.g. "Oh the overwhelming, never-ending, reckless love of God"'}
+                  />
+                </div>
+                <div className="lf-lyric-actions">
+                  <Button
+                    type="submit"
+                    icon="pi pi-search"
+                    label="Find song"
+                    className="lf-search-btn"
+                    loading={lyricFetching}
+                  />
+                </div>
+              </form>
+            ) : (
+              <form className="lf-search-form" onSubmit={handleSubmit}>
+                <div className="lf-field">
+                  <label htmlFor="lf-title">Song title</label>
+                  <InputText
+                    id="lf-title"
+                    value={form.title}
+                    onChange={(event) => setForm((prev) => ({ ...prev, title: event.target.value }))}
+                    placeholder="e.g. Goodness of God"
+                  />
+                </div>
+                <div className="lf-field">
+                  <label htmlFor="lf-artist">Artist</label>
+                  <InputText
+                    id="lf-artist"
+                    value={form.artist}
+                    onChange={(event) => setForm((prev) => ({ ...prev, artist: event.target.value }))}
+                    placeholder="e.g. Bethel Music"
+                  />
+                </div>
+                <div className="lf-field">
+                  <label htmlFor="lf-album">Album</label>
+                  <InputText
+                    id="lf-album"
+                    value={form.album}
+                    onChange={(event) => setForm((prev) => ({ ...prev, album: event.target.value }))}
+                    placeholder="optional"
+                  />
+                </div>
+                <div className="lf-field lf-field-year">
+                  <label htmlFor="lf-year">Year</label>
+                  <InputText
+                    id="lf-year"
+                    value={form.year}
+                    inputMode="numeric"
+                    onChange={(event) => setForm((prev) => ({ ...prev, year: event.target.value }))}
+                    placeholder="optional"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  icon="pi pi-search"
+                  label="Search"
+                  className="lf-search-btn"
+                  loading={detailsFetching}
+                />
+              </form>
+            )}
+          </div>
 
           <p className="lf-hint">
-            Lyrics via LRCLIB. Year refines the text search only (LRCLIB has no year
-            filter). Section labels are auto-detected — fix anything in the editor, or
-            tune the vocabulary in Label settings.
+            {isLyricTab
+              ? 'Paste a line or two of the lyrics — a web search identifies the song, then pulls every available version from LRCLIB. Pick a result to auto-section and edit.'
+              : 'Lyrics via LRCLIB. Year refines the text search only (LRCLIB has no year filter). Section labels are auto-detected — fix anything in the editor, or tune the vocabulary in Label settings.'}
           </p>
 
           <div className="lf-results" aria-live="polite">
             {isFetching && (
               <div className="lf-status">
                 <ProgressSpinner style={{ width: '40px', height: '40px' }} strokeWidth="4" />
-                <span>Searching…</span>
+                <span>{isLyricTab ? 'Searching the web for the song…' : 'Searching…'}</span>
               </div>
             )}
 
@@ -345,8 +463,12 @@ function LyricFormatter() {
               </div>
             )}
 
-            {!isFetching && !isError && committed && results.length === 0 && (
-              <div className="lf-status">No matches. Try fewer or different words.</div>
+            {!isFetching && !isError && hasCommitted && results.length === 0 && (
+              <div className="lf-status">
+                {isLyricTab
+                  ? 'No match found. Try a different or longer line of the lyrics.'
+                  : 'No matches. Try fewer or different words.'}
+              </div>
             )}
 
             {!isFetching && results.length > 0 && (
@@ -379,10 +501,14 @@ function LyricFormatter() {
               </ul>
             )}
 
-            {!committed && (
+            {!hasCommitted && (
               <div className="lf-empty-hint">
-                <i className="pi pi-search" />
-                <span>Search for a song to get started.</span>
+                <i className={isLyricTab ? 'pi pi-sparkles' : 'pi pi-search'} />
+                <span>
+                  {isLyricTab
+                    ? 'Paste a line of lyrics to find the song.'
+                    : 'Search for a song to get started.'}
+                </span>
               </div>
             )}
           </div>
