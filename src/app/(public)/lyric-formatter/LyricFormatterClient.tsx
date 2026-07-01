@@ -9,7 +9,6 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Dialog } from 'primereact/dialog';
-import { ProgressSpinner } from 'primereact/progressspinner';
 import type { EditorTextChangeEvent } from 'primereact/editor';
 
 import { LandingHeader, LandingFooter } from '@/components/landing';
@@ -40,7 +39,7 @@ const Editor = dynamic(() => import('primereact/editor').then((module) => module
   loading: () => <div className="lf-editor-loading">Loading editor…</div>,
 });
 
-type SearchTab = 'details' | 'lyrics';
+type SearchTab = 'details' | 'lyrics' | 'manual';
 
 interface SearchForm {
   title: string;
@@ -124,6 +123,10 @@ function LyricFormatter() {
   const [lyricInput, setLyricInput] = useState('');
   const [lyricCommitted, setLyricCommitted] = useState<string | null>(null);
 
+  const [manualLyrics, setManualLyrics] = useState('');
+  const [manualTitle, setManualTitle] = useState('');
+  const [manualDialogOpen, setManualDialogOpen] = useState(false);
+
   const [selectedTrack, setSelectedTrack] = useState<LrclibTrack | null>(null);
   const [originalPlain, setOriginalPlain] = useState('');
   const [editorHtml, setEditorHtml] = useState('');
@@ -201,6 +204,7 @@ function LyricFormatter() {
 
   // Unify the two searches so the results area + modal serve whichever tab is active.
   const isLyricTab = activeTab === 'lyrics';
+  const isManualTab = activeTab === 'manual';
   const results = isLyricTab ? lyricResults : detailResults;
   const isFetching = isLyricTab ? lyricFetching : detailsFetching;
   const isError = isLyricTab ? lyricIsError : detailsIsError;
@@ -225,6 +229,19 @@ function LyricFormatter() {
       return;
     }
     setLyricCommitted(text);
+  };
+
+  const handleManualFormat = (event: FormEvent) => {
+    event.preventDefault();
+    const text = manualLyrics.trim();
+    if (text.length < 4) {
+      showError('Nothing to format', 'Paste the full lyrics first.');
+      return;
+    }
+    setSelectedTrack(null);
+    setOriginalPlain(text);
+    setManualDialogOpen(true);
+    void detectAndApply(text);
   };
 
   const renderSections = useCallback(
@@ -302,7 +319,7 @@ function LyricFormatter() {
       showError('Nothing to export', 'No lyrics to build slides from.');
       return;
     }
-    const title = selectedTrack?.trackName ?? 'Lyrics';
+    const title = selectedTrack?.trackName ?? (manualTitle.trim() || 'Lyrics');
     // Line wrapping (rule 2) uses the deterministic splitLongLine algorithm — the
     // Gemini /api/lyrics/linebreaks route is intentionally NOT called (no breakHints).
     const bytes = buildProPresenterFile(title, sections, {
@@ -323,14 +340,20 @@ function LyricFormatter() {
       showError('Nothing to export', 'No lyrics to save.');
       return;
     }
-    const base = (selectedTrack?.trackName ?? 'lyrics').replace(/[/\\:*?"<>|]+/g, '') || 'lyrics';
+    const base =
+      (selectedTrack?.trackName ?? (manualTitle.trim() || 'lyrics')).replace(
+        /[/\\:*?"<>|]+/g,
+        '',
+      ) || 'lyrics';
     downloadBlob(text, `${base}.txt`, 'text/plain;charset=utf-8');
     showSuccess('Text file downloaded');
   };
 
   const songTitle = selectedTrack
     ? `${selectedTrack.trackName}${selectedTrack.artistName ? ` — ${selectedTrack.artistName}` : ''}`
-    : '';
+    : manualDialogOpen
+      ? manualTitle.trim() || 'Lyrics'
+      : '';
 
   return (
     <>
@@ -366,9 +389,9 @@ function LyricFormatter() {
               type="button"
               role="tab"
               id="lf-tab-details"
-              aria-selected={!isLyricTab}
+              aria-selected={!isLyricTab && !isManualTab}
               aria-controls="lf-search-panel"
-              className={`lf-tab${!isLyricTab ? ' is-active' : ''}`}
+              className={`lf-tab${!isLyricTab && !isManualTab ? ' is-active' : ''}`}
               onClick={() => setActiveTab('details')}
             >
               <i className="pi pi-list lf-tab-icon" aria-hidden="true" />
@@ -386,12 +409,26 @@ function LyricFormatter() {
               <i className="pi pi-sparkles lf-tab-icon" aria-hidden="true" />
               <span>By lyrics</span>
             </button>
+            <button
+              type="button"
+              role="tab"
+              id="lf-tab-manual"
+              aria-selected={isManualTab}
+              aria-controls="lf-search-panel"
+              className={`lf-tab${isManualTab ? ' is-active' : ''}`}
+              onClick={() => setActiveTab('manual')}
+            >
+              <i className="pi pi-pencil lf-tab-icon" aria-hidden="true" />
+              <span>Manual format</span>
+            </button>
           </div>
 
           <div
             id="lf-search-panel"
             role="tabpanel"
-            aria-labelledby={isLyricTab ? 'lf-tab-lyrics' : 'lf-tab-details'}
+            aria-labelledby={
+              isLyricTab ? 'lf-tab-lyrics' : isManualTab ? 'lf-tab-manual' : 'lf-tab-details'
+            }
           >
             {isLyricTab ? (
               <form className="lf-lyric-form" onSubmit={handleLyricSubmit}>
@@ -415,6 +452,40 @@ function LyricFormatter() {
                     className="lf-search-btn"
                     loading={lyricFetching}
                     disabled={lyricFetching}
+                  />
+                </div>
+              </form>
+            ) : isManualTab ? (
+              <form className="lf-lyric-form" onSubmit={handleManualFormat}>
+                <div className="lf-field">
+                  <label htmlFor="lf-manual-title">Song title (optional)</label>
+                  <InputText
+                    id="lf-manual-title"
+                    value={manualTitle}
+                    onChange={(event) => setManualTitle(event.target.value)}
+                    placeholder="Only used to name the exported file"
+                  />
+                </div>
+                <div className="lf-field">
+                  <label htmlFor="lf-manual-lyrics">Paste the full lyrics</label>
+                  <InputTextarea
+                    id="lf-manual-lyrics"
+                    value={manualLyrics}
+                    onChange={(event) => setManualLyrics(event.target.value)}
+                    rows={14}
+                    autoResize
+                    className="lf-lyric-input lf-manual-input"
+                    placeholder={'Paste the whole song — verses, chorus, bridge, etc.'}
+                  />
+                </div>
+                <div className="lf-lyric-actions">
+                  <Button
+                    type="submit"
+                    icon="pi pi-sparkles"
+                    label="Format"
+                    className="lf-search-btn"
+                    loading={sectioning}
+                    disabled={sectioning}
                   />
                 </div>
               </form>
@@ -472,14 +543,19 @@ function LyricFormatter() {
           <p className="lf-hint">
             {isLyricTab
               ? 'Paste a line or two of the lyrics — a web search identifies the song, then pulls every available version from LRCLIB. Pick a result to auto-section and edit.'
-              : 'Lyrics via LRCLIB. Year refines the text search only (LRCLIB has no year filter). Section labels are auto-detected — fix anything in the editor, or tune the vocabulary in Label settings.'}
+              : isManualTab
+                ? 'For songs LRCLIB doesn’t have. Section detection uses AI (Gemini) or the heuristic grouping, per the "AI section detection" toggle in Settings. Title is optional — it only names the exported file.'
+                : 'Lyrics via LRCLIB. Year refines the text search only (LRCLIB has no year filter). Section labels are auto-detected — fix anything in the editor, or tune the vocabulary in Label settings.'}
           </p>
 
+          {!isManualTab && (
           <div className="lf-results" aria-live="polite">
             {isFetching && (
-              <div className="lf-status">
-                <ProgressSpinner style={{ width: '40px', height: '40px' }} strokeWidth="4" />
-                <span>{isLyricTab ? 'Searching the web for the song…' : 'Searching…'}</span>
+              <div className="lf-status lf-status-loading">
+                <span className="lf-spinner" aria-hidden="true" />
+                <span className="lf-status-label">
+                  {isLyricTab ? 'Searching the web for the song…' : 'Searching…'}
+                </span>
               </div>
             )}
 
@@ -538,6 +614,7 @@ function LyricFormatter() {
               </div>
             )}
           </div>
+          )}
         </section>
       </main>
 
@@ -545,13 +622,16 @@ function LyricFormatter() {
 
       <Dialog
         header={songTitle}
-        visible={selectedTrack !== null}
-        onHide={() => setSelectedTrack(null)}
+        visible={selectedTrack !== null || manualDialogOpen}
+        onHide={() => {
+          setSelectedTrack(null);
+          setManualDialogOpen(false);
+        }}
         dismissableMask
         className="lf-song-dialog"
         style={{ width: '94vw', maxWidth: '880px' }}
       >
-        {selectedTrack && (
+        {(selectedTrack || manualDialogOpen) && (
           <div className="lf-song">
             <div className="lf-song-toolbar">
               <span className="lf-song-hint">
@@ -573,8 +653,20 @@ function LyricFormatter() {
 
             {sectioning ? (
               <div className="lf-song-loading">
-                <ProgressSpinner style={{ width: '42px', height: '42px' }} strokeWidth="4" />
-                <span>Detecting sections with AI…</span>
+                <span className="lf-loading-orb" aria-hidden="true">
+                  <span className="lf-spinner lf-spinner-lg" />
+                </span>
+                <div className="lf-loading-copy">
+                  <span className="lf-loading-title">Detecting sections with AI…</span>
+                  <span className="lf-loading-caption">
+                    Grouping verses, chorus &amp; bridge with Gemini
+                  </span>
+                </div>
+                <div className="lf-loading-skeleton" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </div>
               </div>
             ) : (
               <Editor

@@ -16962,6 +16962,10 @@
   line-height: 1.55;
   resize: vertical;
 }
+/* Manual format tab: a full paste-in editor needs far more room than the snippet field. */
+.lf-manual-input.p-inputtextarea {
+  min-height: 320px;
+}
 .lf-lyric-actions {
   display: flex;
   justify-content: flex-end;
@@ -16989,7 +16993,7 @@
 .lf-search-btn.p-button {
   padding: 0.75rem 1.6rem;
   font-weight: 700;
-  color: #1a2744;
+  color: #ffffff;
   background: var(--color-primary, #d4a84b);
   border: 1px solid var(--color-primary, #d4a84b);
   border-radius: 9px;
@@ -17044,6 +17048,41 @@
 }
 .lf-status-error {
   color: #b91c1c;
+}
+/* Search-in-progress: a soft gold-tinted card instead of bare text + spinner. */
+.lf-status-loading {
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(212, 168, 75, 0.08), rgba(212, 168, 75, 0.02));
+  border: 1px solid rgba(212, 168, 75, 0.18);
+}
+.lf-status-label {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text-heading, #1a2744);
+}
+
+/* Shared ring spinner — replaces PrimeReact's default multi-colour ProgressSpinner
+   so loading states stay on-brand (gold, not the Lara theme's blue/red/green cycle). */
+.lf-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2.5px solid rgba(212, 168, 75, 0.2);
+  border-top-color: var(--color-primary, #d4a84b);
+  animation: lf-spin 0.75s linear infinite;
+}
+.lf-spinner-lg {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+}
+@keyframes lf-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .lf-empty-hint {
   display: flex;
@@ -17211,11 +17250,107 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
+  gap: 1.4rem;
   min-height: 280px;
   height: 46vh;
   color: var(--text-secondary, #64748b);
   font-size: 0.95rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(212, 168, 75, 0.06), rgba(212, 168, 75, 0));
+  border: 1px solid rgba(212, 168, 75, 0.14);
+}
+/* Soft pulsing halo behind the AI-detection spinner — a premium touch, not a bare ring. */
+.lf-loading-orb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+}
+.lf-loading-orb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 168, 75, 0.3), rgba(212, 168, 75, 0) 70%);
+  animation: lf-pulse 1.8s ease-in-out infinite;
+}
+@keyframes lf-pulse {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+.lf-loading-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-align: center;
+}
+.lf-loading-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-heading, #1a2744);
+}
+.lf-loading-caption {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #64748b);
+}
+/* Shimmering placeholder lines — previews the section/lyric rows about to land. */
+.lf-loading-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 220px;
+}
+.lf-loading-skeleton span {
+  display: block;
+  height: 8px;
+  width: 100%;
+  border-radius: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(26, 39, 68, 0.06) 25%,
+    rgba(212, 168, 75, 0.22) 50%,
+    rgba(26, 39, 68, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: lf-shimmer 1.6s ease-in-out infinite;
+}
+.lf-loading-skeleton span:nth-child(2) {
+  width: 78%;
+  animation-delay: 0.15s;
+}
+.lf-loading-skeleton span:nth-child(3) {
+  width: 58%;
+  animation-delay: 0.3s;
+}
+@keyframes lf-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+/* Keep the spin (it's the actual progress signal); still the decorative halo/shimmer. */
+@media (prefers-reduced-motion: reduce) {
+  .lf-loading-orb::before {
+    animation: none;
+    opacity: 0.7;
+  }
+  .lf-loading-skeleton span {
+    animation: none;
+    background: rgba(212, 168, 75, 0.14);
+  }
 }
 /* "Use the Copy button" notice — manual Cmd/Ctrl+C from the rich editor loses formatting. */
 .lf-copy-notice {
@@ -17280,7 +17415,7 @@
   background: rgba(26, 39, 68, 0.06);
 }
 .lf-song-actions .p-button:not(.p-button-outlined) {
-  color: #1a2744;
+  color: #ffffff;
   background: var(--color-primary, #d4a84b);
   border-color: var(--color-primary, #d4a84b);
 }
@@ -17424,7 +17559,7 @@
   background: transparent;
 }
 .lf-settings-footer .p-button:not(.p-button-text) {
-  color: #1a2744;
+  color: #ffffff;
   background: var(--color-primary, #d4a84b);
   border-color: var(--color-primary, #d4a84b);
 }
