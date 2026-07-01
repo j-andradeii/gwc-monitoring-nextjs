@@ -17010,6 +17010,21 @@
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(184, 146, 63, 0.4);
 }
+/* Disabled/loading (search in progress): visibly dimmed, no hover lift. */
+.lf-search-btn.p-button:disabled,
+.lf-search-btn.p-button.p-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 6px rgba(212, 168, 75, 0.25);
+}
+.lf-search-btn.p-button:disabled:hover,
+.lf-search-btn.p-button.p-disabled:hover {
+  background: var(--color-primary, #d4a84b);
+  border-color: var(--color-primary, #d4a84b);
+  transform: none;
+  box-shadow: 0 2px 6px rgba(212, 168, 75, 0.25);
+}
 .lf-hint {
   margin: 1rem 0 0;
   font-size: 0.82rem;
@@ -17197,6 +17212,44 @@
   height: 46vh;
   color: var(--text-secondary, #64748b);
   font-size: 0.95rem;
+}
+/* "Use the Copy button" notice — manual Cmd/Ctrl+C from the rich editor loses formatting. */
+.lf-copy-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-heading, #1a2744);
+  background: rgba(212, 168, 75, 0.1);
+  border: 1px solid rgba(212, 168, 75, 0.4);
+  border-left: 3px solid var(--color-primary, #d4a84b);
+  border-radius: 8px;
+}
+.lf-copy-notice > .pi {
+  flex-shrink: 0;
+  margin-top: 0.08rem;
+  font-size: 1rem;
+  color: var(--color-primary-dark, #b8923f);
+}
+.lf-copy-notice strong {
+  font-weight: 700;
+  color: var(--color-primary-dark, #b8923f);
+}
+.lf-kbd {
+  display: inline-block;
+  padding: 0.02rem 0.35rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--text-heading, #1a2744);
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  white-space: nowrap;
 }
 .lf-song-actions {
   display: flex;

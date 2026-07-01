@@ -17,14 +17,20 @@ import { getPlainLyrics, type LrclibTrack } from '@/lib/lyrics/lrclib';
  *   3. Run those through LRCLIB and VERIFY each returned track's actual lyrics
  *      contain the user's snippet — this guarantees we never show a wrong song
  *      that merely shares a title/theme.
- *   4. Rank by lyric-match strength, dedupe, return the top 10.
+ *   4. Rank by lyric-match strength, dedupe, return the top 5.
  *
  * Requires `FIRECRAWL_API_KEY` (server-only, in `.env`/`.env.local`, gitignored).
  */
 
 const FIRECRAWL_SEARCH_URL = 'https://api.firecrawl.dev/v2/search';
-const MAX_RESULTS = 10;
-const MAX_QUERIES = 6;
+/** How many web results to request from Firecrawl (fewer = quicker; enough for titles). */
+const FIRECRAWL_LIMIT = 6;
+/** Cap on distinct LRCLIB lookups derived from those titles (each is its own request). */
+const MAX_QUERIES = 4;
+/** Number of song versions returned to the client. */
+const MAX_RESULTS = 5;
+/** Bound each LRCLIB lookup so one slow shard can't stall the whole search. */
+const LRCLIB_TIMEOUT_MS = 9000;
 
 interface FirecrawlWebResult {
   title?: string;
@@ -104,14 +110,23 @@ async function firecrawlSearch(apiKey: string, query: string): Promise<Firecrawl
   const response = await fetch(FIRECRAWL_SEARCH_URL, {
     method: 'POST',
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query, limit: MAX_RESULTS, sources: [{ type: 'web' }] }),
-    signal: AbortSignal.timeout(25000),
+    body: JSON.stringify({ query, limit: FIRECRAWL_LIMIT, sources: [{ type: 'web' }] }),
+    signal: AbortSignal.timeout(15000),
   });
   if (!response.ok) {
     throw new Error(`Firecrawl returned ${response.status}`);
   }
   const data = (await response.json()) as { data?: { web?: FirecrawlWebResult[] } };
   return data.data?.web ?? [];
+}
+
+/** Resolve `promise`, or fall back to `fallback` if it doesn't settle within `ms`. */
+function withTimeout<T>(promise: Promise<T>, ms: number, fallback: T): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<T>((resolve) => {
+    timer = setTimeout(() => resolve(fallback), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
 }
 
 // ---- route -----------------------------------------------------------------
@@ -169,14 +184,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ results: [], source: 'firecrawl', reason: 'no-song-titles' });
   }
 
-  // 3. Resolve each query against LRCLIB (parallel) and merge/dedupe by id.
-  const lists = await Promise.all(queries.map((q) => searchLrclib({ q }).catch(() => [])));
+  // 3. Resolve each query against LRCLIB (parallel, each time-bounded) and merge/dedupe by id.
+  const lists = await Promise.all(
+    queries.map((q) =>
+      withTimeout<LrclibTrack[]>(searchLrclib({ q }).catch(() => []), LRCLIB_TIMEOUT_MS, []),
+    ),
+  );
   const byId = new Map<number, LrclibTrack>();
   for (const list of lists) {
     for (const track of list) if (!byId.has(track.id)) byId.set(track.id, track);
   }
 
-  // 4. Verify against the actual lyrics, rank by match strength, take top 10.
+  // 4. Verify against the actual lyrics, rank by match strength, take top 5.
   const scored = [...byId.values()]
     .map((track) => ({ track, score: scoreMatch(lyrics, getPlainLyrics(track)) }))
     .sort((a, b) => b.score.lineHits - a.score.lineHits || b.score.coverage - a.score.coverage);

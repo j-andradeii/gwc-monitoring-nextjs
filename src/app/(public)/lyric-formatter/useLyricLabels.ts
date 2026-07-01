@@ -13,6 +13,28 @@ const DEFAULT_LINES_PER_SLIDE = 2;
 const DEFAULT_USE_AI = true;
 
 /**
+ * Label values renamed in a release, applied to older persisted settings so they
+ * adopt the current default naming without a manual "Reset to defaults".
+ */
+const LABEL_VALUE_RENAMES: Record<string, string> = {
+  'Pre-Chorus': 'PreChorus',
+  'Post-Chorus': 'PostChorus',
+};
+
+/** Rewrite any renamed label values in place; returns true if something changed. */
+function migrateLabelValues(labels: CanonicalLabels): boolean {
+  let changed = false;
+  for (const key of Object.keys(labels)) {
+    const next = LABEL_VALUE_RENAMES[labels[key]];
+    if (next && next !== labels[key]) {
+      labels[key] = next;
+      changed = true;
+    }
+  }
+  return changed;
+}
+
+/**
  * localStorage-backed Lyric Formatter settings: the section-label vocabulary, the
  * ProPresenter lines-per-slide default, and whether to use AI (Gemini) section
  * detection. Starts from the built-ins (also used for SSR), then hydrates saved
@@ -34,6 +56,11 @@ export function useLyricLabels() {
         const parsed: unknown = JSON.parse(stored);
         if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
           restoredLabels = parsed as CanonicalLabels;
+          // Upgrade older saved labels to the current default naming (e.g.
+          // Pre-Chorus → PreChorus) and re-persist so the change sticks.
+          if (migrateLabelValues(restoredLabels)) {
+            window.localStorage.setItem(LABELS_KEY, JSON.stringify(restoredLabels));
+          }
         }
       }
     } catch {

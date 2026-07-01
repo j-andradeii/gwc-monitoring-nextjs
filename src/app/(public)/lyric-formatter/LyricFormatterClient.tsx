@@ -26,6 +26,7 @@ import {
   formatSectionsForEditor,
   chunkLines,
   detectSectionHeader,
+  stripAdLibs,
   type LyricSection,
 } from '@/lib/lyrics/section-lyrics';
 import { buildProPresenterFile, proFilename } from '@/lib/lyrics/propresenter';
@@ -155,8 +156,8 @@ function LyricFormatter() {
     staleTime: 60_000,
   });
 
-  // Lyric search: a snippet is sent to /api/lyrics/identify, which uses Gemini to
-  // resolve the song, then queries LRCLIB and returns the matching versions.
+  // Lyric search: a snippet is sent to /api/lyrics/identify, which web-searches to
+  // identify the song, then queries LRCLIB and returns the matching versions.
   const lyricQuery = lyricCommitted?.trim() ?? '';
   const {
     data: lyricData,
@@ -183,7 +184,7 @@ function LyricFormatter() {
   });
 
   const detailResults = useMemo(() => (data?.results ?? []).slice(0, 3), [data]);
-  const lyricResults = useMemo(() => (lyricData?.results ?? []).slice(0, 10), [lyricData]);
+  const lyricResults = useMemo(() => (lyricData?.results ?? []).slice(0, 5), [lyricData]);
 
   // Unify the two searches so the results area + modal serve whichever tab is active.
   const isLyricTab = activeTab === 'lyrics';
@@ -225,8 +226,11 @@ function LyricFormatter() {
   /** Section the lyrics via Gemini (if enabled) with a heuristic fallback. */
   const detectAndApply = useCallback(
     async (plain: string) => {
+      // Drop parenthetical ad-libs / backing-vocal asides before sectioning so they
+      // never reach the editor, slides, copy, or export.
+      const clean = stripAdLibs(plain, labels);
       if (!useAi) {
-        renderSections(sectionLyrics(plain, labels));
+        renderSections(sectionLyrics(clean, labels));
         return;
       }
       setSectioning(true);
@@ -234,10 +238,10 @@ function LyricFormatter() {
         const response = await fetch('/api/lyrics/section', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ plainLyrics: plain }),
+          body: JSON.stringify({ plainLyrics: clean }),
         });
         if (!response.ok) {
-          renderSections(sectionLyrics(plain, labels));
+          renderSections(sectionLyrics(clean, labels));
           return;
         }
         const data = (await response.json()) as {
@@ -252,9 +256,9 @@ function LyricFormatter() {
             lines: Array.isArray(section.lines) ? section.lines : [],
           }))
           .filter((section) => section.lines.length > 0);
-        renderSections(sections.length ? sections : sectionLyrics(plain, labels));
+        renderSections(sections.length ? sections : sectionLyrics(clean, labels));
       } catch {
-        renderSections(sectionLyrics(plain, labels));
+        renderSections(sectionLyrics(clean, labels));
       } finally {
         setSectioning(false);
       }
@@ -390,6 +394,7 @@ function LyricFormatter() {
                     label="Find song"
                     className="lf-search-btn"
                     loading={lyricFetching}
+                    disabled={lyricFetching}
                   />
                 </div>
               </form>
@@ -438,6 +443,7 @@ function LyricFormatter() {
                   label="Search"
                   className="lf-search-btn"
                   loading={detailsFetching}
+                  disabled={detailsFetching}
                 />
               </form>
             )}
@@ -566,6 +572,16 @@ function LyricFormatter() {
                 style={{ height: '46vh', minHeight: '280px' }}
               />
             )}
+
+            <p className="lf-copy-notice">
+              <i className="pi pi-info-circle" aria-hidden="true" />
+              <span>
+                Use the <strong>Copy</strong> button below to keep the formatting.
+                Selecting the lyrics and pressing <kbd className="lf-kbd">⌘</kbd> /{' '}
+                <kbd className="lf-kbd">Ctrl</kbd> + <kbd className="lf-kbd">C</kbd> — or
+                right-click → Copy — will not preserve it.
+              </span>
+            </p>
 
             <div className="lf-song-actions">
               <Button type="button" icon="pi pi-copy" label="Copy" outlined onClick={handleCopy} />
