@@ -1,10 +1,21 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { sermons } from '../../data/sermons';
 
 type SlideType = 'welcome' | 'campaign' | 'sermon';
+
+interface SermonBannerData {
+  series: string;
+  speaker: string;
+  speakerRole?: string;
+  date: string;
+  duration: string;
+  image: string;
+  excerpt: string;
+}
 
 interface HeroSlideData {
   id: string;
@@ -15,6 +26,7 @@ interface HeroSlideData {
   backgroundImage: string;
   overlayGradient: string;
   is_display_info?: boolean;
+  sermon?: SermonBannerData;
   cta: {
     label: string;
     href: string;
@@ -38,16 +50,83 @@ const HeroSlideContent: React.FC<HeroSlideContentProps> = ({ slide, isTransition
           <span className={`hero-badge ${badgeClass}`}>{slide.badge}</span>
           <h1>{slide.title}</h1>
           <p className="hero-subtitle">{slide.subtitle}</p>
-          {/* <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
-            <i className={slide.cta.icon}></i>
-            {slide.cta.label}
-          </Link> */}
         </>
       )}
 
       <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
         <i className={slide.cta.icon}></i>
         {slide.cta.label}
+      </Link>
+    </div>
+  );
+};
+
+const formatSermonDate = (date: string) =>
+  new Date(date).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+interface HeroSermonBannerProps {
+  slide: HeroSlideData;
+  isTransitioning: boolean;
+}
+
+const HeroSermonBanner: React.FC<HeroSermonBannerProps> = ({ slide, isTransitioning }) => {
+  const sermon = slide.sermon;
+  if (!sermon) return null;
+
+  return (
+    <div className={`hero-sermon-banner ${isTransitioning ? 'transitioning' : ''}`}>
+      <div className="hero-sermon-banner__text">
+        <span className="hero-sermon-banner__eyebrow">
+          <i className="pi pi-bookmark" aria-hidden="true"></i>
+          {slide.badge}
+          <span className="hero-sermon-banner__eyebrow-sep" aria-hidden="true">·</span>
+          {sermon.series}
+        </span>
+
+        <h1 className="hero-sermon-banner__title">{slide.title}</h1>
+
+        <p className="hero-sermon-banner__deck">{sermon.excerpt}</p>
+
+        <div className="hero-sermon-banner__meta">
+          <span className="hero-sermon-banner__meta-item">
+            <i className="pi pi-user" aria-hidden="true"></i>
+            <strong>{sermon.speaker}</strong>
+          </span>
+          <span className="hero-sermon-banner__meta-item">
+            <i className="pi pi-calendar" aria-hidden="true"></i>
+            {formatSermonDate(sermon.date)}
+          </span>
+          <span className="hero-sermon-banner__meta-item">
+            <i className="pi pi-clock" aria-hidden="true"></i>
+            {sermon.duration}
+          </span>
+        </div>
+
+        <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
+          <i className={slide.cta.icon} aria-hidden="true"></i>
+          {slide.cta.label}
+        </Link>
+      </div>
+
+      <Link
+        href={slide.cta.href}
+        className="hero-sermon-banner__artwork"
+        aria-label={`Open sermon notes: ${slide.title}`}
+      >
+        <Image
+          src={sermon.image}
+          alt={slide.title}
+          fill
+          sizes="(max-width: 768px) 92vw, 500px"
+          className="hero-sermon-banner__artwork-img"
+        />
+        <span className="hero-sermon-banner__play" aria-hidden="true">
+          <i className="pi pi-play"></i>
+        </span>
       </Link>
     </div>
   );
@@ -76,13 +155,21 @@ const heroSlides: HeroSlideData[] = [
     badge: 'Latest Message',
     title: latestSermon.title,
     subtitle: latestSermon.excerpt,
-    backgroundImage: latestSermon.image,
+    backgroundImage: '',
     overlayGradient: '',
-    is_display_info: false,
+    sermon: {
+      series: latestSermon.series,
+      speaker: latestSermon.speaker,
+      speakerRole: latestSermon.speakerRole,
+      date: latestSermon.date,
+      duration: latestSermon.duration,
+      image: latestSermon.image,
+      excerpt: latestSermon.excerpt,
+    },
     cta: {
-      label: 'Learn More',
+      label: 'Read Sermon Notes',
       href: `/sermon-notes/${latestSermon.slug}`,
-      icon: 'pi pi-play',
+      icon: 'pi pi-arrow-right',
     },
   },
 ];
@@ -115,20 +202,26 @@ export const HeroSection: React.FC = () => {
     return () => clearInterval(interval);
   }, [goToNext]);
 
+  const activeSlide = heroSlides[activeIndex];
+
   return (
     <section id="home" className="hero-carousel-section">
       {heroSlides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`hero-slide-bg ${index === activeIndex ? 'active' : ''}`}
-          style={{ backgroundImage: `url('${slide.backgroundImage}')` }}
+          className={`hero-slide-bg ${slide.type === 'sermon' && !slide.backgroundImage ? 'hero-slide-bg--sermon' : ''} ${index === activeIndex ? 'active' : ''}`}
+          style={slide.backgroundImage ? { backgroundImage: `url('${slide.backgroundImage}')` } : undefined}
         >
           <div className="hero-slide-overlay" style={{ background: slide.overlayGradient }} />
         </div>
       ))}
 
-      <div className="hero-carousel-content-wrapper">
-        <HeroSlideContent key={heroSlides[activeIndex].id} slide={heroSlides[activeIndex]} isTransitioning={isTransitioning} />
+      <div className={`hero-carousel-content-wrapper ${activeSlide.type === 'sermon' ? 'hero-carousel-content-wrapper--sermon' : ''}`}>
+        {activeSlide.type === 'sermon' ? (
+          <HeroSermonBanner key={activeSlide.id} slide={activeSlide} isTransitioning={isTransitioning} />
+        ) : (
+          <HeroSlideContent key={activeSlide.id} slide={activeSlide} isTransitioning={isTransitioning} />
+        )}
       </div>
 
       {heroSlides.length > 1 && (
