@@ -5,7 +5,7 @@ import { sectionLyrics, type LyricSection } from '@/lib/lyrics/section-lyrics';
  * AI section detection for lyrics.
  *
  * Uses Gemini to group raw lyrics into accurately-labelled musical sections
- * (Verse 1, Chorus, Pre-Chorus, Bridge, ...), which the blank-line heuristic can't
+ * (Verse 1, Chorus, PreChorus, Bridge, ...), which the blank-line heuristic can't
  * reliably do. Falls back to the heuristic (`sectionLyrics`) whenever the key is
  * missing, the API errors/times out, or the model returns implausible output — so
  * the endpoint always returns usable sections.
@@ -16,7 +16,7 @@ import { sectionLyrics, type LyricSection } from '@/lib/lyrics/section-lyrics';
 
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
-const PROMPT = `You label the sections of song lyrics for worship presentation software (like ProPresenter / MultiTracks). Group the lyrics below into their musical sections and give each an accurate label such as: Intro, Verse 1, Verse 2, Pre-Chorus, Chorus, Bridge, Tag, Instrumental, Interlude, Outro, Ending.
+const PROMPT = `You label the sections of song lyrics for worship presentation software (like ProPresenter / MultiTracks). Group the lyrics below into their musical sections and give each an accurate label such as: Intro, Verse 1, Verse 2, PreChorus, Chorus, Bridge, Tag, Instrumental, Interlude, Outro, Ending.
 
 Rules:
 - Keep every line EXACTLY as given — verbatim. Do NOT paraphrase, translate, fix spelling, add, merge, or remove words.
@@ -89,7 +89,7 @@ export async function POST(request: Request) {
             temperature: 0.2,
           },
         }),
-        signal: AbortSignal.timeout(20000),
+        signal: AbortSignal.timeout(40000),
       },
     );
 

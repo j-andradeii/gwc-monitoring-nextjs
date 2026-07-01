@@ -36,10 +36,10 @@ export type CanonicalLabels = Record<string, string>;
 export const DEFAULT_CANONICAL_LABELS: CanonicalLabels = {
   intro: 'Intro',
   verse: 'Verse',
-  prechorus: 'Pre-Chorus',
-  'pre-chorus': 'Pre-Chorus',
-  postchorus: 'Post-Chorus',
-  'post-chorus': 'Post-Chorus',
+  prechorus: 'PreChorus',
+  'pre-chorus': 'PreChorus',
+  postchorus: 'PostChorus',
+  'post-chorus': 'PostChorus',
   chorus: 'Chorus',
   refrain: 'Refrain',
   bridge: 'Bridge',
@@ -92,6 +92,38 @@ export function detectSectionHeader(
 
   const number = match[2];
   return number ? `${canonical} ${number}` : canonical;
+}
+
+/**
+ * Strip parenthetical ad-libs / backing-vocal asides from lyrics — e.g.
+ * "…is my strength (it's more than a feeling)" → "…is my strength" — so the slides
+ * show only the lead line. A `(…)` whose content is a real section marker (e.g.
+ * "(Chorus)", "(Bridge)") is KEPT so header detection still works. A line that was
+ * ONLY an aside is dropped; genuinely blank lines (stanza separators) are preserved.
+ */
+export function stripAdLibs(
+  text: string,
+  labels: CanonicalLabels = DEFAULT_CANONICAL_LABELS,
+): string {
+  return (text || '')
+    .replace(/\r\n?/g, '\n')
+    .split('\n')
+    .map((rawLine) => {
+      const hadContent = rawLine.trim().length > 0;
+      const cleaned = rawLine
+        // Remove each "(…)" aside — unless its content is itself a section marker.
+        .replace(/\(([^)]*)\)/g, (match: string, inner: string) =>
+          detectSectionHeader(inner.trim(), labels) ? match : ' ',
+        )
+        .replace(/[ \t]{2,}/g, ' ') // collapse the gaps left behind
+        .replace(/\s+([,.;!?])/g, '$1') // tidy any space stranded before punctuation
+        .trim();
+      return { hadContent, cleaned };
+    })
+    // Drop lines that were purely an aside (had content, now empty); keep real blanks.
+    .filter((line) => line.cleaned.length > 0 || !line.hadContent)
+    .map((line) => line.cleaned)
+    .join('\n');
 }
 
 /** Build sections from text that already contains explicit headers. */
@@ -238,10 +270,10 @@ export function formatSections(sections: LyricSection[]): string {
 }
 
 /**
- * Split a section's lines into slide-sized groups of `linesPerSlide`, sensibly:
- * never strand a lone trailing line — if exactly one line would be left over it is
- * kept with the previous group, so an odd-length section ends with a fuller group.
- * Examples (target 2): 4→[2,2], 5→[2,3], 3→[3], 6→[2,2,2], 7→[2,2,3].
+ * Split a section's lines into slide-sized groups of AT MOST `linesPerSlide` lines.
+ * The delimiter is a HARD maximum — no group ever exceeds it; a leftover line simply
+ * becomes its own final slide (we do NOT merge it up into a fuller group).
+ * Examples (target 2): 4→[2,2], 5→[2,2,1], 3→[2,1], 6→[2,2,2], 7→[2,2,2,1].
  *
  * Shared by the editor preview and the ProPresenter exporter so they always match.
  */
@@ -249,12 +281,8 @@ export function chunkLines(lines: string[], linesPerSlide: number): string[][] {
   const target = Math.max(1, Math.floor(linesPerSlide));
   if (lines.length <= target) return [lines];
   const chunks: string[][] = [];
-  let i = 0;
-  while (i < lines.length) {
-    const remaining = lines.length - i;
-    const take = remaining === target + 1 ? remaining : target;
-    chunks.push(lines.slice(i, i + take));
-    i += take;
+  for (let i = 0; i < lines.length; i += target) {
+    chunks.push(lines.slice(i, i + target));
   }
   return chunks;
 }

@@ -34,7 +34,7 @@ interface LabelSettingsModalProps {
  * Lyric Formatter settings: the ProPresenter lines-per-slide default plus the
  * section-label vocabulary ({@link CanonicalLabels}). Each label row maps a keyword
  * (how a section appears in lyrics, e.g. "prechorus") to the label shown and used as
- * the ProPresenter group name (e.g. "Pre-Chorus").
+ * the ProPresenter group name (e.g. "PreChorus").
  */
 export default function LabelSettingsModal({
   visible,
@@ -160,7 +160,7 @@ export default function LabelSettingsModal({
       <p className="lf-settings-help">
         Map a <strong>keyword</strong> (how a section is written in lyrics, e.g.{' '}
         <code>prechorus</code>) to the <strong>label</strong> shown here and used as the
-        ProPresenter group name (e.g. <code>Pre-Chorus</code>). The <code>verse</code>,{' '}
+        ProPresenter group name (e.g. <code>PreChorus</code>). The <code>verse</code>,{' '}
         <code>chorus</code>, and <code>bridge</code> labels also rename what
         auto-detection produces.
       </p>
@@ -183,7 +183,7 @@ export default function LabelSettingsModal({
             <InputText
               value={row.label}
               onChange={(event) => updateRow(row.id, 'label', event.target.value)}
-              placeholder="Pre-Chorus"
+              placeholder="PreChorus"
               aria-label="Label"
             />
             <Button
