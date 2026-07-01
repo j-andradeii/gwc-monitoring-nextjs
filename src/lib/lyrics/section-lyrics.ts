@@ -275,7 +275,9 @@ export function formatSections(sections: LyricSection[]): string {
  * becomes its own final slide (we do NOT merge it up into a fuller group).
  * Examples (target 2): 4→[2,2], 5→[2,2,1], 3→[2,1], 6→[2,2,2], 7→[2,2,2,1].
  *
- * Shared by the editor preview and the ProPresenter exporter so they always match.
+ * Superseded by {@link buildSlides} for the editor preview + ProPresenter exporter
+ * (which also apply "smart long-line handling" — see below), but kept exported for
+ * any other caller that only needs the plain length-based grouping.
  */
 export function chunkLines(lines: string[], linesPerSlide: number): string[][] {
   const target = Math.max(1, Math.floor(linesPerSlide));
@@ -288,20 +290,162 @@ export function chunkLines(lines: string[], linesPerSlide: number): string[][] {
 }
 
 /**
- * Render sections to plain text with each section's lines grouped into
- * `linesPerSlide`-line slide groups (a blank line between groups). This is what the
- * editor shows, so the on-screen preview matches the exported slides one-to-one.
- * {@link sectionLyrics} re-parses it cleanly — blank lines are ignored; labels
- * define sections; the exporter re-derives the same groups via {@link chunkLines}.
+ * Smart long-line slide layout. Delimiter is `linesPerSlide`, with two additions:
+ *
+ *  - Rule 1 (de-pair): a line whose length is >= `maxCharsPerLine` gets its OWN
+ *    slide — it never shares a slide with another line. Only lines SHORTER than the
+ *    threshold pack together, up to `linesPerSlide` per slide. This is a fixed
+ *    point: re-running it on the same lines always yields the same slide count/
+ *    grouping, so it's safe to show in the editor preview.
+ *  - Rule 2 (wrap): when `wrapLongLines` is true, a long line's single slide gets up
+ *    to 2 DISPLAY ROWS (for on-screen/projected readability) via {@link lineToRows} —
+ *    a Gemini break hint if one matches, else the deterministic {@link splitLongLine}.
+ *    This does NOT change slide count/grouping — only how many rows render inside
+ *    that one slide — so it's safe to apply ONLY at ProPresenter export time without
+ *    diverging from the editor preview (see the fixed-point note on
+ *    {@link formatSectionsForEditor} and `buildProPresenterFile`).
+ */
+export interface SlideLayoutOptions {
+  linesPerSlide: number;
+  /** De-pair threshold (rule 1). Default {@link DEFAULT_MAX_CHARS_PER_LINE}. */
+  maxCharsPerLine?: number;
+  /** Split an overlong line into 2 rows (rule 2). Default false. */
+  wrapLongLines?: boolean;
+  /** Normalized line -> [rowA, rowB] break hints, e.g. from Gemini. */
+  breakHints?: Record<string, string[]>;
+}
+
+export const DEFAULT_MAX_CHARS_PER_LINE = 30;
+
+/** Normalized key to match a line to a Gemini break hint (whitespace-insensitive). */
+export function lineHintKey(line: string): string {
+  return line.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+/** Candidate break points, tried in priority order, for {@link splitLongLine}. */
+const PUNCTUATION_BREAK = /[,;:]|(?:\s-\s|\s–\s|\s—\s)/g;
+const CONJUNCTION_BREAK = /\s(?:and|but|for|yet|so|when|while|because)\s/gi;
+
+/**
+ * Deterministic Rule-2 fallback: split an overly-long line into two display rows at
+ * a natural break point nearest the middle. Returns 1 row (unchanged) if the line is
+ * short enough or no acceptable break point exists.
+ */
+export function splitLongLine(line: string, maxCharsPerLine: number): string[] {
+  const text = line.trim();
+  const wrapWidth = Math.max(40, maxCharsPerLine * 2);
+  if (text.length <= wrapWidth) return [text];
+
+  const minPos = text.length * 0.3;
+  const maxPos = text.length * 0.7;
+  const midPos = text.length / 2;
+
+  let bestPos = -1;
+  let bestDistance = Infinity;
+
+  const consider = (pos: number) => {
+    if (pos < minPos || pos > maxPos) return;
+    const distance = Math.abs(pos - midPos);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestPos = pos;
+    }
+  };
+
+  // Prefer a comma/semicolon/colon/dash — split right AFTER the punctuation.
+  for (const match of text.matchAll(PUNCTUATION_BREAK)) {
+    consider((match.index ?? 0) + match[0].length);
+  }
+
+  // Fallback: before a conjunction word.
+  if (bestPos === -1) {
+    for (const match of text.matchAll(CONJUNCTION_BREAK)) {
+      consider((match.index ?? 0) + 1);
+    }
+  }
+
+  // Last resort: the space closest to the midpoint.
+  if (bestPos === -1) {
+    for (let i = 0; i < text.length; i += 1) {
+      if (text[i] === ' ') consider(i);
+    }
+  }
+
+  if (bestPos === -1) return [text];
+
+  const rows = [text.slice(0, bestPos).trim(), text.slice(bestPos).trim()].filter(Boolean);
+  return rows.length === 2 ? rows : [text];
+}
+
+/** Rows to render for one line's slide — whole (editor) or wrapped (export). */
+function lineToRows(line: string, options: SlideLayoutOptions): string[] {
+  const trimmed = line.trim();
+  if (!options.wrapLongLines) return [trimmed]; // editor/preview: keep whole (fixed point)
+
+  const hint = options.breakHints?.[lineHintKey(trimmed)];
+  if (hint && hint.length >= 2) {
+    const rows = hint.map((row) => row.trim()).filter(Boolean);
+    if (rows.length >= 2) return rows;
+  }
+
+  return splitLongLine(trimmed, options.maxCharsPerLine ?? DEFAULT_MAX_CHARS_PER_LINE);
+}
+
+/**
+ * Build slide-sized row groups from a section's lines, applying smart long-line
+ * handling (rules 1 + 2 above). Each returned inner array is one slide's display
+ * rows. Shared by the editor preview and the ProPresenter exporter.
+ */
+export function buildSlides(lines: string[], options: SlideLayoutOptions): string[][] {
+  const target = Math.max(1, Math.floor(options.linesPerSlide));
+  const maxChars = options.maxCharsPerLine ?? DEFAULT_MAX_CHARS_PER_LINE;
+  const cleaned = lines.map((line) => line.trim()).filter(Boolean);
+
+  const slides: string[][] = [];
+  let buffer: string[] = [];
+  const flush = () => {
+    if (buffer.length) {
+      slides.push(buffer);
+      buffer = [];
+    }
+  };
+
+  for (const line of cleaned) {
+    if (line.length >= maxChars) {
+      // Rule 1: a long line always gets its own slide — never shares with another.
+      flush();
+      slides.push(lineToRows(line, options));
+    } else {
+      buffer.push(line);
+      if (buffer.length >= target) flush();
+    }
+  }
+  flush();
+
+  return slides;
+}
+
+/**
+ * Render sections to plain text with each section's lines grouped into slides via
+ * {@link buildSlides} (a blank line between slides). This is what the editor shows,
+ * so the on-screen preview matches the exported slide COUNT/grouping one-to-one.
+ *
+ * FIXED-POINT NOTE: `wrapLongLines` is forced OFF here (and in the editor's HTML
+ * builder) because `handleDownloadPro` re-parses this rendered text back through
+ * {@link sectionLyrics} to re-derive sections/grouping on export. If a long line's
+ * wrapped rows were written here as separate lines, that re-parse would re-group
+ * them and the exported slide count would diverge from what the editor showed. Rule
+ * 1 (de-pair) IS a fixed point (same lines in -> same grouping out), so it's safe to
+ * apply here; Rule 2 (wrap) is intentionally export-only — see `buildProPresenterFile`.
  */
 export function formatSectionsForEditor(
   sections: LyricSection[],
-  linesPerSlide: number,
+  options: SlideLayoutOptions,
 ): string {
   return sections
     .map((section) => {
-      const body = chunkLines(section.lines, linesPerSlide)
-        .map((group) => group.join('\n'))
+      const body = buildSlides(section.lines, { ...options, wrapLongLines: false })
+        .map((rows) => rows.join('\n'))
         .join('\n\n');
       return body ? `${section.label}\n${body}` : section.label;
     })

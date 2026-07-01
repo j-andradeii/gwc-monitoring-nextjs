@@ -13,6 +13,8 @@ import {
 
 const DEFAULT_LINES_PER_SLIDE = 2;
 const DEFAULT_USE_AI = true;
+const DEFAULT_MAX_CHARS_PER_LINE = 30;
+const DEFAULT_WRAP_LONG_LINES = true;
 
 interface LabelRow {
   id: string;
@@ -26,7 +28,15 @@ interface LabelSettingsModalProps {
   labels: CanonicalLabels;
   linesPerSlide: number;
   useAi: boolean;
-  onSave: (labels: CanonicalLabels, linesPerSlide: number, useAi: boolean) => void;
+  maxCharsPerLine: number;
+  wrapLongLines: boolean;
+  onSave: (
+    labels: CanonicalLabels,
+    linesPerSlide: number,
+    useAi: boolean,
+    maxCharsPerLine: number,
+    wrapLongLines: boolean,
+  ) => void;
   onReset: () => void;
 }
 
@@ -42,6 +52,8 @@ export default function LabelSettingsModal({
   labels,
   linesPerSlide,
   useAi,
+  maxCharsPerLine,
+  wrapLongLines,
   onSave,
   onReset,
 }: LabelSettingsModalProps) {
@@ -49,6 +61,8 @@ export default function LabelSettingsModal({
   const [rows, setRows] = useState<LabelRow[]>([]);
   const [lines, setLines] = useState(linesPerSlide);
   const [aiEnabled, setAiEnabled] = useState(useAi);
+  const [maxChars, setMaxChars] = useState(maxCharsPerLine);
+  const [wrapLong, setWrapLong] = useState(wrapLongLines);
 
   const buildRows = useCallback(
     (map: CanonicalLabels): LabelRow[] =>
@@ -81,7 +95,7 @@ export default function LabelSettingsModal({
       const label = row.label.trim();
       if (key && label) map[key] = label;
     }
-    onSave(map, lines, aiEnabled);
+    onSave(map, lines, aiEnabled, maxChars, wrapLong);
     onHide();
   };
 
@@ -90,6 +104,8 @@ export default function LabelSettingsModal({
     setRows(buildRows(DEFAULT_CANONICAL_LABELS));
     setLines(DEFAULT_LINES_PER_SLIDE);
     setAiEnabled(DEFAULT_USE_AI);
+    setMaxChars(DEFAULT_MAX_CHARS_PER_LINE);
+    setWrapLong(DEFAULT_WRAP_LONG_LINES);
   };
 
   const footer = (
@@ -118,6 +134,8 @@ export default function LabelSettingsModal({
         setRows(buildRows(labels));
         setLines(linesPerSlide);
         setAiEnabled(useAi);
+        setMaxChars(maxCharsPerLine);
+        setWrapLong(wrapLongLines);
       }}
       footer={footer}
       dismissableMask
@@ -140,6 +158,39 @@ export default function LabelSettingsModal({
           <option value={3}>3 lines</option>
           <option value={4}>4 lines</option>
         </select>
+      </div>
+
+      <div className="lf-settings-section">
+        <label htmlFor="lf-settings-max-chars" className="lf-settings-section-label">
+          Max characters per line
+          <span className="lf-settings-sub">A line at/above this gets its own slide</span>
+        </label>
+        <select
+          id="lf-settings-max-chars"
+          className="lf-lines-select"
+          value={maxChars}
+          onChange={(event) => setMaxChars(Number(event.target.value))}
+        >
+          <option value={20}>20</option>
+          <option value={25}>25</option>
+          <option value={30}>30</option>
+          <option value={35}>35</option>
+          <option value={40}>40</option>
+        </select>
+      </div>
+
+      <div className="lf-settings-section">
+        <label htmlFor="lf-settings-wrap-long" className="lf-settings-section-label">
+          Break long lines
+          <span className="lf-settings-sub">
+            Split a very long line into two on the ProPresenter export
+          </span>
+        </label>
+        <InputSwitch
+          inputId="lf-settings-wrap-long"
+          checked={wrapLong}
+          onChange={(event) => setWrapLong(event.value)}
+        />
       </div>
 
       <div className="lf-settings-section">

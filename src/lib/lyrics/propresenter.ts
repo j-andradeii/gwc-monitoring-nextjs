@@ -28,11 +28,10 @@
  * (white centred text on black), grouped by section name.
  */
 
-import { chunkLines, type LyricSection } from './section-lyrics';
+import { buildSlides, type LyricSection, type SlideLayoutOptions } from './section-lyrics';
 
 const SLIDE_WIDTH = 1920;
 const SLIDE_HEIGHT = 1080;
-const DEFAULT_LINES_PER_SLIDE = 2;
 const FONT_SIZE_HALF_POINTS = 168; // RTF \fs is half-points → 84pt
 
 /** Minimal protobuf wire-format writer (proto3 semantics: zero/empty omitted). */
@@ -264,13 +263,16 @@ function buildCue(cueId: string, label: string, lines: string[]): ProtoWriter {
 
 /**
  * Serialize sections into a ProPresenter 7 `.pro` file. Each section becomes a
- * named, colour-coded slide group; sections are split into `linesPerSlide`-line
- * slides (default 2) via {@link chunkLines}.
+ * named, colour-coded slide group; sections are split into slides via
+ * {@link buildSlides} with `wrapLongLines: true` — same slide grouping as the editor
+ * preview (rule 1: long lines never share a slide), but a long line's single slide
+ * renders as up to 2 RTF rows (rule 2) for projector readability. See the
+ * fixed-point note on `formatSectionsForEditor` in `section-lyrics.ts`.
  */
 export function buildProPresenterFile(
   title: string,
   sections: LyricSection[],
-  linesPerSlide: number = DEFAULT_LINES_PER_SLIDE,
+  options: SlideLayoutOptions,
 ): Uint8Array<ArrayBuffer> {
   const presentation = new ProtoWriter();
 
@@ -297,10 +299,10 @@ export function buildProPresenterFile(
     if (lines.length === 0) continue;
 
     const cueIds: string[] = [];
-    for (const slideLines of chunkLines(lines, linesPerSlide)) {
+    for (const slideRows of buildSlides(lines, { ...options, wrapLongLines: true })) {
       const cueId = generateUuid();
       cueIds.push(cueId);
-      cueWriters.push(buildCue(cueId, section.label, slideLines));
+      cueWriters.push(buildCue(cueId, section.label, slideRows));
     }
 
     // CueGroup → Group{uuid,name,color}

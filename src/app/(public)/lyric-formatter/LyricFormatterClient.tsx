@@ -24,10 +24,11 @@ import {
 import {
   sectionLyrics,
   formatSectionsForEditor,
-  chunkLines,
+  buildSlides,
   detectSectionHeader,
   stripAdLibs,
   type LyricSection,
+  type SlideLayoutOptions,
 } from '@/lib/lyrics/section-lyrics';
 import { buildProPresenterFile, proFilename } from '@/lib/lyrics/propresenter';
 import { useLyricLabels } from './useLyricLabels';
@@ -62,17 +63,18 @@ function escapeHtml(text: string): string {
 
 /**
  * Build initial editor HTML: bold section labels, with each section's lines grouped
- * into slide-sized chunks (a blank line between groups) so the editor previews the
- * exported slides one-to-one.
+ * into slides via {@link buildSlides} (a blank line between slides) so the editor
+ * previews the exported slide COUNT/grouping one-to-one. `wrapLongLines` is forced
+ * off here — see the fixed-point note on `formatSectionsForEditor`.
  */
-function sectionsToHtml(sections: LyricSection[], linesPerSlide: number): string {
+function sectionsToHtml(sections: LyricSection[], options: SlideLayoutOptions): string {
   if (sections.length === 0) return '<p><br></p>';
   return sections
     .map((section) => {
       const label = `<p><strong>${escapeHtml(section.label)}</strong></p>`;
-      const groups = chunkLines(section.lines, linesPerSlide)
-        .map((group) =>
-          group.map((line) => `<p>${escapeHtml(line) || '<br>'}</p>`).join(''),
+      const groups = buildSlides(section.lines, { ...options, wrapLongLines: false })
+        .map((rows) =>
+          rows.map((row) => `<p>${escapeHtml(row) || '<br>'}</p>`).join(''),
         )
         .join('<p><br></p>');
       return label + groups;
@@ -100,8 +102,19 @@ const editorHeader = (
 );
 
 function LyricFormatter() {
-  const { labels, setLabels, resetSettings, linesPerSlide, setLinesPerSlide, useAi, setUseAi } =
-    useLyricLabels();
+  const {
+    labels,
+    setLabels,
+    resetSettings,
+    linesPerSlide,
+    setLinesPerSlide,
+    useAi,
+    setUseAi,
+    maxCharsPerLine,
+    setMaxCharsPerLine,
+    wrapLongLines,
+    setWrapLongLines,
+  } = useLyricLabels();
 
   const [activeTab, setActiveTab] = useState<SearchTab>('details');
 
@@ -216,11 +229,12 @@ function LyricFormatter() {
 
   const renderSections = useCallback(
     (sections: LyricSection[]) => {
-      setEditorHtml(sectionsToHtml(sections, linesPerSlide));
-      setEditorText(formatSectionsForEditor(sections, linesPerSlide));
+      const options: SlideLayoutOptions = { linesPerSlide, maxCharsPerLine };
+      setEditorHtml(sectionsToHtml(sections, options));
+      setEditorText(formatSectionsForEditor(sections, options));
       setEditorKey((key) => key + 1);
     },
-    [linesPerSlide],
+    [linesPerSlide, maxCharsPerLine],
   );
 
   /** Section the lyrics via Gemini (if enabled) with a heuristic fallback. */
@@ -289,7 +303,13 @@ function LyricFormatter() {
       return;
     }
     const title = selectedTrack?.trackName ?? 'Lyrics';
-    const bytes = buildProPresenterFile(title, sections, linesPerSlide);
+    // Line wrapping (rule 2) uses the deterministic splitLongLine algorithm — the
+    // Gemini /api/lyrics/linebreaks route is intentionally NOT called (no breakHints).
+    const bytes = buildProPresenterFile(title, sections, {
+      linesPerSlide,
+      maxCharsPerLine,
+      wrapLongLines,
+    });
     downloadBlob(bytes, proFilename(title), 'application/octet-stream');
     showSuccess(
       'ProPresenter file ready',
@@ -609,10 +629,14 @@ function LyricFormatter() {
         labels={labels}
         linesPerSlide={linesPerSlide}
         useAi={useAi}
-        onSave={(nextLabels, nextLines, nextUseAi) => {
+        maxCharsPerLine={maxCharsPerLine}
+        wrapLongLines={wrapLongLines}
+        onSave={(nextLabels, nextLines, nextUseAi, nextMaxChars, nextWrapLong) => {
           setLabels(nextLabels);
           setLinesPerSlide(nextLines);
           setUseAi(nextUseAi);
+          setMaxCharsPerLine(nextMaxChars);
+          setWrapLongLines(nextWrapLong);
         }}
         onReset={resetSettings}
       />
