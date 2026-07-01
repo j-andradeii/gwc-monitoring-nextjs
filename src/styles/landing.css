@@ -486,6 +486,7 @@
 
 .landing-logo img {
   height: 44px;
+  width: auto; /* preserve the logo's 659:415 (~1.588:1) ratio — never distort */
 }
 
 .landing-logo span {
@@ -949,6 +950,298 @@
 
 .hero-slide-content .landing-btn {
   animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+}
+
+/* ===========================================
+   HERO — SERMON BANNER (Latest Message slide)
+   Replaces the full-bleed sermon photo with a composed,
+   branded banner mirroring the sermon detail hero,
+   adapted for the landing carousel. All GWC tokens.
+   =========================================== */
+
+/* Branded navy backdrop for the sermon slide (no full-bleed photo) */
+.hero-slide-bg--sermon {
+  background:
+    radial-gradient(circle at 80% 25%, rgba(212, 168, 75, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 12% 85%, rgba(74, 60, 110, 0.28) 0%, transparent 55%),
+    linear-gradient(155deg, #22335a 0%, var(--color-navy) 55%, #121b30 100%);
+}
+
+.hero-sermon-banner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr minmax(340px, 500px);
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-sermon-banner.transitioning {
+  pointer-events: none;
+}
+
+.hero-sermon-banner__text {
+  text-align: left;
+  min-width: 0;
+}
+
+.hero-sermon-banner__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+  animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+}
+
+.hero-sermon-banner__eyebrow i {
+  font-size: 13px;
+}
+
+.hero-sermon-banner__eyebrow-sep {
+  opacity: 0.5;
+}
+
+.hero-sermon-banner__title {
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1.6px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 18px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+}
+
+.hero-sermon-banner__deck {
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 540px;
+  margin: 0;
+  animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
+}
+
+.hero-sermon-banner__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  margin: 24px 0 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+}
+
+.hero-sermon-banner__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-sermon-banner__meta-item i {
+  color: var(--color-primary-light);
+  font-size: 15px;
+}
+
+.hero-sermon-banner__meta-item strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.hero-sermon-banner .landing-btn {
+  margin-top: 4px;
+  animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 400ms both;
+}
+
+/* Contained artwork card (was the full-bleed background) */
+.hero-sermon-banner__artwork {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--color-navy);
+  border: 1px solid rgba(212, 168, 75, 0.30);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: heroSlideElementIn 800ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+/* Keep the full designed title-card image undimmed; only shade the
+   bottom-right corner enough for the play badge to stay legible. */
+.hero-sermon-banner__artwork::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at bottom right, rgba(18, 27, 48, 0.55) 0%, transparent 42%);
+  pointer-events: none;
+}
+
+.hero-sermon-banner__artwork:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 42px 90px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(212, 168, 75, 0.5);
+}
+
+.hero-sermon-banner__artwork:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.6), 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* contain (not cover) guarantees the whole designed title card is shown
+   with no cropping, regardless of the source image's ratio. */
+.hero-sermon-banner__artwork-img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.hero-sermon-banner__play {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(212, 168, 75, 0.92);
+  color: var(--color-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+}
+
+.hero-sermon-banner__play i {
+  margin-left: 3px;
+}
+
+.hero-sermon-banner__artwork:hover .hero-sermon-banner__play {
+  transform: scale(1.08);
+  background: var(--color-primary);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero-sermon-banner {
+    gap: 36px;
+    grid-template-columns: 1fr minmax(300px, 420px);
+  }
+}
+
+/* Mobile — stack, poster on top, centered */
+@media (max-width: 768px) {
+  .hero-carousel-content-wrapper--sermon {
+    /* Clear the 70px fixed mobile header + a little breathing room, and
+       tighten the bottom so the whole banner fits the 650px clamped hero
+       without the poster sliding under the header. */
+    padding: 78px 16px 56px;
+    align-items: center;
+  }
+
+  .hero-sermon-banner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 0 16px;
+    max-width: 440px;
+    text-align: center;
+  }
+
+  .hero-sermon-banner__text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-sermon-banner__artwork {
+    order: -1;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 272px;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .hero-sermon-banner__play {
+    width: 46px;
+    height: 46px;
+    font-size: 15px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .hero-sermon-banner__eyebrow {
+    justify-content: center;
+    margin-bottom: 6px;
+    font-size: 11px;
+  }
+
+  .hero-sermon-banner__title {
+    font-size: clamp(22px, 6vw, 30px);
+    letter-spacing: -0.8px;
+    line-height: 1.12;
+    margin-bottom: 8px;
+  }
+
+  .hero-sermon-banner__deck {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 340px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-sermon-banner__meta {
+    justify-content: center;
+    gap: 6px 14px;
+    margin: 12px 0 12px;
+    padding-top: 10px;
+  }
+
+  .hero-sermon-banner__meta-item {
+    font-size: 12.5px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-sermon-banner__eyebrow,
+  .hero-sermon-banner__title,
+  .hero-sermon-banner__deck,
+  .hero-sermon-banner__meta,
+  .hero-sermon-banner .landing-btn,
+  .hero-sermon-banner__artwork {
+    animation: none !important;
+  }
+
+  .hero-sermon-banner__artwork {
+    transition: none;
+  }
+
+  .hero-sermon-banner__artwork:hover {
+    transform: none;
+  }
+
+  .hero-sermon-banner__artwork:hover .hero-sermon-banner__play {
+    transform: none;
+  }
 }
 
 .hero-service-info {

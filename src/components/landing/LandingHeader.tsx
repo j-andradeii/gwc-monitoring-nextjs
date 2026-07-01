@@ -61,10 +61,10 @@ export const LandingHeader: React.FC = () => {
         <div className="landing-logo">
           <Link href="/">
             <Image
-              src="/assets/images/gwc-logo-gold.png"
+              src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/gwc-logo-full.webp"
               alt="Gateway Church Logo"
-              width={65}
-              height={65}
+              width={659}
+              height={415}
               priority
             />
           </Link>
