@@ -9,8 +9,12 @@ import {
 const LABELS_KEY = 'gwc:lyric-formatter:labels';
 const LINES_KEY = 'gwc:lyric-formatter:lines-per-slide';
 const AI_KEY = 'gwc:lyric-formatter:use-ai';
+const MAX_CHARS_KEY = 'gwc:lyric-formatter:max-chars';
+const WRAP_LONG_KEY = 'gwc:lyric-formatter:wrap-long';
 const DEFAULT_LINES_PER_SLIDE = 2;
 const DEFAULT_USE_AI = true;
+const DEFAULT_MAX_CHARS_PER_LINE = 30;
+const DEFAULT_WRAP_LONG_LINES = true;
 
 /**
  * Label values renamed in a release, applied to older persisted settings so they
@@ -44,12 +48,16 @@ export function useLyricLabels() {
   const [labels, setLabelsState] = useState<CanonicalLabels>(DEFAULT_CANONICAL_LABELS);
   const [linesPerSlide, setLinesPerSlideState] = useState(DEFAULT_LINES_PER_SLIDE);
   const [useAi, setUseAiState] = useState(DEFAULT_USE_AI);
+  const [maxCharsPerLine, setMaxCharsPerLineState] = useState(DEFAULT_MAX_CHARS_PER_LINE);
+  const [wrapLongLines, setWrapLongLinesState] = useState(DEFAULT_WRAP_LONG_LINES);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     let restoredLabels: CanonicalLabels | null = null;
     let restoredLines: number | null = null;
     let restoredUseAi: boolean | null = null;
+    let restoredMaxChars: number | null = null;
+    let restoredWrapLong: boolean | null = null;
     try {
       const stored = window.localStorage.getItem(LABELS_KEY);
       if (stored) {
@@ -81,12 +89,31 @@ export function useLyricLabels() {
     } catch {
       // Ignore.
     }
+    try {
+      const storedMaxChars = window.localStorage.getItem(MAX_CHARS_KEY);
+      if (storedMaxChars) {
+        const n = Number(storedMaxChars);
+        if (Number.isFinite(n) && n >= 10 && n <= 80) restoredMaxChars = n;
+      }
+    } catch {
+      // Ignore.
+    }
+    try {
+      const storedWrapLong = window.localStorage.getItem(WRAP_LONG_KEY);
+      if (storedWrapLong === 'true' || storedWrapLong === 'false') {
+        restoredWrapLong = storedWrapLong === 'true';
+      }
+    } catch {
+      // Ignore.
+    }
     // Defer state updates out of the effect body (repo lint rule + avoids any SSR
     // hydration mismatch since the first render matches the server's defaults).
     const timer = setTimeout(() => {
       if (restoredLabels) setLabelsState(restoredLabels);
       if (restoredLines) setLinesPerSlideState(restoredLines);
       if (restoredUseAi !== null) setUseAiState(restoredUseAi);
+      if (restoredMaxChars !== null) setMaxCharsPerLineState(restoredMaxChars);
+      if (restoredWrapLong !== null) setWrapLongLinesState(restoredWrapLong);
       setIsLoaded(true);
     }, 0);
     return () => clearTimeout(timer);
@@ -119,14 +146,36 @@ export function useLyricLabels() {
     }
   }, []);
 
+  const setMaxCharsPerLine = useCallback((next: number) => {
+    setMaxCharsPerLineState(next);
+    try {
+      window.localStorage.setItem(MAX_CHARS_KEY, String(next));
+    } catch {
+      // Ignore.
+    }
+  }, []);
+
+  const setWrapLongLines = useCallback((next: boolean) => {
+    setWrapLongLinesState(next);
+    try {
+      window.localStorage.setItem(WRAP_LONG_KEY, String(next));
+    } catch {
+      // Ignore.
+    }
+  }, []);
+
   const resetSettings = useCallback(() => {
     setLabelsState(DEFAULT_CANONICAL_LABELS);
     setLinesPerSlideState(DEFAULT_LINES_PER_SLIDE);
     setUseAiState(DEFAULT_USE_AI);
+    setMaxCharsPerLineState(DEFAULT_MAX_CHARS_PER_LINE);
+    setWrapLongLinesState(DEFAULT_WRAP_LONG_LINES);
     try {
       window.localStorage.removeItem(LABELS_KEY);
       window.localStorage.removeItem(LINES_KEY);
       window.localStorage.removeItem(AI_KEY);
+      window.localStorage.removeItem(MAX_CHARS_KEY);
+      window.localStorage.removeItem(WRAP_LONG_KEY);
     } catch {
       // Ignore.
     }
@@ -139,6 +188,10 @@ export function useLyricLabels() {
     setLinesPerSlide,
     useAi,
     setUseAi,
+    maxCharsPerLine,
+    setMaxCharsPerLine,
+    wrapLongLines,
+    setWrapLongLines,
     resetSettings,
     isLoaded,
   };
