@@ -68,14 +68,17 @@ export const HomeMarquee: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const requestOpen = useConnectFabStore((s) => s.requestOpen);
   const pauseCountRef = useRef(0);
+  const touchStartXRef = useRef<number | null>(null);
 
+  // activeIndex is a dependency on purpose: any slide change (auto or swipe)
+  // restarts the 5s countdown.
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % SLIDES.length);
     }, SLIDE_INTERVAL_MS);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, activeIndex]);
 
   // Pause on hover AND on focus-within (WCAG 2.2.2 — no unstoppable motion
   // while a keyboard user is interacting with the band). Multiple overlapping
@@ -93,6 +96,25 @@ export const HomeMarquee: React.FC = () => {
     }
   };
 
+  const goTo = (index: number) => {
+    setActiveIndex(((index % SLIDES.length) + SLIDES.length) % SLIDES.length);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    touchStartXRef.current = event.touches[0].clientX;
+    pause();
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    const startX = touchStartXRef.current;
+    touchStartXRef.current = null;
+    resume();
+    if (startX === null) return;
+    const deltaX = event.changedTouches[0].clientX - startX;
+    if (Math.abs(deltaX) < 45) return;
+    goTo(deltaX < 0 ? activeIndex + 1 : activeIndex - 1);
+  };
+
   return (
     <section aria-label="Ways to get involved" className="home-cta-band">
       <div className="landing-container">
@@ -102,6 +124,8 @@ export const HomeMarquee: React.FC = () => {
           onMouseLeave={resume}
           onFocus={pause}
           onBlur={resume}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <div
             className="home-cta-track"

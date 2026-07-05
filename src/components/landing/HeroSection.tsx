@@ -68,6 +68,14 @@ const formatSermonDate = (date: string) =>
     year: 'numeric',
   });
 
+// Long sermon titles drop to a smaller type tier so the banner never grows
+// the hero past its resting height (titles in the data run from 4 to 71+ chars).
+const sermonTitleSizeClass = (title: string) => {
+  if (title.length > 60) return ' hero-sermon-banner__title--xlong';
+  if (title.length > 40) return ' hero-sermon-banner__title--long';
+  return '';
+};
+
 interface HeroSermonBannerProps {
   slide: HeroSlideData;
   isTransitioning: boolean;
@@ -87,7 +95,7 @@ const HeroSermonBanner: React.FC<HeroSermonBannerProps> = ({ slide, isTransition
           {sermon.series}
         </span>
 
-        <h1 className="hero-sermon-banner__title">{slide.title}</h1>
+        <h1 className={`hero-sermon-banner__title${sermonTitleSizeClass(slide.title)}`}>{slide.title}</h1>
 
         <p className="hero-sermon-banner__deck">{sermon.excerpt}</p>
 

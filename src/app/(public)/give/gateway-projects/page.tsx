@@ -104,7 +104,7 @@ export default function GatewayProjectsPage() {
           ]}
         />
 
-        {/* Quick CTA: jumps straight to the Give section */}
+        {/* Quick CTA: jumps straight to the Give section, right below */}
         <ProjectBanner
           badge='Sow'
           targetId="gateway-give"
@@ -114,10 +114,18 @@ export default function GatewayProjectsPage() {
           ariaLabel="Partner With Us"
         />
 
+        {/* ===========================================
+            GIVE TO GATEWAY PROJECTS — lead section
+            Channels-first, mirroring the Ways to Give page: the
+            giving channels are placed immediately after the banner
+            so they're the first thing visitors reach. (White background)
+            =========================================== */}
+        <GatewayGiveSection />
+
         {/* Section 1: Pastor's Vision Narrative (Cream background) */}
         <GatewayVisionSection />
 
-        {/* Section 2: Gateway Projects Overview (Cream background) */}
+        {/* Section 2: Gateway Projects Overview (White background) */}
         <GatewayProjectsSection />
 
         {/* Section 3: Quick Facts / Project Specs (Navy background) */}
@@ -130,11 +138,7 @@ export default function GatewayProjectsPage() {
 
         <GatewayTestimonialsSection />
 
-
-        {/* Section 6: Give to Gateway Projects (Cream background) */}
-        <GatewayGiveSection />
-
-        {/* Pledge Section */}
+        {/* Pledge Section (Grey background) */}
         <GatewayPledgeSection />
       </main>
 

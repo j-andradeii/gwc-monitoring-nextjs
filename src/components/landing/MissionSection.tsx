@@ -89,7 +89,10 @@ export const MissionSection: React.FC = () => {
           </aside> */}
         </div>
 
-        <ProcessSteps className="mission-process-steps" showConnectors={false} />
+        <span className="home-steps-swipe-hint" aria-hidden="true">
+          Swipe <i className="pi pi-arrow-right"></i>
+        </span>
+        <ProcessSteps className="mission-process-steps vm-process-steps" showConnectors={false} />
       </div>
     </section>
   );
