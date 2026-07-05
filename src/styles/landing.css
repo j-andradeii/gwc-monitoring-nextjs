@@ -3021,91 +3021,6 @@
   grid-row: span 1;
 }
 
-/* Lightbox Styles */
-.gallery-lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(26, 39, 68, 0.95);
-  backdrop-filter: blur(16px);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  padding: 40px;
-}
-
-.gallery-lightbox.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox-content {
-  position: relative;
-  width: 100%;
-  max-width: 1100px;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox-image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
-}
-
-.lightbox-image {
-  object-fit: contain;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -60px;
-  right: -20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.lightbox-close:hover {
-  background: var(--primary-gold-accent);
-  border-color: var(--primary-gold-accent);
-  transform: rotate(90deg);
-}
-
-.lightbox-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  padding: 40px 24px 24px;
-  text-align: center;
-}
-
-.lightbox-caption h3 {
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
 /* Mobile Responsive */
 @media (max-width: 1024px) {
   .bento-grid {
@@ -3175,19 +3090,6 @@
 
   .bento-item.active .bento-overlay h3 {
     transform: translateY(0);
-  }
-
-  .lightbox-content {
-    height: 60vh;
-  }
-
-  .lightbox-close {
-    top: -50px;
-    right: 0;
-  }
-
-  .lightbox-caption h3 {
-    font-size: 18px;
   }
 }
 
@@ -8108,9 +8010,15 @@
 }
 
 /* Gateway Projects Overview Section - Gallery Showcase */
+/* Channels-first re-alternation: this section now follows the cream
+   Vision band, so it goes white. background-color: var(--cream) was an
+   undefined custom property (latent bug — rendered transparent); it now
+   uses the real background-section token plus a hairline to make the
+   cream → white boundary explicit. */
 .gateway-projects-section {
   padding: 50px 0;
-  background-color: var(--cream);
+  background-color: var(--background-section, #ffffff);
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
   position: relative;
 }
 
@@ -8190,6 +8098,10 @@
   border-radius: 12px;
   background: #fff;
   border: 1px solid var(--border-color-light, #ddd5c4);
+  /* Extra elevation now that .gateway-projects-section is solid white
+     (previously this white card floated on a transparent/cream-bleed
+     section, so the border alone was enough to read as a distinct card) */
+  box-shadow: 0 4px 20px var(--shadow-color-soft, rgba(26, 39, 68, 0.14));
   text-align: center;
 }
 
@@ -9034,6 +8946,144 @@
 .gateway-give-section .gateway-project-card-wrapper {
   max-width: 700px;
   margin: 50px auto 0;
+}
+
+/* Screenshot notice bar sits below the featured Gotyme card — constrain it to
+   the same 700px width (centered) so it visually aligns with the card instead
+   of running full landing-container width. Scoped to this section so the shared
+   .screenshot-notice (used in-card by GiveTabs) is unaffected. Rounded to match
+   the card's 20px radius. */
+.gateway-give-section .screenshot-notice {
+  max-width: 700px;
+  margin: 24px auto 0;
+  border-radius: 20px;
+}
+
+/* ===========================================
+   Gateway Give Section — Ways-to-Give card treatment
+   Channels now lead this page (see GatewayGiveSection.tsx), mirroring
+   the Ways to Give "How to Give" section. This mirrors the light-band
+   gold-card system scoped to .ways-to-give-page (landing.css ~7417-7501)
+   but scoped to .gateway-give-section ONLY — it does NOT touch the
+   shared .compact-* / .give-channels-section base rules used by
+   ways-to-give / outreach. Base .compact-card rules use !important,
+   so these overrides must too.
+   =========================================== */
+.gateway-give-section .compact-card {
+  border: 1.5px solid rgba(212, 168, 75, 0.55) !important;
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.05),
+    0 6px 22px rgba(26, 39, 68, 0.1) !important;
+}
+
+.gateway-give-section .compact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 168, 75, 0.85) !important;
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 75, 0.3),
+    0 14px 34px rgba(26, 39, 68, 0.17) !important;
+}
+
+.gateway-give-section .compact-account-box {
+  background: #f8fafc;
+}
+
+.gateway-give-section .compact-account-box.copyable:hover {
+  background: #f1f5f9;
+  border-color: rgba(212, 168, 75, 0.25);
+  transform: none;
+}
+
+.gateway-give-section .compact-account-box.copyable:hover .copy-indicator {
+  color: var(--color-navy);
+}
+
+.gateway-give-section .compact-qr {
+  background: #f8fafc;
+}
+
+.gateway-give-section .section-label {
+  color: var(--color-primary-dark, #b8923f);
+}
+
+/* Additional channels grid — sits below the featured Gotyme wrapper */
+.gateway-give-section .giving-channels-grid {
+  margin-top: 28px;
+  align-items: start;
+}
+
+/* The base (unscoped) .card-accent / .channel-logo-compact rules don't
+   define a color source — the featured card supplies its own color via
+   inline style. The additional channel cards instead set --channel-color
+   on the card root (same contract as GiveChannelsSection.tsx), so read
+   it here for the accent bar and logo badge. */
+.gateway-give-section .giving-channels-grid .card-accent {
+  background: var(--channel-color, var(--primary-gold-accent, #d4a84b));
+}
+
+.gateway-give-section .giving-channels-grid .channel-logo-compact {
+  background: var(--channel-color, var(--primary-gold-accent, #d4a84b));
+}
+
+/* QR box for the additional channels — the base .compact-qr rule only
+   styles the "manual transfer" empty state (icon + label), so the
+   QR-image layout used on Ways to Give is added here, scoped, without
+   touching the shared .give-channels-section block. */
+.gateway-give-section .compact-qr-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+.gateway-give-section .compact-qr-image {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  object-fit: contain;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.gateway-give-section .compact-qr-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gateway-give-section .compact-qr-empty i {
+  color: var(--color-primary-dark, #b8923f);
+  font-size: 14px;
+}
+
+.gateway-give-section .compact-qr-download {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Optional supporting label between the featured card and the grid */
+.gateway-give-section .gateway-give-more-label {
+  margin: 40px 0 20px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gateway-give-section .compact-card,
+  .gateway-give-section .compact-card:hover {
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Section Header Center - Unified */
@@ -13636,8 +13686,13 @@
 /* -------------------------------------------
    Vision Section
    ------------------------------------------- */
+/* Channels-first re-alternation: Vision now follows the white Give
+   band, so it takes the house cream wash (warm-gold gradient over the
+   cream token) instead of flat white, with a hairline marking the
+   boundary — matching the alternation system used on Outreach / About. */
 .gateway-vision-section {
-  background: #fff;
+  background: linear-gradient(180deg, rgba(212, 168, 75, 0.06) 0%, rgba(212, 168, 75, 0.13) 100%), var(--color-cream);
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
   padding: 50px 0;
   position: relative;
   overflow: hidden;
@@ -17894,15 +17949,141 @@
   border-top: 1px solid var(--border-color-light, #ddd5c4);
 }
 
-/* Events → white (was muddy ivory #faf8f3); crisp contrast after the dark Projects band */
+/* Events → white (was muddy ivory #faf8f3); crisp contrast after the dark Projects band.
+   position/overflow added so the new atmosphere glows below can be clipped at the
+   section edge, and the container gets an explicit stacking context so its content
+   always sits above the new glows (this section had zero pseudo-elements before). */
 .home-page .events-grid-section {
   background: var(--background-section, #ffffff) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-page .events-grid-section .landing-container {
+  position: relative;
+  z-index: 1;
 }
 
 /* Event cards' base shadow (0.04 opacity) is too faint once the band behind them
    is also white — bump it so the tan border isn't the only separator. */
 .home-page .events-grid-section .event-card {
   box-shadow: 0 2px 10px rgba(26, 39, 68, 0.08);
+}
+
+/* ------------------------------------------------------------
+   AMBIENT ATMOSPHERE — two-tone sanctuary light (2026-07-05).
+   Every band gets a second, gold+purple glow so the page reads
+   as warmly lit rather than flat. White bands (About, Gallery,
+   Ministries, Events) keep their existing single gold ::before
+   glow and gain a purple ::after counterpoint on the opposite
+   corner — a "two-glow" treatment. Cream bands (Mission,
+   Sermons, Contact) keep their existing gold linear-gradient
+   wash untouched and gain ONE extra radial (gold or purple) at
+   a section-unique position so the three creams stop reading as
+   interchangeable. All glows: alpha ≤ 0.14, pointer-events:none,
+   sit behind content (no z-index needed except on Events, which
+   had no stacking context of its own — see above). Arise & Build
+   stays dark and untouched, per design direction. ------------ */
+
+/* About (white): existing base ::before is a gold glow, top-right (40% width).
+   Add a purple counterpoint, bottom-left, so the band is lit from two
+   sanctuary-light sources instead of one.
+   Full-cover box (inset:0) with the position baked into the gradient —
+   a partial box (width/height < 100%) clips radial-gradient's farthest-
+   corner fade before it reaches transparent, leaving a visible straight
+   edge at the box boundary (confirmed via Playwright at 540px). Stops
+   tightened to ~35% to keep the same visual footprint on the larger box. */
+.home-page .about-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 8% 88%, rgba(74, 60, 110, 0.1) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+/* Mission (cream): existing linear-gradient gold wash is untouched. Add one
+   small, off-center radial mixing both hues so Mission's cream reads
+   distinctly from Sermons'/Contact's cream. */
+.home-page .quick-info-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(212, 168, 75, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 8% 95%, rgba(74, 60, 110, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Community Gallery (white): existing base ::before is a gold glow, top-right
+   (600px circle). Add a purple counterpoint, bottom-left, at the same z-index
+   as its sibling so the two glows sit at the same depth. */
+.home-page .community-gallery-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(74, 60, 110, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Sermons (cream): existing base ::before is a gold glow, right side (45%
+   width) + the existing linear-gradient gold wash. Add a purple counterpoint
+   on the opposite (left) side so Sermons' cream differs from Mission's.
+   Full-cover box — see About's comment above for why (radial-gradient
+   farthest-corner fade seams at a partial-box edge). */
+.home-page .sermons-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 6% 55%, rgba(74, 60, 110, 0.09) 0%, transparent 32%);
+  pointer-events: none;
+}
+
+/* Ministries (white): existing base ::before is a gold glow, left side (40%
+   width). Add a purple counterpoint, right side, mirroring About's treatment
+   so every white band shares the same two-glow language.
+   Full-cover box — see About's comment above. */
+.home-page .ministries-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 92% 45%, rgba(74, 60, 110, 0.1) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+/* Events (white): had zero atmosphere before — bring it in line with the
+   other white bands with a gold top-left + purple bottom-right pairing.
+   Full-cover box — see About's comment above. */
+.home-page .events-grid-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 8% 12%, rgba(212, 168, 75, 0.1) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+.home-page .events-grid-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 92% 88%, rgba(74, 60, 110, 0.1) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+/* Contact (cream): section root had zero pseudo-elements (the nested
+   .contact-info-panel::before is a separate inner-card glow). Add one purple
+   radial on the opposite side of the panel's own gold glow so it doesn't
+   double up, keeping Contact's cream distinct from Mission's/Sermons'.
+   Full-cover box — see About's comment above. */
+.home-page .contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 12% 8%, rgba(74, 60, 110, 0.08) 0%, transparent 30%);
+  pointer-events: none;
 }
 
 /* ---- About: playful tilted photo + welcome sticker ---- */
