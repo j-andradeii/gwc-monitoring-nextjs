@@ -145,7 +145,7 @@ const heroSlides: HeroSlideData[] = [
     overlayGradient: 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(26, 39, 68, 0.40) 100%)',
     cta: {
       label: 'Join This Sunday',
-      href: '#services',
+      href: '/events/sonday-service',
       icon: 'pi pi-calendar',
     },
   },

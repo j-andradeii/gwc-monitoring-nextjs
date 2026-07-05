@@ -26,6 +26,10 @@ export const AboutSection: React.FC = () => {
               className="about-image"
               unoptimized
             />
+            <span className="home-sticker">
+              <i className="pi pi-heart-fill" aria-hidden="true"></i>
+              Welcome home
+            </span>
             <div className="about-image-accent"></div>
           </div>
 

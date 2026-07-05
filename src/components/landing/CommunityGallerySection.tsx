@@ -132,7 +132,7 @@ export const CommunityGallerySection: React.FC = () => {
                 unoptimized
               />
               <div className="bento-overlay">
-                <h3></h3>
+                <h3>{image.alt}</h3>
               </div>
             </div>
           ))}

@@ -11,7 +11,7 @@ work Google Search Console + build authority + be patient** (re-indexing 40+ pag
 
 ## 1. Run the automated monitor
 ```bash
-node scripts/seo-inxdex-check.mjs
+node scripts/seo-index-check.mjs
 ```
 Read-only. Tells you (a) how many of the 4 fixes are **live on production** yet, and (b) per-URL health
 (status / canonical / robots). It can NOT read GSC — that's the manual half below.
@@ -39,7 +39,7 @@ Fill a row each time you check GSC (Pages report → numbers). `site:` is a roug
 | Date | Fixes live (x/4) | GSC Indexed | Crawled-not-indexed | `site:` count | Notes |
 |------|------------------|-------------|---------------------|---------------|-------|
 | 2026-06-18 | 0/4 (baseline, pre-deploy) | _fill from GSC_ | _fill from GSC_ | ~1 (home only) | Audit + 4 fixes implemented, not yet deployed. |
-| | | | | | |
+| 2026-07-04 | 4/4 LIVE ✅ | _fill from GSC_ | _fill from GSC_ | ~8 (home, 2 give, 4–5 sermons, 1 event) | All 57 sitemap URLs 200 + self-canonical + index,follow. Newest sermons ARE indexing (monuments-men indexed ≤2 wks after publish). Still out: /about, /connect, /events, /sermon-notes listings → Request-Index these first. |
 | | | | | | |
 
 ## 5. The 4 fixes being tracked
