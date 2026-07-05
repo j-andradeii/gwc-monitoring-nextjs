@@ -155,7 +155,7 @@ export const GatewayGiveSection: React.FC = () => {
         </div>
 
         {/* Screenshot Email Notice */}
-        <div className="screenshot-notice animate-on-scroll">
+        {/* <div className="screenshot-notice animate-on-scroll">
           <div className="notice-icon">
             <i className="pi pi-camera"></i>
           </div>
@@ -166,7 +166,7 @@ export const GatewayGiveSection: React.FC = () => {
               justinmarctariman@yahoo.com
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
