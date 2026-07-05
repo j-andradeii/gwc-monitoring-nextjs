@@ -160,6 +160,7 @@ export const CommunityGallerySection: React.FC = () => {
         >
           <span className="section-label">Our Community</span>
           <h2>Life Together</h2>
+          <p>Real moments from our church family — tap any photo for a closer look.</p>
         </div>
 
         {/* Bento Grid Layout - Responsive for all screens */}
