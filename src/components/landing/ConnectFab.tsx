@@ -12,6 +12,7 @@ import { useScrollToFirstError } from '@/components/forms';
 import { contactSchema, type ContactFormData } from '@/models/schemas/contact.schema';
 import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '@/services/api-client';
+import { useConnectFabStore } from '@/stores/connectFab.store';
 
 const FAB_TEXTS = ['CONNECT', 'PRAYER?', 'NEED HELP?'];
 
@@ -120,6 +121,29 @@ export function ConnectFab() {
         }, 5000);
         return () => clearInterval(interval);
     }, []);
+
+    // Open on an external request (e.g. the homepage CTA slider's "Request Prayer" slide)
+    const pendingTab = useConnectFabStore((s) => s.pendingTab);
+    const clearConnectRequest = useConnectFabStore((s) => s.clearRequest);
+
+    useEffect(() => {
+        if (!pendingTab) return;
+        setTimeout(() => {
+            setActiveTab(pendingTab);
+            setSubmitted(false);
+            submitPrayerRequest.reset();
+            submitCellGroupJoin.reset();
+            reset(
+                pendingTab === 'prayer'
+                    ? { type: 'prayer', name: '', email: '', phone: '', message: '' }
+                    : { type: 'join', name: '', email: '', phone: '', gender: '', facebook: '', instagram: '', address: '', joinReason: '' }
+            );
+            clearErrors();
+            setIsOpen(true);
+            clearConnectRequest();
+        }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pendingTab]);
 
     const toggleModal = () => {
         if (!isOpen) {

@@ -15919,7 +15919,7 @@
 
 .give-channels-section .section-header-center p {
   max-width: 620px;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.65;
 }
 
@@ -17626,5 +17626,538 @@
   .lf-result-meta {
     align-items: flex-start;
     text-align: left;
+  }
+}
+
+/* ============================================================
+   HOME PAGE — MODERN & FRIENDLY REFRESH (scoped: .home-page)
+   Gen-Z-leaning pass on the landing sections: pill-chip eyebrows,
+   sentence-case fluid headings with a Fraunces italic accent,
+   softer 24px geometry, playful sticker/tilt details and a brand
+   marquee. Every rule is gated under .home-page (set on the
+   src/app/page.tsx root) so shared base classes — .contact-*,
+   .events-grid-section, .section-label, .btn-arrow-* — stay
+   untouched on the other public pages.
+   ============================================================ */
+
+/* ---- Eyebrows → friendly pill chips ---- */
+.home-page .section-label,
+.home-page .section-label-light {
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.home-page .section-label {
+  background: rgba(212, 168, 75, 0.12);
+  border: 1px solid rgba(212, 168, 75, 0.38);
+  color: var(--color-primary-dark, #b8923f);
+}
+
+.home-page .section-label-light {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+}
+
+.home-page .section-label::before,
+.home-page .section-label-light::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-gold-accent);
+}
+
+/* ---- Friendlier headings: sentence case + fluid scale ---- */
+.home-page .about-content h2,
+.home-page .section-header-inline h2,
+.home-page .section-header-center h2,
+.home-page .community-gallery-section .section-header-center h2,
+.home-page .service-cta-content h2,
+.home-page .events-grid-header h2,
+.home-page .contact-info-panel h2,
+.home-page .arise-build-title {
+  text-transform: none;
+  text-shadow: none;
+}
+
+.home-page .about-content h2 {
+  font-size: clamp(30px, 2vw + 20px, 42px);
+  letter-spacing: -1.4px;
+}
+
+.home-page .mission-content h2 {
+  font-size: clamp(30px, 2vw + 18px, 42px);
+  letter-spacing: -1.2px;
+}
+
+.home-page .community-gallery-section .section-header-center h2 {
+  font-size: clamp(32px, 2.6vw + 20px, 48px);
+  letter-spacing: -1.4px;
+}
+
+.home-page .service-cta-content h2 {
+  font-size: clamp(30px, 2vw + 18px, 42px);
+  letter-spacing: -1.2px;
+}
+
+.home-page .section-header-inline h2 {
+  font-size: clamp(28px, 1.6vw + 18px, 38px);
+  letter-spacing: -1.2px;
+}
+
+.home-page .section-header-center h2 {
+  font-size: clamp(28px, 1.8vw + 18px, 40px);
+  letter-spacing: -1.2px;
+}
+
+.home-page .section-header-center p {
+  font-size: 16px;
+}
+
+.home-page .events-grid-header h2 {
+  font-size: clamp(28px, 1.8vw + 18px, 40px);
+  letter-spacing: -1.2px;
+}
+
+.home-page .contact-info-panel h2 {
+  letter-spacing: -0.8px;
+}
+
+.home-page .arise-build-title {
+  font-size: clamp(36px, 3vw + 20px, 54px);
+  letter-spacing: -1.5px;
+}
+
+/* ---- CTA slider band (under the hero) ---- */
+.home-page .home-cta-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-gold-accent) 0%, #c9973f 100%);
+  padding: 15px 0;
+}
+
+.home-page .home-cta-viewport {
+  overflow: hidden;
+}
+
+.home-page .home-cta-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-page .home-cta-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 40px;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  text-align: left;
+}
+
+.home-page .home-cta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 7px 16px;
+  border-radius: 50px;
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.home-page .home-cta-tag .pi-circle-fill {
+  font-size: 7px;
+  color: var(--primary-gold-accent);
+}
+
+.home-page .home-cta-headline {
+  color: var(--color-navy);
+  font-weight: 800;
+  font-size: clamp(17px, 1.1vw + 12px, 24px);
+  letter-spacing: -0.4px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-page .home-cta-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+  color: var(--color-navy);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.home-page .home-cta-action i {
+  transition: transform 0.25s ease;
+}
+
+.home-page .home-cta-slide:hover .home-cta-action i,
+.home-page .home-cta-slide:focus-visible .home-cta-action i {
+  transform: translateX(4px);
+}
+
+.home-page .home-cta-slide:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   SECTION BAND ALTERNATION — full home page order (top→bottom):
+   Hero (dark) · Marquee (gold) · About (white) · Mission (cream)
+   · Community Gallery (white) · Sermons (cream) · Ministries
+   (white) · Arise & Build / Projects (dark) · Events (white)
+   · Contact (cream). Every adjacent pair differs in tone; every
+   light band touching another light band gets a hairline.
+   ============================================================ */
+
+/* Community gallery → white (was cream) */
+.home-page .community-gallery-section {
+  background-color: var(--background-section, #ffffff) !important;
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+/* Sermons → cream warm-gold wash (was flat --background-main cream) */
+.home-page .sermons-section {
+  background:
+    linear-gradient(180deg, rgba(212, 168, 75, 0.06) 0%, rgba(212, 168, 75, 0.13) 100%),
+    var(--color-cream, #f5f0e6) !important;
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+/* Ministries → white (unchanged bg) + hairline vs the cream Sermons band above */
+.home-page .ministries-section {
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+/* Events → white (was muddy ivory #faf8f3); crisp contrast after the dark Projects band */
+.home-page .events-grid-section {
+  background: var(--background-section, #ffffff) !important;
+}
+
+/* Event cards' base shadow (0.04 opacity) is too faint once the band behind them
+   is also white — bump it so the tan border isn't the only separator. */
+.home-page .events-grid-section .event-card {
+  box-shadow: 0 2px 10px rgba(26, 39, 68, 0.08);
+}
+
+/* ---- About: playful tilted photo + welcome sticker ---- */
+.home-page .about-image-wrapper {
+  transform: rotate(-2deg);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-page .about-image-wrapper:hover {
+  transform: rotate(0deg);
+}
+
+.home-page .about-image {
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(26, 39, 68, 0.16);
+}
+
+.home-page .about-image-accent {
+  border-radius: 24px;
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(6deg);
+  opacity: 0.2;
+}
+
+.home-page .home-sticker {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(212, 168, 75, 0.55);
+  box-shadow: 0 8px 24px rgba(26, 39, 68, 0.18);
+  color: var(--color-navy);
+  font-size: 13px;
+  font-weight: 800;
+  transform: rotate(-3deg);
+}
+
+.home-page .home-sticker i {
+  font-size: 13px;
+  color: var(--color-error, #6b2c3a);
+}
+
+.home-page .about-content p {
+  font-size: 17px;
+}
+
+/* ---- Mission: cream warm-gold wash alternation band + sticker step numbers ---- */
+.home-page .quick-info-section {
+  background:
+    linear-gradient(180deg, rgba(212, 168, 75, 0.06) 0%, rgba(212, 168, 75, 0.13) 100%),
+    var(--color-cream, #f5f0e6) !important;
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+.home-page .process-step-card {
+  border-radius: 24px;
+  border-color: rgba(212, 168, 75, 0.28);
+}
+
+.home-page .process-step-card::before {
+  border-radius: 24px;
+}
+
+.home-page .process-step-card:hover {
+  transform: translateY(-10px) rotate(-1deg);
+}
+
+.home-page .step-number {
+  width: 44px;
+  height: 44px;
+  top: -20px;
+  border-radius: 12px;
+  transform: translateX(-50%) rotate(-8deg);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-page .step-number span {
+  font-size: 18px;
+}
+
+.home-page .process-step-card:hover .step-number {
+  transform: translateX(-50%) rotate(8deg) scale(1.08);
+}
+
+/* ---- Community gallery: rounder tiles + caption chips ---- */
+.home-page .bento-item {
+  border-radius: 24px;
+}
+
+.home-page .bento-overlay {
+  padding: 18px;
+}
+
+.home-page .bento-overlay h3 {
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+/* ---- Service band: softer info tiles ---- */
+.home-page .service-detail-item {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* ---- Sermons: rounder cards, chip meta, pill view-all ---- */
+.home-page .sermon-card {
+  border-radius: 24px;
+  border-color: rgba(212, 168, 75, 0.25);
+}
+
+.home-page .sermon-card-content {
+  padding: 20px;
+}
+
+.home-page .sermon-meta {
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.home-page .sermon-meta span {
+  padding: 5px 12px;
+  border-radius: 50px;
+  background: rgba(212, 168, 75, 0.1);
+  border: 1px solid rgba(212, 168, 75, 0.28);
+  font-weight: 600;
+}
+
+.home-page .sermon-duration {
+  padding: 5px 12px;
+  border-radius: 50px;
+  background: rgba(26, 39, 68, 0.82);
+}
+
+.home-page .view-all-link {
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(212, 168, 75, 0.45);
+  color: var(--color-primary-dark, #b8923f);
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.home-page .view-all-link:hover {
+  background: var(--primary-gold-accent);
+  border-color: var(--primary-gold-accent);
+  color: #ffffff;
+  gap: 10px;
+}
+
+/* ---- Ministries: rounder, sentence case, staggered grid ---- */
+.home-page .ministry-card {
+  border-radius: 24px;
+}
+
+.home-page .ministry-card h3 {
+  text-transform: none;
+  letter-spacing: -0.3px;
+  font-size: 26px;
+}
+
+@media (min-width: 1025px) {
+  .home-page .ministry-card:nth-child(even) {
+    margin-top: 32px;
+  }
+}
+
+/* ---- Gateway Projects: minimalist — flat, no card, thin-rule eyebrow ---- */
+.home-page .arise-build-container {
+  max-width: 680px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  border: 0;
+}
+
+.home-page .arise-build-overlay {
+  background: linear-gradient(180deg, rgba(26, 39, 68, 0.72) 0%, rgba(26, 39, 68, 0.86) 100%);
+}
+
+.home-page .arise-build-section::after {
+  display: none;
+}
+
+.home-page .arise-build-label {
+  gap: 14px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  color: var(--color-primary-light, #e5c47a);
+}
+
+.home-page .arise-build-label::before,
+.home-page .arise-build-label::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  border-radius: 0;
+  background: var(--color-primary-light, #e5c47a);
+}
+
+.home-page .arise-build-description {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---- Events header: pill CTA (scoped — section is shared) ---- */
+.home-page .btn-arrow,
+.home-page .btn-arrow-outline-navy {
+  border-radius: 50px;
+}
+
+/* ---- Contact: warmer cream band (alternation anchor after white Events), rounder card, pill submit ---- */
+.home-page .contact-section {
+  background:
+    linear-gradient(180deg, rgba(212, 168, 75, 0.05) 0%, rgba(212, 168, 75, 0.11) 100%),
+    var(--color-cream, #f5f0e6) !important;
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+.home-page .contact-card-inner {
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(26, 39, 68, 0.14);
+}
+
+.home-page .submit-btn {
+  border-radius: 50px;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 768px) {
+  .home-page .home-cta-band {
+    padding: 12px 0;
+  }
+
+  .home-page .home-cta-tag,
+  .home-page .home-cta-headline {
+    display: none;
+  }
+
+  .home-page .home-cta-slide {
+    justify-content: center;
+    min-height: 44px;
+    padding: 4px 0;
+  }
+
+  .home-page .home-cta-action {
+    margin: 0 auto;
+  }
+
+  .home-page .about-image-wrapper,
+  .home-page .about-image-wrapper:hover {
+    transform: rotate(0deg);
+  }
+
+  .home-page .home-sticker {
+    bottom: 12px;
+    left: 12px;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .home-page .bento-item {
+    border-radius: 12px;
+  }
+
+  .home-page .arise-build-container {
+    padding: 32px 20px;
+  }
+}
+
+/* ---- Reduced motion: disable slide transition + arrow-hover motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .home-page .home-cta-track {
+    transition: none;
+  }
+
+  .home-page .home-cta-action i {
+    transition: none;
   }
 }

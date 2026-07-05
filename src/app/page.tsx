@@ -45,6 +45,7 @@ export const metadata: Metadata = {
 import {
   LandingHeader,
   HeroSection,
+  HomeMarquee,
   AboutSection,
   MissionSection,
   CommunityGallerySection,
@@ -216,7 +217,7 @@ const jsonLd = {
 
 export default function LandingPage() {
   return (
-    <div className="landing-page">
+    <div className="landing-page home-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -227,10 +228,11 @@ export default function LandingPage() {
       <main className="landing-main">
         <ScrollAnimationProvider>
           <HeroSection />
+          <HomeMarquee />
           <AboutSection />
           <MissionSection />
           <CommunityGallerySection />
-          <ChurchServiceSection />
+          {/* <ChurchServiceSection /> */}
           <SermonsSection />
           <MinistriesSection />
           <AriseAndBuildSection />
