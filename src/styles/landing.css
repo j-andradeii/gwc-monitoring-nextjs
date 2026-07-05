@@ -13917,6 +13917,146 @@
   }
 }
 
+/* ===========================================
+   Gateway PROJECTS — Vision section polish
+   Scoped to .gateway-projects-page so the shared .gateway-vision-* base
+   rules (reused by .gateway-outreach-page .outreach-vision-section) stay
+   untouched. Adds: top-aligned columns (removes the centered-portrait
+   dead space), a decorative offset gold frame behind the photo, a
+   scripture pull-quote card that surfaces gatewayVisionData.scripture,
+   a larger lead paragraph, and a signature-style attribution.
+   =========================================== */
+.gateway-projects-page .gateway-vision-grid {
+  align-items: start;
+  gap: 64px;
+}
+
+/* Decorative offset gold frame behind the portrait */
+.gateway-projects-page .gateway-vision-photo-frame {
+  position: relative;
+}
+
+.gateway-projects-page .gateway-vision-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 20px -20px -20px 20px;
+  border: 2px solid rgba(212, 168, 75, 0.5);
+  border-radius: 16px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gateway-projects-page .gateway-vision-photo-frame .gateway-vision-image-wrapper {
+  z-index: 1;
+  height: 520px;
+}
+
+/* Scripture pull-quote card — sits under the portrait, fills the left
+   column so it balances the taller narrative column. */
+.gateway-projects-page .gateway-vision-scripture-card {
+  position: relative;
+  margin: 46px 0 0;
+  padding: 26px 28px 22px;
+  background: #ffffff;
+  border: 1px solid rgba(212, 168, 75, 0.32);
+  border-left: 4px solid var(--color-primary, #d4a84b);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.04),
+    0 16px 34px rgba(26, 39, 68, 0.09);
+}
+
+.gateway-projects-page .gateway-vision-scripture-quote {
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-serif, 'Fraunces', Georgia, serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--text-heading, #1a2744);
+}
+
+.gateway-projects-page .gateway-vision-scripture-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--color-primary-dark, #b8923f);
+}
+
+.gateway-projects-page .gateway-vision-scripture-ref i {
+  font-size: 13px;
+}
+
+/* Lead paragraph — larger, deeper intro line */
+.gateway-projects-page .gateway-vision-lead {
+  font-size: 20px;
+  line-height: 1.65;
+  font-weight: 600;
+  color: var(--text-heading, #1a2744);
+}
+
+/* Signature-style attribution: divider hairline + vertical gold bar */
+.gateway-projects-page .gateway-vision-attribution {
+  margin-top: 38px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(212, 168, 75, 0.28);
+  align-items: center;
+}
+
+.gateway-projects-page .gateway-vision-attr-line {
+  width: 4px;
+  height: 42px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--color-primary, #d4a84b) 0%, var(--color-primary-dark, #b8923f) 100%);
+}
+
+.gateway-projects-page .gateway-vision-attr-name {
+  font-size: 19px;
+}
+
+@media (max-width: 900px) {
+  .gateway-projects-page .gateway-vision-grid {
+    gap: 40px;
+  }
+
+  .gateway-projects-page .gateway-vision-photo-frame .gateway-vision-image-wrapper {
+    height: 380px;
+  }
+
+  .gateway-projects-page .gateway-vision-photo-frame::before {
+    inset: 14px -14px -14px 14px;
+  }
+
+  .gateway-projects-page .gateway-vision-scripture-card {
+    margin-top: 34px;
+    text-align: left;
+  }
+
+  .gateway-projects-page .gateway-vision-attribution {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gateway-projects-page .gateway-vision-photo-frame .gateway-vision-image-wrapper {
+    height: 300px;
+  }
+
+  .gateway-projects-page .gateway-vision-lead {
+    font-size: 16px;
+  }
+
+  .gateway-projects-page .gateway-vision-scripture-quote {
+    font-size: 16px;
+  }
+}
+
 /* -------------------------------------------
    Quick Facts Section
    ------------------------------------------- */

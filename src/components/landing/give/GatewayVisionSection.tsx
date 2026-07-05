@@ -3,23 +3,39 @@ import Image from 'next/image';
 import { gatewayVisionData } from '@/data/giveData';
 
 export const GatewayVisionSection: React.FC = () => {
+  const { scripture } = gatewayVisionData;
+
   return (
     <section id="gateway-vision" className="landing-section gateway-vision-section">
       <div className="landing-container">
         <div className="gateway-vision-grid">
-          {/* Left Column: Pastor portrait image */}
+          {/* Left Column: Pastor portrait + scripture pull-quote */}
           <div className="gateway-vision-image animate-on-scroll">
-            <div className="gateway-vision-image-wrapper">
-              <Image
-                src={gatewayVisionData.pastorImage}
-                alt={`${gatewayVisionData.pastorName} - ${gatewayVisionData.pastorRole}`}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="gateway-vision-photo"
-                unoptimized
-              />
+            <div className="gateway-vision-photo-frame">
+              <div className="gateway-vision-image-wrapper">
+                <Image
+                  src={gatewayVisionData.pastorImage}
+                  alt={`${gatewayVisionData.pastorName} - ${gatewayVisionData.pastorRole}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="gateway-vision-photo"
+                  unoptimized
+                />
+              </div>
             </div>
-            {/* Scripture overlay on image */}
+
+            {/* Scripture behind the vision — surfaces gatewayVisionData.scripture */}
+            {scripture && (
+              <figure className="gateway-vision-scripture-card">
+                <blockquote className="gateway-vision-scripture-quote">
+                  {scripture.text}
+                </blockquote>
+                <figcaption className="gateway-vision-scripture-ref">
+                  <i className="pi pi-book" aria-hidden="true"></i>
+                  {scripture.verse}
+                </figcaption>
+              </figure>
+            )}
           </div>
 
           {/* Right Column: Vision narrative text */}
@@ -29,7 +45,9 @@ export const GatewayVisionSection: React.FC = () => {
 
             <div className="gateway-vision-text">
               {gatewayVisionData.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p key={index} className={index === 0 ? 'gateway-vision-lead' : undefined}>
+                  {paragraph}
+                </p>
               ))}
             </div>
 
