@@ -26,8 +26,8 @@ export const GatewayGiveSection: React.FC = () => {
     <section id="gateway-give" className="landing-section gateway-give-section">
       <div className="landing-container">
         <div className="section-header-center animate-on-scroll">
-          <span className="section-label">Contribute</span>
-          <h2>Give to Gateway Projects</h2>
+          <span className="section-label">SOW IN FAITH</span>
+          <h2>SOW to Gateway Projects</h2>
           <p>
             Support the ministry center improvement project through any of our giving
             channels. Please send a screenshot of your transaction to{' '}
