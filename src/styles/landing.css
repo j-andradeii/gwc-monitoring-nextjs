@@ -1855,7 +1855,7 @@
    QUICK INFO SECTION (Mission) - White Background
    =========================================== */
 .quick-info-section {
-  padding: 72px 0 !important;
+  padding: 50px 0 !important;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
   position: relative;
   overflow: hidden;
