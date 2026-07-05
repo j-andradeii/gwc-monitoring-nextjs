@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { Carousel } from 'primereact/carousel';
 
 interface GalleryImage {
   id: number;
@@ -88,18 +87,31 @@ export const CommunityGallerySection: React.FC = () => {
     document.body.style.overflow = 'unset';
   };
 
-  const handleImageInteraction = (e: React.MouseEvent | React.TouchEvent, image: GalleryImage) => {
-    // Check if device is likely mobile (touch primary) or small screen
-    const isMobile = window.innerWidth <= 768;
+  // Close the lightbox with Escape
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeLightbox();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [lightboxOpen]);
 
-    if (isMobile) {
-      e.preventDefault(); // Prevent opening lightbox immediately if it was onClick
-      if (activeMobileId === image.id) {
-        // Toggle off
-        setActiveMobileId(null);
-      } else {
-        setActiveMobileId(image.id);
-      }
+  // Desktop: click opens the lightbox. Mobile: first tap reveals the caption
+  // overlay, second tap opens the lightbox.
+  const handleTileClick = (image: GalleryImage) => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile && activeMobileId !== image.id) {
+      setActiveMobileId(image.id);
+      return;
+    }
+    openLightbox(image);
+  };
+
+  const handleTileKeyDown = (event: React.KeyboardEvent, image: GalleryImage) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openLightbox(image);
     }
   };
 
@@ -122,6 +134,11 @@ export const CommunityGallerySection: React.FC = () => {
               data-interact-id={`img-${image.id}`}
               className={`bento-item bento-item-${index + 1} animate-on-scroll ${activeMobileId === image.id ? 'active' : ''} ${visibleItems.has(`img-${image.id}`) ? 'visible' : ''}`}
               style={{ transitionDelay: `${index * 100}ms` }}
+              role="button"
+              tabIndex={0}
+              aria-label={`View photo: ${image.alt}`}
+              onClick={() => handleTileClick(image)}
+              onKeyDown={(event) => handleTileKeyDown(event, image)}
             >
               <Image
                 src={image.src}
@@ -133,6 +150,9 @@ export const CommunityGallerySection: React.FC = () => {
               />
               <div className="bento-overlay">
                 <h3>{image.alt}</h3>
+                <span className="bento-expand" aria-hidden="true">
+                  <i className="pi pi-search-plus"></i>
+                </span>
               </div>
             </div>
           ))}
@@ -145,7 +165,7 @@ export const CommunityGallerySection: React.FC = () => {
         onClick={closeLightbox}
       >
         <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-          <button className="lightbox-close" onClick={closeLightbox}>
+          <button className="lightbox-close" onClick={closeLightbox} aria-label="Close photo viewer">
             <i className="pi pi-times"></i>
           </button>
           {selectedImage && (
