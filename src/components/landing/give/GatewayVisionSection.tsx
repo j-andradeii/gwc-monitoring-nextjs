@@ -24,18 +24,6 @@ export const GatewayVisionSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Scripture behind the vision — surfaces gatewayVisionData.scripture */}
-            {scripture && (
-              <figure className="gateway-vision-scripture-card">
-                <blockquote className="gateway-vision-scripture-quote">
-                  {scripture.text}
-                </blockquote>
-                <figcaption className="gateway-vision-scripture-ref">
-                  <i className="pi pi-book" aria-hidden="true"></i>
-                  {scripture.verse}
-                </figcaption>
-              </figure>
-            )}
           </div>
 
           {/* Right Column: Vision narrative text */}
