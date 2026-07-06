@@ -177,14 +177,14 @@ export default function WaysToGivePage() {
         <GiveHero backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/giving.jpeg" />
 
         {/* Project banner CTA */}
-        <ProjectBanner
+        {/* <ProjectBanner
           badge="Sow"
           targetId="give-channels"
           title="Honor God with Your Giving"
           buttonLabel="Giving channels"
           buttonAriaLabel="Giving channels"
           ariaLabel="Giving channels"
-        />
+        /> */}
 
         {/* ===========================================
             GIVING CHANNELS — lead section

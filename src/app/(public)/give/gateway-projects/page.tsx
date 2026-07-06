@@ -105,14 +105,14 @@ export default function GatewayProjectsPage() {
         />
 
         {/* Quick CTA: jumps straight to the Give section, right below */}
-        <ProjectBanner
+        {/* <ProjectBanner
           badge='Sow'
           targetId="gateway-give"
           title="Build the future of Gateway with us"
           buttonLabel="Give to Gateway Projects"
           buttonAriaLabel="Jump to Give to Gateway Projects section"
           ariaLabel="Partner With Us"
-        />
+        /> */}
 
         {/* ===========================================
             GIVE TO GATEWAY PROJECTS — lead section
