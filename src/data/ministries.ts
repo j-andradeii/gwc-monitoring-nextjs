@@ -24,9 +24,13 @@ export const ministries: Ministry[] = [
         id: '1',
         title: 'Gateway Axis',
         image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/youth_1.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        description: `Welcome to AXIS 💫 
+We are the Youth Ministry of Gateway Church, a community centered on one purpose: Jesus at the Center. AXIS exists as a people awakened and a movement of lives realigned, called to live with Christ as the foundation of it all. In every story and every season, we hold firmly to this truth: 
+“In Him we live, and move, and have our being.” — Acts 17:28 
+“In Him all things hold together.” — Colossians 1:17`,
         social: {
-            instagram: 'https://www.instagram.com/gateway.axis'
+            instagram: 'https://www.instagram.com/gateway.axis',
+            facebook: 'https://www.facebook.com/profile.php?id=61591631940856',
         }
     },
     {
@@ -60,7 +64,7 @@ export const ministries: Ministry[] = [
         id: '5',
         title: 'Men Ministry',
         image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/men.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        description: `Gateway Church Cebu Men's Ministry aims to provide an avenue for the Men of the church to develop a Christ-like character, heart of a servant, a life of faithfulness and obedience to His word. Strengthening one another in faith and wisdom in accordance to God's will.`,
     },
     {
         id: '6',

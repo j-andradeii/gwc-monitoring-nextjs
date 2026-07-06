@@ -7,6 +7,7 @@ import './globals.css';
 
 import { siteMetadata } from '@/data/site-metadata';
 import { QueryProvider } from '@/components/providers/QueryProvider';
+import { ScrollbarAutoHide } from '@/components/providers/ScrollbarAutoHide';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -82,6 +83,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-sans antialiased">
+        <ScrollbarAutoHide />
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

@@ -18431,27 +18431,10 @@
   backdrop-filter: blur(8px);
 }
 
-/* Tiles are now real lightbox triggers — keyboard focus ring included */
+/* Gallery tiles are display-only (no lightbox); keyboard focus ring kept for safety */
 .home-page .bento-item:focus-visible {
   outline: 3px solid var(--primary-gold-accent);
   outline-offset: 3px;
-}
-
-/* "Opens larger" affordance chip, revealed with the caption overlay */
-.home-page .bento-expand {
-  margin-left: auto;
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  font-size: 14px;
 }
 
 /* ---- Service band: softer info tiles ---- */
