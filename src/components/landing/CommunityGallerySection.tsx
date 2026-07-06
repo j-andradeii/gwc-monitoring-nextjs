@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface GalleryImage {
@@ -32,79 +32,43 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 export const CommunityGallerySection: React.FC = () => {
   const [images, setImages] = useState<GalleryImage[]>(galleryImages);
-  const [activeMobileId, setActiveMobileId] = useState<number | null>(null);
-  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
-  const sectionRef = useRef<HTMLElement>(null);
 
   const displayedImages = images.slice(0, 8);
 
-  // Shuffle images on client (deferred to avoid synchronous setState in effect)
+  // Shuffle images on the client (deferred so server + first client render share
+  // the original order — avoids a hydration mismatch). This is the ONLY state
+  // update in this component; after it runs the gallery never re-renders again.
   useEffect(() => {
     const t = setTimeout(() => setImages(shuffleArray(galleryImages)), 0);
     return () => clearTimeout(t);
   }, []);
 
-  // Scroll Animation Observer - Scoped to this component
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('data-interact-id');
-            if (id) {
-              setVisibleItems((prev) => {
-                const newSet = new Set(prev);
-                newSet.add(id);
-                return newSet;
-              });
-              observer.unobserve(entry.target);
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      const items = sectionRef.current.querySelectorAll('.animate-on-scroll');
-      items.forEach((item) => observer.observe(item));
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [images]); // Re-run when images are set (shuffled)
-
-  // Mobile has no hover, so a tap reveals the caption overlay. It only ever
-  // reveals — never hides — so nothing disappears on tap, and there is no
-  // lightbox/preview to open. Desktop shows the caption on hover.
-  const handleTileClick = (image: GalleryImage) => {
-    if (window.innerWidth <= 768) {
-      setActiveMobileId(image.id);
-    }
-  };
-
   return (
-    <section className="community-gallery-section" id="community" ref={sectionRef}>
+    <section className="community-gallery-section" id="community">
       <div className="landing-container landing-full-width">
-        <div
-          className={`section-header-center animate-on-scroll ${visibleItems.has('header') ? 'visible' : ''}`}
-          data-interact-id="header"
-        >
+        <div className="section-header-center animate-on-scroll">
           <span className="section-label">Our Community</span>
           <h2>Life Together</h2>
           <p>Real moments from our church family.</p>
         </div>
 
-        {/* Bento Grid Layout - Responsive for all screens */}
+        {/*
+          Bento Grid — pure display, no click behaviour.
+
+          Scroll reveal is handled globally by ScrollAnimationProvider, which
+          adds `.animate-visible` directly to the DOM. Tiles are keyed by grid
+          POSITION (index), not image id, so the one-time client shuffle only
+          swaps each slot's image and never rewrites a tile's className. That
+          keeps the provider-added `.animate-visible` class intact — nothing
+          disappears on re-render. There is no onClick / active state here, so a
+          tap can never trigger a render that wipes the reveal either.
+        */}
         <div className="bento-grid">
           {displayedImages.map((image, index) => (
             <div
-              key={image.id}
-              data-interact-id={`img-${image.id}`}
-              className={`bento-item bento-item-${index + 1} animate-on-scroll ${activeMobileId === image.id ? 'active' : ''} ${visibleItems.has(`img-${image.id}`) ? 'visible' : ''}`}
+              key={index}
+              className={`bento-item bento-item-${index + 1} animate-on-scroll`}
               style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={() => handleTileClick(image)}
             >
               <Image
                 src={image.src}
@@ -114,9 +78,6 @@ export const CommunityGallerySection: React.FC = () => {
                 className="bento-image"
                 unoptimized
               />
-              <div className="bento-overlay">
-                <h3>{image.alt}</h3>
-              </div>
             </div>
           ))}
         </div>
