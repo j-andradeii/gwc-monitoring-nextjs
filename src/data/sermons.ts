@@ -6702,7 +6702,7 @@ As we faithfully embrace God's calling, we become people who preserve His truth,
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: "In a world that constantly tells us to define ourselves by appearance, achievements, or the approval of others, God offers a different perspective. Our identity is not something we create, it is something we receive from Him.",
 
     description: `**DESIGNED BY THE MASTER: DISCOVERING YOUR TRUE WORTH IN A FILTERED WORLD**
@@ -6963,6 +6963,305 @@ When we understand that we are God's masterpiece, we stop striving for acceptanc
         kicker: 'Key Verse',
         verse: 'Ephesians 2:10',
         text: 'For we are His workmanship, created in Christ Jesus for good works, which God prepared beforehand that we should walk in them.',
+      },
+    ],
+  },
+  {
+    id: '32',
+    slug: 'built-different',
+    title: 'Built Different',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-07-05',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: "Caleb stood out not because he was stronger or more talented than the other spies, but because he carried a different spirit, one marked by unwavering faith, wholehearted obedience, and complete trust in God.",
+
+    description: `**BUILT DIFFERENT**
+
+Key Verse: Numbers 14:24
+
+---
+
+**INTRODUCTION**
+
+In every generation, God raises up people who refuse to be shaped by fear, compromise, or the opinions of the crowd. Caleb stood out not because he was stronger or more talented than the other spies, but because he carried a different spirit, one marked by unwavering faith, wholehearted obedience, and complete trust in God.
+
+Although all twelve spies saw the same land, only Caleb and Joshua viewed it through the lens of God's promises instead of human limitations. Their story reminds us that being "built different" is not about being extraordinary in our own strength; it is about living by faith when everyone else chooses fear.
+
+God is still looking for people who will trust Him fully, keep their eyes on His promises, and remain faithful through every season.
+
+---
+
+**1. You Challenge the Status Quo**
+
+"We should go up and take possession of the land, for we can certainly do it." (Numbers 13:30)
+
+Most of the spies focused on the obstacles before them. They saw giants, fortified cities, and impossible circumstances. Caleb, however, saw the faithfulness of God.
+
+Being built different means refusing to let fear define reality. Faith does not ignore the facts, it chooses to believe that God is greater than them.
+
+The Kingdom of God operates through faith. While the majority allowed fear to shape their perspective, Caleb assigned faith to the facts because he trusted God's promise more than his own limitations.
+
+Assign faith, not fear, to the facts. Faith is the currency of the Kingdom.
+
+---
+
+**2. You Are Driven by the Future, Not the Past**
+
+"Why is the Lord bringing us to this land only to let us fall by the sword?" (Numbers 14:3–4)
+
+Israel longed to return to Egypt because it felt familiar, even though it represented bondage. Fear caused them to prefer the comfort of the past over the promise of the future.
+
+God desires to lead His people forward, but He will not entrust lasting blessings to those who continually look backward.
+
+Caleb understood that God's promises were worth waiting and fighting for. His vision was anchored in God's future rather than yesterday's experiences.
+
+God will never trust long-term blessing to short-term people.
+
+---
+
+**3. Your Cravings Have Changed**
+
+"Only do not rebel against the Lord. And do not be afraid of the people of the land..." (Numbers 14:9)
+
+Fear has a way of changing what we desire. The Israelites allowed fear to make slavery seem more appealing than freedom.
+
+A transformed heart desires God's promises more than temporary comfort.
+
+When we are built different, our cravings change. We stop longing for what is comfortable and begin pursuing what God has prepared for us, even when it requires faith.
+
+Don't allow the fear of where you are to cause you to forfeit the future of what could be.
+
+---
+
+**4. Your Eyes Are on God, Not Yourself**
+
+Throughout Numbers 13 and 14, the ten spies continually focused on themselves. They compared their own strength to the size of the giants and concluded they were incapable.
+
+Caleb and Joshua focused on God instead.
+
+Self-focus magnifies problems. God-focus magnifies His power.
+
+When our attention shifts away from ourselves and onto God's character, fear begins to lose its grip. Faith grows because our confidence is no longer based on our ability but on God's faithfulness.
+
+The fatal flaw of the majority report was deep self-absorption.
+
+---
+
+**5. You Are Consistent Over Time**
+
+"I am still as strong today as the day Moses sent me out." (Joshua 14:11)
+
+Caleb remained faithful for more than forty years while waiting for God's promise to be fulfilled.
+
+His passion, courage, and faith did not fade with time. He continued trusting God through every season until he received what had been promised.
+
+Being built different is not about occasional moments of faith, it is about consistent obedience over a lifetime.
+
+God honors those who continue following Him wholeheartedly, even when fulfillment takes longer than expected.
+
+Consistency is the evidence of enduring faith.
+
+---
+
+**CALEB: A DIFFERENT SPIRIT**
+
+Among the twelve spies, every leader represented a tribe of Israel. Many of their names carried powerful meanings connected to hearing God, salvation, deliverance, or God's provision. Yet despite these meaningful names, only Caleb and Joshua returned with a report rooted in faith.
+
+Caleb's name is commonly translated as "dog," a symbol of fierce loyalty in the ancient Semitic world. Some scholars also connect his name to the idea of being wholehearted. His life reflected exactly that, complete devotion and unwavering faithfulness to God.
+
+Joshua's name means "The LORD is Salvation," reminding us that victory comes not through human strength but through God's power.
+
+Their lives demonstrate that identity is not determined by a name alone but by a heart that fully follows God.
+
+---
+
+**KEY TAKEAWAYS**
+
+* God honors those who have a different spirit and follow Him wholeheartedly.
+* Faith chooses God's promises over fear and circumstances.
+* Don't allow your past to keep you from God's future.
+* A transformed heart desires God's will more than personal comfort.
+* Keep your eyes on God rather than your own limitations.
+* Consistency in following God produces lasting fruit.
+* God is looking for faithful people, not just gifted people.
+
+"Being built different is not about standing out for yourself, it's about standing firm in faith when everyone else chooses fear."
+
+---
+
+**CALL TO ACTION**
+
+Ask God to cultivate a different spirit within you.
+
+* Choose faith over fear when facing challenges.
+* Let go of the past and embrace God's future.
+* Desire God's promises more than temporary comfort.
+* Fix your eyes on God's faithfulness rather than your limitations.
+* Remain consistent in your walk with Christ, even when answers take time.
+
+Like Caleb, may we be known as people who follow God wholeheartedly. When we trust Him completely, He will lead us into the promises He has prepared for us.`,
+
+    tags: ['Faith', 'Courage', 'Trust', 'Obedience', 'Consistency', 'Identity'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/built_different.webp',
+    scriptures: [
+      {
+        verse: 'Numbers 14:24',
+        text: 'But My servant Caleb, because he has a different spirit in him and has followed Me fully, I will bring into the land where he went, and his descendants shall inherit it.',
+      },
+      {
+        verse: 'Numbers 13:30',
+        text: "Then Caleb quieted the people before Moses, and said, 'Let us go up at once and take possession, for we are well able to overcome it.'",
+      },
+      {
+        verse: 'Numbers 14:3-4',
+        text: "Why has the LORD brought us to this land to fall by the sword, that our wives and children should become victims? Would it not be better for us to return to Egypt? So they said to one another, 'Let us select a leader and return to Egypt.'",
+      },
+      {
+        verse: 'Numbers 14:9',
+        text: 'Only do not rebel against the LORD, nor fear the people of the land, for they are our bread; their protection has departed from them, and the LORD is with us. Do not fear them.',
+      },
+      {
+        verse: 'Joshua 14:11',
+        text: 'As yet I am as strong this day as on the day that Moses sent me; just as my strength was then, even so is my strength now, for war, both to go out and to come in.',
+      },
+    ],
+    keyPoints: ['You Challenge the Status Quo', 'You Are Driven by the Future, Not the Past', 'Your Cravings Have Changed', 'Your Eyes Are on God, Not Yourself', 'You Are Consistent Over Time'],
+    relatedSermons: ['31', '30'],
+    subtitle: { prefix: 'Built', italic: 'Different' },
+    keyVerse: 'Numbers 14:24',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Built Different',
+        unnumbered: true,
+        paragraphs: [
+          'In every generation, God raises up people who refuse to be shaped by fear, compromise, or the opinions of the crowd. Caleb stood out not because he was stronger or more talented than the other spies, but because he carried a different spirit, one marked by unwavering faith, wholehearted obedience, and complete trust in God.',
+          'Although all twelve spies saw the same land, only Caleb and Joshua viewed it through the lens of God\'s promises instead of human limitations. Their story reminds us that being "built different" is not about being extraordinary in our own strength; it is about living by faith when everyone else chooses fear.',
+          'God is still looking for people who will trust Him fully, keep their eyes on His promises, and remain faithful through every season.',
+        ],
+      },
+      {
+        id: 'sec-challenge-status-quo',
+        title: 'You Challenge the Status Quo',
+        paragraphs: [
+          '**Numbers 13:30** — "We should go up and take possession of the land, for we can certainly do it."',
+          'Most of the spies focused on the obstacles before them. They saw giants, fortified cities, and impossible circumstances. Caleb, however, saw the faithfulness of God.',
+          'Being built different means refusing to let fear define reality. Faith does not ignore the facts, it chooses to believe that God is greater than them.',
+          "The Kingdom of God operates through faith. While the majority allowed fear to shape their perspective, Caleb assigned faith to the facts because he trusted God's promise more than his own limitations.",
+        ],
+        callout: 'Assign faith, not fear, to the facts. Faith is the currency of the Kingdom.',
+      },
+      {
+        id: 'sec-driven-by-future',
+        title: 'You Are Driven by the Future, Not the Past',
+        paragraphs: [
+          '**Numbers 14:3–4** — "Why is the Lord bringing us to this land only to let us fall by the sword?"',
+          'Israel longed to return to Egypt because it felt familiar, even though it represented bondage. Fear caused them to prefer the comfort of the past over the promise of the future.',
+          'God desires to lead His people forward, but He will not entrust lasting blessings to those who continually look backward.',
+          "Caleb understood that God's promises were worth waiting and fighting for. His vision was anchored in God's future rather than yesterday's experiences.",
+        ],
+        callout: 'God will never trust long-term blessing to short-term people.',
+      },
+      {
+        id: 'sec-cravings-changed',
+        title: 'Your Cravings Have Changed',
+        paragraphs: [
+          '**Numbers 14:9** — "Only do not rebel against the Lord. And do not be afraid of the people of the land..."',
+          'Fear has a way of changing what we desire. The Israelites allowed fear to make slavery seem more appealing than freedom.',
+          "A transformed heart desires God's promises more than temporary comfort.",
+          'When we are built different, our cravings change. We stop longing for what is comfortable and begin pursuing what God has prepared for us, even when it requires faith.',
+        ],
+        callout: "Don't allow the fear of where you are to cause you to forfeit the future of what could be.",
+      },
+      {
+        id: 'sec-eyes-on-god',
+        title: 'Your Eyes Are on God, Not Yourself',
+        paragraphs: [
+          'Throughout Numbers 13 and 14, the ten spies continually focused on themselves. They compared their own strength to the size of the giants and concluded they were incapable.',
+          'Caleb and Joshua focused on God instead.',
+          'Self-focus magnifies problems. God-focus magnifies His power.',
+          "When our attention shifts away from ourselves and onto God's character, fear begins to lose its grip. Faith grows because our confidence is no longer based on our ability but on God's faithfulness.",
+        ],
+        callout: 'The fatal flaw of the majority report was deep self-absorption.',
+      },
+      {
+        id: 'sec-consistent-over-time',
+        title: 'You Are Consistent Over Time',
+        paragraphs: [
+          '**Joshua 14:11** — "I am still as strong today as the day Moses sent me out."',
+          "Caleb remained faithful for more than forty years while waiting for God's promise to be fulfilled.",
+          'His passion, courage, and faith did not fade with time. He continued trusting God through every season until he received what had been promised.',
+          'Being built different is not about occasional moments of faith, it is about consistent obedience over a lifetime.',
+          'God honors those who continue following Him wholeheartedly, even when fulfillment takes longer than expected.',
+        ],
+        callout: 'Consistency is the evidence of enduring faith.',
+      },
+      {
+        id: 'sec-different-spirit',
+        title: 'Caleb: A Different Spirit',
+        unnumbered: true,
+        paragraphs: [
+          'Among the twelve spies, every leader represented a tribe of Israel. Many of their names carried powerful meanings connected to hearing God, salvation, deliverance, or God\'s provision. Yet despite these meaningful names, only Caleb and Joshua returned with a report rooted in faith.',
+          'Caleb\'s name is commonly translated as "dog," a symbol of fierce loyalty in the ancient Semitic world. Some scholars also connect his name to the idea of being wholehearted. His life reflected exactly that, complete devotion and unwavering faithfulness to God.',
+          'Joshua\'s name means "The LORD is Salvation," reminding us that victory comes not through human strength but through God\'s power.',
+          'Their lives demonstrate that identity is not determined by a name alone but by a heart that fully follows God.',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Ask God to cultivate a different spirit within you.',
+          'Choose faith over fear when facing challenges.',
+          "Let go of the past and embrace God's future.",
+          'Desire God\'s promises more than temporary comfort.',
+          "Fix your eyes on God's faithfulness rather than your limitations.",
+          'Remain consistent in your walk with Christ, even when answers take time.',
+          'Like Caleb, may we be known as people who follow God wholeheartedly. When we trust Him completely, He will lead us into the promises He has prepared for us.',
+        ],
+        callout: "Being built different is not about standing out for yourself, it's about standing firm in faith when everyone else chooses fear.",
+      },
+    ],
+    keyTakeaways: [
+      'God honors those who have a different spirit and follow Him wholeheartedly.',
+      "Faith chooses God's promises over fear and circumstances.",
+      "Don't allow your past to keep you from God's future.",
+      "A transformed heart desires God's will more than personal comfort.",
+      'Keep your eyes on God rather than your own limitations.',
+      'Consistency in following God produces lasting fruit.',
+      'God is looking for faithful people, not just gifted people.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Numbers 14:24',
+        text: 'But My servant Caleb, because he has a different spirit in him and has followed Me fully, I will bring into the land where he went, and his descendants shall inherit it.',
+      },
+      {
+        kicker: 'You Challenge the Status Quo',
+        verse: 'Numbers 13:30',
+        text: "Then Caleb quieted the people before Moses, and said, 'Let us go up at once and take possession, for we are well able to overcome it.'",
+      },
+      {
+        kicker: 'You Are Driven by the Future, Not the Past',
+        verse: 'Numbers 14:3-4',
+        text: "Why has the LORD brought us to this land to fall by the sword, that our wives and children should become victims? Would it not be better for us to return to Egypt? So they said to one another, 'Let us select a leader and return to Egypt.'",
+      },
+      {
+        kicker: 'Your Cravings Have Changed',
+        verse: 'Numbers 14:9',
+        text: 'Only do not rebel against the LORD, nor fear the people of the land, for they are our bread; their protection has departed from them, and the LORD is with us. Do not fear them.',
+      },
+      {
+        kicker: 'You Are Consistent Over Time',
+        verse: 'Joshua 14:11',
+        text: 'As yet I am as strong this day as on the day that Moses sent me; just as my strength was then, even so is my strength now, for war, both to go out and to come in.',
       },
     ],
   },
