@@ -88,11 +88,12 @@ Invite someone and come experience community with us.
     type: GatewayEventType.SONDAY_SERVICE,
     is_event_finished: false,
     gallery: [
-      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_1.webp',
-      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_2.webp',
-      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_3.webp',
-      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_4.webp',
-      // 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/05_31_26_5.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/you_belong_here_1.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/you_belong_here_2.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/you_belong_here_3.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/you_belong_here_4.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/you_belong_here_5.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/sunday_service/you_belong_here_6.webp'
     ]
   },
   
