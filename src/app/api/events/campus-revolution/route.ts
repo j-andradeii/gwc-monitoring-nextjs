@@ -115,22 +115,6 @@ async function appendToGoogleSheet(
     // Timestamp in Asia/Manila timezone.
     const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
 
-    // Birthdate — formatted as a readable US date.
-    //
-    // Two fixes are baked in here:
-    //  1. Timezone: the client sends the birthdate as a UTC ISO string, so we
-    //     format it in Asia/Manila (same zone the timestamp above uses) to avoid
-    //     an off-by-one day for PH registrants.
-    //  2. Leading apostrophe: under USER_ENTERED, Google Sheets coerces
-    //     "MM/DD/YYYY" into a date *serial number* (e.g. 34679). Column E has no
-    //     date number-format, so the bare serial rendered as an unreadable
-    //     integer. The apostrophe forces the cell to plain text and is not shown.
-    let birthdateStr = '';
-    if (data.birthdate) {
-      const bd = new Date(data.birthdate as string | number | Date);
-      birthdateStr = `'${bd.toLocaleDateString('en-US', { timeZone: 'Asia/Manila' })}`;
-    }
-
     // Social handles — one "Platform: @handle" per line.
     const socialMedia = Array.isArray(data.socialMedia)
       ? (data.socialMedia as Array<{ platform: string; handle: string }>)
@@ -154,7 +138,7 @@ async function appendToGoogleSheet(
       data.firstName || '',     // B  First Name
       data.lastName || '',      // C  Last Name
       data.cellLeader || '',    // D  Cell Leader
-      birthdateStr,             // E  Birthdate
+      '',                       // E  (Birthdate removed — column kept blank to preserve existing sheet alignment)
       data.email || '',         // F  Email
       data.phone || '',         // G  Phone
       socialMedia,              // H  Social Handles
@@ -200,12 +184,10 @@ export async function POST(request: Request) {
       socialMedia = [];
     }
 
-    const birthdateRaw = formData.get('birthdate');
     const fields = {
       firstName: String(formData.get('firstName') ?? ''),
       lastName: String(formData.get('lastName') ?? ''),
       cellLeader: String(formData.get('cellLeader') ?? ''),
-      birthdate: birthdateRaw ? new Date(String(birthdateRaw)) : undefined,
       email: String(formData.get('email') ?? ''),
       phone: String(formData.get('phone') ?? ''),
       socialMedia,
@@ -222,9 +204,16 @@ export async function POST(request: Request) {
 
     const eventSlug = String(formData.get('eventSlug') ?? '');
 
-    // Handle proof of payment upload.
+    // Handle proof of payment upload. Payment is required — reject if missing.
     const proof = formData.get('proofOfPayment');
     const proofProvided = proof instanceof Blob && proof.size > 0;
+
+    if (!proofProvided) {
+      return NextResponse.json(
+        { error: 'Proof of payment is required' },
+        { status: 400 }
+      );
+    }
 
     let proofUrl = '';
     if (proofProvided) {

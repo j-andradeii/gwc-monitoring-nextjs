@@ -13,6 +13,7 @@ interface ProofOfPaymentFieldProps {
   name?: string;
   label?: string;
   sublabel?: string;
+  required?: boolean;
 }
 
 /**
@@ -25,6 +26,7 @@ export default function ProofOfPaymentField({
   name = 'proofOfPayment',
   label = 'Upload proof of payment',
   sublabel = 'Upload 1 supported image. Max 10 MB.',
+  required = false,
 }: ProofOfPaymentFieldProps) {
   const methods = useFormContext();
   const [isConverting, setIsConverting] = useState(false);
@@ -51,7 +53,11 @@ export default function ProofOfPaymentField({
     <div className="sod-upload-field">
       <span className="sod-upload-label">
         {label}
-        <span className="sod-upload-optional">(optional)</span>
+        {required ? (
+          <span className="form-required">*</span>
+        ) : (
+          <span className="sod-upload-optional">(optional)</span>
+        )}
       </span>
       <span className="sod-upload-sublabel">{sublabel}</span>
 

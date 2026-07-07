@@ -298,6 +298,10 @@
    existing .vip-* rules. Only appended, never modifies above.
    ============================================================ */
 
+.sod-form-row-1col {
+    grid-template-columns: 1fr;
+}
+
 .sod-form-row-2col {
     grid-template-columns: 1fr 1fr;
 }
