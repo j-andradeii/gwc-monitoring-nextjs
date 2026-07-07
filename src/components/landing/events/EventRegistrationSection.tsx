@@ -8,7 +8,6 @@ import { useMutation } from '@tanstack/react-query';
 import { Event } from '@/data/events';
 import {
   FormInput,
-  FormMaskedDate,
   FormSocialMedia,
   useScrollToFirstError,
 } from '@/components/forms';
@@ -20,15 +19,14 @@ import { mimeFromFilename } from '@/lib/image-mime';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
-// Client-side Zod schema — extends the base schema with the optional proof file.
+// Client-side Zod schema — extends the base schema with the required proof file.
 const proofOfPaymentSchema = z
-  .instanceof(File)
+  .instanceof(File, { message: 'Proof of payment is required' })
   .refine((file) => file.size <= SOD_PROOF_MAX_BYTES, 'File must be 10 MB or smaller')
   .refine(
     (file) => file.type.startsWith('image/') || mimeFromFilename(file.name) !== null,
     'Please upload an image file'
-  )
-  .optional();
+  );
 
 const eventRegistrationFormSchema = eventRegistrationSchema.extend({
   proofOfPayment: proofOfPaymentSchema,
@@ -51,7 +49,6 @@ export default function EventRegistrationSection({ event }: Props) {
       firstName: '',
       lastName: '',
       cellLeader: '',
-      birthdate: undefined,
       email: '',
       phone: '',
       socialMedia: [{ platform: 'Facebook', handle: '' }],
@@ -69,7 +66,6 @@ export default function EventRegistrationSection({ event }: Props) {
       formData.append('firstName', data.firstName);
       formData.append('lastName', data.lastName);
       formData.append('cellLeader', data.cellLeader);
-      formData.append('birthdate', data.birthdate ? data.birthdate.toISOString() : '');
       formData.append('email', data.email ?? '');
       formData.append('phone', data.phone ?? '');
       formData.append('socialMedia', JSON.stringify(data.socialMedia));
@@ -137,7 +133,6 @@ export default function EventRegistrationSection({ event }: Props) {
                       firstName: '',
                       lastName: '',
                       cellLeader: '',
-                      birthdate: undefined,
                       email: '',
                       phone: '',
                       socialMedia: [{ platform: 'Facebook', handle: '' }],
@@ -196,21 +191,13 @@ export default function EventRegistrationSection({ event }: Props) {
                           />
                         </div>
 
-                        <div className="form-row sod-form-row-2col">
-                          <FormMaskedDate
-                            name="birthdate"
-                            label="Date of Birth"
-                            showRequired
-                          />
+                        <div className="form-row sod-form-row-1col">
                           <FormInput
                             name="email"
                             label="Email (optional)"
                             placeholder="you@email.com"
                             className="modern-field"
                           />
-                        </div>
-
-                        <div className="form-row sod-form-row-1col">
                           <FormInput
                             name="phone"
                             label="Phone Number (optional)"
@@ -256,8 +243,8 @@ export default function EventRegistrationSection({ event }: Props) {
                         </div>
 
                         <p className="sod-payment-intro">
-                          Pay the registration fee by scanning either QR code below, then
-                          upload your proof of payment to confirm your slot.
+                          Pay the {event.registration_fee ? `${event.registration_fee} ` : ''}registration fee by scanning
+                          either QR code below, then upload your proof of payment to confirm your slot.
                         </p>
 
                         <div className="sod-payment-grid">
@@ -329,12 +316,13 @@ export default function EventRegistrationSection({ event }: Props) {
                         <div className="sod-amount-field">
                           <FormInput
                             name="amountSent"
-                            label="Payment Amount Sent (optional)"
+                            label="Payment Amount Sent"
+                            showRequired
                             className="modern-field"
                           />
                         </div>
 
-                        <ProofOfPaymentField />
+                        <ProofOfPaymentField required />
 
                         <p className="sod-payment-note">
                           <i className="pi pi-info-circle" aria-hidden="true"></i>

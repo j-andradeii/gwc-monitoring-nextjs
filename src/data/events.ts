@@ -30,7 +30,8 @@ export interface Event {
   type: GatewayEventType;
   is_event_finished?: boolean;
   gallery?: string[]; // Optional array of image URLs for the event gallery,
-  has_payment?: boolean
+  has_payment?: boolean;
+  registration_fee?: string; // Display-ready registration fee for paid events (e.g. "₱350"); shown on the event page
 }
 
 const getUpcomingSunday = (): string => {
@@ -388,7 +389,8 @@ We will go and make disciples! We are ready to give our all! 🔥
     gallery: [
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/theme.webp'
     ],
-    has_payment: true
+    has_payment: true,
+    registration_fee: '₱300'
   },
 ];
 

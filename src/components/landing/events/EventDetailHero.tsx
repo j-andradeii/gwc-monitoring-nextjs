@@ -66,12 +66,18 @@ export function EventDetailHero({ event, onJoinEvent, onShareEvent }: Props) {
                   <span><strong>{event.location}</strong>Location</span>
                 </div>
               )}
+              {event.registration_fee && (
+                <div className="event-detail-hero__meta-item">
+                  <i className="pi pi-money-bill" aria-hidden="true" />
+                  <span><strong>{event.registration_fee}</strong>Registration Fee</span>
+                </div>
+              )}
             </div>
 
             <div className="event-detail-hero__actions" aria-label="Event actions">
               <button type="button" className="landing-btn landing-btn-primary event-detail-hero__action" onClick={onJoinEvent}>
                 <i className="pi pi-user-plus" aria-hidden="true" />
-                Join Event
+                {event.has_payment ? 'Register' : 'Join Event'}
               </button>
               <button type="button" className="landing-btn landing-btn-outline event-detail-hero__action" onClick={onShareEvent}>
                 <i className="pi pi-share-alt" aria-hidden="true" />
