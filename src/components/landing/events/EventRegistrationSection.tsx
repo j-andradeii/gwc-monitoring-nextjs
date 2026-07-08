@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -40,6 +40,7 @@ interface Props {
 
 export default function EventRegistrationSection({ event }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
   const [registrantName, setRegistrantName] = useState<string | null>(null);
 
   const methods = useForm<EventRegistrationFormData>({
@@ -92,15 +93,24 @@ export default function EventRegistrationSection({ event }: Props) {
 
       return response.json();
     },
-    onSuccess: () => {
-      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    },
   });
 
   const onSubmit = (data: EventRegistrationFormData) => {
     setRegistrantName(`${data.firstName} ${data.lastName}`);
     submitRegistration.mutate(data);
   };
+
+  // On a successful registration the form is swapped for the "Thank You!"
+  // success message. Wait for that container to paint, then scroll it into
+  // view (this section only renders for has_payment events).
+  useEffect(() => {
+    if (submitRegistration.isSuccess) {
+      (successRef.current ?? sectionRef.current)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, [submitRegistration.isSuccess]);
 
   return (
     <section
@@ -113,7 +123,7 @@ export default function EventRegistrationSection({ event }: Props) {
         <div className="event-register-form-wrap">
           <div className="vip-form-container">
             {submitRegistration.isSuccess ? (
-              <div className="success-animation-container">
+              <div className="success-animation-container" ref={successRef}>
                 <div className="success-icon-wrapper">
                   <i className="pi pi-heart-fill" aria-hidden="true"></i>
                   <div className="pulse-ring" aria-hidden="true"></div>
