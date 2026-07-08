@@ -371,7 +371,7 @@ Tag your movie buddy, scan the QR code, and save your seat. We can’t wait to s
     day: 'Saturday',
     time: '9:00 AM',
     location: 'IEC Convention Center of Cebu, Cebu City',
-    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/campus_leaders.webp',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/campus_rev_1920x1080_enhanced.webp',
     description: `
 God intentionally chose us to reach the youth of this generation. So, let's rise up, campus leaders! Let nothing stop us from winning our campuses for Jesus! 🔥
 
@@ -387,6 +387,7 @@ We will go and make disciples! We are ready to give our all! 🔥
     type: GatewayEventType.G12_CONFERENCE,
     is_event_finished: false,
     gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/campus_leaders.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/theme.webp'
     ],
     has_payment: true,
