@@ -134,7 +134,7 @@ export default function EventsPage() {
         </section>
 
         {/* Past Events archive — gives finished-event detail pages an internal link */}
-        {pastEvents.length > 0 && (
+        {/* {pastEvents.length > 0 && (
           <section className="events-grid-section events-past-section">
             <div className="landing-container">
               <div
@@ -150,7 +150,7 @@ export default function EventsPage() {
               <EventsCardGrid events={pastEvents} showDescription={true} showAll={true} limit={0} />
             </div>
           </section>
-        )}
+        )} */}
       </main>
 
       <LandingFooter />

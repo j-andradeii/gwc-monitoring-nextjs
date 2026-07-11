@@ -73,11 +73,12 @@ export default function EventRegistrationSection({ event }: Props) {
       formData.append('amountSent', data.amountSent ?? '');
       formData.append('eventSlug', event.slug);
       formData.append('eventTitle', event.title);
+      formData.append('eventDate', event.date);
       if (data.proofOfPayment) {
         formData.append('proofOfPayment', data.proofOfPayment);
       }
 
-      const response = await fetch('/api/events/campus-revolution', {
+      const response = await fetch('/api/events/event-registration', {
         method: 'POST',
         body: formData,
       });
@@ -328,6 +329,7 @@ export default function EventRegistrationSection({ event }: Props) {
                             name="amountSent"
                             label="Payment Amount Sent"
                             showRequired
+                            placeholder={event.registration_fee}
                             className="modern-field"
                           />
                         </div>
