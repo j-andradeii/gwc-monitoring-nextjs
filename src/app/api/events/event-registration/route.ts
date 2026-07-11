@@ -7,7 +7,10 @@ import { resolveImageMime } from '@/lib/image-mime';
 export const runtime = 'nodejs';
 
 /**
- * G12 Campus Revolution (and future campus events) spreadsheet.
+ * Generic paid-event registration route (any event with `has_payment: true`).
+ * Every paid event submits here and rows are distinguished by the Event Name
+ * and Event Date columns written ahead of the registrant's details.
+ *
  * The owner-supplied target Sheet ID is hardcoded as a fallback so the route
  * still writes even when GOOGLE_SPREADSHEET_G12_EVENTS isn't set in the Vercel
  * environment; the env var wins when present. (Without this fallback, a missing
@@ -32,7 +35,7 @@ function resolveSheetTab(eventSlug: string): string {
 }
 
 // Wrap in single quotes so tab names with spaces are valid A1 notation.
-const sheetRangeForTab = (tab: string) => `'${tab}'!A:J`;
+const sheetRangeForTab = (tab: string) => `'${tab}'!A:L`;
 
 interface SheetResult {
   success: boolean;
@@ -87,6 +90,8 @@ async function uploadProofToBlob(
 async function appendToGoogleSheet(
   data: Record<string, unknown>,
   eventSlug: string,
+  eventTitle: string,
+  eventDate: string,
   proofUrl: string,
   proofProvided: boolean
 ): Promise<SheetResult> {
@@ -132,18 +137,21 @@ async function appendToGoogleSheet(
         ? 'Proof upload failed — please follow up'
         : '';
 
-    // Column order: A–J
+    // Column order: A–L. Event Name + Event Date lead the registrant details so
+    // rows from every paid event can be told apart on the shared sheet.
     const row = [
       timestamp,                // A  Timestamp
-      data.firstName || '',     // B  First Name
-      data.lastName || '',      // C  Last Name
-      data.cellLeader || '',    // D  Cell Leader
-      '',                       // E  (Birthdate removed — column kept blank to preserve existing sheet alignment)
-      data.email || '',         // F  Email
-      data.phone || '',         // G  Phone
-      socialMedia,              // H  Social Handles
-      data.amountSent || '',    // I  Amount Sent
-      proofCell,                // J  Proof of Payment (=IMAGE)
+      eventTitle || '',         // B  Event Name
+      eventDate || '',          // C  Event Date
+      data.firstName || '',     // D  First Name
+      data.lastName || '',      // E  Last Name
+      data.cellLeader || '',    // F  Cell Leader
+      '',                       // G  (Birthdate removed — column kept blank to preserve existing sheet alignment)
+      data.email || '',         // H  Email
+      data.phone || '',         // I  Phone
+      socialMedia,              // J  Social Handles
+      data.amountSent || '',    // K  Amount Sent
+      proofCell,                // L  Proof of Payment (=IMAGE)
     ];
 
     await sheets.spreadsheets.values.append({
@@ -152,9 +160,9 @@ async function appendToGoogleSheet(
       valueInputOption: 'USER_ENTERED',
       // Force every submission onto a fresh row that starts at column A.
       // Without INSERT_ROWS, append's default OVERWRITE mode mis-detects the
-      // "table": the isolated =HYPERLINK/=IMAGE() cell in the last column (J),
+      // "table": the isolated =HYPERLINK/=IMAGE() cell in the last column (L),
       // separated from the rest by empty optional cells, makes the next row
-      // anchor at that column (J) instead of A. INSERT_ROWS inserts a brand-new
+      // anchor at that column (L) instead of A. INSERT_ROWS inserts a brand-new
       // row and writes the values from the range's first column (A).
       insertDataOption: 'INSERT_ROWS',
       requestBody: {
@@ -203,6 +211,8 @@ export async function POST(request: Request) {
     }
 
     const eventSlug = String(formData.get('eventSlug') ?? '');
+    const eventTitle = String(formData.get('eventTitle') ?? '');
+    const eventDate = String(formData.get('eventDate') ?? '');
 
     // Handle proof of payment upload. Payment is required — reject if missing.
     const proof = formData.get('proofOfPayment');
@@ -252,6 +262,8 @@ export async function POST(request: Request) {
     const result = await appendToGoogleSheet(
       validationResult.data as unknown as Record<string, unknown>,
       eventSlug,
+      eventTitle,
+      eventDate,
       proofUrl,
       proofProvided
     );
@@ -261,7 +273,7 @@ export async function POST(request: Request) {
       message: 'Registration received successfully',
     });
   } catch (error) {
-    console.error('Campus Revolution registration error:', error);
+    console.error('Event registration error:', error);
     return NextResponse.json(
       { success: false, message: 'Failed to process registration' },
       { status: 500 }
