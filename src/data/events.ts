@@ -393,6 +393,43 @@ We will go and make disciples! We are ready to give our all! 🔥
     has_payment: true,
     registration_fee: '₱300'
   },
+    {
+    id: 15,
+    slug: 'g12-national-conference-davao-2026',
+    title: 'G12 NATIONAL CONFERENCE',
+    date: 'October 23, 2026',
+    displayDate: 'Oct 23',
+    day: 'Friday',
+    time: '9:00 AM',
+    location: 'SMX Davao, 3rd Level, SM Lana Premier, JP Laurel Avenue Lana, Davao City',
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/natcon/banner.webp',
+    description: `
+G12 family, our vision is clear, and we will always persevere! Let's all keep ourselves prepared for our National Conference this year! 🔥
+G12 PH National Conference 2026: GO AND MAKE DISCIPLES OF ALL NATIONS
+
+🗓 Conference Schedule:
+October 23 (Friday) — Batch 1
+October 24 (Saturday) — Batch 2 
+
+🕜Time: 9AM to 6PM
+
+📍Venue: SMX Davao, 3rd Level, SM Lana Premier, JP Laurel Avenue Lana, Davao City
+🎙SPEAKERS:
+- Pastor Cesar & Emma Claudia Castellanos
+- International and national leaders
+📝 Registration fee: PHP1,000`
+,
+    category: 'Training',
+    isFeatured: false,
+    type: GatewayEventType.G12_CONFERENCE,
+    is_event_finished: false,
+    gallery: [
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/natcon/natcon.webp',
+      'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/natcon/schedule.webp'
+    ],
+    has_payment: true,
+    registration_fee: '₱1000'
+  },
 ];
 
 export const getEventById = (id: number): Event | undefined => {
