@@ -60,17 +60,18 @@
   gap: 4px;
 }
 
+/* DESIGN_SYSTEM §4 Section Label / Eyebrow: 11-12px, 2.5px tracking */
 .admin-dash-eyebrow {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--admin-gold);
   margin: 0 0 2px;
 }
 
 .admin-dash-title {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--admin-text-heading);
   margin: 0;
@@ -78,8 +79,9 @@
   letter-spacing: -0.3px;
 }
 
+/* DESIGN_SYSTEM §4 Body Copy: 15px */
 .admin-dash-subtitle {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--admin-text-muted);
   margin: 0;
@@ -103,7 +105,7 @@
   background: var(--admin-surface);
   color: var(--admin-text-body);
   font-family: inherit;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -139,7 +141,7 @@
   background: linear-gradient(145deg, var(--admin-gold) 0%, var(--admin-gold-dark) 100%);
   color: #ffffff;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -212,9 +214,10 @@
 }
 
 /* Icon tile — accent color driven via --accent CSS custom property set inline */
+/* DESIGN_SYSTEM §14 Stats Widget Card .stats-icon-container: 48px */
 .admin-dash-stat-icon {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -240,7 +243,7 @@
 }
 
 .admin-dash-stat-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--admin-text-muted);
   text-transform: uppercase;
@@ -250,8 +253,9 @@
   text-overflow: ellipsis;
 }
 
+/* DESIGN_SYSTEM §14 Stats Widget Card .stats-value: 28px */
 .admin-dash-stat-value {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--admin-text-heading);
   line-height: 1.15;
@@ -259,7 +263,7 @@
 }
 
 .admin-dash-stat-trend {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--admin-text-faint);
 }
@@ -283,7 +287,7 @@
 }
 
 .admin-dash-section-title {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--admin-text-heading);
   margin: 0;
@@ -291,7 +295,7 @@
 }
 
 .admin-dash-section-hint {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--admin-text-faint);
 }
@@ -335,8 +339,8 @@
 }
 
 .admin-dash-action-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   background: var(--admin-gold-soft);
   color: var(--admin-gold-dark);
@@ -353,15 +357,16 @@
   background: rgba(192, 160, 103, 0.20);
 }
 
+/* DESIGN_SYSTEM §4 Body Copy: 15px */
 .admin-dash-action-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--admin-text-heading);
   line-height: 1.3;
 }
 
 .admin-dash-action-description {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--admin-text-muted);
   line-height: 1.5;
@@ -373,7 +378,7 @@
   top: 16px;
   right: 14px;
   color: var(--admin-gold);
-  font-size: 12px;
+  font-size: 13px;
   transition: transform var(--admin-transition-standard),
               color var(--admin-transition-standard);
 }
@@ -405,19 +410,19 @@
   align-items: center;
   justify-content: center;
   color: var(--admin-text-faint);
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 2px;
 }
 
 .admin-dash-empty-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--admin-text-body);
   margin: 0;
 }
 
 .admin-dash-empty-text {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--admin-text-muted);
   max-width: 300px;
@@ -437,8 +442,8 @@
 }
 
 .admin-dash-coming-soon-icon-tile {
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
   border-radius: 14px;
   background: var(--admin-gold-soft);
   border: 1px solid var(--admin-gold-border);
@@ -446,12 +451,13 @@
   align-items: center;
   justify-content: center;
   color: var(--admin-gold-dark);
-  font-size: 26px;
+  font-size: 28px;
   margin-bottom: 4px;
 }
 
+/* DESIGN_SYSTEM §4 Step Title: 20px */
 .admin-dash-coming-soon-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--admin-text-heading);
   margin: 0;
@@ -459,7 +465,7 @@
 }
 
 .admin-dash-coming-soon-text {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--admin-text-muted);
   max-width: 320px;
@@ -506,7 +512,7 @@
   }
 
   .admin-dash-stat-value {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .admin-dash-actions-grid {

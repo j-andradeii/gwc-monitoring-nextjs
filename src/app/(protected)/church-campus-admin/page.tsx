@@ -91,7 +91,7 @@ export default function ChurchCampusAdmin() {
               style={{ ['--accent' as string]: stat.accent }}
             >
               <div className="admin-dash-stat-icon" aria-hidden="true">
-                <i className={stat.icon} style={{ fontSize: 18 }} />
+                <i className={stat.icon} style={{ fontSize: 20 }} />
               </div>
               <div className="admin-dash-stat-body">
                 <span className="admin-dash-stat-label">{stat.label}</span>
@@ -119,7 +119,7 @@ export default function ChurchCampusAdmin() {
               className="admin-dash-action-card"
             >
               <span className="admin-dash-action-icon" aria-hidden="true">
-                <i className={action.icon} style={{ fontSize: 16 }} />
+                <i className={action.icon} style={{ fontSize: 18 }} />
               </span>
               <span className="admin-dash-action-label">{action.label}</span>
               <span className="admin-dash-action-description">{action.description}</span>
