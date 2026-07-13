@@ -6976,7 +6976,7 @@ When we understand that we are God's masterpiece, we stop striving for acceptanc
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: "Caleb stood out not because he was stronger or more talented than the other spies, but because he carried a different spirit, one marked by unwavering faith, wholehearted obedience, and complete trust in God.",
 
     description: `**BUILT DIFFERENT**
@@ -7262,6 +7262,221 @@ Like Caleb, may we be known as people who follow God wholeheartedly. When we tru
         kicker: 'You Are Consistent Over Time',
         verse: 'Joshua 14:11',
         text: 'As yet I am as strong this day as on the day that Moses sent me; just as my strength was then, even so is my strength now, for war, both to go out and to come in.',
+      },
+    ],
+  },
+  {
+    id: '33',
+    slug: 'faith-over-fear',
+    title: 'Faith over Fear',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-07-12',
+    duration: '45 min',
+    series: 'Faith Foundation',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: "Fear destroys, but faith builds. Faith doesn't deny the storm; it declares that God is greater than it.",
+
+    description: `**FAITH OVER FEAR**
+
+Key Verse: Mark 4:35–41
+
+---
+
+**INTRODUCTION**
+
+Fear destroys, but faith builds.
+
+Storms don't ask for permission before they arrive. Life is unpredictable, but our confidence doesn't come from knowing what tomorrow holds, it comes from knowing the One who holds tomorrow.
+
+---
+
+**1. Life Is Unpredictable** (Proverbs 27:1)
+
+We cannot control the "weather" of life, but we can trust the One who governs it. If our faith depends on life always being smooth, it will crumble when storms come.
+
+---
+
+**2. We Have Limitations** (2 Corinthians 12:9)
+
+Sometimes God allows us to reach the end of ourselves so we can experience the beginning of His work. Our weaknesses become the very place where His strength and miracles are revealed.
+
+---
+
+**3. Trials Reveal What's Inside Us** (Numbers 13:30–31 | 1 Peter 1:7)
+
+Storms expose what fills our hearts. Fear focuses on problems, while faith remembers God's faithfulness. Our faith is refined through testing and is precious in God's sight.
+
+---
+
+**4. Storms Reveal Who God Really Is** (Job 42:5)
+
+Storms are temporary, but what we learn about God through them lasts forever. Every trial is an invitation to know Him more deeply and experience His faithfulness in a new way.
+
+---
+
+**5. Faith and Fear Cannot Coexist** (Isaiah 26:3)
+
+Fear magnifies the storm, but faith magnifies the Savior. Worry dwells on what could go wrong, while faith meditates on God's promises, His sovereignty, and His goodness.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Life is uncertain, but God is unchanging.
+* Your weakness creates room for God's strength.
+* Storms don't define you, they refine you.
+* Every trial is an opportunity to know God more deeply.
+* Choose faith over fear because you cannot hold on to both at the same time.
+
+---
+
+**CALL TO ACTION**
+
+Whatever storm you're facing today, don't allow fear to have the final word. Fix your eyes on Jesus, trust His promises, and remember that the same God who calms the storm is with you in the middle of it.
+
+Faith doesn't deny the storm; it declares that God is greater than it.`,
+
+    tags: ['Faith', 'Fear', 'Trust', 'Storms', 'Peace', 'Faithfulness'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/faith_over_faith.webp',
+    scriptures: [
+      {
+        verse: 'Mark 4:35–41',
+        text: "On the same day, when evening had come, He said to them, 'Let us cross over to the other side.' Now when they had left the multitude, they took Him along in the boat as He was. And other little boats were also with Him. And a great windstorm arose, and the waves beat into the boat, so that it was already filling. But He was in the stern, asleep on a pillow. And they awoke Him and said to Him, 'Teacher, do You not care that we are perishing?' Then He arose and rebuked the wind, and said to the sea, 'Peace, be still!' And the wind ceased and there was a great calm. But He said to them, 'Why are you so fearful? How is it that you have no faith?' And they feared exceedingly, and said to one another, 'Who can this be, that even the wind and the sea obey Him!'",
+      },
+      {
+        verse: 'Proverbs 27:1',
+        text: 'Do not boast about tomorrow, for you do not know what a day may bring forth.',
+      },
+      {
+        verse: '2 Corinthians 12:9',
+        text: "And He said to me, 'My grace is sufficient for you, for My strength is made perfect in weakness.' Therefore most gladly I will rather boast in my infirmities, that the power of Christ may rest upon me.",
+      },
+      {
+        verse: 'Numbers 13:30–31',
+        text: "Then Caleb quieted the people before Moses, and said, 'Let us go up at once and take possession, for we are well able to overcome it.' But the men who had gone up with him said, 'We are not able to go up against the people, for they are stronger than we.'",
+      },
+      {
+        verse: '1 Peter 1:7',
+        text: 'that the genuineness of your faith, being much more precious than gold that perishes, though it is tested by fire, may be found to praise, honor, and glory at the revelation of Jesus Christ,',
+      },
+      {
+        verse: 'Job 42:5',
+        text: 'I have heard of You by the hearing of the ear, but now my eye sees You.',
+      },
+      {
+        verse: 'Isaiah 26:3',
+        text: 'You will keep him in perfect peace, whose mind is stayed on You, because he trusts in You.',
+      },
+    ],
+    keyPoints: ['Life Is Unpredictable', 'We Have Limitations', "Trials Reveal What's Inside Us", 'Storms Reveal Who God Really Is', 'Faith and Fear Cannot Coexist'],
+    relatedSermons: ['32', '31'],
+    subtitle: { prefix: 'Faith Over', italic: 'Fear' },
+    keyVerse: 'Mark 4:35–41',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Faith Over Fear',
+        unnumbered: true,
+        paragraphs: [
+          'Fear destroys, but faith builds.',
+          "Storms don't ask for permission before they arrive. Life is unpredictable, but our confidence doesn't come from knowing what tomorrow holds, it comes from knowing the One who holds tomorrow.",
+        ],
+      },
+      {
+        id: 'sec-life-unpredictable',
+        title: 'Life Is Unpredictable',
+        paragraphs: [
+          '**Proverbs 27:1**',
+          'We cannot control the "weather" of life, but we can trust the One who governs it. If our faith depends on life always being smooth, it will crumble when storms come.',
+        ],
+      },
+      {
+        id: 'sec-we-have-limitations',
+        title: 'We Have Limitations',
+        paragraphs: [
+          '**2 Corinthians 12:9**',
+          'Sometimes God allows us to reach the end of ourselves so we can experience the beginning of His work. Our weaknesses become the very place where His strength and miracles are revealed.',
+        ],
+      },
+      {
+        id: 'sec-trials-reveal-whats-inside',
+        title: "Trials Reveal What's Inside Us",
+        paragraphs: [
+          '**Numbers 13:30–31 · 1 Peter 1:7**',
+          "Storms expose what fills our hearts. Fear focuses on problems, while faith remembers God's faithfulness. Our faith is refined through testing and is precious in God's sight.",
+        ],
+      },
+      {
+        id: 'sec-storms-reveal-god',
+        title: 'Storms Reveal Who God Really Is',
+        paragraphs: [
+          '**Job 42:5**',
+          'Storms are temporary, but what we learn about God through them lasts forever. Every trial is an invitation to know Him more deeply and experience His faithfulness in a new way.',
+        ],
+      },
+      {
+        id: 'sec-faith-and-fear-cannot-coexist',
+        title: 'Faith and Fear Cannot Coexist',
+        paragraphs: [
+          '**Isaiah 26:3**',
+          "Fear magnifies the storm, but faith magnifies the Savior. Worry dwells on what could go wrong, while faith meditates on God's promises, His sovereignty, and His goodness.",
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          "Whatever storm you're facing today, don't allow fear to have the final word. Fix your eyes on Jesus, trust His promises, and remember that the same God who calms the storm is with you in the middle of it.",
+        ],
+        callout: "Faith doesn't deny the storm; it declares that God is greater than it.",
+      },
+    ],
+    keyTakeaways: [
+      'Life is uncertain, but God is unchanging.',
+      "Your weakness creates room for God's strength.",
+      "Storms don't define you, they refine you.",
+      'Every trial is an opportunity to know God more deeply.',
+      'Choose faith over fear because you cannot hold on to both at the same time.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Mark 4:35–41',
+        text: "On the same day, when evening had come, He said to them, 'Let us cross over to the other side.' Now when they had left the multitude, they took Him along in the boat as He was. And other little boats were also with Him. And a great windstorm arose, and the waves beat into the boat, so that it was already filling. But He was in the stern, asleep on a pillow. And they awoke Him and said to Him, 'Teacher, do You not care that we are perishing?' Then He arose and rebuked the wind, and said to the sea, 'Peace, be still!' And the wind ceased and there was a great calm. But He said to them, 'Why are you so fearful? How is it that you have no faith?' And they feared exceedingly, and said to one another, 'Who can this be, that even the wind and the sea obey Him!'",
+      },
+      {
+        kicker: 'Life Is Unpredictable',
+        verse: 'Proverbs 27:1',
+        text: 'Do not boast about tomorrow, for you do not know what a day may bring forth.',
+      },
+      {
+        kicker: 'We Have Limitations',
+        verse: '2 Corinthians 12:9',
+        text: "And He said to me, 'My grace is sufficient for you, for My strength is made perfect in weakness.' Therefore most gladly I will rather boast in my infirmities, that the power of Christ may rest upon me.",
+      },
+      {
+        kicker: "Trials Reveal What's Inside Us",
+        verse: 'Numbers 13:30–31',
+        text: "Then Caleb quieted the people before Moses, and said, 'Let us go up at once and take possession, for we are well able to overcome it.' But the men who had gone up with him said, 'We are not able to go up against the people, for they are stronger than we.'",
+      },
+      {
+        kicker: "Trials Reveal What's Inside Us",
+        verse: '1 Peter 1:7',
+        text: 'that the genuineness of your faith, being much more precious than gold that perishes, though it is tested by fire, may be found to praise, honor, and glory at the revelation of Jesus Christ,',
+      },
+      {
+        kicker: 'Storms Reveal Who God Really Is',
+        verse: 'Job 42:5',
+        text: 'I have heard of You by the hearing of the ear, but now my eye sees You.',
+      },
+      {
+        kicker: 'Faith and Fear Cannot Coexist',
+        verse: 'Isaiah 26:3',
+        text: 'You will keep him in perfect peace, whose mind is stayed on You, because he trusts in You.',
       },
     ],
   },
