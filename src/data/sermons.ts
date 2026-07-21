@@ -7275,7 +7275,7 @@ Like Caleb, may we be known as people who follow God wholeheartedly. When we tru
     duration: '45 min',
     series: 'Faith Foundation',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: "Fear destroys, but faith builds. Faith doesn't deny the storm; it declares that God is greater than it.",
 
     description: `**FAITH OVER FEAR**
@@ -7477,6 +7477,273 @@ Faith doesn't deny the storm; it declares that God is greater than it.`,
         kicker: 'Faith and Fear Cannot Coexist',
         verse: 'Isaiah 26:3',
         text: 'You will keep him in perfect peace, whose mind is stayed on You, because he trusts in You.',
+      },
+    ],
+  },
+  {
+    id: '34',
+    slug: 'reshaped',
+    title: 'Reshaped',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-07-19',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'God is less concerned with our qualifications than with our willingness to be reshaped. When we surrender our pride and trust His process, He prepares us to fulfill His purpose.',
+
+    description: `**RESHAPED**
+
+Exodus 2:11–15
+
+---
+
+**INTRODUCTION**
+
+Before God entrusted Moses with leading Israel out of Egypt, He first transformed the man who would carry the mission. Moses believed he was ready to deliver God's people, but he attempted to fulfill a God-given calling through human strength and self-confidence.
+
+God's work in Moses reminds us that our greatest obstacle is often not the circumstances around us but the pride and self-sufficiency within us. Before God fills us with His Spirit, He often leads us through a season of emptying, where our dependence shifts from ourselves to Him.
+
+This message reminds us that God is less concerned with our qualifications than with our willingness to be reshaped. When we surrender our pride and trust His process, He prepares us to fulfill His purpose.
+
+---
+
+**1. The Delusion of Human Qualification** (Exodus 2:11–12 | Acts 7:22–25 | Philippians 3:4–7)
+
+Moses had the education, influence, and position of an Egyptian prince. From a human perspective, he appeared fully qualified to lead. Yet instead of waiting for God's timing, he relied on his own strength and methods.
+
+Likewise, Paul once placed great confidence in his impressive religious credentials but later considered them worthless compared to knowing Christ.
+
+Human qualifications may open doors, but they can never replace the work of the Holy Spirit. Apart from God, our achievements can easily become monuments to our own pride rather than testimonies of His grace.
+
+Throughout Scripture, God repeatedly chose to break and reshape people like Moses, Joseph, and Paul before using them mightily.
+
+God does not call the qualified, He qualifies those He calls.
+
+---
+
+**2. The Necessity of Divine Emptying** (Exodus 2:15 | Genesis 41:14–16 | Acts 9:8–12)
+
+After fleeing Egypt, Moses entered the wilderness—a place that seemed like failure but was actually God's classroom.
+
+God had to remove "Egypt" from Moses before Moses could lead Israel out of Egypt. The wilderness was not punishment; it was preparation.
+
+Seasons of emptying are often painful because God exposes what we have been depending on. When life shakes us, whatever fills our hearts will eventually be revealed.
+
+Before God pours out His Spirit, He often drains us of pride, self-reliance, and worldly thinking. The wilderness becomes the place where dependence on God is formed.
+
+True spiritual maturity is not built on growing self-confidence alone but on growing confidence in God.
+
+---
+
+**3. Sustained by the Spirit Unto Eternity** (Exodus 3:11–12 | Acts 9:17–20 | John 15:5)
+
+Once Moses was emptied of self, God filled him with His presence.
+
+God's response to Moses' insecurity was not to list his qualifications but to give him a promise:
+
+"I will be with you."
+
+Our effectiveness in ministry does not come from talent, experience, or ability, it comes from God's presence working through surrendered lives.
+
+As we serve God, we are also called to be faithful stewards of the lives and bodies He has entrusted to us. Ministry is not about striving until we are exhausted but about allowing God's Spirit to sustain us for the long journey.
+
+Every generation becomes a testimony of God's faithfulness when ordinary people choose to depend on His power instead of their own.
+
+---
+
+**KEY TAKEAWAYS**
+
+* God often reshapes us before He releases us into our calling.
+* Human qualifications can never replace the work of the Holy Spirit.
+* God does not call the qualified, He qualifies the called.
+* The wilderness is not God's rejection but His place of preparation.
+* God empties us of self-reliance so He can fill us with His Spirit.
+* True confidence is rooted in God's presence, not in our own abilities.
+* Ministry is sustained by dependence on God, not human strength.
+* God's process prepares us for His purpose.
+
+---
+
+**CALL TO ACTION**
+
+Invite God to reshape your heart and deepen your dependence on Him.
+
+* Surrender areas where you have been relying on your own strength.
+* Embrace God's process, even when it feels uncomfortable or slow.
+* Seek God's direction instead of human approval.
+* Allow the Holy Spirit to shape your character before pursuing your calling.
+* Trust that God's preparation is producing a life that can faithfully carry His purpose.
+
+As we allow God to empty us of pride and self-sufficiency, He fills us with His presence, empowers us by His Spirit, and equips us to accomplish the God-sized purpose He has prepared for our lives.
+
+God cannot fully fill a life that is already full of itself. He reshapes us by emptying us of self so that we may be filled with His Spirit.`,
+
+    tags: ['Surrender', 'Humility', 'Preparation', 'Calling', 'Holy Spirit', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/reshaped.webp',
+    scriptures: [
+      {
+        verse: 'Exodus 2:11–12',
+        text: 'Now it came to pass in those days, when Moses was grown, that he went out to his brethren and looked at their burdens. And he saw an Egyptian beating a Hebrew, one of his brethren. So he looked this way and that way, and when he saw no one, he killed the Egyptian and hid him in the sand.',
+      },
+      {
+        verse: 'Acts 7:22–25',
+        text: 'And Moses was learned in all the wisdom of the Egyptians, and was mighty in words and deeds. Now when he was forty years old, it came into his heart to visit his brethren, the children of Israel. And seeing one of them suffer wrong, he defended and avenged him who was oppressed, and struck down the Egyptian. For he supposed that his brethren would have understood that God would deliver them by his hand, but they did not understand.',
+      },
+      {
+        verse: 'Philippians 3:4–7',
+        text: 'though I also might have confidence in the flesh. If anyone else thinks he may have confidence in the flesh, I more so: circumcised the eighth day, of the stock of Israel, of the tribe of Benjamin, a Hebrew of the Hebrews; concerning the law, a Pharisee; concerning zeal, persecuting the church; concerning the righteousness which is in the law, blameless. But what things were gain to me, these I have counted loss for Christ.',
+      },
+      {
+        verse: 'Exodus 2:15',
+        text: 'When Pharaoh heard of this matter, he sought to kill Moses. But Moses fled from the face of Pharaoh and dwelt in the land of Midian; and he sat down by a well.',
+      },
+      {
+        verse: 'Genesis 41:14–16',
+        text: "Then Pharaoh sent and called Joseph, and they brought him quickly out of the dungeon; and he shaved, changed his clothing, and came to Pharaoh. And Pharaoh said to Joseph, 'I have had a dream, and there is no one who can interpret it. But I have heard it said of you that you can understand a dream, to interpret it.' So Joseph answered Pharaoh, saying, 'It is not in me; God will give Pharaoh an answer of peace.'",
+      },
+      {
+        verse: 'Acts 9:8–12',
+        text: "Then Saul arose from the ground, and when his eyes were opened he saw no one. But they led him by the hand and brought him into Damascus. And he was three days without sight, and neither ate nor drank. Now there was a certain disciple at Damascus named Ananias; and to him the Lord said in a vision, 'Ananias.' And he said, 'Here I am, Lord.' So the Lord said to him, 'Arise and go to the street called Straight, and inquire at the house of Judas for one called Saul of Tarsus, for behold, he is praying. And in a vision he has seen a man named Ananias coming in and putting his hand on him, so that he might receive his sight.'",
+      },
+      {
+        verse: 'Exodus 3:11–12',
+        text: "But Moses said to God, 'Who am I that I should go to Pharaoh, and that I should bring the children of Israel out of Egypt?' So He said, 'I will certainly be with you. And this shall be a sign to you that I have sent you: When you have brought the people out of Egypt, you shall serve God on this mountain.'",
+      },
+      {
+        verse: 'Acts 9:17–20',
+        text: "And Ananias went his way and entered the house; and laying his hands on him he said, 'Brother Saul, the Lord Jesus, who appeared to you on the road as you came, has sent me that you may receive your sight and be filled with the Holy Spirit.' Immediately there fell from his eyes something like scales, and he received his sight at once; and he arose and was baptized. So when he had received food, he was strengthened. Then Saul spent some days with the disciples at Damascus. Immediately he preached the Christ in the synagogues, that He is the Son of God.",
+      },
+      {
+        verse: 'John 15:5',
+        text: 'I am the vine, you are the branches. He who abides in Me, and I in him, bears much fruit; for without Me you can do nothing.',
+      },
+    ],
+    keyPoints: ['The Delusion of Human Qualification', 'The Necessity of Divine Emptying', 'Sustained by the Spirit Unto Eternity'],
+    relatedSermons: ['32', '31'],
+    keyVerse: 'Exodus 2:11–15',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Reshaped',
+        unnumbered: true,
+        paragraphs: [
+          "Before God entrusted Moses with leading Israel out of Egypt, He first transformed the man who would carry the mission. Moses believed he was ready to deliver God's people, but he attempted to fulfill a God-given calling through human strength and self-confidence.",
+          "God's work in Moses reminds us that our greatest obstacle is often not the circumstances around us but the pride and self-sufficiency within us. Before God fills us with His Spirit, He often leads us through a season of emptying, where our dependence shifts from ourselves to Him.",
+          'This message reminds us that God is less concerned with our qualifications than with our willingness to be reshaped. When we surrender our pride and trust His process, He prepares us to fulfill His purpose.',
+        ],
+      },
+      {
+        id: 'sec-delusion-human-qualification',
+        title: 'The Delusion of Human Qualification',
+        paragraphs: [
+          '**Exodus 2:11–12 · Acts 7:22–25 · Philippians 3:4–7**',
+          "Moses had the education, influence, and position of an Egyptian prince. From a human perspective, he appeared fully qualified to lead. Yet instead of waiting for God's timing, he relied on his own strength and methods.",
+          'Likewise, Paul once placed great confidence in his impressive religious credentials but later considered them worthless compared to knowing Christ.',
+          'Human qualifications may open doors, but they can never replace the work of the Holy Spirit. Apart from God, our achievements can easily become monuments to our own pride rather than testimonies of His grace.',
+          'Throughout Scripture, God repeatedly chose to break and reshape people like Moses, Joseph, and Paul before using them mightily.',
+        ],
+        callout: 'God does not call the qualified, He qualifies those He calls.',
+      },
+      {
+        id: 'sec-necessity-divine-emptying',
+        title: 'The Necessity of Divine Emptying',
+        paragraphs: [
+          '**Exodus 2:15 · Genesis 41:14–16 · Acts 9:8–12**',
+          "After fleeing Egypt, Moses entered the wilderness—a place that seemed like failure but was actually God's classroom.",
+          'God had to remove "Egypt" from Moses before Moses could lead Israel out of Egypt. The wilderness was not punishment; it was preparation.',
+          'Seasons of emptying are often painful because God exposes what we have been depending on. When life shakes us, whatever fills our hearts will eventually be revealed.',
+          'Before God pours out His Spirit, He often drains us of pride, self-reliance, and worldly thinking. The wilderness becomes the place where dependence on God is formed.',
+        ],
+        callout: 'True spiritual maturity is not built on growing self-confidence alone but on growing confidence in God.',
+      },
+      {
+        id: 'sec-sustained-by-the-spirit',
+        title: 'Sustained by the Spirit Unto Eternity',
+        paragraphs: [
+          '**Exodus 3:11–12 · Acts 9:17–20 · John 15:5**',
+          'Once Moses was emptied of self, God filled him with His presence.',
+          "God's response to Moses' insecurity was not to list his qualifications but to give him a promise:",
+          '*"I will be with you."*',
+          "Our effectiveness in ministry does not come from talent, experience, or ability, it comes from God's presence working through surrendered lives.",
+          "As we serve God, we are also called to be faithful stewards of the lives and bodies He has entrusted to us. Ministry is not about striving until we are exhausted but about allowing God's Spirit to sustain us for the long journey.",
+          "Every generation becomes a testimony of God's faithfulness when ordinary people choose to depend on His power instead of their own.",
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Invite God to reshape your heart and deepen your dependence on Him.',
+          'Surrender areas where you have been relying on your own strength.',
+          "Embrace God's process, even when it feels uncomfortable or slow.",
+          "Seek God's direction instead of human approval.",
+          'Allow the Holy Spirit to shape your character before pursuing your calling.',
+          "Trust that God's preparation is producing a life that can faithfully carry His purpose.",
+          'As we allow God to empty us of pride and self-sufficiency, He fills us with His presence, empowers us by His Spirit, and equips us to accomplish the God-sized purpose He has prepared for our lives.',
+        ],
+        callout: 'God cannot fully fill a life that is already full of itself. He reshapes us by emptying us of self so that we may be filled with His Spirit.',
+      },
+    ],
+    keyTakeaways: [
+      'God often reshapes us before He releases us into our calling.',
+      'Human qualifications can never replace the work of the Holy Spirit.',
+      'God does not call the qualified, He qualifies the called.',
+      "The wilderness is not God's rejection but His place of preparation.",
+      'God empties us of self-reliance so He can fill us with His Spirit.',
+      "True confidence is rooted in God's presence, not in our own abilities.",
+      'Ministry is sustained by dependence on God, not human strength.',
+      "God's process prepares us for His purpose.",
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'The Delusion of Human Qualification',
+        verse: 'Exodus 2:11–12',
+        text: 'Now it came to pass in those days, when Moses was grown, that he went out to his brethren and looked at their burdens. And he saw an Egyptian beating a Hebrew, one of his brethren. So he looked this way and that way, and when he saw no one, he killed the Egyptian and hid him in the sand.',
+      },
+      {
+        kicker: 'The Delusion of Human Qualification',
+        verse: 'Acts 7:22–25',
+        text: 'And Moses was learned in all the wisdom of the Egyptians, and was mighty in words and deeds. Now when he was forty years old, it came into his heart to visit his brethren, the children of Israel. And seeing one of them suffer wrong, he defended and avenged him who was oppressed, and struck down the Egyptian. For he supposed that his brethren would have understood that God would deliver them by his hand, but they did not understand.',
+      },
+      {
+        kicker: 'The Delusion of Human Qualification',
+        verse: 'Philippians 3:4–7',
+        text: 'though I also might have confidence in the flesh. If anyone else thinks he may have confidence in the flesh, I more so: circumcised the eighth day, of the stock of Israel, of the tribe of Benjamin, a Hebrew of the Hebrews; concerning the law, a Pharisee; concerning zeal, persecuting the church; concerning the righteousness which is in the law, blameless. But what things were gain to me, these I have counted loss for Christ.',
+      },
+      {
+        kicker: 'The Necessity of Divine Emptying',
+        verse: 'Exodus 2:15',
+        text: 'When Pharaoh heard of this matter, he sought to kill Moses. But Moses fled from the face of Pharaoh and dwelt in the land of Midian; and he sat down by a well.',
+      },
+      {
+        kicker: 'The Necessity of Divine Emptying',
+        verse: 'Genesis 41:14–16',
+        text: "Then Pharaoh sent and called Joseph, and they brought him quickly out of the dungeon; and he shaved, changed his clothing, and came to Pharaoh. And Pharaoh said to Joseph, 'I have had a dream, and there is no one who can interpret it. But I have heard it said of you that you can understand a dream, to interpret it.' So Joseph answered Pharaoh, saying, 'It is not in me; God will give Pharaoh an answer of peace.'",
+      },
+      {
+        kicker: 'The Necessity of Divine Emptying',
+        verse: 'Acts 9:8–12',
+        text: "Then Saul arose from the ground, and when his eyes were opened he saw no one. But they led him by the hand and brought him into Damascus. And he was three days without sight, and neither ate nor drank. Now there was a certain disciple at Damascus named Ananias; and to him the Lord said in a vision, 'Ananias.' And he said, 'Here I am, Lord.' So the Lord said to him, 'Arise and go to the street called Straight, and inquire at the house of Judas for one called Saul of Tarsus, for behold, he is praying. And in a vision he has seen a man named Ananias coming in and putting his hand on him, so that he might receive his sight.'",
+      },
+      {
+        kicker: 'Sustained by the Spirit Unto Eternity',
+        verse: 'Exodus 3:11–12',
+        text: "But Moses said to God, 'Who am I that I should go to Pharaoh, and that I should bring the children of Israel out of Egypt?' So He said, 'I will certainly be with you. And this shall be a sign to you that I have sent you: When you have brought the people out of Egypt, you shall serve God on this mountain.'",
+      },
+      {
+        kicker: 'Sustained by the Spirit Unto Eternity',
+        verse: 'Acts 9:17–20',
+        text: "And Ananias went his way and entered the house; and laying his hands on him he said, 'Brother Saul, the Lord Jesus, who appeared to you on the road as you came, has sent me that you may receive your sight and be filled with the Holy Spirit.' Immediately there fell from his eyes something like scales, and he received his sight at once; and he arose and was baptized. So when he had received food, he was strengthened. Then Saul spent some days with the disciples at Damascus. Immediately he preached the Christ in the synagogues, that He is the Son of God.",
+      },
+      {
+        kicker: 'Sustained by the Spirit Unto Eternity',
+        verse: 'John 15:5',
+        text: 'I am the vine, you are the branches. He who abides in Me, and I in him, bears much fruit; for without Me you can do nothing.',
       },
     ],
   },
