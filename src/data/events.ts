@@ -368,7 +368,7 @@ Tag your movie buddy, scan the QR code, and save your seat. We can’t wait to s
     title: 'G12 CAMPUS REVOLUTION',
     date: 'August 6, 2026',
     displayDate: 'Aug 6',
-    day: 'Saturday',
+    day: 'Thursday',
     time: '9:00 AM',
     location: 'IEC Convention Center of Cebu, Cebu City',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/campus_rev_1920x1080_enhanced.webp',
