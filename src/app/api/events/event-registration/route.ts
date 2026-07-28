@@ -193,13 +193,13 @@ async function appendToGoogleSheet({
 
     // Column order: A–M. Event Name + Event Date lead the registrant details so
     // rows from every paid event can be told apart on the shared sheet.
-    const buildRow = (firstName: string, lastName: string) => [
+    const buildRow = (firstName: string, lastName: string, cellLeaderOverride?: string) => [
       timestamp,                // A  Timestamp
       eventTitle || '',         // B  Event Name
       eventDate || '',          // C  Event Date
       firstName,                // D  First Name
       lastName,                 // E  Last Name
-      data.cellLeader || '',    // F  Cell Leader
+      cellLeaderOverride !== undefined ? cellLeaderOverride : (data.cellLeader || ''),    // F  Cell Leader
       '',                       // G  (Birthdate removed — column kept blank to preserve existing sheet alignment)
       data.email || '',         // H  Email
       data.phone || '',         // I  Phone
@@ -209,14 +209,13 @@ async function appendToGoogleSheet({
     ];
 
     // Group registration: one row per person. The extra registrants only supply
-    // their names — every other column (cell leader, contact details, socials)
-    // and the proof of payment are copied from the primary registrant, since a
-    // single payment covers the whole group.
+    // their names — contact details, socials, and the proof of payment are copied 
+    // from the primary registrant, but the cell leader field is left blank.
     const rows = [
       buildRow(String(data.firstName ?? ''), String(data.lastName ?? '')),
       ...(Array.isArray(data.additionalRegistrants)
         ? (data.additionalRegistrants as AdditionalRegistrant[]).map((registrant) =>
-            buildRow(registrant.firstName ?? '', registrant.lastName ?? '')
+            buildRow(registrant.firstName ?? '', registrant.lastName ?? '', '')
           )
         : []),
     ];

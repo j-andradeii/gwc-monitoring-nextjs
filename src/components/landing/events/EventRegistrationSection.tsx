@@ -208,10 +208,20 @@ export default function EventRegistrationSection({ event }: Props) {
   // view (this section only renders for has_payment events).
   useEffect(() => {
     if (submitRegistration.isSuccess) {
-      (successRef.current ?? sectionRef.current)?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
+      // A slightly longer timeout ensures the layout shift from the form 
+      // disappearing has fully settled.
+      setTimeout(() => {
+        const target = successRef.current ?? sectionRef.current;
+        if (target) {
+          // Calculate the target position and subtract 100px to account for 
+          // potential sticky headers, which often cover elements scrolled to the top.
+          const yPosition = target.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({
+            top: yPosition,
+            behavior: 'smooth',
+          });
+        }
+      }, 150);
     }
   }, [submitRegistration.isSuccess]);
 
