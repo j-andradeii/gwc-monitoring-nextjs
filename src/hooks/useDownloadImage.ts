@@ -35,6 +35,41 @@ const triggerAnchorDownload = (href: string, filename: string, newTab = false) =
 };
 
 /**
+ * Save an in-memory image: native share sheet on mobile, file download elsewhere.
+ * Shared by both entry points below so the two paths never drift apart.
+ */
+const saveBlob = async (blob: Blob, filename: string) => {
+    // Mobile: hand the image to the OS share sheet → "Save Image" to Photos.
+    if (
+        isMobileDevice() &&
+        typeof navigator !== 'undefined' &&
+        typeof navigator.canShare === 'function'
+    ) {
+        const file = new File([blob], filename, {
+            type: blob.type || 'image/jpeg',
+        });
+
+        if (navigator.canShare({ files: [file] })) {
+            try {
+                await navigator.share({ files: [file], title: filename });
+                return; // saved (or sheet handled by the user) — done
+            } catch (shareErr) {
+                // User dismissed the sheet — treat as done, don't fall back.
+                if (shareErr instanceof Error && shareErr.name === 'AbortError') {
+                    return;
+                }
+                // Any other share failure → fall through to the blob download.
+            }
+        }
+    }
+
+    // Desktop (and mobile fallback): download the blob.
+    const blobUrl = window.URL.createObjectURL(blob);
+    triggerAnchorDownload(blobUrl, filename);
+    window.URL.revokeObjectURL(blobUrl);
+};
+
+/**
  * Hook to handle image downloading with blob handling for cross-origin support.
  *
  * On an actual mobile device the image is routed through the native share sheet
@@ -42,10 +77,31 @@ const triggerAnchorDownload = (href: string, filename: string, newTab = false) =
  * Photos / camera roll via the "Save Image" action — the web has no API to write
  * to Photos silently, so the share sheet is the standard one-tap path. Desktop
  * (and any device without file-share support) keeps the normal file download.
+ *
+ * `downloadImage` fetches a remote URL first; `downloadBlob` takes an image the
+ * page already generated (e.g. a canvas render) — never route those through a
+ * blob: URL + fetch, the app's CSP `connect-src` (middleware.ts) blocks it.
  */
 export const useDownloadImage = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    const downloadBlob = useCallback(async (blob: Blob, filename: string) => {
+        if (!blob) return;
+
+        setIsDownloading(true);
+        setError(null);
+
+        try {
+            await saveBlob(blob, filename);
+        } catch (err: unknown) {
+            console.error('Download failed:', err);
+            setError(err instanceof Error ? err.message : 'Failed to download image');
+            throw err;
+        } finally {
+            setIsDownloading(false);
+        }
+    }, []);
 
     const downloadImage = useCallback(async (url: string, filename: string) => {
         if (!url) return;
@@ -57,36 +113,7 @@ export const useDownloadImage = () => {
             const response = await fetch(url);
             if (!response.ok) throw new Error('Network response was not ok');
 
-            const blob = await response.blob();
-
-            // Mobile: hand the image to the OS share sheet → "Save Image" to Photos.
-            if (
-                isMobileDevice() &&
-                typeof navigator !== 'undefined' &&
-                typeof navigator.canShare === 'function'
-            ) {
-                const file = new File([blob], filename, {
-                    type: blob.type || 'image/jpeg',
-                });
-
-                if (navigator.canShare({ files: [file] })) {
-                    try {
-                        await navigator.share({ files: [file], title: filename });
-                        return; // saved (or sheet handled by the user) — done
-                    } catch (shareErr) {
-                        // User dismissed the sheet — treat as done, don't fall back.
-                        if (shareErr instanceof Error && shareErr.name === 'AbortError') {
-                            return;
-                        }
-                        // Any other share failure → fall through to the blob download.
-                    }
-                }
-            }
-
-            // Desktop (and mobile fallback): download the fetched blob.
-            const blobUrl = window.URL.createObjectURL(blob);
-            triggerAnchorDownload(blobUrl, filename);
-            window.URL.revokeObjectURL(blobUrl);
+            await saveBlob(await response.blob(), filename);
         } catch (err: unknown) {
             console.error('Download failed:', err);
             setError(err instanceof Error ? err.message : 'Failed to download image');
@@ -99,5 +126,5 @@ export const useDownloadImage = () => {
         }
     }, []);
 
-    return { downloadImage, isDownloading, error };
+    return { downloadImage, downloadBlob, isDownloading, error };
 };

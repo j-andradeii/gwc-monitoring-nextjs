@@ -71,7 +71,7 @@ export default function EventRegistrationSection({ event }: Props) {
   const [registeredNames, setRegisteredNames] = useState<string[]>([]);
   const [isSavingReceipt, setIsSavingReceipt] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
-  const { downloadImage } = useDownloadImage();
+  const { downloadBlob } = useDownloadImage();
 
   const methods = useForm<EventRegistrationFormData>({
     resolver: zodResolver(eventRegistrationFormSchema),
@@ -179,7 +179,6 @@ export default function EventRegistrationSection({ event }: Props) {
 
     setIsSavingReceipt(true);
     setSaveError(null);
-    let objectUrl: string | null = null;
 
     try {
       const blob = await createRegistrationReceiptImage({
@@ -191,15 +190,15 @@ export default function EventRegistrationSection({ event }: Props) {
         names: registeredNames,
       });
 
-      objectUrl = URL.createObjectURL(blob);
-      await downloadImage(objectUrl, `gateway-registration-${referenceNumber}.png`);
+      // The blob goes straight to the hook: wrapping it in a blob: URL and
+      // fetching it back trips the app's CSP connect-src (see middleware.ts).
+      await downloadBlob(blob, `gateway-registration-${referenceNumber}.png`);
     } catch (error) {
       console.error('Saving the registration receipt failed:', error);
       setSaveError(
         'We couldn’t save the image on this device. Please screenshot this page instead.'
       );
     } finally {
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
       setIsSavingReceipt(false);
     }
   };
