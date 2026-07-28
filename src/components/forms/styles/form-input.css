@@ -78,6 +78,40 @@ textarea::placeholder {
   width: 100%;
 }
 
+/* ---------------------------------------------------------------
+   Compact control padding
+   globals.css styles every .p-inputtext with px-4 py-3 (16/12px),
+   which renders ~51px-tall fields — too airy inside the multi-step
+   forms. Scoping to .input-container keeps the reduction to the
+   Form* components in this folder (every one of them renders that
+   wrapper) and leaves PrimeReact inputs elsewhere in the app alone.
+   --------------------------------------------------------------- */
+.input-container .p-inputtext,
+.input-container .p-dropdown .p-dropdown-label,
+.input-container .p-inputnumber-input,
+.input-container .p-password-input,
+.input-container .p-inputtextarea {
+  padding: 0.5rem 0.75rem;
+}
+
+/* The dropdown's arrow column is sized by the theme — narrow it so the
+   trigger doesn't look oversized next to the tighter label. */
+.input-container .p-dropdown .p-dropdown-trigger {
+  width: 2.5rem;
+}
+
+/* Touch targets stay comfortable on phones. */
+@media (max-width: 640px) {
+
+  .input-container .p-inputtext,
+  .input-container .p-dropdown .p-dropdown-label,
+  .input-container .p-inputnumber-input,
+  .input-container .p-password-input,
+  .input-container .p-inputtextarea {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
 /* Disabled state */
 .disable {
   opacity: 0.6;
