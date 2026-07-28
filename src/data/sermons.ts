@@ -7490,7 +7490,7 @@ Faith doesn't deny the storm; it declares that God is greater than it.`,
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'God is less concerned with our qualifications than with our willingness to be reshaped. When we surrender our pride and trust His process, He prepares us to fulfill His purpose.',
 
     description: `**RESHAPED**
@@ -7744,6 +7744,292 @@ God cannot fully fill a life that is already full of itself. He reshapes us by e
         kicker: 'Sustained by the Spirit Unto Eternity',
         verse: 'John 15:5',
         text: 'I am the vine, you are the branches. He who abides in Me, and I in him, bears much fruit; for without Me you can do nothing.',
+      },
+    ],
+  },
+  {
+    id: '35',
+    slug: 'turn-your-eyes-upon-jesus',
+    title: 'Turn Your Eyes Upon Jesus',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-07-26',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'Paul reminds us that true unity is found only when our eyes remain fixed on Jesus. This message challenges us to examine where our attention has settled and to intentionally turn our eyes back to Jesus.',
+
+    description: `**TURN YOUR EYES UPON JESUS**
+
+Key Verse: 1 Corinthians 1:10–17
+
+---
+
+**INTRODUCTION**
+
+In every generation, believers face distractions that compete for their attention. Whether it's possessions, circumstances, personal ambitions, or even people we admire, anything that takes the place of Jesus can become an idol. The church in Corinth struggled with division because their focus had shifted from Christ to human leaders.
+
+Paul reminds us that true unity is found only when our eyes remain fixed on Jesus. When our focus is misplaced, division, comparison, and disappointment inevitably follow. But when Christ becomes the center of our lives, our perspective changes, our relationships are restored, and we find lasting hope.
+
+This message challenges us to examine where our attention has settled and to intentionally turn our eyes back to Jesus.
+
+---
+
+**1. Have You Fixed Your Eyes on Things?** (1 Timothy 6:17)
+
+**The Reality:**
+
+Earthly possessions and riches are temporary. While they may provide comfort and security for a season, they can never carry the weight of our identity, hope, or purpose.
+
+When our hearts become attached to material things, we begin trusting the gifts more than the Giver. Our focus shifts from the Creator to created things, and material possessions slowly begin to define our success and satisfaction.
+
+**The Correction:**
+
+God calls us to place our confidence in Him, the One who generously provides everything we need.
+
+Instead of allowing possessions to become our security, we are invited to trust the God who faithfully provides. When our eyes remain on the Creator, we learn to enjoy His blessings without allowing them to become idols.
+
+---
+
+**2. Have You Fixed Your Eyes on Circumstances?** (Colossians 3:2)
+
+**The Reality:**
+
+Life constantly changes. Seasons of joy are followed by seasons of difficulty, and if our peace depends solely on our circumstances, our spiritual life will become unstable.
+
+It is easy to let our environment determine our spiritual temperature. When life is going well, faith seems easy. But when challenges arise, fear and discouragement can quickly take over if our perspective remains fixed on earthly realities.
+
+**The Correction:**
+
+God invites us to lift our eyes beyond temporary circumstances and focus on eternal truth.
+
+Instead of dwelling on our present situation, we can remember God's faithfulness throughout history and in our own lives. His track record reminds us that He remains sovereign regardless of what we face.
+
+When we fix our eyes on Christ, we gain a heavenly perspective that produces peace even in uncertain seasons.
+
+---
+
+**3. Have You Fixed Your Eyes on Yourself?** (Philippians 2:4–5)
+
+**The Reality:**
+
+A self-centered life is incompatible with the heart of the Gospel.
+
+When personal preferences, rights, and ambitions become our highest priority, relationships suffer and unity begins to break down. Self-absorption makes it difficult to genuinely love and serve others.
+
+Disunity often begins when we elevate ourselves above God's greater purpose.
+
+**The Correction:**
+
+Jesus demonstrated a different way, the way of humility and sacrificial love.
+
+Rather than insisting on His own rights, Christ willingly served others and gave His life for humanity. As His followers, we are called to adopt the same mindset.
+
+The greatest in God's Kingdom is not the one who is served, but the one who serves.
+
+---
+
+**4. Have You Fixed Your Eyes on Others?** (Psalm 118:8)
+
+**The Reality:**
+
+People naturally admire leaders, mentors, and influential voices. While spiritual leaders are gifts from God, they were never meant to replace Him.
+
+When our faith becomes centred on personalities rather than Christ, disappointment is inevitable because every human being is imperfect.
+
+Human-centred ministry often leads to disillusionment when expectations are placed on people instead of the Lord.
+
+**The Correction:**
+
+Take refuge in the Lord alone.
+
+Pastors, leaders, and mentors are servants, not saviors. Our faith must remain anchored in Jesus, the Chief Shepherd, whose character never changes.
+
+When our eyes stay fixed on Christ, we can appreciate godly leaders without idolising them.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Unity begins when Jesus remains the centre of our lives.
+* Misplaced focus often leads to division and conflict.
+* Earthly possessions can never replace the Creator.
+* Circumstances should never determine our faith or peace.
+* Humility strengthens relationships, while self-focus creates division.
+* Spiritual leaders are servants of God, not substitutes for Christ.
+* Lasting hope and security are found only by fixing our eyes on Jesus.
+* The power of the cross continually calls us back to Christ as our greatest focus.
+
+"Whatever captures your attention will eventually shape your direction. Keep your eyes on Jesus, and He will keep your heart anchored in truth."
+
+---
+
+**CALL TO ACTION**
+
+Take time to examine where your attention has been focused.
+
+* Choose to trust the Creator more than created things.
+* Remember God's faithfulness instead of being overwhelmed by your circumstances.
+* Replace self-centred living with Christ-like humility and service.
+* Honour spiritual leaders without placing them on a pedestal.
+* Fix your eyes on Jesus daily through prayer, worship, and His Word.
+
+When Christ remains at the centre of our lives, unity replaces division, peace overcomes fear, and our hearts remain anchored in the One who never changes.`,
+
+    tags: ['Focus', 'Unity', 'Humility', 'Trust', 'Christ', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/fix_eyes_on_Jesus.webp',
+    scriptures: [
+      {
+        verse: '1 Corinthians 1:10–17',
+        text: "Now I plead with you, brethren, by the name of our Lord Jesus Christ, that you all speak the same thing, and that there be no divisions among you, but that you be perfectly joined together in the same mind and in the same judgment. For it has been declared to me concerning you, my brethren, by those of Chloe's household, that there are contentions among you. Now I say this, that each of you says, 'I am of Paul,' or 'I am of Apollos,' or 'I am of Cephas,' or 'I am of Christ.' Is Christ divided? Was Paul crucified for you? Or were you baptized in the name of Paul? I thank God that I baptized none of you except Crispus and Gaius, lest anyone should say that I had baptized in my own name. Yes, I also baptized the household of Stephanas. Besides, I do not know whether I baptized any other. For Christ did not send me to baptize, but to preach the gospel, not with wisdom of words, lest the cross of Christ should be made of no effect.",
+      },
+      {
+        verse: '1 Timothy 6:17',
+        text: 'Command those who are rich in this present age not to be haughty, nor to trust in uncertain riches but in the living God, who gives us richly all things to enjoy.',
+      },
+      {
+        verse: 'Colossians 3:2',
+        text: 'Set your mind on things above, not on things on the earth.',
+      },
+      {
+        verse: 'Philippians 2:4–5',
+        text: 'Let each of you look out not only for his own interests, but also for the interests of others. Let this mind be in you which was also in Christ Jesus.',
+      },
+      {
+        verse: 'Psalm 118:8',
+        text: 'It is better to trust in the Lord than to put confidence in man.',
+      },
+    ],
+    keyPoints: [
+      'Have You Fixed Your Eyes on Things?',
+      'Have You Fixed Your Eyes on Circumstances?',
+      'Have You Fixed Your Eyes on Yourself?',
+      'Have You Fixed Your Eyes on Others?',
+    ],
+    relatedSermons: ['34', '33'],
+    keyVerse: '1 Corinthians 1:10–17',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Turn Your Eyes Upon Jesus',
+        unnumbered: true,
+        paragraphs: [
+          "In every generation, believers face distractions that compete for their attention. Whether it's possessions, circumstances, personal ambitions, or even people we admire, anything that takes the place of Jesus can become an idol. The church in Corinth struggled with division because their focus had shifted from Christ to human leaders.",
+          'Paul reminds us that true unity is found only when our eyes remain fixed on Jesus. When our focus is misplaced, division, comparison, and disappointment inevitably follow. But when Christ becomes the center of our lives, our perspective changes, our relationships are restored, and we find lasting hope.',
+          'This message challenges us to examine where our attention has settled and to intentionally turn our eyes back to Jesus.',
+        ],
+      },
+      {
+        id: 'sec-eyes-on-things',
+        title: 'Have You Fixed Your Eyes on Things?',
+        paragraphs: [
+          '**1 Timothy 6:17**',
+          '**The Reality:**',
+          'Earthly possessions and riches are temporary. While they may provide comfort and security for a season, they can never carry the weight of our identity, hope, or purpose.',
+          'When our hearts become attached to material things, we begin trusting the gifts more than the Giver. Our focus shifts from the Creator to created things, and material possessions slowly begin to define our success and satisfaction.',
+          '**The Correction:**',
+          'God calls us to place our confidence in Him, the One who generously provides everything we need.',
+          'Instead of allowing possessions to become our security, we are invited to trust the God who faithfully provides. When our eyes remain on the Creator, we learn to enjoy His blessings without allowing them to become idols.',
+        ],
+      },
+      {
+        id: 'sec-eyes-on-circumstances',
+        title: 'Have You Fixed Your Eyes on Circumstances?',
+        paragraphs: [
+          '**Colossians 3:2**',
+          '**The Reality:**',
+          'Life constantly changes. Seasons of joy are followed by seasons of difficulty, and if our peace depends solely on our circumstances, our spiritual life will become unstable.',
+          'It is easy to let our environment determine our spiritual temperature. When life is going well, faith seems easy. But when challenges arise, fear and discouragement can quickly take over if our perspective remains fixed on earthly realities.',
+          '**The Correction:**',
+          'God invites us to lift our eyes beyond temporary circumstances and focus on eternal truth.',
+          "Instead of dwelling on our present situation, we can remember God's faithfulness throughout history and in our own lives. His track record reminds us that He remains sovereign regardless of what we face.",
+          'When we fix our eyes on Christ, we gain a heavenly perspective that produces peace even in uncertain seasons.',
+        ],
+      },
+      {
+        id: 'sec-eyes-on-yourself',
+        title: 'Have You Fixed Your Eyes on Yourself?',
+        paragraphs: [
+          '**Philippians 2:4–5**',
+          '**The Reality:**',
+          'A self-centered life is incompatible with the heart of the Gospel.',
+          'When personal preferences, rights, and ambitions become our highest priority, relationships suffer and unity begins to break down. Self-absorption makes it difficult to genuinely love and serve others.',
+          "Disunity often begins when we elevate ourselves above God's greater purpose.",
+          '**The Correction:**',
+          'Jesus demonstrated a different way, the way of humility and sacrificial love.',
+          'Rather than insisting on His own rights, Christ willingly served others and gave His life for humanity. As His followers, we are called to adopt the same mindset.',
+          "The greatest in God's Kingdom is not the one who is served, but the one who serves.",
+        ],
+      },
+      {
+        id: 'sec-eyes-on-others',
+        title: 'Have You Fixed Your Eyes on Others?',
+        paragraphs: [
+          '**Psalm 118:8**',
+          '**The Reality:**',
+          'People naturally admire leaders, mentors, and influential voices. While spiritual leaders are gifts from God, they were never meant to replace Him.',
+          'When our faith becomes centred on personalities rather than Christ, disappointment is inevitable because every human being is imperfect.',
+          'Human-centred ministry often leads to disillusionment when expectations are placed on people instead of the Lord.',
+          '**The Correction:**',
+          'Take refuge in the Lord alone.',
+          'Pastors, leaders, and mentors are servants, not saviors. Our faith must remain anchored in Jesus, the Chief Shepherd, whose character never changes.',
+          'When our eyes stay fixed on Christ, we can appreciate godly leaders without idolising them.',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Take time to examine where your attention has been focused.',
+          'Choose to trust the Creator more than created things.',
+          "Remember God's faithfulness instead of being overwhelmed by your circumstances.",
+          'Replace self-centred living with Christ-like humility and service.',
+          'Honour spiritual leaders without placing them on a pedestal.',
+          'Fix your eyes on Jesus daily through prayer, worship, and His Word.',
+          'When Christ remains at the centre of our lives, unity replaces division, peace overcomes fear, and our hearts remain anchored in the One who never changes.',
+        ],
+        callout: 'Whatever captures your attention will eventually shape your direction. Keep your eyes on Jesus, and He will keep your heart anchored in truth.',
+      },
+    ],
+    keyTakeaways: [
+      'Unity begins when Jesus remains the centre of our lives.',
+      'Misplaced focus often leads to division and conflict.',
+      'Earthly possessions can never replace the Creator.',
+      'Circumstances should never determine our faith or peace.',
+      'Humility strengthens relationships, while self-focus creates division.',
+      'Spiritual leaders are servants of God, not substitutes for Christ.',
+      'Lasting hope and security are found only by fixing our eyes on Jesus.',
+      'The power of the cross continually calls us back to Christ as our greatest focus.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: '1 Corinthians 1:10–17',
+        text: "Now I plead with you, brethren, by the name of our Lord Jesus Christ, that you all speak the same thing, and that there be no divisions among you, but that you be perfectly joined together in the same mind and in the same judgment. For it has been declared to me concerning you, my brethren, by those of Chloe's household, that there are contentions among you. Now I say this, that each of you says, 'I am of Paul,' or 'I am of Apollos,' or 'I am of Cephas,' or 'I am of Christ.' Is Christ divided? Was Paul crucified for you? Or were you baptized in the name of Paul? I thank God that I baptized none of you except Crispus and Gaius, lest anyone should say that I had baptized in my own name. Yes, I also baptized the household of Stephanas. Besides, I do not know whether I baptized any other. For Christ did not send me to baptize, but to preach the gospel, not with wisdom of words, lest the cross of Christ should be made of no effect.",
+      },
+      {
+        kicker: 'Have You Fixed Your Eyes on Things?',
+        verse: '1 Timothy 6:17',
+        text: 'Command those who are rich in this present age not to be haughty, nor to trust in uncertain riches but in the living God, who gives us richly all things to enjoy.',
+      },
+      {
+        kicker: 'Have You Fixed Your Eyes on Circumstances?',
+        verse: 'Colossians 3:2',
+        text: 'Set your mind on things above, not on things on the earth.',
+      },
+      {
+        kicker: 'Have You Fixed Your Eyes on Yourself?',
+        verse: 'Philippians 2:4–5',
+        text: 'Let each of you look out not only for his own interests, but also for the interests of others. Let this mind be in you which was also in Christ Jesus.',
+      },
+      {
+        kicker: 'Have You Fixed Your Eyes on Others?',
+        verse: 'Psalm 118:8',
+        text: 'It is better to trust in the Lord than to put confidence in man.',
       },
     ],
   },
