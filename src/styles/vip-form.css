@@ -1196,3 +1196,305 @@
         animation: none;
     }
 }
+
+/* ------------------------------------------------------------
+   Additional registrants (group registration)
+   One payment can cover several people: the toggle opens a list
+   of name rows, each of which becomes its own sheet row.
+   ------------------------------------------------------------ */
+
+/* Toggle card — gold-tinted so it reads as an opt-in, not a required field. */
+.event-register-multi-toggle {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(212, 168, 75, 0.35);
+    background: rgba(212, 168, 75, 0.08);
+}
+
+.event-register-multi-toggle .p-checkbox {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.event-register-multi-toggle-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    /* Override the generic form label rules from form-input.css */
+    margin: 0;
+}
+
+.event-register-multi-toggle-label strong {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-heading, #0f172a);
+}
+
+.event-register-multi-toggle-label span {
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-multi-rows {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+/* Each row is a small card: header (badge + title + remove) above the name fields. */
+.event-register-multi-row {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid #d1d9e6;
+    background: #ffffff;
+}
+
+.event-register-multi-row-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+/* Continues the primary registrant's numbering — they are #1. */
+.event-register-multi-row-number {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--primary-gold-accent, #d4a84b);
+    background: rgba(240, 180, 41, 0.1);
+}
+
+.event-register-multi-row-title {
+    flex: 1;
+    min-width: 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-multi-row-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.event-register-multi-remove.p-button {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+}
+
+.event-register-multi-total {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-multi-total i {
+    color: var(--color-primary-dark, #b8923f);
+}
+
+/* Group-payment reminder in the Proof of Payment column. */
+.event-register-multi-fee {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 168, 75, 0.30);
+    background: rgba(212, 168, 75, 0.08);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-multi-fee i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-primary-dark, #b8923f);
+}
+
+.event-register-multi-fee strong {
+    color: var(--text-heading, #0f172a);
+    font-weight: 700;
+}
+
+/* ------------------------------------------------------------
+   Success receipt
+   Shown in place of the form after a successful submission and
+   mirrored by the downloadable PNG (lib/registration-receipt.ts).
+   ------------------------------------------------------------ */
+
+.event-register-section .success-animation-container p {
+    margin-bottom: 26px;
+}
+
+.event-register-receipt {
+    max-width: 460px;
+    margin: 0 auto 24px;
+    padding: 22px;
+    text-align: left;
+    border-radius: 18px;
+    border: 1px solid #e3dccc;
+    background: var(--color-ivory, #faf8f3);
+}
+
+.event-register-receipt-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-receipt-ref {
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--color-cream, #f5f0e6);
+}
+
+.event-register-receipt-code {
+    display: block;
+    font-family: 'SFMono-Regular', Consolas, 'Courier New', monospace;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--color-navy, #1a2744);
+    word-break: break-all;
+}
+
+.event-register-receipt-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-receipt-meta i {
+    color: var(--color-primary-dark, #b8923f);
+}
+
+.event-register-receipt-names {
+    margin-top: 20px;
+}
+
+.event-register-receipt-names ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.event-register-receipt-names li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-navy, #1a2744);
+    border-bottom: 1px solid #eef0f4;
+}
+
+.event-register-receipt-names li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.event-register-receipt-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary-gold-accent, #d4a84b);
+    background: rgba(240, 180, 41, 0.12);
+}
+
+.event-register-receipt-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 16px 0 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-receipt-note i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-primary-dark, #b8923f);
+}
+
+.event-register-receipt-error {
+    max-width: 460px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    text-align: left;
+    color: var(--color-error, #6b2c3a);
+}
+
+.event-register-success-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* The download arrow shouldn't slide sideways like the CTA arrows do. */
+.event-register-success-actions .landing-btn:hover i {
+    transform: none;
+}
+
+@media (max-width: 480px) {
+    .event-register-success-actions .landing-btn {
+        width: 100%;
+    }
+}
+
+/* Mobile: stack the two name fields. */
+@media (max-width: 640px) {
+    .event-register-multi-row-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .event-register-multi-row {
+        padding: 12px;
+        gap: 10px;
+    }
+}
