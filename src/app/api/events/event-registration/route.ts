@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { randomInt } from 'node:crypto';
 import { put } from '@vercel/blob';
 import { eventRegistrationSchema } from '@/models/schemas/event-registration.schema';
 import { SOD_PROOF_MAX_BYTES } from '@/models/schemas/sod.schema';
@@ -10,6 +11,11 @@ export const runtime = 'nodejs';
  * Generic paid-event registration route (any event with `has_payment: true`).
  * Every paid event submits here and rows are distinguished by the Event Name
  * and Event Date columns written ahead of the registrant's details.
+ *
+ * A submission may cover a group: the primary registrant plus any number of
+ * additional registrants (names only). Each person becomes its own sheet row
+ * and every row carries the same proof-of-payment image and the same reference
+ * number (column M), since one payment covers the whole group.
  *
  * The owner-supplied target Sheet ID is hardcoded as a fallback so the route
  * still writes even when GOOGLE_SPREADSHEET_G12_EVENTS isn't set in the Vercel
@@ -35,11 +41,47 @@ function resolveSheetTab(eventSlug: string): string {
 }
 
 // Wrap in single quotes so tab names with spaces are valid A1 notation.
-const sheetRangeForTab = (tab: string) => `'${tab}'!A:L`;
+const sheetRangeForTab = (tab: string) => `'${tab}'!A:M`;
+
+// Ambiguous characters (0/O, 1/I) are left out so references stay readable when
+// a registrant reads theirs out over the phone or copies it from a screenshot.
+const REFERENCE_ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+
+/**
+ * One reference number per payment. Every registrant covered by the same
+ * submission (and therefore the same proof of payment) shares it, so staff can
+ * match a group of sheet rows back to a single payment.
+ */
+function generateReferenceNumber(manilaParts: { year: string; month: string; day: string }): string {
+  let suffix = '';
+  for (let i = 0; i < 5; i += 1) {
+    suffix += REFERENCE_ALPHABET[randomInt(REFERENCE_ALPHABET.length)];
+  }
+  return `GWC-${manilaParts.year}${manilaParts.month}${manilaParts.day}-${suffix}`;
+}
+
+/** Date parts in Asia/Manila — the timezone every other sheet value uses. */
+function manilaDateParts(date: Date): { year: string; month: string; day: string } {
+  const [month, day, year] = date
+    .toLocaleDateString('en-US', {
+      timeZone: 'Asia/Manila',
+      year: '2-digit',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    .split('/');
+
+  return { year, month, day };
+}
 
 interface SheetResult {
   success: boolean;
   message: string;
+}
+
+interface AdditionalRegistrant {
+  firstName: string;
+  lastName: string;
 }
 
 /**
@@ -87,14 +129,29 @@ async function uploadProofToBlob(
   return blob.url;
 }
 
-async function appendToGoogleSheet(
-  data: Record<string, unknown>,
-  eventSlug: string,
-  eventTitle: string,
-  eventDate: string,
-  proofUrl: string,
-  proofProvided: boolean
-): Promise<SheetResult> {
+interface AppendParams {
+  data: Record<string, unknown>;
+  eventSlug: string;
+  eventTitle: string;
+  eventDate: string;
+  proofUrl: string;
+  proofProvided: boolean;
+  /** Asia/Manila submission time — the same value the registrant sees. */
+  timestamp: string;
+  /** Shared by every row of this submission. */
+  referenceNumber: string;
+}
+
+async function appendToGoogleSheet({
+  data,
+  eventSlug,
+  eventTitle,
+  eventDate,
+  proofUrl,
+  proofProvided,
+  timestamp,
+  referenceNumber,
+}: AppendParams): Promise<SheetResult> {
   const sheetTab = resolveSheetTab(eventSlug);
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
   const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
@@ -117,9 +174,6 @@ async function appendToGoogleSheet(
 
     const sheets = google.sheets({ version: 'v4', auth });
 
-    // Timestamp in Asia/Manila timezone.
-    const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
-
     // Social handles — one "Platform: @handle" per line.
     const socialMedia = Array.isArray(data.socialMedia)
       ? (data.socialMedia as Array<{ platform: string; handle: string }>)
@@ -137,21 +191,34 @@ async function appendToGoogleSheet(
         ? 'Proof upload failed — please follow up'
         : '';
 
-    // Column order: A–L. Event Name + Event Date lead the registrant details so
+    // Column order: A–M. Event Name + Event Date lead the registrant details so
     // rows from every paid event can be told apart on the shared sheet.
-    const row = [
+    const buildRow = (firstName: string, lastName: string) => [
       timestamp,                // A  Timestamp
       eventTitle || '',         // B  Event Name
       eventDate || '',          // C  Event Date
-      data.firstName || '',     // D  First Name
-      data.lastName || '',      // E  Last Name
+      firstName,                // D  First Name
+      lastName,                 // E  Last Name
       data.cellLeader || '',    // F  Cell Leader
       '',                       // G  (Birthdate removed — column kept blank to preserve existing sheet alignment)
       data.email || '',         // H  Email
       data.phone || '',         // I  Phone
       socialMedia,              // J  Social Handles
-      data.amountSent || '',    // K  Amount Sent
+      referenceNumber,          // M  Reference No. (shared by every row of this payment)
       proofCell,                // L  Proof of Payment (=IMAGE)
+    ];
+
+    // Group registration: one row per person. The extra registrants only supply
+    // their names — every other column (cell leader, contact details, socials)
+    // and the proof of payment are copied from the primary registrant, since a
+    // single payment covers the whole group.
+    const rows = [
+      buildRow(String(data.firstName ?? ''), String(data.lastName ?? '')),
+      ...(Array.isArray(data.additionalRegistrants)
+        ? (data.additionalRegistrants as AdditionalRegistrant[]).map((registrant) =>
+            buildRow(registrant.firstName ?? '', registrant.lastName ?? '')
+          )
+        : []),
     ];
 
     await sheets.spreadsheets.values.append({
@@ -166,11 +233,17 @@ async function appendToGoogleSheet(
       // row and writes the values from the range's first column (A).
       insertDataOption: 'INSERT_ROWS',
       requestBody: {
-        values: [row],
+        values: rows,
       },
     });
 
-    return { success: true, message: `Added to Google Sheets (${sheetTab})` };
+    return {
+      success: true,
+      message:
+        rows.length > 1
+          ? `Added ${rows.length} registrants to Google Sheets (${sheetTab})`
+          : `Added to Google Sheets (${sheetTab})`,
+    };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
       return { success: true, message: 'Logged locally (googleapis not installed)' };
@@ -192,6 +265,23 @@ export async function POST(request: Request) {
       socialMedia = [];
     }
 
+    // Extra people covered by this same payment — one sheet row each.
+    // Anything malformed degrades to "registering alone" rather than failing.
+    let additionalRegistrants: AdditionalRegistrant[] = [];
+    try {
+      const parsed = JSON.parse(String(formData.get('additionalRegistrants') ?? '[]'));
+      if (Array.isArray(parsed)) {
+        additionalRegistrants = parsed
+          .map((registrant) => ({
+            firstName: String(registrant?.firstName ?? '').trim(),
+            lastName: String(registrant?.lastName ?? '').trim(),
+          }))
+          .filter((registrant) => registrant.firstName || registrant.lastName);
+      }
+    } catch {
+      additionalRegistrants = [];
+    }
+
     const fields = {
       firstName: String(formData.get('firstName') ?? ''),
       lastName: String(formData.get('lastName') ?? ''),
@@ -199,7 +289,8 @@ export async function POST(request: Request) {
       email: String(formData.get('email') ?? ''),
       phone: String(formData.get('phone') ?? ''),
       socialMedia,
-      amountSent: String(formData.get('amountSent') ?? ''),
+      registerMultiple: additionalRegistrants.length > 0,
+      additionalRegistrants,
     };
 
     const validationResult = eventRegistrationSchema.safeParse(fields);
@@ -259,17 +350,28 @@ export async function POST(request: Request) {
       }
     }
 
-    const result = await appendToGoogleSheet(
-      validationResult.data as unknown as Record<string, unknown>,
+    // Generated here (not inside the sheet writer) so the registrant still gets
+    // a reference number and timestamp when Google Sheets isn't configured.
+    const submittedAt = new Date();
+    const timestamp = submittedAt.toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+    const referenceNumber = generateReferenceNumber(manilaDateParts(submittedAt));
+
+    const result = await appendToGoogleSheet({
+      data: validationResult.data as unknown as Record<string, unknown>,
       eventSlug,
       eventTitle,
       eventDate,
       proofUrl,
-      proofProvided
-    );
+      proofProvided,
+      timestamp,
+      referenceNumber,
+    });
 
     return NextResponse.json({
       ...result,
+      referenceNumber,
+      timestamp,
+      registeredCount: 1 + additionalRegistrants.length,
       message: 'Registration received successfully',
     });
   } catch (error) {
