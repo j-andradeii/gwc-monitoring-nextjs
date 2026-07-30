@@ -6,3 +6,4 @@ export * from './useAuth';
 export * from './useBreadcrumbs';
 export * from './useResponsive';
 export * from './usePagination';
+export * from './useResetMobileZoom';
