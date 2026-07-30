@@ -143,6 +143,12 @@ export default function CompleteRegistrationPanel({
   const handleContinue = (submitEvent: React.FormEvent) => {
     submitEvent.preventDefault();
     if (!canContinue) return;
+
+    // Blur active element to dismiss mobile keyboard
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
     uploadProof.reset();
     proofMethods.reset({ proofOfPayment: undefined });
     lookup.mutate(trimmedReference);
@@ -187,6 +193,7 @@ export default function CompleteRegistrationPanel({
             spellCheck={false}
             aria-required="true"
             className={`w-100 ${lookup.isError ? 'p-invalid' : ''}`}
+            style={{ fontSize: '16px' }}
           />
         </div>
 
