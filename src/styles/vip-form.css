@@ -1343,6 +1343,64 @@
 }
 
 /* ------------------------------------------------------------
+   Compact payment QR cards
+   The codes are reference material, not the focus of the form, so
+   section 04 shouldn't tower over the details column beside it.
+   Scoped to this section + the pay-later dialog on purpose: the
+   .sod-payment-* rules above are shared with the SOD enrollment
+   page, which is a single column and wants the larger codes.
+   ------------------------------------------------------------ */
+
+/* Cap the two tracks instead of letting 1fr 1fr stretch the cards across the
+   whole column — the cards now hug their QR. The tracks still shrink below the
+   max on narrow phones, so nothing overflows. `start` keeps the pair aligned
+   with the intro text and the upload field rather than floating mid-column. */
+.event-register-section .sod-payment-grid,
+.event-complete-dialog .sod-payment-grid {
+    grid-template-columns: repeat(2, minmax(0, 190px));
+    justify-content: start;
+    gap: 10px;
+}
+
+.event-register-section .sod-payment-card,
+.event-complete-dialog .sod-payment-card {
+    gap: 8px;
+    padding: 12px;
+    border-radius: 14px;
+}
+
+.event-register-section .sod-payment-bank,
+.event-complete-dialog .sod-payment-bank {
+    font-size: 13.5px;
+}
+
+.event-register-section .sod-payment-bank i,
+.event-complete-dialog .sod-payment-bank i {
+    font-size: 15px;
+}
+
+/* The frame caps the QR — the image inside is width:100% of it. 160px keeps
+   these dense InstaPay codes scannable off a screen; anyone who needs bigger
+   taps Download QR for the full-resolution image. */
+.event-register-section .sod-payment-qr-frame,
+.event-complete-dialog .sod-payment-qr-frame {
+    max-width: 160px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.event-register-section .sod-payment-scan,
+.event-complete-dialog .sod-payment-scan {
+    font-size: 11px;
+    gap: 5px;
+}
+
+.event-register-section .sod-payment-scan i,
+.event-complete-dialog .sod-payment-scan i {
+    font-size: 12px;
+}
+
+/* ------------------------------------------------------------
    Success receipt
    Shown in place of the form after a successful submission and
    mirrored by the downloadable PNG (lib/registration-receipt.ts).

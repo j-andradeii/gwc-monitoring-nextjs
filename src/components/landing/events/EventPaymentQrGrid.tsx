@@ -53,9 +53,9 @@ export default function EventPaymentQrGrid() {
             color="var(--color-primary)"
             className="sod-payment-download"
             style={{
-              marginTop: '0.25rem',
-              padding: '0.45rem 0.9rem',
-              fontSize: '0.78rem',
+              marginTop: '0.15rem',
+              padding: '0.38rem 0.75rem',
+              fontSize: '0.72rem',
               fontWeight: 700,
             }}
           />
