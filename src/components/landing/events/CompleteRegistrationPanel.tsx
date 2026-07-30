@@ -159,15 +159,17 @@ export default function CompleteRegistrationPanel({
   const registrants = lookupResult?.registrants ?? [];
 
   return (
-    <div className="event-complete-panel">
+    <div className="event-complete-panel" id="event-complete">
       <span className="event-complete-eyebrow">
         <i className="pi pi-history" aria-hidden="true"></i>
         Already registered?
       </span>
       <h3 className="event-complete-title">Complete your registration</h3>
+      {/* One sentence — the panel now leads the section, so it has to stay
+          compact enough not to push the registration form down the page. */}
       <p className="event-complete-intro">
-        To complete registration, input your reference no. — the code on the receipt you got
-        when you registered. We&apos;ll pull up your slot so you can send your proof of payment.
+        Enter the reference no. from your receipt and we&apos;ll pull up your slot so you can
+        send your proof of payment.
       </p>
 
       <form className="event-complete-form" onSubmit={handleContinue} noValidate>

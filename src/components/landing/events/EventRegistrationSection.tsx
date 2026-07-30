@@ -241,6 +241,19 @@ export default function EventRegistrationSection({ event }: Props) {
     }
   }, [showConfirmation]);
 
+  // Pay-later half of the flow. Always a sibling of the form card (never nested
+  // inside the <form>) so its own input and Continue button can't submit the
+  // registration. The key remounts it when the prefill appears, which seeds the
+  // input without an effect that writes state during render.
+  const completePanel = (
+    <CompleteRegistrationPanel
+      key={pendingPaymentReference ?? 'blank'}
+      event={event}
+      prefillReference={pendingPaymentReference}
+      onProofRecorded={setRecordedProof}
+    />
+  );
+
   return (
     <section
       id="event-register"
@@ -250,6 +263,13 @@ export default function EventRegistrationSection({ event }: Props) {
     >
       <div className="landing-container">
         <div className="event-register-form-wrap">
+          {/* Before registering, the pay-later panel leads the section: someone
+              coming back with a reference number would otherwise have to scroll
+              the entire form to find it. It only moves below on the
+              confirmation screen, where it follows the receipt as the next
+              step with its reference number already filled in. */}
+          {!showConfirmation && completePanel}
+
           <div className="vip-form-container">
             {showConfirmation ? (
               <div className="success-animation-container" ref={successRef}>
@@ -550,8 +570,9 @@ export default function EventRegistrationSection({ event }: Props) {
                         <p className="sod-payment-intro">
                           Pay the {event.registration_fee ? `${event.registration_fee} ` : ''}registration fee by scanning
                           either QR code below, then upload your proof of payment to confirm your slot.
-                          {' '}<strong>Haven&apos;t paid yet?</strong> Register now and send your
-                          proof later using the reference number we&apos;ll give you.
+                          {' '}<strong>Haven&apos;t paid yet?</strong>{' '}
+                          Register now and send your proof later using the reference number
+                          we&apos;ll give you.
                         </p>
 
                         {totalRegistrants > 1 && (
@@ -579,7 +600,10 @@ export default function EventRegistrationSection({ event }: Props) {
                           <span>
                             Your slot is confirmed once we verify your payment. Registering
                             without a proof reserves your slot — upload it any time from{' '}
-                            <strong>Complete your registration</strong> below.
+                            <a href="#event-complete" className="sod-payment-note-link">
+                              Complete your registration
+                            </a>{' '}
+                            at the top of this section.
                           </span>
                         </p>
                       </div>
@@ -614,18 +638,7 @@ export default function EventRegistrationSection({ event }: Props) {
             )}
           </div>
 
-          {/* Pay-later half of the flow. A sibling of the form card (never
-              nested inside the <form>) so its own input and Continue button
-              can't submit the registration, and so it stays reachable on the
-              success screen — where the reference number is prefilled.
-              The key remounts it when that prefill appears, which seeds the
-              input without an effect that writes state during render. */}
-          <CompleteRegistrationPanel
-            key={pendingPaymentReference ?? 'blank'}
-            event={event}
-            prefillReference={pendingPaymentReference}
-            onProofRecorded={setRecordedProof}
-          />
+          {showConfirmation && completePanel}
         </div>
       </div>
     </section>
