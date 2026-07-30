@@ -284,8 +284,8 @@ export default function EventRegistrationSection({ event }: Props) {
                     </>
                   ) : null}{' '}
                   {proofProvided
-                    ? 'is in — we’ll confirm once your payment is verified.'
-                    : 'is in. Your slot is reserved — send your payment and upload the proof to confirm it.'}
+                    ? 'is in. Your slot is reserved.'
+                    : 'is in. To complete, use your reference number to upload proof of payment.'}
                 </p>
 
                 {/* Receipt — the registrant's proof of registration. Mirrors the
@@ -338,9 +338,7 @@ export default function EventRegistrationSection({ event }: Props) {
                     <strong>Take a screenshot or save your reference no.</strong> Screenshot
                     this page — or tap <em>Save as image</em> below — and keep{' '}
                     <strong>{referenceNumber}</strong>.{' '}
-                    {proofProvided
-                      ? 'It’s how we match your payment to your slot.'
-                      : 'You’ll need it to upload your proof of payment and confirm your slot.'}
+                    'It’s how we match your payment to your slot.'
                   </span>
                 </p>
 
