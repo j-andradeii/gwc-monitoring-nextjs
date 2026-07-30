@@ -1,11 +1,10 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useId, useState, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useMutation } from '@tanstack/react-query';
-import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Event } from '@/data/events';
 import ProofOfPaymentField from '@/components/forms/ProofOfPaymentField';
@@ -81,6 +80,18 @@ export default function CompleteRegistrationPanel({
     mode: 'onChange',
     defaultValues: { proofOfPayment: undefined },
   });
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isDialogOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isDialogOpen]);
 
   const lookup = useMutation({
     mutationFn: async (referenceNumber: string): Promise<LookupResult> => {
@@ -192,8 +203,8 @@ export default function CompleteRegistrationPanel({
             autoComplete="off"
             spellCheck={false}
             aria-required="true"
-            className={`w-100 ${lookup.isError ? 'p-invalid' : ''}`}
-            style={{ fontSize: '16px' }}
+            className={`w-100 !text-black ${lookup.isError ? 'p-invalid' : ''}`}
+            style={{ fontSize: '16px', opacity: 1, WebkitTextFillColor: '#000' }}
           />
         </div>
 
@@ -221,18 +232,17 @@ export default function CompleteRegistrationPanel({
         </p>
       )}
 
-      <Dialog
-        header="Complete your registration"
-        visible={isDialogOpen && !!lookupResult}
-        onHide={closeDialog}
-        dismissableMask
-        draggable={false}
-        blockScroll
-        className="event-complete-dialog"
-        style={{ width: '92vw', maxWidth: '540px' }}
-      >
-        {lookupResult && (
-          <>
+      {isDialogOpen && !!lookupResult && (
+        <div className="connect-modal-overlay open" onClick={(e) => {
+            if (e.target === e.currentTarget) closeDialog();
+        }}>
+          <div className="connect-modal-content event-complete-dialog" style={{ width: '92vw', maxWidth: '540px', maxHeight: '75vh', display: 'flex', flexDirection: 'column', padding: '24px' }}>
+            <button type="button" className="connect-close-btn" onClick={closeDialog}>
+                <i className="pi pi-times"></i>
+            </button>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '20px', color: 'var(--color-navy, #1a202c)', flexShrink: 0 }}>Complete your registration</h3>
+            
+          <div style={{ flex: 1, overflowY: 'auto', paddingRight: '4px' }}>
             {/* Same receipt styling as the confirmation screen so the
                 registrant recognises what they're looking at. */}
             <div className="event-register-receipt event-complete-receipt">
@@ -325,9 +335,10 @@ export default function CompleteRegistrationPanel({
                 </button>
               </form>
             </FormProvider>
-          </>
-        )}
-      </Dialog>
+          </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
