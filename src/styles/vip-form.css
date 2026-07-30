@@ -866,6 +866,30 @@
     font-weight: 700;
 }
 
+/* In-note anchor (event registration → the pay-later panel at the top of the
+   section). Navy text, gold underline: gold text on white is only ~3:1, which
+   fails AA at this 13px size, so the brand colour carries in the underline. */
+.sod-payment-note-link {
+    font-weight: 700;
+    color: var(--color-navy, #1a2744);
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary, #d4a84b);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+}
+
+.sod-payment-note-link:hover {
+    text-decoration-color: var(--color-primary-dark, #b8923f);
+    text-decoration-thickness: 3px;
+}
+
+.sod-payment-note-link:focus-visible {
+    outline: 2px solid var(--color-primary, #d4a84b);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
 /* --- QR download button (SOD-scoped; base .download-qr-btn is shared — do NOT touch it) --- */
 .sod-enrollment-page .sod-payment-download {
     width: 100%;
@@ -1128,11 +1152,16 @@
 
 
 /* The welcome card was removed — center the lone form card and cap its width
-   so it doesn't stretch full-bleed on desktop. */
+   so it doesn't stretch full-bleed on desktop. Flex column so the pay-later
+   panel and the form card are spaced by one gap regardless of which order
+   they render in (the panel leads before registering, follows after). */
 .event-register-form-wrap {
     width: 100%;
     max-width: 760px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
 }
 
 /* Card floats on the alternate background via elevation — NO border
@@ -1144,6 +1173,102 @@
         0 2px 6px rgba(26, 39, 68, 0.05),
         0 26px 60px rgba(26, 39, 68, 0.14),
         0 40px 90px rgba(212, 168, 75, 0.10);
+}
+
+/* ------------------------------------------------------------
+   Compact scale — event registration only
+   The shared .vip-form-container / .form-section / .section-title
+   sizes are tuned for the SOD enrollment page, where the form IS
+   the whole page. Here the card is one block on an event detail
+   page, sharing the section with the pay-later panel, so it steps
+   down ~0.75×. Every selector is scoped to .event-register-section
+   so the SOD and VIP forms keep their original scale.
+   ------------------------------------------------------------ */
+
+.event-register-section .vip-form-container {
+    padding: 32px;
+    border-radius: 22px;
+}
+
+.event-register-section .form-header {
+    margin-bottom: 26px;
+}
+
+.event-register-section .step-label {
+    margin-bottom: 6px;
+    font-size: 11px;
+    letter-spacing: 1.6px;
+}
+
+.event-register-section .form-main-title {
+    font-size: 22px;
+    letter-spacing: -0.4px;
+}
+
+.event-register-section .form-section {
+    margin-bottom: 28px;
+}
+
+.event-register-section .section-title {
+    gap: 11px;
+    margin-bottom: 18px;
+    padding-bottom: 11px;
+}
+
+.event-register-section .section-number {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    font-size: 12.5px;
+}
+
+.event-register-section .section-title h4 {
+    font-size: 15.5px;
+}
+
+.event-register-section .form-row {
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.event-register-section .form-error-alert {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    font-size: 13px;
+}
+
+.event-register-section .sod-payment-intro {
+    margin-bottom: 14px;
+    font-size: 13px;
+}
+
+.event-register-section .sod-payment-note {
+    margin-top: 14px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+}
+
+.event-register-section .event-register-multi-toggle {
+    gap: 10px;
+    padding: 12px 14px;
+}
+
+.event-register-section .event-register-multi-toggle-label strong {
+    font-size: 14px;
+}
+
+.event-register-section .event-register-multi-toggle-label span {
+    font-size: 12.5px;
+}
+
+.event-register-section .vip-submit-button {
+    margin-bottom: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+.event-register-section .privacy-note {
+    font-size: 11.5px;
 }
 
 /* The columns wrapper is a plain block by default → fields stack in one column
@@ -1162,11 +1287,11 @@
        1100px by default, so override it within this section, then let the form
        wrap fill that width. */
     .event-register-section .landing-container {
-        max-width: 1400px;
+               max-width: 1100px;
     }
 
     .event-register-form-wrap {
-        max-width: 1400px;
+            max-width: 1100px;
     }
 
     .event-register-columns {
@@ -1186,6 +1311,21 @@
 @media (max-width: 640px) {
     .event-register-section {
         padding: 32px 0 50px;
+    }
+
+    /* The scoped compact padding above (0,2,0) outranks the shared
+       `.vip-form-container { padding: 30px 20px }` in the other 640px block,
+       so restate it here or the card keeps its desktop padding on phones. */
+    .event-register-section .vip-form-container {
+        padding: 22px 16px;
+    }
+
+    .event-register-section .form-main-title {
+        font-size: 20px;
+    }
+
+    .event-register-section .success-animation-container h3 {
+        font-size: 21px;
     }
 }
 
@@ -1343,13 +1483,109 @@
 }
 
 /* ------------------------------------------------------------
+   Compact payment QR cards
+   The codes are reference material, not the focus of the form, so
+   section 04 shouldn't tower over the details column beside it.
+   Scoped to this section + the pay-later dialog on purpose: the
+   .sod-payment-* rules above are shared with the SOD enrollment
+   page, which is a single column and wants the larger codes.
+   ------------------------------------------------------------ */
+
+/* Cap the two tracks instead of letting 1fr 1fr stretch the cards across the
+   whole column — the cards now hug their QR. The tracks still shrink below the
+   max on narrow phones, so nothing overflows. `start` keeps the pair aligned
+   with the intro text and the upload field rather than floating mid-column. */
+.event-register-section .sod-payment-grid,
+.event-complete-dialog .sod-payment-grid {
+    grid-template-columns: repeat(2, minmax(0, 190px));
+    justify-content: start;
+    gap: 10px;
+}
+
+.event-register-section .sod-payment-card,
+.event-complete-dialog .sod-payment-card {
+    gap: 8px;
+    padding: 12px;
+    border-radius: 14px;
+}
+
+.event-register-section .sod-payment-bank,
+.event-complete-dialog .sod-payment-bank {
+    font-size: 13.5px;
+}
+
+.event-register-section .sod-payment-bank i,
+.event-complete-dialog .sod-payment-bank i {
+    font-size: 15px;
+}
+
+/* The frame caps the QR — the image inside is width:100% of it. 160px keeps
+   these dense InstaPay codes scannable off a screen; anyone who needs bigger
+   taps Download QR for the full-resolution image. */
+.event-register-section .sod-payment-qr-frame,
+.event-complete-dialog .sod-payment-qr-frame {
+    max-width: 160px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.event-register-section .sod-payment-scan,
+.event-complete-dialog .sod-payment-scan {
+    font-size: 11px;
+    gap: 5px;
+}
+
+.event-register-section .sod-payment-scan i,
+.event-complete-dialog .sod-payment-scan i {
+    font-size: 12px;
+}
+
+/* ------------------------------------------------------------
    Success receipt
    Shown in place of the form after a successful submission and
    mirrored by the downloadable PNG (lib/registration-receipt.ts).
    ------------------------------------------------------------ */
 
+/* Success screen rides the same compact scale as the form it replaces. */
+.event-register-section .success-animation-container {
+    padding: 24px 0;
+}
+
+.event-register-section .success-animation-container h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
 .event-register-section .success-animation-container p {
-    margin-bottom: 26px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.event-register-section .event-register-receipt {
+    max-width: 420px;
+    margin-bottom: 18px;
+    padding: 16px;
+    border-radius: 14px;
+}
+
+.event-register-section .event-register-receipt-ref {
+    padding: 11px 13px;
+    border-radius: 10px;
+}
+
+.event-register-section .event-register-receipt-code {
+    font-size: 19px;
+}
+
+.event-register-section .event-register-receipt-keep,
+.event-register-section .event-register-receipt-error {
+    max-width: 420px;
+}
+
+.event-register-section .event-register-receipt-keep {
+    padding: 11px 13px;
+    border-radius: 11px;
+    font-size: 12.5px;
 }
 
 .event-register-receipt {
@@ -1457,6 +1693,47 @@
     color: var(--color-primary-dark, #b8923f);
 }
 
+/* "Screenshot this" nudge — the reference number is the only way back into a
+   registration whose payment is still outstanding, so it gets its own callout
+   rather than being buried in the receipt notes. */
+.event-register-receipt-keep {
+    max-width: 460px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(212, 168, 75, 0.35);
+    background: rgba(212, 168, 75, 0.10);
+    font-size: 13px;
+    line-height: 1.55;
+    text-align: left;
+    color: var(--text-secondary, #475569);
+}
+
+.event-register-section .success-animation-container .event-register-receipt-keep {
+    margin-bottom: 16px;
+}
+
+.event-register-receipt-keep i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 16px;
+    color: var(--color-primary-dark, #b8923f);
+}
+
+.event-register-receipt-keep strong {
+    color: var(--text-heading, #0f172a);
+    font-weight: 800;
+}
+
+.event-register-receipt-keep em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--color-navy, #1a2744);
+}
+
 .event-register-receipt-error {
     max-width: 460px;
     margin: 0 auto 18px;
@@ -1496,5 +1773,325 @@
     .event-register-multi-row {
         padding: 12px;
         gap: 10px;
+    }
+}
+
+/* ------------------------------------------------------------
+   Complete your registration (pay-later panel + dialog)
+   LEADS the section, above the form card: someone returning with
+   a reference no. would otherwise have to scroll the whole form
+   to reach it. Reference no. + Continue looks the registration
+   up, then a dialog collects the proof of payment.
+
+   Navy (not white) so it reads as a *different door* from the
+   white form card below it, and so the cream section keeps its
+   light → dark → light alternation (DESIGN_SYSTEM.md §8/§9).
+   Dark surface ⇒ white text + gold accents throughout.
+   ------------------------------------------------------------ */
+
+.event-complete-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 18px 22px 20px;
+    border-radius: 16px;
+    background: linear-gradient(160deg, var(--color-navy, #1a2744) 0%, var(--color-navy-dark, #151e32) 100%);
+    color: #ffffff;
+    box-shadow:
+        0 2px 6px rgba(26, 39, 68, 0.10),
+        0 18px 44px rgba(26, 39, 68, 0.22);
+    /* Clear the sticky LandingHeader when the section-04 note links here. */
+    scroll-margin-top: 90px;
+}
+
+/* Static gold accent bar — the .takeaways treatment (§15), marking this as an
+   accented entry point rather than a passive card. */
+.event-complete-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        var(--color-primary, #d4a84b),
+        var(--color-primary-light, #e5c47a),
+        var(--color-primary, #d4a84b));
+}
+
+/* Full gold (not primary-dark) — this eyebrow now sits on navy, where the
+   brighter gold carries and the darker one muddies. */
+.event-complete-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    color: var(--color-primary, #d4a84b);
+}
+
+.event-complete-title {
+    margin: 6px 0 4px;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: #ffffff;
+}
+
+.event-complete-intro {
+    margin: 0 0 12px;
+    max-width: 62ch;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+/* Field and Continue sit side by side, baseline-aligned on the input. */
+.event-complete-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+/* Capped — the section runs to 1400px on desktop, and a field that wide for a
+   17-character reference code reads as a mistake. */
+.event-complete-field {
+    flex: 1 1 240px;
+    min-width: 0;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Override the generic form label rules from form-input.css — the panel is
+   dark now, so the label and its required asterisk both need to be relit
+   (burgundy on navy is unreadable). */
+.event-complete-field label {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.event-complete-field label .form-required {
+    color: var(--color-primary-light, #e5c47a);
+}
+
+/* The input keeps its white fill — a dark field on a dark panel would lose the
+   one element people have to type into.
+
+   Padding: this is a bare <InputText>, not a Form* component, so it never gets
+   the .input-container compact rule from form-input.css and falls through to
+   globals.css's px-4 py-3 (~51px tall). Match form-input.css's compact values
+   here so it sits at the same height as the fields in the form card below. */
+.event-complete-field .p-inputtext {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+    font-family: 'SFMono-Regular', Consolas, 'Courier New', monospace;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+/* globals.css rings at 0.2 alpha, which all but vanishes against navy. */
+.event-complete-field .p-inputtext:focus {
+    border-color: var(--color-primary, #d4a84b);
+    box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.4);
+}
+
+/* Gold + NAVY text — the canonical gold-surface rule (DESIGN.md). The old
+   near-black fill would have disappeared into the navy panel. */
+/* No fixed height — vertical padding matches the input's 0.5rem so the pair
+   line up on the row's align-items (DESIGN.md button rule). */
+.event-complete-continue {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--color-primary, #d4a84b) 0%, var(--color-primary-dark, #b8923f) 100%);
+    color: var(--color-navy, #1a2744);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 14px rgba(212, 168, 75, 0.26);
+}
+
+.event-complete-continue:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--color-primary-light, #e5c47a) 0%, var(--color-primary, #d4a84b) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(212, 168, 75, 0.36);
+}
+
+.event-complete-continue:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Disabled until a reference number is typed — read as inert, not clickable.
+   A translucent white sits back on navy the way #cbd5e1 did on white. */
+.event-complete-continue:disabled {
+    background: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.55);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.event-complete-error,
+.event-complete-done {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 14px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Burgundy text can't sit directly on the navy panel (DESIGN.md: mid/dark tones
+   on a dark surface). Give the message its own light chip so the error keeps
+   its burgundy semantic at ~9:1 instead of being relit to an off-palette pink. */
+.event-complete-error {
+    padding: 10px 13px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(107, 44, 58, 0.3);
+    color: var(--color-error, #6b2c3a);
+}
+
+.event-complete-error i {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.event-complete-done {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(34, 139, 94, 0.28);
+    background: rgba(34, 139, 94, 0.08);
+    color: #1f6b4d;
+}
+
+.event-complete-done i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 16px;
+}
+
+/* --- The dialog --- */
+.event-complete-dialog .p-dialog-header {
+    padding: 20px 24px 12px;
+}
+
+.event-complete-dialog .p-dialog-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--color-navy, #1a2744);
+}
+
+.event-complete-dialog .p-dialog-content {
+    padding: 0 24px 24px;
+}
+
+/* The receipt block is already centred + capped on the success screen; inside
+   the dialog it should simply fill the available width. */
+.event-complete-receipt {
+    max-width: none;
+    margin: 0 0 16px;
+}
+
+.event-complete-upload-form .sod-payment-intro {
+    margin: 18px 0 14px;
+}
+
+.event-complete-upload-form .form-error-alert {
+    margin: 16px 0 0;
+}
+
+.event-complete-submit {
+    margin-top: 18px;
+    margin-bottom: 0;
+    padding: 12px 8px;
+}
+
+.event-complete-dialog-success {
+    padding: 8px 0 4px;
+    text-align: center;
+}
+
+.event-complete-dialog-success > i {
+    font-size: 44px;
+    color: #22885e;
+}
+
+.event-complete-dialog-success h4 {
+    margin: 14px 0 8px;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--color-navy, #1a2744);
+}
+
+.event-complete-dialog-success p {
+    margin: 0 0 22px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary, #475569);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .event-complete-continue,
+    .event-complete-continue:hover:not(:disabled) {
+        transition: none;
+        transform: none;
+    }
+}
+
+@media (max-width: 560px) {
+
+    /* The panel leads the section here, where the form below is a single tall
+       column — keep it tight so it costs as little vertical space as possible. */
+    .event-register-form-wrap {
+        gap: 16px;
+    }
+
+    .event-complete-panel {
+        padding: 16px 16px 18px;
+    }
+
+    .event-complete-title {
+        font-size: 16px;
+    }
+
+    /* Continue wraps to its own full-width line here, so drop the desktop cap
+       or the field would sit narrower than the button beneath it. */
+    .event-complete-field {
+        max-width: none;
+    }
+
+    /* Touch targets stay comfortable on phones — same step-up form-input.css
+       makes for .input-container at this breakpoint. */
+    .event-complete-field .p-inputtext {
+        padding: 0.65rem 0.75rem;
+    }
+
+    /* Stack so the Continue button gets a full-width tap target. */
+    .event-complete-continue {
+        flex: 1 1 100%;
+        padding: 11px 18px;
+    }
+
+    .event-complete-dialog .p-dialog-header {
+        padding: 16px 18px 10px;
+    }
+
+    .event-complete-dialog .p-dialog-content {
+        padding: 0 18px 18px;
     }
 }

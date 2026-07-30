@@ -21,26 +21,23 @@ import {
   useScrollToFirstError,
 } from '@/components/forms';
 import ProofOfPaymentField from '@/components/forms/ProofOfPaymentField';
-import DownloadQRButton from '@/components/ui/DownloadQRButton';
+import CompleteRegistrationPanel, {
+  type RecordedProof,
+} from '@/components/landing/events/CompleteRegistrationPanel';
+import EventPaymentQrGrid from '@/components/landing/events/EventPaymentQrGrid';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
 import { createRegistrationReceiptImage } from '@/lib/registration-receipt';
 import { eventRegistrationSchema } from '@/models/schemas/event-registration.schema';
-import { SOD_PROOF_MAX_BYTES } from '@/models/schemas/sod.schema';
-import { mimeFromFilename } from '@/lib/image-mime';
+import { proofOfPaymentFileSchema } from '@/models/schemas/proof-of-payment.schema';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
-// Client-side Zod schema — extends the base schema with the required proof file.
-const proofOfPaymentSchema = z
-  .instanceof(File, { message: 'Proof of payment is required' })
-  .refine((file) => file.size <= SOD_PROOF_MAX_BYTES, 'File must be 10 MB or smaller')
-  .refine(
-    (file) => file.type.startsWith('image/') || mimeFromFilename(file.name) !== null,
-    'Please upload an image file'
-  );
-
+// Client-side Zod schema — extends the base schema with the proof file.
+// The proof is OPTIONAL: a registrant may reserve their slot now and send the
+// payment later from the "Complete your registration" panel, which matches
+// their reference number back to these rows.
 const eventRegistrationFormSchema = eventRegistrationSchema.extend({
-  proofOfPayment: proofOfPaymentSchema,
+  proofOfPayment: proofOfPaymentFileSchema.optional(),
 });
 
 type EventRegistrationFormData = z.infer<typeof eventRegistrationFormSchema>;
@@ -69,6 +66,10 @@ export default function EventRegistrationSection({ event }: Props) {
   const multiToggleId = useId();
   // Names captured at submit time — the form is reset behind the success screen.
   const [registeredNames, setRegisteredNames] = useState<string[]>([]);
+  // Set when a proof of payment is sent later against an existing reference
+  // number instead of with the form. It reaches the same confirmation screen,
+  // built from what the sheet gave back rather than from this form's values.
+  const [recordedProof, setRecordedProof] = useState<RecordedProof | null>(null);
   const [isSavingReceipt, setIsSavingReceipt] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const { downloadBlob } = useDownloadImage();
@@ -162,12 +163,26 @@ export default function EventRegistrationSection({ event }: Props) {
     submitRegistration.mutate(data);
   };
 
-  // The server owns both values so the receipt matches the sheet row exactly.
+  // The server owns these values so the receipt matches the sheet row exactly.
   const submissionResult = submitRegistration.data as
-    | { referenceNumber?: string; timestamp?: string }
+    | { referenceNumber?: string; timestamp?: string; proofProvided?: boolean }
     | undefined;
-  const referenceNumber = submissionResult?.referenceNumber ?? '—';
-  const submittedAt = submissionResult?.timestamp ?? '';
+
+  // Two ways into the confirmation screen: a fresh registration, or a proof of
+  // payment sent later for one. `recordedProof` wins — it is the newer event,
+  // and its values come straight back from the rows that were just updated.
+  const showConfirmation = submitRegistration.isSuccess || !!recordedProof;
+  const referenceNumber = recordedProof?.referenceNumber ?? submissionResult?.referenceNumber ?? '—';
+  const submittedAt = recordedProof?.timestamp ?? submissionResult?.timestamp ?? '';
+  const receiptNames = recordedProof?.names ?? registeredNames;
+  // Drives the confirmation copy: without a proof the slot is only reserved.
+  const proofProvided = recordedProof ? true : (submissionResult?.proofProvided ?? false);
+  // A registration just made here that still owes a payment — its reference
+  // number seeds the pay-later panel so it needn't be retyped.
+  const pendingPaymentReference =
+    submitRegistration.isSuccess && !proofProvided
+      ? submissionResult?.referenceNumber
+      : undefined;
 
   /**
    * Draw the receipt to a PNG and hand it to `useDownloadImage`, which routes
@@ -187,7 +202,7 @@ export default function EventRegistrationSection({ event }: Props) {
         eventDate: `${event.day}, ${event.date}`,
         referenceNumber,
         timestamp: submittedAt,
-        names: registeredNames,
+        names: receiptNames,
       });
 
       // The blob goes straight to the hook: wrapping it in a blob: URL and
@@ -203,11 +218,12 @@ export default function EventRegistrationSection({ event }: Props) {
     }
   };
 
-  // On a successful registration the form is swapped for the "Thank You!"
-  // success message. Wait for that container to paint, then scroll it into
-  // view (this section only renders for has_payment events).
+  // On a successful registration — or once a late proof of payment is recorded
+  // and its dialog closes — the form is swapped for the "Thank You!" success
+  // message. Wait for that container to paint, then scroll it into view (this
+  // section only renders for has_payment events).
   useEffect(() => {
-    if (submitRegistration.isSuccess) {
+    if (showConfirmation) {
       // A slightly longer timeout ensures the layout shift from the form 
       // disappearing has fully settled.
       setTimeout(() => {
@@ -223,7 +239,20 @@ export default function EventRegistrationSection({ event }: Props) {
         }
       }, 150);
     }
-  }, [submitRegistration.isSuccess]);
+  }, [showConfirmation]);
+
+  // Pay-later half of the flow. Always a sibling of the form card (never nested
+  // inside the <form>) so its own input and Continue button can't submit the
+  // registration. The key remounts it when the prefill appears, which seeds the
+  // input without an effect that writes state during render.
+  const completePanel = (
+    <CompleteRegistrationPanel
+      key={pendingPaymentReference ?? 'blank'}
+      event={event}
+      prefillReference={pendingPaymentReference}
+      onProofRecorded={setRecordedProof}
+    />
+  );
 
   return (
     <section
@@ -234,20 +263,29 @@ export default function EventRegistrationSection({ event }: Props) {
     >
       <div className="landing-container">
         <div className="event-register-form-wrap">
+          {/* Before registering, the pay-later panel leads the section: someone
+              coming back with a reference number would otherwise have to scroll
+              the entire form to find it. It only moves below on the
+              confirmation screen, where it follows the receipt as the next
+              step with its reference number already filled in. */}
+          {!showConfirmation && completePanel}
+
           <div className="vip-form-container">
-            {submitRegistration.isSuccess ? (
+            {showConfirmation ? (
               <div className="success-animation-container" ref={successRef}>
                 <h3>Thank You!</h3>
                 <p>
-                  <strong>{registeredNames[0]}</strong>, your registration for{' '}
+                  <strong>{receiptNames[0]}</strong>, your registration for{' '}
                   <strong>{event.title}</strong>
-                  {registeredNames.length > 1 ? (
+                  {receiptNames.length > 1 ? (
                     <>
                       {' '}
-                      — covering <strong>{registeredNames.length} people</strong> —
+                      — covering <strong>{receiptNames.length} people</strong> —
                     </>
                   ) : null}{' '}
-                  is in — we&apos;ll confirm once your payment is verified.
+                  {proofProvided
+                    ? 'is in — we’ll confirm once your payment is verified.'
+                    : 'is in. Your slot is reserved — send your payment and upload the proof to confirm it.'}
                 </p>
 
                 {/* Receipt — the registrant's proof of registration. Mirrors the
@@ -265,12 +303,12 @@ export default function EventRegistrationSection({ event }: Props) {
 
                   <div className="event-register-receipt-names">
                     <span className="event-register-receipt-label">
-                      {registeredNames.length > 1
-                        ? `Registrants (${registeredNames.length})`
+                      {receiptNames.length > 1
+                        ? `Registrants (${receiptNames.length})`
                         : 'Registrant'}
                     </span>
                     <ol>
-                      {registeredNames.map((name, index) => (
+                      {receiptNames.map((name, index) => (
                         <li key={`${name}-${index}`}>
                           <span className="event-register-receipt-num" aria-hidden="true">
                             {index + 1}
@@ -281,16 +319,30 @@ export default function EventRegistrationSection({ event }: Props) {
                     </ol>
                   </div>
 
-                  {registeredNames.length > 1 && (
+                  {receiptNames.length > 1 && (
                     <p className="event-register-receipt-note">
                       <i className="pi pi-info-circle" aria-hidden="true"></i>
                       <span>
                         Everyone above shares this reference number — it covers the one
-                        payment you sent.
+                        payment {proofProvided ? 'you sent' : 'for the whole group'}.
                       </span>
                     </p>
                   )}
                 </div>
+
+                {/* The reference number is the only way back into this
+                    registration — say so loudly before they navigate away. */}
+                <p className="event-register-receipt-keep" role="note">
+                  <i className="pi pi-camera" aria-hidden="true"></i>
+                  <span>
+                    <strong>Take a screenshot or save your reference no.</strong> Screenshot
+                    this page — or tap <em>Save as image</em> below — and keep{' '}
+                    <strong>{referenceNumber}</strong>.{' '}
+                    {proofProvided
+                      ? 'It’s how we match your payment to your slot.'
+                      : 'You’ll need it to upload your proof of payment and confirm your slot.'}
+                  </span>
+                </p>
 
                 {saveError && (
                   <p className="event-register-receipt-error" role="alert">
@@ -319,6 +371,7 @@ export default function EventRegistrationSection({ event }: Props) {
                       submitRegistration.reset();
                       reset(DEFAULT_FORM_VALUES);
                       setRegisteredNames([]);
+                      setRecordedProof(null);
                       setSaveError(null);
                     }}
                   >
@@ -517,6 +570,9 @@ export default function EventRegistrationSection({ event }: Props) {
                         <p className="sod-payment-intro">
                           Pay the {event.registration_fee ? `${event.registration_fee} ` : ''}registration fee by scanning
                           either QR code below, then upload your proof of payment to confirm your slot.
+                          {' '}<strong>Haven&apos;t paid yet?</strong>{' '}
+                          Register now and send your proof later using the reference number
+                          we&apos;ll give you.
                         </p>
 
                         {totalRegistrants > 1 && (
@@ -533,78 +589,21 @@ export default function EventRegistrationSection({ event }: Props) {
                           </p>
                         )}
 
-                        <div className="sod-payment-grid">
-                          <div className="sod-payment-card">
-                            <span className="sod-payment-bank">
-                              <i className="pi pi-credit-card" aria-hidden="true"></i>
-                              BPI
-                            </span>
-                            <span className="sod-payment-qr-frame">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
-                                alt="BPI payment QR code for Gateway event registration"
-                                className="sod-payment-qr"
-                                loading="lazy"
-                              />
-                            </span>
-                            <span className="sod-payment-scan">
-                              <i className="pi pi-qrcode" aria-hidden="true"></i>
-                              Scan to pay
-                            </span>
-                            <DownloadQRButton
-                              qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png"
-                              filename="gateway-event-bpi-qr.png"
-                              color="var(--color-primary)"
-                              className="sod-payment-download"
-                              style={{
-                                marginTop: '0.25rem',
-                                padding: '0.45rem 0.9rem',
-                                fontSize: '0.78rem',
-                                fontWeight: 700,
-                              }}
-                            />
-                          </div>
+                        <EventPaymentQrGrid />
 
-                          <div className="sod-payment-card">
-                            <span className="sod-payment-bank">
-                              <i className="pi pi-wallet" aria-hidden="true"></i>
-                              GCash
-                            </span>
-                            <span className="sod-payment-qr-frame">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
-                                alt="GCash payment QR code for Gateway event registration"
-                                className="sod-payment-qr"
-                                loading="lazy"
-                              />
-                            </span>
-                            <span className="sod-payment-scan">
-                              <i className="pi pi-qrcode" aria-hidden="true"></i>
-                              Scan to pay
-                            </span>
-                            <DownloadQRButton
-                              qrCodeUrl="https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png"
-                              filename="gateway-event-gcash-qr.png"
-                              color="var(--color-primary)"
-                              className="sod-payment-download"
-                              style={{
-                                marginTop: '0.25rem',
-                                padding: '0.45rem 0.9rem',
-                                fontSize: '0.78rem',
-                                fontWeight: 700,
-                              }}
-                            />
-                          </div>
-                        </div>
-
-                        <ProofOfPaymentField required />
+                        <ProofOfPaymentField
+                          sublabel="Optional — you can send this later with your reference number. Max 10 MB."
+                        />
 
                         <p className="sod-payment-note">
                           <i className="pi pi-info-circle" aria-hidden="true"></i>
                           <span>
-                            Your slot is confirmed once we verify your payment.
+                            Your slot is confirmed once we verify your payment. Registering
+                            without a proof reserves your slot — upload it any time from{' '}
+                            <a href="#event-complete" className="sod-payment-note-link">
+                              Complete your registration
+                            </a>{' '}
+                            at the top of this section.
                           </span>
                         </p>
                       </div>
@@ -638,6 +637,8 @@ export default function EventRegistrationSection({ event }: Props) {
               </FormProvider>
             )}
           </div>
+
+          {showConfirmation && completePanel}
         </div>
       </div>
     </section>
