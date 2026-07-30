@@ -8,7 +8,7 @@ import './globals.css';
 import { siteMetadata } from '@/data/site-metadata';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { ScrollbarAutoHide } from '@/components/providers/ScrollbarAutoHide';
-import { MobileZoomReset } from '@/components/providers/MobileZoomReset';
+// import { MobileZoomReset } from '@/components/providers/MobileZoomReset';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -85,7 +85,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-sans antialiased">
         <ScrollbarAutoHide />
-        <MobileZoomReset />
+        {/* <MobileZoomReset /> */}
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
