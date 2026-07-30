@@ -239,7 +239,9 @@ export default function EventRegistrationSection({ event }: Props) {
         }
       }, 150);
     }
-  }, [showConfirmation]);
+  }, [showConfirmation, recordedProof]);
+
+
 
   // Pay-later half of the flow. Always a sibling of the form card (never nested
   // inside the <form>) so its own input and Continue button can't submit the
@@ -337,8 +339,7 @@ export default function EventRegistrationSection({ event }: Props) {
                   <span>
                     <strong>Take a screenshot or save your reference no.</strong> Screenshot
                     this page — or tap <em>Save as image</em> below — and keep{' '}
-                    <strong>{referenceNumber}</strong>.{' '}
-                    'It’s how we match your payment to your slot.'
+                    <strong>{referenceNumber}</strong>. It’s how we match your payment to your slot.
                   </span>
                 </p>
 
