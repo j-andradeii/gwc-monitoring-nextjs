@@ -111,27 +111,52 @@ export default function CompleteRegistrationPanel({
   const scrollDown = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
+    // Clamped to the last scrollable pixel: asking for an offset past the end
+    // leaves iOS parked in the overscroll region — a screen of blank white
+    // below the content — instead of bouncing back.
+    const end = Math.max(el.scrollHeight - el.clientHeight, 0);
+    const target = Math.min(el.scrollTop + Math.round(el.clientHeight * 0.8), end);
     const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    el.scrollBy({ top: Math.round(el.clientHeight * 0.8), behavior: smooth ? 'smooth' : 'auto' });
+    el.scrollTo({ top: target, behavior: smooth ? 'smooth' : 'auto' });
   }, []);
+
+  /**
+   * A resize can leave the offset past the end of the content — the dialog is
+   * sized off the viewport, and an in-app browser's toolbars collapse under
+   * you — which paints as a screen of blank white below the last element.
+   * Pull it back before re-measuring.
+   */
+  const handleResize = useCallback(() => {
+    const el = scrollRef.current;
+    if (el) {
+      const end = Math.max(el.scrollHeight - el.clientHeight, 0);
+      if (el.scrollTop > end) el.scrollTop = end;
+    }
+    updateScrollHint();
+  }, [updateScrollHint]);
 
   useEffect(() => {
     if (!isDialogOpen) return;
 
+    const scroller = scrollRef.current;
     const content = scrollContentRef.current;
-    if (!content) return;
+    if (!scroller || !content) return;
 
-    // ResizeObserver reports the box once on subscribe, so this covers the
-    // first measurement as well as the QR images settling in afterwards.
-    const observer = new ResizeObserver(updateScrollHint);
+    // Both boxes matter: the content grows as the QR images settle in, and the
+    // scroller's own height follows the viewport. ResizeObserver reports each
+    // one on subscribe, which doubles as the first measurement.
+    const observer = new ResizeObserver(handleResize);
     observer.observe(content);
-    window.addEventListener('resize', updateScrollHint);
+    observer.observe(scroller);
+    window.addEventListener('resize', handleResize);
+    window.visualViewport?.addEventListener('resize', handleResize);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('resize', updateScrollHint);
+      window.removeEventListener('resize', handleResize);
+      window.visualViewport?.removeEventListener('resize', handleResize);
     };
-  }, [isDialogOpen, updateScrollHint]);
+  }, [isDialogOpen, handleResize]);
 
   const lookup = useMutation({
     mutationFn: async (referenceNumber: string): Promise<LookupResult> => {
