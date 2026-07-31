@@ -72,6 +72,9 @@ export default function EventRegistrationSection({ event }: Props) {
   const [recordedProof, setRecordedProof] = useState<RecordedProof | null>(null);
   const [isSavingReceipt, setIsSavingReceipt] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [copiedReference, setCopiedReference] = useState(false);
+  const [copyError, setCopyError] = useState<string | null>(null);
+  const copyResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { downloadBlob } = useDownloadImage();
 
   const methods = useForm<EventRegistrationFormData>({
@@ -183,6 +186,36 @@ export default function EventRegistrationSection({ event }: Props) {
     submitRegistration.isSuccess && !proofProvided
       ? submissionResult?.referenceNumber
       : undefined;
+  // '—' is what stands in when the server didn't return one; there is nothing
+  // to put on the clipboard in that case.
+  const canCopyReference = referenceNumber !== '—';
+
+  /**
+   * Copying beats retyping a 16-character code into a chat message, and it is
+   * what the reference number is mostly used for. The confirmation reverts
+   * after a couple of seconds so the button reads as an action again.
+   */
+  const handleCopyReference = async () => {
+    if (!canCopyReference) return;
+
+    try {
+      await navigator.clipboard.writeText(referenceNumber);
+      setCopyError(null);
+      setCopiedReference(true);
+      if (copyResetRef.current) clearTimeout(copyResetRef.current);
+      copyResetRef.current = setTimeout(() => setCopiedReference(false), 2000);
+    } catch (error) {
+      // Blocked permission or an insecure origin — the number is still on
+      // screen, so point them at the manual way rather than failing silently.
+      console.error('Copying the reference number failed:', error);
+      setCopiedReference(false);
+      setCopyError('We couldn’t copy it for you. Press and hold the number to copy it manually.');
+    }
+  };
+
+  useEffect(() => () => {
+    if (copyResetRef.current) clearTimeout(copyResetRef.current);
+  }, []);
 
   /**
    * Draw the receipt to a PNG and hand it to `useDownloadImage`, which routes
@@ -295,7 +328,23 @@ export default function EventRegistrationSection({ event }: Props) {
                 <div className="event-register-receipt">
                   <div className="event-register-receipt-ref">
                     <span className="event-register-receipt-label">Reference No.</span>
-                    <strong className="event-register-receipt-code">{referenceNumber}</strong>
+                    <div className="event-register-receipt-code-row">
+                      <strong className="event-register-receipt-code">{referenceNumber}</strong>
+                      {canCopyReference && (
+                        <button
+                          type="button"
+                          className={`event-register-receipt-copy${copiedReference ? ' is-copied' : ''}`}
+                          onClick={handleCopyReference}
+                          aria-label={`Copy reference number ${referenceNumber}`}
+                        >
+                          <i
+                            className={`pi ${copiedReference ? 'pi-check' : 'pi-copy'}`}
+                            aria-hidden="true"
+                          />
+                          <span role="status">{copiedReference ? 'Copied' : 'Copy'}</span>
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   <div className="event-register-receipt-meta">
@@ -331,6 +380,13 @@ export default function EventRegistrationSection({ event }: Props) {
                     </p>
                   )}
                 </div>
+
+                {copyError && (
+                  <p className="event-register-receipt-error" role="alert">
+                    <i className="pi pi-exclamation-circle" aria-hidden="true"></i>
+                    {copyError}
+                  </p>
+                )}
 
                 {/* The reference number is the only way back into this
                     registration — say so loudly before they navigate away. */}

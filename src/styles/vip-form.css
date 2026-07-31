@@ -1622,6 +1622,62 @@
     letter-spacing: 0.5px;
     color: var(--color-navy, #1a2744);
     word-break: break-all;
+    /* One tap/click grabs the whole reference — the copy button is the easy
+       path, this is the fallback when the clipboard API is blocked. */
+    user-select: all;
+    -webkit-user-select: all;
+}
+
+.event-register-receipt-code-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Deliberately no min-width: 0 — the code keeps its natural width so a narrow
+   phone wraps the button onto its own line instead of breaking the reference
+   mid-code (the base rule allows break-all for the standalone layout). */
+.event-register-receipt-code-row .event-register-receipt-code {
+    flex: 1 1 auto;
+    word-break: normal;
+}
+
+.event-register-receipt-copy {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 11px;
+    border: 1px solid rgba(26, 39, 68, 0.18);
+    border-radius: 9px;
+    background: #ffffff;
+    color: var(--color-navy, #1a2744);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.event-register-receipt-copy:hover {
+    background: var(--color-navy, #1a2744);
+    border-color: var(--color-navy, #1a2744);
+    color: var(--color-primary-light, #e5c47a);
+}
+
+.event-register-receipt-copy:focus-visible {
+    outline: 2px solid var(--color-primary, #d4a84b);
+    outline-offset: 2px;
+}
+
+/* The confirmation is a state, not a call to action — green, and it stops
+   reacting to hover until it reverts. */
+.event-register-receipt-copy.is-copied,
+.event-register-receipt-copy.is-copied:hover {
+    background: rgba(34, 139, 94, 0.1);
+    border-color: rgba(34, 139, 94, 0.35);
+    color: #1f6b4d;
 }
 
 .event-register-receipt-meta {
@@ -1895,6 +1951,17 @@
     text-transform: uppercase;
 }
 
+/* The input carries an inline -webkit-text-fill-color so the typed reference
+   number stays black on iOS — but the placeholder inherits that fill and ends
+   up reading as an already-entered value. Relight it to the same grey the rest
+   of the forms use (form-input.css); a rule applied directly to ::placeholder
+   beats the inherited fill. */
+.event-complete-field .p-inputtext::placeholder {
+    color: #6b7280;
+    -webkit-text-fill-color: #6b7280;
+    opacity: 1;
+}
+
 /* globals.css rings at 0.2 alpha, which all but vanishes against navy. */
 .event-complete-field .p-inputtext:focus {
     border-color: var(--color-primary, #d4a84b);
@@ -1983,7 +2050,138 @@
     font-size: 16px;
 }
 
-/* --- The dialog --- */
+/* --- The dialog ---
+   It borrows the .connect-modal-* shell, which is built for a wide two-column
+   modal (min-height 600px, a dark image panel behind the close button). This
+   block re-fits that shell for a single narrow column on a white surface. */
+.event-complete-dialog.connect-modal-content {
+    width: 92vw;
+    max-width: 540px;
+    /* Beats .connect-modal-content's min-height: 600px, which would otherwise
+       win over max-height and push the dialog past a phone screen. */
+    min-height: 0;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+/* Padded clear of the close button so a longer title can't run under it. */
+.event-complete-dialog-title {
+    flex-shrink: 0;
+    margin: 0 0 20px;
+    padding-right: 40px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-navy, #1a202c);
+}
+
+/* The shared rule turns this white-on-translucent-white below 768px, which is
+   invisible here — the phone layout has no dark image panel behind it. */
+.event-complete-dialog .connect-close-btn {
+    top: 14px;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(26, 39, 68, 0.07);
+    backdrop-filter: none;
+    color: var(--color-navy, #1a2744);
+    font-size: 16px;
+}
+
+.event-complete-dialog .connect-close-btn:hover {
+    background: rgba(26, 39, 68, 0.13);
+    color: var(--color-navy, #1a2744);
+}
+
+.event-complete-dialog .connect-close-btn:focus-visible {
+    outline: 2px solid var(--color-primary, #d4a84b);
+    outline-offset: 2px;
+}
+
+/* Positioning context for the scroll cue, which overlays the fold. */
+.event-complete-dialog-body {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+}
+
+.event-complete-dialog-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* The receipt, both QR codes and the upload field don't fit a phone screen, so
+   fade the last line out and drop a chevron on it — without this the dialog
+   looks like it ends at the QR grid. Hidden once the end is reached. */
+.event-complete-scroll-hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 62px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 4px;
+    background: linear-gradient(to top,
+            #ffffff 12%,
+            rgba(255, 255, 255, 0.88) 52%,
+            rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    /* The fade itself is decorative — it must never eat a tap meant for the
+       content it is sitting over. */
+    pointer-events: none;
+}
+
+.event-complete-scroll-hint.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* The chevron, on the other hand, does take taps: it lands squarely on the
+   upload dropzone, and a pass-through tap there opens the file picker instead
+   of scrolling. */
+.event-complete-scroll-hint button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-navy, #1a2744);
+    color: var(--color-primary-light, #e5c47a);
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(26, 39, 68, 0.3);
+    animation: event-complete-scroll-nudge 1.6s ease-in-out infinite;
+    pointer-events: auto;
+}
+
+@keyframes event-complete-scroll-nudge {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(4px);
+    }
+}
+
 .event-complete-dialog .p-dialog-header {
     padding: 20px 24px 12px;
 }
@@ -2050,6 +2248,11 @@
         transition: none;
         transform: none;
     }
+
+    /* The gradient still marks the fold; only the bounce goes. */
+    .event-complete-scroll-hint button {
+        animation: none;
+    }
 }
 
 @media (max-width: 560px) {
@@ -2084,6 +2287,18 @@
     .event-complete-continue {
         flex: 1 1 100%;
         padding: 11px 18px;
+    }
+
+    /* Give the dialog as much of the phone screen as the overlay padding
+       allows — the less that sits below the fold, the better. */
+    .event-complete-dialog.connect-modal-content {
+        max-height: 85vh;
+        padding: 20px 18px;
+    }
+
+    .event-complete-dialog-title {
+        margin-bottom: 16px;
+        font-size: 1.125rem;
     }
 
     .event-complete-dialog .p-dialog-header {
