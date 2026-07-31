@@ -2061,6 +2061,11 @@
        win over max-height and push the dialog past a phone screen. */
     min-height: 0;
     max-height: 75vh;
+    /* dvh tracks the *visible* viewport. In an in-app browser (Messenger,
+       Instagram) vh keeps counting the space under the collapsing toolbars, so
+       a vh-sized dialog resizes mid-scroll and strands the scroll offset past
+       the content. vh stays first as the fallback. */
+    max-height: 75dvh;
     display: flex;
     flex-direction: column;
     padding: 24px;
@@ -2116,7 +2121,13 @@
     min-height: 0;
     overflow-y: auto;
     padding-right: 4px;
-    -webkit-overflow-scrolling: touch;
+    /* Keeps the gesture inside the dialog: without it a flick that reaches the
+       end chains to the page behind and, in an iOS in-app browser, can leave
+       this container parked in its rubber-band gap showing blank white.
+       (Deliberately no -webkit-overflow-scrolling: touch — that legacy
+       momentum layer is where those stuck-scroll artifacts live, and iOS has
+       scrolled smoothly without it since 13.) */
+    overscroll-behavior: contain;
 }
 
 /* The receipt, both QR codes and the upload field don't fit a phone screen, so
@@ -2293,6 +2304,7 @@
        allows — the less that sits below the fold, the better. */
     .event-complete-dialog.connect-modal-content {
         max-height: 85vh;
+        max-height: 85dvh;
         padding: 20px 18px;
     }
 
