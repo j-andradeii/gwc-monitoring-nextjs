@@ -68,12 +68,14 @@ export const EventsFilter: React.FC<EventsFilterProps> = ({
               placeholder="Search events..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
+              /* Font size lives in globals.css so the mobile anti-zoom rule can
+                 raise it to 16px — an inline fontSize would override it. */
+              className="events-filter-search-input"
               style={{
                 width: '100%',
                 padding: '14px 16px 14px 46px',
                 border: '2px solid var(--border-color)',
                 borderRadius: '12px',
-                fontSize: '15px',
                 outline: 'none',
                 transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
                 backgroundColor: '#ffffff',

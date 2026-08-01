@@ -134,6 +134,9 @@ export function ShareModal({ isOpen, onClose, title, excerpt, modalTitle = 'Shar
                         type="text"
                         readOnly
                         value={shareUrl}
+                        /* Font size lives in globals.css so the mobile anti-zoom rule can
+                           raise it to 16px — an inline fontSize would override it. */
+                        className="share-modal-url-input"
                         style={{
                             width: '100%',
                             padding: '12px 16px',
@@ -142,7 +145,6 @@ export function ShareModal({ isOpen, onClose, title, excerpt, modalTitle = 'Shar
                             border: '1px solid var(--border-color)',
                             backgroundColor: '#f8fafc',
                             color: 'var(--text-secondary)',
-                            fontSize: '14px',
                             outline: 'none',
                         }}
                     />
