@@ -851,3 +851,65 @@ html.is-scrolling ::-webkit-scrollbar-thumb:hover {
     border-color: var(--primary-gold-accent) !important;
     color: white;
 }
+
+/* ===========================================
+   NO AUTO-ZOOM ON INPUT FOCUS (iOS Safari)
+   ===========================================
+   Mobile Safari zooms the whole viewport whenever a text field is focused
+   and its computed font-size is under 16px — and it does NOT zoom back out
+   on blur, so the page stays enlarged and clipped for the rest of the visit.
+
+   Every field on the site was landing at 15px:
+     - .landing-page sets font-size: 15px on the page root;
+     - Tailwind preflight's `input, textarea, select { font: inherit }` lives
+       in @layer base, while PrimeReact's `.p-inputtext { font-size: 1rem }`
+       lives in @layer primereact — and because theme.css is imported first,
+       `primereact` is the EARLIER (weaker) layer, so preflight wins and the
+       15px inherits straight into every control.
+
+   These rules are UNLAYERED, so they outrank both layers. Scoped to touch /
+   small screens so desktop keeps the intentional 15px control scale — the
+   1px difference is invisible on a phone, but it's the whole fix.
+
+   `!important` is deliberate: 16px on a focused field is an invariant, not a
+   preference. Page-level rules routinely out-specify a bare element selector
+   (`.input-group textarea { font-size: 15px }` in landing.css is one), and
+   every such rule would silently bring the zoom back.
+
+   Don't "solve" this with `maximum-scale=1` / `user-scalable=no` on the
+   viewport meta instead: that blocks pinch-zoom for everyone (an a11y
+   regression) and iOS ignores it in Safari anyway. Keep the font at 16px.
+   =========================================== */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']):not([type='color']):not([type='submit']):not([type='button']),
+  textarea,
+  select,
+  [contenteditable='true'],
+  .p-inputtext,
+  .p-inputtextarea,
+  .p-password-input,
+  .p-inputnumber-input,
+  .p-dropdown-label,
+  .p-dropdown-filter,
+  .p-multiselect-label,
+  .p-multiselect-filter,
+  .p-autocomplete-input,
+  .p-chips-input-token input,
+  .p-calendar input {
+    font-size: 16px !important;
+  }
+}
+
+/* These three inputs carry their styling inline in TSX. Their font sizes were
+   lifted out of the style objects and parked here so the rule above governs
+   them from one place — put them back in the JSX and the next person who drops
+   the `!important` reintroduces the zoom on exactly these three fields. */
+.events-filter-search-input {
+  font-size: 15px;
+}
+
+.share-modal-url-input,
+.sermon-notes-search-input {
+  font-size: 14px;
+}

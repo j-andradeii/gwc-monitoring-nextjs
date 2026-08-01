@@ -259,12 +259,14 @@ export default function SermonNotesClient() {
                                     placeholder="Search sermons, speakers, or scripture..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
+                                    /* Font size lives in globals.css so the mobile anti-zoom rule
+                                       can raise it to 16px — an inline fontSize would override it. */
+                                    className="sermon-notes-search-input"
                                     style={{
                                         width: '100%',
                                         padding: '10px 14px 10px 38px',
                                         border: '1px solid #e5e7eb',
                                         borderRadius: '8px',
-                                        fontSize: '14px',
                                         outline: 'none',
                                         transition: 'all 0.2s ease',
                                         backgroundColor: '#ffffff',
