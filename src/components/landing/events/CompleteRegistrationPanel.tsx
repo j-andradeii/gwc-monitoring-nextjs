@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, useEffect } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -74,6 +74,11 @@ export default function CompleteRegistrationPanel({
   const referenceInputId = useId();
   const [reference, setReference] = useState(prefillReference ?? '');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  // The dialog is taller than a phone screen (receipt + two QR codes + upload),
+  // so it needs an explicit "there's more below" cue.
+  const [showScrollHint, setShowScrollHint] = useState(false);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const scrollContentRef = useRef<HTMLDivElement | null>(null);
 
   const proofMethods = useForm<ProofUploadFormData>({
     resolver: zodResolver(proofUploadSchema),
@@ -92,6 +97,66 @@ export default function CompleteRegistrationPanel({
       document.body.style.overflow = 'auto';
     };
   }, [isDialogOpen]);
+
+  /** Show the cue only while there is still something left to scroll to. */
+  const updateScrollHint = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const remaining = el.scrollHeight - el.scrollTop - el.clientHeight;
+    setShowScrollHint(remaining > 24);
+  }, []);
+
+  /** The chevron lands on top of the upload dropzone, so it has to handle its
+   *  own taps — otherwise they fall through and open the file picker. */
+  const scrollDown = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    // Clamped to the last scrollable pixel: asking for an offset past the end
+    // leaves iOS parked in the overscroll region — a screen of blank white
+    // below the content — instead of bouncing back.
+    const end = Math.max(el.scrollHeight - el.clientHeight, 0);
+    const target = Math.min(el.scrollTop + Math.round(el.clientHeight * 0.8), end);
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollTo({ top: target, behavior: smooth ? 'smooth' : 'auto' });
+  }, []);
+
+  /**
+   * A resize can leave the offset past the end of the content — the dialog is
+   * sized off the viewport, and an in-app browser's toolbars collapse under
+   * you — which paints as a screen of blank white below the last element.
+   * Pull it back before re-measuring.
+   */
+  const handleResize = useCallback(() => {
+    const el = scrollRef.current;
+    if (el) {
+      const end = Math.max(el.scrollHeight - el.clientHeight, 0);
+      if (el.scrollTop > end) el.scrollTop = end;
+    }
+    updateScrollHint();
+  }, [updateScrollHint]);
+
+  useEffect(() => {
+    if (!isDialogOpen) return;
+
+    const scroller = scrollRef.current;
+    const content = scrollContentRef.current;
+    if (!scroller || !content) return;
+
+    // Both boxes matter: the content grows as the QR images settle in, and the
+    // scroller's own height follows the viewport. ResizeObserver reports each
+    // one on subscribe, which doubles as the first measurement.
+    const observer = new ResizeObserver(handleResize);
+    observer.observe(content);
+    observer.observe(scroller);
+    window.addEventListener('resize', handleResize);
+    window.visualViewport?.addEventListener('resize', handleResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', handleResize);
+      window.visualViewport?.removeEventListener('resize', handleResize);
+    };
+  }, [isDialogOpen, handleResize]);
 
   const lookup = useMutation({
     mutationFn: async (referenceNumber: string): Promise<LookupResult> => {
@@ -167,6 +232,7 @@ export default function CompleteRegistrationPanel({
 
   const closeDialog = () => {
     setIsDialogOpen(false);
+    setShowScrollHint(false);
     // Drop the staged file so re-opening starts clean.
     uploadProof.reset();
     proofMethods.reset({ proofOfPayment: undefined });
@@ -236,13 +302,20 @@ export default function CompleteRegistrationPanel({
         <div className="connect-modal-overlay open" onClick={(e) => {
             if (e.target === e.currentTarget) closeDialog();
         }}>
-          <div className="connect-modal-content event-complete-dialog" style={{ width: '92vw', maxWidth: '540px', maxHeight: '75vh', display: 'flex', flexDirection: 'column', padding: '24px' }}>
-            <button type="button" className="connect-close-btn" onClick={closeDialog}>
-                <i className="pi pi-times"></i>
+          <div className="connect-modal-content event-complete-dialog">
+            <button
+              type="button"
+              className="connect-close-btn"
+              onClick={closeDialog}
+              aria-label="Close"
+            >
+                <i className="pi pi-times" aria-hidden="true"></i>
             </button>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '20px', color: 'var(--color-navy, #1a202c)', flexShrink: 0 }}>Complete your registration</h3>
-            
-          <div style={{ flex: 1, overflowY: 'auto', paddingRight: '4px' }}>
+            <h3 className="event-complete-dialog-title">Complete your registration</h3>
+
+          <div className="event-complete-dialog-body">
+          <div className="event-complete-dialog-scroll" ref={scrollRef} onScroll={updateScrollHint}>
+          <div ref={scrollContentRef}>
             {/* Same receipt styling as the confirmation screen so the
                 registrant recognises what they're looking at. */}
             <div className="event-register-receipt event-complete-receipt">
@@ -335,6 +408,20 @@ export default function CompleteRegistrationPanel({
                 </button>
               </form>
             </FormProvider>
+          </div>
+          </div>
+          {/* Sits over the fold, not in the flow, so it never shifts the
+              content it is pointing past. Decorative for assistive tech —
+              keyboard and screen-reader users just scroll the region — hence
+              aria-hidden and tabIndex -1 on the button. */}
+          <div
+            className={`event-complete-scroll-hint${showScrollHint ? ' is-visible' : ''}`}
+            aria-hidden="true"
+          >
+            <button type="button" tabIndex={-1} onClick={scrollDown}>
+              <i className="pi pi-chevron-down"></i>
+            </button>
+          </div>
           </div>
           </div>
         </div>
