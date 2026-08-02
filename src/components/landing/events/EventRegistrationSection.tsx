@@ -483,9 +483,12 @@ export default function EventRegistrationSection({ event }: Props) {
                         <div className="form-row sod-form-row-1col">
                           <FormInput
                             name="email"
-                            label="Email (optional)"
+                            label="Email"
+                            showRequired
                             placeholder="you@email.com"
                             className="modern-field"
+                            type="email"
+                            inputMode="email"
                           />
                           <FormInput
                             name="phone"
@@ -607,8 +610,7 @@ export default function EventRegistrationSection({ event }: Props) {
 
                         <FormSocialMedia
                           name="socialMedia"
-                          label="Social Handles"
-                          showRequired
+                          label="Social Handles (optional)"
                         />
                       </div>
                     </div>

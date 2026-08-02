@@ -484,8 +484,8 @@ ${[
  * Fire both messages. Never throws and never rejects: the registration it
  * describes is already saved, so the worst an email failure may do is log.
  *
- * The registrant copy is skipped when the (optional) Email field was left
- * blank — that is the normal case for someone who only left a phone number.
+ * The address is a required field, so the registrant copy should always go out;
+ * the guard is a backstop for rows that reach here from anywhere else.
  */
 export async function sendRegistrationEmails(data: RegistrationEmailData): Promise<void> {
   const messages: Array<{ audience: string; to: string; payload: ReturnType<typeof buildRegistrantEmail> }> = [];
