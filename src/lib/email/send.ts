@@ -72,16 +72,16 @@ export function isEmailConfigured(): boolean {
  * the one being standardised on. Set only one of them to avoid the ambiguity.
  */
 export function resolveFromAddress(): string {
-  const address = process.env.MAIL_FROM_ADDRESS?.trim();
+  // const address = process.env.MAIL_FROM_ADDRESS?.trim();
 
-  if (address) {
-    const name = process.env.MAIL_FROM_NAME?.trim();
-    if (!name) return address;
-    // A display name containing a comma or quote has to be quoted or the header
-    // parses as two recipients.
-    const safeName = /[",<>:;@\\]/.test(name) ? `"${name.replace(/(["\\])/g, '\\$1')}"` : name;
-    return `${safeName} <${address}>`;
-  }
+  // if (address) {
+  //   const name = process.env.MAIL_FROM_NAME?.trim();
+  //   if (!name) return address;
+  //   // A display name containing a comma or quote has to be quoted or the header
+  //   // parses as two recipients.
+  //   const safeName = /[",<>:;@\\]/.test(name) ? `"${name.replace(/(["\\])/g, '\\$1')}"` : name;
+  //   return `${safeName} <${address}>`;
+  // }
 
   return process.env.MAIL_FROM?.trim() || DEFAULT_FROM;
 }
