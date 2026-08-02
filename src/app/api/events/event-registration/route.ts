@@ -1,7 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import { randomInt } from 'node:crypto';
 import { eventRegistrationSchema } from '@/models/schemas/event-registration.schema';
 import { readProofBlob, uploadProofToBlob } from '@/lib/event-proof-upload';
+import { sendRegistrationEmails } from '@/lib/email/event-registration-email';
 import {
   EVENT_REGISTRATION_SPREADSHEET_ID,
   PROOF_UPLOAD_FAILED_NOTE,
@@ -278,6 +279,38 @@ export async function POST(request: Request) {
       proofProvided,
       timestamp,
       referenceNumber,
+    });
+
+    // Emailed copy of the receipt for the registrant + a heads-up for staff.
+    // Deferred with `after` so a slow mail API doesn't hold up the confirmation
+    // screen, and kept best-effort: the rows are already in the sheet, so a
+    // send failure is logged, never surfaced as a failed registration.
+    const registrantNames = [
+      `${validationResult.data.firstName} ${validationResult.data.lastName}`.trim(),
+      ...additionalRegistrants.map((registrant) =>
+        `${registrant.firstName} ${registrant.lastName}`.trim()
+      ),
+    ].filter(Boolean);
+
+    after(async () => {
+      try {
+        await sendRegistrationEmails({
+          eventTitle,
+          eventDate,
+          eventSlug,
+          referenceNumber,
+          timestamp,
+          names: registrantNames,
+          proofProvided,
+          email: validationResult.data.email,
+          phone: validationResult.data.phone,
+          cellLeader: validationResult.data.cellLeader,
+          socialMedia: validationResult.data.socialMedia,
+          proofUrl,
+        });
+      } catch (emailError) {
+        console.error('Registration email dispatch failed:', emailError);
+      }
     });
 
     return NextResponse.json({
