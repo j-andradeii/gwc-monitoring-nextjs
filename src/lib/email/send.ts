@@ -14,9 +14,15 @@
  * Node-only — never import from a Client Component (RESEND_API_KEY is secret).
  *
  * Env:
- *   RESEND_API_KEY      required; without it sending is skipped, not attempted
- *   MAIL_FROM           e.g. `Gateway Church <hello@resend.dev>`
- *   ADMIN_NOTIFY_EMAIL  read by the callers that notify staff
+ *   RESEND_API_KEY       required; without it sending is skipped, not attempted
+ *   MAIL_FROM_ADDRESS    sender address, e.g. `connect@gatewaychurchcebu.com`
+ *   MAIL_FROM_NAME       optional display name, e.g. `Gateway Church`
+ *   MAIL_FROM            legacy single-value form, `Name <address>`; used only
+ *                        when MAIL_FROM_ADDRESS is unset
+ *   ADMIN_NOTIFY_EMAIL   read by the callers that notify staff
+ *
+ * The sender's DOMAIN must be verified at resend.com/domains — Resend rejects
+ * anything else with a 403 before delivery is attempted.
  */
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails';
@@ -58,6 +64,28 @@ export function isEmailConfigured(): boolean {
   return Boolean(process.env.RESEND_API_KEY);
 }
 
+/**
+ * The `from` header, assembled from whichever env shape is configured.
+ *
+ * MAIL_FROM_ADDRESS (+ optional MAIL_FROM_NAME) wins over the older single
+ * MAIL_FROM: both are set in this project's Vercel environment, and the pair is
+ * the one being standardised on. Set only one of them to avoid the ambiguity.
+ */
+export function resolveFromAddress(): string {
+  const address = process.env.MAIL_FROM_ADDRESS?.trim();
+
+  if (address) {
+    const name = process.env.MAIL_FROM_NAME?.trim();
+    if (!name) return address;
+    // A display name containing a comma or quote has to be quoted or the header
+    // parses as two recipients.
+    const safeName = /[",<>:;@\\]/.test(name) ? `"${name.replace(/(["\\])/g, '\\$1')}"` : name;
+    return `${safeName} <${address}>`;
+  }
+
+  return process.env.MAIL_FROM?.trim() || DEFAULT_FROM;
+}
+
 export async function sendEmail(message: EmailMessage): Promise<EmailResult> {
   const apiKey = process.env.RESEND_API_KEY;
 
@@ -81,7 +109,7 @@ export async function sendEmail(message: EmailMessage): Promise<EmailResult> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: process.env.MAIL_FROM || DEFAULT_FROM,
+        from: resolveFromAddress(),
         to: recipients,
         subject: message.subject,
         html: message.html,
