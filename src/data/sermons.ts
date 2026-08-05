@@ -7757,7 +7757,7 @@ God cannot fully fill a life that is already full of itself. He reshapes us by e
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'Paul reminds us that true unity is found only when our eyes remain fixed on Jesus. This message challenges us to examine where our attention has settled and to intentionally turn our eyes back to Jesus.',
 
     description: `**TURN YOUR EYES UPON JESUS**
@@ -8030,6 +8030,259 @@ When Christ remains at the centre of our lives, unity replaces division, peace o
         kicker: 'Have You Fixed Your Eyes on Others?',
         verse: 'Psalm 118:8',
         text: 'It is better to trust in the Lord than to put confidence in man.',
+      },
+    ],
+  },
+  {
+    id: '36',
+    slug: 'just-press-in',
+    title: 'Just Press In',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-08-02',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'Many people were surrounding Jesus that day, yet only one person experienced the life-changing power of God. Proximity to spiritual things is not enough, true transformation happens when faith moves us to intentionally reach for Jesus.',
+
+    description: `**JUST PRESS IN**
+
+Key Verse: Mark 5:20–30
+
+---
+
+**INTRODUCTION**
+
+Many people were surrounding Jesus that day. The crowd pressed against Him from every direction, yet only one person experienced the life-changing power of God, a woman who reached out in faith.
+
+Her miracle did not come because she was close to Jesus physically but because she approached Him with faith, desperation, and intentionality. While the crowd merely brushed against Him, she believed that even touching the edge of His garment would bring healing.
+
+This passage reminds us that proximity to spiritual things is not enough. True transformation happens when faith moves us to intentionally reach for Jesus. God is looking for people who will press through every obstacle and trust Him completely.
+
+---
+
+**1. Proximity Is Not the Same as Faith**
+
+"If I just touch His clothes, I will be healed." (Mark 5:28)
+
+The crowd was physically close to Jesus, but their closeness alone did not produce a miracle. They were near His presence without engaging Him in faith.
+
+The woman, however, came with a different posture. Her touch was intentional and filled with expectation.
+
+Being present in church, serving in ministry, or participating in spiritual activities does not automatically lead to transformation. A genuine encounter with Jesus requires personal faith and wholehearted trust.
+
+Without faith, it is impossible to please God. Faith is what draws us into a deeper relationship with Him.
+
+---
+
+**2. Desperation Opens the Door for Faith**
+
+The woman had exhausted every earthly solution before coming to Jesus. After years of suffering and disappointment, she discovered that Jesus was her only hope.
+
+Sometimes God allows us to reach the end of ourselves so that we finally recognize that He is all we truly need.
+
+Our greatest problems can become the very fuel that strengthens our faith. Rather than allowing hardship to produce despair, we can allow it to deepen our dependence on Christ.
+
+When God brings healing, He does not simply address one area of our lives, He restores the whole person.
+
+Faith begins when we stop trusting our own solutions and place our complete confidence in Jesus.
+
+---
+
+**3. Faith Speaks Before It Sees**
+
+"If I just touch His clothes, I will be healed."
+
+Before the woman experienced her miracle, she first believed it in her heart and confessed it with her mouth.
+
+Faith comes from hearing the Word of God, but it does not remain silent. Genuine faith shapes the way we think, speak, and respond.
+
+Instead of continually repeating our problems, we are called to speak God's promises. Our words should align with our faith because what we hear shapes what we believe, and what we believe influences how we live.
+
+Faith is never passive, it produces action.
+
+When our confession agrees with God's Word, our hearts become anchored in hope rather than fear.
+
+---
+
+**4. Faith Is Intentional**
+
+Jesus immediately recognized that power had gone out from Him, not because of the crowd, but because of one intentional touch of faith.
+
+The difference between the crowd and the woman was not distance but intentionality.
+
+The crowd simply pressed around Jesus, while the woman deliberately reached out, believing that He alone could change her life.
+
+In the same way, we can attend church, serve faithfully, and participate in ministry, yet never truly engage God with our hearts. Physical presence in a spiritual environment does not guarantee a transforming encounter.
+
+God responds to faith that is intentional, expectant, and fully surrendered.
+
+Don't merely surround Jesus, reach for Him.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Proximity to Jesus is not enough; faith is what leads to transformation.
+* Faith is active, intentional, and expressed through both belief and action.
+* Desperation can become the doorway to deeper dependence on God.
+* God desires to heal and restore every area of our lives.
+* Faith comes from hearing God's Word and aligning our confession with His truth.
+* What you hear shapes your beliefs, and what you believe shapes your life.
+* Problems can become the fuel that strengthens your faith.
+* God is looking for a generation that reaches for Him with intentional faith, not just religious activity.
+
+"Many were close to Jesus, but only one touched Him with faith. Don't settle for being near His presence, press in until your faith connects with His power."
+
+---
+
+**CALL TO ACTION**
+
+Make a decision to move beyond simply being present and intentionally pursue Jesus.
+
+* Spend time hearing God's Word and allowing it to strengthen your faith.
+* Replace words of fear with declarations rooted in God's promises.
+* Bring your deepest needs before Jesus with confidence and expectation.
+* Let your challenges become opportunities to trust Him more deeply.
+* Don't merely participate in church or ministry, seek a genuine encounter with Christ.
+
+When we press in with faith and intentionality, we discover that Jesus is not only able to meet our needs but also to transform our hearts, strengthen our faith, and reveal that He is all we have ever truly needed.`,
+
+    tags: ['Faith', 'Healing', 'Desperation', 'Intentionality', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/just_pressed_in.jpg',
+    scriptures: [
+      {
+        verse: 'Mark 5:20–30',
+        text: 'And he departed and began to proclaim in Decapolis all that Jesus had done for him; and all marveled. Now when Jesus had crossed over again by boat to the other side, a great multitude gathered to Him; and He was by the sea. And behold, one of the rulers of the synagogue came, Jairus by name. And when he saw Him, he fell at His feet and begged Him earnestly, saying, "My little daughter lies at the point of death. Come and lay Your hands on her, that she may be healed, and she will live." So Jesus went with him, and a great multitude followed Him and thronged Him. Now a certain woman had a flow of blood for twelve years, and had suffered many things from many physicians. She had spent all that she had and was no better, but rather grew worse. When she heard about Jesus, she came behind Him in the crowd and touched His garment. For she said, "If only I may touch His clothes, I shall be made well." Immediately the fountain of her blood was dried up, and she felt in her body that she was healed of the affliction. And Jesus, immediately knowing in Himself that power had gone out of Him, turned around in the crowd and said, "Who touched My clothes?"',
+      },
+      {
+        verse: 'Mark 5:28',
+        text: 'For she said, "If only I may touch His clothes, I shall be made well."',
+      },
+      {
+        verse: 'Hebrews 11:6',
+        text: 'But without faith it is impossible to please Him, for he who comes to God must believe that He is, and that He is a rewarder of those who diligently seek Him.',
+      },
+      {
+        verse: 'Romans 10:17',
+        text: 'So then faith comes by hearing, and hearing by the word of God.',
+      },
+    ],
+    keyPoints: [
+      'Proximity Is Not the Same as Faith',
+      'Desperation Opens the Door for Faith',
+      'Faith Speaks Before It Sees',
+      'Faith Is Intentional',
+    ],
+    relatedSermons: ['35', '34'],
+    keyVerse: 'Mark 5:20–30',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Just Press In',
+        unnumbered: true,
+        paragraphs: [
+          'Many people were surrounding Jesus that day. The crowd pressed against Him from every direction, yet only one person experienced the life-changing power of God, a woman who reached out in faith.',
+          'Her miracle did not come because she was close to Jesus physically but because she approached Him with faith, desperation, and intentionality. While the crowd merely brushed against Him, she believed that even touching the edge of His garment would bring healing.',
+          'This passage reminds us that proximity to spiritual things is not enough. True transformation happens when faith moves us to intentionally reach for Jesus. God is looking for people who will press through every obstacle and trust Him completely.',
+        ],
+      },
+      {
+        id: 'sec-proximity-is-not-faith',
+        title: 'Proximity Is Not the Same as Faith',
+        paragraphs: [
+          '**"If I just touch His clothes, I will be healed." (Mark 5:28)**',
+          'The crowd was physically close to Jesus, but their closeness alone did not produce a miracle. They were near His presence without engaging Him in faith.',
+          'The woman, however, came with a different posture. Her touch was intentional and filled with expectation.',
+          'Being present in church, serving in ministry, or participating in spiritual activities does not automatically lead to transformation. A genuine encounter with Jesus requires personal faith and wholehearted trust.',
+          'Without faith, it is impossible to please God. Faith is what draws us into a deeper relationship with Him.',
+        ],
+      },
+      {
+        id: 'sec-desperation-opens-the-door',
+        title: 'Desperation Opens the Door for Faith',
+        paragraphs: [
+          'The woman had exhausted every earthly solution before coming to Jesus. After years of suffering and disappointment, she discovered that Jesus was her only hope.',
+          'Sometimes God allows us to reach the end of ourselves so that we finally recognize that He is all we truly need.',
+          'Our greatest problems can become the very fuel that strengthens our faith. Rather than allowing hardship to produce despair, we can allow it to deepen our dependence on Christ.',
+          'When God brings healing, He does not simply address one area of our lives, He restores the whole person.',
+          'Faith begins when we stop trusting our own solutions and place our complete confidence in Jesus.',
+        ],
+      },
+      {
+        id: 'sec-faith-speaks-before-it-sees',
+        title: 'Faith Speaks Before It Sees',
+        paragraphs: [
+          '**"If I just touch His clothes, I will be healed."**',
+          'Before the woman experienced her miracle, she first believed it in her heart and confessed it with her mouth.',
+          'Faith comes from hearing the Word of God, but it does not remain silent. Genuine faith shapes the way we think, speak, and respond.',
+          "Instead of continually repeating our problems, we are called to speak God's promises. Our words should align with our faith because what we hear shapes what we believe, and what we believe influences how we live.",
+          'Faith is never passive, it produces action.',
+          "When our confession agrees with God's Word, our hearts become anchored in hope rather than fear.",
+        ],
+      },
+      {
+        id: 'sec-faith-is-intentional',
+        title: 'Faith Is Intentional',
+        paragraphs: [
+          'Jesus immediately recognized that power had gone out from Him, not because of the crowd, but because of one intentional touch of faith.',
+          'The difference between the crowd and the woman was not distance but intentionality.',
+          'The crowd simply pressed around Jesus, while the woman deliberately reached out, believing that He alone could change her life.',
+          'In the same way, we can attend church, serve faithfully, and participate in ministry, yet never truly engage God with our hearts. Physical presence in a spiritual environment does not guarantee a transforming encounter.',
+          'God responds to faith that is intentional, expectant, and fully surrendered.',
+          "Don't merely surround Jesus, reach for Him.",
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Make a decision to move beyond simply being present and intentionally pursue Jesus.',
+          "Spend time hearing God's Word and allowing it to strengthen your faith.",
+          "Replace words of fear with declarations rooted in God's promises.",
+          'Bring your deepest needs before Jesus with confidence and expectation.',
+          'Let your challenges become opportunities to trust Him more deeply.',
+          "Don't merely participate in church or ministry, seek a genuine encounter with Christ.",
+          'When we press in with faith and intentionality, we discover that Jesus is not only able to meet our needs but also to transform our hearts, strengthen our faith, and reveal that He is all we have ever truly needed.',
+        ],
+        callout:
+          "Many were close to Jesus, but only one touched Him with faith. Don't settle for being near His presence, press in until your faith connects with His power.",
+      },
+    ],
+    keyTakeaways: [
+      'Proximity to Jesus is not enough; faith is what leads to transformation.',
+      'Faith is active, intentional, and expressed through both belief and action.',
+      'Desperation can become the doorway to deeper dependence on God.',
+      'God desires to heal and restore every area of our lives.',
+      "Faith comes from hearing God's Word and aligning our confession with His truth.",
+      'What you hear shapes your beliefs, and what you believe shapes your life.',
+      'Problems can become the fuel that strengthens your faith.',
+      'God is looking for a generation that reaches for Him with intentional faith, not just religious activity.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: 'Mark 5:20–30',
+        text: 'And he departed and began to proclaim in Decapolis all that Jesus had done for him; and all marveled. Now when Jesus had crossed over again by boat to the other side, a great multitude gathered to Him; and He was by the sea. And behold, one of the rulers of the synagogue came, Jairus by name. And when he saw Him, he fell at His feet and begged Him earnestly, saying, "My little daughter lies at the point of death. Come and lay Your hands on her, that she may be healed, and she will live." So Jesus went with him, and a great multitude followed Him and thronged Him. Now a certain woman had a flow of blood for twelve years, and had suffered many things from many physicians. She had spent all that she had and was no better, but rather grew worse. When she heard about Jesus, she came behind Him in the crowd and touched His garment. For she said, "If only I may touch His clothes, I shall be made well." Immediately the fountain of her blood was dried up, and she felt in her body that she was healed of the affliction. And Jesus, immediately knowing in Himself that power had gone out of Him, turned around in the crowd and said, "Who touched My clothes?"',
+      },
+      {
+        kicker: 'Proximity Is Not the Same as Faith',
+        verse: 'Mark 5:28',
+        text: 'For she said, "If only I may touch His clothes, I shall be made well."',
+      },
+      {
+        kicker: 'Proximity Is Not the Same as Faith',
+        verse: 'Hebrews 11:6',
+        text: 'But without faith it is impossible to please Him, for he who comes to God must believe that He is, and that He is a rewarder of those who diligently seek Him.',
+      },
+      {
+        kicker: 'Faith Speaks Before It Sees',
+        verse: 'Romans 10:17',
+        text: 'So then faith comes by hearing, and hearing by the word of God.',
       },
     ],
   },
