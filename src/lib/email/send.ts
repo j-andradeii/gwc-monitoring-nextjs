@@ -86,6 +86,50 @@ export function resolveFromAddress(): string {
   return process.env.MAIL_FROM?.trim() || DEFAULT_FROM;
 }
 
+/** One addressed copy of a built message, ready for `dispatchEmails`. */
+export interface OutgoingMessage {
+  /** `registrant` / `admin` — only ever used to label a log line. */
+  audience: string;
+  to: string;
+  replyTo?: string;
+  payload: { subject: string; html: string; text: string };
+}
+
+/**
+ * Send a batch and report on it, without ever throwing — the action being
+ * emailed about has already succeeded, so every failure here is a log line and
+ * nothing more. `allSettled` so one dead address can't take the others down.
+ *
+ * `label` and `reference` only tag the logs, e.g.
+ * `Registration admin email not sent (GWC-260730-AB7KX): …`.
+ */
+export async function dispatchEmails(
+  label: string,
+  reference: string,
+  messages: OutgoingMessage[]
+): Promise<void> {
+  if (messages.length === 0) return;
+
+  const results = await Promise.allSettled(
+    messages.map(({ to, replyTo, payload }) =>
+      sendEmail({ to, replyTo, subject: payload.subject, html: payload.html, text: payload.text })
+    )
+  );
+
+  results.forEach((outcome, index) => {
+    const { audience } = messages[index];
+
+    if (outcome.status === 'rejected') {
+      console.error(`${label} ${audience} email threw (${reference}):`, outcome.reason);
+      return;
+    }
+
+    if (!outcome.value.sent) {
+      console.error(`${label} ${audience} email not sent (${reference}):`, outcome.value.error);
+    }
+  });
+}
+
 export async function sendEmail(message: EmailMessage): Promise<EmailResult> {
   const apiKey = process.env.RESEND_API_KEY;
 
