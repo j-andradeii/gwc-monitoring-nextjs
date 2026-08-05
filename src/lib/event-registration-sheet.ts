@@ -45,6 +45,10 @@ export const SHEET_COLUMN = {
   eventDate: 2, // C
   firstName: 3, // D
   lastName: 4, // E
+  cellLeader: 5, // F
+  email: 7, // H
+  phone: 8, // I
+  socialMedia: 9, // J
   referenceNumber: 10, // K
   proofOfPayment: 11, // L
 } as const;
@@ -126,7 +130,15 @@ export function getSheetsClient(): SheetsApi | null {
   return google.sheets({ version: 'v4', auth }) as SheetsApi;
 }
 
-/** One sheet row that shares a reference number with the rest of its group. */
+/**
+ * One sheet row that shares a reference number with the rest of its group.
+ *
+ * The contact fields are SERVER-ONLY. Anyone can try a reference number against
+ * the proof route, so nothing here may be echoed back to the client beyond the
+ * names — see the route's `summarize`, which picks its response field by field
+ * for exactly that reason. They exist so the route can email the registrant
+ * about their own upload.
+ */
 export interface RegistrationRowMatch {
   /** 1-based sheet row — the range read starts at row 1. */
   rowNumber: number;
@@ -135,10 +147,37 @@ export interface RegistrationRowMatch {
   eventDate: string;
   timestamp: string;
   hasProof: boolean;
+  /** Column H. Copied onto every row of a group from the person who paid. */
+  email: string;
+  phone: string;
+  /** Column F — only the primary registrant's row carries one. */
+  cellLeader: string;
+  socialMedia: Array<{ platform: string; handle: string }>;
 }
 
 const cellText = (row: unknown[] | undefined, column: number): string =>
   String(row?.[column] ?? '').trim();
+
+/**
+ * Column J back into pairs. The registration route writes one
+ * `Platform: @handle` per line; a hand-edited line with no colon is kept under
+ * a generic label rather than dropped, since staff can still use it.
+ */
+export function parseSocialHandles(cell: string): Array<{ platform: string; handle: string }> {
+  return cell
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const separator = line.indexOf(':');
+      if (separator === -1) return { platform: 'Social', handle: line };
+      return {
+        platform: line.slice(0, separator).trim(),
+        handle: line.slice(separator + 1).trim(),
+      };
+    })
+    .filter((entry) => entry.handle);
+}
 
 /**
  * Every registration row carrying `referenceNumber` (column K). One payment can
@@ -199,6 +238,10 @@ export async function findRegistrationsByReference(
       // The failed-upload sentinel is text, not a proof — only a formula or a
       // bare URL counts as an image staff can actually open.
       hasProof: proofCell.startsWith('=') || /^https?:\/\//i.test(proofCell),
+      email: cellText(row, SHEET_COLUMN.email),
+      phone: cellText(row, SHEET_COLUMN.phone),
+      cellLeader: cellText(row, SHEET_COLUMN.cellLeader),
+      socialMedia: parseSocialHandles(cellText(row, SHEET_COLUMN.socialMedia)),
     });
   });
 

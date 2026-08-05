@@ -1,5 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import { readProofBlob, uploadProofToBlob } from '@/lib/event-proof-upload';
+import {
+  primaryRegistrantEmail,
+  sendProofOfPaymentEmails,
+} from '@/lib/email/event-proof-email';
 import {
   attachProofToRows,
   findRegistrationsByReference,
@@ -27,6 +31,11 @@ export const runtime = 'nodejs';
  * Only names are returned — never the contact details stored alongside them —
  * so a guessed reference can't be turned into a source of emails or phone
  * numbers. Rows are located by column K, which the registration route writes.
+ *
+ * A successful POST also emails the registrant and staff (lib/email/
+ * event-proof-email.ts). The registrant's address comes off the sheet and is
+ * only ever used as a recipient — it is never echoed back in the response, so
+ * this stays true of the POST as well as the GET.
  */
 
 /** References look like GWC-260730-AB7KX; be lenient but reject obvious noise. */
@@ -145,12 +154,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Proof of payment is required' }, { status: 400 });
     }
 
+    const eventSlug = String(formData.get('eventSlug') ?? '');
+
     // Locate the rows BEFORE uploading so a bad reference doesn't leave an
     // orphaned image sitting in Blob storage.
-    const resolved = await resolveRows(
-      String(formData.get('referenceNumber') ?? ''),
-      String(formData.get('eventSlug') ?? '')
-    );
+    const resolved = await resolveRows(String(formData.get('referenceNumber') ?? ''), eventSlug);
 
     if ('error' in resolved) return resolved.error;
 
@@ -188,6 +196,39 @@ export async function POST(request: Request) {
       proofUrl,
       timestamp
     );
+
+    // Receipt for the registrant + a heads-up for staff, mirroring what a
+    // registration that arrived with its proof already attached sends (see
+    // ../route.ts). Deferred with `after` so a slow mail API doesn't hold up
+    // the confirmation screen, and best-effort: the sheet is already updated,
+    // so a send failure is logged, never surfaced as a failed upload.
+    //
+    // `matches` was read before the write, so `hasProof` still describes what
+    // was on file BEFORE this upload — that is what tells us it replaced one.
+    const primary = resolved.matches[0];
+    const replacedExisting = resolved.matches.some((match) => match.hasProof);
+
+    after(async () => {
+      try {
+        await sendProofOfPaymentEmails({
+          eventTitle: primary.eventTitle,
+          eventDate: primary.eventDate,
+          eventSlug,
+          referenceNumber: resolved.referenceNumber,
+          timestamp,
+          names: resolved.matches.map((match) => match.name).filter(Boolean),
+          // One recipient, whatever the reference covers: the person who paid.
+          email: primaryRegistrantEmail(resolved.matches),
+          phone: primary.phone,
+          cellLeader: primary.cellLeader,
+          socialMedia: primary.socialMedia,
+          proofUrl,
+          replacedExisting,
+        });
+      } catch (emailError) {
+        console.error('Proof of payment email dispatch failed:', emailError);
+      }
+    });
 
     return NextResponse.json({
       success: true,
