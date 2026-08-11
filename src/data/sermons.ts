@@ -8043,7 +8043,7 @@ When Christ remains at the centre of our lives, unity replaces division, peace o
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'Many people were surrounding Jesus that day, yet only one person experienced the life-changing power of God. Proximity to spiritual things is not enough, true transformation happens when faith moves us to intentionally reach for Jesus.',
 
     description: `**JUST PRESS IN**
@@ -8283,6 +8283,331 @@ When we press in with faith and intentionality, we discover that Jesus is not on
         kicker: 'Faith Speaks Before It Sees',
         verse: 'Romans 10:17',
         text: 'So then faith comes by hearing, and hearing by the word of God.',
+      },
+    ],
+  },
+  {
+    id: '37',
+    slug: 'strike-the-ground',
+    title: 'Strike the Ground (The Test of Zeal and Faith)',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-08-09',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'There are moments when faith requires more than believing, it requires action. God gave King Jehoash an opportunity to participate in the victory He had already declared, yet the extent of his victory was connected to the level of his zeal and persistence.',
+
+    description: `**STRIKE THE GROUND (THE TEST OF ZEAL AND FAITH)**
+
+Key verse: 2 Kings 13:14–19
+
+---
+
+**INTRODUCTION**
+
+There are moments when faith requires more than believing, it requires action. In the story of King Jehoash and the prophet Elisha, God gave the king an opportunity to participate in the victory He had already declared. Yet the extent of Jehoash's victory was connected to the level of his zeal and persistence.
+
+Elisha's instructions were not simply about shooting arrows or striking the ground. They revealed the condition of the king's heart. Would he act with faith? Would he persist? Would he fight for the complete victory God had promised?
+
+This passage reminds us that we should not wait for something to happen before we respond. Faith moves before circumstances change. Zeal refuses to settle for partial victory, and persistence continues until God's purpose is fulfilled.
+
+---
+
+**1. The Bow and the Arrow**
+
+**"Attack Before the Enemy Arrives"** (2 Kings 13:15)
+
+The bow and arrow were weapons capable of striking an enemy from a distance. Unlike a weapon that requires the enemy to be within reach, the arrow could be released before the enemy arrived.
+
+This gives us a picture of proactive faith. We don't wait for darkness to come before we respond. We prepare, pray, speak God's Word, and act in faith before the battle reaches us.
+
+There are situations in life where we cannot afford to remain passive. God calls us to recognize the urgency of the times and respond with both faith and zeal.
+
+Faith does not simply wait for something to happen. Faith moves.
+
+Don't wait for the enemy to arrive, strike the ground and prepare for victory in faith.
+
+---
+
+**2. Hands Upon the Hands**
+
+**"The Greatest Weapon Is Impartation"** (2 Kings 13:16)
+
+Elisha placed his hands upon the king's hands as he prepared to shoot the arrow. This was more than physical guidance, it was a prophetic act of commissioning and empowerment.
+
+Jehoash held the physical weapon, but the victory ultimately came from God. Elisha's prophetic action demonstrated that the power behind the mission was not human ability but God's authority working through His servant.
+
+Information is important, but information alone does not transform lives. We need the work and empowerment of the Holy Spirit.
+
+We can know the Bible, understand theology, and possess knowledge, but God's Spirit is what makes that knowledge powerful and relevant in our lives.
+
+We do not simply exist, we have a God-given purpose. And God provides the empowerment necessary to fulfil it.
+
+God does not only give us information for the assignment; He empowers us through His Spirit to fulfil it.
+
+---
+
+**3. The First Arrow**
+
+**"Have a Vision of Your Complete Victory"** (2 Kings 13:17)
+
+Elisha declared:
+"The Lord's arrow of victory, the arrow of victory over Aram!"
+
+The arrow represented God's promised victory over the enemy. Before Jehoash could see the victory physically, he had to act on the word that had been spoken.
+
+Faith shoots before it sees.
+
+God often asks us to move according to His Word before we see the evidence of the outcome. Faith does not deny the reality of the battle, it trusts the God who has already declared the victory.
+
+We must develop a vision that goes beyond survival. Don't settle for simply getting through the battle when God is calling you toward victory.
+
+Faith acts on God's promise before the evidence appears.
+
+---
+
+**4. Strike the Ground**
+
+**"Victory Belongs to Those Who Refuse to Stop"** (2 Kings 13:18–19)
+
+After shooting the arrow, Elisha instructed Jehoash to strike the ground. The king struck it three times and then stopped.
+
+Elisha became angry because the king had stopped too soon. His limited response revealed a limited level of zeal and determination.
+
+The striking of the ground became a test of the king's heart. How badly did he want the victory? How much did he believe God's promise?
+
+Jehoash's problem was not that he failed to act, it was that he stopped too early.
+
+There is a difference between obedience and wholehearted obedience. There is a difference between believing God can give victory and persevering until the victory is complete.
+
+Knowledge without zeal can make us spiritually complacent. Zeal without knowledge and faith can lead us in the wrong direction. But when knowledge, faith, and zeal work together, they produce persistent obedience.
+
+Don't stop striking until God has accomplished what He has promised.
+
+---
+
+**THE CHRISTIAN LIFE REQUIRES BOTH FAITH AND ZEAL**
+
+* Knowledge without zeal and faith can make us proud but powerless.
+* Zeal without knowledge and faith can make us passionate but misguided.
+* Faith without action can become passive.
+* Faith expressed through zeal and obedience becomes a force that moves us toward God's purposes.
+
+Paul reminds us:
+"Never be lacking in zeal, but keep your spiritual fervor, serving the Lord." (Romans 12:11)
+
+God is looking for a generation that will not become lukewarm, passive, or easily discouraged.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Faith is not passive, it responds and takes action.
+* We should not wait for something to happen before we do something.
+* God calls us to respond to the desperation of our time with faith and zeal.
+* Knowledge must be accompanied by the empowerment of the Holy Spirit.
+* Faith acts before it sees the complete outcome.
+* Don't settle for partial victory when God has promised more.
+* Persistence reveals the condition of our faith and zeal.
+* Victory belongs to those who refuse to stop pursuing God's purpose.
+* God has already given the victory, but we must faithfully participate in what He is doing.
+
+"Faith shoots before it sees, and zeal keeps striking until the promise is fulfilled."
+
+---
+
+**CALL TO ACTION**
+
+Ask yourself: Where have I stopped striking the ground?
+
+* Identify an area where you have become passive or discouraged.
+* Begin praying and acting before circumstances change.
+* Ask the Holy Spirit to renew your zeal and strengthen your faith.
+* Stop settling for partial obedience when God is calling you to go further.
+* Keep striking the ground through prayer, obedience, service, and perseverance.
+* Believe God's promises even when you cannot yet see the victory.
+
+Don't wait for darkness to arrive before you raise your weapon. Don't stop after the first strike. Keep pressing forward in faith, because the God who gives the victory is the same God who empowers you to fight the battle.`,
+
+    tags: ['Faith', 'Zeal', 'Persistence', 'Obedience', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/strike_the_ground.webp',
+    scriptures: [
+      {
+        verse: '2 Kings 13:14–19',
+        text: 'Elisha had become sick with the illness of which he would die. Then Joash the king of Israel came down to him, and wept over his face, and said, "O my father, my father, the chariots of Israel and their horsemen!" And Elisha said to him, "Take a bow and some arrows." So he took himself a bow and some arrows. Then he said to the king of Israel, "Put your hand on the bow." So he put his hand on it, and Elisha put his hands on the king\'s hands. And he said, "Open the east window"; and he opened it. Then Elisha said, "Shoot"; and he shot. And he said, "The arrow of the LORD\'s deliverance and the arrow of deliverance from Syria; for you must strike the Syrians at Aphek till you have destroyed them." Then he said, "Take the arrows"; so he took them. And he said to the king of Israel, "Strike the ground"; so he struck three times, and stopped. And the man of God was angry with him, and said, "You should have struck five or six times; then you would have struck Syria till you had destroyed it! But now you will strike Syria only three times."',
+      },
+      {
+        verse: '2 Kings 13:15',
+        text: 'And Elisha said to him, "Take a bow and some arrows." So he took himself a bow and some arrows.',
+      },
+      {
+        verse: '2 Kings 13:16',
+        text: 'Then he said to the king of Israel, "Put your hand on the bow." So he put his hand on it, and Elisha put his hands on the king\'s hands.',
+      },
+      {
+        verse: '2 Kings 13:17',
+        text: 'And he said, "Open the east window"; and he opened it. Then Elisha said, "Shoot"; and he shot. And he said, "The arrow of the LORD\'s deliverance and the arrow of deliverance from Syria; for you must strike the Syrians at Aphek till you have destroyed them."',
+      },
+      {
+        verse: '2 Kings 13:18–19',
+        text: 'Then he said, "Take the arrows"; so he took them. And he said to the king of Israel, "Strike the ground"; so he struck three times, and stopped. And the man of God was angry with him, and said, "You should have struck five or six times; then you would have struck Syria till you had destroyed it! But now you will strike Syria only three times."',
+      },
+      {
+        verse: 'Romans 12:11',
+        text: 'not lagging in diligence, fervent in spirit, serving the Lord;',
+      },
+    ],
+    keyPoints: [
+      'The Bow and the Arrow',
+      'Hands Upon the Hands',
+      'The First Arrow',
+      'Strike the Ground',
+    ],
+    relatedSermons: ['36', '35'],
+    keyVerse: '2 Kings 13:14–19',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Strike the Ground (The Test of Zeal and Faith)',
+        unnumbered: true,
+        paragraphs: [
+          "There are moments when faith requires more than believing, it requires action. In the story of King Jehoash and the prophet Elisha, God gave the king an opportunity to participate in the victory He had already declared. Yet the extent of Jehoash's victory was connected to the level of his zeal and persistence.",
+          "Elisha's instructions were not simply about shooting arrows or striking the ground. They revealed the condition of the king's heart. Would he act with faith? Would he persist? Would he fight for the complete victory God had promised?",
+          "This passage reminds us that we should not wait for something to happen before we respond. Faith moves before circumstances change. Zeal refuses to settle for partial victory, and persistence continues until God's purpose is fulfilled.",
+        ],
+      },
+      {
+        id: 'sec-the-bow-and-the-arrow',
+        title: 'The Bow and the Arrow',
+        paragraphs: [
+          '**"Attack Before the Enemy Arrives" (2 Kings 13:15)**',
+          'The bow and arrow were weapons capable of striking an enemy from a distance. Unlike a weapon that requires the enemy to be within reach, the arrow could be released before the enemy arrived.',
+          "This gives us a picture of proactive faith. We don't wait for darkness to come before we respond. We prepare, pray, speak God's Word, and act in faith before the battle reaches us.",
+          'There are situations in life where we cannot afford to remain passive. God calls us to recognize the urgency of the times and respond with both faith and zeal.',
+          'Faith does not simply wait for something to happen. Faith moves.',
+        ],
+        callout:
+          "Don't wait for the enemy to arrive, strike the ground and prepare for victory in faith.",
+      },
+      {
+        id: 'sec-hands-upon-the-hands',
+        title: 'Hands Upon the Hands',
+        paragraphs: [
+          '**"The Greatest Weapon Is Impartation" (2 Kings 13:16)**',
+          "Elisha placed his hands upon the king's hands as he prepared to shoot the arrow. This was more than physical guidance, it was a prophetic act of commissioning and empowerment.",
+          "Jehoash held the physical weapon, but the victory ultimately came from God. Elisha's prophetic action demonstrated that the power behind the mission was not human ability but God's authority working through His servant.",
+          'Information is important, but information alone does not transform lives. We need the work and empowerment of the Holy Spirit.',
+          "We can know the Bible, understand theology, and possess knowledge, but God's Spirit is what makes that knowledge powerful and relevant in our lives.",
+          'We do not simply exist, we have a God-given purpose. And God provides the empowerment necessary to fulfil it.',
+        ],
+        callout:
+          'God does not only give us information for the assignment; He empowers us through His Spirit to fulfil it.',
+      },
+      {
+        id: 'sec-the-first-arrow',
+        title: 'The First Arrow',
+        paragraphs: [
+          '**"Have a Vision of Your Complete Victory" (2 Kings 13:17)**',
+          'Elisha declared:',
+          '*"The Lord\'s arrow of victory, the arrow of victory over Aram!"*',
+          "The arrow represented God's promised victory over the enemy. Before Jehoash could see the victory physically, he had to act on the word that had been spoken.",
+          'Faith shoots before it sees.',
+          'God often asks us to move according to His Word before we see the evidence of the outcome. Faith does not deny the reality of the battle, it trusts the God who has already declared the victory.',
+          "We must develop a vision that goes beyond survival. Don't settle for simply getting through the battle when God is calling you toward victory.",
+        ],
+        callout: "Faith acts on God's promise before the evidence appears.",
+      },
+      {
+        id: 'sec-strike-the-ground',
+        title: 'Strike the Ground',
+        paragraphs: [
+          '**"Victory Belongs to Those Who Refuse to Stop" (2 Kings 13:18–19)**',
+          'After shooting the arrow, Elisha instructed Jehoash to strike the ground. The king struck it three times and then stopped.',
+          'Elisha became angry because the king had stopped too soon. His limited response revealed a limited level of zeal and determination.',
+          "The striking of the ground became a test of the king's heart. How badly did he want the victory? How much did he believe God's promise?",
+          "Jehoash's problem was not that he failed to act, it was that he stopped too early.",
+          'There is a difference between obedience and wholehearted obedience. There is a difference between believing God can give victory and persevering until the victory is complete.',
+          'Knowledge without zeal can make us spiritually complacent. Zeal without knowledge and faith can lead us in the wrong direction. But when knowledge, faith, and zeal work together, they produce persistent obedience.',
+        ],
+        callout: "Don't stop striking until God has accomplished what He has promised.",
+      },
+      {
+        id: 'sec-faith-and-zeal',
+        title: 'The Christian Life Requires Both Faith and Zeal',
+        unnumbered: true,
+        paragraphs: [
+          'Knowledge without zeal and faith can make us proud but powerless.',
+          'Zeal without knowledge and faith can make us passionate but misguided.',
+          'Faith without action can become passive.',
+          "Faith expressed through zeal and obedience becomes a force that moves us toward God's purposes.",
+          'Paul reminds us:',
+          '*"Never be lacking in zeal, but keep your spiritual fervor, serving the Lord."* (Romans 12:11)',
+          'God is looking for a generation that will not become lukewarm, passive, or easily discouraged.',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          '**Ask yourself: Where have I stopped striking the ground?**',
+          'Identify an area where you have become passive or discouraged.',
+          'Begin praying and acting before circumstances change.',
+          'Ask the Holy Spirit to renew your zeal and strengthen your faith.',
+          'Stop settling for partial obedience when God is calling you to go further.',
+          'Keep striking the ground through prayer, obedience, service, and perseverance.',
+          "Believe God's promises even when you cannot yet see the victory.",
+          "Don't wait for darkness to arrive before you raise your weapon. Don't stop after the first strike. Keep pressing forward in faith, because the God who gives the victory is the same God who empowers you to fight the battle.",
+        ],
+        callout:
+          'Faith shoots before it sees, and zeal keeps striking until the promise is fulfilled.',
+      },
+    ],
+    keyTakeaways: [
+      'Faith is not passive, it responds and takes action.',
+      'We should not wait for something to happen before we do something.',
+      'God calls us to respond to the desperation of our time with faith and zeal.',
+      'Knowledge must be accompanied by the empowerment of the Holy Spirit.',
+      'Faith acts before it sees the complete outcome.',
+      "Don't settle for partial victory when God has promised more.",
+      'Persistence reveals the condition of our faith and zeal.',
+      "Victory belongs to those who refuse to stop pursuing God's purpose.",
+      'God has already given the victory, but we must faithfully participate in what He is doing.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Verse',
+        verse: '2 Kings 13:14–19',
+        text: 'Elisha had become sick with the illness of which he would die. Then Joash the king of Israel came down to him, and wept over his face, and said, "O my father, my father, the chariots of Israel and their horsemen!" And Elisha said to him, "Take a bow and some arrows." So he took himself a bow and some arrows. Then he said to the king of Israel, "Put your hand on the bow." So he put his hand on it, and Elisha put his hands on the king\'s hands. And he said, "Open the east window"; and he opened it. Then Elisha said, "Shoot"; and he shot. And he said, "The arrow of the LORD\'s deliverance and the arrow of deliverance from Syria; for you must strike the Syrians at Aphek till you have destroyed them." Then he said, "Take the arrows"; so he took them. And he said to the king of Israel, "Strike the ground"; so he struck three times, and stopped. And the man of God was angry with him, and said, "You should have struck five or six times; then you would have struck Syria till you had destroyed it! But now you will strike Syria only three times."',
+      },
+      {
+        kicker: 'The Bow and the Arrow',
+        verse: '2 Kings 13:15',
+        text: 'And Elisha said to him, "Take a bow and some arrows." So he took himself a bow and some arrows.',
+      },
+      {
+        kicker: 'Hands Upon the Hands',
+        verse: '2 Kings 13:16',
+        text: 'Then he said to the king of Israel, "Put your hand on the bow." So he put his hand on it, and Elisha put his hands on the king\'s hands.',
+      },
+      {
+        kicker: 'The First Arrow',
+        verse: '2 Kings 13:17',
+        text: 'And he said, "Open the east window"; and he opened it. Then Elisha said, "Shoot"; and he shot. And he said, "The arrow of the LORD\'s deliverance and the arrow of deliverance from Syria; for you must strike the Syrians at Aphek till you have destroyed them."',
+      },
+      {
+        kicker: 'Strike the Ground',
+        verse: '2 Kings 13:18–19',
+        text: 'Then he said, "Take the arrows"; so he took them. And he said to the king of Israel, "Strike the ground"; so he struck three times, and stopped. And the man of God was angry with him, and said, "You should have struck five or six times; then you would have struck Syria till you had destroyed it! But now you will strike Syria only three times."',
+      },
+      {
+        kicker: 'The Christian Life Requires Both Faith and Zeal',
+        verse: 'Romans 12:11',
+        text: 'not lagging in diligence, fervent in spirit, serving the Lord;',
       },
     ],
   },
