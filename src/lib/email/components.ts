@@ -53,10 +53,16 @@ export function escapeHtml(value: string): string {
  * Link back to the event page. `hash` targets a section on it — pass
  * `event-complete` for someone who still owes a proof of payment, and leave it
  * off for someone who is done and just wants the event details.
+ *
+ * `reference` rides along as `?ref=` and prefills the reference field of the
+ * "Complete your registration" panel on arrival, so the button in the email is
+ * the whole journey: land on the event, land on the panel, field already
+ * filled (see EventRegistrationSection, which reads the param).
  */
-export function eventUrl(eventSlug: string, hash?: string): string {
+export function eventUrl(eventSlug: string, hash?: string, reference?: string): string {
   const base = siteMetadata.siteUrl.replace(/\/$/, '');
-  return `${base}/events/${encodeURIComponent(eventSlug)}${hash ? `#${hash}` : ''}`;
+  const query = reference ? `?ref=${encodeURIComponent(reference)}` : '';
+  return `${base}/events/${encodeURIComponent(eventSlug)}${query}${hash ? `#${hash}` : ''}`;
 }
 
 /**
