@@ -51,7 +51,7 @@ export const FormSocialMedia: React.FC<FormSocialMediaProps> = ({
     return (
         <div className={`w-full ${className}`}>
             {label && (
-                <label htmlFor={name} className="block mb-2 font-semibold" style={{ color: '#334155' }}>
+                <label htmlFor={name} className="block mb-2 font-bold" style={{ color: '#334155' }}>
                     {label}
                     {showRequired && <span className="form-required">*</span>}
                 </label>

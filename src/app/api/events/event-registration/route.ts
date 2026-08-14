@@ -108,14 +108,6 @@ async function appendToGoogleSheet({
       return { success: true, message: 'Logged locally (Google Sheets not configured)' };
     }
 
-    // Social handles — one "Platform: @handle" per line.
-    const socialMedia = Array.isArray(data.socialMedia)
-      ? (data.socialMedia as Array<{ platform: string; handle: string }>)
-          .filter((s) => s.platform && s.handle)
-          .map((s) => `${s.platform}: ${s.handle}`)
-          .join('\n')
-      : '';
-
     // Empty when no proof was sent — the registrant can fill it in later with
     // their reference number, which writes this exact cell format.
     const proofCell = proofUrl
@@ -136,14 +128,14 @@ async function appendToGoogleSheet({
       '',                       // G  (Birthdate removed — column kept blank to preserve existing sheet alignment)
       data.email || '',         // H  Email
       data.phone || '',         // I  Phone
-      socialMedia,              // J  Social Handles
+      '',                       // J  (Social Handles removed — column kept blank to preserve existing sheet alignment)
       referenceNumber,          // K  Reference No. (shared by every row of this payment)
       proofCell,                // L  Proof of Payment (=IMAGE, or blank until sent)
     ];
 
     // Group registration: one row per person. The extra registrants only supply
-    // their names — contact details, socials, and the proof of payment are copied
-    // from the primary registrant, but the cell leader field is left blank.
+    // their names — contact details and the proof of payment are copied from the
+    // primary registrant, but the cell leader field is left blank.
     const rows = [
       buildRow(String(data.firstName ?? ''), String(data.lastName ?? '')),
       ...(Array.isArray(data.additionalRegistrants)
@@ -189,14 +181,6 @@ export async function POST(request: Request) {
   try {
     const formData = await request.formData();
 
-    // Parse social media from JSON string.
-    let socialMedia: Array<{ platform: string; handle: string }> = [];
-    try {
-      socialMedia = JSON.parse(String(formData.get('socialMedia') ?? '[]'));
-    } catch {
-      socialMedia = [];
-    }
-
     // Extra people covered by this same payment — one sheet row each.
     // Anything malformed degrades to "registering alone" rather than failing.
     let additionalRegistrants: AdditionalRegistrant[] = [];
@@ -220,7 +204,6 @@ export async function POST(request: Request) {
       cellLeader: String(formData.get('cellLeader') ?? ''),
       email: String(formData.get('email') ?? ''),
       phone: String(formData.get('phone') ?? ''),
-      socialMedia,
       registerMultiple: additionalRegistrants.length > 0,
       additionalRegistrants,
     };
@@ -305,7 +288,6 @@ export async function POST(request: Request) {
           email: validationResult.data.email,
           phone: validationResult.data.phone,
           cellLeader: validationResult.data.cellLeader,
-          socialMedia: validationResult.data.socialMedia,
           proofUrl,
         });
       } catch (emailError) {

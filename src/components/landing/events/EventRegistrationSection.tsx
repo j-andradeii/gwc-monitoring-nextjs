@@ -15,11 +15,7 @@ import { useMutation } from '@tanstack/react-query';
 import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
 import { Event } from '@/data/events';
-import {
-  FormInput,
-  FormSocialMedia,
-  useScrollToFirstError,
-} from '@/components/forms';
+import { FormInput, useScrollToFirstError } from '@/components/forms';
 import ProofOfPaymentField from '@/components/forms/ProofOfPaymentField';
 import CompleteRegistrationPanel, {
   type RecordedProof,
@@ -50,7 +46,6 @@ const DEFAULT_FORM_VALUES: DefaultValues<EventRegistrationFormData> = {
   cellLeader: '',
   email: '',
   phone: '',
-  socialMedia: [{ platform: 'Facebook', handle: '' }],
   registerMultiple: false,
   additionalRegistrants: [],
   proofOfPayment: undefined,
@@ -124,7 +119,6 @@ export default function EventRegistrationSection({ event }: Props) {
       formData.append('cellLeader', data.cellLeader ?? '');
       formData.append('email', data.email ?? '');
       formData.append('phone', data.phone ?? '');
-      formData.append('socialMedia', JSON.stringify(data.socialMedia));
       // One extra row per additional registrant; the server copies this
       // submission's proof of payment onto each of them.
       formData.append(
@@ -607,11 +601,6 @@ export default function EventRegistrationSection({ event }: Props) {
                             className="modern-field"
                           />
                         </div>
-
-                        <FormSocialMedia
-                          name="socialMedia"
-                          label="Social Handles (optional)"
-                        />
                       </div>
                     </div>
 
@@ -621,7 +610,7 @@ export default function EventRegistrationSection({ event }: Props) {
                       <div className="form-section sod-payment-section">
                         <div className="section-title">
                           <span className="section-number">04</span>
-                          <h4>Proof of Payment</h4>
+                          <h4>Proof of Payment (Optional)</h4>
                         </div>
 
                         <p className="sod-payment-intro">
