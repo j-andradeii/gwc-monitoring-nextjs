@@ -65,7 +65,14 @@ export function buildRegistrantEmail(data: RegistrationEmailData) {
   const count = names.length;
   const isGroup = count > 1;
   const primary = names[0] ?? 'Friend';
-  const url = eventUrl(data.eventSlug, 'event-complete');
+  // The reference only rides along for someone who still owes a proof: their
+  // button is "Upload proof of payment", and it should land on the panel with
+  // nothing left to type. A booked registrant's button is "View event details".
+  const url = eventUrl(
+    data.eventSlug,
+    'event-complete',
+    data.proofProvided ? undefined : data.referenceNumber
+  );
 
   const subject = data.proofProvided
     ? `Your slot is booked — ${data.eventTitle} (${data.referenceNumber})`

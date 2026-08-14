@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import {
   useForm,
   FormProvider,
@@ -40,6 +40,29 @@ type EventRegistrationFormData = z.infer<typeof eventRegistrationFormSchema>;
 
 const EMPTY_REGISTRANT = { firstName: '', lastName: '' };
 
+// Shape of the reference numbers the registration route hands out
+// (`GWC-YYMMDD-XXXXX`). Anything else arriving in `?ref=` is ignored rather
+// than typed into the field for the registrant to puzzle over.
+const REFERENCE_PATTERN = /^GWC-\d{6}-[A-Z0-9]{5}$/;
+
+/**
+ * `?ref=` — the reference number carried in by the "Upload proof of payment"
+ * button of the registration email, which links to
+ * `/events/<slug>?ref=…#event-complete`.
+ *
+ * Read through `useSyncExternalStore` rather than `useSearchParams()`: this
+ * page is prerendered (see generateStaticParams in the [slug] route) and that
+ * hook would force it behind a Suspense boundary. The server snapshot is null,
+ * so the prerendered HTML still matches at hydration and the value arrives on
+ * the render straight after it.
+ */
+const subscribeToLocation = (onChange: () => void) => {
+  window.addEventListener('popstate', onChange);
+  return () => window.removeEventListener('popstate', onChange);
+};
+const readReferenceParam = () => new URLSearchParams(window.location.search).get('ref');
+const readNoReferenceParam = () => null;
+
 const DEFAULT_FORM_VALUES: DefaultValues<EventRegistrationFormData> = {
   firstName: '',
   lastName: '',
@@ -71,6 +94,18 @@ export default function EventRegistrationSection({ event }: Props) {
   const [copyError, setCopyError] = useState<string | null>(null);
   const copyResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { downloadBlob } = useDownloadImage();
+
+  // Reference number linked from the registration email, if this visit came
+  // from one. Anything unrecognisable is dropped — see REFERENCE_PATTERN.
+  const referenceParam = useSyncExternalStore(
+    subscribeToLocation,
+    readReferenceParam,
+    readNoReferenceParam
+  );
+  const emailReference = useMemo(() => {
+    const candidate = referenceParam?.trim().toUpperCase();
+    return candidate && REFERENCE_PATTERN.test(candidate) ? candidate : undefined;
+  }, [referenceParam]);
 
   const methods = useForm<EventRegistrationFormData>({
     resolver: zodResolver(eventRegistrationFormSchema),
@@ -180,6 +215,10 @@ export default function EventRegistrationSection({ event }: Props) {
     submitRegistration.isSuccess && !proofProvided
       ? submissionResult?.referenceNumber
       : undefined;
+  // A registration made here wins over one linked from an email — it is the
+  // reference they are looking at right now.
+  const panelPrefillReference = pendingPaymentReference ?? emailReference;
+
   // '—' is what stands in when the server didn't return one; there is nothing
   // to put on the clipboard in that case.
   const canCopyReference = referenceNumber !== '—';
@@ -210,6 +249,30 @@ export default function EventRegistrationSection({ event }: Props) {
   useEffect(() => () => {
     if (copyResetRef.current) clearTimeout(copyResetRef.current);
   }, []);
+
+  /**
+   * The link's own `#event-complete` already scrolls, but the hero image above
+   * the section settles late and drags the anchor down with it — so someone
+   * arriving from the email lands mid-page. Take the position again once the
+   * layout has settled.
+   */
+  useEffect(() => {
+    if (!emailReference) return;
+
+    const timer = setTimeout(() => {
+      const panel = document.getElementById('event-complete');
+      if (!panel) return;
+
+      const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({
+        // Same 100px allowance for the sticky header as the confirmation scroll.
+        top: panel.getBoundingClientRect().top + window.scrollY - 100,
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+    }, 250);
+
+    return () => clearTimeout(timer);
+  }, [emailReference]);
 
   /**
    * Draw the receipt to a PNG and hand it to `useDownloadImage`, which routes
@@ -276,9 +339,9 @@ export default function EventRegistrationSection({ event }: Props) {
   // input without an effect that writes state during render.
   const completePanel = (
     <CompleteRegistrationPanel
-      key={pendingPaymentReference ?? 'blank'}
+      key={panelPrefillReference ?? 'blank'}
       event={event}
-      prefillReference={pendingPaymentReference}
+      prefillReference={panelPrefillReference}
       onProofRecorded={setRecordedProof}
     />
   );
