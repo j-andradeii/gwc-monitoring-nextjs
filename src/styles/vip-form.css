@@ -745,7 +745,7 @@
 
 /* --- Bolder field labels + stronger required indicator --- */
 .sod-enrollment-page .advanced-vip-form label:not(.sod-radio-option):not(.sod-status-option) {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .sod-enrollment-page .sod-radio-legend,
