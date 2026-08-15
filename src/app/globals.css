@@ -44,8 +44,8 @@
 
   /* Neutrals - Warm sanctuary tones */
   --color-background: #f5f0e6;
-  --color-foreground: #0d1424;
-  --color-muted: #1f2937;
+  --color-foreground: #000;
+  --color-muted: #000;
   --color-border: #c8bfa8;
   --color-surface: #ffffff;
 
@@ -54,8 +54,8 @@
   --background-main: #f5f0e6;
   --background-section: #ffffff;
   --text-primary: #000;
-  --text-heading: #020617;
-  --text-secondary: #0d1424;
+  --text-heading: #000;
+  --text-secondary: #000;
   --border-color: #c8bfa8;
   --border-color-light: #ddd5c4;
   --button-text-on-gold: #ffffff;
@@ -346,7 +346,7 @@ body {
 .p-toast .p-toast-message-warn .p-toast-message-icon,
 .p-toast .p-toast-message-warn .p-toast-icon-close,
 .p-toast .p-toast-message-warn .p-toast-icon-close-icon {
-  color: #1a2744 !important;
+  color: #000 !important;
 }
 .p-toast .p-toast-message-warn .p-toast-message-icon svg,
 .p-toast .p-toast-message-warn .p-toast-icon-close svg {
@@ -551,7 +551,7 @@ body {
 }
 
 .label {
-  @apply text-sm font-medium text-gray-900;
+  @apply text-sm font-medium text-black;
 }
 
 .error-text {
@@ -803,35 +803,35 @@ html.is-scrolling ::-webkit-scrollbar-thumb:hover {
    SIDEBAR MENU STYLES
    =========================================== */
 .sidebar-container .section-label {
-  color: #1f2937 !important;
+  color: #000 !important;
 }
 
 .sidebar-container .menu-item {
-  color: #030712 !important;
+  color: #000 !important;
 }
 
 .sidebar-container .menu-item-label {
-  color: #030712 !important;
+  color: #000 !important;
 }
 
 .sidebar-container .menu-item-icon i {
-  color: #111827 !important;
+  color: #000 !important;
 }
 
 .sidebar-container .menu-item.active .menu-item-label {
-  color: #030712 !important;
+  color: #000 !important;
 }
 
 .sidebar-container .submenu-item .menu-item-label {
-  color: #0d1424 !important;
+  color: #000 !important;
 }
 
 .sidebar-container .submenu-item .menu-item-icon i {
-  color: #1f2937 !important;
+  color: #000 !important;
 }
 
 .sidebar-container .expand-icon {
-  color: #374151 !important;
+  color: #000 !important;
 }
 
 .event-register-multi-toggle .p-checkbox .p-checkbox-box {

@@ -62,7 +62,7 @@ export function MemberCard({
 
         {/* Info */}
         <div className="flex-1 min-w-0">
-          <h4 className="font-semibold text-gray-800 truncate">{fullName}</h4>
+          <h4 className="font-semibold text-black truncate">{fullName}</h4>
 
           {member.email && (
             <p className="text-sm text-gray-500 truncate">
@@ -187,7 +187,7 @@ export function MemberListItem({
         className="bg-primary text-white"
       />
       <div className="flex-1 min-w-0">
-        <p className="font-medium text-gray-800 truncate">{fullName}</p>
+        <p className="font-medium text-black truncate">{fullName}</p>
         <p className="text-sm text-gray-500 truncate">
           {member.email || member.mobile_number || 'No contact info'}
         </p>

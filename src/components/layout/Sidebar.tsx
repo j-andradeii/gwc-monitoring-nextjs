@@ -364,11 +364,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
   icon: {
     fontSize: '14px',
-    color: '#6b7280',
+    color: '#000',
   },
   iconHover: {
     fontSize: '14px',
-    color: '#4b5563',
+    color: '#000',
   },
   iconActive: {
     fontSize: '14px',
@@ -378,18 +378,18 @@ const styles: Record<string, React.CSSProperties> = {
     flex: 1,
     fontSize: '14px',
     fontWeight: 500,
-    color: '#374151',
+    color: '#000',
     whiteSpace: 'nowrap' as const,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     transition: 'color 0.2s ease',
   },
   menuLabelHover: {
-    color: '#1f2937',
+    color: '#000',
   },
   menuLabelActive: {
     fontWeight: 600,
-    color: '#1f2937',
+    color: '#000',
   },
   badge: {
     padding: '3px 8px',
@@ -439,7 +439,7 @@ const styles: Record<string, React.CSSProperties> = {
   submenuLabel: {
     fontSize: '13px',
     fontWeight: 400,
-    color: '#6b7280',
+    color: '#000',
   },
   submenuLabelActive: {
     fontWeight: 500,
@@ -479,7 +479,7 @@ const styles: Record<string, React.CSSProperties> = {
   footerTitle: {
     fontSize: '13px',
     fontWeight: 600,
-    color: '#1f2937',
+    color: '#000',
   },
   footerLink: {
     fontSize: '11px',

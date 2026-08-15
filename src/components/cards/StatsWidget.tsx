@@ -98,7 +98,7 @@ export function StatsWidget({
       <div className="flex items-center justify-between">
         <div className="flex-1">
           <p className="text-sm text-gray-500 font-medium mb-1">{title}</p>
-          <p className="text-2xl font-bold text-gray-800">
+          <p className="text-2xl font-bold text-black">
             {prefix}
             {typeof value === 'number' ? value.toLocaleString() : value}
             {suffix}

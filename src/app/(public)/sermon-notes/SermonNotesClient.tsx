@@ -270,7 +270,7 @@ export default function SermonNotesClient() {
                                         outline: 'none',
                                         transition: 'all 0.2s ease',
                                         backgroundColor: '#ffffff',
-                                        color: '#374151',
+                                        color: '#000',
                                         boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
                                     }}
                                     onFocus={(e) => {

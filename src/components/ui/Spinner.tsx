@@ -54,7 +54,7 @@ export function Spinner({
         fill={fill}
         animationDuration={animationDuration}
       />
-      {label && <span className="text-sm text-gray-600">{label}</span>}
+      {label && <span className="text-sm text-black">{label}</span>}
     </div>
   );
 
