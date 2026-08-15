@@ -19,11 +19,14 @@ import {
 import {
   GiveHero,
   GiveWhySection,
-  GiveChannelsSection,
   GiveVideoTestimony,
+  GivingConfirmationSection,
+  GivingUploadCue,
+  WaysToGiveChannelsSection,
+  WaysToGiveTabs,
 } from '@/components/landing/give';
 
-import type { GiveKeywordInstruction } from '@/components/landing/give/GiveChannelsSection';
+import type { GiveKeywordInstruction } from '@/components/landing/give/WaysToGiveChannelsSection';
 
 import {
   scriptures,
@@ -187,79 +190,106 @@ export default function WaysToGivePage() {
         /> */}
 
         {/* ===========================================
-            GIVING CHANNELS — lead section
-            Placed first so the giving channels are immediately
-            accessible to the user. One block serves both Tithes &
-            Offering and Firstfruits; the keyword for the message /
-            details / reference field is surfaced as the final
-            "How to Send" step per card.
+            TABS — "Give Details" (channels) / "Why We Give"
+            (Tithes, Firstfruits, testimonies + Contact). Both panels
+            render in the SSR HTML (the copy backs the FAQPage JSON-LD
+            above) — only visibility toggles between them.
             =========================================== */}
-        <GiveChannelsSection
-          sectionId="give-channels"
-          sectionLabel="Channels"
-          title="How to Give"
-          keywords={giveKeywords}
-        />
+        <WaysToGiveTabs
+          detailsPanel={
+            <>
+              {/* A fork of GiveChannelsSection that lives only here: copying an
+                  account number reveals a mobile-only hint on that card
+                  pointing at the form below — the moment someone is about to
+                  leave for their banking app is the only time they are still
+                  looking. The shared component (used by gateway-outreach,
+                  which has no confirmation form) stays untouched. */}
+              <WaysToGiveChannelsSection
+                sectionId="give-channels"
+                sectionLabel="Channels"
+                title="How to Give"
+                keywords={giveKeywords}
+              />
 
-        {/* ===========================================
-            SECTION 1 — TITHES & OFFERING
-            =========================================== */}
-        <GiveWhySection
-          sectionId="tithes-offering"
-          sectionLabel="Generosity"
-          title="Tithes & Offering"
-          intro={tithesAndOfferingIntro}
-          variantClassName="give-why-section--compact"
-          scriptures={scriptures}
-          scriptureMaxLines={4}
-        />
+              {/* Give first (above), then tell us (here) — the two halves of
+                  one errand, kept on the same tab so nobody has to hunt for
+                  the second one. Both bands stay WHITE by explicit request
+                  (see the #wtg-panel-give-details override in landing.css). */}
+              <GivingConfirmationSection />
 
-        <GiveVideoTestimony
-          videoUrl={TITHES_VIDEO_URL}
-          sectionId="tithes-offering-testimony"
-          sectionLabel="Testimony"
-          title="Stories of Faithful Giving"
-          description="Hear how tithes and offerings have moved the ministry forward."
-        />
+              {/* On a phone the form above is a full screen of cards below the
+                  fold, so it may as well not exist. This floats a prompt over
+                  the channels while they're being read, and gets out of the way
+                  once the form is on screen. Sits inside this panel (not inside
+                  the channels section) on purpose — see the component docblock
+                  for both reasons. */}
+              <GivingUploadCue />
+            </>
+          }
+          whyPanel={
+            <>
+              {/* ===========================================
+                  SECTION 1 — TITHES & OFFERING
+                  =========================================== */}
+              <GiveWhySection
+                sectionId="tithes-offering"
+                sectionLabel="Generosity"
+                title="Tithes & Offering"
+                intro={tithesAndOfferingIntro}
+                variantClassName="give-why-section--compact"
+                scriptures={scriptures}
+                scriptureMaxLines={4}
+              />
 
-        {/* ===========================================
-            SECTION 2 — FIRSTFRUITS
-            =========================================== */}
-        <GiveWhySection
-          sectionId="firstfruits"
-          sectionLabel="Firstfruits"
-          title="Firstfruits"
-          intro={firstfruitsIntro}
-          scriptures={firstfruitsScriptures}
-          variantClassName="give-why-section--default give-why-section--compact"
-          scriptureMaxLines={4}
-          learnMoreHref="/sermon-notes/first-fruit-sunday"
-          learnMoreLabel="Learn more about Firstfruits"
-          learnMoreCaption="Dive deeper into the heart behind Firstfruits Sunday."
-        />
+              <GiveVideoTestimony
+                videoUrl={TITHES_VIDEO_URL}
+                sectionId="tithes-offering-testimony"
+                sectionLabel="Testimony"
+                title="Stories of Faithful Giving"
+                description="Hear how tithes and offerings have moved the ministry forward."
+              />
 
-        <GiveVideoTestimony
-          videoUrl={FIRSTFRUITS_VIDEO_URL}
-          videos={[
-            {
-              url: FIRSTFRUITS_VIDEO_URL,
-              title: 'Firstfruits Testimony',
-              speaker: 'Doc Vince & Arian Araneta',
-            },
-            {
-              url: `https://www.youtube.com/watch?v=uSE1AlFt6Bw`,
-              title: 'Firstfruits Testimony',
-              speaker: 'Justin & Amae Tariman',
-            },
-          ]}
-          sectionId="firstfruits-testimony"
-          sectionLabel="Testimony"
-          title="Firstfruits Testimony"
-          description="A story of God’s faithfulness when His people honor the first."
-        />
+              {/* ===========================================
+                  SECTION 2 — FIRSTFRUITS
+                  =========================================== */}
+              <GiveWhySection
+                sectionId="firstfruits"
+                sectionLabel="Firstfruits"
+                title="Firstfruits"
+                intro={firstfruitsIntro}
+                scriptures={firstfruitsScriptures}
+                variantClassName="give-why-section--default give-why-section--compact"
+                scriptureMaxLines={4}
+                learnMoreHref="/sermon-notes/first-fruit-sunday"
+                learnMoreLabel="Learn more about Firstfruits"
+                learnMoreCaption="Dive deeper into the heart behind Firstfruits Sunday."
+              />
 
-        {/* Contact Section */}
-        <ContactSection />
+              <GiveVideoTestimony
+                videoUrl={FIRSTFRUITS_VIDEO_URL}
+                videos={[
+                  {
+                    url: FIRSTFRUITS_VIDEO_URL,
+                    title: 'Firstfruits Testimony',
+                    speaker: 'Doc Vince & Arian Araneta',
+                  },
+                  {
+                    url: `https://www.youtube.com/watch?v=uSE1AlFt6Bw`,
+                    title: 'Firstfruits Testimony',
+                    speaker: 'Justin & Amae Tariman',
+                  },
+                ]}
+                sectionId="firstfruits-testimony"
+                sectionLabel="Testimony"
+                title="Firstfruits Testimony"
+                description="A story of God’s faithfulness when His people honor the first."
+              />
+
+              {/* Contact Section */}
+              <ContactSection />
+            </>
+          }
+        />
       </main>
 
       <LandingFooter />

@@ -1,6 +1,9 @@
 /* Form text color - Matte Black */
 :root {
-  --form-text-color: #242124;
+  --form-text-color: #000;
+  /* Resting field border. globals.css draws controls with border-gray-300
+     (#d1d5db), which nearly disappears on the white form cards. */
+  --form-border-color: #6b7280;
 }
 
 .p-icon-field {
@@ -9,7 +12,7 @@
 
 /* Form labels */
 label {
-  color: #242124;
+  color: var(--form-text-color);
   font-weight: 700;
 }
 
@@ -24,7 +27,7 @@ label {
 input,
 textarea,
 select {
-  color: #242124;
+  color: var(--form-text-color);
 }
 
 /* Placeholder color - slightly lighter */
@@ -110,6 +113,40 @@ textarea::placeholder {
   .input-container .p-inputtextarea {
     padding: 0.65rem 0.75rem;
   }
+}
+
+/* ---------------------------------------------------------------
+   Darker field borders
+   Scoped to .input-container so only the Form* components in this
+   folder change — PrimeReact controls elsewhere keep gray-300.
+   Focus and invalid are re-stated below because the globals.css
+   rules for those tie on specificity with the resting rule, and the
+   winner would otherwise come down to stylesheet order.
+   --------------------------------------------------------------- */
+.input-container .p-inputtext,
+.input-container .p-inputtextarea,
+.input-container .p-inputnumber-input,
+.input-container .p-password-input,
+.input-container .p-dropdown,
+.input-container .p-calendar .p-inputtext {
+  border-color: var(--form-border-color);
+}
+
+/* Focus keeps the gold border from globals.css. */
+.input-container .p-inputtext:focus,
+.input-container .p-inputtextarea:focus,
+.input-container .p-inputnumber-input:focus,
+.input-container .p-password-input:focus,
+.input-container .p-calendar .p-inputtext:focus {
+  border-color: var(--color-primary, #d4a84b);
+}
+
+/* Error border always wins over the resting colour. */
+.input-container .p-invalid,
+.input-container .p-invalid.p-inputtext,
+.input-container .p-invalid .p-inputtext,
+.input-container .p-invalid .p-inputtextarea {
+  border-color: var(--velvet, #DA4453);
 }
 
 /* Disabled state */

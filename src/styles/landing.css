@@ -7463,6 +7463,12 @@
    =========================================== */
 .ways-to-give-page .give-channels-section {
   background: var(--background-section, #ffffff);
+  /* The shared rule allows 90px — enough for the fixed 70px header alone, but
+     this page also pins the Ways-to-Give tab bar (~88px) beneath it, and the
+     page now LANDS on this section (WaysToGiveTabs scrolls here when there's
+     no hash). At 90px the "How to Give" heading parks under the tab bar.
+     Same allowance as `.giving-confirm-section` further down. */
+  scroll-margin-top: 170px;
 }
 
 .ways-to-give-page .give-channels-section::before {
@@ -16579,6 +16585,313 @@
 }
 
 /* ===========================================
+   REVEAL-ON-COPY RECEIPT HINT  (mobile only)
+   Appears inside a channel card once its account number has been copied,
+   linking down to the giving-confirmation form. On a phone the giver copies
+   the number and leaves for GCash/BPI/BDO immediately — they never scroll far
+   enough to find the form, so the prompt has to land at the copy tap.
+
+   Uniquely prefixed `gcs-` (Give Channels Section) rather than restyling any
+   shared `.compact-*` selector: those classes are also used by
+   /give/gateway-outreach and /give/gateway-projects, and cascade order between
+   stylesheets is not something to rely on here.
+
+   Rendered ONLY by `WaysToGiveChannelsSection` (the ways-to-give fork of
+   `GiveChannelsSection`), so the other two pages never emit this markup at
+   all. The fork keeps `give-channels-section` on its root section, which is
+   what the selectors below hang off — rename that class and these break.
+
+   Selectors are compounded with `.give-channels-section` purely for weight:
+   `.landing-page a` (0,1,1) paints every public-page link gold, which would
+   drop this sentence to ~3.4:1 on its own tinted background. (0,2,0) wins.
+   =========================================== */
+.give-channels-section .gcs-receipt-hint {
+  /* Desktop is untouched: there is no app-switch problem when the form is a
+     scroll away on the same screen. `display: none` also keeps it out of the
+     accessibility tree, so nothing is announced that can't be seen. */
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .give-channels-section .gcs-receipt-hint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Pulled up tight under the account box (which carries a 12px bottom
+       margin) so it reads as part of the thing they just tapped. */
+    margin: -6px 16px 12px;
+    padding: 12px 14px;
+    min-height: 48px;
+    border: 1px solid rgba(212, 168, 75, 0.5);
+    border-radius: 8px;
+    background: rgba(212, 168, 75, 0.12);
+    /* Near-black body copy on the gold wash (>12:1). Gold-on-gold would be
+       decorative, not readable — and this is the instruction that matters. */
+    color: var(--text-primary, #0d1424);
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+    text-decoration: none;
+    animation: gcsReceiptHintIn 0.3s ease-out both;
+  }
+
+  .give-channels-section .gcs-receipt-hint:hover {
+    background: rgba(212, 168, 75, 0.2);
+    border-color: var(--color-primary, #d4a84b);
+    color: var(--text-primary, #0d1424);
+  }
+
+  .give-channels-section .gcs-receipt-hint:active {
+    background: rgba(212, 168, 75, 0.24);
+  }
+
+  .give-channels-section .gcs-receipt-hint:focus-visible {
+    outline: 2px solid var(--color-primary-dark, #b8923f);
+    outline-offset: 2px;
+  }
+
+  /* Navy glyph on gold (~6.5:1) — white on gold would fail the 3:1 floor for
+     meaningful graphics. */
+  .give-channels-section .gcs-receipt-hint-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--color-primary, #d4a84b);
+    color: var(--color-navy, #1a2744);
+  }
+
+  .give-channels-section .gcs-receipt-hint-icon i {
+    font-size: 12px;
+  }
+
+  .give-channels-section .gcs-receipt-hint-text {
+    flex: 1;
+  }
+}
+
+/* Matches the card gutters of the narrower mobile block above. */
+@media (max-width: 767px) {
+  .give-channels-section .gcs-receipt-hint {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}
+
+@keyframes gcsReceiptHintIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .give-channels-section .gcs-receipt-hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===========================================
+   RECEIPT-UPLOAD INTRO LINK
+   Primary CTA inside the section intro paragraph, scrolling down to the
+   giving-confirmation form. `.landing-page a` (0,1,1) repaints every
+   public-page link `--primary-gold-accent` with `text-decoration: none`,
+   which would sink this link straight back to the ~2.6:1 gold-on-white
+   failure the underline/weight/darker-gold were meant to fix — so those
+   are redeclared here at (0,2,0) to win, same pattern as `.gcs-receipt-hint`
+   above. `--color-primary-dark` on white measures ~3.2:1 (the project's own
+   documented "large/bold text" floor); the always-on underline + 700 weight
+   are the non-colour affordance so the link never relies on colour alone.
+   =========================================== */
+/* The primary "upload your receipt" link. Body-dark text with a thick gold
+   underline rather than gold text: gold on white is ~2.6:1 (and the darker
+   #b8923f only ~3.2:1), which misses the 4.5:1 body-copy bar at this
+   paragraph's size — and this page is written for the least sighted-confident
+   giver. The bold weight + always-on underline carry the link affordance, so
+   colour is never doing that job alone. The quieter email/Facebook fallbacks
+   below stay plain gold, which reads as the intended hierarchy. */
+.give-channels-section .gcs-intro-receipt-link {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary-dark, #b8923f);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Interaction must never REDUCE contrast — thicken the rule instead of
+   lightening the text. */
+.give-channels-section .gcs-intro-receipt-link:hover,
+.give-channels-section .gcs-intro-receipt-link:focus-visible {
+  color: var(--text-primary);
+  text-decoration-thickness: 3px;
+}
+
+.give-channels-section .gcs-intro-receipt-link:focus-visible {
+  outline: 2px solid var(--color-primary-dark, #b8923f);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===========================================
+   FLOATING "UPLOAD YOUR RECEIPT" CUE  (mobile only)
+   Rendered by `GivingUploadCue` inside the Give Details tab panel, on top of
+   the channels band. The in-card hint above only appears after a successful
+   copy; this is the cue for the giver who scans the QR or types the number by
+   hand and would otherwise never learn the form exists.
+
+   Mount/unmount is the component's job (it watches both sections with an
+   IntersectionObserver) — everything here is presentation only, so the bar
+   can't strand itself visible through a CSS-only state.
+
+   NOT prefixed to `.give-channels-section` like the rules above: this element
+   is a SIBLING of that section, not a descendant. `.landing-page a` (0,1,1)
+   still repaints every public-page link gold, so the compounded
+   `a.gcs-upload-cue` (0,2,0) below is what keeps the white label white.
+   =========================================== */
+a.gcs-upload-cue {
+  /* Desktop has no app-switch problem — the form is one scroll away on the
+     same screen, and the intro paragraph already links to it. */
+  display: none;
+}
+
+@media (max-width: 768px) {
+  a.gcs-upload-cue {
+    position: fixed;
+    /* Inset from all three edges so it reads as a floating action, not as
+       system chrome the giver might mistake for their phone's own UI. */
+    left: 12px;
+    right: 12px;
+    /* Clears the iOS home indicator; falls back to the bare 12px elsewhere. */
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    /* Under the sticky tab bar (900) and the fixed header (1000): this is a
+       prompt, and it must never cover the navigation out of the page. */
+    z-index: 890;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    /* Comfortably past the 44px touch-target floor — the whole bar is the
+       target, not just the words. */
+    min-height: 56px;
+    border-radius: 14px;
+    /* Same navy fill + gold ring as the active tab segment, so the page's two
+       "this is live and tappable" surfaces read as one system. White on this
+       navy measures 14.81:1. */
+    background: var(--color-navy, #1a2744);
+    box-shadow:
+      0 0 0 1.5px var(--color-primary, #d4a84b),
+      0 8px 24px rgba(26, 39, 68, 0.32);
+    color: var(--color-contrast-light, #ffffff);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: left;
+    text-decoration: none;
+    animation: gcsUploadCueIn 0.32s ease-out both;
+  }
+
+  /* Hover/active must never REDUCE contrast — the fill lightens toward the
+     lifted navy rather than washing the label out. */
+  a.gcs-upload-cue:hover,
+  a.gcs-upload-cue:active {
+    background: var(--color-navy-dark, #151e32);
+    color: var(--color-contrast-light, #ffffff);
+  }
+
+  a.gcs-upload-cue:focus-visible {
+    outline: 2px solid var(--color-contrast-light, #ffffff);
+    outline-offset: 3px;
+  }
+
+  /* Navy glyph on gold (~6.5:1) — matches the in-card hint's icon chip. */
+  .gcs-upload-cue-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primary, #d4a84b);
+    color: var(--color-navy, #1a2744);
+  }
+
+  .gcs-upload-cue-icon i {
+    font-size: 14px;
+  }
+
+  .gcs-upload-cue-text {
+    flex: 1;
+  }
+
+  /* The arrow carries the "it's below you" half of the message, so it is the
+     one part that keeps moving — 2 nudges, then still, rather than a loop
+     that would pull at the eye for the whole visit. */
+  .gcs-upload-cue-chevron {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary, #d4a84b);
+    animation: gcsUploadCueNudge 1.1s ease-in-out 0.35s 2;
+  }
+
+  .gcs-upload-cue-chevron i {
+    font-size: 13px;
+  }
+}
+
+/* Narrower phones: the label is what gives, not the touch target. */
+@media (max-width: 360px) {
+  a.gcs-upload-cue {
+    gap: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+
+@keyframes gcsUploadCueIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gcsUploadCueNudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  a.gcs-upload-cue,
+  .gcs-upload-cue-chevron {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===========================================
    OUTREACH RELIEF FUND SECTION
    White band between cream Testimonials and
    navy-blue Give channels band.
@@ -18874,5 +19187,339 @@
 
   .home-page .home-steps-swipe-hint i {
     animation: none;
+  }
+}
+
+/* ===========================================
+   WAYS TO GIVE — content-switcher tabs
+   Sticky segmented-control tab bar, scoped to .ways-to-give-page. Both
+   tab panels render in the SSR HTML at all times (giving copy backs the
+   page's FAQPage JSON-LD) — only visibility toggles via the `hidden`
+   attribute. Appended at the end of the file per house rule (unique
+   `wtg-` prefix avoids the SSR/client-nav cascade-order flip that
+   duplicate class names cause).
+
+   Segmented control (2026-08): navy active segment inside a centered
+   cream "track", replacing the previous pale gold-outline pill (too
+   washed out to read as selected) — see DESIGN_SYSTEM.md §3 contrast
+   rule. The fill moved gold -> navy (2026-08, later same month) because
+   the requested white label text measured only 2.21:1 on gold (fails
+   AA); navy is retained-as-ring (not fill) instead, and white-on-navy
+   measures 14.81:1.
+   =========================================== */
+.ways-to-give-page .wtg-tabs-wrapper {
+  position: relative;
+}
+
+/* 1px sentinel observed by IntersectionObserver to detect the sticky
+   bar pinning under the fixed 70px header (see component for the
+   `-71px` rootMargin math). Carries no visual weight of its own. */
+.ways-to-give-page .wtg-tabs-sentinel {
+  height: 1px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.ways-to-give-page .wtg-tabs-bar {
+  position: sticky;
+  top: 70px;
+  z-index: 900;
+  width: 100%;
+  /* Warm ivory wash (not pure white) so the bar reads as its own layer
+     against the white give-channels band directly beneath it. */
+  background: rgba(250, 248, 243, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(26, 39, 68, 0.06);
+  box-shadow: none;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Stuck state: pinned beneath the header — gains a soft navy drop shadow
+   + a firmer hairline so it visibly separates from the content below. */
+.ways-to-give-page .wtg-tabs-bar.is-stuck {
+  box-shadow: 0 6px 20px rgba(26, 39, 68, 0.1);
+  border-bottom-color: rgba(26, 39, 68, 0.12);
+}
+
+.ways-to-give-page .wtg-tabs-scroll {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.ways-to-give-page .wtg-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* The track — a visible container behind both segments. */
+.ways-to-give-page .wtg-tablist {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 4px;
+  padding: 6px;
+  margin: 16px 0;
+  border-radius: 50px;
+  background: var(--color-cream, #f5f0e6);
+  box-shadow: inset 0 0 0 1px rgba(26, 39, 68, 0.08);
+}
+
+.ways-to-give-page .wtg-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ways-to-give-page .wtg-tab-btn:not(.is-active):hover {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-navy);
+}
+
+/* Active segment — solid navy fill, white label + icon (14.81:1,
+   passes AA with a wide margin; white-on-gold measured only 2.21:1 and
+   failed, which is why the fill moved from gold to navy). Gold is kept
+   as a thin 1.5px ring accent so the control still reads gold-branded,
+   plus a navy lift shadow (opacity 0.28, above the 0.10 design-system
+   shadow floor). The icon has no explicit color of its own, so it
+   inherits this white from the button. */
+.ways-to-give-page .wtg-tab-btn.is-active {
+  background: var(--color-navy, #1a2744);
+  color: var(--color-contrast-light, #ffffff);
+  font-weight: 700;
+  box-shadow: 0 0 0 1.5px var(--color-primary, #d4a84b), 0 4px 14px rgba(26, 39, 68, 0.28);
+}
+
+/* Focus ring: no single brand color clears 3:1 against BOTH contexts a
+   segment can sit in — gold measures 1.95:1 on the cream track (fails)
+   and navy measures 1:1 against its own active navy fill (invisible).
+   A two-layer ring solves both: an inner white ring reads against the
+   navy active fill (14.81:1) while the outer navy ring reads against
+   the cream track (13.0:1). Comma-separated box-shadows paint
+   first-listed-on-top, so this renders as one concentric white->navy
+   halo regardless of which segment is focused. `outline: solid
+   transparent` is kept (rather than `none`) purely so forced-colors /
+   Windows High Contrast mode still draws its native system focus ring. */
+.ways-to-give-page .wtg-tab-btn:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 2px var(--color-contrast-light, #ffffff),
+    0 0 0 4px var(--color-navy, #1a2744);
+}
+
+/* Active + focused: layer the lift shadow back in behind the two-tone
+   ring so the segment doesn't visually flatten while it's focused. */
+.ways-to-give-page .wtg-tab-btn.is-active:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--color-contrast-light, #ffffff),
+    0 0 0 4px var(--color-navy, #1a2744),
+    0 4px 14px rgba(26, 39, 68, 0.28);
+}
+
+/* Kill rule: .landing-section / .give-channels-section descendants can set
+   an explicit `display`, which beats the UA `[hidden] { display:none }`
+   rule. Force it with higher specificity so the inactive panel is
+   genuinely hidden (not just visually collapsed). */
+.ways-to-give-page .wtg-tab-panel[hidden] {
+  display: none !important;
+}
+
+@media (hover: none) {
+  .ways-to-give-page .wtg-tab-btn:not(.is-active):hover {
+    background: transparent;
+    color: var(--text-secondary);
+  }
+
+  .ways-to-give-page .wtg-tab-btn {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ways-to-give-page .wtg-tab-btn,
+  .ways-to-give-page .wtg-tabs-bar {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ways-to-give-page .wtg-tablist {
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .ways-to-give-page .wtg-tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+  }
+}
+
+/* ===========================================
+   Ways to Give tabs — house white/cream band alternation
+   (DESIGN_SYSTEM.md §8 "Section Background Alternation").
+   Each panel's direct .landing-section children alternate
+   odd = white, even = cream, starting white. `.contact-section`
+   does not carry `.landing-section`, so it is excluded from this
+   rule and keeps its site-wide grey closing band.
+
+   `:nth-of-type` (not `:nth-child`) counts among sibling <section>
+   elements so the sequence is self-correcting: the tithes
+   GiveVideoTestimony currently renders null (TITHES_VIDEO_URL is
+   undefined) and is absent from the DOM; if it's ever enabled the
+   position shifts but odd/even still lands correctly.
+
+   !important is required on both sides: `.give-why-section--default`
+   (~line 7507) sets #firstfruits white unconditionally, and the base
+   `.give-why-section` / `.give-video-testimony-section` rules set
+   cream unconditionally — both are single-class (0,1,0) selectors,
+   so our (0,4,0) compound below needs !important to win the tie. */
+.ways-to-give-page .wtg-tab-panel--alternating > .landing-section:nth-of-type(odd) {
+  background: var(--background-section, #ffffff) !important;
+}
+
+.ways-to-give-page .wtg-tab-panel--alternating > .landing-section:nth-of-type(even) {
+  background: var(--color-cream, #f5f0e6) !important;
+}
+
+/* DELIBERATE, USER-REQUESTED DEVIATION from the alternation rule above.
+   The "Give Details" tab now stacks two sections — the giving channels and
+   the giving-confirmation form — and the owner asked for both to stay WHITE
+   ("just make the bg white if there is multiple section"). The rules above
+   would tint the second one cream because it is :nth-of-type(even).
+
+   An ID selector (1,2,0) out-specifies the (0,4,0) compound above even though
+   both carry !important, so this needs no extra weight of its own. Separation
+   between the two white bands comes from the hairline on the section below
+   instead of a background change. */
+#wtg-panel-give-details.wtg-tab-panel--alternating > .landing-section {
+  background: var(--background-section, #ffffff) !important;
+}
+
+/* ===========================================
+   GIVING CONFIRMATION — "Already gave? Let us know"
+   Second section of the Give Details tab: name + a photo of the
+   receipt. Only the band itself is styled here; the card and its
+   fields reuse the shared vip-form.css primitives.
+   =========================================== */
+.giving-confirm-section {
+  padding: 0px 0;
+  position: relative;
+  /* Fixed header (70px) + the sticky Ways-to-Give tab bar (~88px) that pins
+     beneath it, so an anchor jump doesn't land under the chrome. */
+  scroll-margin-top: 170px;
+  /* Two white bands in a row (see the override above) — this hairline is what
+     separates them, per the outreach band system. */
+  border-top: 1px solid rgba(26, 39, 68, 0.08);
+}
+
+.giving-confirm-section .section-header-center {
+  margin-bottom: 32px;
+}
+
+/* A 2-field form has no business spanning the full 1100px container: keep the
+   card narrow so the eye never has to travel, which is the whole point of this
+   form for an older giver. */
+.giving-confirm-section .giving-confirm-card {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* One obvious button, sized for a thumb (≥56px tall — the shared
+   .vip-submit-button padding of 8px lands under the 48px touch-target floor). */
+.giving-confirm-section .vip-submit-button {
+  min-height: 56px;
+  padding: 16px 24px;
+  font-size: 17px;
+}
+
+/* Gold ring on the navy submit button (4.7:1); navy would be invisible there. */
+.giving-confirm-section .vip-submit-button:focus-visible {
+  outline: 2px solid var(--color-primary, #d4a84b);
+  outline-offset: 3px;
+}
+
+/* Change / Remove are 46×20 text buttons in the shared upload field — fine on
+   the form-heavy SOD and event pages, too small for a thumb here. Enlarged to
+   the 44px touch-target floor and boxed so they read as buttons, scoped so the
+   other two surfaces are untouched. */
+.giving-confirm-section .sod-upload-actions {
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.giving-confirm-section .sod-upload-change,
+.giving-confirm-section .sod-upload-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 88px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  background: rgba(26, 39, 68, 0.04);
+  transition: background 0.25s ease;
+}
+
+.giving-confirm-section .sod-upload-change:hover:not(:disabled) {
+  background: rgba(212, 168, 75, 0.16);
+}
+
+.giving-confirm-section .sod-upload-remove:hover:not(:disabled) {
+  background: rgba(218, 68, 83, 0.12);
+}
+
+@media (hover: none) {
+  .giving-confirm-section .sod-upload-change:hover:not(:disabled),
+  .giving-confirm-section .sod-upload-remove:hover:not(:disabled) {
+    background: rgba(26, 39, 68, 0.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .giving-confirm-section .sod-upload-change,
+  .giving-confirm-section .sod-upload-remove {
+    transition: none;
+  }
+}
+
+/* The upload controls sit on white / a pale gold wash, where a gold ring only
+   measures 2.6:1 — navy reads at 13:1 and clears the WCAG 2.2 focus-appearance
+   contrast requirement. Scoped to this section so the shared SOD and event
+   upload fields keep their existing treatment. */
+.giving-confirm-section .sod-upload-dropzone:focus-visible,
+.giving-confirm-section .sod-upload-change:focus-visible,
+.giving-confirm-section .sod-upload-remove:focus-visible {
+  outline: 2px solid var(--color-navy, #1a2744);
+  outline-offset: 3px;
+}
+
+/* Last section of the form — no trailing gap before the actions. */
+.giving-confirm-section .form-section:last-of-type {
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .giving-confirm-section .section-header-center {
+    margin-bottom: 24px;
   }
 }

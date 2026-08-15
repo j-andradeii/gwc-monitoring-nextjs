@@ -1,21 +1,33 @@
 /**
- * Registration receipt image
+ * Receipt image (event registrations + giving confirmations)
  *
- * Draws the post-submission confirmation (reference number, timestamp and every
- * registered name) onto a canvas and returns it as a PNG blob so the registrant
- * can save it to their phone / desktop as proof of registration.
+ * Draws a post-submission confirmation (reference number, timestamp and every
+ * name on the submission) onto a canvas and returns it as a PNG blob so the
+ * person can save it to their phone / desktop as their copy.
  *
  * Canvas is used instead of a DOM-to-image library so the receipt renders
  * identically everywhere and the app keeps its dependency footprint.
+ *
+ * Everything that changes between the two surfaces is a parameter — the
+ * layout, palette and spacing are shared so a receipt always looks like a
+ * Gateway receipt no matter which form produced it.
  */
 
 export interface RegistrationReceiptData {
+  /** Subtitle under the headline (an event name, or what the gift was for). */
   eventTitle: string;
+  /** Optional line under the subtitle. Pass '' to omit it entirely. */
   eventDate: string;
   referenceNumber: string;
   timestamp: string;
-  /** Primary registrant first, then everyone covered by the same payment. */
+  /** Primary person first, then everyone else covered by the same payment. */
   names: string[];
+  /** Big line at the top. Defaults to the event-registration wording. */
+  headline?: string;
+  /** Uppercase label above the name list. Defaults to REGISTRANT(S). */
+  namesLabel?: string;
+  /** Closing line under the timestamp. */
+  footerNote?: string;
 }
 
 const NAVY = '#1a2744';
@@ -131,10 +143,13 @@ export async function createRegistrationReceiptImage(
   const contentWidth = WIDTH - PADDING * 2;
 
   measure.font = `700 30px ${SANS}`;
-  const titleLines = wrapText(measure, data.eventTitle, contentWidth, 2);
+  const titleLines = data.eventTitle ? wrapText(measure, data.eventTitle, contentWidth, 2) : [];
+  // The date line is optional (a giving receipt has no event date) — when it is
+  // absent the header loses exactly the height it would have taken.
+  const hasDateLine = Boolean(data.eventDate);
 
   const namesCount = data.names.length;
-  const headerHeight = 250 + titleLines.length * 38;
+  const headerHeight = 250 + titleLines.length * 38 - (hasDateLine ? 0 : 34);
   const referenceHeight = 132;
   const namesHeight = 54 + namesCount * NAME_ROW_HEIGHT;
   const footerHeight = 96;
@@ -179,9 +194,9 @@ export async function createRegistrationReceiptImage(
   y += 52;
   ctx.fillStyle = NAVY;
   ctx.font = `800 42px ${SANS}`;
-  ctx.fillText('Registration Confirmed', PADDING, y);
+  ctx.fillText(data.headline ?? 'Registration Confirmed', PADDING, y);
 
-  // Event
+  // Subtitle (event name / what the gift was for)
   y += 50;
   ctx.fillStyle = NAVY;
   ctx.font = `700 30px ${SANS}`;
@@ -190,10 +205,12 @@ export async function createRegistrationReceiptImage(
     y += 38;
   }
 
-  ctx.fillStyle = MUTED;
-  ctx.font = `500 20px ${SANS}`;
-  ctx.fillText(data.eventDate, PADDING, y);
-  y += 34;
+  if (hasDateLine) {
+    ctx.fillStyle = MUTED;
+    ctx.font = `500 20px ${SANS}`;
+    ctx.fillText(data.eventDate, PADDING, y);
+    y += 34;
+  }
 
   // Reference block
   const refBoxHeight = 96;
@@ -216,7 +233,7 @@ export async function createRegistrationReceiptImage(
   ctx.font = `700 13px ${SANS}`;
   drawTrackedText(
     ctx,
-    namesCount > 1 ? `REGISTRANTS (${namesCount})` : 'REGISTRANT',
+    data.namesLabel ?? (namesCount > 1 ? `REGISTRANTS (${namesCount})` : 'REGISTRANT'),
     PADDING,
     y,
     1.8
@@ -266,7 +283,11 @@ export async function createRegistrationReceiptImage(
   ctx.font = `500 17px ${SANS}`;
   ctx.fillText(`Submitted ${data.timestamp}`, PADDING, y);
   y += 26;
-  ctx.fillText('Your slot is confirmed once we verify your payment.', PADDING, y);
+  ctx.fillText(
+    data.footerNote ?? 'Your slot is confirmed once we verify your payment.',
+    PADDING,
+    y
+  );
 
   return new Promise<Blob>((resolve, reject) => {
     canvas.toBlob((blob) => {

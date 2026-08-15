@@ -275,7 +275,7 @@
 
 /* ---- Prose ---- */
 .prose {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 18px;
   line-height: 1.75;
   font-weight: 500;

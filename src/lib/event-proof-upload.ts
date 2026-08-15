@@ -60,16 +60,19 @@ export async function ensureWebp(
  * Upload the proof image to Vercel Blob and return its public URL.
  * `nameHint` only shapes the filename (last name, or a reference number when
  * the proof arrives after the fact) — a random suffix keeps it unique.
+ * `folder` keeps unrelated proofs apart in Blob storage: event registrations
+ * default to `event-proofs`, giving confirmations pass `giving-proofs`.
  */
 export async function uploadProofToBlob(
   inputBuffer: Buffer,
   originalMime: string,
-  nameHint: string
+  nameHint: string,
+  folder = 'event-proofs'
 ): Promise<string> {
   const { buffer, mime, ext } = await ensureWebp(inputBuffer, originalMime);
   const safeBase = `${nameHint || 'registrant'}`.replace(/[^a-zA-Z0-9._-]/g, '_');
 
-  const blob = await put(`event-proofs/${safeBase}.${ext}`, buffer, {
+  const blob = await put(`${folder}/${safeBase}.${ext}`, buffer, {
     access: 'public',
     addRandomSuffix: true,
     contentType: mime,
