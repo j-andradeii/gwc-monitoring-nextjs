@@ -7464,11 +7464,26 @@
 .ways-to-give-page .give-channels-section {
   background: var(--background-section, #ffffff);
   /* The shared rule allows 90px — enough for the fixed 70px header alone, but
-     this page also pins the Ways-to-Give tab bar (~88px) beneath it, and the
-     page now LANDS on this section (WaysToGiveTabs scrolls here when there's
-     no hash). At 90px the "How to Give" heading parks under the tab bar.
-     Same allowance as `.giving-confirm-section` further down. */
-  scroll-margin-top: 170px;
+     this page also pins the Ways-to-Give tab bar beneath it, and the page
+     LANDS on this section (WaysToGiveTabs glides here when there's no hash).
+     At 90px the section's own opening copy parks under the tab bar.
+
+     Sized to the chrome EXACTLY so the glide ends with the tab bar pinned
+     flush under the header — the old 170px stopped ~11px short and left a
+     band of the hero photo showing in the seam between the two bars. Desktop
+     bar = 16px margin + (6 + 44 + 6) tablist + 16px margin + 1px border = 89,
+     plus the 70px fixed header. Increasing this number scrolls LESS, not
+     more: the glide lands at `target.top - scrollMarginTop`. */
+  scroll-margin-top: 159px;
+}
+
+/* Mobile bar is 16px shorter — `.wtg-tablist` drops to `margin: 12px 0`
+   under 768px (70 + 12 + 56 + 12 + 1 = 151), so the desktop allowance would
+   re-open the same seam here. */
+@media (max-width: 768px) {
+  .ways-to-give-page .give-channels-section {
+    scroll-margin-top: 70px;
+  }
 }
 
 .ways-to-give-page .give-channels-section::before {
