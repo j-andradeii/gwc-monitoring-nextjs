@@ -247,6 +247,46 @@ ${rows}
         </tr>`;
 }
 
+/**
+ * The uploaded receipt, shown inline and clickable through to the full-size
+ * original in a new tab.
+ *
+ * Staff verify an amount by looking at the image, so making them click into the
+ * sheet (or even into a link) to see it is a step too many. Two things carry
+ * the click target, deliberately: the image itself, and a text link beneath it.
+ * Outlook and several corporate clients block remote images by default, and a
+ * blocked <img> takes its wrapping <a> with it — the caption link is what keeps
+ * the receipt reachable when that happens.
+ *
+ * `width` is an attribute as well as CSS because Outlook ignores `max-width`;
+ * 480 fits the 600px card once the 40px gutters and the frame's padding are
+ * taken out. Height is left to the image so a tall phone screenshot isn't
+ * squashed — a receipt that can't be read is worth nothing here.
+ */
+export function receiptImage(url: string, labelText = 'Receipt'): string {
+  const href = escapeHtml(url);
+
+  return `        <tr>
+          <td class="gwc-pad" style="padding:26px 40px 0 40px;font-family:${SANS};">
+            ${label(labelText)}
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;background:${IVORY};border:1px solid ${BORDER};border-radius:14px;">
+              <tr>
+                <td align="center" style="padding:14px 14px 10px 14px;">
+                  <a href="${href}" target="_blank" rel="noopener noreferrer" style="display:block;text-decoration:none;">
+                    <img src="${href}" alt="Proof of payment — open the email's images to view it" width="480" style="display:block;width:100%;max-width:480px;height:auto;border-radius:10px;border:1px solid ${HAIRLINE};">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding:0 14px 14px 14px;font-family:${SANS};">
+                  <a href="${href}" target="_blank" rel="noopener noreferrer" style="font-size:13px;font-weight:700;color:${GOLD_DARK};text-decoration:underline;">Open full size in a new tab</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>`;
+}
+
 /** "Alice", "Alice +1", "Alice +3" — for subject lines. */
 export function summarizeNames(names: string[]): string {
   const [primary, ...rest] = names;

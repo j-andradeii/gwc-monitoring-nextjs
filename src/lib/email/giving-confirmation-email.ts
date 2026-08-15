@@ -26,12 +26,12 @@ import {
   MUTED,
   NAVY,
   SANS,
-  SUCCESS,
   callout,
   detailRows,
   escapeHtml,
   footer,
   header,
+  receiptImage,
   referenceCard,
   shell,
 } from './components';
@@ -150,11 +150,12 @@ export function buildGivingAdminEmail(data: GivingEmailData) {
     subject,
     `${name} sent a giving confirmation for ${amount}.`,
     [
+      // The name leads the headline: staff read these in a list, and "joseph
+      // has sown" is scannable in a way that a generic "Someone has sown" is
+      // not. It falls back to "Someone has sown" when the name is blank.
       header(
-        'Someone has sown',
-        `<strong style="color:${NAVY};">${escapeHtml(name)}</strong> sent a giving confirmation for <strong style="color:${NAVY};">${escapeHtml(
-          amount
-        )}</strong>.`
+        `${name} has sown`,
+        `Sent a giving confirmation for <strong style="color:${NAVY};">${escapeHtml(amount)}</strong>.`
       ),
       referenceCard(data.referenceNumber, data.timestamp),
       detailRows([
@@ -162,15 +163,16 @@ export function buildGivingAdminEmail(data: GivingEmailData) {
         ['Amount', `<strong style="color:${NAVY};">${escapeHtml(amount)}</strong>`],
         ['Email', data.email ? escapeHtml(data.email) : ''],
         ['Note', data.notes ? multilineHtml(data.notes) : ''],
+        // Only worth a row when there is NO image to show — the block below
+        // says "uploaded" far better than the word "uploaded" does.
         [
           'Receipt',
           data.proofUrl
-            ? `<span style="color:${SUCCESS};font-weight:700;">Uploaded</span> &middot; <a href="${escapeHtml(
-                data.proofUrl
-              )}" style="color:${GOLD_DARK};">view receipt</a>`
+            ? ''
             : `<span style="color:${GOLD_DARK};font-weight:700;">Image upload failed — check the sheet</span>`,
         ],
       ]),
+      data.proofUrl ? receiptImage(data.proofUrl) : '',
       callout(
         'booked',
         `Recorded on the <strong>GIVING</strong> sheet under reference <strong style="font-family:${MONO};">${escapeHtml(
@@ -186,7 +188,7 @@ export function buildGivingAdminEmail(data: GivingEmailData) {
   );
 
   const text = [
-    `SOMEONE HAS SOWN — ${amount}`,
+    `${name.toUpperCase()} HAS SOWN — ${amount}`,
     '',
     `Sower: ${name}`,
     `Amount: ${amount}`,
