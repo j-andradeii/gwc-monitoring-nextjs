@@ -4,6 +4,7 @@ export { GiveWhySection } from './GiveWhySection';
 export { GiveScriptureList } from './GiveScriptureList';
 export { GiveChannelsSection } from './GiveChannelsSection';
 export { GiveVideoTestimony } from './GiveVideoTestimony';
+export { WaysToGiveTabs } from './WaysToGiveTabs';
 export { GiveQuickCTA } from './GiveQuickCTA';
 export { GatewayProjectsSection } from './GatewayProjectsSection';
 export { GatewayProgressSection } from './GatewayProgressSection';

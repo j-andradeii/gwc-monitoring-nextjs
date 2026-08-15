@@ -18876,3 +18876,212 @@
     animation: none;
   }
 }
+
+/* ===========================================
+   WAYS TO GIVE — content-switcher tabs
+   Sticky segmented-control tab bar, scoped to .ways-to-give-page. Both
+   tab panels render in the SSR HTML at all times (giving copy backs the
+   page's FAQPage JSON-LD) — only visibility toggles via the `hidden`
+   attribute. Appended at the end of the file per house rule (unique
+   `wtg-` prefix avoids the SSR/client-nav cascade-order flip that
+   duplicate class names cause).
+
+   Segmented control (2026-08): navy active segment inside a centered
+   cream "track", replacing the previous pale gold-outline pill (too
+   washed out to read as selected) — see DESIGN_SYSTEM.md §3 contrast
+   rule. The fill moved gold -> navy (2026-08, later same month) because
+   the requested white label text measured only 2.21:1 on gold (fails
+   AA); navy is retained-as-ring (not fill) instead, and white-on-navy
+   measures 14.81:1.
+   =========================================== */
+.ways-to-give-page .wtg-tabs-wrapper {
+  position: relative;
+}
+
+/* 1px sentinel observed by IntersectionObserver to detect the sticky
+   bar pinning under the fixed 70px header (see component for the
+   `-71px` rootMargin math). Carries no visual weight of its own. */
+.ways-to-give-page .wtg-tabs-sentinel {
+  height: 1px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.ways-to-give-page .wtg-tabs-bar {
+  position: sticky;
+  top: 70px;
+  z-index: 900;
+  width: 100%;
+  /* Warm ivory wash (not pure white) so the bar reads as its own layer
+     against the white give-channels band directly beneath it. */
+  background: rgba(250, 248, 243, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(26, 39, 68, 0.06);
+  box-shadow: none;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Stuck state: pinned beneath the header — gains a soft navy drop shadow
+   + a firmer hairline so it visibly separates from the content below. */
+.ways-to-give-page .wtg-tabs-bar.is-stuck {
+  box-shadow: 0 6px 20px rgba(26, 39, 68, 0.1);
+  border-bottom-color: rgba(26, 39, 68, 0.12);
+}
+
+.ways-to-give-page .wtg-tabs-scroll {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.ways-to-give-page .wtg-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* The track — a visible container behind both segments. */
+.ways-to-give-page .wtg-tablist {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 4px;
+  padding: 6px;
+  margin: 16px 0;
+  border-radius: 50px;
+  background: var(--color-cream, #f5f0e6);
+  box-shadow: inset 0 0 0 1px rgba(26, 39, 68, 0.08);
+}
+
+.ways-to-give-page .wtg-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ways-to-give-page .wtg-tab-btn:not(.is-active):hover {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-navy);
+}
+
+/* Active segment — solid navy fill, white label + icon (14.81:1,
+   passes AA with a wide margin; white-on-gold measured only 2.21:1 and
+   failed, which is why the fill moved from gold to navy). Gold is kept
+   as a thin 1.5px ring accent so the control still reads gold-branded,
+   plus a navy lift shadow (opacity 0.28, above the 0.10 design-system
+   shadow floor). The icon has no explicit color of its own, so it
+   inherits this white from the button. */
+.ways-to-give-page .wtg-tab-btn.is-active {
+  background: var(--color-navy, #1a2744);
+  color: var(--color-contrast-light, #ffffff);
+  font-weight: 700;
+  box-shadow: 0 0 0 1.5px var(--color-primary, #d4a84b), 0 4px 14px rgba(26, 39, 68, 0.28);
+}
+
+/* Focus ring: no single brand color clears 3:1 against BOTH contexts a
+   segment can sit in — gold measures 1.95:1 on the cream track (fails)
+   and navy measures 1:1 against its own active navy fill (invisible).
+   A two-layer ring solves both: an inner white ring reads against the
+   navy active fill (14.81:1) while the outer navy ring reads against
+   the cream track (13.0:1). Comma-separated box-shadows paint
+   first-listed-on-top, so this renders as one concentric white->navy
+   halo regardless of which segment is focused. `outline: solid
+   transparent` is kept (rather than `none`) purely so forced-colors /
+   Windows High Contrast mode still draws its native system focus ring. */
+.ways-to-give-page .wtg-tab-btn:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 2px var(--color-contrast-light, #ffffff),
+    0 0 0 4px var(--color-navy, #1a2744);
+}
+
+/* Active + focused: layer the lift shadow back in behind the two-tone
+   ring so the segment doesn't visually flatten while it's focused. */
+.ways-to-give-page .wtg-tab-btn.is-active:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--color-contrast-light, #ffffff),
+    0 0 0 4px var(--color-navy, #1a2744),
+    0 4px 14px rgba(26, 39, 68, 0.28);
+}
+
+/* Kill rule: .landing-section / .give-channels-section descendants can set
+   an explicit `display`, which beats the UA `[hidden] { display:none }`
+   rule. Force it with higher specificity so the inactive panel is
+   genuinely hidden (not just visually collapsed). */
+.ways-to-give-page .wtg-tab-panel[hidden] {
+  display: none !important;
+}
+
+@media (hover: none) {
+  .ways-to-give-page .wtg-tab-btn:not(.is-active):hover {
+    background: transparent;
+    color: var(--text-secondary);
+  }
+
+  .ways-to-give-page .wtg-tab-btn {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ways-to-give-page .wtg-tab-btn,
+  .ways-to-give-page .wtg-tabs-bar {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ways-to-give-page .wtg-tablist {
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .ways-to-give-page .wtg-tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+  }
+}
+
+/* ===========================================
+   Ways to Give tabs — house white/cream band alternation
+   (DESIGN_SYSTEM.md §8 "Section Background Alternation").
+   Each panel's direct .landing-section children alternate
+   odd = white, even = cream, starting white. `.contact-section`
+   does not carry `.landing-section`, so it is excluded from this
+   rule and keeps its site-wide grey closing band.
+
+   `:nth-of-type` (not `:nth-child`) counts among sibling <section>
+   elements so the sequence is self-correcting: the tithes
+   GiveVideoTestimony currently renders null (TITHES_VIDEO_URL is
+   undefined) and is absent from the DOM; if it's ever enabled the
+   position shifts but odd/even still lands correctly.
+
+   !important is required on both sides: `.give-why-section--default`
+   (~line 7507) sets #firstfruits white unconditionally, and the base
+   `.give-why-section` / `.give-video-testimony-section` rules set
+   cream unconditionally — both are single-class (0,1,0) selectors,
+   so our (0,4,0) compound below needs !important to win the tie. */
+.ways-to-give-page .wtg-tab-panel--alternating > .landing-section:nth-of-type(odd) {
+  background: var(--background-section, #ffffff) !important;
+}
+
+.ways-to-give-page .wtg-tab-panel--alternating > .landing-section:nth-of-type(even) {
+  background: var(--color-cream, #f5f0e6) !important;
+}
