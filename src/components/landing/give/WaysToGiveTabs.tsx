@@ -76,8 +76,9 @@ function glideToLanding(targetId: string): () => void {
     // Someone who has already scrolled is reading — leave them where they are.
     if (!target || window.scrollY > 4) return cancel();
 
-    // Honours the section's own `scroll-margin-top` (170px here: fixed header
-    // + sticky tab bar) so the allowance stays in the stylesheet.
+    // Honours the section's own `scroll-margin-top` (159px desktop / 151px
+    // mobile here: fixed header + sticky tab bar, sized so the bar lands
+    // pinned flush) so the allowance stays in the stylesheet.
     const marginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
     const startY = window.scrollY;
     const endY = Math.min(
