@@ -95,7 +95,7 @@ export const WaysToGiveChannelsSection: React.FC<WaysToGiveChannelsSectionProps>
   showGivingDescription = true,
   sectionId = 'give-channels',
   sectionLabel = 'Channels',
-  title = 'How to Give',
+  title = 'How to Sow',
   keywords,
   confirmationTargetId = 'giving-confirmation',
 }) => {
@@ -157,18 +157,7 @@ export const WaysToGiveChannelsSection: React.FC<WaysToGiveChannelsSectionProps>
             <span className="section-label">{sectionLabel}</span>
             <h2>{title}</h2>
             <p>
-              Choose your preferred method to give your tithes, offerings, and firstfruits. After you send your gift,{' '}
-              <a
-                href={`#${confirmationTargetId}`}
-                onClick={handleScrollToConfirmation}
-                className="gcs-intro-receipt-link"
-              >
-                upload a screenshot of your receipt below.
-              </a>{' '}
-                You can also email it to{' '}
-              <a href={`mailto:${CONTACT_INFO.email}`} className="text-primary hover:underline">{CONTACT_INFO.email}</a>{' '}
-              or send it to us on{' '}
-              <a href={CONTACT_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Facebook</a>.
+              Choose your preferred method to give your tithes, offerings, and firstfruits.
             </p>
           </div>
         )}

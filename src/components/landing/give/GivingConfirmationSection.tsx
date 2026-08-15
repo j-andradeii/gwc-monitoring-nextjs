@@ -5,7 +5,12 @@ import { useForm, FormProvider, type DefaultValues } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useMutation } from '@tanstack/react-query';
-import { FormInput, ProofOfPaymentField, useScrollToFirstError } from '@/components/forms';
+import {
+  FormInput,
+  FormTextarea,
+  ProofOfPaymentField,
+  useScrollToFirstError,
+} from '@/components/forms';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
 import { createRegistrationReceiptImage } from '@/lib/registration-receipt';
 import { givingConfirmationSchema } from '@/models/schemas/giving-confirmation.schema';
@@ -33,8 +38,14 @@ type GivingConfirmationFormData = z.infer<typeof givingConfirmationFormSchema>;
 
 const DEFAULT_FORM_VALUES: DefaultValues<GivingConfirmationFormData> = {
   fullName: '',
+  email: '',
+  amount: '',
+  notes: '',
   proofOfPayment: undefined,
 };
+
+/** Mirrors the schema's cap so the textarea stops them before the error does. */
+const NOTES_MAX_LENGTH = 500;
 
 export interface GivingConfirmationSectionProps {
   /** Anchor id for the section. */
@@ -46,8 +57,9 @@ export interface GivingConfirmationSectionProps {
  *
  * Sits directly beneath the giving channels on the "Give Details" tab: the
  * giver sends their gift with one of the cards above, then tells us it's on the
- * way here. Deliberately the shortest form on the site (name + photo) because
- * the people most likely to use it are the least comfortable with online forms.
+ * way here. Deliberately the shortest form on the site (name + amount + photo,
+ * plus an optional email) because the people most likely to use it are the
+ * least comfortable with online forms.
  *
  * The confirmation screen mirrors the paid-event one (reference no., copy
  * button, saveable receipt image) so both surfaces hand back the same kind of
@@ -83,6 +95,11 @@ export const GivingConfirmationSection: React.FC<GivingConfirmationSectionProps>
     mutationFn: async (data: GivingConfirmationFormData) => {
       const formData = new FormData();
       formData.append('fullName', data.fullName);
+      // Optional — sent as '' when skipped so the route parses one shape.
+      formData.append('email', data.email?.trim() ?? '');
+      // Already normalised to digits by the schema's transform.
+      formData.append('amount', data.amount);
+      formData.append('notes', data.notes?.trim() ?? '');
       formData.append('proofOfPayment', data.proofOfPayment);
 
       const response = await fetch('/api/give/giving-confirmation', {
@@ -223,8 +240,7 @@ export const GivingConfirmationSection: React.FC<GivingConfirmationSectionProps>
             <div className="success-animation-container" ref={successRef} tabIndex={-1}>
               <h3>Thank You!</h3>
               <p>
-                <strong>{giverName}</strong>, we&apos;ve received your giving confirmation. Our
-                team will check it against your gift.
+                <strong>{giverName}</strong>, we&apos;ve received your giving confirmation. 
               </p>
 
               {/* Receipt — the giver's copy. Mirrors the saved image, so what
@@ -281,8 +297,7 @@ export const GivingConfirmationSection: React.FC<GivingConfirmationSectionProps>
                 <span>
                   <strong>Take a screenshot or save your reference no.</strong> Screenshot this
                   page — or tap <em>Save as image</em> below — and keep{' '}
-                  <strong>{referenceNumber}</strong>. It&apos;s how we find your gift if you ever
-                  need to ask about it.
+                  <strong>{referenceNumber}</strong>. 
                 </span>
               </p>
 
@@ -343,7 +358,7 @@ export const GivingConfirmationSection: React.FC<GivingConfirmationSectionProps>
                 <div className="form-section">
                   <div className="section-title">
                     <span className="section-number">01</span>
-                    <h4>Your Name</h4>
+                    <h4>Your Details</h4>
                   </div>
 
                   <div className="form-row">
@@ -353,6 +368,41 @@ export const GivingConfirmationSection: React.FC<GivingConfirmationSectionProps>
                       showRequired
                       placeholder="Juan Dela Cruz"
                       className="modern-field"
+                    />
+                    {/* Optional: nothing is emailed — it's only so the finance
+                        team can reach back if a gift can't be matched. */}
+                    <FormInput
+                      name="email"
+                      label="Email (optional)"
+                      placeholder="you@email.com"
+                      className="modern-field"
+                      type="email"
+                      inputMode="email"
+                    />
+                    {/* Left as free text with a decimal keypad rather than
+                        type="number": the schema strips "₱" and commas, so
+                        pasting "₱1,500.00" straight from a banking app works,
+                        and there are no scroll-wheel/spinner surprises. */}
+                    <FormInput
+                      name="amount"
+                      label="Amount Sown (₱)"
+                      showRequired
+                      placeholder="1500"
+                      className="modern-field"
+                      inputMode="decimal"
+                    />
+                    {/* Optional: whatever the receipt photo can't say for
+                        itself. Lands in the sheet's Notes column (E), where the
+                        finance team reads it while matching the gift. */}
+                    <FormTextarea
+                      name="notes"
+                      label="Notes (optional)"
+                      placeholder="Anything we should know? e.g. which fund this is for, or whose account it was sent from."
+                      className="modern-field"
+                      rows={3}
+                      autoResize
+                      maxLength={NOTES_MAX_LENGTH}
+                      showCount
                     />
                   </div>
                 </div>

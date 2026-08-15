@@ -90,6 +90,12 @@ interface SheetsValuesApi {
     insertDataOption?: string;
     requestBody: { values: unknown[][] };
   }): Promise<unknown>;
+  update(params: {
+    spreadsheetId: string;
+    range: string;
+    valueInputOption: string;
+    requestBody: { values: unknown[][] };
+  }): Promise<unknown>;
   batchUpdate(params: {
     spreadsheetId: string;
     requestBody: {
@@ -99,8 +105,31 @@ interface SheetsValuesApi {
   }): Promise<unknown>;
 }
 
+/**
+ * Spreadsheet-level (not values-level) calls: reading tab metadata and growing
+ * a tab's grid. Used by `appendGivingRow` in giving-confirmation-sheet.ts.
+ */
+interface SheetsSpreadsheetsApi {
+  values: SheetsValuesApi;
+  get(params: { spreadsheetId: string; fields?: string }): Promise<{
+    data: {
+      sheets?: Array<{
+        properties?: {
+          sheetId?: number;
+          title?: string;
+          gridProperties?: { rowCount?: number };
+        };
+      }>;
+    };
+  }>;
+  batchUpdate(params: {
+    spreadsheetId: string;
+    requestBody: { requests: unknown[] };
+  }): Promise<unknown>;
+}
+
 export interface SheetsApi {
-  spreadsheets: { values: SheetsValuesApi };
+  spreadsheets: SheetsSpreadsheetsApi;
 }
 
 /**

@@ -7463,6 +7463,12 @@
    =========================================== */
 .ways-to-give-page .give-channels-section {
   background: var(--background-section, #ffffff);
+  /* The shared rule allows 90px — enough for the fixed 70px header alone, but
+     this page also pins the Ways-to-Give tab bar (~88px) beneath it, and the
+     page now LANDS on this section (WaysToGiveTabs scrolls here when there's
+     no hash). At 90px the "How to Give" heading parks under the tab bar.
+     Same allowance as `.giving-confirm-section` further down. */
+  scroll-margin-top: 170px;
 }
 
 .ways-to-give-page .give-channels-section::before {
@@ -16735,6 +16741,154 @@
   outline: 2px solid var(--color-primary-dark, #b8923f);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* ===========================================
+   FLOATING "UPLOAD YOUR RECEIPT" CUE  (mobile only)
+   Rendered by `GivingUploadCue` inside the Give Details tab panel, on top of
+   the channels band. The in-card hint above only appears after a successful
+   copy; this is the cue for the giver who scans the QR or types the number by
+   hand and would otherwise never learn the form exists.
+
+   Mount/unmount is the component's job (it watches both sections with an
+   IntersectionObserver) — everything here is presentation only, so the bar
+   can't strand itself visible through a CSS-only state.
+
+   NOT prefixed to `.give-channels-section` like the rules above: this element
+   is a SIBLING of that section, not a descendant. `.landing-page a` (0,1,1)
+   still repaints every public-page link gold, so the compounded
+   `a.gcs-upload-cue` (0,2,0) below is what keeps the white label white.
+   =========================================== */
+a.gcs-upload-cue {
+  /* Desktop has no app-switch problem — the form is one scroll away on the
+     same screen, and the intro paragraph already links to it. */
+  display: none;
+}
+
+@media (max-width: 768px) {
+  a.gcs-upload-cue {
+    position: fixed;
+    /* Inset from all three edges so it reads as a floating action, not as
+       system chrome the giver might mistake for their phone's own UI. */
+    left: 12px;
+    right: 12px;
+    /* Clears the iOS home indicator; falls back to the bare 12px elsewhere. */
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    /* Under the sticky tab bar (900) and the fixed header (1000): this is a
+       prompt, and it must never cover the navigation out of the page. */
+    z-index: 890;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    /* Comfortably past the 44px touch-target floor — the whole bar is the
+       target, not just the words. */
+    min-height: 56px;
+    border-radius: 14px;
+    /* Same navy fill + gold ring as the active tab segment, so the page's two
+       "this is live and tappable" surfaces read as one system. White on this
+       navy measures 14.81:1. */
+    background: var(--color-navy, #1a2744);
+    box-shadow:
+      0 0 0 1.5px var(--color-primary, #d4a84b),
+      0 8px 24px rgba(26, 39, 68, 0.32);
+    color: var(--color-contrast-light, #ffffff);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: left;
+    text-decoration: none;
+    animation: gcsUploadCueIn 0.32s ease-out both;
+  }
+
+  /* Hover/active must never REDUCE contrast — the fill lightens toward the
+     lifted navy rather than washing the label out. */
+  a.gcs-upload-cue:hover,
+  a.gcs-upload-cue:active {
+    background: var(--color-navy-dark, #151e32);
+    color: var(--color-contrast-light, #ffffff);
+  }
+
+  a.gcs-upload-cue:focus-visible {
+    outline: 2px solid var(--color-contrast-light, #ffffff);
+    outline-offset: 3px;
+  }
+
+  /* Navy glyph on gold (~6.5:1) — matches the in-card hint's icon chip. */
+  .gcs-upload-cue-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primary, #d4a84b);
+    color: var(--color-navy, #1a2744);
+  }
+
+  .gcs-upload-cue-icon i {
+    font-size: 14px;
+  }
+
+  .gcs-upload-cue-text {
+    flex: 1;
+  }
+
+  /* The arrow carries the "it's below you" half of the message, so it is the
+     one part that keeps moving — 2 nudges, then still, rather than a loop
+     that would pull at the eye for the whole visit. */
+  .gcs-upload-cue-chevron {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary, #d4a84b);
+    animation: gcsUploadCueNudge 1.1s ease-in-out 0.35s 2;
+  }
+
+  .gcs-upload-cue-chevron i {
+    font-size: 13px;
+  }
+}
+
+/* Narrower phones: the label is what gives, not the touch target. */
+@media (max-width: 360px) {
+  a.gcs-upload-cue {
+    gap: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+
+@keyframes gcsUploadCueIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gcsUploadCueNudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  a.gcs-upload-cue,
+  .gcs-upload-cue-chevron {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ===========================================

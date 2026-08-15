@@ -21,6 +21,7 @@ import {
   GiveWhySection,
   GiveVideoTestimony,
   GivingConfirmationSection,
+  GivingUploadCue,
   WaysToGiveChannelsSection,
   WaysToGiveTabs,
 } from '@/components/landing/give';
@@ -215,6 +216,14 @@ export default function WaysToGivePage() {
                   the second one. Both bands stay WHITE by explicit request
                   (see the #wtg-panel-give-details override in landing.css). */}
               <GivingConfirmationSection />
+
+              {/* On a phone the form above is a full screen of cards below the
+                  fold, so it may as well not exist. This floats a prompt over
+                  the channels while they're being read, and gets out of the way
+                  once the form is on screen. Sits inside this panel (not inside
+                  the channels section) on purpose — see the component docblock
+                  for both reasons. */}
+              <GivingUploadCue />
             </>
           }
           whyPanel={

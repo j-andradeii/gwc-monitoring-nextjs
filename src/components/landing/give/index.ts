@@ -7,6 +7,8 @@ export { GiveChannelsSection } from './GiveChannelsSection';
 export { WaysToGiveChannelsSection } from './WaysToGiveChannelsSection';
 export { GiveVideoTestimony } from './GiveVideoTestimony';
 export { GivingConfirmationSection } from './GivingConfirmationSection';
+// Mobile-only floating prompt pointing at the section above.
+export { GivingUploadCue } from './GivingUploadCue';
 export { WaysToGiveTabs } from './WaysToGiveTabs';
 export { GiveQuickCTA } from './GiveQuickCTA';
 export { GatewayProjectsSection } from './GatewayProjectsSection';

@@ -35,6 +35,97 @@ const HASH_TO_TAB: Record<string, TabId> = {
   'firstfruits-testimony': 'why-we-give',
 };
 
+/** House easing (same cubic as AboutSection's count-up): fast out, soft stop. */
+function easeOut(t: number): number {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+/** Beat before the glide starts, so the hero is seen rather than flashed past. */
+const LANDING_DELAY_MS = 150;
+/** Long enough to read as a deliberate move, short enough not to feel held up. */
+const LANDING_DURATION_MS = 900;
+
+/**
+ * Eases the window down to `targetId` and returns a cancel function.
+ *
+ * Hand-animated rather than `scrollIntoView({ behavior: 'smooth' })` because
+ * globals.css sets `scroll-behavior: auto` below 769px on purpose ("use JS for
+ * better control") — the native call would animate on desktop and hard-cut on
+ * phones, which is where this page is mostly read.
+ *
+ * The giver always outranks the animation: a wheel, touch, or key during the
+ * wait or the glide cancels it on the spot, and a page that is already scrolled
+ * when the timer fires is left alone. Nothing here fights someone who has
+ * started reading.
+ *
+ * Input events, deliberately, rather than a `scroll` listener: the glide moves
+ * the window itself, so a scroll listener would cancel on its own first frame.
+ */
+function glideToLanding(targetId: string): () => void {
+  if (typeof window === 'undefined') return () => {};
+
+  let rafId: number | null = null;
+  let cancelled = false;
+
+  // Declared before `cancel` so it can be captured by value: the callback only
+  // ever runs on a later task, by which point `cancel` is initialised.
+  const startTimer = window.setTimeout(() => {
+    if (cancelled) return;
+
+    const target = document.getElementById(targetId);
+    // Someone who has already scrolled is reading — leave them where they are.
+    if (!target || window.scrollY > 4) return cancel();
+
+    // Honours the section's own `scroll-margin-top` (170px here: fixed header
+    // + sticky tab bar) so the allowance stays in the stylesheet.
+    const marginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+    const startY = window.scrollY;
+    const endY = Math.min(
+      target.getBoundingClientRect().top + startY - marginTop,
+      // Never ask for a position past the end of the document, or the glide
+      // spends its last frames easing toward somewhere it can't reach.
+      document.documentElement.scrollHeight - window.innerHeight
+    );
+    const distance = endY - startY;
+    if (Math.abs(distance) < 1) return cancel();
+
+    // Reduced motion gets the destination without the journey.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo({ top: endY, behavior: 'auto' });
+      return cancel();
+    }
+
+    const startTime = performance.now();
+    const step = (now: number) => {
+      if (cancelled) return;
+      const progress = Math.min((now - startTime) / LANDING_DURATION_MS, 1);
+      window.scrollTo({ top: startY + distance * easeOut(progress), behavior: 'auto' });
+      if (progress < 1) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        cancel();
+      }
+    };
+    rafId = requestAnimationFrame(step);
+  }, LANDING_DELAY_MS);
+
+  const cancel = () => {
+    cancelled = true;
+    if (rafId !== null) cancelAnimationFrame(rafId);
+    window.clearTimeout(startTimer);
+    window.removeEventListener('wheel', cancel);
+    window.removeEventListener('touchstart', cancel);
+    window.removeEventListener('keydown', cancel);
+  };
+
+  // Any input from the giver outranks the glide — including during the delay.
+  window.addEventListener('wheel', cancel, { passive: true, once: true });
+  window.addEventListener('touchstart', cancel, { passive: true, once: true });
+  window.addEventListener('keydown', cancel, { once: true });
+
+  return cancel;
+}
+
 /**
  * Ways to Give — content-switcher tabs.
  *
@@ -59,6 +150,8 @@ export const WaysToGiveTabs: React.FC<WaysToGiveTabsProps> = ({ detailsPanel, wh
   const detailsPanelRef = useRef<HTMLDivElement>(null);
   const whyPanelRef = useRef<HTMLDivElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  /** Cancels the landing glide (see `glideToLanding`) if this unmounts first. */
+  const cancelLandingRef = useRef<(() => void) | null>(null);
 
   const panelRef = useCallback(
     (id: TabId) => (id === 'give-details' ? detailsPanelRef.current : whyPanelRef.current),
@@ -104,15 +197,37 @@ export const WaysToGiveTabs: React.FC<WaysToGiveTabsProps> = ({ detailsPanel, wh
       if (typeof window === 'undefined') return;
       const hash = window.location.hash.replace('#', '');
       const matchedTab = HASH_TO_TAB[hash];
+
       if (matchedTab) {
         setActiveId(matchedTab);
         revealPanel(matchedTab);
         requestAnimationFrame(() => {
           document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+        return;
       }
+
+      /**
+       * No hash (or one this page doesn't own): glide down to the giving
+       * channels rather than sitting at the top of the hero. Anyone arriving
+       * here — from the nav, a shared link, or a redirect — came to give, and
+       * the channels are the thing they came for. Animating it (rather than
+       * jumping) keeps the hero readable on the way past, so the page still
+       * introduces itself instead of appearing to have loaded halfway down.
+       *
+       * The hash is written by the effect below, so a reload or a share keeps
+       * the same spot.
+       */
+      const [defaultTab] = TAB_ITEMS;
+      cancelLandingRef.current = glideToLanding(defaultTab.hash);
     }, 0);
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearTimeout(timer);
+      // A tab switch or route change mid-glide must not leave a rAF loop
+      // driving the scroll position of a page the giver has left.
+      cancelLandingRef.current?.();
+    };
   }, [revealPanel]);
 
   // Update the hash when the tab changes (after mount only) — replaceState so

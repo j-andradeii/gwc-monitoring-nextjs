@@ -4,11 +4,10 @@ import { readProofBlob, uploadProofToBlob } from '@/lib/event-proof-upload';
 import {
   GIVING_CONFIRMATION_SPREADSHEET_ID,
   PROOF_UPLOAD_FAILED_NOTE,
-  buildGivingRow,
+  appendGivingRow,
   buildProofCell,
   generateGivingReference,
   getSheetsClient,
-  givingSheetRangeForTab,
   resolveGivingSheetTab,
 } from '@/lib/giving-confirmation-sheet';
 
@@ -23,11 +22,13 @@ export const runtime = 'nodejs';
  * can match it. Both the name and the image are required — a row without a
  * proof would be nothing but a name.
  *
- * One row per submission, columns A–E on the GIVING tab:
- *   A Timestamp · B Full Name · C Reference No. · D Proof · E Notes (staff)
+ * One row per submission, columns A–G on the GIVING tab:
+ *   A Timestamp · B Full Name · C Reference No. · D Proof · E Notes (giver)
+ *   F Email (optional) · G Amount
  *
- * No email is sent and no email is collected: the confirmation screen (and the
- * saveable receipt image) is the giver's copy.
+ * Nothing is emailed — the confirmation screen (and the saveable receipt image)
+ * is the giver's copy. The optional email in column F is a way for the finance
+ * team to reach back when a gift can't be matched, not a mailing trigger.
  */
 
 interface SheetResult {
@@ -37,6 +38,12 @@ interface SheetResult {
 
 interface AppendParams {
   fullName: string;
+  /** '' when the giver left the optional field blank. */
+  email: string;
+  /** Bare number string, normalised by the schema. */
+  amount: string;
+  /** The giver's own optional note — '' when left blank. */
+  notes: string;
   proofUrl: string;
   proofProvided: boolean;
   /** Asia/Manila submission time — the same value the giver sees. */
@@ -46,6 +53,9 @@ interface AppendParams {
 
 async function appendToGivingSheet({
   fullName,
+  email,
+  amount,
+  notes,
   proofUrl,
   proofProvided,
   timestamp,
@@ -73,18 +83,16 @@ async function appendToGivingSheet({
         ? PROOF_UPLOAD_FAILED_NOTE
         : '';
 
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: GIVING_CONFIRMATION_SPREADSHEET_ID,
-      range: givingSheetRangeForTab(sheetTab),
-      valueInputOption: 'USER_ENTERED',
-      // Force every submission onto a fresh row starting at column A. Without
-      // INSERT_ROWS, append's default OVERWRITE mode mis-detects the "table":
-      // the isolated =HYPERLINK/=IMAGE() cell anchors the next row at that
-      // column instead of A.
-      insertDataOption: 'INSERT_ROWS',
-      requestBody: {
-        values: [buildGivingRow({ timestamp, fullName, referenceNumber, proofCell })],
-      },
+    // Writes an explicit A:G range on the next free row — see `appendGivingRow`
+    // for why `values.append` cannot be used here (it shifted rows to column G).
+    await appendGivingRow(sheets, GIVING_CONFIRMATION_SPREADSHEET_ID, sheetTab, {
+      timestamp,
+      fullName,
+      referenceNumber,
+      proofCell,
+      email,
+      amount,
+      notes,
     });
 
     return { success: true, message: `Added to Google Sheets (${sheetTab})` };
@@ -104,11 +112,22 @@ export async function POST(request: Request) {
 
     const validationResult = givingConfirmationSchema.safeParse({
       fullName: String(formData.get('fullName') ?? ''),
+      email: String(formData.get('email') ?? ''),
+      amount: String(formData.get('amount') ?? ''),
+      notes: String(formData.get('notes') ?? ''),
     });
 
     if (!validationResult.success) {
+      // Hand back the first issue's own message so the giver is told which box
+      // to fix, rather than a blanket "check the form". The name's message is
+      // the fallback because it's the field most likely to be missing.
+      const [firstIssue] = validationResult.error.issues;
+
       return NextResponse.json(
-        { error: 'Please type your full name.', details: validationResult.error.issues },
+        {
+          error: firstIssue?.message ?? 'Please type your full name.',
+          details: validationResult.error.issues,
+        },
         { status: 400 }
       );
     }
@@ -152,6 +171,9 @@ export async function POST(request: Request) {
 
     const result = await appendToGivingSheet({
       fullName: validationResult.data.fullName,
+      email: validationResult.data.email ?? '',
+      amount: validationResult.data.amount,
+      notes: validationResult.data.notes ?? '',
       proofUrl,
       proofProvided,
       timestamp,
