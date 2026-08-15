@@ -19,7 +19,10 @@
  *   MAIL_FROM_NAME       optional display name, e.g. `Gateway Church`
  *   MAIL_FROM            legacy single-value form, `Name <address>`; used only
  *                        when MAIL_FROM_ADDRESS is unset
- *   ADMIN_NOTIFY_EMAIL   read by the callers that notify staff
+ *   ADMIN_NOTIFY_EMAIL   read by the event callers that notify staff
+ *   PASTOR_ADMIN_NOTIFY_EMAIL
+ *                        the giving caller's equivalent — gift amounts go to a
+ *                        narrower audience than event sign-ups do
  *
  * The sender's DOMAIN must be verified at resend.com/domains — Resend rejects
  * anything else with a 403 before delivery is attempted.

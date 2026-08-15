@@ -1,6 +1,7 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import { givingConfirmationSchema } from '@/models/schemas/giving-confirmation.schema';
 import { readProofBlob, uploadProofToBlob } from '@/lib/event-proof-upload';
+import { sendGivingConfirmationEmails } from '@/lib/email/giving-confirmation-email';
 import {
   GIVING_CONFIRMATION_SPREADSHEET_ID,
   PROOF_UPLOAD_FAILED_NOTE,
@@ -26,9 +27,11 @@ export const runtime = 'nodejs';
  *   A Timestamp · B Full Name · C Reference No. · D Proof · E Notes (giver)
  *   F Email (optional) · G Amount
  *
- * Nothing is emailed — the confirmation screen (and the saveable receipt image)
- * is the giver's copy. The optional email in column F is a way for the finance
- * team to reach back when a gift can't be matched, not a mailing trigger.
+ * Two emails go out after the row is written (see lib/email/giving-confirmation-email.ts):
+ * a copy of the receipt to the sower — only when they left an address, since the
+ * field is optional — and a "somebody has sown" notification to
+ * PASTOR_ADMIN_NOTIFY_EMAIL. Both are best-effort; the confirmation screen and
+ * its saveable receipt image remain the sower's primary copy.
  */
 
 interface SheetResult {
@@ -178,6 +181,27 @@ export async function POST(request: Request) {
       proofProvided,
       timestamp,
       referenceNumber,
+    });
+
+    // An emailed copy of the receipt for the sower (only when they gave an
+    // address — the field is optional) plus a heads-up for staff. Deferred with
+    // `after` so a slow mail API doesn't hold up the confirmation screen, and
+    // best-effort: the row is already on the sheet, so a send failure is logged,
+    // never surfaced as a failed submission.
+    after(async () => {
+      try {
+        await sendGivingConfirmationEmails({
+          referenceNumber,
+          timestamp,
+          fullName: validationResult.data.fullName,
+          amount: validationResult.data.amount,
+          email: validationResult.data.email,
+          notes: validationResult.data.notes,
+          proofUrl,
+        });
+      } catch (emailError) {
+        console.error('[giving-confirmation] email dispatch failed:', emailError);
+      }
     });
 
     return NextResponse.json({
