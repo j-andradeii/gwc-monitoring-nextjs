@@ -130,7 +130,7 @@ const styles: Record<string, React.CSSProperties> = {
     textDecoration: 'none',
     fontSize: '13px',
     fontWeight: 500,
-    color: '#4b5563',
+    color: '#000',
     transition: 'all 0.2s ease',
   },
   linkHover: {
@@ -139,11 +139,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
   homeIcon: {
     fontSize: '14px',
-    color: '#6b7280',
+    color: '#000',
   },
   itemIcon: {
     fontSize: '12px',
-    color: '#6b7280',
+    color: '#000',
   },
   current: {
     display: 'flex',
@@ -152,7 +152,7 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '6px 10px',
     fontSize: '13px',
     fontWeight: 600,
-    color: '#111827',
+    color: '#000',
   },
   separator: {
     display: 'flex',
@@ -168,7 +168,7 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: 'center',
     padding: '6px 8px',
     fontSize: '13px',
-    color: '#6b7280',
+    color: '#000',
   },
 };
 
@@ -225,13 +225,13 @@ const pageHeaderStyles: Record<string, React.CSSProperties> = {
   title: {
     fontSize: '28px',
     fontWeight: 700,
-    color: '#111827',
+    color: '#000',
     margin: '0 0 4px',
     lineHeight: 1.3,
   },
   subtitle: {
     fontSize: '15px',
-    color: '#6b7280',
+    color: '#000',
     margin: 0,
     lineHeight: 1.5,
   },
@@ -331,12 +331,12 @@ const statsStyles: Record<string, React.CSSProperties> = {
   value: {
     fontSize: '24px',
     fontWeight: 700,
-    color: '#111827',
+    color: '#000',
     lineHeight: 1.2,
   },
   label: {
     fontSize: '13px',
-    color: '#6b7280',
+    color: '#000',
     marginTop: '2px',
   },
   change: {
@@ -348,7 +348,7 @@ const statsStyles: Record<string, React.CSSProperties> = {
     fontSize: '12px',
     fontWeight: 600,
     background: 'rgba(107, 114, 128, 0.1)',
-    color: '#6b7280',
+    color: '#000',
   },
   changePositive: {
     background: 'rgba(34, 197, 94, 0.1)',

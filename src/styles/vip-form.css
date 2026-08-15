@@ -109,7 +109,7 @@
 
 .form-main-title {
     font-size: 28px;
-    color: #0f172a;
+    color: #000;
     font-weight: 800;
 }
 
@@ -142,7 +142,7 @@
 .section-title h4 {
     font-size: 18px;
     font-weight: 800;
-    color: #1e293b;
+    color: #000;
     margin: 0;
 }
 
@@ -202,7 +202,7 @@
 .privacy-note {
     text-align: center;
     font-size: 12px;
-    color: #64748b;
+    color: #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -257,11 +257,11 @@
     font-size: 32px;
     font-weight: 800;
     margin-bottom: 15px;
-    color: #0f172a;
+    color: #000;
 }
 
 .success-animation-container p {
-    color: #475569;
+    color: #000;
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 400px;

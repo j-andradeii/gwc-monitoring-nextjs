@@ -59,7 +59,7 @@ export function CardDivTitle({
         <div className="flex items-center gap-3">
           {icon && <i className={`${icon} text-primary text-xl`} />}
           <div>
-            <h3 className="font-semibold text-gray-800">{title}</h3>
+            <h3 className="font-semibold text-black">{title}</h3>
             {subtitle && (
               <p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>
             )}

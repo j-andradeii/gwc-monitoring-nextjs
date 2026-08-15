@@ -127,7 +127,7 @@ export function RoleGuard({
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
           <i className="pi pi-lock text-4xl text-gray-400 mb-4" />
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+          <h2 className="text-xl font-semibold text-black mb-2">
             Access Denied
           </h2>
           <p className="text-gray-500">
