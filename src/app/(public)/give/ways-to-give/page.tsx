@@ -19,12 +19,13 @@ import {
 import {
   GiveHero,
   GiveWhySection,
-  GiveChannelsSection,
   GiveVideoTestimony,
+  GivingConfirmationSection,
+  WaysToGiveChannelsSection,
   WaysToGiveTabs,
 } from '@/components/landing/give';
 
-import type { GiveKeywordInstruction } from '@/components/landing/give/GiveChannelsSection';
+import type { GiveKeywordInstruction } from '@/components/landing/give/WaysToGiveChannelsSection';
 
 import {
   scriptures,
@@ -195,12 +196,26 @@ export default function WaysToGivePage() {
             =========================================== */}
         <WaysToGiveTabs
           detailsPanel={
-            <GiveChannelsSection
-              sectionId="give-channels"
-              sectionLabel="Channels"
-              title="How to Give"
-              keywords={giveKeywords}
-            />
+            <>
+              {/* A fork of GiveChannelsSection that lives only here: copying an
+                  account number reveals a mobile-only hint on that card
+                  pointing at the form below — the moment someone is about to
+                  leave for their banking app is the only time they are still
+                  looking. The shared component (used by gateway-outreach,
+                  which has no confirmation form) stays untouched. */}
+              <WaysToGiveChannelsSection
+                sectionId="give-channels"
+                sectionLabel="Channels"
+                title="How to Give"
+                keywords={giveKeywords}
+              />
+
+              {/* Give first (above), then tell us (here) — the two halves of
+                  one errand, kept on the same tab so nobody has to hunt for
+                  the second one. Both bands stay WHITE by explicit request
+                  (see the #wtg-panel-give-details override in landing.css). */}
+              <GivingConfirmationSection />
+            </>
           }
           whyPanel={
             <>

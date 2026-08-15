@@ -3,7 +3,10 @@ export { GiveTabs } from './GiveTabs';
 export { GiveWhySection } from './GiveWhySection';
 export { GiveScriptureList } from './GiveScriptureList';
 export { GiveChannelsSection } from './GiveChannelsSection';
+// Ways-to-Give-only fork of the above (adds the reveal-on-copy receipt hint).
+export { WaysToGiveChannelsSection } from './WaysToGiveChannelsSection';
 export { GiveVideoTestimony } from './GiveVideoTestimony';
+export { GivingConfirmationSection } from './GivingConfirmationSection';
 export { WaysToGiveTabs } from './WaysToGiveTabs';
 export { GiveQuickCTA } from './GiveQuickCTA';
 export { GatewayProjectsSection } from './GatewayProjectsSection';

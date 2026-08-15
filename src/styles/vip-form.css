@@ -1544,45 +1544,60 @@
    Success receipt
    Shown in place of the form after a successful submission and
    mirrored by the downloadable PNG (lib/registration-receipt.ts).
+
+   SHARED by two surfaces — the paid-event registration section and
+   the giving-confirmation section on Ways to Give. The base rules
+   below are unscoped; the compact-scale overrides list BOTH section
+   classes rather than duplicating the block, so the two receipts can
+   never drift apart.
    ------------------------------------------------------------ */
 
 /* Success screen rides the same compact scale as the form it replaces. */
-.event-register-section .success-animation-container {
+.event-register-section .success-animation-container,
+.giving-confirm-section .success-animation-container {
     padding: 24px 0;
 }
 
-.event-register-section .success-animation-container h3 {
+.event-register-section .success-animation-container h3,
+.giving-confirm-section .success-animation-container h3 {
     margin-bottom: 10px;
     font-size: 24px;
 }
 
-.event-register-section .success-animation-container p {
+.event-register-section .success-animation-container p,
+.giving-confirm-section .success-animation-container p {
     margin-bottom: 18px;
     font-size: 14px;
 }
 
-.event-register-section .event-register-receipt {
+.event-register-section .event-register-receipt,
+.giving-confirm-section .event-register-receipt {
     max-width: 420px;
     margin-bottom: 18px;
     padding: 16px;
     border-radius: 14px;
 }
 
-.event-register-section .event-register-receipt-ref {
+.event-register-section .event-register-receipt-ref,
+.giving-confirm-section .event-register-receipt-ref {
     padding: 11px 13px;
     border-radius: 10px;
 }
 
-.event-register-section .event-register-receipt-code {
+.event-register-section .event-register-receipt-code,
+.giving-confirm-section .event-register-receipt-code {
     font-size: 19px;
 }
 
 .event-register-section .event-register-receipt-keep,
-.event-register-section .event-register-receipt-error {
+.event-register-section .event-register-receipt-error,
+.giving-confirm-section .event-register-receipt-keep,
+.giving-confirm-section .event-register-receipt-error {
     max-width: 420px;
 }
 
-.event-register-section .event-register-receipt-keep {
+.event-register-section .event-register-receipt-keep,
+.giving-confirm-section .event-register-receipt-keep {
     padding: 11px 13px;
     border-radius: 11px;
     font-size: 12.5px;
@@ -1768,7 +1783,8 @@
     color: var(--text-secondary, #475569);
 }
 
-.event-register-section .success-animation-container .event-register-receipt-keep {
+.event-register-section .success-animation-container .event-register-receipt-keep,
+.giving-confirm-section .success-animation-container .event-register-receipt-keep {
     margin-bottom: 16px;
 }
 

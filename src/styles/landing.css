@@ -16579,6 +16579,165 @@
 }
 
 /* ===========================================
+   REVEAL-ON-COPY RECEIPT HINT  (mobile only)
+   Appears inside a channel card once its account number has been copied,
+   linking down to the giving-confirmation form. On a phone the giver copies
+   the number and leaves for GCash/BPI/BDO immediately — they never scroll far
+   enough to find the form, so the prompt has to land at the copy tap.
+
+   Uniquely prefixed `gcs-` (Give Channels Section) rather than restyling any
+   shared `.compact-*` selector: those classes are also used by
+   /give/gateway-outreach and /give/gateway-projects, and cascade order between
+   stylesheets is not something to rely on here.
+
+   Rendered ONLY by `WaysToGiveChannelsSection` (the ways-to-give fork of
+   `GiveChannelsSection`), so the other two pages never emit this markup at
+   all. The fork keeps `give-channels-section` on its root section, which is
+   what the selectors below hang off — rename that class and these break.
+
+   Selectors are compounded with `.give-channels-section` purely for weight:
+   `.landing-page a` (0,1,1) paints every public-page link gold, which would
+   drop this sentence to ~3.4:1 on its own tinted background. (0,2,0) wins.
+   =========================================== */
+.give-channels-section .gcs-receipt-hint {
+  /* Desktop is untouched: there is no app-switch problem when the form is a
+     scroll away on the same screen. `display: none` also keeps it out of the
+     accessibility tree, so nothing is announced that can't be seen. */
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .give-channels-section .gcs-receipt-hint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Pulled up tight under the account box (which carries a 12px bottom
+       margin) so it reads as part of the thing they just tapped. */
+    margin: -6px 16px 12px;
+    padding: 12px 14px;
+    min-height: 48px;
+    border: 1px solid rgba(212, 168, 75, 0.5);
+    border-radius: 8px;
+    background: rgba(212, 168, 75, 0.12);
+    /* Near-black body copy on the gold wash (>12:1). Gold-on-gold would be
+       decorative, not readable — and this is the instruction that matters. */
+    color: var(--text-primary, #0d1424);
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+    text-decoration: none;
+    animation: gcsReceiptHintIn 0.3s ease-out both;
+  }
+
+  .give-channels-section .gcs-receipt-hint:hover {
+    background: rgba(212, 168, 75, 0.2);
+    border-color: var(--color-primary, #d4a84b);
+    color: var(--text-primary, #0d1424);
+  }
+
+  .give-channels-section .gcs-receipt-hint:active {
+    background: rgba(212, 168, 75, 0.24);
+  }
+
+  .give-channels-section .gcs-receipt-hint:focus-visible {
+    outline: 2px solid var(--color-primary-dark, #b8923f);
+    outline-offset: 2px;
+  }
+
+  /* Navy glyph on gold (~6.5:1) — white on gold would fail the 3:1 floor for
+     meaningful graphics. */
+  .give-channels-section .gcs-receipt-hint-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--color-primary, #d4a84b);
+    color: var(--color-navy, #1a2744);
+  }
+
+  .give-channels-section .gcs-receipt-hint-icon i {
+    font-size: 12px;
+  }
+
+  .give-channels-section .gcs-receipt-hint-text {
+    flex: 1;
+  }
+}
+
+/* Matches the card gutters of the narrower mobile block above. */
+@media (max-width: 767px) {
+  .give-channels-section .gcs-receipt-hint {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}
+
+@keyframes gcsReceiptHintIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .give-channels-section .gcs-receipt-hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===========================================
+   RECEIPT-UPLOAD INTRO LINK
+   Primary CTA inside the section intro paragraph, scrolling down to the
+   giving-confirmation form. `.landing-page a` (0,1,1) repaints every
+   public-page link `--primary-gold-accent` with `text-decoration: none`,
+   which would sink this link straight back to the ~2.6:1 gold-on-white
+   failure the underline/weight/darker-gold were meant to fix — so those
+   are redeclared here at (0,2,0) to win, same pattern as `.gcs-receipt-hint`
+   above. `--color-primary-dark` on white measures ~3.2:1 (the project's own
+   documented "large/bold text" floor); the always-on underline + 700 weight
+   are the non-colour affordance so the link never relies on colour alone.
+   =========================================== */
+/* The primary "upload your receipt" link. Body-dark text with a thick gold
+   underline rather than gold text: gold on white is ~2.6:1 (and the darker
+   #b8923f only ~3.2:1), which misses the 4.5:1 body-copy bar at this
+   paragraph's size — and this page is written for the least sighted-confident
+   giver. The bold weight + always-on underline carry the link affordance, so
+   colour is never doing that job alone. The quieter email/Facebook fallbacks
+   below stay plain gold, which reads as the intended hierarchy. */
+.give-channels-section .gcs-intro-receipt-link {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary-dark, #b8923f);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Interaction must never REDUCE contrast — thicken the rule instead of
+   lightening the text. */
+.give-channels-section .gcs-intro-receipt-link:hover,
+.give-channels-section .gcs-intro-receipt-link:focus-visible {
+  color: var(--text-primary);
+  text-decoration-thickness: 3px;
+}
+
+.give-channels-section .gcs-intro-receipt-link:focus-visible {
+  outline: 2px solid var(--color-primary-dark, #b8923f);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===========================================
    OUTREACH RELIEF FUND SECTION
    White band between cream Testimonials and
    navy-blue Give channels band.
@@ -19084,4 +19243,129 @@
 
 .ways-to-give-page .wtg-tab-panel--alternating > .landing-section:nth-of-type(even) {
   background: var(--color-cream, #f5f0e6) !important;
+}
+
+/* DELIBERATE, USER-REQUESTED DEVIATION from the alternation rule above.
+   The "Give Details" tab now stacks two sections — the giving channels and
+   the giving-confirmation form — and the owner asked for both to stay WHITE
+   ("just make the bg white if there is multiple section"). The rules above
+   would tint the second one cream because it is :nth-of-type(even).
+
+   An ID selector (1,2,0) out-specifies the (0,4,0) compound above even though
+   both carry !important, so this needs no extra weight of its own. Separation
+   between the two white bands comes from the hairline on the section below
+   instead of a background change. */
+#wtg-panel-give-details.wtg-tab-panel--alternating > .landing-section {
+  background: var(--background-section, #ffffff) !important;
+}
+
+/* ===========================================
+   GIVING CONFIRMATION — "Already gave? Let us know"
+   Second section of the Give Details tab: name + a photo of the
+   receipt. Only the band itself is styled here; the card and its
+   fields reuse the shared vip-form.css primitives.
+   =========================================== */
+.giving-confirm-section {
+  padding: 0px 0;
+  position: relative;
+  /* Fixed header (70px) + the sticky Ways-to-Give tab bar (~88px) that pins
+     beneath it, so an anchor jump doesn't land under the chrome. */
+  scroll-margin-top: 170px;
+  /* Two white bands in a row (see the override above) — this hairline is what
+     separates them, per the outreach band system. */
+  border-top: 1px solid rgba(26, 39, 68, 0.08);
+}
+
+.giving-confirm-section .section-header-center {
+  margin-bottom: 32px;
+}
+
+/* A 2-field form has no business spanning the full 1100px container: keep the
+   card narrow so the eye never has to travel, which is the whole point of this
+   form for an older giver. */
+.giving-confirm-section .giving-confirm-card {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* One obvious button, sized for a thumb (≥56px tall — the shared
+   .vip-submit-button padding of 8px lands under the 48px touch-target floor). */
+.giving-confirm-section .vip-submit-button {
+  min-height: 56px;
+  padding: 16px 24px;
+  font-size: 17px;
+}
+
+/* Gold ring on the navy submit button (4.7:1); navy would be invisible there. */
+.giving-confirm-section .vip-submit-button:focus-visible {
+  outline: 2px solid var(--color-primary, #d4a84b);
+  outline-offset: 3px;
+}
+
+/* Change / Remove are 46×20 text buttons in the shared upload field — fine on
+   the form-heavy SOD and event pages, too small for a thumb here. Enlarged to
+   the 44px touch-target floor and boxed so they read as buttons, scoped so the
+   other two surfaces are untouched. */
+.giving-confirm-section .sod-upload-actions {
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.giving-confirm-section .sod-upload-change,
+.giving-confirm-section .sod-upload-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 88px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  background: rgba(26, 39, 68, 0.04);
+  transition: background 0.25s ease;
+}
+
+.giving-confirm-section .sod-upload-change:hover:not(:disabled) {
+  background: rgba(212, 168, 75, 0.16);
+}
+
+.giving-confirm-section .sod-upload-remove:hover:not(:disabled) {
+  background: rgba(218, 68, 83, 0.12);
+}
+
+@media (hover: none) {
+  .giving-confirm-section .sod-upload-change:hover:not(:disabled),
+  .giving-confirm-section .sod-upload-remove:hover:not(:disabled) {
+    background: rgba(26, 39, 68, 0.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .giving-confirm-section .sod-upload-change,
+  .giving-confirm-section .sod-upload-remove {
+    transition: none;
+  }
+}
+
+/* The upload controls sit on white / a pale gold wash, where a gold ring only
+   measures 2.6:1 — navy reads at 13:1 and clears the WCAG 2.2 focus-appearance
+   contrast requirement. Scoped to this section so the shared SOD and event
+   upload fields keep their existing treatment. */
+.giving-confirm-section .sod-upload-dropzone:focus-visible,
+.giving-confirm-section .sod-upload-change:focus-visible,
+.giving-confirm-section .sod-upload-remove:focus-visible {
+  outline: 2px solid var(--color-navy, #1a2744);
+  outline-offset: 3px;
+}
+
+/* Last section of the form — no trailing gap before the actions. */
+.giving-confirm-section .form-section:last-of-type {
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .giving-confirm-section .section-header-center {
+    margin-bottom: 24px;
+  }
 }
