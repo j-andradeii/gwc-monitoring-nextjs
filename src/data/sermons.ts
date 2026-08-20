@@ -8296,7 +8296,7 @@ When we press in with faith and intentionality, we discover that Jesus is not on
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'There are moments when faith requires more than believing, it requires action. God gave King Jehoash an opportunity to participate in the victory He had already declared, yet the extent of his victory was connected to the level of his zeal and persistence.',
 
     description: `**STRIKE THE GROUND (THE TEST OF ZEAL AND FAITH)**
@@ -8608,6 +8608,432 @@ Don't wait for darkness to arrive before you raise your weapon. Don't stop after
         kicker: 'The Christian Life Requires Both Faith and Zeal',
         verse: 'Romans 12:11',
         text: 'not lagging in diligence, fervent in spirit, serving the Lord;',
+      },
+    ],
+  },
+  {
+    id: '38',
+    slug: 'from-despair-to-destiny',
+    title: 'From Despair to Destiny',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-08-16',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'Life can bring us to moments where everything seems to fall apart at once. At the lowest point of his life, David had a choice: allow the situation to break him or find strength in the Lord.',
+
+    description: `**FROM DESPAIR TO DESTINY**
+
+Key text: 1 Samuel 30:1–30
+
+---
+
+Life can bring us to moments where everything seems to fall apart at once. David experienced this in Ziklag. The city was burnt, their families were taken captive, and the people who had followed David were now talking about turning against him.
+
+At the lowest point of his life, David had a choice: allow the situation to break him or find strength in the Lord.
+
+The story of David reminds us that our circumstances do not have the final word. Even when we are at rock bottom, God can use that moment to reshape our response, strengthen our faith, and redirect us toward His purpose.
+
+When you are at rock bottom, whatever you do and whatever you decide will define you.
+
+---
+
+**1. Life Can Throw Unexpected Crises** (1 Samuel 30:1–30)
+
+David had experienced victories and success, but suddenly he faced an unexpected crisis. Everything familiar was taken from him, and those closest to him blamed him for what had happened.
+
+There will be seasons in life when we feel like we are winning battles one moment and losing everything the next. Being faithful to God does not mean we are exempt from unexpected trials.
+
+Your situation can either make you or break you.
+
+But David chose a different response:
+
+"But David strengthened himself in the Lord his God." (1 Samuel 30:6)
+
+When everything around David was falling apart, he returned to the One who could give him strength.
+
+---
+
+**The Enemy Wants to Distract You From God's Will**
+
+- The Amalekites were persistent enemies of Israel.
+Genesis 36:12
+Exodus 17:8–16
+
+Throughout Scripture, Amalek opposed God's people. Their attack in Exodus 17 reveals a pattern of taking advantage of vulnerability.
+
+They did not simply confront Israel at their strongest. They attacked those who were vulnerable - the weak, the young, the old, and those who were falling behind.
+
+This gives us an important spiritual reminder: the enemy looks for vulnerable places.
+
+At the lowest point of your life, you may become more vulnerable to discouragement, temptation, fear, and distraction.
+
+The enemy wants to wipe you out. He wants to distract you from the will of God. He wants to pull you away from the destiny God has prepared for you.
+
+Before a breakthrough comes, there may be distraction.
+
+Before destiny comes, there may be opposition.
+
+The enemy will try to get you to abandon what God has called you to.
+
+---
+
+**The Spirit of Amalek**
+
+- The spirit represented by Amalek is one that raises its fist against God and opposes His purposes. It is a spirit that seeks to destroy, distract, and take advantage of vulnerable moments.
+
+God instructed Moses:
+
+"Write this on a scroll as something to be remembered..." (Exodus 17:14)
+
+The lesson was not meant to be forgotten. It was to be remembered and passed on to the next generation.
+
+We also need to recognize and eliminate anything in our lives that opposes God's will.
+
+Once you allow a spirit of rebellion, disobedience, bitterness, or resistance toward God to take root, it can eventually destroy what God is building in your life.
+
+---
+
+**"This Property Is Not for Sale"**
+
+Imagine putting up a sign in your life that says:
+
+*THIS PROPERTY IS NOT FOR SALE.*
+
+The enemy is looking for something he can take.
+
+Maybe you have surrendered most of your life to God, but there is still one thing you are keeping for yourself.
+
+One corner of your heart.
+One relationship.
+One habit.
+One desire.
+One area where you still want control.
+
+You may say, "My life belongs to God," but the question is: Is there still something you refuse to surrender?
+
+When there is no surrender in our worship, we can end up worshipping the worship.
+
+We can worship the music.
+We can worship the atmosphere.
+We can enjoy the experience without truly surrendering our hearts to God.
+
+But worship is surrender. If there is no surrender, it is not true worship.
+
+The enemy looks for the areas we refuse to surrender because those areas become vulnerable points.
+
+Once you allow the enemy to occupy even a small corner, eventually that corner can affect the rest of the house.
+
+That is why everything must belong to God.
+
+---
+
+**The Enemy Is After Your Destiny**
+
+The enemy is threatened by what God wants to accomplish through your life.
+
+He is after your destiny.
+
+He wants to distract you before you experience your breakthrough. He wants to steal your joy, weaken your faith, and cause you to abandon the purpose God has given you.
+
+Amalek will always try to get in the way of God's will.
+
+But your crisis does not have to become your conclusion.
+
+---
+
+**Weeping Has a Limit**
+
+"So David and his men wept aloud until they had no strength left to weep." — 1 Samuel 30:4
+
+There was a point when David and his men had nothing left.
+
+They wept.
+They grieved.
+They were devastated.
+
+But notice that Scripture says they wept "until".
+
+There comes an "until" moment.
+
+We can weep all we want, but there comes a point when we must recognize that we have reached the end of ourselves and allow God to move on our behalf.
+
+There is a time to grieve, but there is also a time to rise.
+
+David eventually strengthened himself in the Lord.
+
+When he reached the end of himself, he found strength in God.
+
+---
+
+**Surrender Everything**
+
+- Sometimes we think we have surrendered everything to God, but there may still be a small part of our lives that we are holding onto.
+
+Even if it is only a corner of your heart.
+
+But when you refuse to surrender that corner, you leave space for something else to occupy it.
+
+God does not want only part of your life. He wants your whole heart. True worship is complete surrender. True surrender means saying:
+
+"Lord, everything belongs to You."
+
+When everything is surrendered to God, there is nothing left for the enemy to claim.
+
+---
+
+**KEY TAKEAWAYS**
+
+* Unexpected crises can come even when we are faithfully following God.
+* When we reach rock bottom, our response and decisions matter.
+* David found strength by strengthening himself in the Lord.
+* The enemy seeks to distract us from God's will and purpose.
+* Vulnerable seasons require greater spiritual alertness.
+* The spirit of Amalek represents opposition and rebellion against God's purposes.
+* What we refuse to surrender can become a vulnerable area in our lives.
+* Worship is more than music, atmosphere, or emotion—it is surrender.
+* Weeping is part of the process, but it cannot become our permanent position.
+* God wants complete surrender, not just the parts of our lives we are comfortable giving Him.
+* Your crisis does not have to destroy your destiny.
+
+"Put a sign on your heart that says: THIS PROPERTY IS NOT FOR SALE. Everything God has entrusted to you belongs to Him."
+
+---
+
+**CALL TO ACTION**
+
+What part of my life am I still unwilling to surrender to God? Bring that area before the Lord.
+
+* Surrender the corner of your heart you have been holding onto.
+* Strengthen yourself in the Lord through prayer and His Word.
+* Identify the vulnerable areas of your life and bring them under God's authority.
+* Don't allow your lowest moment to dictate your destiny.
+* When the time of weeping is over, choose to rise and move forward in faith.
+* Guard what God has entrusted to you.
+* Teach the next generation to recognize and reject anything that pulls them away from God's will.
+
+Your situation can make you or break you. But when you surrender everything to God and strengthen yourself in Him, despair does not have to be your destination. God can turn your lowest point into the beginning of your journey toward destiny.`,
+
+    tags: ['Faith', 'Surrender', 'Worship', 'Destiny', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/despair_to_destiny.webp',
+    scriptures: [
+      {
+        verse: '1 Samuel 30:1–30',
+        text: 'Now it happened, when David and his men came to Ziklag, on the third day, that the Amalekites had invaded the South and Ziklag, attacked Ziklag and burned it with fire, and had taken captive the women and those who were there, from small to great; they did not kill anyone, but carried them away and went their way. So David and his men came to the city, and there it was, burned with fire; and their wives, their sons, and their daughters had been taken captive. Then David and the people who were with him lifted up their voices and wept, until they had no more power to weep. And David\'s two wives, Ahinoam the Jezreelitess, and Abigail the widow of Nabal the Carmelite, had been taken captive. Now David was greatly distressed, for the people spoke of stoning him, because the soul of all the people was grieved, every man for his sons and his daughters. But David strengthened himself in the LORD his God. Then David said to Abiathar the priest, Ahimelech\'s son, "Please bring the ephod here to me." And Abiathar brought the ephod to David. So David inquired of the LORD, saying, "Shall I pursue this troop? Shall I overtake them?" And He answered him, "Pursue, for you shall surely overtake them and without fail recover all." So David went, he and the six hundred men who were with him, and came to the Brook Besor, where those stayed who were left behind. But David pursued, he and four hundred men; for two hundred stayed behind, who were so weary that they could not cross the Brook Besor. Then they found an Egyptian in the field, and brought him to David; and they gave him bread and he ate, and they let him drink water. And they gave him a piece of a cake of figs and two clusters of raisins. So when he had eaten, his strength came back to him; for he had eaten no bread nor drunk water for three days and three nights. Then David said to him, "To whom do you belong, and where are you from?" And he said, "I am a young man from Egypt, servant of an Amalekite; and my master left me behind, because three days ago I fell sick. We made an invasion of the southern area of the Cherethites, in the territory which belongs to Judah, and of the southern area of Caleb; and we burned Ziklag with fire." And David said to him, "Can you take me down to this troop?" So he said, "Swear to me by God that you will neither kill me nor deliver me into the hands of my master, and I will take you down to this troop." And when he had brought him down, there they were, spread out over all the land, eating and drinking and dancing, because of all the great spoil which they had taken from the land of the Philistines and from the land of Judah. Then David attacked them from twilight until the evening of the next day. Not a man of them escaped, except four hundred young men who rode on camels and fled. So David recovered all that the Amalekites had carried away, and David rescued his two wives. And nothing of theirs was lacking, either small or great, sons or daughters, spoil or anything which they had taken from them; David recovered all. Then David took all the flocks and herds they had driven before those other livestock, and said, "This is David\'s spoil." Now David came to the two hundred men who had been so weary that they could not follow David, whom they also had made to stay at the Brook Besor. So they went out to meet David and to meet the people who were with him. And when David came near the people, he greeted them. Then all the wicked and worthless men of those who went with David answered and said, "Because they did not go with us, we will not give them any of the spoil that we have recovered, except for every man\'s wife and children, that they may lead them away and depart." But David said, "My brethren, you shall not do so with what the LORD has given us, who has preserved us and delivered into our hand the troop that came against us. For who will heed you in this matter? But as his part is who goes down to the battle, so shall his part be who stays by the supplies; they shall share alike." So it was, from that day forward; he made it a statute and an ordinance for Israel to this day. Now when David came to Ziklag, he sent some of the spoil to the elders of Judah, to his friends, saying, "Here is a present for you from the spoil of the enemies of the LORD" — to those who were in Bethel, those who were in Ramoth of the South, those who were in Jattir, those who were in Aroer, those who were in Siphmoth, those who were in Eshtemoa, those who were in Rachal, those who were in the cities of the Jerahmeelites, those who were in the cities of the Kenites, those who were in Hormah, those who were in Chorashan, those who were in Athach.',
+      },
+      {
+        verse: '1 Samuel 30:6',
+        text: 'Now David was greatly distressed, for the people spoke of stoning him, because the soul of all the people was grieved, every man for his sons and his daughters. But David strengthened himself in the LORD his God.',
+      },
+      {
+        verse: 'Genesis 36:12',
+        text: 'Now Timna was the concubine of Eliphaz, Esau\'s son, and she bore Amalek to Eliphaz. These were the sons of Adah, Esau\'s wife.',
+      },
+      {
+        verse: 'Exodus 17:8–16',
+        text: 'Now Amalek came and fought with Israel in Rephidim. And Moses said to Joshua, "Choose us some men and go out, fight with Amalek. Tomorrow I will stand on the top of the hill with the rod of God in my hand." So Joshua did as Moses said to him, and fought with Amalek. And Moses, Aaron, and Hur went up to the top of the hill. And so it was, when Moses held up his hand, that Israel prevailed; and when he let down his hand, Amalek prevailed. But Moses\' hands became heavy; so they took a stone and put it under him, and he sat on it. And Aaron and Hur supported his hands, one on one side, and the other on the other side; and his hands were steady until the going down of the sun. So Joshua defeated Amalek and his people with the edge of the sword. Then the LORD said to Moses, "Write this for a memorial in the book and recount it in the hearing of Joshua, that I will utterly blot out the remembrance of Amalek from under heaven." And Moses built an altar and called its name, The-LORD-Is-My-Banner; for he said, "Because the LORD has sworn: the LORD will have war with Amalek from generation to generation."',
+      },
+      {
+        verse: 'Exodus 17:14',
+        text: 'Then the LORD said to Moses, "Write this for a memorial in the book and recount it in the hearing of Joshua, that I will utterly blot out the remembrance of Amalek from under heaven."',
+      },
+      {
+        verse: '1 Samuel 30:4',
+        text: 'Then David and the people who were with him lifted up their voices and wept, until they had no more power to weep.',
+      },
+    ],
+    keyPoints: [
+      'Life Can Throw Unexpected Crises',
+      "The Enemy Wants to Distract You From God's Will",
+      'The Spirit of Amalek',
+      'This Property Is Not for Sale',
+      'The Enemy Is After Your Destiny',
+      'Weeping Has a Limit',
+      'Surrender Everything',
+    ],
+    relatedSermons: ['37', '36'],
+    keyVerse: '1 Samuel 30:1–30',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'From Despair to Destiny',
+        unnumbered: true,
+        paragraphs: [
+          'Life can bring us to moments where everything seems to fall apart at once. David experienced this in Ziklag. The city was burnt, their families were taken captive, and the people who had followed David were now talking about turning against him.',
+          'At the lowest point of his life, David had a choice: allow the situation to break him or find strength in the Lord.',
+          'The story of David reminds us that our circumstances do not have the final word. Even when we are at rock bottom, God can use that moment to reshape our response, strengthen our faith, and redirect us toward His purpose.',
+        ],
+        callout: 'When you are at rock bottom, whatever you do and whatever you decide will define you.',
+      },
+      {
+        id: 'sec-life-can-throw-unexpected-crises',
+        title: 'Life Can Throw Unexpected Crises',
+        paragraphs: [
+          '**1 Samuel 30:1–30**',
+          'David had experienced victories and success, but suddenly he faced an unexpected crisis. Everything familiar was taken from him, and those closest to him blamed him for what had happened.',
+          'There will be seasons in life when we feel like we are winning battles one moment and losing everything the next. Being faithful to God does not mean we are exempt from unexpected trials.',
+          'But David chose a different response:',
+          '*"But David strengthened himself in the Lord his God."* (1 Samuel 30:6)',
+          'When everything around David was falling apart, he returned to the One who could give him strength.',
+        ],
+        callout: 'Your situation can either make you or break you.',
+      },
+      {
+        id: 'sec-the-enemy-wants-to-distract-you',
+        title: "The Enemy Wants to Distract You From God's Will",
+        paragraphs: [
+          '**The Amalekites were persistent enemies of Israel.** (Genesis 36:12; Exodus 17:8–16)',
+          "Throughout Scripture, Amalek opposed God's people. Their attack in Exodus 17 reveals a pattern of taking advantage of vulnerability.",
+          'They did not simply confront Israel at their strongest. They attacked those who were vulnerable - the weak, the young, the old, and those who were falling behind.',
+          'This gives us an important spiritual reminder: the enemy looks for vulnerable places.',
+          'At the lowest point of your life, you may become more vulnerable to discouragement, temptation, fear, and distraction.',
+          'The enemy wants to wipe you out. He wants to distract you from the will of God. He wants to pull you away from the destiny God has prepared for you.',
+          'Before a breakthrough comes, there may be distraction.',
+          'Before destiny comes, there may be opposition.',
+        ],
+        callout: 'The enemy will try to get you to abandon what God has called you to.',
+      },
+      {
+        id: 'sec-the-spirit-of-amalek',
+        title: 'The Spirit of Amalek',
+        paragraphs: [
+          'The spirit represented by Amalek is one that raises its fist against God and opposes His purposes. It is a spirit that seeks to destroy, distract, and take advantage of vulnerable moments.',
+          'God instructed Moses:',
+          '*"Write this on a scroll as something to be remembered..."* (Exodus 17:14)',
+          'The lesson was not meant to be forgotten. It was to be remembered and passed on to the next generation.',
+          "We also need to recognize and eliminate anything in our lives that opposes God's will.",
+        ],
+        callout: 'Once you allow a spirit of rebellion, disobedience, bitterness, or resistance toward God to take root, it can eventually destroy what God is building in your life.',
+      },
+      {
+        id: 'sec-this-property-is-not-for-sale',
+        title: '"This Property Is Not for Sale"',
+        paragraphs: [
+          'Imagine putting up a sign in your life that says:',
+          '*THIS PROPERTY IS NOT FOR SALE.*',
+          'The enemy is looking for something he can take.',
+          'Maybe you have surrendered most of your life to God, but there is still one thing you are keeping for yourself.',
+          'One corner of your heart.',
+          'One relationship.',
+          'One habit.',
+          'One desire.',
+          'One area where you still want control.',
+          'You may say, "My life belongs to God," but the question is: Is there still something you refuse to surrender?',
+          'When there is no surrender in our worship, we can end up worshipping the worship.',
+          'We can worship the music.',
+          'We can worship the atmosphere.',
+          'We can enjoy the experience without truly surrendering our hearts to God.',
+          'But worship is surrender. If there is no surrender, it is not true worship.',
+          'The enemy looks for the areas we refuse to surrender because those areas become vulnerable points.',
+          'Once you allow the enemy to occupy even a small corner, eventually that corner can affect the rest of the house.',
+        ],
+        callout: 'That is why everything must belong to God.',
+      },
+      {
+        id: 'sec-the-enemy-is-after-your-destiny',
+        title: 'The Enemy Is After Your Destiny',
+        paragraphs: [
+          'The enemy is threatened by what God wants to accomplish through your life.',
+          'He is after your destiny.',
+          'He wants to distract you before you experience your breakthrough. He wants to steal your joy, weaken your faith, and cause you to abandon the purpose God has given you.',
+          "Amalek will always try to get in the way of God's will.",
+        ],
+        callout: 'But your crisis does not have to become your conclusion.',
+      },
+      {
+        id: 'sec-weeping-has-a-limit',
+        title: 'Weeping Has a Limit',
+        paragraphs: [
+          '*"So David and his men wept aloud until they had no strength left to weep."* — 1 Samuel 30:4',
+          'There was a point when David and his men had nothing left.',
+          'They wept.',
+          'They grieved.',
+          'They were devastated.',
+          'But notice that Scripture says they wept "until".',
+          'There comes an "until" moment.',
+          'We can weep all we want, but there comes a point when we must recognize that we have reached the end of ourselves and allow God to move on our behalf.',
+          'David eventually strengthened himself in the Lord.',
+          'When he reached the end of himself, he found strength in God.',
+        ],
+        callout: 'There is a time to grieve, but there is also a time to rise.',
+      },
+      {
+        id: 'sec-surrender-everything',
+        title: 'Surrender Everything',
+        paragraphs: [
+          'Sometimes we think we have surrendered everything to God, but there may still be a small part of our lives that we are holding onto.',
+          'Even if it is only a corner of your heart.',
+          'But when you refuse to surrender that corner, you leave space for something else to occupy it.',
+          'God does not want only part of your life. He wants your whole heart. True worship is complete surrender. True surrender means saying:',
+          '*"Lord, everything belongs to You."*',
+        ],
+        callout: 'When everything is surrendered to God, there is nothing left for the enemy to claim.',
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          '**What part of my life am I still unwilling to surrender to God? Bring that area before the Lord.**',
+          'Surrender the corner of your heart you have been holding onto.',
+          'Strengthen yourself in the Lord through prayer and His Word.',
+          "Identify the vulnerable areas of your life and bring them under God's authority.",
+          "Don't allow your lowest moment to dictate your destiny.",
+          'When the time of weeping is over, choose to rise and move forward in faith.',
+          'Guard what God has entrusted to you.',
+          "Teach the next generation to recognize and reject anything that pulls them away from God's will.",
+          'Your situation can make you or break you. But when you surrender everything to God and strengthen yourself in Him, despair does not have to be your destination. God can turn your lowest point into the beginning of your journey toward destiny.',
+        ],
+        callout: 'Put a sign on your heart that says: THIS PROPERTY IS NOT FOR SALE. Everything God has entrusted to you belongs to Him.',
+      },
+    ],
+    keyTakeaways: [
+      'Unexpected crises can come even when we are faithfully following God.',
+      'When we reach rock bottom, our response and decisions matter.',
+      'David found strength by strengthening himself in the Lord.',
+      "The enemy seeks to distract us from God's will and purpose.",
+      'Vulnerable seasons require greater spiritual alertness.',
+      "The spirit of Amalek represents opposition and rebellion against God's purposes.",
+      'What we refuse to surrender can become a vulnerable area in our lives.',
+      'Worship is more than music, atmosphere, or emotion—it is surrender.',
+      'Weeping is part of the process, but it cannot become our permanent position.',
+      'God wants complete surrender, not just the parts of our lives we are comfortable giving Him.',
+      'Your crisis does not have to destroy your destiny.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: '1 Samuel 30:1–30',
+        text: 'Now it happened, when David and his men came to Ziklag, on the third day, that the Amalekites had invaded the South and Ziklag, attacked Ziklag and burned it with fire, and had taken captive the women and those who were there, from small to great; they did not kill anyone, but carried them away and went their way. So David and his men came to the city, and there it was, burned with fire; and their wives, their sons, and their daughters had been taken captive. Then David and the people who were with him lifted up their voices and wept, until they had no more power to weep. And David\'s two wives, Ahinoam the Jezreelitess, and Abigail the widow of Nabal the Carmelite, had been taken captive. Now David was greatly distressed, for the people spoke of stoning him, because the soul of all the people was grieved, every man for his sons and his daughters. But David strengthened himself in the LORD his God. Then David said to Abiathar the priest, Ahimelech\'s son, "Please bring the ephod here to me." And Abiathar brought the ephod to David. So David inquired of the LORD, saying, "Shall I pursue this troop? Shall I overtake them?" And He answered him, "Pursue, for you shall surely overtake them and without fail recover all." So David went, he and the six hundred men who were with him, and came to the Brook Besor, where those stayed who were left behind. But David pursued, he and four hundred men; for two hundred stayed behind, who were so weary that they could not cross the Brook Besor. Then they found an Egyptian in the field, and brought him to David; and they gave him bread and he ate, and they let him drink water. And they gave him a piece of a cake of figs and two clusters of raisins. So when he had eaten, his strength came back to him; for he had eaten no bread nor drunk water for three days and three nights. Then David said to him, "To whom do you belong, and where are you from?" And he said, "I am a young man from Egypt, servant of an Amalekite; and my master left me behind, because three days ago I fell sick. We made an invasion of the southern area of the Cherethites, in the territory which belongs to Judah, and of the southern area of Caleb; and we burned Ziklag with fire." And David said to him, "Can you take me down to this troop?" So he said, "Swear to me by God that you will neither kill me nor deliver me into the hands of my master, and I will take you down to this troop." And when he had brought him down, there they were, spread out over all the land, eating and drinking and dancing, because of all the great spoil which they had taken from the land of the Philistines and from the land of Judah. Then David attacked them from twilight until the evening of the next day. Not a man of them escaped, except four hundred young men who rode on camels and fled. So David recovered all that the Amalekites had carried away, and David rescued his two wives. And nothing of theirs was lacking, either small or great, sons or daughters, spoil or anything which they had taken from them; David recovered all. Then David took all the flocks and herds they had driven before those other livestock, and said, "This is David\'s spoil." Now David came to the two hundred men who had been so weary that they could not follow David, whom they also had made to stay at the Brook Besor. So they went out to meet David and to meet the people who were with him. And when David came near the people, he greeted them. Then all the wicked and worthless men of those who went with David answered and said, "Because they did not go with us, we will not give them any of the spoil that we have recovered, except for every man\'s wife and children, that they may lead them away and depart." But David said, "My brethren, you shall not do so with what the LORD has given us, who has preserved us and delivered into our hand the troop that came against us. For who will heed you in this matter? But as his part is who goes down to the battle, so shall his part be who stays by the supplies; they shall share alike." So it was, from that day forward; he made it a statute and an ordinance for Israel to this day. Now when David came to Ziklag, he sent some of the spoil to the elders of Judah, to his friends, saying, "Here is a present for you from the spoil of the enemies of the LORD" — to those who were in Bethel, those who were in Ramoth of the South, those who were in Jattir, those who were in Aroer, those who were in Siphmoth, those who were in Eshtemoa, those who were in Rachal, those who were in the cities of the Jerahmeelites, those who were in the cities of the Kenites, those who were in Hormah, those who were in Chorashan, those who were in Athach.',
+      },
+      {
+        kicker: 'Life Can Throw Unexpected Crises',
+        verse: '1 Samuel 30:6',
+        text: 'Now David was greatly distressed, for the people spoke of stoning him, because the soul of all the people was grieved, every man for his sons and his daughters. But David strengthened himself in the LORD his God.',
+      },
+      {
+        kicker: "The Enemy Wants to Distract You From God's Will",
+        verse: 'Genesis 36:12',
+        text: 'Now Timna was the concubine of Eliphaz, Esau\'s son, and she bore Amalek to Eliphaz. These were the sons of Adah, Esau\'s wife.',
+      },
+      {
+        kicker: "The Enemy Wants to Distract You From God's Will",
+        verse: 'Exodus 17:8–16',
+        text: 'Now Amalek came and fought with Israel in Rephidim. And Moses said to Joshua, "Choose us some men and go out, fight with Amalek. Tomorrow I will stand on the top of the hill with the rod of God in my hand." So Joshua did as Moses said to him, and fought with Amalek. And Moses, Aaron, and Hur went up to the top of the hill. And so it was, when Moses held up his hand, that Israel prevailed; and when he let down his hand, Amalek prevailed. But Moses\' hands became heavy; so they took a stone and put it under him, and he sat on it. And Aaron and Hur supported his hands, one on one side, and the other on the other side; and his hands were steady until the going down of the sun. So Joshua defeated Amalek and his people with the edge of the sword. Then the LORD said to Moses, "Write this for a memorial in the book and recount it in the hearing of Joshua, that I will utterly blot out the remembrance of Amalek from under heaven." And Moses built an altar and called its name, The-LORD-Is-My-Banner; for he said, "Because the LORD has sworn: the LORD will have war with Amalek from generation to generation."',
+      },
+      {
+        kicker: 'The Spirit of Amalek',
+        verse: 'Exodus 17:14',
+        text: 'Then the LORD said to Moses, "Write this for a memorial in the book and recount it in the hearing of Joshua, that I will utterly blot out the remembrance of Amalek from under heaven."',
+      },
+      {
+        kicker: 'Weeping Has a Limit',
+        verse: '1 Samuel 30:4',
+        text: 'Then David and the people who were with him lifted up their voices and wept, until they had no more power to weep.',
       },
     ],
   },
