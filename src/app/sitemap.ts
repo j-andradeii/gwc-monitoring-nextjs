@@ -116,6 +116,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
+    {
+      url: `${siteUrl}/events/lifeclass-enrollment`,
+      lastModified: STATIC_CONTENT_LASTMOD,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
 
     // Give
     {

@@ -722,6 +722,11 @@
    SHARED VIP form (vip-form/VipFormClient) is left untouched:
    tighter vertical rhythm, bolder labels + required indicator,
    the Step 04 payment-QR section, and a tighter mobile layout.
+
+   NOTE: .sod-enrollment-page is now the shared ENROLLMENT-FORM skin —
+   the Life Class enrollment page (events/lifeclass-enrollment) wears it
+   too, alongside its own .lifeclass-enrollment-page hook. Changing a rule
+   here changes both pages; scope page-specific tweaks to the page class.
    ============================================================ */
 
 /* --- Tighter vertical rhythm (was 40 / 25 / 20 / 40) --- */
