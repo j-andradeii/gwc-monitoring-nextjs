@@ -1,0 +1,116 @@
+/* ============================================================
+   PosterHero — a hero that IS the poster.
+
+   PageHero paints its image as a `background-size: cover` layer,
+   which is right for a scenic photo but wrong for a poster: a
+   flyer in a hero band of a different shape loses its top and
+   bottom, taking the event dates with them.
+
+   So the artwork spans the full width of the viewport and the
+   band is exactly as tall as its own ratio makes it. Nothing
+   crops it, nothing letterboxes it, nothing sits over it but the
+   corner brackets.
+
+   This assumes a poster cut WIDE enough to carry a hero band
+   (the Life Class art is 8:3). Hand it a 16:9 or portrait file
+   and the band will be correspondingly tall on a wide monitor —
+   the fix is a wider crop of the artwork, not a cap here, which
+   could only reintroduce cropping or empty margins.
+   ============================================================ */
+
+.poster-hero {
+    position: relative;
+    isolation: isolate;
+    /* .landing-header is position:fixed and 70px tall, so the band starts
+       below it — otherwise the header would cover the top of the artwork,
+       which is the crop this component exists to avoid. No other padding:
+       any would show as a strip of page background above or below a
+       full-bleed image. */
+    padding-top: 70px;
+    /* Closes the band against the page below without needing to know what
+       colour that page is. */
+    border-bottom: 1px solid rgba(229, 196, 122, 0.35);
+    /* Kills the inline-element baseline gap under the image. */
+    line-height: 0;
+}
+
+/* The artwork: full viewport width, height from its own aspect ratio.
+
+   Selector is doubled up on purpose: landing.css has `.landing-page img
+   { max-width: 100% }` which at 0-1-1 outranks a lone `.poster-hero-img`,
+   so anything set here has to clear that bar to stick. */
+.poster-hero .poster-hero-img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    /* Reserves the band's height from the ratio the component passes in, so
+       nothing shifts when the image lands. Set in CSS rather than left to the
+       width/height attributes because <picture> can swap in a differently
+       shaped file below the breakpoint — the attributes describe only the
+       desktop one. */
+    aspect-ratio: var(--poster-hero-ratio);
+    animation: posterHeroFade 700ms ease-out both;
+}
+
+/* Opacity only — a translate would slide the image off its own edges and
+   flash the page background underneath it. */
+@keyframes posterHeroFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* The corner brackets come from landing.css (.page-hero-frame /
+   .page-hero-corner, animation included); this only lifts them above the
+   artwork and pulls them in from the band's edge.
+   The top inset clears the fixed header as well — an even inset all round put
+   the two top brackets underneath it, where nobody could see them. */
+.poster-hero .page-hero-frame {
+    inset: calc(70px + clamp(14px, 2vw, 26px)) clamp(14px, 2vw, 26px) clamp(14px, 2vw, 26px);
+    z-index: 2;
+}
+
+/* The page's <h1>, exposed to screen readers and crawlers but never drawn —
+   the poster is the visible headline. Removing the element instead would
+   leave the page with no <h1> at all. */
+.poster-hero-heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Phones. The 640px here MUST match MOBILE_BREAKPOINT_PX in PosterHero.tsx:
+   that constant picks which file <picture> loads, this picks which ratio the
+   band reserves for it. If they drift, the hero jumps on load. */
+@media (max-width: 640px) {
+    /* The mobile cut is a different shape; fall back to the desktop ratio when
+       a page passes no mobile art. */
+    .poster-hero .poster-hero-img {
+        aspect-ratio: var(--poster-hero-mobile-ratio, var(--poster-hero-ratio));
+    }
+
+    /* Too little band left at this size for the brackets to frame anything —
+       they would just crowd the artwork. */
+    .poster-hero .page-hero-frame {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .poster-hero .poster-hero-img {
+        animation: none;
+    }
+}

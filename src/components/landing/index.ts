@@ -6,6 +6,7 @@ export { LandingHeader } from './LandingHeader';
 export { HeroSection } from './HeroSection';
 export { HomeMarquee } from './HomeMarquee';
 export { PageHero } from './PageHero';
+export { PosterHero } from './PosterHero';
 export { AboutSection } from './AboutSection';
 export { MissionSection } from './MissionSection';
 export { CommunityGallerySection } from './CommunityGallerySection';
