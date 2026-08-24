@@ -15,6 +15,28 @@ import { z } from 'zod';
 
 export const LIFECLASS_CATEGORY_OPTIONS = ['Student', 'Working Professional', 'Parent'] as const;
 
+/**
+ * Reference numbers issued at enrollment: `LC-YYMMDD-XXXXX`.
+ *
+ * A distinct prefix from the G12 events flow's `GWC-` on purpose — the two read
+ * different spreadsheets, so a reference pasted into the wrong lookup should
+ * fail its format check rather than 404 with no explanation.
+ *
+ * Lives here, next to the schema, because both sides need it: the route
+ * generates references and the client validates what someone types into the
+ * "Already enrolled?" panel.
+ */
+export const LIFECLASS_REFERENCE_PREFIX = 'LC';
+
+export const LIFECLASS_REFERENCE_PATTERN = /^LC-\d{6}-[A-Z0-9]{5}$/;
+
+/**
+ * The enrollment fee, rendered as-is wherever it appears — the welcome card,
+ * the payment section, and the confirmation email. One constant so a change of
+ * fee can't leave a stale figure behind in a place nobody thought to look.
+ */
+export const LIFECLASS_FEE = 'PHP 500';
+
 export const lifeclassEnrollmentSchema = z.object({
   surname: z.string().min(1, 'Surname is required'),
   givenName: z.string().min(1, 'Given name is required'),

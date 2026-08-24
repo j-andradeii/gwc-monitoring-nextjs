@@ -1,6 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import { lifeclassEnrollmentSchema } from '@/models/schemas/lifeclass.schema';
 import { readProofBlob, uploadProofToBlob } from '@/lib/event-proof-upload';
+import { LIFECLASS_FEE, LIFECLASS_REFERENCE_PREFIX } from '@/models/schemas/lifeclass.schema';
+import { generateReferenceNumber } from '@/lib/reference-number';
+import { sendLifeclassEnrollmentEmails } from '@/lib/email/lifeclass-enrollment-email';
 import {
   LIFECLASS_ENROLLMENT_SPREADSHEET_ID,
   PROOF_UPLOAD_FAILED_NOTE,
@@ -27,6 +30,12 @@ export const runtime = 'nodejs';
  * =HYPERLINK(IMAGE(url)). Proof is OPTIONAL: an enrollee who hasn't paid yet is
  * still recorded, and so is one whose image upload fails — losing the
  * enrollment over a picture would be the worse outcome.
+ *
+ * Every enrollment is issued a REFERENCE NUMBER (`LC-YYMMDD-XXXXX`, column K).
+ * It goes back to the browser for the confirmation screen and out by email,
+ * because it is the only way back into the row: ./proof/route.ts takes it and
+ * attaches a payment to the enrollment it names. See the "Already enrolled?"
+ * panel on the enrollment page.
  */
 
 interface SheetResult {
@@ -37,7 +46,9 @@ interface SheetResult {
 async function appendToLifeclassSheet(
   data: LifeclassEnrollmentData,
   proofUrl: string,
-  proofProvided: boolean
+  proofProvided: boolean,
+  referenceNumber: string,
+  timestamp: string
 ): Promise<SheetResult> {
   const sheetTab = resolveLifeclassSheetTab();
 
@@ -62,7 +73,7 @@ async function appendToLifeclassSheet(
         : '';
 
     await appendLifeclassRow(sheets, LIFECLASS_ENROLLMENT_SPREADSHEET_ID, sheetTab, {
-      timestamp: new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }),
+      timestamp,
       givenName: data.givenName,
       surname: data.surname,
       email: data.email,
@@ -72,6 +83,7 @@ async function appendToLifeclassSheet(
       category: data.category,
       proofCell,
       amountSent: data.amountSent ?? '',
+      referenceNumber,
     });
 
     return { success: true, message: `Added to Google Sheets (${sheetTab})` };
@@ -136,10 +148,53 @@ export async function POST(request: Request) {
       }
     }
 
-    const result = await appendToLifeclassSheet(validationResult.data, proofUrl, proofProvided);
+    // One reference per enrollment, generated here rather than client-side so
+    // it cannot be chosen: it is what authorises a later payment upload onto
+    // this row. The timestamp is shared with the sheet so the receipt, the
+    // email and column A all say the same thing.
+    const submittedAt = new Date();
+    const timestamp = submittedAt.toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+    const referenceNumber = generateReferenceNumber(LIFECLASS_REFERENCE_PREFIX, submittedAt);
+
+    const result = await appendToLifeclassSheet(
+      validationResult.data,
+      proofUrl,
+      proofProvided,
+      referenceNumber,
+      timestamp
+    );
+
+    // Deferred with `after` so a slow mail API doesn't hold up the confirmation
+    // screen, and best-effort: the row is already on the sheet, so a send
+    // failure is logged, never surfaced as a failed enrollment.
+    const enrollee = validationResult.data;
+    after(async () => {
+      try {
+        await sendLifeclassEnrollmentEmails({
+          referenceNumber,
+          timestamp,
+          name: `${enrollee.givenName} ${enrollee.surname}`.trim(),
+          email: enrollee.email,
+          mobileNumber: enrollee.mobileNumber,
+          birthday: enrollee.birthdate
+            ? enrollee.birthdate.toLocaleDateString('en-US', { timeZone: 'Asia/Manila' })
+            : '',
+          cellLeader: enrollee.cellLeader,
+          category: enrollee.category,
+          fee: LIFECLASS_FEE,
+          proofProvided,
+          amountSent: enrollee.amountSent,
+          proofUrl,
+        });
+      } catch (emailError) {
+        console.error('[lifeclass-enrollment] email dispatch failed:', emailError);
+      }
+    });
 
     return NextResponse.json({
       ...result,
+      referenceNumber,
+      timestamp,
       message: 'Life Class enrollment received successfully',
     });
   } catch (error) {

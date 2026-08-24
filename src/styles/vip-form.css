@@ -2342,3 +2342,165 @@
         padding: 0 18px 18px;
     }
 }
+
+/* ============================================================
+   LIFE CLASS ENROLLMENT — page-scoped layout
+   Scoped under .lifeclass-enrollment-page so the shared
+   .sod-enrollment-page skin (SOD enrollment) is untouched.
+
+   The page gained a pay-later route: an "Already registered?"
+   tab above the welcome card opens the panel that takes a
+   reference number and an extra proof of payment.
+   ============================================================ */
+
+/* The welcome card used to BE the grid item, so its position:sticky travelled
+   inside .vip-layout-grid. Now that the tab sits above it they share a wrapper,
+   and a wrapper sized to its content leaves sticky nothing to travel in — so
+   the wrapper sticks instead. Better anyway: the tab stays reachable while the
+   form scrolls past. */
+.lifeclass-enrollment-page .lifeclass-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lifeclass-enrollment-page .lifeclass-sidebar .vip-welcome-card {
+    position: relative;
+    top: auto;
+}
+
+/* The panel is a sibling of the form card, never nested inside the <form>. */
+.lifeclass-enrollment-page .lifeclass-form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+}
+
+/* ── The "Already registered?" tab ─────────────────────────── */
+
+.lifeclass-tab-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid rgba(212, 168, 75, 0.55);
+    border-radius: 16px;
+    background: #ffffff;
+    color: var(--color-navy, #1a2744);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease,
+        box-shadow 0.18s ease;
+    box-shadow:
+        0 1px 3px rgba(26, 39, 68, 0.08),
+        0 10px 24px rgba(26, 39, 68, 0.10);
+}
+
+.lifeclass-tab-button-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lifeclass-tab-button-label i {
+    font-size: 16px;
+    color: var(--color-primary-dark, #b8923f);
+    transition: color 0.18s ease;
+}
+
+.lifeclass-tab-button > i {
+    font-size: 12px;
+    color: var(--color-primary-dark, #b8923f);
+    transition: color 0.18s ease;
+}
+
+.lifeclass-tab-button:hover {
+    background: #fdf9f0;
+    border-color: var(--color-primary, #d4a84b);
+    transform: translateY(-1px);
+}
+
+.lifeclass-tab-button:focus-visible {
+    outline: 2px solid var(--color-primary, #d4a84b);
+    outline-offset: 2px;
+}
+
+/* Open state matches the panel it controls — navy card, gold accents — so the
+   tab reads as the thing that opened it rather than a button left pressed. */
+.lifeclass-tab-button.is-active {
+    background: linear-gradient(160deg, var(--color-navy, #1a2744) 0%,
+        var(--color-navy-dark, #151e32) 100%);
+    border-color: var(--color-primary, #d4a84b);
+    color: #ffffff;
+}
+
+.lifeclass-tab-button.is-active .lifeclass-tab-button-label i,
+.lifeclass-tab-button.is-active > i {
+    color: var(--color-primary, #d4a84b);
+}
+
+/* ── Confirmation screens ──────────────────────────────────── */
+
+/* The reference receipt, on both the enrolled and the paid screens. */
+.lifeclass-enrollment-page .lifeclass-receipt {
+    margin: 22px auto 4px;
+    max-width: 420px;
+    text-align: left;
+}
+
+/* ── Panel extras the events version doesn't have ──────────── */
+
+/* "Lost it? Enter the email address you enrolled with instead." — the events
+   panel takes a reference only, so this hint has no equivalent there.
+
+   It is a child of .event-complete-form, NOT of .event-complete-field: the row
+   aligns on `flex-end`, so sitting inside the field would push the Continue
+   button down by the height of this text instead of leaving it level with the
+   input. `flex: 1 1 100%` drops it onto its own line beneath both. */
+.event-complete-hint {
+    flex: 1 1 100%;
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+/* The amount field inside the dialog. The enrollment form's own amount input
+   comes from FormInput and is already styled; this one is a bare InputText. */
+.event-complete-amount-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-heading, #0f172a);
+}
+
+@media (max-width: 992px) {
+    /* One column here, so the sidebar leads the page and must scroll away
+       rather than pin a 600px card over the form. */
+    .lifeclass-enrollment-page .lifeclass-sidebar {
+        position: relative;
+        top: 0;
+        margin-bottom: 30px;
+    }
+
+    .lifeclass-enrollment-page .lifeclass-sidebar .vip-welcome-card {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .lifeclass-tab-button {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+}

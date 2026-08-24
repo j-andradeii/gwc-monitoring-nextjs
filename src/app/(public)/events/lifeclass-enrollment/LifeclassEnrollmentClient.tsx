@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-form';
 import type { DefaultValues } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,9 +17,16 @@ import {
 import { proofOfPaymentFileSchema } from '@/models/schemas/proof-of-payment.schema';
 import {
   LIFECLASS_CATEGORY_OPTIONS,
+  LIFECLASS_FEE,
+  LIFECLASS_REFERENCE_PATTERN,
   lifeclassEnrollmentSchema,
 } from '@/models/schemas/lifeclass.schema';
-import DownloadQRButton from '@/components/ui/DownloadQRButton';
+import { useDownloadImage } from '@/hooks/useDownloadImage';
+import { createRegistrationReceiptImage } from '@/lib/registration-receipt';
+import LifeclassPaymentQrGrid from './LifeclassPaymentQrGrid';
+import LifeclassAlreadyEnrolledPanel, {
+  type RecordedLifeclassProof,
+} from './LifeclassAlreadyEnrolledPanel';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
@@ -68,29 +75,27 @@ const LIFECLASS_BATCH = {
    * Paying is NOT required to submit the form — see section 03, where both the
    * amount and the proof image are optional.
    */
-  fee: 'PHP 500',
+  fee: LIFECLASS_FEE,
   /** Who an enrollee follows up with about payment. */
   contact: 'the Life Class team',
 } as const;
 
 /**
- * Payment QR codes. Currently the same account the SOD enrollment uses — swap
- * these if Life Class fees are collected through a different account.
+ * `?ref=` — the reference number carried in by the "Upload proof of payment"
+ * button of the enrollment email, which links to
+ * `/events/lifeclass-enrollment?ref=…#lifeclass-complete`.
+ *
+ * Read through `useSyncExternalStore` rather than `useSearchParams()`: that
+ * hook would force this page behind a Suspense boundary. The server snapshot is
+ * null, so the prerendered HTML still matches at hydration and the value
+ * arrives on the render straight after it.
  */
-const LIFECLASS_PAYMENT_QRS = [
-  {
-    bank: 'BPI',
-    icon: 'pi pi-credit-card',
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_bpi.png',
-    filename: 'gateway-lifeclass-bpi-qr.png',
-  },
-  {
-    bank: 'GCash',
-    icon: 'pi pi-wallet',
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sod-payment/kc_gcash.png',
-    filename: 'gateway-lifeclass-gcash-qr.png',
-  },
-] as const;
+const subscribeToLocation = (onChange: () => void) => {
+  window.addEventListener('popstate', onChange);
+  return () => window.removeEventListener('popstate', onChange);
+};
+const readReferenceParam = () => new URLSearchParams(window.location.search).get('ref');
+const readNoReferenceParam = () => null;
 
 // Client-side form schema = the enrollment fields + the optional proof image.
 // (The route validates the fields + the resulting Blob URL instead — a File
@@ -190,8 +195,213 @@ function RadioCardGroup({ name, legend, options, required = false }: RadioCardGr
   );
 }
 
+interface ReferenceReceiptProps {
+  referenceNumber: string;
+  timestamp: string;
+  timestampLabel: string;
+  /** The enrollee this reference covers. Empty entries are dropped. */
+  names: string[];
+  canCopy: boolean;
+  copied: boolean;
+  onCopy: (value: string) => void;
+}
+
+/**
+ * The receipt: reference number, when it was stamped, and who it covers.
+ *
+ * Mirrors the confirmation screen of the G12 events flow
+ * (components/landing/events/EventRegistrationSection) element for element, and
+ * wears its `.event-register-receipt` styling — which the "Already registered?"
+ * dialog also wears — so the same number reads as the same artefact everywhere
+ * it appears.
+ *
+ * Shared by both Life Class screens (after enrolling, and after a later
+ * payment) so the two can't drift apart.
+ */
+function ReferenceReceipt({
+  referenceNumber,
+  timestamp,
+  timestampLabel,
+  names,
+  canCopy,
+  copied,
+  onCopy,
+}: ReferenceReceiptProps) {
+  const listed = names.filter(Boolean);
+
+  return (
+    <div className="event-register-receipt lifeclass-receipt">
+      <div className="event-register-receipt-ref">
+        <span className="event-register-receipt-label">Reference No.</span>
+        <div className="event-register-receipt-code-row">
+          <strong className="event-register-receipt-code">{referenceNumber}</strong>
+          {canCopy && (
+            <button
+              type="button"
+              className={`event-register-receipt-copy${copied ? ' is-copied' : ''}`}
+              onClick={() => onCopy(referenceNumber)}
+              aria-label={`Copy reference number ${referenceNumber}`}
+            >
+              <i className={`pi ${copied ? 'pi-check' : 'pi-copy'}`} aria-hidden="true" />
+              <span role="status">{copied ? 'Copied' : 'Copy'}</span>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {timestamp && (
+        <div className="event-register-receipt-meta">
+          <i className="pi pi-clock" aria-hidden="true"></i>
+          <span>
+            {timestampLabel} {timestamp}
+          </span>
+        </div>
+      )}
+
+      {listed.length > 0 && (
+        <div className="event-register-receipt-names">
+          <span className="event-register-receipt-label">Enrollee</span>
+          <ol>
+            {listed.map((name, index) => (
+              <li key={`${name}-${index}`}>
+                <span className="event-register-receipt-num" aria-hidden="true">
+                  {index + 1}
+                </span>
+                {name}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function LifeclassEnrollmentClient() {
   const [enrolledName, setEnrolledName] = useState<string | null>(null);
+  // Reference number the route issued for THIS submission. It is the only way
+  // back into the enrollment, so the confirmation screen leads with it.
+  const [referenceNumber, setReferenceNumber] = useState<string | null>(null);
+  // Set when a payment is sent later against an existing enrollment instead of
+  // with the form. It reaches its own confirmation screen, built from what the
+  // sheet gave back rather than from this form's values.
+  const [recordedProof, setRecordedProof] = useState<RecordedLifeclassProof | null>(null);
+  /**
+   * Whether the "Already registered?" panel is open.
+   *
+   * `null` means "nobody has touched the tab yet", which lets the default fall
+   * out of `?ref=`: arriving from the enrollment email opens the panel, so the
+   * button in it lands on something already filled in rather than on a page to
+   * go hunting through. Derived rather than synced in an effect — setting state
+   * from an effect here would cost a cascading render on every visit.
+   */
+  const [panelOverride, setPanelOverride] = useState<boolean | null>(null);
+  // Asia/Manila stamp the route wrote into column A, so the receipt on screen
+  // says the same thing as the sheet and the email.
+  const [submittedAt, setSubmittedAt] = useState('');
+  // Whether the enrollment form carried a proof image, which decides whether
+  // the confirmation asks for one.
+  const [proofProvided, setProofProvided] = useState(false);
+  const [copiedReference, setCopiedReference] = useState(false);
+  const [copyError, setCopyError] = useState<string | null>(null);
+  const [isSavingReceipt, setIsSavingReceipt] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const copyResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+  const { downloadBlob } = useDownloadImage();
+
+  // Reference number linked from the enrollment email, if this visit came from
+  // one. Anything unrecognisable is dropped rather than typed into the field
+  // for the enrollee to puzzle over.
+  const referenceParam = useSyncExternalStore(
+    subscribeToLocation,
+    readReferenceParam,
+    readNoReferenceParam
+  );
+  const emailReference = useMemo(() => {
+    const candidate = referenceParam?.trim().toUpperCase();
+    return candidate && LIFECLASS_REFERENCE_PATTERN.test(candidate) ? candidate : undefined;
+  }, [referenceParam]);
+
+  const showAlreadyEnrolled = panelOverride ?? Boolean(emailReference);
+
+
+  // Scroll the panel into view when it is opened by hand. Skipped on the
+  // email-link path, where it is already the first thing rendered.
+  useEffect(() => {
+    if (!showAlreadyEnrolled || emailReference) return;
+    const target = panelRef.current;
+    if (!target) return;
+    window.scrollTo({
+      top: target.getBoundingClientRect().top + window.scrollY - 100,
+      behavior: 'smooth',
+    });
+  }, [showAlreadyEnrolled, emailReference]);
+
+  useEffect(() => () => {
+    if (copyResetRef.current) clearTimeout(copyResetRef.current);
+  }, []);
+
+  const canCopyReference =
+    typeof navigator !== 'undefined' && Boolean(navigator.clipboard?.writeText);
+
+  const handleCopyReference = async (value: string) => {
+    if (!canCopyReference) return;
+
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopyError(null);
+      setCopiedReference(true);
+      if (copyResetRef.current) clearTimeout(copyResetRef.current);
+      copyResetRef.current = setTimeout(() => setCopiedReference(false), 2000);
+    } catch (error) {
+      // Blocked permission or an insecure origin — the number is still on
+      // screen, so point them at the manual way rather than failing silently.
+      console.error('Copying the reference number failed:', error);
+      setCopiedReference(false);
+      setCopyError('We couldn’t copy it for you. Press and hold the number to copy it manually.');
+    }
+  };
+
+  /**
+   * Save the receipt as a PNG, the same escape hatch the G12 events screen
+   * offers: a reference number that only ever lived in a browser tab is one
+   * closed tab away from a support message.
+   *
+   * `createRegistrationReceiptImage` is shared with that flow — the headline
+   * and labels are parameters, so nothing about it is event-specific.
+   */
+  const handleSaveReceipt = async () => {
+    if (isSavingReceipt || !referenceNumber) return;
+
+    setIsSavingReceipt(true);
+    setSaveError(null);
+
+    try {
+      const blob = await createRegistrationReceiptImage({
+        eventTitle: 'Life Class',
+        eventDate: `Class starts ${LIFECLASS_BATCH.classStarts}`,
+        referenceNumber,
+        timestamp: submittedAt,
+        names: enrolledName ? [enrolledName] : [],
+        headline: 'You’re enrolled',
+        namesLabel: 'ENROLLEE',
+        footerNote: 'Use this reference number to send your proof of payment.',
+      });
+
+      // The blob goes straight to the hook: wrapping it in a blob: URL and
+      // fetching it back trips the app's CSP connect-src (see middleware.ts).
+      await downloadBlob(blob, `gateway-lifeclass-${referenceNumber}.png`);
+    } catch (error) {
+      console.error('Saving the Life Class receipt failed:', error);
+      setSaveError(
+        'We couldn’t save the image on this device. Please screenshot this page instead.'
+      );
+    } finally {
+      setIsSavingReceipt(false);
+    }
+  };
 
   const methods = useForm<LifeclassEnrollmentFormData>({
     resolver: zodResolver(lifeclassEnrollmentFormSchema),
@@ -231,7 +441,9 @@ export default function LifeclassEnrollmentClient() {
 
       return response.json();
     },
-    onSuccess: () => {
+    onSuccess: (result: { referenceNumber?: string; timestamp?: string }) => {
+      setReferenceNumber(result?.referenceNumber ?? null);
+      setSubmittedAt(result?.timestamp ?? '');
       reset(EMPTY_FORM);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
@@ -239,11 +451,27 @@ export default function LifeclassEnrollmentClient() {
 
   const onSubmit = (data: LifeclassEnrollmentFormData) => {
     setEnrolledName(`${data.givenName} ${data.surname}`);
+    // Captured at submit time — the form is reset behind the success screen.
+    setProofProvided(Boolean(data.proofOfPayment));
     submitEnrollment.mutate(data);
   };
 
   // On a failed submit, scroll the first invalid field into view (mobile + desktop).
   const onError = useScrollToFirstError();
+
+  /**
+   * The pay-later panel REPLACES the enrollment form rather than sitting on top
+   * of it — someone coming back to settle their fee has no reason to scroll
+   * past the questions again, and two forms on one screen invites filling in
+   * the wrong one.
+   *
+   * Both confirmation screens are exempt: they carry the reference number the
+   * panel is asking for, so hiding them would take away the thing being typed
+   * in. (`recordedProof` closes the panel anyway.)
+   */
+  const showEnrollmentCard =
+    !showAlreadyEnrolled || submitEnrollment.isSuccess || Boolean(recordedProof);
+
 
   return (
     // `sod-enrollment-page` is the shared enrollment-form skin in vip-form.css
@@ -273,7 +501,30 @@ export default function LifeclassEnrollmentClient() {
         <div className="landing-container">
           <div className="vip-layout-grid">
 
-            {/* Left Side: Welcome Card */}
+            {/* Left Side: the "Already registered?" tab, then the Welcome Card.
+
+                The tab sits ABOVE the card and reads as attached to it, so the
+                pay-later route is visible without scrolling the whole form —
+                someone coming back to settle their fee has no reason to read
+                the enrollment questions again. */}
+            <div className="lifeclass-sidebar">
+              <button
+                type="button"
+                className={`lifeclass-tab-button${showAlreadyEnrolled ? ' is-active' : ''}`}
+                onClick={() => setPanelOverride(!showAlreadyEnrolled)}
+                aria-expanded={showAlreadyEnrolled}
+                aria-controls="lifeclass-complete"
+              >
+                <span className="lifeclass-tab-button-label">
+                  <i className="pi pi-history" aria-hidden="true"></i>
+                  Already registered?
+                </span>
+                <i
+                  className={`pi ${showAlreadyEnrolled ? 'pi-chevron-up' : 'pi-chevron-down'}`}
+                  aria-hidden="true"
+                ></i>
+              </button>
+
             <div className="vip-welcome-card sod-welcome-card">
               <div className="glass-overlay" />
               <div className="card-content">
@@ -322,30 +573,185 @@ export default function LifeclassEnrollmentClient() {
               </div>
             </div>
 
-            {/* Right Side: Enrollment Form */}
+            </div>
+
+            {/* Right Side: the pay-later panel, then the Enrollment Form.
+
+                The panel is a SIBLING of the form card, never nested inside the
+                <form>, so its own input and Continue button can't submit the
+                enrollment. */}
+            <div className="lifeclass-form-column">
+              {showAlreadyEnrolled && !recordedProof && (
+                <div ref={panelRef}>
+                  <LifeclassAlreadyEnrolledPanel
+                    // Remounts when the prefill appears, which seeds the input
+                    // without an effect that writes state during render.
+                    key={emailReference ?? referenceNumber ?? 'blank'}
+                    prefillReference={emailReference ?? referenceNumber ?? undefined}
+                    onProofRecorded={setRecordedProof}
+                  />
+                </div>
+              )}
+
+            {showEnrollmentCard && (
             <div className="vip-form-container">
-              {submitEnrollment.isSuccess ? (
-                <div className="success-animation-container">
-                  <div className="success-icon-wrapper">
-                    <i className="pi pi-heart-fill"></i>
-                    <div className="pulse-ring"></div>
+              {recordedProof ? (
+                <div className="success-animation-container" ref={successRef}>
+                  <h3>Payment received!</h3>
+                  <p>
+                    {recordedProof.name ? <strong>{recordedProof.name}</strong> : 'Thanks'}, we
+                    have your proof of payment
+                    {recordedProof.paymentNumber > 1 ? (
+                      <>
+                        {' '}
+                        &mdash; <strong>payment {recordedProof.paymentNumber}</strong> &mdash;
+                      </>
+                    ) : null}
+                    . Your slot is confirmed once we verify it.
+                    {recordedProof.totalPaid ? (
+                      <>
+                        {' '}
+                        Recorded so far: <strong>{recordedProof.totalPaid}</strong>.
+                      </>
+                    ) : null}
+                  </p>
+
+                  {recordedProof.referenceNumber && (
+                    <ReferenceReceipt
+                      referenceNumber={recordedProof.referenceNumber}
+                      timestamp={recordedProof.timestamp}
+                      timestampLabel="Received"
+                      names={[recordedProof.name]}
+                      canCopy={canCopyReference}
+                      copied={copiedReference}
+                      onCopy={handleCopyReference}
+                    />
+                  )}
+
+                  {copyError && (
+                    <p className="event-register-receipt-error" role="alert">
+                      <i className="pi pi-exclamation-circle" aria-hidden="true"></i>
+                      {copyError}
+                    </p>
+                  )}
+
+                  <p className="event-register-receipt-keep" role="note">
+                    <i className="pi pi-info-circle" aria-hidden="true"></i>
+                    <span>
+                      <strong>Paying in parts?</strong> Send the next one the same way &mdash;{' '}
+                      <strong>{recordedProof.referenceNumber}</strong> keeps working, and every
+                      upload is kept.
+                    </span>
+                  </p>
+
+                  <div className="event-register-success-actions">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setRecordedProof(null);
+                        setPanelOverride(true);
+                      }}
+                      className="landing-btn landing-btn-primary elevated"
+                    >
+                      <i className="pi pi-upload" aria-hidden="true" />
+                      Send another proof
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setRecordedProof(null);
+                        setPanelOverride(false);
+                      }}
+                      className="landing-btn landing-btn-outline"
+                    >
+                      Back to enrollment
+                    </button>
                   </div>
+                </div>
+              ) : submitEnrollment.isSuccess ? (
+                <div className="success-animation-container" ref={successRef}>
                   <h3>Thank You!</h3>
                   <p>
-                    Thank you for enrolling in Life Class, <strong>{enrolledName}</strong>!
-                    We can&rsquo;t wait to journey with you.
+                    <strong>{enrolledName}</strong>, your enrollment in{' '}
+                    <strong>Life Class</strong>{' '}
+                    {proofProvided
+                      ? 'is in. Your slot is reserved.'
+                      : `is in. To complete, use your reference number to upload proof of the ${LIFECLASS_BATCH.fee} fee.`}
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      submitEnrollment.reset();
-                      reset(EMPTY_FORM);
-                      setEnrolledName(null);
-                    }}
-                    className="landing-btn landing-btn-primary elevated"
-                  >
-                    Submit Another Enrollment
-                  </button>
+
+                  {/* Receipt — the enrollee's proof of enrollment. Mirrors the
+                      saved image so what they see is what they keep. */}
+                  {referenceNumber && (
+                    <ReferenceReceipt
+                      referenceNumber={referenceNumber}
+                      timestamp={submittedAt}
+                      timestampLabel="Enrolled"
+                      names={enrolledName ? [enrolledName] : []}
+                      canCopy={canCopyReference}
+                      copied={copiedReference}
+                      onCopy={handleCopyReference}
+                    />
+                  )}
+
+                  {copyError && (
+                    <p className="event-register-receipt-error" role="alert">
+                      <i className="pi pi-exclamation-circle" aria-hidden="true"></i>
+                      {copyError}
+                    </p>
+                  )}
+
+                  {/* The reference number is the only way back into this
+                      enrollment — say so loudly before they navigate away. */}
+                  {referenceNumber && (
+                    <p className="event-register-receipt-keep" role="note">
+                      <i className="pi pi-camera" aria-hidden="true"></i>
+                      <span>
+                        <strong>Take a screenshot or save your reference no.</strong> Screenshot
+                        this page — or tap <em>Save as image</em> below — and keep{' '}
+                        <strong>{referenceNumber}</strong>. It&rsquo;s how we match your payment
+                        to your slot. We&rsquo;ve emailed it to you too.
+                      </span>
+                    </p>
+                  )}
+
+                  {saveError && (
+                    <p className="event-register-receipt-error" role="alert">
+                      <i className="pi pi-exclamation-circle" aria-hidden="true"></i>
+                      {saveError}
+                    </p>
+                  )}
+
+                  <div className="event-register-success-actions">
+                    {referenceNumber && (
+                      <button
+                        type="button"
+                        className="landing-btn landing-btn-primary elevated"
+                        onClick={handleSaveReceipt}
+                        disabled={isSavingReceipt}
+                      >
+                        <i
+                          className={`pi ${isSavingReceipt ? 'pi-spin pi-spinner' : 'pi-download'}`}
+                          aria-hidden="true"
+                        />
+                        {isSavingReceipt ? 'Saving…' : 'Save as image'}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      className="landing-btn landing-btn-outline"
+                      onClick={() => {
+                        submitEnrollment.reset();
+                        reset(EMPTY_FORM);
+                        setEnrolledName(null);
+                        setReferenceNumber(null);
+                        setSubmittedAt('');
+                        setSaveError(null);
+                        setCopyError(null);
+                      }}
+                    >
+                      Enroll Another
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <FormProvider {...methods}>
@@ -460,36 +866,7 @@ export default function LifeclassEnrollmentClient() {
                         below and upload your proof of payment.
                       </p>
 
-                      <div className="sod-payment-grid">
-                        {LIFECLASS_PAYMENT_QRS.map((qr) => (
-                          <div className="sod-payment-card" key={qr.bank}>
-                            <span className="sod-payment-bank">
-                              <i className={qr.icon}></i>
-                              {qr.bank}
-                            </span>
-                            <span className="sod-payment-qr-frame">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={qr.src}
-                                alt={`${qr.bank} payment QR code for Life Class enrollment`}
-                                className="sod-payment-qr"
-                                loading="lazy"
-                              />
-                            </span>
-                            <span className="sod-payment-scan">
-                              <i className="pi pi-qrcode"></i>
-                              Scan to pay
-                            </span>
-                            <DownloadQRButton
-                              qrCodeUrl={qr.src}
-                              filename={qr.filename}
-                              color="var(--color-primary)"
-                              className="sod-payment-download"
-                              style={{ marginTop: '0.25rem', padding: '0.45rem 0.9rem', fontSize: '0.78rem', fontWeight: 700 }}
-                            />
-                          </div>
-                        ))}
-                      </div>
+                      <LifeclassPaymentQrGrid />
 
                       <div className="sod-amount-field">
                         <FormInput
@@ -535,6 +912,8 @@ export default function LifeclassEnrollmentClient() {
                   </form>
                 </FormProvider>
               )}
+            </div>
+            )}
             </div>
           </div>
         </div>
