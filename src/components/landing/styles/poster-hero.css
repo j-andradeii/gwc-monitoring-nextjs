@@ -11,6 +11,13 @@
    crops it, nothing letterboxes it, nothing sits over it but the
    corner brackets.
 
+   The one exception is opt-in and phones-only: a page that sets
+   --poster-hero-mobile-band-ratio asks for a taller band than the
+   file's shape, and the art is scaled up and cropped left/right
+   to fill it. A phone gives the band no width to spend, so that
+   trade — the poster's outer margins for height — is sometimes
+   the better read. See the mobile block at the foot of the file.
+
    This assumes a poster cut WIDE enough to carry a hero band
    (the Life Class art is 8:3). Hand it a 16:9 or portrait file
    and the band will be correspondingly tall on a wide monitor —
@@ -97,9 +104,21 @@
    band reserves for it. If they drift, the hero jumps on load. */
 @media (max-width: 640px) {
     /* The mobile cut is a different shape; fall back to the desktop ratio when
-       a page passes no mobile art. */
+       a page passes no mobile art.
+
+       --poster-hero-mobile-band-ratio, if a page sets it, overrides BOTH: the
+       band is made taller than the file and the art scales up to fill it. A
+       phone gives the band no width to spend, so the only way to a taller hero
+       is to trade the poster's outer margins for it. */
     .poster-hero .poster-hero-img {
-        aspect-ratio: var(--poster-hero-mobile-ratio, var(--poster-hero-ratio));
+        aspect-ratio: var(--poster-hero-mobile-band-ratio,
+                var(--poster-hero-mobile-ratio, var(--poster-hero-ratio)));
+        /* A no-op unless a band ratio is set — without one the box already
+           matches the file exactly and there is nothing to crop. With one, the
+           crop is even on both sides, which is what makes the choice of ratio
+           a question about how much slack the artwork has around its content. */
+        object-fit: cover;
+        object-position: center;
     }
 
     /* Too little band left at this size for the brackets to frame anything —

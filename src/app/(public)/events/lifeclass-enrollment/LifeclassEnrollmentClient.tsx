@@ -27,6 +27,7 @@ import LifeclassPaymentQrGrid from './LifeclassPaymentQrGrid';
 import LifeclassAlreadyEnrolledPanel, {
   type RecordedLifeclassProof,
 } from './LifeclassAlreadyEnrolledPanel';
+import LifeclassScrollToFormCue from './LifeclassScrollToFormCue';
 import '@/styles/landing.css';
 import '@/styles/vip-form.css';
 
@@ -48,14 +49,35 @@ const LIFECLASS_POSTER = {
 /**
  * The phone cut, used below 640px. Art direction, not just a smaller file: the
  * 8:3 banner collapses to a ~146px strip on a 390px screen, where the class
- * dates printed on it are barely legible. This 16:9 original is 220px tall
- * there and reads properly.
+ * dates printed on it are barely legible. This 16:9 original is the widest cut
+ * that still reads there.
+ *
+ * These are the FILE's real dimensions and must stay that way — how much of the
+ * band it fills is LIFECLASS_POSTER_MOBILE_BAND's business, not this object's.
  */
 const LIFECLASS_POSTER_MOBILE = {
   src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/LIFECLASS-ENROLLMENT.webp',
   width: 1920,
   height: 1080,
 } as const;
+
+/**
+ * How tall the phone band is allowed to get, as a ratio.
+ *
+ * Even the 16:9 cut is only ~219px on a 390px screen, which still reads as a
+ * strip rather than a poster. Band height is viewport width ÷ ratio and a phone
+ * gives you no width to spend, so the height has to be bought from the
+ * artwork's own margins: PosterHero scales the file up to fill this ratio and
+ * crops it evenly left and right. 3:2 is ~260px, a fifth taller.
+ *
+ * 3:2 is the CEILING here, not a taste call. The poster's content — from the
+ * "L" of "LifeClass" to the right-hand photo — spans 1620 of the file's 1920px,
+ * and 1620/1080 is exactly 3:2. Anything squarer starts eating the wording.
+ * A hero taller than this needs a taller CUT of the artwork (a 4:5 or 1:1
+ * export), swapped in above with its real dimensions; it cannot come from a
+ * smaller number here.
+ */
+const LIFECLASS_POSTER_MOBILE_BAND = { width: 3, height: 2 } as const;
 
 /**
  * Batch details shown on the welcome card and in the payment section.
@@ -488,6 +510,14 @@ export default function LifeclassEnrollmentClient() {
   const showEnrollmentCard =
     !showAlreadyEnrolled || submitEnrollment.isSuccess || Boolean(recordedProof);
 
+  /**
+   * Whether the enrollment form itself is on the page, as opposed to one of the
+   * two confirmation screens that share its card. Gates the mobile "jump to the
+   * form" cue, which would otherwise have nothing to point at.
+   */
+  const showEnrollmentForm =
+    showEnrollmentCard && !recordedProof && !submitEnrollment.isSuccess;
+
 
   return (
     // `sod-enrollment-page` is the shared enrollment-form skin in vip-form.css
@@ -509,6 +539,7 @@ export default function LifeclassEnrollmentClient() {
         imageWidth={LIFECLASS_POSTER.width}
         imageHeight={LIFECLASS_POSTER.height}
         mobileImage={LIFECLASS_POSTER_MOBILE}
+        mobileBandRatio={LIFECLASS_POSTER_MOBILE_BAND}
         imageAlt="LifeClass Batch 3 enrollment poster — enroll August 16 until September 13, 2026; class starts October 4"
         title="Life Class Enrollment"
       />
@@ -528,7 +559,13 @@ export default function LifeclassEnrollmentClient() {
                 column is stacked there, so a tab above the card would wedge
                 itself between the poster and the welcome copy. */}
             <div className="lifeclass-sidebar">
+              {/* The mobile cue's landing spot, not the form itself: stacked,
+                  this tab is the last thing above the form column, so aiming
+                  here puts the pay-later route and the form's own header on
+                  screen together instead of dropping the reader straight onto
+                  "First Name" with no idea what they've landed in. */}
               <button
+                id="lifeclass-enroll-start"
                 type="button"
                 className={`lifeclass-tab-button${showAlreadyEnrolled ? ' is-active' : ''}`}
                 onClick={() => setPanelOverride(!showAlreadyEnrolled)}
@@ -776,6 +813,7 @@ export default function LifeclassEnrollmentClient() {
               ) : (
                 <FormProvider {...methods}>
                   <form
+                    id="lifeclass-enroll-form"
                     onSubmit={handleSubmit(onSubmit, onError)}
                     className="advanced-vip-form"
                     aria-busy={submitEnrollment.isPending}
@@ -938,6 +976,12 @@ export default function LifeclassEnrollmentClient() {
           </div>
         </div>
       </main>
+
+      {/* Outside <main> on purpose, the same way GivingUploadCue sits outside
+          the section it points at: it is `position: fixed`, and a transform,
+          filter or will-change on any layout wrapper would become its
+          containing block and clip it to the column. */}
+      {showEnrollmentForm && <LifeclassScrollToFormCue />}
 
       <LandingFooter />
     </div>

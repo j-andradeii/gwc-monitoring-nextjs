@@ -39,6 +39,21 @@ interface PosterHeroProps {
    */
   mobileImage?: PosterArt;
   /**
+   * Optional taller band for phones, given as a ratio (e.g. `{ width: 3,
+   * height: 2 }`). The mobile art is scaled up to FILL it and cropped left and
+   * right — the one place this component crops on purpose.
+   *
+   * It exists because band height is viewport width ÷ ratio, and a phone gives
+   * you no width to spend: a 16:9 cut is a ~219px strip on a 390px screen no
+   * matter how good the artwork is. Trading the poster's outer margins for
+   * height is often the better read.
+   *
+   * Only safe on art with slack around its content, and only up to the ratio
+   * where that slack runs out — work out where the content actually ends
+   * before picking a number. Leave it off and nothing crops, as before.
+   */
+  mobileBandRatio?: { width: number; height: number };
+  /**
    * The page's <h1>. Rendered for screen readers and search results only — it
    * is never drawn, because the poster already carries the wording and a
    * caption would just repeat it. Omit only if the page has an <h1> elsewhere.
@@ -80,6 +95,7 @@ export const PosterHero: React.FC<PosterHeroProps> = ({
   imageWidth,
   imageHeight,
   mobileImage,
+  mobileBandRatio,
   title,
   id,
   className = '',
@@ -93,6 +109,11 @@ export const PosterHero: React.FC<PosterHeroProps> = ({
           '--poster-hero-ratio': `${imageWidth} / ${imageHeight}`,
           ...(mobileImage
             ? { '--poster-hero-mobile-ratio': `${mobileImage.width} / ${mobileImage.height}` }
+            : {}),
+          ...(mobileBandRatio
+            ? {
+                '--poster-hero-mobile-band-ratio': `${mobileBandRatio.width} / ${mobileBandRatio.height}`,
+              }
             : {}),
         } as React.CSSProperties
       }
