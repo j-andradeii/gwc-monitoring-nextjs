@@ -483,28 +483,47 @@ export default function LifeclassEnrollmentClient() {
       setReferenceNumber(result?.referenceNumber ?? null);
       setSubmittedAt(result?.timestamp ?? '');
       reset(EMPTY_FORM);
-      // Scrolling to the success screen is the effect above's job — it has to
+      // Scrolling to the success screen is the effect below's job — it has to
       // wait for that screen to paint, which hasn't happened yet here.
     },
   });
 
   /**
-   * Once the form is swapped for the "Thank You!" screen, bring that screen
-   * into view — on phones and on desktop alike.
+   * Which confirmation screen is on the page, if any — they share one card,
+   * one `successRef` and one scroll effect. Matches the render order below:
+   * a recorded payment wins over an enrollment made earlier in the session.
+   *
+   * A string rather than a boolean so a SECOND proof sent against the same
+   * enrollment counts as a new screen and scrolls again, instead of the effect
+   * seeing `true` both times and sitting still.
+   */
+  const confirmationScreen = recordedProof
+    ? `proof:${recordedProof.referenceNumber}:${recordedProof.paymentNumber}`
+    : submitEnrollment.isSuccess
+      ? 'enrollment'
+      : null;
+
+  /**
+   * Once a confirmation screen takes over the card — "Thank You!" after
+   * enrolling, "Payment received!" after a later proof — bring it into view, on
+   * phones and on desktop alike.
    *
    * Scrolling to the top of the page instead isn't enough on either: the poster
-   * hero fills most of a phone viewport, and on desktop the success card sits
-   * in the right-hand column below the hero, so the reader lands on artwork
-   * with their reference number somewhere off screen.
+   * hero fills most of a phone viewport, and on desktop the card sits in the
+   * right-hand column below the hero, so the reader lands on artwork with their
+   * reference number somewhere off screen. The proof-of-payment route is worse
+   * still — the upload dialog is a fixed overlay that locks body scroll, so
+   * closing it drops the reader back wherever they were before they opened it,
+   * which for a hand-opened panel can be most of a page above the answer.
    *
-   * It can't ride along in the mutation's `onSuccess` either — the success
-   * screen hasn't rendered at that point, so there is nothing to measure. The
-   * 150ms wait lets the layout shift settle too: the form is far taller than
-   * the card replacing it, and measuring before that reflow lands aims at the
-   * wrong offset.
+   * It can't ride along in either mutation's `onSuccess` — the screen hasn't
+   * rendered at that point, so there is nothing to measure. The 150ms wait lets
+   * the layout shift settle too: the form (or the panel) is far taller than the
+   * card replacing it, and measuring before that reflow lands aims at the wrong
+   * offset.
    */
   useEffect(() => {
-    if (!submitEnrollment.isSuccess) return;
+    if (!confirmationScreen) return;
 
     const timer = setTimeout(() => {
       const target = successRef.current;
@@ -517,14 +536,15 @@ export default function LifeclassEnrollmentClient() {
         behavior: smooth ? 'smooth' : 'auto',
       });
 
-      // Move keyboard / screen-reader focus into the receipt too — the form
-      // they were tabbing through no longer exists. Programmatic focus on a
-      // container doesn't trigger :focus-visible, so nothing changes visually.
+      // Move keyboard / screen-reader focus into the receipt too — the form (or
+      // the dialog) they were tabbing through no longer exists. Programmatic
+      // focus on a container doesn't trigger :focus-visible, so nothing changes
+      // visually.
       target.focus({ preventScroll: true });
     }, 150);
 
     return () => clearTimeout(timer);
-  }, [submitEnrollment.isSuccess]);
+  }, [confirmationScreen]);
 
   const onSubmit = (data: LifeclassEnrollmentFormData) => {
     setEnrolledName(`${data.givenName} ${data.surname}`);
@@ -692,7 +712,9 @@ export default function LifeclassEnrollmentClient() {
             {showEnrollmentCard && (
             <div className="vip-form-container">
               {recordedProof ? (
-                <div className="success-animation-container" ref={successRef}>
+                // tabIndex -1 so the scroll effect can park focus here; the
+                // upload dialog that had it has just closed.
+                <div className="success-animation-container" ref={successRef} tabIndex={-1}>
                   <h3>Payment received!</h3>
                   <p>
                     {recordedProof.name ? <strong>{recordedProof.name}</strong> : 'Thanks'}, we
