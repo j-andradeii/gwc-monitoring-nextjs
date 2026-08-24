@@ -244,7 +244,7 @@ export default function LifeclassAlreadyEnrolledPanel({
     <div className="event-complete-panel" id="lifeclass-complete">
       <span className="event-complete-eyebrow">
         <i className="pi pi-history" aria-hidden="true"></i>
-        Already registered?
+        Already Enrolled?
       </span>
       <h3 className="event-complete-title">Send your proof of payment</h3>
       <p className="event-complete-intro">
@@ -273,7 +273,6 @@ export default function LifeclassAlreadyEnrolledPanel({
             autoComplete="off"
             spellCheck={false}
             aria-required="true"
-            aria-describedby={`${lookupInputId}-hint`}
             className={`w-100 !text-black ${lookup.isError ? 'p-invalid' : ''}`}
             style={{ fontSize: '16px', opacity: 1, WebkitTextFillColor: '#000' }}
           />
@@ -292,14 +291,6 @@ export default function LifeclassAlreadyEnrolledPanel({
             </>
           )}
         </button>
-
-        {/* A sibling of the field, not a child of it: the row aligns on
-            `flex-end`, so anything below the input inside .event-complete-field
-            drags the Continue button down with it. Full-width, so it wraps to
-            its own line under both. */}
-        <small id={`${lookupInputId}-hint`} className="event-complete-hint">
-          Lost it? Enter the email address you enrolled with instead.
-        </small>
       </form>
 
       {lookup.isError && (

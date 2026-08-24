@@ -2348,8 +2348,9 @@
    Scoped under .lifeclass-enrollment-page so the shared
    .sod-enrollment-page skin (SOD enrollment) is untouched.
 
-   The page gained a pay-later route: an "Already registered?"
-   tab above the welcome card opens the panel that takes a
+   The page gained a pay-later route: an "Already Enrolled?"
+   tab beside the welcome card (above it on desktop, below it
+   once the layout stacks) opens the panel that takes a
    reference number and an extra proof of payment.
    ============================================================ */
 
@@ -2379,7 +2380,7 @@
     min-width: 0;
 }
 
-/* ── The "Already registered?" tab ─────────────────────────── */
+/* ── The "Already Enrolled?" tab ────────────────────────────── */
 
 .lifeclass-tab-button {
     display: flex;
@@ -2459,21 +2460,6 @@
 
 /* ── Panel extras the events version doesn't have ──────────── */
 
-/* "Lost it? Enter the email address you enrolled with instead." — the events
-   panel takes a reference only, so this hint has no equivalent there.
-
-   It is a child of .event-complete-form, NOT of .event-complete-field: the row
-   aligns on `flex-end`, so sitting inside the field would push the Continue
-   button down by the height of this text instead of leaving it level with the
-   input. `flex: 1 1 100%` drops it onto its own line beneath both. */
-.event-complete-hint {
-    flex: 1 1 100%;
-    margin-top: 2px;
-    font-size: 12px;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.68);
-}
-
 /* The amount field inside the dialog. The enrollment form's own amount input
    comes from FormInput and is already styled; this one is a bare InputText. */
 .event-complete-amount-label {
@@ -2486,15 +2472,29 @@
 
 @media (max-width: 992px) {
     /* One column here, so the sidebar leads the page and must scroll away
-       rather than pin a 600px card over the form. */
+       rather than pin a 600px card over the form.
+
+       No margin-bottom: the grid's own 30px row gap already separates this
+       from the form column, and the tab now ends the stack — a second 30px
+       under it would float it in the middle of nowhere instead of reading as
+       attached to what it opens. */
     .lifeclass-enrollment-page .lifeclass-sidebar {
         position: relative;
         top: 0;
-        margin-bottom: 30px;
+        margin-bottom: 0;
     }
 
     .lifeclass-enrollment-page .lifeclass-sidebar .vip-welcome-card {
         margin-bottom: 0;
+        /* Swapped with the tab: stacked, a tab above the card would wedge
+           itself between the poster and the welcome copy, pushing the class
+           details down. The card introduces the page, the tab follows it —
+           and it lands right on top of the panel it opens. */
+        order: 1;
+    }
+
+    .lifeclass-enrollment-page .lifeclass-sidebar .lifeclass-tab-button {
+        order: 2;
     }
 }
 

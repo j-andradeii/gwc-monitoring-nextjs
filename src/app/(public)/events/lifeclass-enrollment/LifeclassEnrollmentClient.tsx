@@ -211,7 +211,7 @@ interface ReferenceReceiptProps {
  *
  * Mirrors the confirmation screen of the G12 events flow
  * (components/landing/events/EventRegistrationSection) element for element, and
- * wears its `.event-register-receipt` styling — which the "Already registered?"
+ * wears its `.event-register-receipt` styling — which the "Already Enrolled?"
  * dialog also wears — so the same number reads as the same artefact everywhere
  * it appears.
  *
@@ -287,7 +287,7 @@ export default function LifeclassEnrollmentClient() {
   // sheet gave back rather than from this form's values.
   const [recordedProof, setRecordedProof] = useState<RecordedLifeclassProof | null>(null);
   /**
-   * Whether the "Already registered?" panel is open.
+   * Whether the "Already Enrolled?" panel is open.
    *
    * `null` means "nobody has touched the tab yet", which lets the default fall
    * out of `?ref=`: arriving from the enrollment email opens the panel, so the
@@ -327,15 +327,31 @@ export default function LifeclassEnrollmentClient() {
   const showAlreadyEnrolled = panelOverride ?? Boolean(emailReference);
 
 
-  // Scroll the panel into view when it is opened by hand. Skipped on the
-  // email-link path, where it is already the first thing rendered.
+  /**
+   * Bring the panel into view once it is open. Both ways in need this.
+   *
+   * Opened by hand, the panel is below the fold. Arriving from the enrollment
+   * email's "Upload proof of payment" button, the `#lifeclass-complete`
+   * fragment on that link cannot do the job itself: the panel is gated on
+   * `?ref=`, which `useSyncExternalStore` only reports AFTER hydration, so at
+   * the moment the browser resolves the fragment its target does not exist —
+   * and a fragment is resolved once, never retried. Without this, the email
+   * button drops the reader at the top of the poster with the panel a full
+   * screen further down.
+   *
+   * The email path jumps instantly, the way the fragment would have; a
+   * hand-opened panel scrolls smoothly from wherever the reader was.
+   */
   useEffect(() => {
-    if (!showAlreadyEnrolled || emailReference) return;
+    if (!showAlreadyEnrolled) return;
     const target = panelRef.current;
     if (!target) return;
+    const smooth =
+      !emailReference && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({
+      // -100 clears the sticky header.
       top: target.getBoundingClientRect().top + window.scrollY - 100,
-      behavior: 'smooth',
+      behavior: smooth ? 'smooth' : 'auto',
     });
   }, [showAlreadyEnrolled, emailReference]);
 
@@ -501,12 +517,16 @@ export default function LifeclassEnrollmentClient() {
         <div className="landing-container">
           <div className="vip-layout-grid">
 
-            {/* Left Side: the "Already registered?" tab, then the Welcome Card.
+            {/* Left Side: the "Already Enrolled?" tab, then the Welcome Card.
 
-                The tab sits ABOVE the card and reads as attached to it, so the
-                pay-later route is visible without scrolling the whole form —
-                someone coming back to settle their fee has no reason to read
-                the enrollment questions again. */}
+                On desktop the tab sits ABOVE the card and reads as attached to
+                it, so the pay-later route is visible without scrolling the
+                whole form — someone coming back to settle their fee has no
+                reason to read the enrollment questions again.
+
+                Below 992px the two swap (CSS `order`, see vip-form.css): the
+                column is stacked there, so a tab above the card would wedge
+                itself between the poster and the welcome copy. */}
             <div className="lifeclass-sidebar">
               <button
                 type="button"
@@ -517,7 +537,7 @@ export default function LifeclassEnrollmentClient() {
               >
                 <span className="lifeclass-tab-button-label">
                   <i className="pi pi-history" aria-hidden="true"></i>
-                  Already registered?
+                  Already Enrolled?
                 </span>
                 <i
                   className={`pi ${showAlreadyEnrolled ? 'pi-chevron-up' : 'pi-chevron-down'}`}
