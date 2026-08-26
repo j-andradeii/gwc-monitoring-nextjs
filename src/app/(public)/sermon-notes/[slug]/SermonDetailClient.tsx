@@ -169,19 +169,40 @@ function SermonMetaRow({ sermon, readingMinutes }: { sermon: Sermon; readingMinu
 }
 
 // ---------------------------------------------------------------------------
+// Hero Backdrop — the sermon artwork, blurred, as the hero background
+// ---------------------------------------------------------------------------
+function HeroBackdrop({ sermon }: { sermon: Sermon }) {
+  return (
+    <div className="sermon-hero__backdrop" aria-hidden="true">
+      <Image
+        src={sermon.image}
+        alt=""
+        fill
+        sizes="100vw"
+        quality={35}
+        className="sermon-hero__backdrop-img"
+        priority
+      />
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Hero Artwork card
 // ---------------------------------------------------------------------------
 function HeroArtwork({ sermon }: { sermon: Sermon }) {
   return (
-    <div className="sermon-hero__artwork">
-      <Image
-        src={sermon.image}
-        alt={sermon.title}
-        fill
-        sizes="(max-width: 1023px) 100vw, 320px"
-        className="sermon-hero__artwork-img"
-        priority
-      />
+    <div className="sermon-hero__artwork-wrap">
+      <div className="sermon-hero__artwork">
+        <Image
+          src={sermon.image}
+          alt={sermon.title}
+          fill
+          sizes="(max-width: 1023px) 100vw, 320px"
+          className="sermon-hero__artwork-img"
+          priority
+        />
+      </div>
     </div>
   );
 }
@@ -655,6 +676,7 @@ export default function SermonDetailClient({
 
       {/* ======= Hero ======= */}
       <section className="sermon-hero">
+        <HeroBackdrop sermon={sermon} />
         <div className="landing-container">
           <SermonBreadcrumbs title={sermon.title} />
           <div className="sermon-hero__layout">
