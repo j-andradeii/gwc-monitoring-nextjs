@@ -9048,7 +9048,7 @@ Your situation can make you or break you. But when you surrender everything to G
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
     isFeatured: true,
-    excerpt: 'There are seasons when life can feel like a grave—isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.',
+    excerpt: 'There are seasons when life can feel like a grave: `isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.',
 
     description: `**GRAVES INTO GARDENS**
 
@@ -9056,7 +9056,7 @@ Key text: Mark 5:19
 
 ---
 
-There are seasons when life can feel like a grave—isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.
+There are seasons when life can feel like a grave:isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.
 
 Jesus met a man whom society had abandoned and restored him completely. He did not only deliver him from spiritual bondage; He restored his dignity, his identity, his relationships, and his purpose.
 
