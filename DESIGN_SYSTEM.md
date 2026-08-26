@@ -146,7 +146,7 @@ Targets: WCAG AA — **≥ 4.5:1** body text, **≥ 3:1** large/bold text.
 ### Named Sanctuary Colors
 | Name | Variable | Hex | Usage |
 |------|----------|-----|-------|
-| **Deep Navy** | `--color-navy` | `#1a2744` | Dark backgrounds, footer, sermon hero |
+| **Deep Navy** | `--color-navy` | `#1a2744` | Dark backgrounds, footer, dark sections |
 | **Darker Navy** | `--color-navy-dark` | `#151e32` | Footer / badge gradient end |
 | Purple | `--color-purple` | `#4a3c6e` | Alias of secondary |
 | Burgundy | `--color-burgundy` | `#6b2c3a` | Alias of accent |
@@ -624,6 +624,51 @@ Border-heavy cards with hover inversion for service times / venues.
 ---
 
 ## 10. Hero & Carousel Sections
+
+### Sermon Detail Hero — photographic
+The `/sermon-notes/[slug]` hero has **no brand colour behind the type**. The
+sermon's own artwork is the background — full-bleed, blurred to ambient texture,
+under a neutral near-black scrim — so each sermon takes its mood from its own
+image. Defined in `src/styles/sermon-detail.css`.
+
+```css
+.sermon-hero {
+  --hero-scrim: 14, 12, 16;        /* neutral near-black, faintly warm */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: rgb(var(--hero-scrim));   /* base, behind the photo */
+}
+
+.sermon-hero__backdrop      { position: absolute; inset: -60px; z-index: -2; }
+.sermon-hero__backdrop-img  { object-fit: cover; filter: blur(34px) saturate(1.25); }
+```
+
+Three layers sit on the photo, all in `.sermon-hero::before`:
+
+1. A **horizontal scrim**, `0.90 → 0.84 → 0.55`, heaviest under the type and
+   lifting toward the artwork card so the photograph stays visible on the right.
+2. A gentle **vertical vignette** (`0.30` top, `0.35` bottom).
+3. A faint **gold pool** at 84%/24% tying the photo back to the brand accent.
+
+**Contrast** — a photograph gives no contrast guarantee, so the scrim carries it.
+Measured against pure-white imagery (the worst case) at the right edge of the
+560px type column, where the scrim is thinnest at ~`0.82`:
+
+| Foreground | Ratio | AA |
+|------------|-------|----|
+| White body + title | 11.3:1 | pass |
+| Gold `#d4a84b` eyebrow, icons, italic `em` | 5.1:1 | pass |
+
+Rules when touching this hero:
+
+- **Never lighten the scrim under the type column.** Everything left of ~45% must
+  stay at or above `0.80`, or a light sermon image drops the type below AA.
+- Chips and the eyebrow pill use `backdrop-filter: blur(10px)` over a
+  `rgba(255,255,255,0.08)` fill — they must hold up over *any* artwork, not just
+  the ones currently in `sermons.ts`.
+- The backdrop `<Image>` is `aria-hidden` with `alt=""` and `quality={35}`; it is
+  decoration, and the blur makes the quality drop invisible.
 
 ### Hero Container
 ```css
