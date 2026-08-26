@@ -81,7 +81,19 @@ interface Props {
 export default function EventRegistrationSection({ event }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
+  const panelToggleRef = useRef<HTMLButtonElement>(null);
   const multiToggleId = useId();
+  /**
+   * Whether the "Already Registered?" panel is open.
+   *
+   * `null` means "nobody has touched the tab yet", which lets the default fall
+   * out of `?ref=`: arriving from the registration email opens the panel, so
+   * the button in it lands on something already filled in rather than on a
+   * page to go hunting through. Derived rather than synced in an effect —
+   * setting state from an effect here would cost a cascading render on every
+   * visit.
+   */
+  const [panelOverride, setPanelOverride] = useState<boolean | null>(null);
   // Names captured at submit time — the form is reset behind the success screen.
   const [registeredNames, setRegisteredNames] = useState<string[]>([]);
   // Set when a proof of payment is sent later against an existing reference
@@ -106,6 +118,8 @@ export default function EventRegistrationSection({ event }: Props) {
     const candidate = referenceParam?.trim().toUpperCase();
     return candidate && REFERENCE_PATTERN.test(candidate) ? candidate : undefined;
   }, [referenceParam]);
+
+  const showAlreadyRegistered = panelOverride ?? Boolean(emailReference);
 
   const methods = useForm<EventRegistrationFormData>({
     resolver: zodResolver(eventRegistrationFormSchema),
@@ -251,28 +265,40 @@ export default function EventRegistrationSection({ event }: Props) {
   }, []);
 
   /**
-   * The link's own `#event-complete` already scrolls, but the hero image above
-   * the section settles late and drags the anchor down with it — so someone
-   * arriving from the email lands mid-page. Take the position again once the
-   * layout has settled.
+   * Bring the pay-later panel into view once it is open. Both ways in need it.
+   *
+   * Opened by hand from the form's section-04 note, the panel is most of a
+   * screen above where the reader was standing. Arriving from the email, the
+   * link's own `#event-complete` already scrolls, but the hero image above the
+   * section settles late and drags the anchor down with it — so they land
+   * mid-page. Hence the wait before measuring on that path; a hand-opened
+   * panel has nothing to wait for.
+   *
+   * Aims at the tab rather than the panel: the tab is the way back to the
+   * registration form, so it has to stay on screen.
    */
   useEffect(() => {
-    if (!emailReference) return;
+    if (!showAlreadyRegistered) return;
 
-    const timer = setTimeout(() => {
-      const panel = document.getElementById('event-complete');
-      if (!panel) return;
+    const smooth =
+      !emailReference && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({
-        // Same 100px allowance for the sticky header as the confirmation scroll.
-        top: panel.getBoundingClientRect().top + window.scrollY - 100,
-        behavior: smooth ? 'smooth' : 'auto',
-      });
-    }, 250);
+    const timer = setTimeout(
+      () => {
+        const target = panelToggleRef.current ?? document.getElementById('event-complete');
+        if (!target) return;
+
+        window.scrollTo({
+          // Same 100px allowance for the sticky header as the confirmation scroll.
+          top: target.getBoundingClientRect().top + window.scrollY - 100,
+          behavior: smooth ? 'smooth' : 'auto',
+        });
+      },
+      emailReference ? 250 : 0
+    );
 
     return () => clearTimeout(timer);
-  }, [emailReference]);
+  }, [showAlreadyRegistered, emailReference]);
 
   /**
    * Draw the receipt to a PNG and hand it to `useDownloadImage`, which routes
@@ -346,6 +372,18 @@ export default function EventRegistrationSection({ event }: Props) {
     />
   );
 
+  /**
+   * The pay-later panel REPLACES the registration form rather than sitting on
+   * top of it — someone coming back to send their proof has no reason to
+   * scroll past the questions again, and two forms on one screen invites
+   * filling in the wrong one.
+   *
+   * The confirmation screen is exempt: it carries the reference number the
+   * panel is asking for, so hiding it would take away the thing being typed in
+   * (there the panel follows the receipt instead of leading the section).
+   */
+  const showFormCard = showConfirmation || !showAlreadyRegistered;
+
   return (
     <section
       id="event-register"
@@ -355,13 +393,34 @@ export default function EventRegistrationSection({ event }: Props) {
     >
       <div className="landing-container">
         <div className="event-register-form-wrap">
-          {/* Before registering, the pay-later panel leads the section: someone
-              coming back with a reference number would otherwise have to scroll
-              the entire form to find it. It only moves below on the
-              confirmation screen, where it follows the receipt as the next
-              step with its reference number already filled in. */}
-          {!showConfirmation && completePanel}
+          {/* Before registering, the pay-later route leads the section as a
+              collapsed tab: someone coming back with a reference number would
+              otherwise have to scroll the entire form to find it, while
+              everyone else would have to scroll past a panel they don't need.
+              Opening it swaps the form out for the panel. */}
+          {!showConfirmation && (
+            <button
+              ref={panelToggleRef}
+              type="button"
+              className={`form-tab-button${showAlreadyRegistered ? ' is-active' : ''}`}
+              onClick={() => setPanelOverride(!showAlreadyRegistered)}
+              aria-expanded={showAlreadyRegistered}
+              aria-controls="event-complete"
+            >
+              <span className="form-tab-button-label">
+                <i className="pi pi-history" aria-hidden="true"></i>
+                Already Registered?
+              </span>
+              <i
+                className={`pi ${showAlreadyRegistered ? 'pi-chevron-up' : 'pi-chevron-down'}`}
+                aria-hidden="true"
+              ></i>
+            </button>
+          )}
 
+          {!showConfirmation && showAlreadyRegistered && completePanel}
+
+          {showFormCard && (
           <div className="vip-form-container">
             {showConfirmation ? (
               <div className="success-animation-container" ref={successRef}>
@@ -485,6 +544,11 @@ export default function EventRegistrationSection({ event }: Props) {
                       setRegisteredNames([]);
                       setRecordedProof(null);
                       setSaveError(null);
+                      // Someone reaching this screen through the pay-later
+                      // panel left the tab open — close it, or "Register
+                      // Another" lands them back on that panel instead of on
+                      // the blank form they asked for.
+                      setPanelOverride(false);
                     }}
                   >
                     Register Another
@@ -709,9 +773,16 @@ export default function EventRegistrationSection({ event }: Props) {
                           <span>
                             Your slot is confirmed once we verify your payment. Registering
                             without a proof reserves your slot — upload it any time from{' '}
-                            <a href="#event-complete" className="sod-payment-note-link">
-                              Complete your registration
-                            </a>{' '}
+                            {/* A button, not an anchor: the panel is collapsed
+                                behind the tab above, so there is no
+                                `#event-complete` for a fragment to find. */}
+                            <button
+                              type="button"
+                              className="sod-payment-note-link"
+                              onClick={() => setPanelOverride(true)}
+                            >
+                              Already Registered?
+                            </button>{' '}
                             at the top of this section.
                           </span>
                         </p>
@@ -746,6 +817,7 @@ export default function EventRegistrationSection({ event }: Props) {
               </FormProvider>
             )}
           </div>
+          )}
 
           {showConfirmation && completePanel}
         </div>

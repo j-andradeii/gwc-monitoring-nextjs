@@ -871,10 +871,20 @@
     font-weight: 700;
 }
 
-/* In-note anchor (event registration → the pay-later panel at the top of the
+/* In-note link (event registration → the pay-later panel at the top of the
    section). Navy text, gold underline: gold text on white is only ~3:1, which
-   fails AA at this 13px size, so the brand colour carries in the underline. */
+   fails AA at this 13px size, so the brand colour carries in the underline.
+
+   Worn by a <button>, not an <a>: the panel is collapsed until asked for, so
+   there is no `#event-complete` to point a fragment at — hence the button
+   reset. It leads the declarations because `font: inherit` would otherwise
+   undo the weight below it. */
 .sod-payment-note-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
     font-weight: 700;
     color: var(--color-navy, #1a2744);
     text-decoration: underline;
@@ -1141,7 +1151,7 @@
 /* Section scroll target — leave room for the sticky LandingHeader (70 px)
    plus a comfortable 20 px buffer so the heading is never clipped. */
 #event-register {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 65px;
 }
 
 /* Alternate (warm cream) background — this section follows the white
@@ -2380,9 +2390,13 @@
     min-width: 0;
 }
 
-/* ── The "Already Enrolled?" tab ────────────────────────────── */
+/* ── The "Already Enrolled? / Already Registered?" tab ──────────
+   Shared by both pay-later flows: Life Class enrollment and the event
+   registration section. Flow-neutral name because the two wear it identically
+   — only the wording inside changes.
+   ------------------------------------------------------------- */
 
-.lifeclass-tab-button {
+.form-tab-button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2406,46 +2420,53 @@
         0 10px 24px rgba(26, 39, 68, 0.10);
 }
 
-.lifeclass-tab-button-label {
+@media (min-width: 768px) {
+  .form-tab-button {
+    width: 40% !important;
+  }
+
+}
+
+.form-tab-button-label {
     display: inline-flex;
     align-items: center;
     gap: 10px;
 }
 
-.lifeclass-tab-button-label i {
+.form-tab-button-label i {
     font-size: 16px;
     color: var(--color-primary-dark, #b8923f);
     transition: color 0.18s ease;
 }
 
-.lifeclass-tab-button > i {
+.form-tab-button > i {
     font-size: 12px;
     color: var(--color-primary-dark, #b8923f);
     transition: color 0.18s ease;
 }
 
-.lifeclass-tab-button:hover {
+.form-tab-button:hover {
     background: #fdf9f0;
     border-color: var(--color-primary, #d4a84b);
     transform: translateY(-1px);
 }
 
-.lifeclass-tab-button:focus-visible {
+.form-tab-button:focus-visible {
     outline: 2px solid var(--color-primary, #d4a84b);
     outline-offset: 2px;
 }
 
 /* Open state matches the panel it controls — navy card, gold accents — so the
    tab reads as the thing that opened it rather than a button left pressed. */
-.lifeclass-tab-button.is-active {
+.form-tab-button.is-active {
     background: linear-gradient(160deg, var(--color-navy, #1a2744) 0%,
         var(--color-navy-dark, #151e32) 100%);
     border-color: var(--color-primary, #d4a84b);
     color: #ffffff;
 }
 
-.lifeclass-tab-button.is-active .lifeclass-tab-button-label i,
-.lifeclass-tab-button.is-active > i {
+.form-tab-button.is-active .form-tab-button-label i,
+.form-tab-button.is-active > i {
     color: var(--color-primary, #d4a84b);
 }
 
@@ -2493,13 +2514,13 @@
         order: 1;
     }
 
-    .lifeclass-enrollment-page .lifeclass-sidebar .lifeclass-tab-button {
+    .lifeclass-enrollment-page .lifeclass-sidebar .form-tab-button {
         order: 2;
     }
 }
 
 @media (max-width: 640px) {
-    .lifeclass-tab-button {
+    .form-tab-button {
         padding: 12px 14px;
         font-size: 13px;
     }

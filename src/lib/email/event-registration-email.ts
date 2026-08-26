@@ -65,14 +65,15 @@ export function buildRegistrantEmail(data: RegistrationEmailData) {
   const count = names.length;
   const isGroup = count > 1;
   const primary = names[0] ?? 'Friend';
-  // The reference only rides along for someone who still owes a proof: their
-  // button is "Upload proof of payment", and it should land on the panel with
-  // nothing left to type. A booked registrant's button is "View event details".
-  const url = eventUrl(
-    data.eventSlug,
-    'event-complete',
-    data.proofProvided ? undefined : data.referenceNumber
-  );
+  // The reference — and the `#event-complete` hash with it — only ride along
+  // for someone who still owes a proof: their button is "Upload proof of
+  // payment", and it should land on the panel with nothing left to type. A
+  // booked registrant's button is "View event details", so it goes to the top
+  // of the page; the panel is collapsed behind its "Already Registered?" tab
+  // until asked for, so that hash would find nothing on their visit anyway.
+  const url = data.proofProvided
+    ? eventUrl(data.eventSlug)
+    : eventUrl(data.eventSlug, 'event-complete', data.referenceNumber);
 
   const subject = data.proofProvided
     ? `Your slot is booked — ${data.eventTitle} (${data.referenceNumber})`
