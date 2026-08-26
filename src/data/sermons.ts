@@ -8621,7 +8621,7 @@ Don't wait for darkness to arrive before you raise your weapon. Don't stop after
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'Life can bring us to moments where everything seems to fall apart at once. At the lowest point of his life, David had a choice: allow the situation to break him or find strength in the Lord.',
 
     description: `**FROM DESPAIR TO DESTINY**
@@ -9034,6 +9034,404 @@ Your situation can make you or break you. But when you surrender everything to G
         kicker: 'Weeping Has a Limit',
         verse: '1 Samuel 30:4',
         text: 'Then David and the people who were with him lifted up their voices and wept, until they had no more power to weep.',
+      },
+    ],
+  },
+  {
+    id: '39',
+    slug: 'graves-into-gardens',
+    title: 'Graves Into Gardens',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-08-23',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'There are seasons when life can feel like a grave—isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.',
+
+    description: `**GRAVES INTO GARDENS**
+
+Key text: Mark 5:19
+
+---
+
+There are seasons when life can feel like a grave—isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.
+
+Jesus met a man whom society had abandoned and restored him completely. He did not only deliver him from spiritual bondage; He restored his dignity, his identity, his relationships, and his purpose.
+
+The enemy's strategy is often isolation and self-destruction. God's answer is connection, restoration, and purpose.
+
+Jesus was intentional and strategic. After transforming this man's life, Jesus gave him an assignment: go home and tell others what God had done for him.
+
+One transformed life became a testimony that reached an entire community.
+
+God can take what looks like a grave and turn it into a garden.
+
+---
+
+**THE STRATEGY OF THE ENEMY**
+
+**1. Isolation**
+
+Isolation is more than simply being alone. It is being disconnected from the people and relationships that provide support, accountability, encouragement, and protection.
+
+Isolation strips a person from community and accountability, leaving them more vulnerable to discouragement, temptation, and destructive patterns.
+
+The enemy's plan is isolation, but God's antidote is connection.
+
+Scripture reminds us that two are better than one because when one falls, the other can help them up.
+
+(Ecclesiastes 4:10)
+
+We were never designed to walk through life completely alone. God places people around us to encourage, correct, strengthen, and remind us of His truth.
+
+---
+
+**2. Self-Destruction**
+
+When darkness dominates the mind, it can lead a person toward self-destructive behavior.
+
+The man in Mark 5 lived among the tombs, separated from society and unable to control his own actions. His condition reflected the devastating effects of spiritual bondage and isolation.
+
+But Jesus did not leave him in that condition.
+
+God's plan is not destruction but restoration.
+
+(Jeremiah 29:11)
+
+Even when someone has reached a place of deep brokenness, that does not mean their story is over.
+
+Isolation and self-destruction are not the end of the story when Jesus enters the picture.
+
+---
+
+**3 REASONS WHY WE NEED TO SHARE THE GOSPEL**
+
+(Mark 5:18)
+
+**1. You Are the Primary Witness to Your Own Transformation**
+
+"Go home to your own people and tell them how much the Lord has done for you, and how He has had mercy on you." (Mark 5:19)
+
+The man who had been delivered did not need a theological degree before he could become a witness.
+
+He had a story.
+
+He knew what his life was like before Jesus, and he knew what Jesus had done.
+
+That made him a living testimony.
+
+Your testimony is something no skeptic can easily argue against because you experienced it yourself.
+
+You have lived the transformation.
+
+You know what God has brought you through.
+
+You know the ways He has changed you.
+
+You know the mercy He has shown you.
+
+Your life can become a living witness to the power of the Gospel.
+
+We are called to live the life God has designed for us, not only for our own benefit but as a testimony to those around us.
+
+Your transformation is part of your testimony.
+
+---
+
+**2. People Are Terrified of Grace Until They See Its Fruit**
+
+"They came to Jesus and saw the man who had been possessed by the legion of demons, sitting there, dressed and in his right mind…" (Mark 5:15)
+
+The people who knew this man's past could now see the evidence of what Jesus had done.
+
+Grace can be difficult for people to understand until they see its fruit.
+
+When the power of God enters your life, it can disrupt the plans you once had for yourself. God's purpose may challenge your comfort, your habits, and even the direction you thought your life was going.
+
+The world can misunderstand God's holiness and grace, but a transformed life makes the Gospel tangible.
+
+When you step back into your community changed, people can see the Gospel through your life.
+
+You become a walking testimony.
+
+Your transformed life can make Jesus accessible and beautiful to people who may be afraid to approach Him on their own.
+
+The Gospel is not only something we preach.
+
+The Gospel is something we live.
+
+---
+
+**3. Someone Else's Freedom May Depend on Your Voice**
+
+Jesus told the man to return to his community and tell them what God had done for him.
+
+"Go home to your own people and tell them how much the Lord has done for you, and how He has had mercy on you." (Mark 5:19)
+
+The man obeyed.
+
+And his testimony became a witness to the surrounding region.
+
+We often underestimate what God can do through one person's story.
+
+Someone else's freedom may begin with your testimony.
+
+Someone else may need to hear how God restored you.
+
+Someone else may need to know that they are not beyond God's reach.
+
+You don't need to have every answer to become an effective witness for Christ.
+
+You simply need to be willing to tell the story of His mercy and grace in your life.
+
+Step out of your boat. Open your mouth. Tell your story.
+
+Jesus was intentional and strategic in reaching people. He knew that one transformed life could influence an entire community.
+
+We may never see the full potential of what God can accomplish through our testimony.
+
+But God is still in the business of transforming people.
+
+And He can use your story to help transform someone else's life.
+
+---
+
+**KEY TAKEAWAYS**
+
+* God's plan is connection; the enemy's strategy is isolation.
+* Isolation can remove accountability, community, and support.
+* Self-destruction is not the end of your story.
+* Jesus restores not only one area of our lives but the entirety of our being.
+* Our bodies are created for honor and are temples of the Holy Spirit.
+* Your transformation makes you a living witness to God's grace.
+* People may understand grace more clearly when they see its fruit in our lives.
+* You don't need all the answers to share the Gospel, you need a testimony.
+* Someone else's freedom may begin when you choose to share your story.
+* Never underestimate what God can do through one transformed life.
+* Do not allow isolation or self-neglect to rob you of the future God has prepared for you.
+
+"What looked like a grave became the place where Jesus revealed the beginning of a new life."
+
+---
+
+**CALL TO ACTION**
+
+Refuse to let isolation define your life.
+
+* Reconnect with people who can encourage and strengthen your faith.
+* Allow trusted believers to speak into your life with accountability and love.
+* Take care of the body and life God has entrusted to you.
+* Remember that your past does not determine your future.
+* Identify one person who needs to hear what God has done in your life.
+* Step out of your comfort zone and share your testimony.
+* Tell someone about the mercy and grace of Jesus.
+
+The man in Mark 5 went from living among the tombs to becoming a witness in his own community.
+
+Jesus can turn graves into gardens, brokenness into beauty, isolation into connection, and a painful past into a powerful testimony.
+
+Your story is not over.
+
+God is still in the business of transforming people and He may want to use your story to transform someone else's life.`,
+
+    tags: ['Testimony', 'Restoration', 'Gospel', 'Community', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/graves_to_garden.webp',
+    scriptures: [
+      {
+        verse: 'Mark 5:19',
+        text: 'However, Jesus did not permit him, but said to him, "Go home to your friends, and tell them what great things the Lord has done for you, and how He has had compassion on you."',
+      },
+      {
+        verse: 'Ecclesiastes 4:10',
+        text: 'For if they fall, one will lift up his companion. But woe to him who is alone when he falls, for he has no one to help him up.',
+      },
+      {
+        verse: 'Jeremiah 29:11',
+        text: 'For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope.',
+      },
+      {
+        verse: 'Mark 5:18',
+        text: 'And when He got into the boat, he who had been demon-possessed begged Him that he might be with Him.',
+      },
+      {
+        verse: 'Mark 5:15',
+        text: 'Then they came to Jesus, and saw the one who had been demon-possessed and had the legion, sitting and clothed and in his right mind. And they were afraid.',
+      },
+    ],
+    keyPoints: [
+      'Isolation',
+      'Self-Destruction',
+      'You Are the Primary Witness to Your Own Transformation',
+      'People Are Terrified of Grace Until They See Its Fruit',
+      "Someone Else's Freedom May Depend on Your Voice",
+    ],
+    relatedSermons: ['38', '37'],
+    keyVerse: 'Mark 5:19',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Graves Into Gardens',
+        unnumbered: true,
+        paragraphs: [
+          '**Key text: Mark 5:19**',
+          'There are seasons when life can feel like a grave—isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.',
+          'Jesus met a man whom society had abandoned and restored him completely. He did not only deliver him from spiritual bondage; He restored his dignity, his identity, his relationships, and his purpose.',
+          "The enemy's strategy is often isolation and self-destruction. God's answer is connection, restoration, and purpose.",
+          "Jesus was intentional and strategic. After transforming this man's life, Jesus gave him an assignment: go home and tell others what God had done for him.",
+          'One transformed life became a testimony that reached an entire community.',
+        ],
+        callout: 'God can take what looks like a grave and turn it into a garden.',
+      },
+      {
+        id: 'sec-isolation',
+        kicker: 'The Strategy of the Enemy',
+        title: 'Isolation',
+        paragraphs: [
+          'Isolation is more than simply being alone. It is being disconnected from the people and relationships that provide support, accountability, encouragement, and protection.',
+          'Isolation strips a person from community and accountability, leaving them more vulnerable to discouragement, temptation, and destructive patterns.',
+          'Scripture reminds us that two are better than one because when one falls, the other can help them up.',
+          '**Ecclesiastes 4:10**',
+          'We were never designed to walk through life completely alone. God places people around us to encourage, correct, strengthen, and remind us of His truth.',
+        ],
+        callout: "The enemy's plan is isolation, but God's antidote is connection.",
+      },
+      {
+        id: 'sec-self-destruction',
+        kicker: 'The Strategy of the Enemy',
+        title: 'Self-Destruction',
+        paragraphs: [
+          'When darkness dominates the mind, it can lead a person toward self-destructive behavior.',
+          'The man in Mark 5 lived among the tombs, separated from society and unable to control his own actions. His condition reflected the devastating effects of spiritual bondage and isolation.',
+          'But Jesus did not leave him in that condition.',
+          "God's plan is not destruction but restoration.",
+          '**Jeremiah 29:11**',
+          'Even when someone has reached a place of deep brokenness, that does not mean their story is over.',
+        ],
+        callout: 'Isolation and self-destruction are not the end of the story when Jesus enters the picture.',
+      },
+      {
+        id: 'sec-primary-witness',
+        kicker: '3 Reasons Why We Need to Share the Gospel',
+        title: 'You Are the Primary Witness to Your Own Transformation',
+        paragraphs: [
+          '**Mark 5:18**',
+          '*"Go home to your own people and tell them how much the Lord has done for you, and how He has had mercy on you."* (Mark 5:19)',
+          'The man who had been delivered did not need a theological degree before he could become a witness.',
+          'He had a story.',
+          'He knew what his life was like before Jesus, and he knew what Jesus had done.',
+          'That made him a living testimony.',
+          'Your testimony is something no skeptic can easily argue against because you experienced it yourself.',
+          'You have lived the transformation.',
+          'You know what God has brought you through.',
+          'You know the ways He has changed you.',
+          'You know the mercy He has shown you.',
+          'Your life can become a living witness to the power of the Gospel.',
+          'We are called to live the life God has designed for us, not only for our own benefit but as a testimony to those around us.',
+        ],
+        callout: 'Your transformation is part of your testimony.',
+      },
+      {
+        id: 'sec-grace-and-its-fruit',
+        kicker: '3 Reasons Why We Need to Share the Gospel',
+        title: 'People Are Terrified of Grace Until They See Its Fruit',
+        paragraphs: [
+          '*"They came to Jesus and saw the man who had been possessed by the legion of demons, sitting there, dressed and in his right mind…"* (Mark 5:15)',
+          "The people who knew this man's past could now see the evidence of what Jesus had done.",
+          'Grace can be difficult for people to understand until they see its fruit.',
+          "When the power of God enters your life, it can disrupt the plans you once had for yourself. God's purpose may challenge your comfort, your habits, and even the direction you thought your life was going.",
+          "The world can misunderstand God's holiness and grace, but a transformed life makes the Gospel tangible.",
+          'When you step back into your community changed, people can see the Gospel through your life.',
+          'You become a walking testimony.',
+          'Your transformed life can make Jesus accessible and beautiful to people who may be afraid to approach Him on their own.',
+          'The Gospel is not only something we preach.',
+        ],
+        callout: 'The Gospel is something we live.',
+      },
+      {
+        id: 'sec-someone-elses-freedom',
+        kicker: '3 Reasons Why We Need to Share the Gospel',
+        title: "Someone Else's Freedom May Depend on Your Voice",
+        paragraphs: [
+          'Jesus told the man to return to his community and tell them what God had done for him.',
+          '*"Go home to your own people and tell them how much the Lord has done for you, and how He has had mercy on you."* (Mark 5:19)',
+          'The man obeyed.',
+          'And his testimony became a witness to the surrounding region.',
+          "We often underestimate what God can do through one person's story.",
+          "Someone else's freedom may begin with your testimony.",
+          'Someone else may need to hear how God restored you.',
+          "Someone else may need to know that they are not beyond God's reach.",
+          "You don't need to have every answer to become an effective witness for Christ.",
+          'You simply need to be willing to tell the story of His mercy and grace in your life.',
+          'Step out of your boat. Open your mouth. Tell your story.',
+          'Jesus was intentional and strategic in reaching people. He knew that one transformed life could influence an entire community.',
+          'We may never see the full potential of what God can accomplish through our testimony.',
+          'But God is still in the business of transforming people.',
+        ],
+        callout: "And He can use your story to help transform someone else's life.",
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          '**Refuse to let isolation define your life.**',
+          'Reconnect with people who can encourage and strengthen your faith.',
+          'Allow trusted believers to speak into your life with accountability and love.',
+          'Take care of the body and life God has entrusted to you.',
+          'Remember that your past does not determine your future.',
+          'Identify one person who needs to hear what God has done in your life.',
+          'Step out of your comfort zone and share your testimony.',
+          'Tell someone about the mercy and grace of Jesus.',
+          'The man in Mark 5 went from living among the tombs to becoming a witness in his own community.',
+          'Jesus can turn graves into gardens, brokenness into beauty, isolation into connection, and a painful past into a powerful testimony.',
+          'Your story is not over.',
+          "God is still in the business of transforming people and He may want to use your story to transform someone else's life.",
+        ],
+        callout: 'What looked like a grave became the place where Jesus revealed the beginning of a new life.',
+      },
+    ],
+    keyTakeaways: [
+      "God's plan is connection; the enemy's strategy is isolation.",
+      'Isolation can remove accountability, community, and support.',
+      'Self-destruction is not the end of your story.',
+      'Jesus restores not only one area of our lives but the entirety of our being.',
+      'Our bodies are created for honor and are temples of the Holy Spirit.',
+      "Your transformation makes you a living witness to God's grace.",
+      'People may understand grace more clearly when they see its fruit in our lives.',
+      "You don't need all the answers to share the Gospel, you need a testimony.",
+      "Someone else's freedom may begin when you choose to share your story.",
+      'Never underestimate what God can do through one transformed life.',
+      'Do not allow isolation or self-neglect to rob you of the future God has prepared for you.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: 'Mark 5:19',
+        text: 'However, Jesus did not permit him, but said to him, "Go home to your friends, and tell them what great things the Lord has done for you, and how He has had compassion on you."',
+      },
+      {
+        kicker: 'Isolation',
+        verse: 'Ecclesiastes 4:10',
+        text: 'For if they fall, one will lift up his companion. But woe to him who is alone when he falls, for he has no one to help him up.',
+      },
+      {
+        kicker: 'Self-Destruction',
+        verse: 'Jeremiah 29:11',
+        text: 'For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope.',
+      },
+      {
+        kicker: '3 Reasons Why We Need to Share the Gospel',
+        verse: 'Mark 5:18',
+        text: 'And when He got into the boat, he who had been demon-possessed begged Him that he might be with Him.',
+      },
+      {
+        kicker: 'People Are Terrified of Grace Until They See Its Fruit',
+        verse: 'Mark 5:15',
+        text: 'Then they came to Jesus, and saw the one who had been demon-possessed and had the legion, sitting and clothed and in his right mind. And they were afraid.',
       },
     ],
   },
