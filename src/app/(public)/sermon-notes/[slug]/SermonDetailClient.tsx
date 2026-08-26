@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { LandingHeader, LandingFooter, ShareModal, ProjectBanner } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
 import { Event } from '@/data/events';
-import { parseSermonSections, deriveBookBadge, estimateReadingMinutes, slugifySectionId } from '@/lib/sermon-parser';
+import { parseSermonSections, deriveBookBadge, slugifySectionId } from '@/lib/sermon-parser';
 
 interface Props {
   sermon: Sermon;
@@ -113,7 +113,7 @@ function SermonHeroTitle({ sermon }: { sermon: Sermon }) {
 // ---------------------------------------------------------------------------
 // Hero Meta Row
 // ---------------------------------------------------------------------------
-function SermonMetaRow({ sermon, readingMinutes }: { sermon: Sermon; readingMinutes: number }) {
+function SermonMetaRow({ sermon }: { sermon: Sermon }) {
   const formattedDate = new Date(sermon.date).toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -130,7 +130,7 @@ function SermonMetaRow({ sermon, readingMinutes }: { sermon: Sermon; readingMinu
         </svg>
         <span>
           <strong>{sermon.speaker}</strong>
-          {sermon.speakerRole}
+          <span className="sermon-hero__meta-label">{sermon.speakerRole}</span>
         </span>
       </div>
 
@@ -145,15 +145,6 @@ function SermonMetaRow({ sermon, readingMinutes }: { sermon: Sermon; readingMinu
         <span><strong>{formattedDate}</strong></span>
       </div>
 
-      {/* Duration + reading time */}
-      <div className="sermon-hero__meta-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
-        <span><strong>{sermon.duration}</strong> · {readingMinutes} min read</span>
-      </div>
-
       {/* Key verse */}
       {sermon.keyVerse && (
         <div className="sermon-hero__meta-item">
@@ -161,7 +152,9 @@ function SermonMetaRow({ sermon, readingMinutes }: { sermon: Sermon; readingMinu
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
           </svg>
-          <span><strong>{sermon.keyVerse}</strong> Key Verse</span>
+          <span>
+            <strong>{sermon.keyVerse}</strong>
+          </span>
         </div>
       )}
     </div>
@@ -621,19 +614,6 @@ export default function SermonDetailClient({
     [sermon.scriptureGroups, sermon.scriptures]
   );
 
-  // ---- Reading minutes (all text combined) ----
-  const readingMinutes = useMemo(() => {
-    const allText = [
-      ...sections.flatMap((s) => [
-        ...s.paragraphs,
-        ...(s.subItems ?? []).map((item) => item.text),
-      ]),
-      ...blessings.map((b) => b.text),
-      ...keyTakeaways,
-    ].join(' ');
-    return estimateReadingMinutes(allText);
-  }, [sections, blessings, keyTakeaways]);
-
   // ---- Scroll-spy TOC ----
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -684,7 +664,7 @@ export default function SermonDetailClient({
               <SermonEyebrow series={sermon.series} number={sermon.seriesNumber} />
               <SermonHeroTitle sermon={sermon} />
               <p className="sermon-hero__deck">{sermon.excerpt}</p>
-              <SermonMetaRow sermon={sermon} readingMinutes={readingMinutes} />
+              <SermonMetaRow sermon={sermon} />
             </div>
             <HeroArtwork sermon={sermon} />
           </div>

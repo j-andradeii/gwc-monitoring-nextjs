@@ -41,7 +41,6 @@
   --hero-ink: rgba(255, 255, 255, 0.80);
   --hero-ink-dim: rgba(255, 255, 255, 0.66);
   --hero-rule: rgba(255, 255, 255, 0.16);
-  --hero-surface: rgba(255, 255, 255, 0.08);
 
   position: relative;
   isolation: isolate;
@@ -216,12 +215,12 @@
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Meta — glass chips, blurred so they hold up over any artwork. */
+/* Meta — plain icon + text, set directly on the hero artwork. */
 .sermon-hero__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  align-items: stretch;
+  gap: 10px 26px;
+  align-items: center;
   padding-top: 28px;
   border-top: 1px solid var(--hero-rule);
 }
@@ -230,15 +229,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 15px;
-  border-radius: 10px;
-  background: var(--hero-surface);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   color: var(--hero-ink);
   font-size: 13.5px;
   line-height: 1.35;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
 }
 
 .sermon-hero__meta-item svg {
@@ -252,6 +246,18 @@
   color: #fff;
   font-weight: 700;
   margin-right: 4px;
+}
+
+/* Secondary labels (speaker role, "Key Verse") — dropped on mobile so the
+   meta row stays to one value per item. */
+@media (max-width: 768px) {
+  .sermon-hero__meta-label {
+    display: none;
+  }
+
+  .sermon-hero__meta-item strong {
+    margin-right: 0;
+  }
 }
 
 .sermon-hero__layout {
