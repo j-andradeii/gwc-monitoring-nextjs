@@ -23,7 +23,8 @@ export function ConnectFab() {
     const [activeTab, setActiveTab] = useState<'prayer' | 'join'>('prayer');
     const pathname = usePathname();
     const isEventDetailRoute = pathname.startsWith('/events/') && pathname !== '/events/vip-form';
-    const isFabHiddenRoute = pathname === '/give/ways-to-give';
+    const isSermonNoteDetailRoute = pathname.startsWith('/sermon-notes/');
+    const isFabHiddenRoute = pathname === '/give/ways-to-give' || isSermonNoteDetailRoute;
 
     const methods = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
