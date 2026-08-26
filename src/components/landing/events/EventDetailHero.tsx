@@ -21,6 +21,19 @@ export function EventDetailHero({ event, onJoinEvent, onShareEvent }: Props) {
 
   return (
     <section className="event-detail-hero">
+      {/* The event's own artwork, blurred down to ambient texture. */}
+      <div className="event-detail-hero__backdrop" aria-hidden="true">
+        <Image
+          src={event.image}
+          alt=""
+          fill
+          sizes="100vw"
+          quality={35}
+          className="event-detail-hero__backdrop-img"
+          priority
+        />
+      </div>
+
       <div className="landing-container">
         <nav className="event-detail-breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link>
@@ -41,13 +54,22 @@ export function EventDetailHero({ event, onJoinEvent, onShareEvent }: Props) {
             <div className="event-detail-hero__meta" aria-label="Event summary">
               <div className="event-detail-hero__meta-item">
                 <i className="pi pi-calendar" aria-hidden="true" />
-                <span><strong>{event.day}, {dateLabel}</strong>Date</span>
+                <span>
+                  <strong>{event.day}, {dateLabel}</strong>
+                  <span className="event-detail-hero__meta-label">Date</span>
+                </span>
               </div>
               <div className="event-detail-hero__meta-item">
                 <i className="pi pi-clock" aria-hidden="true" />
-                <span><strong>{event.time}</strong>Time</span>
-                {event.time_sub_label && <span><strong>({event.time_sub_label})</strong></span>}
-
+                <span>
+                  <strong>
+                    {event.time}
+                    {event.time_sub_label && (
+                      <span className="event-detail-hero__meta-note">({event.time_sub_label})</span>
+                    )}
+                  </strong>
+                  <span className="event-detail-hero__meta-label">Time</span>
+                </span>
               </div>
               {isGoldenPeak ? (
                 <a
@@ -58,18 +80,27 @@ export function EventDetailHero({ event, onJoinEvent, onShareEvent }: Props) {
                   aria-label={`Open ${event.location} in Google Maps`}
                 >
                   <i className="pi pi-map-marker" aria-hidden="true" />
-                  <span><strong>{event.location}</strong>Location</span>
+                  <span>
+                    <strong>{event.location}</strong>
+                    <span className="event-detail-hero__meta-label">Location</span>
+                  </span>
                 </a>
               ) : (
                 <div className="event-detail-hero__meta-item">
                   <i className="pi pi-map-marker" aria-hidden="true" />
-                  <span><strong>{event.location}</strong>Location</span>
+                  <span>
+                    <strong>{event.location}</strong>
+                    <span className="event-detail-hero__meta-label">Location</span>
+                  </span>
                 </div>
               )}
               {event.registration_fee && (
                 <div className="event-detail-hero__meta-item">
                   <i className="pi pi-money-bill" aria-hidden="true" />
-                  <span><strong>{event.registration_fee}</strong>Registration Fee</span>
+                  <span>
+                    <strong>{event.registration_fee}</strong>
+                    <span className="event-detail-hero__meta-label">Registration fee</span>
+                  </span>
                 </div>
               )}
             </div>
@@ -86,32 +117,34 @@ export function EventDetailHero({ event, onJoinEvent, onShareEvent }: Props) {
             </div>
           </div>
 
-          <figure className="event-detail-hero__artwork">
-            <Image
-              src={event.image}
-              alt={event.title}
-              fill
-              sizes="(max-width: 1023px) 100vw, 48vw"
-              className="event-detail-hero__artwork-img"
-              priority
-            />
-            <figcaption className="event-detail-hero__date" aria-label={dateLabel}>
-              <span>{dateDay}</span>
-              <strong>{dateMonth}</strong>
-            </figcaption>
-            {isGoldenPeak ? (
-              <a
-                className="event-detail-hero__map-link"
-                href={CONTACT_INFO.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${event.location} in Google Maps`}
-              >
-                <i className="pi pi-map-marker" aria-hidden="true" />
-                View map
-              </a>
-            ) : null}
-          </figure>
+          <div className="event-detail-hero__artwork-wrap">
+            <figure className="event-detail-hero__artwork">
+              <Image
+                src={event.image}
+                alt={event.title}
+                fill
+                sizes="(max-width: 1023px) 100vw, 44vw"
+                className="event-detail-hero__artwork-img"
+                priority
+              />
+              <figcaption className="event-detail-hero__date" aria-label={dateLabel}>
+                <span>{dateDay}</span>
+                <strong>{dateMonth}</strong>
+              </figcaption>
+              {isGoldenPeak ? (
+                <a
+                  className="event-detail-hero__map-link"
+                  href={CONTACT_INFO.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${event.location} in Google Maps`}
+                >
+                  <i className="pi pi-map-marker" aria-hidden="true" />
+                  View map
+                </a>
+              ) : null}
+            </figure>
+          </div>
         </div>
       </div>
     </section>
