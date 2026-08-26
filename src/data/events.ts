@@ -355,7 +355,7 @@ Tag your movie buddy, scan the QR code, and save your seat. We can’t wait to s
     category: 'Fellowship',
     isFeatured: false,
     type: GatewayEventType.FELLOWSHIP,
-    is_event_finished: false,
+    is_event_finished: true,
     gallery: [
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/1.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/2.webp',
@@ -385,7 +385,7 @@ We will go and make disciples! We are ready to give our all! 🔥
     category: 'Training',
     isFeatured: false,
     type: GatewayEventType.G12_CONFERENCE,
-    is_event_finished: false,
+    is_event_finished: true,
     gallery: [
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/campus_leaders.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/campus_rev/theme.webp'
