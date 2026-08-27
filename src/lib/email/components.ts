@@ -37,6 +37,23 @@ export const SANS =
 export const MONO = "'SFMono-Regular',Consolas,'Courier New',monospace";
 
 /**
+ * The gold wordmark, opening every email the way the site opens.
+ *
+ * Blob-hosted rather than inlined: a data URI this size is stripped or turned
+ * into an attachment by several clients, and a remote src is the only form
+ * Gmail's image proxy will cache.
+ *
+ * Source is 659x415, with generous whitespace baked around the glyph — hence
+ * 160px, which holds the mark at the weight of the headline beneath it while
+ * staying well inside the card's 520px column. The height is stated as an
+ * attribute too, because Outlook sizes from the attributes and ignores the CSS.
+ */
+export const LOGO_URL =
+  'https://gtxngthtpisigkys.public.blob.vercel-storage.com/gwc-logo-full.webp';
+const LOGO_WIDTH = 160;
+const LOGO_HEIGHT = 101;
+
+/**
  * Names and event titles are registrant-supplied and land inside markup — a
  * last name of `<script>` must not become one.
  */
@@ -68,7 +85,7 @@ export function eventUrl(eventSlug: string, hash?: string, reference?: string): 
 /**
  * Outer document. `preheader` is the grey line inboxes show next to the
  * subject — left unset it fills with whatever text comes first, which here
- * would be the "GATEWAY CHURCH" wordmark.
+ * would be the logo's "Gateway Church" alt text.
  */
 export function shell(title: string, preheader: string, content: string): string {
   return `<!DOCTYPE html>
@@ -111,12 +128,20 @@ ${content}
 </html>`;
 }
 
-/** Gold wordmark + headline — the receipt image opens the same way. */
+/**
+ * Gold wordmark + headline — the receipt image opens the same way.
+ *
+ * The logo carries the church's name, so the alt text is styled to match the
+ * tracked wordmark it replaces: Outlook for Windows blocks remote images by
+ * default and renders WebP not at all, and in both cases what's left is the
+ * alt string. Styled this way it reads as the wordmark rather than as a
+ * broken image.
+ */
 export function header(headline: string, sublineHtml?: string): string {
   return `        <tr>
-          <td class="gwc-pad" style="padding:36px 40px 0 40px;font-family:${SANS};">
-            <div style="font-size:12px;font-weight:800;letter-spacing:2.4px;color:${GOLD_DARK};text-transform:uppercase;">Gateway Church</div>
-            <h1 class="gwc-title" style="margin:14px 0 0 0;font-size:30px;line-height:1.2;font-weight:800;color:${NAVY};">${escapeHtml(headline)}</h1>
+          <td class="gwc-pad" style="padding:32px 40px 0 40px;font-family:${SANS};">
+            <img src="${LOGO_URL}" alt="Gateway Church" width="${LOGO_WIDTH}" height="${LOGO_HEIGHT}" style="display:block;width:${LOGO_WIDTH}px;max-width:${LOGO_WIDTH}px;height:auto;border:0;outline:none;text-decoration:none;font-family:${SANS};font-size:12px;font-weight:800;letter-spacing:2.4px;color:${GOLD_DARK};text-transform:uppercase;">
+            <h1 class="gwc-title" style="margin:16px 0 0 0;font-size:30px;line-height:1.2;font-weight:800;color:${NAVY};">${escapeHtml(headline)}</h1>
             ${sublineHtml ? `<div style="margin-top:10px;font-size:15px;line-height:1.6;color:${MUTED};">${sublineHtml}</div>` : ''}
           </td>
         </tr>`;
