@@ -674,6 +674,15 @@
    HERO CAROUSEL SECTION - Custom Implementation
    =========================================== */
 .hero-carousel-section {
+  /* Same tokens the sermon and event detail heroes use — the sermon slide
+     below borrows their photographic treatment, so the values live where
+     both the background layer and the banner can read them. */
+  --hero-scrim: 14, 12, 16;              /* neutral near-black, faintly warm */
+  --hero-gold: 212, 168, 75;             /* --color-primary channels */
+
+  --hero-ink: rgba(255, 255, 255, 0.80);
+  --hero-rule: rgba(255, 255, 255, 0.16);
+
   position: relative;
   min-height: 75vh;
   margin-top: 0;
@@ -959,12 +968,49 @@
    adapted for the landing carousel. All GWC tokens.
    =========================================== */
 
-/* Branded navy backdrop for the sermon slide (no full-bleed photo) */
+/* Photographic backdrop for the sermon slide — mirrors `.sermon-hero`: the
+   sermon artwork IS the background, blurred to ambient texture under a
+   neutral near-black scrim, so each sermon takes its mood from its own
+   image instead of a flat brand gradient. */
 .hero-slide-bg--sermon {
+  background: rgb(var(--hero-scrim));
+}
+
+.hero-slide-bg__backdrop {
+  position: absolute;
+  inset: -60px;                          /* bleed, so the blur has no soft edge */
+  pointer-events: none;
+}
+
+.hero-slide-bg__backdrop-img {
+  object-fit: cover;
+  object-position: center 35%;
+  filter: blur(34px) saturate(1.25);
+  transform: scale(1.06);
+}
+
+/* Scrim — heaviest under the type, lifting toward the artwork card on the
+   right so the photograph stays visible there. Generated last, so it paints
+   over both the backdrop image and the slide overlay. */
+.hero-slide-bg--sermon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background:
-    radial-gradient(circle at 80% 25%, rgba(212, 168, 75, 0.16) 0%, transparent 45%),
-    radial-gradient(circle at 12% 85%, rgba(74, 60, 110, 0.28) 0%, transparent 55%),
-    linear-gradient(155deg, #22335a 0%, var(--color-navy) 55%, #121b30 100%);
+    linear-gradient(
+      100deg,
+      rgba(var(--hero-scrim), 0.90) 0%,
+      rgba(var(--hero-scrim), 0.84) 38%,
+      rgba(var(--hero-scrim), 0.55) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--hero-scrim), 0.30) 0%,
+      transparent 35%,
+      rgba(var(--hero-scrim), 0.35) 100%
+    ),
+    radial-gradient(ellipse 55% 45% at 84% 24%, rgba(var(--hero-gold), 0.09) 0%, transparent 65%);
 }
 
 .hero-sermon-banner {
@@ -975,8 +1021,8 @@
   margin: 0 auto;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: 1fr minmax(340px, 500px);
-  gap: 56px;
+  grid-template-columns: 1fr minmax(320px, 460px);
+  gap: 48px;
   align-items: center;
 }
 
@@ -989,21 +1035,35 @@
   min-width: 0;
 }
 
+/* Gold pill with a lit dot — `.sermon-hero__eyebrow` on the detail page. */
 .hero-sermon-banner__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 12px;
+  gap: 9px;
+  padding: 7px 16px 7px 12px;
+  border-radius: 999px;
+  background: rgba(var(--hero-gold), 0.14);
+  border: 1px solid rgba(var(--hero-gold), 0.34);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: 18px;
+  color: var(--color-primary-light);
+  margin-bottom: 22px;
   animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
 }
 
-.hero-sermon-banner__eyebrow i {
-  font-size: 13px;
+.hero-sermon-banner__eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--hero-gold), 0.20);
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .hero-sermon-banner__eyebrow-sep {
@@ -1011,15 +1071,27 @@
 }
 
 .hero-sermon-banner__title {
-  font-size: clamp(34px, 4.4vw, 56px);
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -1.6px;
+  line-height: 1.04;
+  letter-spacing: -2px;
   text-transform: uppercase;
   color: #ffffff;
-  margin: 0 0 18px;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  margin: 0 0 22px;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
   animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+}
+
+/* The accented word, set in serif italic gold — `.sermon-hero__title em`. */
+.hero-sermon-banner__title em {
+  font-style: italic;
+  font-family: var(--font-serif, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -1.5px;
+  color: var(--color-primary-light);
 }
 
 /* Length tiers (set from HeroSection.tsx by character count) so a long
@@ -1037,38 +1109,44 @@
 }
 
 .hero-sermon-banner__deck {
-  font-size: 17px;
-  line-height: 1.6;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.82);
-  max-width: 540px;
-  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.65;
+  color: var(--hero-ink);
+  max-width: 560px;
+  margin: 0 0 32px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
   /* Cap the excerpt (some run 250+ chars) so the banner height stays bounded
-     and the hero doesn't resize between slides; mobile clamps tighter to 2. */
+     and the hero doesn't resize between slides; mobile clamps tighter to 2.
+     The detail hero has no such cap — it isn't sharing a frame with a
+     welcome slide of a fixed height. */
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
 }
 
+/* Meta — plain icon + text over a hairline rule, as on the detail hero. */
 .hero-sermon-banner__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 24px;
+  gap: 10px 26px;
   align-items: center;
-  margin: 24px 0 26px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin: 0 0 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hero-rule);
   animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
 }
 
 .hero-sermon-banner__meta-item {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.35;
+  color: var(--hero-ink);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
 }
 
 .hero-sermon-banner__meta-item i {
@@ -1081,84 +1159,82 @@
   font-weight: 700;
 }
 
+/* Secondary label (speaker role) — `.sermon-hero__meta-label`. */
+.hero-sermon-banner__meta-label {
+  margin-left: 4px;
+  color: rgba(255, 255, 255, 0.66);
+  text-transform: capitalize;
+}
+
 .hero-sermon-banner .landing-btn {
   margin-top: 4px;
   animation: heroSlideElementIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 400ms both;
 }
 
-/* Contained artwork card (was the full-bleed background) */
-.hero-sermon-banner__artwork {
+/* Artwork card — the sharp copy of what's blurred behind it, framed by the
+   offset gold plate from the detail hero. The plate lives on the wrap
+   because the card itself clips to its own rounded corners. */
+.hero-sermon-banner__artwork-wrap {
   position: relative;
-  display: block;
-  aspect-ratio: 16 / 9;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--color-navy);
-  border: 1px solid rgba(212, 168, 75, 0.30);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   animation: heroSlideElementIn 800ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
 }
 
-/* Keep the full designed title-card image undimmed; only shade the
-   bottom-right corner enough for the play badge to stay legible. */
-.hero-sermon-banner__artwork::after {
+.hero-sermon-banner__artwork-wrap::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at bottom right, rgba(18, 27, 48, 0.55) 0%, transparent 42%);
+  transform: translate(14px, 14px);
+  border: 1px solid rgba(var(--hero-gold), 0.40);
+  border-radius: 18px;
   pointer-events: none;
 }
 
+.hero-sermon-banner__artwork {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgb(var(--hero-scrim));
+  box-shadow:
+    0 34px 64px -20px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 0 6px rgba(var(--hero-gold), 0.07);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Unlike the detail hero's card, this one is a link — it keeps a hover lift. */
 .hero-sermon-banner__artwork:hover {
   transform: translateY(-6px);
-  box-shadow: 0 42px 90px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(212, 168, 75, 0.5);
+  box-shadow:
+    0 42px 90px -20px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(255, 255, 255, 0.22),
+    0 0 0 6px rgba(var(--hero-gold), 0.16);
 }
 
 .hero-sermon-banner__artwork:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.6), 0 30px 70px rgba(0, 0, 0, 0.45);
+  box-shadow:
+    0 0 0 3px rgba(var(--hero-gold), 0.60),
+    0 34px 64px -20px rgba(0, 0, 0, 0.65);
 }
 
-/* contain (not cover) guarantees the whole designed title card is shown
-   with no cropping, regardless of the source image's ratio. */
 .hero-sermon-banner__artwork-img {
-  object-fit: contain;
-  object-position: center;
-}
-
-.hero-sermon-banner__play {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  z-index: 2;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: rgba(212, 168, 75, 0.92);
-  color: var(--color-navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
-}
-
-.hero-sermon-banner__play i {
-  margin-left: 3px;
-}
-
-.hero-sermon-banner__artwork:hover .hero-sermon-banner__play {
-  transform: scale(1.08);
-  background: var(--color-primary);
+  object-fit: cover;
+  object-position: center top;
 }
 
 /* Tablet */
 @media (max-width: 1024px) {
   .hero-sermon-banner {
     gap: 36px;
-    grid-template-columns: 1fr minmax(300px, 420px);
+    grid-template-columns: 1fr minmax(280px, 380px);
+  }
+
+  /* The offset plate would clip against the container edge here — the detail
+     hero drops it at its own stacking breakpoint for the same reason. */
+  .hero-sermon-banner__artwork-wrap::before {
+    display: none;
   }
 }
 
@@ -1170,6 +1246,20 @@
        without the poster sliding under the header. */
     padding: 78px 16px 56px;
     align-items: center;
+  }
+
+  /* The type centres under the artwork here rather than sitting in a left
+     column, so the scrim goes vertical — the diagonal one lifts to 0.55
+     exactly where centred type would land. */
+  .hero-slide-bg--sermon::after {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(var(--hero-scrim), 0.74) 0%,
+        rgba(var(--hero-scrim), 0.86) 46%,
+        rgba(var(--hero-scrim), 0.92) 100%
+      ),
+      radial-gradient(ellipse 70% 40% at 50% 18%, rgba(var(--hero-gold), 0.10) 0%, transparent 65%);
   }
 
   .hero-sermon-banner {
@@ -1187,27 +1277,24 @@
     align-items: center;
   }
 
-  .hero-sermon-banner__artwork {
+  .hero-sermon-banner__artwork-wrap {
     order: -1;
-    aspect-ratio: 16 / 9;
     width: 100%;
     max-width: 272px;
     margin: 0 auto;
+  }
+
+  .hero-sermon-banner__artwork {
+    aspect-ratio: 16 / 10;
     border-radius: 16px;
   }
 
-  .hero-sermon-banner__play {
-    width: 46px;
-    height: 46px;
-    font-size: 15px;
-    bottom: 10px;
-    right: 10px;
-  }
-
   .hero-sermon-banner__eyebrow {
-    justify-content: center;
-    margin-bottom: 6px;
-    font-size: 11px;
+    gap: 7px;
+    padding: 5px 12px 5px 9px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 1.6px;
   }
 
   .hero-sermon-banner__title {
@@ -1233,6 +1320,7 @@
     margin: 0 auto;
     max-width: 340px;
     display: -webkit-box;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -1241,12 +1329,19 @@
   .hero-sermon-banner__meta {
     justify-content: center;
     gap: 6px 14px;
-    margin: 12px 0 12px;
+    margin: 12px 0 14px;
     padding-top: 10px;
   }
 
   .hero-sermon-banner__meta-item {
+    gap: 7px;
     font-size: 12.5px;
+  }
+
+  /* One value per item so the row stays short enough for the clamped mobile
+     hero — the detail hero drops its secondary labels here for the same reason. */
+  .hero-sermon-banner__meta-label {
+    display: none;
   }
 }
 
@@ -1257,7 +1352,7 @@
   .hero-sermon-banner__deck,
   .hero-sermon-banner__meta,
   .hero-sermon-banner .landing-btn,
-  .hero-sermon-banner__artwork {
+  .hero-sermon-banner__artwork-wrap {
     animation: none !important;
   }
 
@@ -1266,10 +1361,6 @@
   }
 
   .hero-sermon-banner__artwork:hover {
-    transform: none;
-  }
-
-  .hero-sermon-banner__artwork:hover .hero-sermon-banner__play {
     transform: none;
   }
 }

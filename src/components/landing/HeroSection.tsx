@@ -7,14 +7,23 @@ import { sermons } from '../../data/sermons';
 
 type SlideType = 'welcome' | 'campaign' | 'sermon';
 
+// The subset of a Sermon the hero slide needs — the same facts the sermon
+// detail hero leads with, so the two read as one system.
 interface SermonBannerData {
   series: string;
+  seriesNumber?: number;
   speaker: string;
   speakerRole?: string;
   date: string;
-  duration: string;
   image: string;
   excerpt: string;
+  keyVerse?: string;
+  /** Split title — the accented word is set in serif italic, as on the detail hero. */
+  subtitle?: {
+    prefix: string;
+    italic: string;
+    suffix?: string;
+  };
 }
 
 interface HeroSlideData {
@@ -76,6 +85,36 @@ const sermonTitleSizeClass = (title: string) => {
   return '';
 };
 
+// "Vision · Sermon 07" — the label the detail hero's eyebrow builds.
+const sermonSeriesLabel = (series: string, number?: number) =>
+  number ? `${series} · Sermon ${String(number).padStart(2, '0')}` : series;
+
+// Title with the optional serif-italic split, mirroring the detail hero's
+// SermonHeroTitle. Sermons with no `subtitle` fall back to the plain title.
+const HeroSermonTitle: React.FC<{ title: string; subtitle?: SermonBannerData['subtitle'] }> = ({
+  title,
+  subtitle,
+}) => {
+  // Size the type off the text that actually renders, not the raw title.
+  const rendered = subtitle
+    ? [subtitle.prefix, subtitle.italic, subtitle.suffix].filter(Boolean).join(' ')
+    : title;
+  const className = `hero-sermon-banner__title${sermonTitleSizeClass(rendered)}`;
+
+  if (!subtitle) {
+    return <h1 className={className}>{title}</h1>;
+  }
+
+  return (
+    <h1 className={className}>
+      {subtitle.prefix}
+      {' '}
+      <em>{subtitle.italic}</em>
+      {subtitle.suffix ? <>{' '}{subtitle.suffix}</> : null}
+    </h1>
+  );
+};
+
 interface HeroSermonBannerProps {
   slide: HeroSlideData;
   isTransitioning: boolean;
@@ -89,29 +128,36 @@ const HeroSermonBanner: React.FC<HeroSermonBannerProps> = ({ slide, isTransition
     <div className={`hero-sermon-banner ${isTransitioning ? 'transitioning' : ''}`}>
       <div className="hero-sermon-banner__text">
         <span className="hero-sermon-banner__eyebrow">
-          <i className="pi pi-bookmark" aria-hidden="true"></i>
           {slide.badge}
           <span className="hero-sermon-banner__eyebrow-sep" aria-hidden="true">·</span>
-          {sermon.series}
+          {sermonSeriesLabel(sermon.series, sermon.seriesNumber)}
         </span>
 
-        <h1 className={`hero-sermon-banner__title${sermonTitleSizeClass(slide.title)}`}>{slide.title}</h1>
+        <HeroSermonTitle title={slide.title} subtitle={sermon.subtitle} />
 
         <p className="hero-sermon-banner__deck">{sermon.excerpt}</p>
 
+        {/* The same three facts the detail hero leads with: who, when, key verse. */}
         <div className="hero-sermon-banner__meta">
           <span className="hero-sermon-banner__meta-item">
             <i className="pi pi-user" aria-hidden="true"></i>
-            <strong>{sermon.speaker}</strong>
+            <span>
+              <strong>{sermon.speaker}</strong>
+              {sermon.speakerRole && (
+                <span className="hero-sermon-banner__meta-label">{sermon.speakerRole}</span>
+              )}
+            </span>
           </span>
           <span className="hero-sermon-banner__meta-item">
             <i className="pi pi-calendar" aria-hidden="true"></i>
             {formatSermonDate(sermon.date)}
           </span>
-          <span className="hero-sermon-banner__meta-item">
-            <i className="pi pi-clock" aria-hidden="true"></i>
-            {sermon.duration}
-          </span>
+          {sermon.keyVerse && (
+            <span className="hero-sermon-banner__meta-item">
+              <i className="pi pi-book" aria-hidden="true"></i>
+              <strong>{sermon.keyVerse}</strong>
+            </span>
+          )}
         </div>
 
         <Link href={slide.cta.href} className="landing-btn landing-btn-primary">
@@ -120,22 +166,22 @@ const HeroSermonBanner: React.FC<HeroSermonBannerProps> = ({ slide, isTransition
         </Link>
       </div>
 
-      <Link
-        href={slide.cta.href}
-        className="hero-sermon-banner__artwork"
-        aria-label={`Open sermon notes: ${slide.title}`}
-      >
-        <Image
-          src={sermon.image}
-          alt={slide.title}
-          fill
-          sizes="(max-width: 768px) 92vw, 500px"
-          className="hero-sermon-banner__artwork-img"
-        />
-        <span className="hero-sermon-banner__play" aria-hidden="true">
-          <i className="pi pi-play"></i>
-        </span>
-      </Link>
+      {/* The wrap carries the offset gold plate; the card clips its own image. */}
+      <div className="hero-sermon-banner__artwork-wrap">
+        <Link
+          href={slide.cta.href}
+          className="hero-sermon-banner__artwork"
+          aria-label={`Open sermon notes: ${slide.title}`}
+        >
+          <Image
+            src={sermon.image}
+            alt={slide.title}
+            fill
+            sizes="(max-width: 768px) 92vw, 460px"
+            className="hero-sermon-banner__artwork-img"
+          />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -165,14 +211,19 @@ const heroSlides: HeroSlideData[] = [
     subtitle: latestSermon.excerpt,
     backgroundImage: '',
     overlayGradient: '',
+    // `seriesNumber`, `subtitle` and `keyVerse` are optional in the sermon data:
+    // entries that carry them get the detail hero's numbered eyebrow, split
+    // italic title and key-verse meta; older ones fall back gracefully.
     sermon: {
       series: latestSermon.series,
+      seriesNumber: latestSermon.seriesNumber,
       speaker: latestSermon.speaker,
       speakerRole: latestSermon.speakerRole,
       date: latestSermon.date,
-      duration: latestSermon.duration,
       image: latestSermon.image,
       excerpt: latestSermon.excerpt,
+      keyVerse: latestSermon.keyVerse,
+      subtitle: latestSermon.subtitle,
     },
     cta: {
       label: 'Read Sermon Notes',
@@ -220,6 +271,21 @@ export const HeroSection: React.FC = () => {
           className={`hero-slide-bg ${slide.type === 'sermon' && !slide.backgroundImage ? 'hero-slide-bg--sermon' : ''} ${index === activeIndex ? 'active' : ''}`}
           style={slide.backgroundImage ? { backgroundImage: `url('${slide.backgroundImage}')` } : undefined}
         >
+          {/* The sermon's own artwork, blurred to ambient texture — the same
+              backdrop the sermon detail hero uses, so the slide takes its mood
+              from its own image rather than a flat brand gradient. */}
+          {slide.type === 'sermon' && slide.sermon && (
+            <div className="hero-slide-bg__backdrop" aria-hidden="true">
+              <Image
+                src={slide.sermon.image}
+                alt=""
+                fill
+                sizes="100vw"
+                quality={35}
+                className="hero-slide-bg__backdrop-img"
+              />
+            </div>
+          )}
           <div className="hero-slide-overlay" style={{ background: slide.overlayGradient }} />
         </div>
       ))}
