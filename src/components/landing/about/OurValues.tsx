@@ -48,7 +48,7 @@ const coreValues: ValueItem[] = [
   {
     icon: 'pi pi-book',
     title: 'I Love Training & Equipping',
-    description: 'Training is my happy hour—I pursue continuous growth.',
+    description: 'Training is my happy hour. I pursue continuous growth.',
   },
   {
     icon: 'pi pi-sitemap',
@@ -113,7 +113,7 @@ const beliefs: BeliefItem[] = [
     title: 'The Ordinances of the Church',
     summary: 'Baptism and Communion commanded by Christ.',
     description:
-      'Baptism in Water: The ordinance of baptism by immersion is commanded by the Scriptures. All who repent and believe on Christ as Savior and Lord are to be baptized. Holy Communion: The Lord\'s Supper, consisting of the elements—bread and the fruit of the vine—is the symbol expressing our sharing the divine nature of our Lord Jesus Christ.',
+      'Baptism in Water: The ordinance of baptism by immersion is commanded by the Scriptures. All who repent and believe on Christ as Savior and Lord are to be baptized. Holy Communion: The Lord\'s Supper, consisting of the elements (bread and the fruit of the vine) is the symbol expressing our sharing the divine nature of our Lord Jesus Christ.',
   },
   {
     title: 'The Baptism in the Holy Spirit',
@@ -192,7 +192,7 @@ export const OurValues: React.FC = () => {
               What <span className="values-vibrant-accent">Shapes</span> Us
             </h2>
             <p className="values-subtitle">
-              Twelve core values that drive us — they shape every cell group, every
+              Twelve core values that drive us. They shape every cell group, every
               service, and every disciple we send out.
             </p>
           </div>

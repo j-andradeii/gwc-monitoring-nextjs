@@ -8,13 +8,13 @@ const lifestyleFeatures = [
     icon: 'pi pi-sun',
     title: 'Spirit-Filled Daily Living',
     description:
-      'Faith is not just Sunday. We equip you to walk in the Spirit every day — in your home, workplace, and community.',
+      'Faith is not just Sunday. We equip you to walk in the Spirit every day, in your home, workplace, and community.',
   },
   {
     icon: 'pi pi-heart',
     title: 'Generosity & Service',
     description:
-      'We believe a generous life is a blessed life. Whether giving your time, treasure, or talent — every act of service matters.',
+      'We believe a generous life is a blessed life. Whether giving your time, treasure, or talent, every act of service matters.',
   },
   {
     icon: 'pi pi-bookmark',
@@ -50,7 +50,7 @@ export const Lifestyle: React.FC = () => {
         }}
       >
         Being part of Gateway Church is a lifestyle, not just a church attendance. We
-        pursue God&apos;s presence in every area of life — and invite you to do the same.
+        pursue God&apos;s presence in every area of life, and invite you to do the same.
       </p>
 
       <div

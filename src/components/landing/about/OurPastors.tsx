@@ -33,7 +33,7 @@ const pastorBios: PastorBio[] = [
     name: 'Annuelle Joyce, Keren Jana & Derick Jeshurun',
     icon: 'pi pi-heart-fill',
     paragraph:
-      'The children are actively involved in various ministries of Gateway Church — youth ministry, ushering, tech team, worship team, and kids ministry. Both girls also serve as cell group leaders. Joyce and Keren study at the University of San Carlos (BS Nursing 3 and BS Tourism Management 2), while Derick is in Senior High School at Cebu Bradford School, Inc.',
+      'The children are actively involved in various ministries of Gateway Church: youth ministry, ushering, tech team, worship team, and kids ministry. Both girls also serve as cell group leaders. Joyce and Keren study at the University of San Carlos (BS Nursing 3 and BS Tourism Management 2), while Derick is in Senior High School at Cebu Bradford School, Inc.',
   },
 ];
 

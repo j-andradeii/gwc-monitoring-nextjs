@@ -196,7 +196,7 @@ export default function LabelSettingsModal({
       <div className="lf-settings-section">
         <label htmlFor="lf-settings-ai" className="lf-settings-section-label">
           AI section detection
-          <span className="lf-settings-sub">Gemini — smarter Verse / Chorus / Bridge labels</span>
+          <span className="lf-settings-sub">Gemini: smarter Verse / Chorus / Bridge labels</span>
         </label>
         <InputSwitch
           inputId="lf-settings-ai"
@@ -248,7 +248,7 @@ export default function LabelSettingsModal({
           </div>
         ))}
         {rows.length === 0 && (
-          <p className="lf-settings-empty">No mappings — add one or reset to defaults.</p>
+          <p className="lf-settings-empty">No mappings yet. Add one or reset to defaults.</p>
         )}
       </div>
 

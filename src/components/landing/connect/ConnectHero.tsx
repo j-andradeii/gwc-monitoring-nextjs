@@ -12,7 +12,7 @@ export const ConnectHero: React.FC = () => {
       id="connect-top"
       badge="Connect"
       title="Find Your Place at Gateway"
-      subtitle="Take your next step — from first visit to lifelong growth"
+      subtitle="Take your next step, from first visit to lifelong growth"
       backgroundImage={activeBackground}
       className="connect-hero"
     />

@@ -15,7 +15,7 @@ const ACCEPTED_ITEMS: AcceptedItem[] = [
   },
   {
     label: 'Food',
-    description: 'Non-perishable canned goods and dry pantry staples — sealed and unexpired.',
+    description: 'Non-perishable canned goods and dry pantry staples, sealed and unexpired.',
     icon: 'pi pi-shopping-bag',
   },
   {

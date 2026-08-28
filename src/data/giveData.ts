@@ -38,14 +38,14 @@ export const firstfruitsScriptures = [
 
 // Intro paragraphs for each themed section
 export const tithesAndOfferingIntro =
-  'Tithes and offerings are an act of worship — returning to God the first ten percent ' +
+  'Tithes and offerings are an act of worship, returning to God the first ten percent ' +
   'of what He has entrusted to us, plus offerings given as the Spirit leads. Your ' +
   'consistent generosity sustains the day-to-day ministry of Gateway Church: weekly ' +
   'worship, discipleship, outreach, and pastoral care for the church family.';
 
 export const firstfruitsIntro =
-  'Firstfruits is the practice of dedicating the first portion of every new increase — ' +
-  'a new job, a fresh paycheck cycle, a new business, a year-opening blessing — back ' +
+  'Firstfruits is the practice of dedicating the first portion of every new increase ' +
+  '(a new job, a fresh paycheck cycle, a new business, a year-opening blessing) back ' +
   'to the Lord before anything else is spent. It is a prophetic act that sets the ' +
   'tone for the season ahead and invites God’s favor over everything that follows.';
 

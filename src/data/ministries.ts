@@ -26,8 +26,8 @@ export const ministries: Ministry[] = [
         image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/youth_1.jpg',
         description: `Welcome to AXIS 💫 
 We are the Youth Ministry of Gateway Church, a community centered on one purpose: Jesus at the Center. AXIS exists as a people awakened and a movement of lives realigned, called to live with Christ as the foundation of it all. In every story and every season, we hold firmly to this truth: 
-“In Him we live, and move, and have our being.” — Acts 17:28 
-“In Him all things hold together.” — Colossians 1:17`,
+“In Him we live, and move, and have our being.” (Acts 17:28) 
+“In Him all things hold together.” (Colossians 1:17)`,
         social: {
             instagram: 'https://www.instagram.com/gateway.axis',
             facebook: 'https://www.facebook.com/profile.php?id=61591631940856',

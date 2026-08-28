@@ -44,7 +44,7 @@ When we give our first fruits:
 
 - We demonstrate obedience and trust.
 
-This principle is not about the result — it is about obedience. The blessing is a byproduct; obedience is the priority.
+This principle is not about the result. It is about obedience. The blessing is a byproduct; obedience is the priority.
 
 When you give your first fruit to God, He stands on it. He stands guard over what you entrust to Him.`;
 
@@ -158,7 +158,7 @@ const giveFaqJsonLd = {
           name: 'What is the difference between tithes, offerings, and firstfruits?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Tithes are the first ten percent of your income given back to God as worship. Offerings are gifts given beyond the tithe as the Spirit leads. Firstfruits is the dedication of the first portion of every new increase — a new job, a new business, or a fresh season — back to the Lord before anything else is spent.',
+            text: 'Tithes are the first ten percent of your income given back to God as worship. Offerings are gifts given beyond the tithe as the Spirit leads. Firstfruits is the dedication of the first portion of every new increase (a new job, a new business, or a fresh season) back to the Lord before anything else is spent.',
           },
         },
       ],

@@ -431,7 +431,7 @@ export default function EventRegistrationSection({ event }: Props) {
                   {receiptNames.length > 1 ? (
                     <>
                       {' '}
-                      — covering <strong>{receiptNames.length} people</strong> —
+                      (covering <strong>{receiptNames.length} people</strong>)
                     </>
                   ) : null}{' '}
                   {proofProvided
@@ -490,7 +490,7 @@ export default function EventRegistrationSection({ event }: Props) {
                     <p className="event-register-receipt-note">
                       <i className="pi pi-info-circle" aria-hidden="true"></i>
                       <span>
-                        Everyone above shares this reference number — it covers the one
+                        Everyone above shares this reference number. It covers the one
                         payment {proofProvided ? 'you sent' : 'for the whole group'}.
                       </span>
                     </p>
@@ -510,7 +510,7 @@ export default function EventRegistrationSection({ event }: Props) {
                   <i className="pi pi-camera" aria-hidden="true"></i>
                   <span>
                     <strong>Take a screenshot or save your reference no.</strong> Screenshot
-                    this page — or tap <em>Save as image</em> below — and keep{' '}
+                    this page, or tap <em>Save as image</em> below, and keep{' '}
                     <strong>{referenceNumber}</strong>. It’s how we match your payment to your slot.
                   </span>
                 </p>
@@ -649,7 +649,7 @@ export default function EventRegistrationSection({ event }: Props) {
                             <strong>Register multiple people</strong>
                             <span>
                               Tick this if your payment covers other people, then add their
-                              names below — each one gets their own slot.
+                              names below. Each one gets their own slot.
                             </span>
                           </label>
                         </div>
@@ -756,8 +756,8 @@ export default function EventRegistrationSection({ event }: Props) {
                               {event.registration_fee
                                 ? ` (${event.registration_fee} × ${totalRegistrants})`
                                 : ''}
-                              . Send the total in one payment and upload that single proof —
-                              it will be recorded for everyone on your list.
+                              . Send the total in one payment and upload that single proof.
+                              It will be recorded for everyone on your list.
                             </span>
                           </p>
                         )}
@@ -765,14 +765,14 @@ export default function EventRegistrationSection({ event }: Props) {
                         <EventPaymentQrGrid />
 
                         <ProofOfPaymentField
-                          sublabel="Optional — you can send this later with your reference number. Max 10 MB."
+                          sublabel="Optional. You can send this later with your reference number. Max 10 MB."
                         />
 
                         <p className="sod-payment-note">
                           <i className="pi pi-info-circle" aria-hidden="true"></i>
                           <span>
                             Your slot is confirmed once we verify your payment. Registering
-                            without a proof reserves your slot — upload it any time from{' '}
+                            without a proof reserves your slot. Upload it any time from{' '}
                             {/* A button, not an anchor: the panel is collapsed
                                 behind the tab above, so there is no
                                 `#event-complete` for a fragment to find. */}

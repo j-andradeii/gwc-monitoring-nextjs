@@ -350,7 +350,7 @@ function LyricFormatter() {
   };
 
   const songTitle = selectedTrack
-    ? `${selectedTrack.trackName}${selectedTrack.artistName ? ` — ${selectedTrack.artistName}` : ''}`
+    ? `${selectedTrack.trackName}${selectedTrack.artistName ? ` · ${selectedTrack.artistName}` : ''}`
     : manualDialogOpen
       ? manualTitle.trim() || 'Lyrics'
       : '';
@@ -475,7 +475,7 @@ function LyricFormatter() {
                     rows={14}
                     autoResize
                     className="lf-lyric-input lf-manual-input"
-                    placeholder={'Paste the whole song — verses, chorus, bridge, etc.'}
+                    placeholder={'Paste the whole song: verses, chorus, bridge, etc.'}
                   />
                 </div>
                 <div className="lf-lyric-actions">
@@ -542,10 +542,10 @@ function LyricFormatter() {
 
           <p className="lf-hint">
             {isLyricTab
-              ? 'Paste a line or two of the lyrics — a web search identifies the song, then pulls every available version from LRCLIB. Pick a result to auto-section and edit.'
+              ? 'Paste a line or two of the lyrics. A web search identifies the song, then pulls every available version from LRCLIB. Pick a result to auto-section and edit.'
               : isManualTab
-                ? 'For songs LRCLIB doesn’t have. Section detection uses AI (Gemini) or the heuristic grouping, per the "AI section detection" toggle in Settings. Title is optional — it only names the exported file.'
-                : 'Lyrics via LRCLIB. Year refines the text search only (LRCLIB has no year filter). Section labels are auto-detected — fix anything in the editor, or tune the vocabulary in Label settings.'}
+                ? 'For songs LRCLIB doesn’t have. Section detection uses AI (Gemini) or the heuristic grouping, per the "AI section detection" toggle in Settings. Title is optional. It only names the exported file.'
+                : 'Lyrics via LRCLIB. Year refines the text search only (LRCLIB has no year filter). Section labels are auto-detected. Fix anything in the editor, or tune the vocabulary in Label settings.'}
           </p>
 
           {!isManualTab && (
@@ -635,7 +635,7 @@ function LyricFormatter() {
           <div className="lf-song">
             <div className="lf-song-toolbar">
               <span className="lf-song-hint">
-                Section labels sit on their own line. Edit freely — copy &amp; export use
+                Section labels sit on their own line. Edit freely. Copy &amp; export use
                 what you see here.
               </span>
               <div className="lf-song-toolbar-right">
@@ -690,8 +690,8 @@ function LyricFormatter() {
               <span>
                 Use the <strong>Copy</strong> button below to keep the formatting.
                 Selecting the lyrics and pressing <kbd className="lf-kbd">⌘</kbd> /{' '}
-                <kbd className="lf-kbd">Ctrl</kbd> + <kbd className="lf-kbd">C</kbd> — or
-                right-click → Copy — will not preserve it.
+                <kbd className="lf-kbd">Ctrl</kbd> + <kbd className="lf-kbd">C</kbd> (or
+                right-click → Copy) will not preserve it.
               </span>
             </p>
 
