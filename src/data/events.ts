@@ -109,9 +109,9 @@ Invite someone and come experience community with us.
     location: '8th Floor, Golden Peak Hotel and Suites',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/mrkplc.jpg',
     description: `“Love is patient, love is kind.”
-— 1 Corinthians 13:4
+1 Corinthians 13:4
 
-You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering—together, 
+You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering, together, 
 let’s discover what it truly means to wait, trust, and honor love the way God designed it.
 
 Everyone is invited. See you there! 🫶✨`,
@@ -232,7 +232,7 @@ Everyone is invited. See you there! 🫶✨`,
     time: '2:00 PM',
     location: '11th Floor, Golden Peak Hotel and Suites',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/baptism.jpg',
-    description: `"Therefore, if anyone is in Christ, he is a new creation." — 2 Cor. 5:17`,
+    description: `"Therefore, if anyone is in Christ, he is a new creation." (2 Cor. 5:17)`,
     category: 'Retreat',
     isFeatured: false,
     type: GatewayEventType.RETREAT,
@@ -288,7 +288,7 @@ Everyone is invited. See you there! 🫶✨`,
     location: '8th Floor, Golden Peak Hotel and Suites',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/axis/axis.webp',
     description: `
-You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering—together.
+You’re warmly invited to join us for an afternoon of faith, purpose, and God-centered love. A Youth & Young Professionals Gathering, together.
 Everyone is invited. See you there! 🫶✨`,
     category: 'Fellowship',
     isFeatured: false,
@@ -314,7 +314,7 @@ Everyone is invited. See you there! 🫶✨`,
     description: `
 🎬✨ Your next movie hangout is on us!
 
-Grab your friends and enjoy an afternoon filled with great films, good company, and delicious movie snacks—all for FREE! 🍿🍟
+Grab your friends and enjoy an afternoon filled with great films, good company, and delicious movie snacks, all for FREE! 🍿🍟
 
 📍 8F, Golden Peak Hotel
 🕜 Doors Open: 1:30 PM
@@ -345,7 +345,7 @@ Tag your movie buddy, scan the QR code, and save your seat. We can’t wait to s
     description: `
 🎬✨ Your next movie hangout is on us!
 
-Grab your friends and enjoy an afternoon filled with great films, good company, and delicious movie snacks—all for FREE! 🍿🍟
+Grab your friends and enjoy an afternoon filled with great films, good company, and delicious movie snacks, all for FREE! 🍿🍟
 
 📍 8F, Golden Peak Hotel
 🕜 Doors Open: 1:30 PM
@@ -408,8 +408,8 @@ G12 family, our vision is clear, and we will always persevere! Let's all keep ou
 G12 PH National Conference 2026: GO AND MAKE DISCIPLES OF ALL NATIONS
 
 🗓 Conference Schedule:
-October 23 (Friday) — Batch 1
-October 24 (Saturday) — Batch 2 
+October 23 (Friday): Batch 1
+October 24 (Saturday): Batch 2 
 
 🕜Time: 9AM to 6PM
 

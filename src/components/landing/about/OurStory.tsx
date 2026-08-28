@@ -33,7 +33,7 @@ export const OurStory: React.FC = () => {
               Gateway Church began with a simple vision: to create a place where people
               from all walks of life could encounter God&apos;s presence and discover their
               purpose. What started as a small gathering has grown into a vibrant,
-              multicultural community united by faith and love.
+              multigenerational community united by faith and love.
             </p>
             <p>
               We are more than just a Sunday service. We are a family committed to

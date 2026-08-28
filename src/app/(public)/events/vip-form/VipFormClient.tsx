@@ -75,7 +75,7 @@ export default function VipFormClient() {
                                 <h2 className="welcome-title">Welcome Home</h2>
                                 <p className="welcome-text">
                                     We believe that every person who walks through our doors is a VIP.
-                                    Gateway is more than just a building—it&apos;s a family.
+                                    Gateway is more than just a building. It&apos;s a family.
                                 </p>
 
                                 <div className="welcome-features">

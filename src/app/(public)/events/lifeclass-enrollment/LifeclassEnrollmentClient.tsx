@@ -827,7 +827,7 @@ export default function LifeclassEnrollmentClient() {
                       <i className="pi pi-camera" aria-hidden="true"></i>
                       <span>
                         <strong>Take a screenshot or save your reference no.</strong> Screenshot
-                        this page — or tap <em>Save as image</em> below — and keep{' '}
+                        this page, or tap <em>Save as image</em> below, and keep{' '}
                         <strong>{referenceNumber}</strong>. It&rsquo;s how we match your payment
                         to your slot. We&rsquo;ve emailed it to you too.
                       </span>
@@ -982,7 +982,7 @@ export default function LifeclassEnrollmentClient() {
 
                       <p className="sod-payment-intro">
                         The Life Class enrollment fee is <strong>{LIFECLASS_BATCH.fee}</strong>.
-                        Paying now is optional — you can submit this form first and settle the fee
+                        Paying now is optional. You can submit this form first and settle the fee
                         before class starts. If you&rsquo;d like to pay now, scan either QR code
                         below and upload your proof of payment.
                       </p>
@@ -1003,7 +1003,7 @@ export default function LifeclassEnrollmentClient() {
                       <p className="sod-payment-note">
                         <i className="pi pi-info-circle"></i>
                         <span>
-                          Your slot is reserved as soon as you submit — your payment just needs to
+                          Your slot is reserved as soon as you submit. Your payment just needs to
                           reach us before {LIFECLASS_BATCH.classStarts}. Questions?
                           Message <strong>{LIFECLASS_BATCH.contact}</strong>.
                         </span>

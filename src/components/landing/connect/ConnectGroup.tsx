@@ -14,7 +14,7 @@ const groupFeatures = [
     icon: 'pi pi-map-marker',
     title: 'Find a Group Near You',
     description:
-      'We have groups in multiple areas — whether you live north, south, or central, there is a community close to you.',
+      'We have groups in multiple areas, whether you live north, south, or central, there is a community close to you.',
   },
   {
     icon: 'pi pi-heart',
@@ -50,7 +50,7 @@ export const ConnectGroup: React.FC = () => {
         }}
       >
         Life is better together. Our Connect Groups (cell groups) are small, intentional
-        communities where you can belong, grow, and be known — not just attend church.
+        communities where you can belong, grow, and be known, not just attend church.
       </p>
 
       <div

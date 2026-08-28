@@ -296,7 +296,7 @@ export const GivingConfirmationSection: React.FC<GivingConfirmationSectionProps>
                 <i className="pi pi-camera" aria-hidden="true"></i>
                 <span>
                   <strong>Take a screenshot or save your reference no.</strong> Screenshot this
-                  page — or tap <em>Save as image</em> below — and keep{' '}
+                  page, or tap <em>Save as image</em> below, and keep{' '}
                   <strong>{referenceNumber}</strong>. 
                 </span>
               </p>

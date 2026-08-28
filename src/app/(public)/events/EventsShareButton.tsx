@@ -5,7 +5,7 @@ import { ShareModal } from '@/components/landing';
 
 const SHARE_TITLE = 'Upcoming Events | Gateway Church';
 const SHARE_EXCERPT =
-  'Check out upcoming events at Gateway Church — connect, grow, and celebrate with our community.';
+  'Check out upcoming events at Gateway Church: connect, grow, and celebrate with our community.';
 
 export function EventsShareButton() {
   const [showShareModal, setShowShareModal] = useState(false);

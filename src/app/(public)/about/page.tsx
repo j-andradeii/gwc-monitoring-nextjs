@@ -14,7 +14,7 @@ const siteUrl = siteMetadata.siteUrl;
 export const metadata: Metadata = {
   title: 'About Us | Gateway Church',
   description:
-    'Learn about Gateway Church - our vision, mission, values, and what we believe. We are a vibrant, multicultural community dedicated to sharing the love of Christ.',
+    'Learn about Gateway Church - our vision, mission, values, and what we believe. We are a vibrant, multigenerational community dedicated to sharing the love of Christ.',
   keywords: [
     'Gateway Church',
     'About Gateway Church',

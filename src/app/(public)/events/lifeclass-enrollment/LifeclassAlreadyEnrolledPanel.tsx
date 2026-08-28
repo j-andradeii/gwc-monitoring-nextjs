@@ -249,7 +249,7 @@ export default function LifeclassAlreadyEnrolledPanel({
       <h3 className="event-complete-title">Send your proof of payment</h3>
       <p className="event-complete-intro">
         Enter the reference no. from your confirmation email and we&rsquo;ll pull up your
-        enrollment. Paying the {LIFECLASS_FEE} in parts is fine — you can send a proof as many
+        enrollment. Paying the {LIFECLASS_FEE} in parts is fine. You can send a proof as many
         times as you need.
       </p>
 
@@ -363,7 +363,7 @@ export default function LifeclassAlreadyEnrolledPanel({
                     <p className="sod-payment-note">
                       <i className="pi pi-info-circle" aria-hidden="true"></i>
                       <span>
-                        That email matches more than one enrollment — this is the most recent
+                        That email matches more than one enrollment. This is the most recent
                         one. If it isn&rsquo;t the one you meant, close this and use the
                         reference number instead.
                       </span>
@@ -385,7 +385,7 @@ export default function LifeclassAlreadyEnrolledPanel({
                             (<strong>{result.amountPaid}</strong> recorded so far)
                           </>
                         ) : null}
-                        . Sending another one <strong>adds</strong> to it — nothing is replaced.
+                        . Sending another one <strong>adds</strong> to it, and nothing is replaced.
                       </span>
                     </p>
                   )}

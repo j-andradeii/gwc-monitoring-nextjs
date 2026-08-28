@@ -10,7 +10,7 @@ export const OutreachGiveSection: React.FC = () => {
           <span className="section-label">Support Our Outreach</span>
           <h2 className="outreach-give-title">Your Generosity Saves Lives</h2>
           <p className="outreach-give-subtitle">
-            Your generosity enables us to respond when disaster strikes — providing immediate relief, recovery support, and lasting hope to families in crisis
+            Your generosity enables us to respond when disaster strikes, providing immediate relief, recovery support, and lasting hope to families in crisis
           </p>
         </div>
       </div>

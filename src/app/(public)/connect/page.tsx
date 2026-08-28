@@ -14,7 +14,7 @@ const siteUrl = siteMetadata.siteUrl;
 export const metadata: Metadata = {
   title: 'Connect | Gateway Church',
   description:
-    'Take your next step at Gateway Church Cebu — from your first visit to lifelong growth. Find a Connect Group, discover New Life, and grow as a disciple.',
+    'Take your next step at Gateway Church Cebu, from your first visit to lifelong growth. Find a Connect Group, discover New Life, and grow as a disciple.',
   keywords: [
     'Gateway Church Connect',
     'next steps church Cebu',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Connect | Gateway Church',
     description:
-      'Take your next step at Gateway Church — from first visit to lifelong growth. Find community, grow in faith, and be sent.',
+      'Take your next step at Gateway Church, from first visit to lifelong growth. Find community, grow in faith, and be sent.',
     type: 'website',
     locale: 'en_US',
     siteName: siteMetadata.name,
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Connect | Gateway Church',
     description:
-      'Take your next step at Gateway Church — from first visit to lifelong growth. Find community, grow in faith, and be sent.',
+      'Take your next step at Gateway Church, from first visit to lifelong growth. Find community, grow in faith, and be sent.',
     images: ['/og-image.jpg'],
   },
 };
@@ -85,7 +85,7 @@ const connectJsonLd = {
           name: "I'm new to Christianity. What is the New Life pathway at Gateway Church?",
           acceptedAnswer: {
             '@type': 'Answer',
-            text: "The New Life pathway at Gateway Church Cebu is designed for people who have just made a decision to follow Jesus or are curious about faith. It includes learning about salvation, being baptised in water, and attending an Encounter Weekend — a transformative experience that helps new believers encounter God's presence and begin their faith journey.",
+            text: "The New Life pathway at Gateway Church Cebu is designed for people who have just made a decision to follow Jesus or are curious about faith. It includes learning about salvation, being baptised in water, and attending an Encounter Weekend, a transformative experience that helps new believers encounter God's presence and begin their faith journey.",
           },
         },
         {
@@ -101,7 +101,7 @@ const connectJsonLd = {
           name: 'How can I grow as a disciple at Gateway Church Cebu?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: "Gateway Church Cebu follows the WIN–CONSOLIDATE–DISCIPLE–SEND process. The Growth pathway includes a structured discipleship track, equipping workshops, mentoring, and the School of Leaders program. The ultimate goal is to be sent — empowered to fulfil the Great Commission in your own sphere of influence.",
+            text: "Gateway Church Cebu follows the WIN–CONSOLIDATE–DISCIPLE–SEND process. The Growth pathway includes a structured discipleship track, equipping workshops, mentoring, and the School of Leaders program. The ultimate goal is to be sent, empowered to fulfil the Great Commission in your own sphere of influence.",
           },
         },
       ],

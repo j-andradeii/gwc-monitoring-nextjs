@@ -8,7 +8,7 @@ export const siteMetadata = {
     name: 'Gateway Church',
     shortName: 'Gateway',
     slogan: 'Loving God, Loving People',
-    description: 'Gateway Church Cebu — a vibrant, multicultural Christian church in Cebu City, Philippines. Sunday services at the 8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave. Loving God, Loving People.',
+    description: 'Gateway Church Cebu is a vibrant, multigenerational Christian church in Cebu City, Philippines. Sunday services at the 8th Floor, Golden Peak Hotel and Suites, Escario St. Gorordo Ave. Loving God, Loving People.',
     siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://www.gatewaychurchcebu.com',
     keywords: [
         'Gateway Church',
