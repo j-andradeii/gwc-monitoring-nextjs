@@ -2390,10 +2390,11 @@
     min-width: 0;
 }
 
-/* ── The "Already Enrolled? / Already Registered?" tab ──────────
-   Shared by both pay-later flows: Life Class enrollment and the event
-   registration section. Flow-neutral name because the two wear it identically
-   — only the wording inside changes.
+/* ── The events "Already Registered?" tab ──────────────────
+   EventRegistrationSection only. Life Class wears the same face through its
+   own `.lifeclass-tab-button` below — the two sit in different layouts (a
+   full-width form card here, a 350px sidebar there), so each owns its width
+   and neither flow's tweaks can reach the other.
    ------------------------------------------------------------- */
 
 .form-tab-button {
@@ -2470,6 +2471,86 @@
     color: var(--color-primary, #d4a84b);
 }
 
+/* ── The Life Class "Already Enrolled?" tab ───────────────
+   Same face as the events tab above, kept as its own class on purpose: this
+   one fills the 350px sidebar column it lives in, where the events tab's 40%
+   desktop width would leave it a stub.
+   ------------------------------------------------------------- */
+
+.lifeclass-tab-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid rgba(212, 168, 75, 0.55);
+    border-radius: 16px;
+    background: #ffffff;
+    color: var(--color-navy, #1a2744);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease,
+        box-shadow 0.18s ease;
+    box-shadow:
+        0 1px 3px rgba(26, 39, 68, 0.08),
+        0 10px 24px rgba(26, 39, 68, 0.10);
+}
+
+.lifeclass-tab-button-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lifeclass-tab-button-label i {
+    font-size: 16px;
+    color: var(--color-primary-dark, #b8923f);
+    transition: color 0.18s ease;
+}
+
+.lifeclass-tab-button > i {
+    font-size: 12px;
+    color: var(--color-primary-dark, #b8923f);
+    transition: color 0.18s ease;
+}
+
+.lifeclass-tab-button:hover {
+    background: #fdf9f0;
+    border-color: var(--color-primary, #d4a84b);
+    transform: translateY(-1px);
+}
+
+.lifeclass-tab-button:focus-visible {
+    outline: 2px solid var(--color-primary, #d4a84b);
+    outline-offset: 2px;
+}
+
+/* Open state matches the panel it controls — navy card, gold accents — so the
+   tab reads as the thing that opened it rather than a button left pressed. */
+.lifeclass-tab-button.is-active {
+    background: linear-gradient(160deg, var(--color-navy, #1a2744) 0%,
+        var(--color-navy-dark, #151e32) 100%);
+    border-color: var(--color-primary, #d4a84b);
+    color: #ffffff;
+}
+
+.lifeclass-tab-button.is-active .lifeclass-tab-button-label i,
+.lifeclass-tab-button.is-active > i {
+    color: var(--color-primary, #d4a84b);
+}
+
+@media (max-width: 640px) {
+    .lifeclass-tab-button {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+}
+
 /* ── Confirmation screens ──────────────────────────────────── */
 
 /* The reference receipt, on both the enrolled and the paid screens. */
@@ -2514,7 +2595,7 @@
         order: 1;
     }
 
-    .lifeclass-enrollment-page .lifeclass-sidebar .form-tab-button {
+    .lifeclass-enrollment-page .lifeclass-sidebar .lifeclass-tab-button {
         order: 2;
     }
 }

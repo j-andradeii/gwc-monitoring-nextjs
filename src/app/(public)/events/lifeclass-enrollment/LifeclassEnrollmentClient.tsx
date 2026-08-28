@@ -626,12 +626,12 @@ export default function LifeclassEnrollmentClient() {
               <button
                 id="lifeclass-enroll-start"
                 type="button"
-                className={`form-tab-button${showAlreadyEnrolled ? ' is-active' : ''}`}
+                className={`lifeclass-tab-button${showAlreadyEnrolled ? ' is-active' : ''}`}
                 onClick={() => setPanelOverride(!showAlreadyEnrolled)}
                 aria-expanded={showAlreadyEnrolled}
                 aria-controls="lifeclass-complete"
               >
-                <span className="form-tab-button-label">
+                <span className="lifeclass-tab-button-label">
                   <i className="pi pi-history" aria-hidden="true"></i>
                   Already Enrolled?
                 </span>
