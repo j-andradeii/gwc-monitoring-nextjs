@@ -43,15 +43,22 @@ export const MONO = "'SFMono-Regular',Consolas,'Courier New',monospace";
  * into an attachment by several clients, and a remote src is the only form
  * Gmail's image proxy will cache.
  *
- * Source is 659x415, with generous whitespace baked around the glyph — hence
+ * Source is 720x440, with generous whitespace baked around the glyph — hence
  * 160px, which holds the mark at the weight of the headline beneath it while
  * staying well inside the card's 520px column. The height is stated as an
  * attribute too, because Outlook sizes from the attributes and ignores the CSS.
+ *
+ * PNG, not WebP, and deliberately so. The previous WebP was lossy-with-alpha
+ * (a VP8 plane plus a separate ALPH chunk), and the encoder left near-black
+ * pixels under the 86% of the image that is transparent. Gmail's iOS client
+ * drops that alpha chunk, which rendered the wordmark on a solid black box.
+ * PNG alpha is honoured far more widely, and nothing here is lossy, so the
+ * hairlines in CHURCH stay clean.
  */
 export const LOGO_URL =
-  'https://gtxngthtpisigkys.public.blob.vercel-storage.com/gwc-logo-full.webp';
+  'https://gtxngthtpisigkys.public.blob.vercel-storage.com/gwc_official_logo.png';
 const LOGO_WIDTH = 160;
-const LOGO_HEIGHT = 101;
+const LOGO_HEIGHT = 98;
 
 /**
  * Names and event titles are registrant-supplied and land inside markup — a
@@ -133,9 +140,8 @@ ${content}
  *
  * The logo carries the church's name, so the alt text is styled to match the
  * tracked wordmark it replaces: Outlook for Windows blocks remote images by
- * default and renders WebP not at all, and in both cases what's left is the
- * alt string. Styled this way it reads as the wordmark rather than as a
- * broken image.
+ * default, and what's left is the alt string. Styled this way it reads as the
+ * wordmark rather than as a broken image.
  */
 export function header(headline: string, sublineHtml?: string): string {
   return `        <tr>
