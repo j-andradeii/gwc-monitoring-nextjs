@@ -9047,7 +9047,7 @@ Your situation can make you or break you. But when you surrender everything to G
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'There are seasons when life can feel like a grave: isolated, broken, forgotten, and without hope. But the story of the man possessed by Legion reminds us that isolation and self-destruction do not have to be the end of our story.',
 
     description: `**GRAVES INTO GARDENS**
@@ -9432,6 +9432,403 @@ God is still in the business of transforming people and He may want to use your 
         kicker: 'People Are Terrified of Grace Until They See Its Fruit',
         verse: 'Mark 5:15',
         text: 'Then they came to Jesus, and saw the one who had been demon-possessed and had the legion, sitting and clothed and in his right mind. And they were afraid.',
+      },
+    ],
+  },
+  {
+    id: '40',
+    slug: 'god-so-loved-the-world',
+    title: 'God so Loved the World',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-08-30',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'John 3:16 is one of the most familiar verses in Scripture, yet its message is deeper than simply knowing that God loves us. It reveals the heart of God, a love so great that He gave His only Son so that humanity could be restored to Him.',
+
+    description: `**GOD SO LOVED THE WORLD**
+
+Key Text: John 3:16
+
+---
+
+John 3:16 is one of the most familiar verses in Scripture, yet its message is deeper than simply knowing that God loves us. It reveals the heart of God, a love so great that He gave His only Son so that humanity could be restored to Him.
+
+The greatest tragedy is not physical death but separation from God, because God is life. A person may appear to have everything materially, yet without God, there is spiritual death.
+
+God's love offers us something greater than temporary life. It offers eternal life, a life that begins when we encounter Jesus and continues into eternity.
+
+Eternal life is more than simply living forever. It is knowing God, experiencing His life within us, being freed from the power of sin, and developing an eternal relationship with Him.
+
+And this gift must be received.
+
+---
+
+**1. THE REACH OF GOD'S LOVE**
+
+"For God so loved the world..." (John 3:16)
+
+**Boundless and Inclusive - God's Love Knows No Boundaries**
+
+The word "world" reveals the reach of God's love. His love is not limited to a particular group, nation, background, or social status.
+
+God's love is deep enough to reach the broken, the lost, and those who feel far from Him.
+
+But love is not merely a feeling.
+
+*You cannot love without giving.*
+
+God demonstrated His love by giving His Son.
+
+Jesus willingly gave Himself as an offering to pay the price for our sins. His sacrifice reveals the heart of the Father, a love that does not simply speak but acts.
+
+When we willingly surrender our lives to God, we reflect His heart.
+
+God's love reaches us where we are, but it does not leave us where we are.
+
+Additional Scripture: 1 Timothy 2:4, Romans 8:32, John 4:10
+
+---
+
+**2. THE COST OF GOD'S LOVE**
+
+"That He gave His one and only Son..." (John 3:16)
+
+**Total and Undeserved - Sacrificial Love**
+
+God's love came at a cost.
+
+Jesus did not give Himself because humanity deserved it. He gave Himself because God chose to demonstrate grace toward people who could never earn salvation through their own efforts.
+
+*Love that costs nothing means little.*
+
+The cross reveals the depth of God's love because it shows us what He was willing to give.
+
+Salvation is not something we achieve through good works, religious activity, or personal effort. It is an unmerited gift of grace that must be received.
+
+The cross reminds us that our salvation was costly to God, even though it is freely offered to us.
+
+This is why our response should never be casual.
+
+The God who gave everything deserves our surrender.
+
+---
+
+**3. THE RESPONSE TO GOD'S LOVE**
+
+"Whoever believes in Him shall not perish but have eternal life" (John 3:16)
+
+**Active, Life-Surrendering Faith**
+
+God has already given the gift. Our responsibility is to receive it through genuine faith.
+
+The Greek word for "believe" is *pisteuō*. Biblical belief goes far beyond intellectual agreement.
+
+It involves three important elements:
+
+**1. Confidence**
+
+A sure trust that Jesus is the Son of God and the only Savior for lost humanity.
+
+**2. Assurance**
+
+A firm confidence that Jesus is faithful and able to complete the work of salvation and bring us into His eternal presence.
+
+**3. Surrender**
+
+Turning over the driver's seat of our lives to Christ through ongoing obedience and submission.
+
+To believe in Jesus is therefore more than saying, "I know He exists."
+
+Even demons recognize who Jesus is. (James 2:19)
+
+The difference is that biblical faith responds with surrender.
+
+Real faith continues to demonstrate trust through selfless action.
+
+When we truly believe, our lives begin to reflect what we believe.
+
+---
+
+**WHAT DOES IT MEAN TO PERISH?**
+
+"Whoever believes in Him shall not perish..." (John 3:16)
+
+The word "perish" can easily be overlooked because we often focus on the promise of eternal life.
+
+But Jesus included this warning because rejecting God's gift has a serious consequence.
+
+To perish is more than physical death. It points to the reality of spiritual death - the separation of humanity from God, who is life.
+
+Apart from God, there is no true spiritual life.
+
+A person may have material possessions, success, relationships, and everything the world considers valuable, yet still experience spiritual separation from God.
+
+This is why the Gospel is so important.
+
+God does not desire anyone to remain separated from Him. (1 Timothy 2:4)
+
+He offers eternal life through Jesus Christ.
+
+---
+
+**ETERNAL LIFE BEGINS NOW**
+
+Eternal life is more than simply living forever.
+
+It is the quality of existence that begins in this life through a relationship with Jesus Christ and continues into eternity.
+
+When Jesus is with you, in you, and working through you, you begin experiencing the reality of eternal life - not yet in its fullness, but already through your relationship with Him.
+
+Eternal life means knowing God.
+
+It means being freed from the power of sin.
+
+It means learning to live beyond temporary and earthly things.
+
+It means developing an eternal relationship with the One who is Himself eternal.
+
+Spiritual disciplines such as prayer, worship, studying God's Word, and obedience strengthen our relationship with God and shape us for both this life and the life to come.
+
+---
+
+**KEY TAKEAWAYS**
+
+* God's love reaches everyone; His love knows no boundaries.
+* The greatest kind of death is separation from God, because God is life.
+* Salvation is not earned through good works—it is God's gift of grace.
+* Eternal life is more than living forever; it is knowing God through Jesus Christ.
+* God's love was demonstrated through the costly sacrifice of Jesus.
+* You cannot truly love without giving.
+* Biblical belief (pisteuō) involves confidence, assurance, and surrender.
+* Faith is not merely intellectual agreement—it is active trust.
+* Real faith produces a life of obedience and selfless action.
+* Rejecting God's gift results in spiritual separation from Him.
+* Eternal life begins with knowing Jesus and continues into eternity.
+
+"God's love was so great that He gave His Son; our response to that love should be so genuine that we give Him our lives."
+
+---
+
+**CALL TO ACTION**
+
+Don't simply remember that God loves you, respond to His love.
+
+* Examine what "believing in Jesus" truly means in your life.
+* Place your confidence in Christ rather than yourself.
+* Receive God's gift of salvation with genuine faith.
+* Surrender the areas of your life that you are still trying to control.
+* Spend intentional time knowing God through His Word, prayer, and worship.
+* Let your faith move beyond words and become visible through your actions.
+* Share the message of God's love with someone who may still feel far from Him.
+
+*God so loved the world that He gave.*
+
+He gave because He loves.
+
+He gave so that we could live.
+
+He gave so that we could be restored to Him.
+
+And when we truly understand the depth of His love, the only fitting response is to believe, surrender, and live for Him.`,
+
+    tags: ['Love', 'Salvation', 'Grace', 'Faith', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/God_so_love_the_world.webp',
+    scriptures: [
+      {
+        verse: 'John 3:16',
+        text: 'For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.',
+      },
+      {
+        verse: '1 Timothy 2:4',
+        text: 'who desires all men to be saved and to come to the knowledge of the truth.',
+      },
+      {
+        verse: 'Romans 8:32',
+        text: 'He who did not spare His own Son, but delivered Him up for us all, how shall He not with Him also freely give us all things?',
+      },
+      {
+        verse: 'John 4:10',
+        text: 'Jesus answered and said to her, "If you knew the gift of God, and who it is who says to you, ‘Give Me a drink,’ you would have asked Him, and He would have given you living water."',
+      },
+      {
+        verse: 'James 2:19',
+        text: 'You believe that there is one God. You do well. Even the demons believe—and tremble!',
+      },
+    ],
+    keyPoints: [
+      "The Reach of God's Love",
+      "The Cost of God's Love",
+      "The Response to God's Love",
+      'What Does It Mean to Perish?',
+      'Eternal Life Begins Now',
+    ],
+    relatedSermons: ['39', '38'],
+    keyVerse: 'John 3:16',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'God So Loved the World',
+        unnumbered: true,
+        paragraphs: [
+          '**Key Text: John 3:16**',
+          'John 3:16 is one of the most familiar verses in Scripture, yet its message is deeper than simply knowing that God loves us. It reveals the heart of God, a love so great that He gave His only Son so that humanity could be restored to Him.',
+          'The greatest tragedy is not physical death but separation from God, because God is life. A person may appear to have everything materially, yet without God, there is spiritual death.',
+          "God's love offers us something greater than temporary life. It offers eternal life, a life that begins when we encounter Jesus and continues into eternity.",
+          'Eternal life is more than simply living forever. It is knowing God, experiencing His life within us, being freed from the power of sin, and developing an eternal relationship with Him.',
+        ],
+        callout: 'And this gift must be received.',
+      },
+      {
+        id: 'sec-reach-of-gods-love',
+        title: "The Reach of God's Love",
+        paragraphs: [
+          '*"For God so loved the world..."* (John 3:16)',
+          "**Boundless and Inclusive - God's Love Knows No Boundaries**",
+          'The word "world" reveals the reach of God\'s love. His love is not limited to a particular group, nation, background, or social status.',
+          "God's love is deep enough to reach the broken, the lost, and those who feel far from Him.",
+          'But love is not merely a feeling.',
+          '*You cannot love without giving.*',
+          'God demonstrated His love by giving His Son.',
+          'Jesus willingly gave Himself as an offering to pay the price for our sins. His sacrifice reveals the heart of the Father, a love that does not simply speak but acts.',
+          'When we willingly surrender our lives to God, we reflect His heart.',
+          '**Additional Scripture: 1 Timothy 2:4, Romans 8:32, John 4:10**',
+        ],
+        callout: "God's love reaches us where we are, but it does not leave us where we are.",
+      },
+      {
+        id: 'sec-cost-of-gods-love',
+        title: "The Cost of God's Love",
+        paragraphs: [
+          '*"That He gave His one and only Son..."* (John 3:16)',
+          '**Total and Undeserved - Sacrificial Love**',
+          "God's love came at a cost.",
+          'Jesus did not give Himself because humanity deserved it. He gave Himself because God chose to demonstrate grace toward people who could never earn salvation through their own efforts.',
+          '*Love that costs nothing means little.*',
+          "The cross reveals the depth of God's love because it shows us what He was willing to give.",
+          'Salvation is not something we achieve through good works, religious activity, or personal effort. It is an unmerited gift of grace that must be received.',
+          'The cross reminds us that our salvation was costly to God, even though it is freely offered to us.',
+          'This is why our response should never be casual.',
+        ],
+        callout: 'The God who gave everything deserves our surrender.',
+      },
+      {
+        id: 'sec-response-to-gods-love',
+        title: "The Response to God's Love",
+        paragraphs: [
+          '*"Whoever believes in Him shall not perish but have eternal life"* (John 3:16)',
+          '**Active, Life-Surrendering Faith**',
+          'God has already given the gift. Our responsibility is to receive it through genuine faith.',
+          'The Greek word for "believe" is *pisteuō*. Biblical belief goes far beyond intellectual agreement.',
+          'It involves three important elements:',
+          '**1. Confidence**',
+          'A sure trust that Jesus is the Son of God and the only Savior for lost humanity.',
+          '**2. Assurance**',
+          'A firm confidence that Jesus is faithful and able to complete the work of salvation and bring us into His eternal presence.',
+          '**3. Surrender**',
+          "Turning over the driver's seat of our lives to Christ through ongoing obedience and submission.",
+          'To believe in Jesus is therefore more than saying, "I know He exists."',
+          'Even demons recognize who Jesus is. (James 2:19)',
+          'The difference is that biblical faith responds with surrender.',
+          'Real faith continues to demonstrate trust through selfless action.',
+        ],
+        callout: 'When we truly believe, our lives begin to reflect what we believe.',
+      },
+      {
+        id: 'sec-what-does-it-mean-to-perish',
+        title: 'What Does It Mean to Perish?',
+        unnumbered: true,
+        paragraphs: [
+          '*"Whoever believes in Him shall not perish..."* (John 3:16)',
+          'The word "perish" can easily be overlooked because we often focus on the promise of eternal life.',
+          "But Jesus included this warning because rejecting God's gift has a serious consequence.",
+          'To perish is more than physical death. It points to the reality of spiritual death - the separation of humanity from God, who is life.',
+          'Apart from God, there is no true spiritual life.',
+          'A person may have material possessions, success, relationships, and everything the world considers valuable, yet still experience spiritual separation from God.',
+          'This is why the Gospel is so important.',
+          'God does not desire anyone to remain separated from Him. (1 Timothy 2:4)',
+        ],
+        callout: 'He offers eternal life through Jesus Christ.',
+      },
+      {
+        id: 'sec-eternal-life-begins-now',
+        title: 'Eternal Life Begins Now',
+        unnumbered: true,
+        paragraphs: [
+          'Eternal life is more than simply living forever.',
+          'It is the quality of existence that begins in this life through a relationship with Jesus Christ and continues into eternity.',
+          'When Jesus is with you, in you, and working through you, you begin experiencing the reality of eternal life - not yet in its fullness, but already through your relationship with Him.',
+          'Eternal life means knowing God.',
+          'It means being freed from the power of sin.',
+          'It means learning to live beyond temporary and earthly things.',
+          'It means developing an eternal relationship with the One who is Himself eternal.',
+          "Spiritual disciplines such as prayer, worship, studying God's Word, and obedience strengthen our relationship with God and shape us for both this life and the life to come.",
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          "**Don't simply remember that God loves you, respond to His love.**",
+          'Examine what "believing in Jesus" truly means in your life.',
+          'Place your confidence in Christ rather than yourself.',
+          "Receive God's gift of salvation with genuine faith.",
+          'Surrender the areas of your life that you are still trying to control.',
+          "Spend intentional time knowing God through His Word, prayer, and worship.",
+          'Let your faith move beyond words and become visible through your actions.',
+          "Share the message of God's love with someone who may still feel far from Him.",
+          '*God so loved the world that He gave.*',
+          'He gave because He loves.',
+          'He gave so that we could live.',
+          'He gave so that we could be restored to Him.',
+          'And when we truly understand the depth of His love, the only fitting response is to believe, surrender, and live for Him.',
+        ],
+        callout: "God's love was so great that He gave His Son; our response to that love should be so genuine that we give Him our lives.",
+      },
+    ],
+    keyTakeaways: [
+      "God's love reaches everyone; His love knows no boundaries.",
+      'The greatest kind of death is separation from God, because God is life.',
+      "Salvation is not earned through good works—it is God's gift of grace.",
+      'Eternal life is more than living forever; it is knowing God through Jesus Christ.',
+      "God's love was demonstrated through the costly sacrifice of Jesus.",
+      'You cannot truly love without giving.',
+      'Biblical belief (pisteuō) involves confidence, assurance, and surrender.',
+      'Faith is not merely intellectual agreement—it is active trust.',
+      'Real faith produces a life of obedience and selfless action.',
+      "Rejecting God's gift results in spiritual separation from Him.",
+      'Eternal life begins with knowing Jesus and continues into eternity.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: 'John 3:16',
+        text: 'For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.',
+      },
+      {
+        kicker: "The Reach of God's Love",
+        verse: '1 Timothy 2:4',
+        text: 'who desires all men to be saved and to come to the knowledge of the truth.',
+      },
+      {
+        kicker: "The Reach of God's Love",
+        verse: 'Romans 8:32',
+        text: 'He who did not spare His own Son, but delivered Him up for us all, how shall He not with Him also freely give us all things?',
+      },
+      {
+        kicker: "The Reach of God's Love",
+        verse: 'John 4:10',
+        text: 'Jesus answered and said to her, "If you knew the gift of God, and who it is who says to you, ‘Give Me a drink,’ you would have asked Him, and He would have given you living water."',
+      },
+      {
+        kicker: "The Response to God's Love",
+        verse: 'James 2:19',
+        text: 'You believe that there is one God. You do well. Even the demons believe—and tremble!',
       },
     ],
   },
