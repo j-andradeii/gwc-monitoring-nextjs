@@ -9445,7 +9445,7 @@ God is still in the business of transforming people and He may want to use your 
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'John 3:16 is one of the most familiar verses in Scripture, yet its message is deeper than simply knowing that God loves us. It reveals the heart of God, a love so great that He gave His only Son so that humanity could be restored to Him.',
 
     description: `**GOD SO LOVED THE WORLD**
@@ -9829,6 +9829,350 @@ And when we truly understand the depth of His love, the only fitting response is
         kicker: "The Response to God's Love",
         verse: 'James 2:19',
         text: 'You believe that there is one God. You do well. Even the demons believe—and tremble!',
+      },
+    ],
+  },
+  {
+    id: '41',
+    slug: 'his-blood',
+    title: 'His Blood',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-09-06',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'The blood of Jesus is the divine currency of our salvation. We cannot earn our way into the presence of the Father through good works, religious activity, or human effort.',
+
+    description: `**HIS BLOOD**
+
+Key Text: Romans 3:21–26
+
+---
+
+Throughout Scripture, blood represents life, sacrifice, covenant, and redemption. From the Passover in Egypt to the cross of Christ, God continually revealed that sin carries a price and that humanity needs a way back into His presence.
+
+In the Old Testament, the Passover lamb pointed forward to something greater. The animal represented Jesus, the ultimate Lamb of God, while the unleavened bread reminded God's people to separate themselves from the yeast, a picture of sin and corruption. What was foreshadowed in the Old Testament was fulfilled completely through Jesus Christ.
+
+The blood of Jesus is the divine currency of our salvation. We cannot earn our way into the presence of the Father through good works, religious activity, or human effort. Our salvation was purchased by the blood of Christ.
+
+Romans 3 reminds us that God's righteousness is revealed through Jesus, who became the sacrifice for our sin so that God could remain just while justifying those who place their faith in Christ.
+
+The blood of Jesus does not merely remind us of what happened at the cross. His blood continues to speak over our lives today.
+
+---
+
+**1. IT WAS A SACRIFICE**
+
+Jesus voluntarily offered His own perfect and sinless life.
+
+He did not accidentally end up on the cross. He willingly gave Himself.
+
+Jesus stood forth as the ultimate Lamb of God. The Passover lamb in Exodus pointed toward Christ, who would ultimately give His life for the sins of the world.
+
+The cross was the altar, Christ was the perfect offering, and He willingly presented Himself for us.
+
+The New Testament describes Christ as the Passover Lamb who was sacrificed for us. (1 Corinthians 5:7)
+
+His sacrifice demonstrates the depth of God's love. (Romans 5:8)
+
+God did not wait for us to become worthy before He loved us. While we were still sinners, Christ died for us.
+
+Because God has given us His greatest gift, we should never respond to a generous God with a stingy heart.
+
+*Do not give a stingy offering to a generous God.*
+
+When we understand the price Jesus paid, our response should be one of gratitude, surrender, generosity, and readiness.
+
+We should be ready anytime God tells us to go, give, serve, or obey.
+
+**Key Truth:**
+Jesus willingly became the perfect sacrifice so that we could be reconciled to God.
+
+---
+
+**2. IT WAS VICARIOUS**
+
+Vicarious means that something is experienced or endured by one person for the ultimate benefit of another.
+
+Jesus did not die for His own sake.
+
+He died for us.
+
+Every drop of blood He shed was poured out for the benefit of people who could never save themselves.
+
+The cross was personal.
+
+Jesus didn't simply die for humanity in some distant or general sense. He gave Himself for you.
+
+The blood that flowed from Calvary represents the incredible love of a Savior who was willing to suffer so that others could receive life.
+
+This is why the Gospel is not merely a theological concept. It is God's personal expression of love toward us.
+
+**Key Truth:**
+Jesus endured what we could not endure so that we could receive what we could never earn.
+
+---
+
+**3. IT WAS SUBSTITUTIONARY**
+
+Christ suffered death as the penalty for our sin, as our substitute.
+
+Jesus did not simply die for us in a general sense.
+
+He died in our place.
+
+We were the ones who had sinned. We were the ones who deserved the penalty. Yet Jesus took our place.
+
+This is the heart of substitutionary atonement.
+
+The innocent One took the place of the guilty.
+
+The righteous One stood in the place of sinners.
+
+The Lamb took the place of those who deserved judgement.
+
+This is why the blood of Jesus is the divine currency of our salvation. We could never pay the price ourselves, but Christ paid it completely.
+
+Our salvation is not based on how much we can do for God.
+
+It is based on what Jesus has already done for us.
+
+**Key Truth:**
+Jesus took our place so that we could stand in the freedom He purchased for us.
+
+---
+
+**4. IT WAS PROPITIATORY**
+
+Christ's sacrifice dealt completely with the penalty of sin and satisfied the righteous justice of God.
+
+God is loving, but He is also just.
+
+Sin cannot simply be ignored.
+
+Justice requires that sin be dealt with, and Jesus willingly became the sacrifice through which God's righteous judgement was satisfied.
+
+The blood of Jesus was propitiatory, it provided the means by which God's righteous wrath against sin was dealt with through Christ.
+
+At the cross, God's justice and God's mercy met.
+
+God did not simply overlook our sin.
+
+Jesus paid for it.
+
+The cross demonstrates that God can remain perfectly just while extending forgiveness to those who place their faith in Christ.
+
+We can approach God not because we are worthy in ourselves, but because Jesus has made the way.
+
+**Key Truth:**
+The blood of Jesus satisfied the demands of God's justice so that we could experience peace with God.
+
+---
+
+**5. IT WAS EXPIATORY**
+
+The blood of Jesus does not only satisfy God's justice, it also deals with our guilt.
+
+Expiation speaks of the removal, cancellation, and cleansing of guilt.
+
+Jesus' perfect sacrifice paid the full price for our sin and removes the guilt of those who receive His forgiveness and follow Him.
+
+God does not keep bringing forgiven sins back to our account.
+
+(Psalm 103:12) He removes our sins as far as the east is from the west.
+
+This is why we cannot allow the enemy to continually use our past against us.
+
+If something keeps reminding you of your forgiven past in order to condemn you, that is not the voice of God.
+
+The Holy Spirit convicts us so that we can repent and be restored.
+
+The enemy condemns us so that we remain trapped in shame.
+
+The blood of Jesus says:
+
+You have been forgiven.
+
+You have been cleansed.
+
+You have been redeemed.
+
+You have been set free.
+
+His blood continues to work in your life.
+
+*"So if the Son sets you free, you will be free indeed."* John 8:36
+
+**Key Truth:**
+The blood of Jesus does not only forgive your sin; it removes your guilt and gives you freedom to walk in a new life`,
+
+    tags: ['Blood', 'Salvation', 'Redemption', 'Grace', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/his_blood.jpg',
+    scriptures: [
+      {
+        verse: 'Romans 3:21–26',
+        text: 'But now the righteousness of God apart from the law is revealed, being witnessed by the Law and the Prophets, even the righteousness of God, through faith in Jesus Christ, to all and on all who believe. For there is no difference; for all have sinned and fall short of the glory of God, being justified freely by His grace through the redemption that is in Christ Jesus, whom God set forth as a propitiation by His blood, through faith, to demonstrate His righteousness, because in His forbearance God had passed over the sins that were previously committed, to demonstrate at the present time His righteousness, that He might be just and the justifier of the one who has faith in Jesus.',
+      },
+      {
+        verse: '1 Corinthians 5:7',
+        text: 'Therefore purge out the old leaven, that you may be a new lump, since you truly are unleavened. For indeed Christ, our Passover, was sacrificed for us.',
+      },
+      {
+        verse: 'Romans 5:8',
+        text: 'But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us.',
+      },
+      {
+        verse: 'Psalm 103:12',
+        text: 'As far as the east is from the west, so far has He removed our transgressions from us.',
+      },
+      {
+        verse: 'John 8:36',
+        text: 'Therefore if the Son makes you free, you shall be free indeed.',
+      },
+    ],
+    keyPoints: [
+      'It Was a Sacrifice',
+      'It Was Vicarious',
+      'It Was Substitutionary',
+      'It Was Propitiatory',
+      'It Was Expiatory',
+    ],
+    relatedSermons: ['40', '39'],
+    keyVerse: 'Romans 3:21–26',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'His Blood',
+        unnumbered: true,
+        paragraphs: [
+          '**Key Text: Romans 3:21–26**',
+          'Throughout Scripture, blood represents life, sacrifice, covenant, and redemption. From the Passover in Egypt to the cross of Christ, God continually revealed that sin carries a price and that humanity needs a way back into His presence.',
+          "In the Old Testament, the Passover lamb pointed forward to something greater. The animal represented Jesus, the ultimate Lamb of God, while the unleavened bread reminded God's people to separate themselves from the yeast, a picture of sin and corruption. What was foreshadowed in the Old Testament was fulfilled completely through Jesus Christ.",
+          'The blood of Jesus is the divine currency of our salvation. We cannot earn our way into the presence of the Father through good works, religious activity, or human effort. Our salvation was purchased by the blood of Christ.',
+          "Romans 3 reminds us that God's righteousness is revealed through Jesus, who became the sacrifice for our sin so that God could remain just while justifying those who place their faith in Christ.",
+          'The blood of Jesus does not merely remind us of what happened at the cross. His blood continues to speak over our lives today.',
+        ],
+      },
+      {
+        id: 'sec-it-was-a-sacrifice',
+        title: 'It Was a Sacrifice',
+        paragraphs: [
+          'Jesus voluntarily offered His own perfect and sinless life.',
+          'He did not accidentally end up on the cross. He willingly gave Himself.',
+          'Jesus stood forth as the ultimate Lamb of God. The Passover lamb in Exodus pointed toward Christ, who would ultimately give His life for the sins of the world.',
+          'The cross was the altar, Christ was the perfect offering, and He willingly presented Himself for us.',
+          'The New Testament describes Christ as the Passover Lamb who was sacrificed for us. (1 Corinthians 5:7)',
+          "His sacrifice demonstrates the depth of God's love. (Romans 5:8)",
+          'God did not wait for us to become worthy before He loved us. While we were still sinners, Christ died for us.',
+          'Because God has given us His greatest gift, we should never respond to a generous God with a stingy heart.',
+          '*Do not give a stingy offering to a generous God.*',
+          'When we understand the price Jesus paid, our response should be one of gratitude, surrender, generosity, and readiness.',
+          'We should be ready anytime God tells us to go, give, serve, or obey.',
+        ],
+        callout: 'Jesus willingly became the perfect sacrifice so that we could be reconciled to God.',
+      },
+      {
+        id: 'sec-it-was-vicarious',
+        title: 'It Was Vicarious',
+        paragraphs: [
+          'Vicarious means that something is experienced or endured by one person for the ultimate benefit of another.',
+          'Jesus did not die for His own sake.',
+          'He died for us.',
+          'Every drop of blood He shed was poured out for the benefit of people who could never save themselves.',
+          'The cross was personal.',
+          "Jesus didn't simply die for humanity in some distant or general sense. He gave Himself for you.",
+          'The blood that flowed from Calvary represents the incredible love of a Savior who was willing to suffer so that others could receive life.',
+          "This is why the Gospel is not merely a theological concept. It is God's personal expression of love toward us.",
+        ],
+        callout: 'Jesus endured what we could not endure so that we could receive what we could never earn.',
+      },
+      {
+        id: 'sec-it-was-substitutionary',
+        title: 'It Was Substitutionary',
+        paragraphs: [
+          'Christ suffered death as the penalty for our sin, as our substitute.',
+          'Jesus did not simply die for us in a general sense.',
+          'He died in our place.',
+          'We were the ones who had sinned. We were the ones who deserved the penalty. Yet Jesus took our place.',
+          'This is the heart of substitutionary atonement.',
+          'The innocent One took the place of the guilty.',
+          'The righteous One stood in the place of sinners.',
+          'The Lamb took the place of those who deserved judgement.',
+          'This is why the blood of Jesus is the divine currency of our salvation. We could never pay the price ourselves, but Christ paid it completely.',
+          'Our salvation is not based on how much we can do for God.',
+          'It is based on what Jesus has already done for us.',
+        ],
+        callout: 'Jesus took our place so that we could stand in the freedom He purchased for us.',
+      },
+      {
+        id: 'sec-it-was-propitiatory',
+        title: 'It Was Propitiatory',
+        paragraphs: [
+          "Christ's sacrifice dealt completely with the penalty of sin and satisfied the righteous justice of God.",
+          'God is loving, but He is also just.',
+          'Sin cannot simply be ignored.',
+          "Justice requires that sin be dealt with, and Jesus willingly became the sacrifice through which God's righteous judgement was satisfied.",
+          "The blood of Jesus was propitiatory, it provided the means by which God's righteous wrath against sin was dealt with through Christ.",
+          "At the cross, God's justice and God's mercy met.",
+          'God did not simply overlook our sin.',
+          'Jesus paid for it.',
+          'The cross demonstrates that God can remain perfectly just while extending forgiveness to those who place their faith in Christ.',
+          'We can approach God not because we are worthy in ourselves, but because Jesus has made the way.',
+        ],
+        callout: "The blood of Jesus satisfied the demands of God's justice so that we could experience peace with God.",
+      },
+      {
+        id: 'sec-it-was-expiatory',
+        title: 'It Was Expiatory',
+        paragraphs: [
+          "The blood of Jesus does not only satisfy God's justice, it also deals with our guilt.",
+          'Expiation speaks of the removal, cancellation, and cleansing of guilt.',
+          "Jesus' perfect sacrifice paid the full price for our sin and removes the guilt of those who receive His forgiveness and follow Him.",
+          'God does not keep bringing forgiven sins back to our account.',
+          '(Psalm 103:12) He removes our sins as far as the east is from the west.',
+          'This is why we cannot allow the enemy to continually use our past against us.',
+          'If something keeps reminding you of your forgiven past in order to condemn you, that is not the voice of God.',
+          'The Holy Spirit convicts us so that we can repent and be restored.',
+          'The enemy condemns us so that we remain trapped in shame.',
+          'The blood of Jesus says:',
+          'You have been forgiven.',
+          'You have been cleansed.',
+          'You have been redeemed.',
+          'You have been set free.',
+          'His blood continues to work in your life.',
+          '*"So if the Son sets you free, you will be free indeed."* John 8:36',
+        ],
+        callout: 'The blood of Jesus does not only forgive your sin; it removes your guilt and gives you freedom to walk in a new life',
+      },
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: 'Romans 3:21–26',
+        text: 'But now the righteousness of God apart from the law is revealed, being witnessed by the Law and the Prophets, even the righteousness of God, through faith in Jesus Christ, to all and on all who believe. For there is no difference; for all have sinned and fall short of the glory of God, being justified freely by His grace through the redemption that is in Christ Jesus, whom God set forth as a propitiation by His blood, through faith, to demonstrate His righteousness, because in His forbearance God had passed over the sins that were previously committed, to demonstrate at the present time His righteousness, that He might be just and the justifier of the one who has faith in Jesus.',
+      },
+      {
+        kicker: 'It Was a Sacrifice',
+        verse: '1 Corinthians 5:7',
+        text: 'Therefore purge out the old leaven, that you may be a new lump, since you truly are unleavened. For indeed Christ, our Passover, was sacrificed for us.',
+      },
+      {
+        kicker: 'It Was a Sacrifice',
+        verse: 'Romans 5:8',
+        text: 'But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us.',
+      },
+      {
+        kicker: 'It Was Expiatory',
+        verse: 'Psalm 103:12',
+        text: 'As far as the east is from the west, so far has He removed our transgressions from us.',
+      },
+      {
+        kicker: 'It Was Expiatory',
+        verse: 'John 8:36',
+        text: 'Therefore if the Son makes you free, you shall be free indeed.',
       },
     ],
   },
