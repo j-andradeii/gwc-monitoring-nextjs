@@ -356,6 +356,14 @@ body {
   color: rgba(26, 39, 68, 0.85) !important;
 }
 
+/* "QR code saved" confirmation fired by DownloadQRButton (mobile only — the OS
+   share sheet closes with no visible trace that the QR reached Photos).
+   PrimeReact sizes the toast `calc(100% - var(--toast-indent, 0px))`, so on a
+   phone it otherwise runs edge to edge; the indent keeps it reading as a card. */
+.p-toast.qr-save-toast {
+  --toast-indent: 2rem;
+}
+
 /* InputSwitch — Tailwind v4 preflight resets `::before { margin: 0 }`, which kills
    lara's vertical-centering offset, so the knob overflows the bottom of the track
    (renders as a notch). Restore the centering offset. */

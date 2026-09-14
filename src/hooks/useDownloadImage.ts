@@ -1,6 +1,28 @@
 import { useState, useCallback } from 'react';
 
 /**
+ * How the image actually reached the user, so callers can confirm it honestly:
+ *  - `shared`     — the OS share sheet completed (the mobile "Save Image" path)
+ *  - `downloaded` — a blob/anchor file download was triggered
+ *  - `dismissed`  — the share sheet was cancelled; nothing was saved
+ *  - `failed`     — neither path worked (the caller's own fallback ran instead)
+ *
+ * Only `shared` and `downloaded` mean the file is on the device — never claim a
+ * save off the back of the other two.
+ */
+export type ImageSaveOutcome = 'shared' | 'downloaded' | 'dismissed' | 'failed';
+
+export interface ImageSaveResult {
+  outcome: ImageSaveOutcome;
+  /**
+   * True when the save ran on a real phone/tablet. Desktop browsers confirm a
+   * download themselves (download chip / shelf), so UI feedback is only worth
+   * showing when this is true.
+   */
+  mobile: boolean;
+}
+
+/**
  * Detect a real mobile / tablet device (touch phone, Android tablet, or iPad).
  * Desktop browsers — even ones that support the Web Share API (Safari/Edge on
  * macOS/Windows) — return false so they keep the normal file download.
@@ -38,10 +60,12 @@ const triggerAnchorDownload = (href: string, filename: string, newTab = false) =
  * Save an in-memory image: native share sheet on mobile, file download elsewhere.
  * Shared by both entry points below so the two paths never drift apart.
  */
-const saveBlob = async (blob: Blob, filename: string) => {
+const saveBlob = async (blob: Blob, filename: string): Promise<ImageSaveResult> => {
+    const mobile = isMobileDevice();
+
     // Mobile: hand the image to the OS share sheet → "Save Image" to Photos.
     if (
-        isMobileDevice() &&
+        mobile &&
         typeof navigator !== 'undefined' &&
         typeof navigator.canShare === 'function'
     ) {
@@ -52,11 +76,11 @@ const saveBlob = async (blob: Blob, filename: string) => {
         if (navigator.canShare({ files: [file] })) {
             try {
                 await navigator.share({ files: [file], title: filename });
-                return; // saved (or sheet handled by the user) — done
+                return { outcome: 'shared', mobile }; // saved — done
             } catch (shareErr) {
                 // User dismissed the sheet — treat as done, don't fall back.
                 if (shareErr instanceof Error && shareErr.name === 'AbortError') {
-                    return;
+                    return { outcome: 'dismissed', mobile };
                 }
                 // Any other share failure → fall through to the blob download.
             }
@@ -67,6 +91,7 @@ const saveBlob = async (blob: Blob, filename: string) => {
     const blobUrl = window.URL.createObjectURL(blob);
     triggerAnchorDownload(blobUrl, filename);
     window.URL.revokeObjectURL(blobUrl);
+    return { outcome: 'downloaded', mobile };
 };
 
 /**
@@ -78,6 +103,10 @@ const saveBlob = async (blob: Blob, filename: string) => {
  * to Photos silently, so the share sheet is the standard one-tap path. Desktop
  * (and any device without file-share support) keeps the normal file download.
  *
+ * Both entry points resolve with an `ImageSaveResult` describing which path ran,
+ * because neither the share sheet nor a mobile download gives the user any
+ * visible confirmation — the caller is the only one that can say "saved".
+ *
  * `downloadImage` fetches a remote URL first; `downloadBlob` takes an image the
  * page already generated (e.g. a canvas render) — never route those through a
  * blob: URL + fetch, the app's CSP `connect-src` (middleware.ts) blocks it.
@@ -86,45 +115,52 @@ export const useDownloadImage = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const downloadBlob = useCallback(async (blob: Blob, filename: string) => {
-        if (!blob) return;
+    const downloadBlob = useCallback(
+        async (blob: Blob, filename: string): Promise<ImageSaveResult> => {
+            if (!blob) return { outcome: 'failed', mobile: isMobileDevice() };
 
-        setIsDownloading(true);
-        setError(null);
+            setIsDownloading(true);
+            setError(null);
 
-        try {
-            await saveBlob(blob, filename);
-        } catch (err: unknown) {
-            console.error('Download failed:', err);
-            setError(err instanceof Error ? err.message : 'Failed to download image');
-            throw err;
-        } finally {
-            setIsDownloading(false);
-        }
-    }, []);
+            try {
+                return await saveBlob(blob, filename);
+            } catch (err: unknown) {
+                console.error('Download failed:', err);
+                setError(err instanceof Error ? err.message : 'Failed to download image');
+                throw err;
+            } finally {
+                setIsDownloading(false);
+            }
+        },
+        []
+    );
 
-    const downloadImage = useCallback(async (url: string, filename: string) => {
-        if (!url) return;
+    const downloadImage = useCallback(
+        async (url: string, filename: string): Promise<ImageSaveResult> => {
+            if (!url) return { outcome: 'failed', mobile: isMobileDevice() };
 
-        setIsDownloading(true);
-        setError(null);
+            setIsDownloading(true);
+            setError(null);
 
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Network response was not ok');
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
 
-            await saveBlob(await response.blob(), filename);
-        } catch (err: unknown) {
-            console.error('Download failed:', err);
-            setError(err instanceof Error ? err.message : 'Failed to download image');
+                return await saveBlob(await response.blob(), filename);
+            } catch (err: unknown) {
+                console.error('Download failed:', err);
+                setError(err instanceof Error ? err.message : 'Failed to download image');
 
-            // Fallback: try to open/download directly.
-            // This helps if CORS blocks fetch but direct access is allowed.
-            triggerAnchorDownload(url, filename, true);
-        } finally {
-            setIsDownloading(false);
-        }
-    }, []);
+                // Fallback: try to open/download directly.
+                // This helps if CORS blocks fetch but direct access is allowed.
+                triggerAnchorDownload(url, filename, true);
+                return { outcome: 'failed', mobile: isMobileDevice() };
+            } finally {
+                setIsDownloading(false);
+            }
+        },
+        []
+    );
 
     return { downloadImage, downloadBlob, isDownloading, error };
 };
