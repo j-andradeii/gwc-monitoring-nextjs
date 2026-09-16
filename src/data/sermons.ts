@@ -9842,7 +9842,7 @@ And when we truly understand the depth of His love, the only fitting response is
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'The blood of Jesus is the divine currency of our salvation. We cannot earn our way into the presence of the Father through good works, religious activity, or human effort.',
 
     description: `**HIS BLOOD**
@@ -10173,6 +10173,405 @@ The blood of Jesus does not only forgive your sin; it removes your guilt and giv
         kicker: 'It Was Expiatory',
         verse: 'John 8:36',
         text: 'Therefore if the Son makes you free, you shall be free indeed.',
+      },
+    ],
+  },
+  {
+    id: '42',
+    slug: 'surplus-vs-sacrifice',
+    title: 'Surplus vs Sacrifice',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-09-13',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: "The Kingdom of God does not operate according to the world's measurements. What may look small to people can be great in the eyes of God when it is given with genuine faith and sacrifice.",
+
+    description: `**SURPLUS VS SACRIFICE**
+
+Key Text: Mark 12:41–44
+
+---
+
+When Jesus watched people giving their offerings at the temple, He was not merely observing what they gave, He was taking notice of the offerer.
+
+The rich gave large amounts, while a poor widow gave two small coins. From a human perspective, the difference was obvious. But Jesus measured their giving differently. He looked beyond the amount and saw the heart, the motive, the faith, and the sacrifice behind the offering.
+
+The Kingdom of God does not operate according to the world's measurements. What may look small to people can be great in the eyes of God when it is given with genuine faith and sacrifice.
+
+True devotion is sacrificial. God is not interested in our leftovers. He desires a heart that trusts Him enough to give, obey, and serve even when it costs us something.
+
+---
+
+**1. A PERSON'S GIFT IS DETERMINED NOT BY THE AMOUNT HE OR SHE GIVES, BUT BY THE AMOUNT OF SACRIFICE INVOLVED IN THE GIVING**
+
+Jesus said that the widow had given more than everyone else because she gave out of her poverty while the others gave out of their surplus.
+
+The issue was not the amount.
+
+The issue was the sacrifice.
+
+The rich could give without feeling the cost, while the widow gave everything she had.
+
+God looks beyond the physical amount. He looks at the heart, the motive, and the faith behind what we offer Him.
+
+Giving says something about the giver.
+
+Our giving reveals our priorities.
+
+It reveals what we trust.
+
+It reveals what we value.
+
+And ultimately, our giving represents us.
+
+---
+
+**2. NO LEFTOVERS FOR GOD**
+
+When we give God our surplus, we can easily give whatever is convenient, whatever is left, or whatever requires the least sacrifice.
+
+But God deserves more than our leftovers.
+
+When something is given without preparation, without intentionality, and without sacrifice, it can reveal something about the condition of our hearts.
+
+This principle is not limited to money.
+
+- It applies to our time.
+- Our energy.
+- Our gifts.
+- Our service.
+- Our worship.
+- Our ministry.
+
+God does not want whatever happens to be left over after everything else has received our best.
+
+---
+
+**3. GIVING IS A GRACE OF CHRISTIANITY**
+
+Giving is one of the graces that should become evident in the life of a believer.
+
+We don't give so that we will be saved.
+
+We give because we are saved.
+
+Our generosity does not purchase salvation. Rather, generosity becomes one of the evidences of a heart that has been transformed by God's grace.
+
+John the Baptist demanded evidence of genuine repentance:
+
+*"Produce fruit in keeping with repentance."* (Luke 3:8)
+
+True repentance produces visible fruit.
+
+In the same way, genuine devotion produces a life that is willing to give.
+
+Our offering is not simply a financial transaction. It can become an expression of worship, gratitude, obedience, and faith.
+
+---
+
+**4. WE ARE FREE FROM THE LAW, BUT NOT FROM THE PRINCIPLES OF THE LAW**
+
+The New Testament does not call believers back to earning God's favor through legalistic giving.
+
+We are saved by grace.
+
+But being free from the law does not mean that biblical principles no longer matter.
+
+The principle of honoring God with what we have remains.
+
+God is still worthy of our first and our best.
+
+---
+
+**5. FAITH GIVES BEYOND CONVENIENCE**
+
+The Kingdom operates through obedience and faith.
+
+If we only give based on what we currently have, we will always be limited by what we can see.
+
+But faith trusts that God is our provider.
+
+When we believe that God provides, we are no longer controlled by scarcity. We can give generously because our confidence is not ultimately in our resources, it is in God.
+
+The widow's offering demonstrated this kind of trust.
+
+She gave even though she had very little left.
+
+Her giving was an act of faith.
+
+---
+
+**6. THIS PRINCIPLE APPLIES TO ALL OUR SERVICE FOR JESUS**
+
+The principle of sacrifice is not limited to our offerings.
+
+God judges our work and ministry not by its size, influence, visibility, or apparent success, but by the sincerity, sacrifice, faith, and love involved in it.
+
+Something can look small to people and still be significant to God.
+
+A hidden prayer.
+A quiet act of service.
+A sacrifice nobody sees.
+A generous gift.
+A faithful commitment.
+
+God notices sincere acts of faith even when the world overlooks them.
+
+Hebrews 7:8 reminds us that God is the One who ultimately sees and evaluates what is given.
+
+The question is not simply, "How much did I give?"
+
+The deeper question is: "How much of my heart was in what I gave?"
+
+True devotion cannot be separated from sacrifice.
+
+---
+
+**QUESTIONS TO PONDER**
+
+Take time to honestly examine your heart:
+
+**1.** Does my giving provide clear evidence that I have really been saved?
+**2.** Do I give gladly, joyfully, and as generously as possible, or do I merely tolerate the offering as an unavoidable annoyance?
+**3.** Is my giving sporadic, stingy, or grudging? If so, what does that reveal about my priorities, my trust, and my heart toward God?
+**4.** Am I giving God my first and my best, or am I giving Him whatever is left over?
+**5.** Does my service for Jesus involve genuine sacrifice, or only what is convenient for me?
+
+---
+
+**KEY TAKEAWAYS**
+
+* God does not only look at the offering; He looks at the offerer.
+* Giving is a reflection of our heart, priorities, and faith.
+* The value of an offering is not determined only by its amount but by the sacrifice involved.
+* We don't give to be saved; we give because we are saved.
+* Genuine repentance produces visible fruit.
+* True devotion is sacrificial.
+* God notices sincere acts of faith even when people overlook them.
+* The Kingdom operates through faith and obedience.
+* We should not give God merely what is convenient or what is left over.
+* God measures our work and ministry by sincere dedication, sacrifice, faith, and love not simply by size or success.
+* Whether young or old, rich or poor, every believer can learn to give.
+* No leftovers for God.
+
+"God doesn't measure your offering by what leaves your hand; He measures it by what it costs your heart."
+
+---
+
+**CALL TO ACTION**
+
+This week, examine what you are giving to God not only financially but in every area of your life.
+
+* Give God your first and your best, not merely what is left over.
+* Give with preparation, intentionality, joy, and faith.
+* Ask God to reveal any area where convenience has replaced sacrifice.
+* Give generously even when it requires you to trust God's provision.
+* Serve Jesus with the same heart of sacrifice.
+* Don't measure your contribution by how it compares with others.
+* Remember that God sees the sincere things that people may never notice.
+
+The widow's offering may have looked insignificant to everyone else, but Jesus saw what others could not see.
+
+He saw her heart.
+He saw her faith.
+He saw her sacrifice.
+
+And that is what God still sees today.
+
+Don't give God what is left. Give Him what is worthy of the One who gave everything for you.`,
+
+    tags: ['Giving', 'Sacrifice', 'Faith', 'Stewardship', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/surplus_vs_sacrifice.webp',
+    scriptures: [
+      {
+        verse: 'Mark 12:41–44',
+        text: 'Now Jesus sat opposite the treasury and saw how the people put money into the treasury. And many who were rich put in much. Then one poor widow came and threw in two mites, which make a quadrans. So He called His disciples to Himself and said to them, "Assuredly, I say to you that this poor widow has put in more than all those who have given to the treasury; for they all put in out of their abundance, but she out of her poverty put in all that she had, her whole livelihood."',
+      },
+      {
+        verse: 'Luke 3:8',
+        text: 'Therefore bear fruits worthy of repentance, and do not begin to say to yourselves, "We have Abraham as our father." For I say to you that God is able to raise up children to Abraham from these stones.',
+      },
+      {
+        verse: 'Hebrews 7:8',
+        text: 'Here mortal men receive tithes, but there he receives them, of whom it is witnessed that he lives.',
+      },
+    ],
+    keyPoints: [
+      "A Person's Gift Is Determined Not by the Amount He or She Gives, but by the Amount of Sacrifice Involved in the Giving",
+      'No Leftovers for God',
+      'Giving Is a Grace of Christianity',
+      'We Are Free From the Law, But Not From the Principles of the Law',
+      'Faith Gives Beyond Convenience',
+      'This Principle Applies to All Our Service for Jesus',
+    ],
+    relatedSermons: ['41', '40'],
+    keyVerse: 'Mark 12:41–44',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'Surplus vs Sacrifice',
+        unnumbered: true,
+        paragraphs: [
+          '**Key Text: Mark 12:41–44**',
+          'When Jesus watched people giving their offerings at the temple, He was not merely observing what they gave, He was taking notice of the offerer.',
+          'The rich gave large amounts, while a poor widow gave two small coins. From a human perspective, the difference was obvious. But Jesus measured their giving differently. He looked beyond the amount and saw the heart, the motive, the faith, and the sacrifice behind the offering.',
+          "The Kingdom of God does not operate according to the world's measurements. What may look small to people can be great in the eyes of God when it is given with genuine faith and sacrifice.",
+          'True devotion is sacrificial. God is not interested in our leftovers. He desires a heart that trusts Him enough to give, obey, and serve even when it costs us something.',
+        ],
+      },
+      {
+        id: 'sec-gift-determined-by-sacrifice',
+        title: "A Person's Gift Is Determined Not by the Amount He or She Gives, but by the Amount of Sacrifice Involved in the Giving",
+        paragraphs: [
+          'Jesus said that the widow had given more than everyone else because she gave out of her poverty while the others gave out of their surplus.',
+          'The issue was not the amount.',
+          'The issue was the sacrifice.',
+          'The rich could give without feeling the cost, while the widow gave everything she had.',
+          'God looks beyond the physical amount. He looks at the heart, the motive, and the faith behind what we offer Him.',
+          'Giving says something about the giver.',
+          'Our giving reveals our priorities.',
+          'It reveals what we trust.',
+          'It reveals what we value.',
+          'And ultimately, our giving represents us.',
+        ],
+      },
+      {
+        id: 'sec-no-leftovers-for-god',
+        title: 'No Leftovers for God',
+        paragraphs: [
+          'When we give God our surplus, we can easily give whatever is convenient, whatever is left, or whatever requires the least sacrifice.',
+          'But God deserves more than our leftovers.',
+          'When something is given without preparation, without intentionality, and without sacrifice, it can reveal something about the condition of our hearts.',
+          'This principle is not limited to money.',
+          'It applies to our time. Our energy. Our gifts. Our service. Our worship. Our ministry.',
+          'God does not want whatever happens to be left over after everything else has received our best.',
+        ],
+      },
+      {
+        id: 'sec-giving-is-a-grace-of-christianity',
+        title: 'Giving Is a Grace of Christianity',
+        paragraphs: [
+          'Giving is one of the graces that should become evident in the life of a believer.',
+          "We don't give so that we will be saved.",
+          'We give because we are saved.',
+          "Our generosity does not purchase salvation. Rather, generosity becomes one of the evidences of a heart that has been transformed by God's grace.",
+          'John the Baptist demanded evidence of genuine repentance:',
+          '*"Produce fruit in keeping with repentance."* (Luke 3:8)',
+          'True repentance produces visible fruit.',
+          'In the same way, genuine devotion produces a life that is willing to give.',
+          'Our offering is not simply a financial transaction. It can become an expression of worship, gratitude, obedience, and faith.',
+        ],
+      },
+      {
+        id: 'sec-free-from-the-law',
+        title: 'We Are Free From the Law, But Not From the Principles of the Law',
+        paragraphs: [
+          "The New Testament does not call believers back to earning God's favor through legalistic giving.",
+          'We are saved by grace.',
+          'But being free from the law does not mean that biblical principles no longer matter.',
+          'The principle of honoring God with what we have remains.',
+          'God is still worthy of our first and our best.',
+        ],
+      },
+      {
+        id: 'sec-faith-gives-beyond-convenience',
+        title: 'Faith Gives Beyond Convenience',
+        paragraphs: [
+          'The Kingdom operates through obedience and faith.',
+          'If we only give based on what we currently have, we will always be limited by what we can see.',
+          'But faith trusts that God is our provider.',
+          'When we believe that God provides, we are no longer controlled by scarcity. We can give generously because our confidence is not ultimately in our resources, it is in God.',
+          "The widow's offering demonstrated this kind of trust.",
+          'She gave even though she had very little left.',
+          'Her giving was an act of faith.',
+        ],
+      },
+      {
+        id: 'sec-applies-to-all-our-service',
+        title: 'This Principle Applies to All Our Service for Jesus',
+        paragraphs: [
+          'The principle of sacrifice is not limited to our offerings.',
+          'God judges our work and ministry not by its size, influence, visibility, or apparent success, but by the sincerity, sacrifice, faith, and love involved in it.',
+          'Something can look small to people and still be significant to God.',
+          'A hidden prayer. A quiet act of service. A sacrifice nobody sees. A generous gift. A faithful commitment.',
+          'God notices sincere acts of faith even when the world overlooks them.',
+          'Hebrews 7:8 reminds us that God is the One who ultimately sees and evaluates what is given.',
+          'The question is not simply, "How much did I give?"',
+          'The deeper question is: "How much of my heart was in what I gave?"',
+          'True devotion cannot be separated from sacrifice.',
+        ],
+      },
+      {
+        id: 'sec-questions-to-ponder',
+        kicker: 'Questions to Ponder',
+        title: 'Questions to Ponder',
+        unnumbered: true,
+        paragraphs: [
+          'Take time to honestly examine your heart:',
+          '**1.** Does my giving provide clear evidence that I have really been saved?',
+          '**2.** Do I give gladly, joyfully, and as generously as possible, or do I merely tolerate the offering as an unavoidable annoyance?',
+          '**3.** Is my giving sporadic, stingy, or grudging? If so, what does that reveal about my priorities, my trust, and my heart toward God?',
+          '**4.** Am I giving God my first and my best, or am I giving Him whatever is left over?',
+          '**5.** Does my service for Jesus involve genuine sacrifice, or only what is convenient for me?',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'This week, examine what you are giving to God not only financially but in every area of your life.',
+          'Give God your first and your best, not merely what is left over.',
+          'Give with preparation, intentionality, joy, and faith.',
+          'Ask God to reveal any area where convenience has replaced sacrifice.',
+          "Give generously even when it requires you to trust God's provision.",
+          'Serve Jesus with the same heart of sacrifice.',
+          "Don't measure your contribution by how it compares with others.",
+          'Remember that God sees the sincere things that people may never notice.',
+          "The widow's offering may have looked insignificant to everyone else, but Jesus saw what others could not see.",
+          'He saw her heart.',
+          'He saw her faith.',
+          'He saw her sacrifice.',
+          'And that is what God still sees today.',
+          "Don't give God what is left. Give Him what is worthy of the One who gave everything for you.",
+        ],
+        callout: "God doesn't measure your offering by what leaves your hand; He measures it by what it costs your heart.",
+      },
+    ],
+    keyTakeaways: [
+      'God does not only look at the offering; He looks at the offerer.',
+      'Giving is a reflection of our heart, priorities, and faith.',
+      'The value of an offering is not determined only by its amount but by the sacrifice involved.',
+      "We don't give to be saved; we give because we are saved.",
+      'Genuine repentance produces visible fruit.',
+      'True devotion is sacrificial.',
+      'God notices sincere acts of faith even when people overlook them.',
+      'The Kingdom operates through faith and obedience.',
+      'We should not give God merely what is convenient or what is left over.',
+      'God measures our work and ministry by sincere dedication, sacrifice, faith, and love not simply by size or success.',
+      'Whether young or old, rich or poor, every believer can learn to give.',
+      'No leftovers for God.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: 'Mark 12:41–44',
+        text: 'Now Jesus sat opposite the treasury and saw how the people put money into the treasury. And many who were rich put in much. Then one poor widow came and threw in two mites, which make a quadrans. So He called His disciples to Himself and said to them, "Assuredly, I say to you that this poor widow has put in more than all those who have given to the treasury; for they all put in out of their abundance, but she out of her poverty put in all that she had, her whole livelihood."',
+      },
+      {
+        kicker: 'Giving Is a Grace of Christianity',
+        verse: 'Luke 3:8',
+        text: 'Therefore bear fruits worthy of repentance, and do not begin to say to yourselves, "We have Abraham as our father." For I say to you that God is able to raise up children to Abraham from these stones.',
+      },
+      {
+        kicker: 'This Principle Applies to All Our Service for Jesus',
+        verse: 'Hebrews 7:8',
+        text: 'Here mortal men receive tithes, but there he receives them, of whom it is witnessed that he lives.',
       },
     ],
   },
