@@ -40,7 +40,8 @@ export const OutreachDonationDropoffSection: React.FC = () => {
           <h2 className="outreach-dropoff-title">Donate Goods &amp; Supplies</h2>
           <p className="outreach-dropoff-subtitle">
             We accept donations of clothing, food, medicine kits, and essential supplies for
-            families in need across Cebu and the Visayas.
+            families in the communities we serve — and we keep stock on hand for when
+            disaster strikes.
           </p>
         </div>
 

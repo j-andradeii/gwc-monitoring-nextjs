@@ -14878,19 +14878,25 @@
 }
 
 /* Optional Relief Fund toggle (page.tsx `SHOW_RELIEF_FUND = false`).
-   With Relief hidden, Vision(white) would sit directly above Impact — so swap
-   Impact→cream and Gallery→white to preserve the white⇄cream alternation:
-     hidden → Vision(w) · Impact(c) · Gallery(w) · Give(navy) · Dropoff(c) · Testimonials(w)
-   Higher specificity (.gateway-outreach-page.relief-fund-hidden) beats the
-   default white/cream assignments above. The card + text contrast treatments
-   are band-agnostic, so nothing else needs to change. */
-.gateway-outreach-page.relief-fund-hidden .outreach-impact-section {
+   The Programs band (cream) sits between Vision and Impact, so while Relief is
+   hidden the DEFAULT assignments above already alternate correctly:
+     hidden → Vision(w) · Programs(c) · Impact(w) · Gallery(c) · Give(navy) · Dropoff(c) · Testimonials(w)
+   Showing Relief inserts one more band and flips the parity of everything after
+   it, so the overrides hang off :not(.relief-fund-hidden) instead:
+     shown  → Vision(w) · Programs(c) · Relief(w) · Impact(c) · Gallery(w) · Give(navy) · Dropoff(c) · Testimonials(w)
+   Higher specificity beats the default white/cream assignments above. The card
+   + text contrast treatments are band-agnostic, so nothing else changes. */
+.gateway-outreach-page:not(.relief-fund-hidden) .outreach-relief-section {
+  background: var(--background-section, #ffffff);
+}
+
+.gateway-outreach-page:not(.relief-fund-hidden) .outreach-impact-section {
   background:
     linear-gradient(180deg, rgba(212, 168, 75, 0.09) 0%, rgba(212, 168, 75, 0.18) 100%),
     var(--color-cream, #f5f0e6);
 }
 
-.gateway-outreach-page.relief-fund-hidden .outreach-gallery-section {
+.gateway-outreach-page:not(.relief-fund-hidden) .outreach-gallery-section {
   background: var(--background-section, #ffffff);
 }
 
@@ -15261,6 +15267,161 @@
 
   .outreach-initiative-content {
     padding: 20px;
+  }
+}
+
+/* -------------------------------------------
+   Outreach Community Programs Section
+   The page's community-outreach anchor: "what we do week to week".
+   Icon cards (no photos) so the band never depends on blob images and the
+   Gallery keeps the photography to itself. Light cream band — every surface
+   declares BOTH background and text colour (see DESIGN.md).
+   ------------------------------------------- */
+.outreach-programs-section {
+  background: var(--color-cream, #f5f0e6);
+  padding: 72px 0;
+  position: relative;
+}
+
+/* Page-scoped cream band + hairline divider, matching the other light bands
+   in the `.gateway-outreach-page` band block above. */
+.gateway-outreach-page .outreach-programs-section {
+  background:
+    linear-gradient(180deg, rgba(212, 168, 75, 0.09) 0%, rgba(212, 168, 75, 0.18) 100%),
+    var(--color-cream, #f5f0e6);
+  border-top: 1px solid var(--border-color-light, #ddd5c4);
+}
+
+.outreach-programs-title {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: var(--text-heading, #020617) !important;
+  letter-spacing: -0.5px;
+}
+
+.outreach-programs-subtitle {
+  font-size: 18px !important;
+  color: var(--text-secondary, #1e293b) !important;
+  font-weight: 500;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+/* Darkened gold eyebrow on the light band (same as this page's other light bands) */
+.gateway-outreach-page .outreach-programs-section .section-label {
+  color: var(--color-primary-dark, #b8923f) !important;
+}
+
+.gateway-outreach-page .outreach-programs-section .section-label::before {
+  background: var(--color-primary-dark, #b8923f) !important;
+}
+
+.outreach-programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.outreach-program-card {
+  background: #ffffff;
+  color: var(--text-secondary, #1e293b);
+  border-radius: 18px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1.5px solid rgba(212, 168, 75, 0.55);
+  /* Crisp neutral contact ring + ambient lift so white cards separate from
+     the cream band (same card system as the impact/dropoff cards). */
+  box-shadow:
+    0 0 0 1px rgba(26, 39, 68, 0.06),
+    0 3px 8px rgba(26, 39, 68, 0.09),
+    0 16px 36px rgba(26, 39, 68, 0.14);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.outreach-program-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 168, 75, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 75, 0.22),
+    0 18px 42px rgba(26, 39, 68, 0.18);
+}
+
+/* Gold surface → NAVY icon. White-on-gold fails contrast (DESIGN.md). */
+.outreach-program-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--color-primary, #d4a84b), var(--color-primary-dark, #b8923f));
+  color: var(--color-navy, #1a2744);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.outreach-program-icon-wrap i {
+  font-size: 22px;
+  color: var(--color-navy, #1a2744);
+}
+
+.outreach-program-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-heading, #020617);
+  margin: 0;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.outreach-program-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary, #1e293b);
+  font-weight: 500;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .outreach-programs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .outreach-programs-section {
+    padding: 56px 0;
+  }
+
+  .outreach-programs-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 16px auto 0;
+  }
+
+  .outreach-programs-title {
+    font-size: 28px !important;
+  }
+
+  .outreach-programs-subtitle {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .outreach-program-card {
+    padding: 22px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outreach-program-card,
+  .outreach-program-card:hover {
+    transition: none;
+    transform: none;
   }
 }
 

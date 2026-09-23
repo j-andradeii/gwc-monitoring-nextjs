@@ -10,7 +10,7 @@ export const OutreachGallerySection: React.FC = () => {
           <span className="section-label">In Action</span>
           <h2 className="outreach-gallery-title">Our Outreach in Action</h2>
           <p className="outreach-gallery-subtitle">
-            Glimpses of how Gateway Church serves communities in their most difficult moments
+            Glimpses of the everyday work — goods packed, homes visited, and neighbors met right where they live
           </p>
         </div>
 
