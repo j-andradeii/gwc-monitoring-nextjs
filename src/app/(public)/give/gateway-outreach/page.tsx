@@ -1,8 +1,10 @@
 /**
  * Gateway Outreach Page
  *
- * Dedicated page for Gateway Church's Disaster Response Ministry.
- * Showcasing outreach initiatives, impact statistics, testimonials, and giving channels.
+ * Dedicated page for Gateway Church's Community Outreach Ministry.
+ * The page leads with the everyday community work — vision, programs, impact,
+ * gallery, giving — and keeps the "we come when disaster strikes" promise in
+ * the copy (hero, vision, give, drop-off) rather than in a section of its own.
  */
 
 import type { Metadata } from 'next';
@@ -20,6 +22,7 @@ import {
 
 import {
   OutreachVisionSection,
+  OutreachProgramsSection,
   OutreachImpactSection,
   OutreachGallerySection,
   OutreachTestimonialsSection,
@@ -32,16 +35,17 @@ import {
 const siteUrl = siteMetadata.siteUrl;
 
 export const metadata: Metadata = {
-  title: 'Gateway Outreach | Disaster Response Ministry | Gateway Church',
+  title: 'Gateway Outreach | Community Outreach Ministry | Gateway Church',
   description:
-    'Gateway Church Cebu\'s disaster response ministry. We bring hope in times of crisis through emergency relief, community recovery, and long-term care for affected families across Cebu and the Visayas.',
+    'Gateway Church Cebu\'s community outreach ministry. We bring food, goods, prayer, and practical help to families across Cebu week after week — and we are ready to respond when disaster strikes.',
   keywords: [
     'Gateway Church',
     'Gateway Outreach',
-    'Disaster Response',
-    'Relief Operations',
     'Community Outreach',
+    'Feeding Program',
+    'Relief Goods',
     'Cebu Church',
+    'Disaster Response',
     'Typhoon Relief',
     'Humanitarian Aid',
     'Christian Outreach Philippines',
@@ -50,9 +54,9 @@ export const metadata: Metadata = {
     canonical: `${siteUrl}/give/gateway-outreach`,
   },
   openGraph: {
-    title: 'Gateway Outreach | Disaster Response Ministry | Gateway Church',
+    title: 'Gateway Outreach | Community Outreach Ministry | Gateway Church',
     description:
-      'Gateway Church Cebu\'s disaster response ministry. We bring hope in times of crisis through emergency relief, community recovery, and long-term care for affected families.',
+      'Gateway Church Cebu\'s community outreach ministry — serving families across Cebu week after week, and ready to respond when disaster strikes.',
     type: 'website',
     locale: 'en_US',
     siteName: siteMetadata.name,
@@ -62,15 +66,15 @@ export const metadata: Metadata = {
         url: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg',
         width: 1200,
         height: 630,
-        alt: 'Gateway Outreach - Disaster Response Ministry',
+        alt: 'Gateway Outreach - Community Outreach Ministry',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gateway Outreach | Disaster Response Ministry | Gateway Church',
+    title: 'Gateway Outreach | Community Outreach Ministry | Gateway Church',
     description:
-      'Gateway Church Cebu\'s disaster response ministry. Bringing hope when disaster strikes.',
+      'Gateway Church Cebu\'s community outreach ministry. Serving our communities — and ready when disaster strikes.',
     images: ['https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg'],
   },
 };
@@ -88,14 +92,15 @@ const breadcrumbJsonLd = {
 /**
  * Toggle for the OPTIONAL Relief Fund fundraising section.
  *
- * Flip to `false` to hide <OutreachReliefFundSection />. Doing so also adds a
- * `relief-fund-hidden` class to the page root, which re-balances the
- * alternating section backgrounds so the white⇄cream rhythm stays intact in
- * BOTH states:
- *   • shown  → Vision(w) · Relief(c) · Impact(w) · Gallery(c) · Give(navy) · …
- *   • hidden → Vision(w) ·            Impact(c) · Gallery(w) · Give(navy) · …
- * The Impact↔Gallery band swap lives in the `.relief-fund-hidden` overrides in
- * `landing.css` (page-scoped band block). No other section needs to change.
+ * Flip to `true` to show <OutreachReliefFundSection />. Leaving it `false`
+ * adds a `relief-fund-hidden` class to the page root, which re-balances the
+ * alternating section backgrounds so the white⇄cream rhythm holds in BOTH
+ * states:
+ *   • shown  → Vision(w) · Programs(c) · Relief(w) · Impact(c) · Gallery(w) · Give(navy) · Dropoff(c) · Testimonials(w)
+ *   • hidden → Vision(w) · Programs(c) ·           Impact(w) · Gallery(c) · Give(navy) · Dropoff(c) · Testimonials(w)
+ * Programs is always the cream band directly after Vision, so it is the SHOWN
+ * state that carries the Relief/Impact/Gallery flip — those overrides live under
+ * `.gateway-outreach-page:not(.relief-fund-hidden)` in `landing.css`.
  */
 const SHOW_RELIEF_FUND = false;
 
@@ -118,7 +123,7 @@ export default function GatewayOutreachPage() {
           id="gateway-outreach-top"
           badge="Gateway Outreach"
           title="Community Outreach Ministry"
-          subtitle="Relief, recovery, and lasting hope for families in crisis"
+          subtitle="Serving the communities around us week after week — and ready to move when disaster strikes"
           backgroundImage="https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/team.jpg"
           className="give-hero gateway-outreach-hero"
           // serviceInfo={[
@@ -135,33 +140,38 @@ export default function GatewayOutreachPage() {
           buttonAriaLabel="Jump to Give to Gateway Projects section"
           ariaLabel="Partner with Us"
         />
-        
 
-        {/* Section 1: Pastor's Vision for Disaster Response (white band) */}
+
+        {/* Section 1: Pastor's Vision — the community calling (white band) */}
         <OutreachVisionSection />
 
-        {/* Section 2: Relief Fund — OPTIONAL fundraising band (cream when shown).
+        {/* Section 2: What We Do — ongoing community programs (cream band).
+            This is the page's community-outreach anchor. */}
+        <OutreachProgramsSection />
+
+        {/* Section 3: Relief Fund — OPTIONAL fundraising band (cream when shown).
             Toggle via SHOW_RELIEF_FUND above; hiding it flips Impact→cream and
             Gallery→white through the `.relief-fund-hidden` class so the
             alternating backgrounds stay balanced. */}
         {SHOW_RELIEF_FUND && <OutreachReliefFundSection />}
 
-        {/* Our Disaster Response Initiatives (built, intentionally disabled) */}
+        {/* Legacy disaster-initiatives grid — kept but not rendered; 4 of its 5
+            images are missing from blob storage (see the note in outreachData.ts). */}
         {/* <OutreachInitiativesSection /> */}
 
-        {/* Section 3: Impact Statistics (white band, light stat cards) */}
+        {/* Section 4: Impact Statistics */}
         <OutreachImpactSection />
 
-        {/* Section 4: Gallery — Outreach in Action (cream band) */}
+        {/* Section 5: Gallery — Outreach in Action */}
         <OutreachGallerySection />
 
-        {/* Section 5: Support Our Outreach — Giving Channels (navy anchor) */}
+        {/* Section 6: Support Our Outreach — Giving Channels (navy anchor) */}
         <OutreachGiveSection />
 
-        {/* Section 6: Drop Off Donations (cream band) */}
+        {/* Section 7: Drop Off Donations (cream band) */}
         <OutreachDonationDropoffSection />
 
-        {/* Section 7: Community Testimonials (white band) */}
+        {/* Section 8: Community Testimonials (white band) */}
         <OutreachTestimonialsSection />
 
 

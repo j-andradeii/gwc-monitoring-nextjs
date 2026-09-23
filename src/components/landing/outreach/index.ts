@@ -1,4 +1,5 @@
 export { OutreachVisionSection } from './OutreachVisionSection';
+export { OutreachProgramsSection } from './OutreachProgramsSection';
 export { OutreachInitiativesSection } from './OutreachInitiativesSection';
 export { OutreachImpactSection } from './OutreachImpactSection';
 export { OutreachGallerySection } from './OutreachGallerySection';

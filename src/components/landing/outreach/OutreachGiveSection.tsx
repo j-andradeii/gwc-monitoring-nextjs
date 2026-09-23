@@ -8,9 +8,9 @@ export const OutreachGiveSection: React.FC = () => {
       <div className="outreach-give-header landing-container">
         <div className="section-header-center animate-on-scroll">
           <span className="section-label">Support Our Outreach</span>
-          <h2 className="outreach-give-title">Your Generosity Saves Lives</h2>
+          <h2 className="outreach-give-title">Your Generosity Reaches Communities</h2>
           <p className="outreach-give-subtitle">
-            Your generosity enables us to respond when disaster strikes, providing immediate relief, recovery support, and lasting hope to families in crisis
+            Every gift keeps our teams in the community week after week — and keeps us ready to move the moment disaster strikes
           </p>
         </div>
       </div>

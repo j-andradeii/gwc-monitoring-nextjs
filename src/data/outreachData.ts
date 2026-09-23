@@ -1,4 +1,9 @@
-// Outreach data for Gateway Outreach — Disaster Response Ministry
+// Outreach data for Gateway Outreach — Community Outreach Ministry
+//
+// FOCUS: the ministry's everyday work is community outreach (goods, feeding,
+// home visitation, children, prayer, barangay partnerships) — see
+// `outreachPrograms`. The readiness to respond when disaster strikes is carried
+// in the page copy (hero, vision, give, drop-off), not in a section of its own.
 
 import type { VisionData, LeaderTestimonial, GalleryImage } from '@/data/giveData';
 
@@ -14,6 +19,14 @@ export interface OutreachInitiative {
   image: string;
 }
 
+// Ongoing community outreach program (icon-only card — no photo dependency)
+export interface OutreachProgram {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
 // Impact stat interface
 export interface OutreachImpactStat {
   icon: string;
@@ -23,14 +36,16 @@ export interface OutreachImpactStat {
 }
 
 // -------------------------------------------
-// Pastor's Vision for Disaster Response
+// Pastor's Vision — community outreach first,
+// with disaster response as the closing beat
 // -------------------------------------------
 export const outreachVisionData: VisionData = {
   sectionLabel: 'Our Calling',
-  heading: 'Bringing Hope When Disaster Strikes',
+  heading: 'Loving Our City, One Community at a Time',
   paragraphs: [
-    'When disaster strikes, Gateway Church believes the body of Christ must be the first to respond — not with prayers alone, but with hands and feet. Gateway Outreach was born from one conviction: the Church is God\'s instrument of restoration in times of crisis.',
-    'Across Cebu and the Visayas, we\'ve answered that call — mobilizing relief teams, distributing goods, and walking with families on the long road to recovery. This is the Gospel in action, and we invite you to partner with us so we can reach farther, respond faster, and rebuild stronger.',
+    'Gateway Outreach exists to carry the love of Christ past our church doors and into the streets, barangays, and homes around us. Our volunteers bring rice and clean water to families who are barely getting by, share meals with children, sit with the elderly, and pray with neighbors carrying more than anyone can see.',
+    'This is ordinary, steady work — a van loaded at night, a table set up along the roadside, a home visited because someone could not come out to meet us. We keep returning to the same communities, because relationships, not one-time events, are what actually change a neighborhood.',
+    'And when disaster strikes those same communities, we are already there. The teams, partnerships, and trust built week after week are exactly what let us move quickly when a typhoon, flood, fire, or earthquake turns a neighborhood upside down.',
   ],
   pastorName: 'Pastor Jimanuel Baloran',
   pastorRole: 'Senior Pastor, Gateway Church Cebu',
@@ -43,13 +58,66 @@ export const outreachVisionData: VisionData = {
 };
 
 // -------------------------------------------
+// Ongoing Community Outreach Programs
+// (the page's primary focus — what we do week to week)
+// -------------------------------------------
+export const outreachPrograms: OutreachProgram[] = [
+  {
+    id: 1,
+    title: 'Relief Goods Distribution',
+    description:
+      'Rice, canned goods, clean drinking water, clothing, and household essentials brought directly to families in the communities we serve.',
+    icon: 'pi pi-box',
+  },
+  {
+    id: 2,
+    title: 'Feeding & Refreshment',
+    description:
+      'Meals and drinks for children and families on outreach days — often the reason a whole neighborhood comes out to meet us.',
+    icon: 'pi pi-shopping-bag',
+  },
+  {
+    id: 3,
+    title: 'Home & Family Visitation',
+    description:
+      'Volunteers go house to house to pray with families, check on the elderly, and hand-carry food packs to those who cannot come out.',
+    icon: 'pi pi-home',
+  },
+  {
+    id: 4,
+    title: 'Children & Youth Outreach',
+    description:
+      'Games, lessons, and small gifts that give the kids in a community something to look forward to — and a church that knows their names.',
+    icon: 'pi pi-star',
+  },
+  {
+    id: 5,
+    title: 'Prayer & Pastoral Care',
+    description:
+      'Our team listens, prays, and walks with neighbors carrying grief, illness, or hardship, long after the goods have been handed out.',
+    icon: 'pi pi-heart-fill',
+  },
+  {
+    id: 6,
+    title: 'Barangay Partnerships',
+    description:
+      'We coordinate with barangay officials and local leaders so that help reaches the households who genuinely need it most.',
+    icon: 'pi pi-users',
+  },
+];
+
+// -------------------------------------------
 // Disaster Response Initiatives
+// NOTE: legacy data for <OutreachInitiativesSection />, which is not rendered
+// on the page. Images 1, 2, 4 and 5 are no longer present in blob storage —
+// remap them before re-enabling that section.
 // -------------------------------------------
 export const outreachInitiatives: OutreachInitiative[] = [
   {
     id: 1,
     title: 'Emergency Relief Distribution',
     description:
+      
       'When disaster strikes, our teams mobilize within 24 hours to distribute food packs, clean water, hygiene kits, and essential supplies to affected families. We partner with local barangay officials to ensure aid reaches the most vulnerable.',
     icon: 'pi pi-box',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/1.jpg',
@@ -107,7 +175,7 @@ export const outreachImpactStats: OutreachImpactStat[] = [
   {
     icon: 'pi pi-clock',
     value: '20',
-    label: 'Volunteer',
+    label: 'Volunteers',
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/8.jpg',
   },
   {
@@ -150,43 +218,44 @@ export const outreachTestimonials: LeaderTestimonial[] = [
 
 // -------------------------------------------
 // Gallery Images
+// Captions and alt text describe what is actually in each photo.
 // -------------------------------------------
 export const outreachGalleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/10.jpg',
-    alt: 'Relief distribution — volunteers packing goods',
-    caption: 'Emergency Relief Distribution',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg',
+    alt: 'Outreach team and community families gathered behind sacks of rice, water containers, and bags of goods',
+    caption: 'Goods Ready for the Families We Serve',
   },
   {
     id: 2,
     src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/12.jpg',
-    alt: 'Disaster recovery team clearing debris',
-    caption: 'Disaster Recovery Operations',
+    alt: 'Neighbors gathering along a roadside for a community outreach distribution',
+    caption: 'Meeting Families Where They Are',
   },
   {
     id: 3,
     src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/13.jpg',
-    alt: 'Community preparedness training session',
-    caption: 'Community Preparedness Training',
+    alt: 'Volunteers setting out drinks on a table at a community outreach stop',
+    caption: 'Feeding and Refreshment',
   },
   {
     id: 4,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/7.jpg',
-    alt: 'Feeding program inside evacuation center',
-    caption: 'Evacuation Center Support',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/6.jpg',
+    alt: 'An elderly woman at home with bags of rice delivered by the outreach team',
+    caption: 'Home and Family Visitation',
   },
   {
     id: 5,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/6.jpg',
-    alt: 'Pastoral care and counseling session',
-    caption: 'Post-Disaster Counseling',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/8.jpg',
+    alt: 'Volunteers packing bags of relief goods on the floor the night before an outreach',
+    caption: 'Packing Night',
   },
   {
     id: 6,
-    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/8.jpg',
-    alt: 'Church volunteers in community prayer',
-    caption: 'Prayer and Community Care',
+    src: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/outreach/3.jpg',
+    alt: 'Volunteers loading bags of goods into a vehicle after dark',
+    caption: 'Loading Up to Roll Out',
   },
 ];
 
