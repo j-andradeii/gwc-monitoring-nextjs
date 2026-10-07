@@ -10186,7 +10186,7 @@ The blood of Jesus does not only forgive your sin; it removes your guilt and giv
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: "The Kingdom of God does not operate according to the world's measurements. What may look small to people can be great in the eyes of God when it is given with genuine faith and sacrifice.",
 
     description: `**SURPLUS VS SACRIFICE**
@@ -10572,6 +10572,638 @@ Don't give God what is left. Give Him what is worthy of the One who gave everyth
         kicker: 'This Principle Applies to All Our Service for Jesus',
         verse: 'Hebrews 7:8',
         text: 'Here mortal men receive tithes, but there he receives them, of whom it is witnessed that he lives.',
+      },
+    ],
+  },
+  {
+    id: '43',
+    slug: 'when-god-ran',
+    title: 'When God Ran',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-10-04',
+    duration: '45 min',
+    series: 'Life Series',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'When the younger son returns home after wasting his inheritance, the father does not stand at a distance waiting for an apology. He sees his son while he is still far away, is moved with compassion, and runs toward him.',
+
+    description: `**WHEN GOD RAN**
+
+Key Text: Luke 15:11–31
+
+"But while he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him." - Luke 15:20
+
+---
+
+**INTRODUCTION: THE SCANDAL OF A RUNNING FATHER**
+
+In the world of Jesus, an honored father would have been expected to carry himself with dignity and composure. Yet in this parable, Jesus gives us a picture of a father who does something unexpected: he runs.
+
+When the younger son returns home after wasting his inheritance, the father does not stand at a distance waiting for an apology. He sees his son while he is still far away, is moved with compassion, and runs toward him.
+
+This is the heart of Luke 15.
+
+Jesus tells three stories about things that were lost—the lost sheep, the lost coin, and the lost son. Each story reveals the heart of God toward those who have wandered away.
+
+The heart of Luke's Gospel is expressed in Luke 19:10:
+
+"For the Son of Man came to seek and to save the lost."
+
+Whether you feel far from God, close to Him, or even resentful within His house, Luke 15 reminds us that the Father is deeply concerned with the lost.
+
+He does not simply wait for them.
+
+He pursues them.
+
+---
+
+**1. THE JOURNEY TO THE FAR COUNTRY**
+
+**The Illusion of Freedom** (Luke 15:13)
+
+The younger son demanded his inheritance from his father. In essence, he was asking for his portion of the family estate before his father's death.
+
+He wanted the father's blessings without the father's presence.
+
+He wanted the inheritance without the relationship.
+
+So he took what belonged to him and traveled into a distant country.
+
+This is a picture of the human condition. At its core, sin is choosing our own way instead of God's way. We want independence from God, often believing that His standards restrict our freedom.
+
+Many people today want the blessings of the Father's house without the authority of the Father.
+
+But when we reject the source of life, we eventually discover that the freedom we thought we wanted can become another form of bondage.
+
+The son traveled far from home, but he also traveled far from the relationship that gave his life meaning.
+
+Life apart from God eventually produces emptiness, disillusionment, and spiritual death.
+
+As Peter reminds us:
+
+"For you were like sheep going astray, but now you have returned to the Shepherd and Overseer of your souls." (1 Peter 2:25)
+
+The far country promises freedom without God, but true life is found in returning to the Father.
+
+---
+
+**2. COMING TO HIMSELF**
+
+**The Awakening of the Soul** (Luke 15:17)
+
+After losing everything, the younger son found himself hungry, broken, and alone.
+
+Then Scripture gives us four powerful words:
+
+"He came to himself." (Luke 15:17)
+
+Before a person can return to God, there must be an awakening to their true condition.
+
+The son recognized where his choices had taken him. He acknowledged his need and decided to return home.
+
+True repentance involves more than feeling bad about what we have done. It involves recognizing our condition, turning back toward God, and surrendering ourselves to Him.
+
+The son did not return demanding his rights.
+
+He returned acknowledging his need for mercy.
+
+This awakening is ultimately the work of God's Spirit. Jesus said that the Holy Spirit convicts the world concerning sin, righteousness, and judgment. (John 16:7–11)
+
+This is also a reminder for those praying for a wayward child, family member, or loved one: never stop praying.
+
+You may not be able to create the awakening in someone else's heart, but you can continue praying for the One who can.
+
+God loves your lost loved one even more than you do.
+
+And He is still pursuing them.
+
+Repentance begins when we stop running from our condition and turn back toward the Father.
+
+---
+
+**3. THE FATHER'S COMPASSION**
+
+**Love That Outruns Judgment** (Luke 15:20–24)
+
+"But while he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him." (Luke 15:20)
+
+The father was watching for his son.
+
+The son was still far away, but the father saw him.
+
+The son had not yet reached the house, but the father was already moving toward him.
+
+This reveals something powerful about God's character.
+
+*He Has Compassion for the Lost*
+
+The father did not see only the son's failure.
+
+He saw his son.
+
+God sees the brokenness, rebellion, shame, and mistakes of those who have wandered away, but He also sees the person He created and loves.
+
+*He Receives Those Who Return*
+
+The father did not place his son on probation.
+
+He did not say, "You need to earn your way back into this family."
+
+Instead, he embraced him.
+
+He put a robe on him.
+
+He placed a ring on his finger.
+
+He put sandals on his feet.
+
+And he celebrated.
+
+The father restored his son to the household.
+
+This is the beauty of God's grace. When we return to Him through Christ, we are not merely tolerated—we are received.
+
+*He Celebrates Restoration*
+
+The father said:
+
+"For this my son was dead, and is alive again; he was lost, and is found." (Luke 15:24)
+
+God rejoices when the lost come home.
+
+*God's compassion is greater than our failure, and His grace is ready to restore those who return to Him.*
+
+---
+
+**4. THE ELDER BROTHER**
+
+**The Peril of Self-Righteousness** (Luke 15:28)
+
+The story does not end with the younger son's return.
+
+Outside the celebration stood the older brother.
+
+He was angry.
+
+He refused to enter.
+
+He was offended by the father's grace.
+
+The elder brother represents another kind of lostness—not the lostness of someone who has left the house, but the lostness of someone who is inside the house but far from the Father's heart.
+
+He had obeyed outwardly, but his words revealed resentment inwardly.
+
+He said:
+
+"Look, these many years I have served you..." (Luke 15:29)
+
+Notice the language. "I have served you."
+
+He viewed his relationship with his father as servitude rather than sonship.
+
+This is the danger of religious self-righteousness.
+
+We can attend church, serve in ministry, follow rules, and still lose compassion for people who need God's grace.
+
+We must never allow our obedience to make us resentful toward those whom God is restoring.
+
+The Father's heart is not simply about keeping those who are already home.
+
+It is about bringing the lost home.
+
+As followers of Jesus, our mission must reflect His mission—to seek and save the lost.
+
+You can be close to the Father's house and still be far from the Father's heart.
+
+---
+
+**5. WHEN GOD RAN**
+
+**Love That Runs Toward the Lost** (Luke 15:20)
+
+Why did the father run?
+
+The text gives us the simplest and most powerful answer:
+
+"He felt compassion."
+
+The father saw his son, felt compassion, and ran.
+
+There are historical discussions about Jewish village customs and later rabbinic traditions surrounding the public shame that could accompany a disgraced son returning home. While the specific details of the Kezazah ceremony are not described in Luke 15 itself, they can help illustrate the social shame the son may have faced.
+
+But the central truth of the parable does not depend on that tradition.
+
+The father ran because he wanted to meet his son with compassion rather than condemnation.
+
+He did not make his son walk the entire distance alone.
+
+He moved toward him.
+
+He embraced him.
+
+He kissed him.
+
+He restored him.
+
+And in doing so, Jesus gave us a picture of the heart of God.
+
+---
+
+**THE GOSPEL: JESUS CAME TO MEET US**
+
+The story ultimately points beyond the father in the parable to the heart of God revealed through Jesus.
+
+Humanity wandered into the far country of sin.
+
+We became separated from God.
+
+We carried shame and guilt that we could never remove ourselves.
+
+But God did not simply look down at our brokenness from a distance.
+
+He came for us.
+
+Jesus came to seek and save the lost.
+
+He stepped into our broken world and went to the cross, bearing our sin and shame so that we could be reconciled to God.
+
+The Gospel is the announcement that the Father has made a way home.
+
+To the lost son or daughter:
+You do not have to fix yourself before coming home.
+
+Come to the Father.
+
+To the elder brother:
+Lay down your self-righteousness.
+
+Step into the house.
+
+Share in the Father's joy.
+
+Because the heart of the Father is always celebrating when the lost are found.
+
+---
+
+**KEY TAKEAWAYS**
+
+- Sin promises freedom but ultimately separates us from the source of life.
+- Repentance begins when we recognize our true condition and turn back to God.
+- God's compassion reaches us even when we are still far away.
+- The Father does not merely tolerate the repentant; He restores them.
+- We can be physically close to God's house while being spiritually far from His heart.
+- Self-righteousness can keep us from celebrating God's grace toward others.
+- God's heart is to seek and save the lost.
+- Jesus came to carry our sin and shame and bring us back to the Father.
+- No matter how far someone has wandered, the way home is still open through Christ.
+
+"We were walking away from the Father, but the Father was already running toward us."
+
+---
+
+**CALL TO ACTION**
+
+This week, ask yourself:
+
+Am I the younger son who needs to come home, or the elder brother who needs to come back to the Father's heart?
+
+- If you have wandered from God, take the first step home.
+- Confess what needs to be surrendered and receive God's grace.
+- If you are praying for someone who is far from God, don't stop praying.
+- Refuse to allow self-righteousness to make you judgmental toward those who are returning.
+- Look for opportunities to show compassion to people who are far from God.
+- Remember that your testimony can become a bridge that helps someone find their way home.
+- Celebrate when the lost are found and the broken are restored.
+
+The younger son thought he was returning to a father who might reject him.
+
+Instead, he discovered a father who was already watching the horizon.
+
+The Father saw him.
+
+The Father had compassion.
+
+The Father ran.
+
+The Father embraced him.
+
+And the Father is still calling His children home today.
+
+When we were far away, God came running toward us.`,
+
+    tags: ['Grace', 'Repentance', 'Compassion', 'Prodigal Son', 'Life Series'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/when_god_ran.webp',
+    scriptures: [
+      {
+        verse: 'Luke 15:11–31',
+        text: `Then He said: "A certain man had two sons. And the younger of them said to his father, 'Father, give me the portion of goods that falls to me.' So he divided to them his livelihood. And not many days after, the younger son gathered all together, journeyed to a far country, and there wasted his possessions with prodigal living. But when he had spent all, there arose a severe famine in that land, and he began to be in want. Then he went and joined himself to a citizen of that country, and he sent him into his fields to feed swine. And he would gladly have filled his stomach with the pods that the swine ate, and no one gave him anything. But when he came to himself, he said, 'How many of my father's hired servants have bread enough and to spare, and I perish with hunger! I will arise and go to my father, and will say to him, "Father, I have sinned against heaven and before you, and I am no longer worthy to be called your son. Make me like one of your hired servants."' And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion, and ran and fell on his neck and kissed him. And the son said to him, 'Father, I have sinned against heaven and in your sight, and am no longer worthy to be called your son.' But the father said to his servants, 'Bring out the best robe and put it on him, and put a ring on his hand and sandals on his feet. And bring the fatted calf here and kill it, and let us eat and be merry; for this my son was dead and is alive again; he was lost and is found.' And they began to be merry. Now his older son was in the field. And as he came and drew near to the house, he heard music and dancing. So he called one of the servants and asked what these things meant. And he said to him, 'Your brother has come, and because he has returned safe and sound, your father has killed the fatted calf.' But he was angry and would not go in. Therefore his father came out and pleaded with him. So he answered and said to his father, 'Lo, these many years I have been serving you; I never transgressed your commandment at any time; and yet you never gave me a young goat, that I might make merry with my friends. But as soon as this son of yours came, who has devoured your livelihood with harlots, you killed the fatted calf for him.' And he said to him, 'Son, you are always with me, and all that I have is yours.`,
+      },
+      {
+        verse: 'Luke 15:20',
+        text: 'And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion, and ran and fell on his neck and kissed him.',
+      },
+      {
+        verse: 'Luke 19:10',
+        text: 'for the Son of Man has come to seek and to save that which was lost.',
+      },
+      {
+        verse: 'Luke 15:13',
+        text: 'And not many days after, the younger son gathered all together, journeyed to a far country, and there wasted his possessions with prodigal living.',
+      },
+      {
+        verse: '1 Peter 2:25',
+        text: 'For you were like sheep going astray, but have now returned to the Shepherd and Overseer of your souls.',
+      },
+      {
+        verse: 'Luke 15:17',
+        text: "But when he came to himself, he said, 'How many of my father's hired servants have bread enough and to spare, and I perish with hunger!'",
+      },
+      {
+        verse: 'John 16:7–11',
+        text: 'Nevertheless I tell you the truth. It is to your advantage that I go away; for if I do not go away, the Helper will not come to you; but if I depart, I will send Him to you. And when He has come, He will convict the world of sin, and of righteousness, and of judgment: of sin, because they do not believe in Me; of righteousness, because I go to My Father and you see Me no more; of judgment, because the ruler of this world is judged.',
+      },
+      {
+        verse: 'Luke 15:20–24',
+        text: "And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion, and ran and fell on his neck and kissed him. And the son said to him, 'Father, I have sinned against heaven and in your sight, and am no longer worthy to be called your son.' But the father said to his servants, 'Bring out the best robe and put it on him, and put a ring on his hand and sandals on his feet. And bring the fatted calf here and kill it, and let us eat and be merry; for this my son was dead and is alive again; he was lost and is found.' And they began to be merry.",
+      },
+      {
+        verse: 'Luke 15:24',
+        text: 'for this my son was dead and is alive again; he was lost and is found. And they began to be merry.',
+      },
+      {
+        verse: 'Luke 15:28',
+        text: 'But he was angry and would not go in. Therefore his father came out and pleaded with him.',
+      },
+      {
+        verse: 'Luke 15:29',
+        text: "So he answered and said to his father, 'Lo, these many years I have been serving you; I never transgressed your commandment at any time; and yet you never gave me a young goat, that I might make merry with my friends.'",
+      },
+    ],
+    keyPoints: [
+      'The Journey to the Far Country',
+      'Coming to Himself',
+      "The Father's Compassion",
+      'The Elder Brother',
+      'When God Ran',
+    ],
+    relatedSermons: ['42', '41'],
+    keyVerse: 'Luke 15:11–31',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'The Scandal of a Running Father',
+        unnumbered: true,
+        paragraphs: [
+          '**Key Text: Luke 15:11–31**',
+          '"But while he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him." - Luke 15:20',
+          'In the world of Jesus, an honored father would have been expected to carry himself with dignity and composure. Yet in this parable, Jesus gives us a picture of a father who does something unexpected: he runs.',
+          'When the younger son returns home after wasting his inheritance, the father does not stand at a distance waiting for an apology. He sees his son while he is still far away, is moved with compassion, and runs toward him.',
+          'This is the heart of Luke 15.',
+          'Jesus tells three stories about things that were lost—the lost sheep, the lost coin, and the lost son. Each story reveals the heart of God toward those who have wandered away.',
+          "The heart of Luke's Gospel is expressed in Luke 19:10:",
+          '"For the Son of Man came to seek and to save the lost."',
+          'Whether you feel far from God, close to Him, or even resentful within His house, Luke 15 reminds us that the Father is deeply concerned with the lost.',
+          'He does not simply wait for them.',
+          'He pursues them.',
+        ],
+      },
+      {
+        id: 'sec-journey-to-the-far-country',
+        kicker: 'The Illusion of Freedom',
+        title: 'The Journey to the Far Country',
+        paragraphs: [
+          '**Luke 15:13**',
+          "The younger son demanded his inheritance from his father. In essence, he was asking for his portion of the family estate before his father's death.",
+          "He wanted the father's blessings without the father's presence.",
+          'He wanted the inheritance without the relationship.',
+          'So he took what belonged to him and traveled into a distant country.',
+          "This is a picture of the human condition. At its core, sin is choosing our own way instead of God's way. We want independence from God, often believing that His standards restrict our freedom.",
+          "Many people today want the blessings of the Father's house without the authority of the Father.",
+          'But when we reject the source of life, we eventually discover that the freedom we thought we wanted can become another form of bondage.',
+          'The son traveled far from home, but he also traveled far from the relationship that gave his life meaning.',
+          'Life apart from God eventually produces emptiness, disillusionment, and spiritual death.',
+          'As Peter reminds us:',
+          '"For you were like sheep going astray, but now you have returned to the Shepherd and Overseer of your souls." (1 Peter 2:25)',
+          'The far country promises freedom without God, but true life is found in returning to the Father.',
+        ],
+      },
+      {
+        id: 'sec-coming-to-himself',
+        kicker: 'The Awakening of the Soul',
+        title: 'Coming to Himself',
+        paragraphs: [
+          '**Luke 15:17**',
+          'After losing everything, the younger son found himself hungry, broken, and alone.',
+          'Then Scripture gives us four powerful words:',
+          '"He came to himself." (Luke 15:17)',
+          'Before a person can return to God, there must be an awakening to their true condition.',
+          'The son recognized where his choices had taken him. He acknowledged his need and decided to return home.',
+          'True repentance involves more than feeling bad about what we have done. It involves recognizing our condition, turning back toward God, and surrendering ourselves to Him.',
+          'The son did not return demanding his rights.',
+          'He returned acknowledging his need for mercy.',
+          "This awakening is ultimately the work of God's Spirit. Jesus said that the Holy Spirit convicts the world concerning sin, righteousness, and judgment. (John 16:7–11)",
+          'This is also a reminder for those praying for a wayward child, family member, or loved one: never stop praying.',
+          "You may not be able to create the awakening in someone else's heart, but you can continue praying for the One who can.",
+          'God loves your lost loved one even more than you do.',
+          'And He is still pursuing them.',
+          'Repentance begins when we stop running from our condition and turn back toward the Father.',
+        ],
+      },
+      {
+        id: 'sec-the-fathers-compassion',
+        kicker: 'Love That Outruns Judgment',
+        title: "The Father's Compassion",
+        paragraphs: [
+          '**Luke 15:20–24**',
+          '"But while he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him." (Luke 15:20)',
+          'The father was watching for his son.',
+          'The son was still far away, but the father saw him.',
+          'The son had not yet reached the house, but the father was already moving toward him.',
+          "This reveals something powerful about God's character.",
+        ],
+        subItems: [
+          {
+            title: 'He Has Compassion for the Lost',
+            text: "The father did not see only the son's failure. He saw his son. God sees the brokenness, rebellion, shame, and mistakes of those who have wandered away, but He also sees the person He created and loves.",
+          },
+          {
+            title: 'He Receives Those Who Return',
+            text: "The father did not place his son on probation. He did not say, \"You need to earn your way back into this family.\" Instead, he embraced him. He put a robe on him. He placed a ring on his finger. He put sandals on his feet. And he celebrated. The father restored his son to the household. This is the beauty of God's grace. When we return to Him through Christ, we are not merely tolerated—we are received.",
+          },
+          {
+            title: 'He Celebrates Restoration',
+            text: 'The father said: "For this my son was dead, and is alive again; he was lost, and is found." (Luke 15:24) God rejoices when the lost come home.',
+          },
+        ],
+        callout: "God's compassion is greater than our failure, and His grace is ready to restore those who return to Him.",
+      },
+      {
+        id: 'sec-the-elder-brother',
+        kicker: 'The Peril of Self-Righteousness',
+        title: 'The Elder Brother',
+        paragraphs: [
+          '**Luke 15:28**',
+          "The story does not end with the younger son's return.",
+          'Outside the celebration stood the older brother.',
+          'He was angry.',
+          'He refused to enter.',
+          "He was offended by the father's grace.",
+          "The elder brother represents another kind of lostness—not the lostness of someone who has left the house, but the lostness of someone who is inside the house but far from the Father's heart.",
+          'He had obeyed outwardly, but his words revealed resentment inwardly.',
+          'He said:',
+          '"Look, these many years I have served you..." (Luke 15:29)',
+          'Notice the language. "I have served you."',
+          'He viewed his relationship with his father as servitude rather than sonship.',
+          'This is the danger of religious self-righteousness.',
+          "We can attend church, serve in ministry, follow rules, and still lose compassion for people who need God's grace.",
+          'We must never allow our obedience to make us resentful toward those whom God is restoring.',
+          "The Father's heart is not simply about keeping those who are already home.",
+          'It is about bringing the lost home.',
+          'As followers of Jesus, our mission must reflect His mission—to seek and save the lost.',
+          "You can be close to the Father's house and still be far from the Father's heart.",
+        ],
+      },
+      {
+        id: 'sec-when-god-ran',
+        kicker: 'Love That Runs Toward the Lost',
+        title: 'When God Ran',
+        paragraphs: [
+          '**Luke 15:20**',
+          'Why did the father run?',
+          'The text gives us the simplest and most powerful answer:',
+          '"He felt compassion."',
+          'The father saw his son, felt compassion, and ran.',
+          'There are historical discussions about Jewish village customs and later rabbinic traditions surrounding the public shame that could accompany a disgraced son returning home. While the specific details of the Kezazah ceremony are not described in Luke 15 itself, they can help illustrate the social shame the son may have faced.',
+          'But the central truth of the parable does not depend on that tradition.',
+          'The father ran because he wanted to meet his son with compassion rather than condemnation.',
+          'He did not make his son walk the entire distance alone.',
+          'He moved toward him.',
+          'He embraced him.',
+          'He kissed him.',
+          'He restored him.',
+          'And in doing so, Jesus gave us a picture of the heart of God.',
+        ],
+      },
+      {
+        id: 'sec-the-gospel',
+        kicker: 'The Gospel',
+        title: 'Jesus Came to Meet Us',
+        unnumbered: true,
+        paragraphs: [
+          'The story ultimately points beyond the father in the parable to the heart of God revealed through Jesus.',
+          'Humanity wandered into the far country of sin.',
+          'We became separated from God.',
+          'We carried shame and guilt that we could never remove ourselves.',
+          'But God did not simply look down at our brokenness from a distance.',
+          'He came for us.',
+          'Jesus came to seek and save the lost.',
+          'He stepped into our broken world and went to the cross, bearing our sin and shame so that we could be reconciled to God.',
+          'The Gospel is the announcement that the Father has made a way home.',
+          'To the lost son or daughter:',
+          'You do not have to fix yourself before coming home.',
+          'Come to the Father.',
+          'To the elder brother:',
+          'Lay down your self-righteousness.',
+          'Step into the house.',
+          "Share in the Father's joy.",
+          'Because the heart of the Father is always celebrating when the lost are found.',
+        ],
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'This week, ask yourself:',
+          "Am I the younger son who needs to come home, or the elder brother who needs to come back to the Father's heart?",
+          'If you have wandered from God, take the first step home.',
+          "Confess what needs to be surrendered and receive God's grace.",
+          "If you are praying for someone who is far from God, don't stop praying.",
+          'Refuse to allow self-righteousness to make you judgmental toward those who are returning.',
+          'Look for opportunities to show compassion to people who are far from God.',
+          'Remember that your testimony can become a bridge that helps someone find their way home.',
+          'Celebrate when the lost are found and the broken are restored.',
+          'The younger son thought he was returning to a father who might reject him.',
+          'Instead, he discovered a father who was already watching the horizon.',
+          'The Father saw him.',
+          'The Father had compassion.',
+          'The Father ran.',
+          'The Father embraced him.',
+          'And the Father is still calling His children home today.',
+          'When we were far away, God came running toward us.',
+        ],
+        callout: 'We were walking away from the Father, but the Father was already running toward us.',
+      },
+    ],
+    keyTakeaways: [
+      'Sin promises freedom but ultimately separates us from the source of life.',
+      'Repentance begins when we recognize our true condition and turn back to God.',
+      "God's compassion reaches us even when we are still far away.",
+      'The Father does not merely tolerate the repentant; He restores them.',
+      "We can be physically close to God's house while being spiritually far from His heart.",
+      "Self-righteousness can keep us from celebrating God's grace toward others.",
+      "God's heart is to seek and save the lost.",
+      'Jesus came to carry our sin and shame and bring us back to the Father.',
+      'No matter how far someone has wandered, the way home is still open through Christ.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: 'Luke 15:11–31',
+        text: `Then He said: "A certain man had two sons. And the younger of them said to his father, 'Father, give me the portion of goods that falls to me.' So he divided to them his livelihood. And not many days after, the younger son gathered all together, journeyed to a far country, and there wasted his possessions with prodigal living. But when he had spent all, there arose a severe famine in that land, and he began to be in want. Then he went and joined himself to a citizen of that country, and he sent him into his fields to feed swine. And he would gladly have filled his stomach with the pods that the swine ate, and no one gave him anything. But when he came to himself, he said, 'How many of my father's hired servants have bread enough and to spare, and I perish with hunger! I will arise and go to my father, and will say to him, "Father, I have sinned against heaven and before you, and I am no longer worthy to be called your son. Make me like one of your hired servants."' And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion, and ran and fell on his neck and kissed him. And the son said to him, 'Father, I have sinned against heaven and in your sight, and am no longer worthy to be called your son.' But the father said to his servants, 'Bring out the best robe and put it on him, and put a ring on his hand and sandals on his feet. And bring the fatted calf here and kill it, and let us eat and be merry; for this my son was dead and is alive again; he was lost and is found.' And they began to be merry. Now his older son was in the field. And as he came and drew near to the house, he heard music and dancing. So he called one of the servants and asked what these things meant. And he said to him, 'Your brother has come, and because he has returned safe and sound, your father has killed the fatted calf.' But he was angry and would not go in. Therefore his father came out and pleaded with him. So he answered and said to his father, 'Lo, these many years I have been serving you; I never transgressed your commandment at any time; and yet you never gave me a young goat, that I might make merry with my friends. But as soon as this son of yours came, who has devoured your livelihood with harlots, you killed the fatted calf for him.' And he said to him, 'Son, you are always with me, and all that I have is yours.`,
+      },
+      {
+        kicker: 'Key Verse',
+        verse: 'Luke 15:20',
+        text: 'And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion, and ran and fell on his neck and kissed him.',
+      },
+      {
+        kicker: 'Introduction',
+        verse: 'Luke 19:10',
+        text: 'for the Son of Man has come to seek and to save that which was lost.',
+      },
+      {
+        kicker: 'The Illusion of Freedom',
+        verse: 'Luke 15:13',
+        text: 'And not many days after, the younger son gathered all together, journeyed to a far country, and there wasted his possessions with prodigal living.',
+      },
+      {
+        kicker: 'The Illusion of Freedom',
+        verse: '1 Peter 2:25',
+        text: 'For you were like sheep going astray, but have now returned to the Shepherd and Overseer of your souls.',
+      },
+      {
+        kicker: 'The Awakening of the Soul',
+        verse: 'Luke 15:17',
+        text: "But when he came to himself, he said, 'How many of my father's hired servants have bread enough and to spare, and I perish with hunger!'",
+      },
+      {
+        kicker: 'The Awakening of the Soul',
+        verse: 'John 16:7–11',
+        text: 'Nevertheless I tell you the truth. It is to your advantage that I go away; for if I do not go away, the Helper will not come to you; but if I depart, I will send Him to you. And when He has come, He will convict the world of sin, and of righteousness, and of judgment: of sin, because they do not believe in Me; of righteousness, because I go to My Father and you see Me no more; of judgment, because the ruler of this world is judged.',
+      },
+      {
+        kicker: 'Love That Outruns Judgment',
+        verse: 'Luke 15:20–24',
+        text: "And he arose and came to his father. But when he was still a great way off, his father saw him and had compassion, and ran and fell on his neck and kissed him. And the son said to him, 'Father, I have sinned against heaven and in your sight, and am no longer worthy to be called your son.' But the father said to his servants, 'Bring out the best robe and put it on him, and put a ring on his hand and sandals on his feet. And bring the fatted calf here and kill it, and let us eat and be merry; for this my son was dead and is alive again; he was lost and is found.' And they began to be merry.",
+      },
+      {
+        kicker: 'Love That Outruns Judgment',
+        verse: 'Luke 15:24',
+        text: 'for this my son was dead and is alive again; he was lost and is found. And they began to be merry.',
+      },
+      {
+        kicker: 'The Peril of Self-Righteousness',
+        verse: 'Luke 15:28',
+        text: 'But he was angry and would not go in. Therefore his father came out and pleaded with him.',
+      },
+      {
+        kicker: 'The Peril of Self-Righteousness',
+        verse: 'Luke 15:29',
+        text: "So he answered and said to his father, 'Lo, these many years I have been serving you; I never transgressed your commandment at any time; and yet you never gave me a young goat, that I might make merry with my friends.'",
       },
     ],
   },
