@@ -10585,7 +10585,7 @@ Don't give God what is left. Give Him what is worthy of the One who gave everyth
     duration: '45 min',
     series: 'Life Series',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'When the younger son returns home after wasting his inheritance, the father does not stand at a distance waiting for an apology. He sees his son while he is still far away, is moved with compassion, and runs toward him.',
 
     description: `**WHEN GOD RAN**
@@ -11204,6 +11204,260 @@ When we were far away, God came running toward us.`,
         kicker: 'The Peril of Self-Righteousness',
         verse: 'Luke 15:29',
         text: "So he answered and said to his father, 'Lo, these many years I have been serving you; I never transgressed your commandment at any time; and yet you never gave me a young goat, that I might make merry with my friends.'",
+      },
+    ],
+  },
+  {
+    id: '44',
+    slug: 'tent-of-meeting',
+    title: 'Tent of Meeting',
+    speaker: 'Salve Ybañez',
+    speakerRole: 'primary leader',
+    date: '2026-11-08',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: "The Tent of Meeting was more than a physical structure in the wilderness. It was an expression of God's desire to have a personal relationship with His people.",
+
+    description: `**TENT OF MEETING**
+
+Encountering God Through Personal Relationship
+
+Key Text: Exodus 33:1–14
+
+Additional Scriptures: 2 Timothy 3:16–17; Deuteronomy 31:14
+
+---
+
+**INTRODUCTION: A PLACE TO MEET WITH GOD**
+
+The Tent of Meeting was more than a physical structure in the wilderness. It was an expression of God's desire to have a personal relationship with His people. Despite Israel's disobedience, God did not completely abandon them. His righteous anger toward sin was real, but His desire to lead His people remained.
+
+In Exodus 33, Moses met with God outside the camp, seeking His presence and direction. The Tent of Meeting also points forward to Jesus, through whom we can now approach the Father.
+
+The message reminds us that knowing about God is not the same as personally knowing Him. God desires more than our attendance or religious activities; He desires a relationship with us.
+
+---
+
+**1. THE TENT OF MEETING: A PLACE OF PERSONAL SEEKING** (Exodus 33:7–11)
+
+The Tent of Meeting represented God's desire to meet with His people. It was a place where Moses could speak with God and receive His direction.
+
+Even when we fall into sin, God does not simply abandon us. However, His love does not mean He overlooks our wrongdoing. He corrects us because He loves us.
+
+As 2 Timothy 3:16–17 reminds us, God's Word teaches, rebukes, corrects, and trains us in righteousness. In the same way, a true friend is willing to speak the truth, even when correction may be difficult.
+
+Love does not simply affirm; sometimes, love must correct.
+
+---
+
+**2. MEETING GOD FACE TO FACE: A PERSONAL RELATIONSHIP** (Exodus 33:11; Deuteronomy 31:14)
+
+The Bible describes how God spoke with Moses face to face, as one speaks with a friend. This shows the intimacy of their relationship with one another.
+
+Joshua also remained at the Tent of Meeting even after Moses returned to the camp. His example reminds us of the importance of staying in God's presence.
+
+People may admire our testimonies and be intrigued by our relationship with God, but they cannot experience that relationship for us. We must personally seek Him.
+
+We cannot sustain our faith through someone else's encounter with God.
+
+When we fail to wait in His presence, we may also miss His direction and commissioning. We must not become so busy doing things for God that we forget to spend time with Him.
+
+---
+
+**3. TRANSFORMED IN HIS PRESENCE: EQUIPPED FOR EVERY GOOD WORK** (Exodus 33:12–14; 2 Timothy 3:16–17)
+
+Spending time in God's presence changes us. He renews our hearts, gives us direction, and prepares us for the work He has called us to do.
+
+God's Word is not simply something we consume for personal encouragement. It equips us to serve and accomplish every good work with purpose.
+
+Our gratitude must also be expressed through prayer, worship, obedience, and the way we live.
+
+To cultivate a devoted time with God, we must take practical steps:
+
+- Set a consistent time for prayer and Bible reading.
+- Find a quiet place where you can focus on God.
+- Read His Word with a heart willing to learn and be corrected.
+- Take time to pray, listen, and reflect.
+- Apply what you learn through obedience and service.
+
+Our time with God should not end with an encounter; it should lead to a transformed life.
+
+---
+
+**KEY TAKEAWAYS**
+
+- The Tent of Meeting represents God's desire for a personal relationship with His people.
+- God's correction is an expression of His love.
+- Our relationship with God must be personal; we cannot rely on someone else's testimony.
+- Faith becomes difficult to sustain when we neglect His presence.
+- We may miss God's direction when we fail to wait on Him.
+- God's Word equips us not only to grow but also to serve.
+- Spending time in God's presence transforms us.
+
+"Do not become so busy serving God that you forget to spend time with Him."
+
+---
+
+**CALL TO ACTION:**
+
+Make your relationship with God a priority. Set aside intentional time to pray, read His Word, and listen to His direction.
+
+Don't settle for simply hearing about other people's encounters with God. Seek Him personally, allow His Word to correct and transform you, and let what you receive in His presence become evident in the way you serve others.
+
+Meet Him personally. Remain in His presence. Be transformed, and serve with purpose.`,
+
+    tags: ['Presence of God', 'Relationship', 'Prayer', "God's Word", 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/tent_of_meeting.webp',
+    scriptures: [
+      {
+        verse: 'Exodus 33:1–14',
+        text: `Then the Lord said to Moses, "Depart and go up from here, you and the people whom you have brought out of the land of Egypt, to the land of which I swore to Abraham, Isaac, and Jacob, saying, 'To your descendants I will give it.' And I will send My Angel before you, and I will drive out the Canaanite and the Amorite and the Hittite and the Perizzite and the Hivite and the Jebusite. Go up to a land flowing with milk and honey; for I will not go up in your midst, lest I consume you on the way, for you are a stiff-necked people." And when the people heard this bad news, they mourned, and no one put on his ornaments. For the Lord had said to Moses, "Say to the children of Israel, 'You are a stiff-necked people. I could come up into your midst in one moment and consume you. Now therefore, take off your ornaments, that I may know what to do to you.' " So the children of Israel stripped themselves of their ornaments by Mount Horeb. Moses took his tent and pitched it outside the camp, far from the camp, and called it the tabernacle of meeting. And it came to pass that everyone who sought the Lord went out to the tabernacle of meeting which was outside the camp. So it was, whenever Moses went out to the tabernacle, that all the people rose, and each man stood at his tent door and watched Moses until he had gone into the tabernacle. And it came to pass, when Moses entered the tabernacle, that the pillar of cloud descended and stood at the door of the tabernacle, and the Lord talked with Moses. All the people saw the pillar of cloud standing at the tabernacle door, and all the people rose and worshiped, each man in his tent door. So the Lord spoke to Moses face to face, as a man speaks to his friend. And he would return to the camp, but his servant Joshua the son of Nun, a young man, did not depart from the tabernacle. Then Moses said to the Lord, "See, You say to me, 'Bring up this people.' But You have not let me know whom You will send with me. Yet You have said, 'I know you by name, and you have also found grace in My sight.' Now therefore, I pray, if I have found grace in Your sight, show me now Your way, that I may know You and that I may find grace in Your sight. And consider that this nation is Your people." And He said, "My Presence will go with you, and I will give you rest."`,
+      },
+      {
+        verse: '2 Timothy 3:16–17',
+        text: 'All Scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness, that the man of God may be complete, thoroughly equipped for every good work.',
+      },
+      {
+        verse: 'Deuteronomy 31:14',
+        text: 'Then the Lord said to Moses, "Behold, the days approach when you must die; call Joshua, and present yourselves in the tabernacle of meeting, that I may inaugurate him." So Moses and Joshua went and presented themselves in the tabernacle of meeting.',
+      },
+      {
+        verse: 'Exodus 33:7–11',
+        text: `Moses took his tent and pitched it outside the camp, far from the camp, and called it the tabernacle of meeting. And it came to pass that everyone who sought the Lord went out to the tabernacle of meeting which was outside the camp. So it was, whenever Moses went out to the tabernacle, that all the people rose, and each man stood at his tent door and watched Moses until he had gone into the tabernacle. And it came to pass, when Moses entered the tabernacle, that the pillar of cloud descended and stood at the door of the tabernacle, and the Lord talked with Moses. All the people saw the pillar of cloud standing at the tabernacle door, and all the people rose and worshiped, each man in his tent door. So the Lord spoke to Moses face to face, as a man speaks to his friend. And he would return to the camp, but his servant Joshua the son of Nun, a young man, did not depart from the tabernacle.`,
+      },
+      {
+        verse: 'Exodus 33:11',
+        text: 'So the Lord spoke to Moses face to face, as a man speaks to his friend. And he would return to the camp, but his servant Joshua the son of Nun, a young man, did not depart from the tabernacle.',
+      },
+      {
+        verse: 'Exodus 33:12–14',
+        text: `Then Moses said to the Lord, "See, You say to me, 'Bring up this people.' But You have not let me know whom You will send with me. Yet You have said, 'I know you by name, and you have also found grace in My sight.' Now therefore, I pray, if I have found grace in Your sight, show me now Your way, that I may know You and that I may find grace in Your sight. And consider that this nation is Your people." And He said, "My Presence will go with you, and I will give you rest."`,
+      },
+    ],
+    keyPoints: [
+      'The Tent of Meeting',
+      'Meeting God Face to Face',
+      'Transformed in His Presence',
+    ],
+    relatedSermons: ['42', '19'],
+    keyVerse: 'Exodus 33:1–14',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'A Place to Meet with God',
+        unnumbered: true,
+        paragraphs: [
+          '*Encountering God Through Personal Relationship*',
+          '**Key Text: Exodus 33:1–14**',
+          '**Additional Scriptures: 2 Timothy 3:16–17; Deuteronomy 31:14**',
+          "The Tent of Meeting was more than a physical structure in the wilderness. It was an expression of God's desire to have a personal relationship with His people. Despite Israel's disobedience, God did not completely abandon them. His righteous anger toward sin was real, but His desire to lead His people remained.",
+          'In Exodus 33, Moses met with God outside the camp, seeking His presence and direction. The Tent of Meeting also points forward to Jesus, through whom we can now approach the Father.',
+          'The message reminds us that knowing about God is not the same as personally knowing Him. God desires more than our attendance or religious activities; He desires a relationship with us.',
+        ],
+      },
+      {
+        id: 'sec-the-tent-of-meeting',
+        kicker: 'A Place of Personal Seeking',
+        title: 'The Tent of Meeting',
+        paragraphs: [
+          '**Exodus 33:7–11**',
+          "The Tent of Meeting represented God's desire to meet with His people. It was a place where Moses could speak with God and receive His direction.",
+          'Even when we fall into sin, God does not simply abandon us. However, His love does not mean He overlooks our wrongdoing. He corrects us because He loves us.',
+          "As 2 Timothy 3:16–17 reminds us, God's Word teaches, rebukes, corrects, and trains us in righteousness. In the same way, a true friend is willing to speak the truth, even when correction may be difficult.",
+        ],
+        callout: 'Love does not simply affirm; sometimes, love must correct.',
+      },
+      {
+        id: 'sec-meeting-god-face-to-face',
+        kicker: 'A Personal Relationship',
+        title: 'Meeting God Face to Face',
+        paragraphs: [
+          '**Exodus 33:11; Deuteronomy 31:14**',
+          'The Bible describes how God spoke with Moses face to face, as one speaks with a friend. This shows the intimacy of their relationship with one another.',
+          "Joshua also remained at the Tent of Meeting even after Moses returned to the camp. His example reminds us of the importance of staying in God's presence.",
+          'People may admire our testimonies and be intrigued by our relationship with God, but they cannot experience that relationship for us. We must personally seek Him.',
+          "We cannot sustain our faith through someone else's encounter with God.",
+          'When we fail to wait in His presence, we may also miss His direction and commissioning. We must not become so busy doing things for God that we forget to spend time with Him.',
+        ],
+      },
+      {
+        id: 'sec-transformed-in-his-presence',
+        kicker: 'Equipped for Every Good Work',
+        title: 'Transformed in His Presence',
+        paragraphs: [
+          '**Exodus 33:12–14; 2 Timothy 3:16–17**',
+          "Spending time in God's presence changes us. He renews our hearts, gives us direction, and prepares us for the work He has called us to do.",
+          "God's Word is not simply something we consume for personal encouragement. It equips us to serve and accomplish every good work with purpose.",
+          'Our gratitude must also be expressed through prayer, worship, obedience, and the way we live.',
+          'To cultivate a devoted time with God, we must take practical steps:',
+          'Set a consistent time for prayer and Bible reading.',
+          'Find a quiet place where you can focus on God.',
+          'Read His Word with a heart willing to learn and be corrected.',
+          'Take time to pray, listen, and reflect.',
+          'Apply what you learn through obedience and service.',
+        ],
+        callout: 'Our time with God should not end with an encounter; it should lead to a transformed life.',
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Make your relationship with God a priority. Set aside intentional time to pray, read His Word, and listen to His direction.',
+          "Don't settle for simply hearing about other people's encounters with God. Seek Him personally, allow His Word to correct and transform you, and let what you receive in His presence become evident in the way you serve others.",
+          'Meet Him personally. Remain in His presence. Be transformed, and serve with purpose.',
+        ],
+        callout: 'Do not become so busy serving God that you forget to spend time with Him.',
+      },
+    ],
+    keyTakeaways: [
+      "The Tent of Meeting represents God's desire for a personal relationship with His people.",
+      "God's correction is an expression of His love.",
+      "Our relationship with God must be personal; we cannot rely on someone else's testimony.",
+      'Faith becomes difficult to sustain when we neglect His presence.',
+      "We may miss God's direction when we fail to wait on Him.",
+      "God's Word equips us not only to grow but also to serve.",
+      "Spending time in God's presence transforms us.",
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: 'Exodus 33:1–14',
+        text: `Then the Lord said to Moses, "Depart and go up from here, you and the people whom you have brought out of the land of Egypt, to the land of which I swore to Abraham, Isaac, and Jacob, saying, 'To your descendants I will give it.' And I will send My Angel before you, and I will drive out the Canaanite and the Amorite and the Hittite and the Perizzite and the Hivite and the Jebusite. Go up to a land flowing with milk and honey; for I will not go up in your midst, lest I consume you on the way, for you are a stiff-necked people." And when the people heard this bad news, they mourned, and no one put on his ornaments. For the Lord had said to Moses, "Say to the children of Israel, 'You are a stiff-necked people. I could come up into your midst in one moment and consume you. Now therefore, take off your ornaments, that I may know what to do to you.' " So the children of Israel stripped themselves of their ornaments by Mount Horeb. Moses took his tent and pitched it outside the camp, far from the camp, and called it the tabernacle of meeting. And it came to pass that everyone who sought the Lord went out to the tabernacle of meeting which was outside the camp. So it was, whenever Moses went out to the tabernacle, that all the people rose, and each man stood at his tent door and watched Moses until he had gone into the tabernacle. And it came to pass, when Moses entered the tabernacle, that the pillar of cloud descended and stood at the door of the tabernacle, and the Lord talked with Moses. All the people saw the pillar of cloud standing at the tabernacle door, and all the people rose and worshiped, each man in his tent door. So the Lord spoke to Moses face to face, as a man speaks to his friend. And he would return to the camp, but his servant Joshua the son of Nun, a young man, did not depart from the tabernacle. Then Moses said to the Lord, "See, You say to me, 'Bring up this people.' But You have not let me know whom You will send with me. Yet You have said, 'I know you by name, and you have also found grace in My sight.' Now therefore, I pray, if I have found grace in Your sight, show me now Your way, that I may know You and that I may find grace in Your sight. And consider that this nation is Your people." And He said, "My Presence will go with you, and I will give you rest."`,
+      },
+      {
+        kicker: 'A Place of Personal Seeking',
+        verse: 'Exodus 33:7–11',
+        text: `Moses took his tent and pitched it outside the camp, far from the camp, and called it the tabernacle of meeting. And it came to pass that everyone who sought the Lord went out to the tabernacle of meeting which was outside the camp. So it was, whenever Moses went out to the tabernacle, that all the people rose, and each man stood at his tent door and watched Moses until he had gone into the tabernacle. And it came to pass, when Moses entered the tabernacle, that the pillar of cloud descended and stood at the door of the tabernacle, and the Lord talked with Moses. All the people saw the pillar of cloud standing at the tabernacle door, and all the people rose and worshiped, each man in his tent door. So the Lord spoke to Moses face to face, as a man speaks to his friend. And he would return to the camp, but his servant Joshua the son of Nun, a young man, did not depart from the tabernacle.`,
+      },
+      {
+        kicker: 'A Place of Personal Seeking',
+        verse: '2 Timothy 3:16–17',
+        text: 'All Scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness, that the man of God may be complete, thoroughly equipped for every good work.',
+      },
+      {
+        kicker: 'A Personal Relationship',
+        verse: 'Exodus 33:11',
+        text: 'So the Lord spoke to Moses face to face, as a man speaks to his friend. And he would return to the camp, but his servant Joshua the son of Nun, a young man, did not depart from the tabernacle.',
+      },
+      {
+        kicker: 'A Personal Relationship',
+        verse: 'Deuteronomy 31:14',
+        text: 'Then the Lord said to Moses, "Behold, the days approach when you must die; call Joshua, and present yourselves in the tabernacle of meeting, that I may inaugurate him." So Moses and Joshua went and presented themselves in the tabernacle of meeting.',
+      },
+      {
+        kicker: 'Equipped for Every Good Work',
+        verse: 'Exodus 33:12–14',
+        text: `Then Moses said to the Lord, "See, You say to me, 'Bring up this people.' But You have not let me know whom You will send with me. Yet You have said, 'I know you by name, and you have also found grace in My sight.' Now therefore, I pray, if I have found grace in Your sight, show me now Your way, that I may know You and that I may find grace in Your sight. And consider that this nation is Your people." And He said, "My Presence will go with you, and I will give you rest."`,
+      },
+      {
+        kicker: 'Equipped for Every Good Work',
+        verse: '2 Timothy 3:16–17',
+        text: 'All Scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness, that the man of God may be complete, thoroughly equipped for every good work.',
       },
     ],
   },
