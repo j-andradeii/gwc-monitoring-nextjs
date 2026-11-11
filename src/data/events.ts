@@ -422,7 +422,7 @@ October 24 (Saturday): Batch 2
     category: 'Training',
     isFeatured: false,
     type: GatewayEventType.G12_CONFERENCE,
-    is_event_finished: false,
+    is_event_finished: true,
     gallery: [
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/natcon/natcon.webp',
       'https://gtxngthtpisigkys.public.blob.vercel-storage.com/events/natcon/schedule.webp'
