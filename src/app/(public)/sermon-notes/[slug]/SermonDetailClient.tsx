@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LandingHeader, LandingFooter, ShareModal, ProjectBanner } from '@/components/landing';
 import { Sermon } from '@/data/sermons';
 import { Event } from '@/data/events';
 import { parseSermonSections, deriveBookBadge, slugifySectionId } from '@/lib/sermon-parser';
+import { getYouTubeEmbedUrl, isYouTubeShort } from '@/lib/youtube';
 
 interface Props {
   sermon: Sermon;
@@ -184,19 +186,127 @@ function HeroBackdrop({ sermon }: { sermon: Sermon }) {
 // Hero Artwork card
 // ---------------------------------------------------------------------------
 function HeroArtwork({ sermon }: { sermon: Sermon }) {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const closeVideo = useCallback(() => setIsVideoOpen(false), []);
+  const embedUrl = sermon.videoUrl
+    ? getYouTubeEmbedUrl(sermon.videoUrl, { autoplay: true })
+    : null;
+
+  const image = (
+    <Image
+      src={sermon.image}
+      alt={embedUrl ? '' : sermon.title}
+      fill
+      sizes="(max-width: 1023px) 100vw, 320px"
+      className="sermon-hero__artwork-img"
+      priority
+    />
+  );
+
   return (
     <div className="sermon-hero__artwork-wrap">
-      <div className="sermon-hero__artwork">
-        <Image
-          src={sermon.image}
-          alt={sermon.title}
-          fill
-          sizes="(max-width: 1023px) 100vw, 320px"
-          className="sermon-hero__artwork-img"
-          priority
+      {embedUrl ? (
+        <button
+          type="button"
+          className="sermon-hero__artwork sermon-hero__artwork--playable"
+          onClick={() => setIsVideoOpen(true)}
+          aria-label={`Play video: ${sermon.title}`}
+          aria-haspopup="dialog"
+        >
+          {image}
+          <span className="sermon-hero__play" aria-hidden="true">
+            <span className="sermon-hero__play-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M9 6.5v11a.75.75 0 0 0 1.14.64l8.86-5.5a.75.75 0 0 0 0-1.28l-8.86-5.5A.75.75 0 0 0 9 6.5Z" />
+              </svg>
+            </span>
+            <span className="sermon-hero__play-label">Watch</span>
+          </span>
+        </button>
+      ) : (
+        <div className="sermon-hero__artwork">{image}</div>
+      )}
+
+      {embedUrl && isVideoOpen && (
+        <VideoLightbox
+          embedUrl={embedUrl}
+          title={sermon.title}
+          vertical={isYouTubeShort(sermon.videoUrl!)}
+          onClose={closeVideo}
+        />
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Video Lightbox — plays the sermon preview/recap over the page
+// ---------------------------------------------------------------------------
+function VideoLightbox({
+  embedUrl,
+  title,
+  vertical,
+  onClose,
+}: {
+  embedUrl: string;
+  title: string;
+  vertical: boolean;
+  onClose: () => void;
+}) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeRef.current?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+      previouslyFocused?.focus();
+    };
+  }, [onClose]);
+
+  // Portal to <body>: the hero sets `isolation: isolate`, which would otherwise
+  // trap the overlay beneath the sticky header.
+  return createPortal(
+    <div
+      className="video-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Video: ${title}`}
+      onClick={onClose}
+    >
+      <button
+        ref={closeRef}
+        type="button"
+        className="video-lightbox__close"
+        onClick={onClose}
+        aria-label="Close video"
+      >
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <div
+        className={`video-lightbox__frame${vertical ? ' video-lightbox__frame--vertical' : ''}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <iframe
+          src={embedUrl}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
         />
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
@@ -445,26 +555,6 @@ function SpeakerCard({ sermon }: { sermon: Sermon }) {
           <strong>{sermon.speaker}</strong>
           {speakerSubtitle && <span>{speakerSubtitle}</span>}
         </div>
-      </div>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Watch Message Card (aside — only when videoUrl present)
-// ---------------------------------------------------------------------------
-function WatchMessageCard({ videoUrl, title }: { videoUrl: string; title: string }) {
-  return (
-    <div className="aside-card">
-      <h4>Watch Message</h4>
-      <div className="video-aside">
-        <iframe
-          src={videoUrl}
-          title={title}
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
       </div>
     </div>
   );
@@ -778,12 +868,6 @@ export default function SermonDetailClient({
                 activeSectionId={activeSectionId}
               />
               <SpeakerCard sermon={sermon} />
-              {sermon.videoUrl && (
-                <WatchMessageCard
-                  videoUrl={sermon.videoUrl}
-                  title={sermon.title}
-                />
-              )}
               <ShareCard onShareClick={() => setShowShareModal(true)} />
               <UpcomingEventsCard events={upcomingEvents} />
             </aside>

@@ -11310,6 +11310,7 @@ Meet Him personally. Remain in His presence. Be transformed, and serve with purp
 
     tags: ['Presence of God', 'Relationship', 'Prayer', "God's Word", 'Vision'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/tent_of_meeting.webp',
+    videoUrl: 'https://www.youtube.com/shorts/RU4bCZVu6lE',
     scriptures: [
       {
         verse: 'Exodus 33:1–14',

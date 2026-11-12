@@ -300,6 +300,136 @@
   object-position: center top;
 }
 
+/* Playable artwork — shown when the sermon has a videoUrl. */
+.sermon-hero__artwork--playable {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.sermon-hero__artwork--playable::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.35) 100%);
+  transition: background 0.25s ease;
+  pointer-events: none;
+}
+
+.sermon-hero__play {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px 5px 5px;
+  border-radius: 999px;
+  background: rgba(16, 16, 20, 0.62);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.6);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sermon-hero__play-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #1a1a1a;
+  background: rgb(var(--hero-gold));
+}
+
+.sermon-hero__play-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.sermon-hero__artwork--playable:hover .sermon-hero__play,
+.sermon-hero__artwork--playable:focus-visible .sermon-hero__play {
+  background: rgba(16, 16, 20, 0.78);
+  transform: translateY(-2px);
+}
+
+.sermon-hero__artwork--playable:hover::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+.sermon-hero__artwork--playable:focus-visible {
+  outline: 2px solid rgb(var(--hero-gold));
+  outline-offset: 4px;
+}
+
+/* ---- Video Lightbox ---- */
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 5000; /* above the sticky landing header */
+  display: grid;
+  place-items: center;
+  padding: 64px 16px 24px;
+  background: rgba(8, 8, 12, 0.88);
+  backdrop-filter: blur(6px);
+  animation: video-lightbox-in 0.2s ease;
+}
+
+.video-lightbox__frame {
+  width: min(100%, 960px);
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+}
+
+.video-lightbox__frame--vertical {
+  aspect-ratio: 9 / 16;
+  width: auto;
+  height: min(100%, 82vh);
+  max-width: 100%;
+}
+
+.video-lightbox__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.video-lightbox__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.video-lightbox__close:hover,
+.video-lightbox__close:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes video-lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ---- Body / Grid ---- */
 .sermon-body {
   padding: 56px 0 80px;
@@ -1167,21 +1297,6 @@
 
 .sermon-btn--block {
   width: 100%;
-}
-
-/* ---- Video Aside Player ---- */
-.video-aside {
-  border-radius: 14px;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  background: var(--color-navy-dark);
-}
-
-.video-aside iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
 }
 
 /* ================================================================
