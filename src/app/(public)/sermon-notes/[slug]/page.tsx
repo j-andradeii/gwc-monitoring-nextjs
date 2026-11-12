@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { sermons, getSermonBySlug, getRelatedSermons, getSermonsBySeries } from '@/data/sermons';
 import { events, isEventUpcoming } from '@/data/events';
 import { siteMetadata } from '@/data/site-metadata';
+import { getYouTubeEmbedUrl } from '@/lib/youtube';
 import SermonDetailClient from './SermonDetailClient';
 
 const siteUrl = siteMetadata.siteUrl;
@@ -131,6 +132,9 @@ export default async function SermonDetailPage({ params }: Props) {
               uploadDate: new Date(sermon.date).toISOString(),
               thumbnailUrl: sermon.image.startsWith('http') ? sermon.image : `${siteUrl}${sermon.image}`,
               contentUrl: sermon.videoUrl,
+              ...(getYouTubeEmbedUrl(sermon.videoUrl)
+                ? { embedUrl: getYouTubeEmbedUrl(sermon.videoUrl) }
+                : {}),
               author: { '@type': 'Person', name: sermon.speaker },
               publisher: {
                 '@type': 'Organization',

@@ -69,7 +69,7 @@ interface Sermon {
 | `speakerImage` | URL | Only if different from `image` |
 | `seriesDescription` | 1-2 sentences | Description of the series |
 | `description` | Multi-line string | Full sermon notes (use template literal) |
-| `videoUrl` | YouTube/video URL | Link to video recording |
+| `videoUrl` | YouTube URL | Preview/recap or full recording — see [YouTube Video Link](#youtube-video-link) |
 | `audioUrl` | Audio file URL | Link to audio recording |
 | `downloadUrl` | File URL | Downloadable resource |
 | `isFeatured` | `true` only | Set on ONE sermon to feature it |
@@ -440,6 +440,39 @@ See sermon `id: '21'` in `sermons.ts` for the complete reference implementation 
 
 ---
 
+## YouTube Video Link
+
+**Rule:** whenever a YouTube link is provided for a sermon (preview, recap, Short, or full message), add it as `videoUrl`. Never leave a provided link out, and never invent one.
+
+```typescript
+image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/tent_of_meeting.webp',
+videoUrl: 'https://www.youtube.com/shorts/RU4bCZVu6lE',
+```
+
+- Paste the link **exactly as given** — any of these shapes work:
+  - `https://www.youtube.com/shorts/<id>` (Shorts — vertical 9:16)
+  - `https://www.youtube.com/watch?v=<id>`
+  - `https://youtu.be/<id>`
+  - `https://www.youtube.com/embed/<id>`
+- Do **not** hand-convert it to an embed URL; `src/lib/youtube.ts` (`getYouTubeEmbedUrl`) does that at render time.
+- Place `videoUrl` directly after `image`.
+- Only one `videoUrl` per sermon.
+
+**What `videoUrl` turns on** (no other fields needed):
+
+| Where | Effect |
+|-------|--------|
+| Hero thumbnail | Compact "▶ Watch" pill in the bottom-left corner of the artwork; clicking anywhere on the thumbnail opens the video in a lightbox (autoplay). Shorts open in a 9:16 frame, other videos in 16:9. |
+| SEO | `VideoObject` JSON-LD is added to the page. |
+
+The hero thumbnail is the **only** place the video plays. There is no "Watch Message" card in the sidebar — do not re-add one or embed the video anywhere else on the page.
+
+The play pill sits in the corner on purpose so it never covers the sermon title or scripture reference printed on the artwork. Do not move it back to the center.
+
+Without `videoUrl`, the hero thumbnail is a plain image with no play pill.
+
+---
+
 ## Speaker Images
 
 Current speaker images in use:
@@ -602,6 +635,7 @@ Before committing a new sermon:
 - [ ] `scriptures` have both `verse` and `text` fields
 - [ ] `keyPoints` summarize main takeaways
 - [ ] `relatedSermons` contain valid existing sermon IDs
+- [ ] If a YouTube link was provided, it is set as `videoUrl` (pasted as-is, right after `image`)
 - [ ] Only ONE sermon has `isFeatured: true` (update previous if needed)
 - [ ] No trailing commas causing syntax errors
 - [ ] Template literals use backticks (`` ` ``) not quotes
