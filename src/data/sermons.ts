@@ -11609,6 +11609,7 @@ The legacy you leave is not only what you give your children, but also the faith
 
     tags: ['Family', 'Legacy', 'Parenting', 'Devotion', 'Vision'],
     image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/generational_legacy.webp',
+    videoUrl: 'https://youtube.com/shorts/rrIHm1WktZ0',
     scriptures: [
       {
         verse: 'Deuteronomy 6:4–5',
