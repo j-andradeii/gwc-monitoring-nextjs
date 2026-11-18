@@ -11217,7 +11217,7 @@ When we were far away, God came running toward us.`,
     duration: '45 min',
     series: 'Lifeclass Series',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: "The Tent of Meeting was more than a physical structure in the wilderness. It was an expression of God's desire to have a personal relationship with His people.",
 
     description: `**TENT OF MEETING**
@@ -11459,6 +11459,359 @@ Meet Him personally. Remain in His presence. Be transformed, and serve with purp
         kicker: 'Equipped for Every Good Work',
         verse: '2 Timothy 3:16–17',
         text: 'All Scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness, that the man of God may be complete, thoroughly equipped for every good work.',
+      },
+    ],
+  },
+  {
+    id: '45',
+    slug: 'building-a-generational-legacy-in-the-daily-rhythms-of-home',
+    title: 'Building a Generational Legacy in the Daily Rhythms of Home',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-11-15',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'A lasting spiritual legacy is not built through occasional religious activities but through a life of consistent devotion to God.',
+
+    description: `**BUILDING A GENERATIONAL LEGACY IN THE DAILY RHYTHMS OF HOME**
+
+(Passing Faith from One Generation to the Next)
+
+Key Text: Deuteronomy 6:1–15
+
+Additional Scriptures: Proverbs 13:22; Ephesians 6:4
+
+---
+
+**INTRODUCTION: THE DANGER OF FORGETTING GOD IN TIMES OF PROSPERITY**
+
+In Deuteronomy 6, the Israelites stood at the edge of the Promised Land. After forty years in the wilderness, they were about to experience a season of abundance—houses, vineyards, and blessings they had not worked to build.
+
+But Moses gave them an important warning: when they became comfortable and satisfied, they must be careful not to forget the Lord.
+
+The danger is that we can become so occupied with the blessings God gives us that we forget the One who gave them. If we cannot manage God's blessings, they can eventually become a curse.
+
+So how do we keep our faith alive and pass it on to the next generation? Moses points us toward something ordinary but powerful: the daily rhythms of our homes.
+
+A lasting spiritual legacy is not built through occasional religious activities but through a life of consistent devotion to God.
+
+---
+
+**I. THE FOUNDATION: WHOLEHEARTED DEVOTION BEFORE HOUSEHOLD INSTRUCTION** (Deuteronomy 6:1–6)
+
+Before Moses instructed parents to teach their children about God, he first addressed their own hearts. In verses 4–5, known as the Shema, Israel was commanded to love the Lord with all their heart, soul, and strength. Jesus later identified this as the greatest commandment (Matthew 22:37).
+
+Notice the order in verse 6: God's commandments must first be upon our hearts.
+
+You cannot pass down a passion you do not possess.
+
+A spiritual inheritance cannot be faked. Financial wealth without spiritual formation can easily be squandered, but a life rooted in God's Word can influence generations.
+
+Proverbs 13:22 reminds us that a good person leaves an inheritance for their children's children. This challenges us to think beyond our own lifetime. Just as Joseph prepared during years of abundance for the famine ahead, we must establish spiritual foundations today that will sustain future generations.
+
+We must be people of conviction, not convenience. Our devotion to God should not depend on circumstances or how comfortable life becomes.
+
+Before we can teach our households to love God, we must first demonstrate that love in our own lives.
+
+---
+
+**II. THE RHYTHM: WEAVING FAITH INTO EVERYDAY LIFE** (Deuteronomy 6:7–9)
+
+Once God's Word is rooted in our hearts, Moses gives us a practical pattern for passing that truth to the next generation.
+
+The instruction to "impress" God's commandments carries the idea of deliberate, repeated shaping. Faith is developed through consistent teaching and example, not a one-time conversation.
+
+God designed the home to be a place where faith is naturally practiced and passed on.
+
+**1. "When You Sit at Home" — The Rhythm of Rest and Fellowship**
+
+The home is the primary place where children learn how to live out their faith. Around the dinner table and in everyday conversations, prayer, Scripture, and discussions about God should become a natural part of family life.
+
+As Ephesians 6:4 instructs, parents are to bring their children up in the training and instruction of the Lord.
+
+**2. "When You Walk Along the Road" — The Rhythm of Everyday Moments**
+
+Faith is not confined to church services or personal devotion. It travels with us through school drop-offs, errands, conversations, and daily challenges.
+
+These ordinary moments provide opportunities to teach God's truth, discuss decisions, and help our children see life through the lens of faith.
+
+**3. "When You Lie Down and When You Rise" — The Rhythm of Daily Devotion**
+
+How we begin and end our day matters. Starting the day with God sets the tone for our household, while ending it with prayer and thanksgiving reminds our family that He watches over us.
+
+What we consistently speak and what our children repeatedly hear become seeds planted in their hearts. In time, those seeds will produce a harvest.
+
+**4. "On Your Hands, Forehead, and Doorframes" — The Rhythm of Visible Identity**
+
+Moses instructed the Israelites to keep God's commandments visible in their daily lives. This points to a faith that influences every part of who we are:
+
+- **On our hands:** What we do—our actions, work, habits, and service—must reflect God's character.
+- **On our foreheads:** How we think—our decisions, mindset, and values—must be guided by God's Word.
+- **On our doorframes:** Who we are as a household, both privately and publicly, must reflect that we belong to the Lord.
+
+Faith should not only be something we talk about. It should be something our families can see in the way we live.
+
+The home is where faith is practiced, modeled, and passed on through everyday life.
+
+---
+
+**III. THE RIPPLE EFFECT: HOW GOD SHAPES GENERATIONS THROUGH THE HOME** (Psalm 78:4–7)
+
+A family's faithfulness can influence generations beyond what they can see today.
+
+Throughout Scripture, God worked through households to accomplish His purposes. He preserved Noah's family, called Abraham to become a blessing to nations, raised Moses through the care of his parents, and established Samuel's ministry through Hannah's devotion.
+
+We also see the importance of a godly upbringing in Timothy, whose sincere faith was first evident in his grandmother Lois and mother Eunice (2 Timothy 1:5).
+
+Psalm 78:4–7 reminds us not to hide God's works from our children but to tell the next generation about His goodness so that they may put their trust in Him.
+
+This is the power of a spiritual legacy: what we faithfully establish today can become the foundation for generations we may never meet.
+
+Success is not simply measured by wealth, achievements, or possessions. True success is knowing the will of God and doing it.
+
+We must show the next generation what it means to love God, remain faithful, and serve Him with passion. We cannot pass on a conviction we do not live out ourselves.
+
+Your faithfulness today can become an anchor for generations tomorrow.
+
+---
+
+**KEY TAKEAWAYS**
+
+- God prepares our hearts for the next season, including the responsibility of managing His blessings.
+- Blessings without spiritual maturity can become a burden.
+- True success is knowing God's will and doing it.
+- You cannot pass on something you do not possess.
+- We must be people of conviction, not convenience.
+- The home is where faith is modeled and passed on.
+- Faith must be woven into everyday family rhythms, not limited to Sunday services.
+- Children learn not only from what we teach but also from what they see us practice.
+- A godly legacy reaches beyond our lifetime.
+
+"You cannot pass down a passion you do not possess. You have to show the next generation what it looks like to live for God."
+
+---
+
+**CALL TO ACTION:**
+
+Building a generational legacy begins with the choices we make at home today.
+
+- **Start with your own heart.** Make your relationship with God a priority.
+- **Establish daily rhythms.** Make prayer and God's Word part of ordinary family life.
+- **Lead by example.** Let your children see your faith through your actions and decisions.
+- **Be intentional with your words.** Speak God's truth and goodness in everyday conversations.
+- **Raise a generation of conviction.** Teach your family to follow God faithfully, not only when it is convenient.
+
+You do not have to change everything overnight. Start with one family meal, one prayer, or one intentional conversation about God.
+
+The legacy you leave is not only what you give your children, but also the faith you demonstrate and pass on to them.`,
+
+    tags: ['Family', 'Legacy', 'Parenting', 'Devotion', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/generational_legacy.webp',
+    scriptures: [
+      {
+        verse: 'Deuteronomy 6:4–5',
+        text: 'Hear, O Israel: The Lord our God, the Lord is one! You shall love the Lord your God with all your heart, with all your soul, and with all your strength.',
+      },
+      {
+        verse: 'Deuteronomy 6:6–7',
+        text: 'And these words which I command you today shall be in your heart. You shall teach them diligently to your children, and shall talk of them when you sit in your house, when you walk by the way, when you lie down, and when you rise up.',
+      },
+      {
+        verse: 'Deuteronomy 6:8–9',
+        text: 'You shall bind them as a sign on your hand, and they shall be as frontlets between your eyes. You shall write them on the doorposts of your house and on your gates.',
+      },
+      {
+        verse: 'Deuteronomy 6:12',
+        text: 'Then beware, lest you forget the Lord who brought you out of the land of Egypt, from the house of bondage.',
+      },
+      {
+        verse: 'Matthew 22:37',
+        text: "Jesus said to him, 'You shall love the Lord your God with all your heart, with all your soul, and with all your mind.'",
+      },
+      {
+        verse: 'Proverbs 13:22',
+        text: "A good man leaves an inheritance to his children's children, but the wealth of the sinner is stored up for the righteous.",
+      },
+      {
+        verse: 'Ephesians 6:4',
+        text: 'And you, fathers, do not provoke your children to wrath, but bring them up in the training and admonition of the Lord.',
+      },
+      {
+        verse: 'Psalm 78:4',
+        text: 'We will not hide them from their children, telling to the generation to come the praises of the Lord, and His strength and His wonderful works that He has done.',
+      },
+      {
+        verse: 'Psalm 78:7',
+        text: 'That they may set their hope in God, and not forget the works of God, but keep His commandments.',
+      },
+      {
+        verse: '2 Timothy 1:5',
+        text: 'When I call to remembrance the genuine faith that is in you, which dwelt first in your grandmother Lois and your mother Eunice, and I am persuaded is in you also.',
+      },
+    ],
+    keyPoints: [
+      'The Foundation: Wholehearted Devotion Before Household Instruction',
+      'The Rhythm: Weaving Faith into Everyday Life',
+      'The Ripple Effect: How God Shapes Generations Through the Home',
+    ],
+    relatedSermons: ['44', '42'],
+    keyVerse: 'Deuteronomy 6:1–15',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'The Danger of Forgetting God in Times of Prosperity',
+        unnumbered: true,
+        paragraphs: [
+          '*Passing Faith from One Generation to the Next*',
+          '**Key Text: Deuteronomy 6:1–15**',
+          '**Additional Scriptures: Proverbs 13:22; Ephesians 6:4**',
+          'In Deuteronomy 6, the Israelites stood at the edge of the Promised Land. After forty years in the wilderness, they were about to experience a season of abundance—houses, vineyards, and blessings they had not worked to build.',
+          'But Moses gave them an important warning: when they became comfortable and satisfied, they must be careful not to forget the Lord.',
+          "The danger is that we can become so occupied with the blessings God gives us that we forget the One who gave them. If we cannot manage God's blessings, they can eventually become a curse.",
+          'So how do we keep our faith alive and pass it on to the next generation? Moses points us toward something ordinary but powerful: the daily rhythms of our homes.',
+        ],
+        callout: 'A lasting spiritual legacy is not built through occasional religious activities but through a life of consistent devotion to God.',
+      },
+      {
+        id: 'sec-the-foundation',
+        kicker: 'The Foundation',
+        title: 'Wholehearted Devotion Before Household Instruction',
+        paragraphs: [
+          '**Deuteronomy 6:1–6**',
+          'Before Moses instructed parents to teach their children about God, he first addressed their own hearts. In verses 4–5, known as the Shema, Israel was commanded to love the Lord with all their heart, soul, and strength. Jesus later identified this as the greatest commandment (Matthew 22:37).',
+          "Notice the order in verse 6: God's commandments must first be upon our hearts.",
+          '**You cannot pass down a passion you do not possess.**',
+          "A spiritual inheritance cannot be faked. Financial wealth without spiritual formation can easily be squandered, but a life rooted in God's Word can influence generations.",
+          "Proverbs 13:22 reminds us that a good person leaves an inheritance for their children's children. This challenges us to think beyond our own lifetime. Just as Joseph prepared during years of abundance for the famine ahead, we must establish spiritual foundations today that will sustain future generations.",
+          'We must be people of conviction, not convenience. Our devotion to God should not depend on circumstances or how comfortable life becomes.',
+        ],
+        callout: 'Before we can teach our households to love God, we must first demonstrate that love in our own lives.',
+      },
+      {
+        id: 'sec-the-rhythm',
+        kicker: 'The Rhythm',
+        title: 'Weaving Faith into Everyday Life',
+        paragraphs: [
+          '**Deuteronomy 6:7–9**',
+          "Once God's Word is rooted in our hearts, Moses gives us a practical pattern for passing that truth to the next generation.",
+          `The instruction to "impress" God's commandments carries the idea of deliberate, repeated shaping. Faith is developed through consistent teaching and example, not a one-time conversation.`,
+          'God designed the home to be a place where faith is naturally practiced and passed on.',
+          '**1. "When You Sit at Home" — The Rhythm of Rest and Fellowship**',
+          'The home is the primary place where children learn how to live out their faith. Around the dinner table and in everyday conversations, prayer, Scripture, and discussions about God should become a natural part of family life.',
+          'As Ephesians 6:4 instructs, parents are to bring their children up in the training and instruction of the Lord.',
+          '**2. "When You Walk Along the Road" — The Rhythm of Everyday Moments**',
+          'Faith is not confined to church services or personal devotion. It travels with us through school drop-offs, errands, conversations, and daily challenges.',
+          "These ordinary moments provide opportunities to teach God's truth, discuss decisions, and help our children see life through the lens of faith.",
+          '**3. "When You Lie Down and When You Rise" — The Rhythm of Daily Devotion**',
+          'How we begin and end our day matters. Starting the day with God sets the tone for our household, while ending it with prayer and thanksgiving reminds our family that He watches over us.',
+          'What we consistently speak and what our children repeatedly hear become seeds planted in their hearts. In time, those seeds will produce a harvest.',
+          '**4. "On Your Hands, Forehead, and Doorframes" — The Rhythm of Visible Identity**',
+          "Moses instructed the Israelites to keep God's commandments visible in their daily lives. This points to a faith that influences every part of who we are:",
+          "**On our hands:** What we do—our actions, work, habits, and service—must reflect God's character.",
+          "**On our foreheads:** How we think—our decisions, mindset, and values—must be guided by God's Word.",
+          '**On our doorframes:** Who we are as a household, both privately and publicly, must reflect that we belong to the Lord.',
+          'Faith should not only be something we talk about. It should be something our families can see in the way we live.',
+        ],
+        callout: 'The home is where faith is practiced, modeled, and passed on through everyday life.',
+      },
+      {
+        id: 'sec-the-ripple-effect',
+        kicker: 'The Ripple Effect',
+        title: 'How God Shapes Generations Through the Home',
+        paragraphs: [
+          '**Psalm 78:4–7**',
+          "A family's faithfulness can influence generations beyond what they can see today.",
+          "Throughout Scripture, God worked through households to accomplish His purposes. He preserved Noah's family, called Abraham to become a blessing to nations, raised Moses through the care of his parents, and established Samuel's ministry through Hannah's devotion.",
+          'We also see the importance of a godly upbringing in Timothy, whose sincere faith was first evident in his grandmother Lois and mother Eunice (2 Timothy 1:5).',
+          "Psalm 78:4–7 reminds us not to hide God's works from our children but to tell the next generation about His goodness so that they may put their trust in Him.",
+          'This is the power of a spiritual legacy: what we faithfully establish today can become the foundation for generations we may never meet.',
+          'Success is not simply measured by wealth, achievements, or possessions. True success is knowing the will of God and doing it.',
+          'We must show the next generation what it means to love God, remain faithful, and serve Him with passion. We cannot pass on a conviction we do not live out ourselves.',
+        ],
+        callout: 'Your faithfulness today can become an anchor for generations tomorrow.',
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'Building a generational legacy begins with the choices we make at home today.',
+          '**Start with your own heart.** Make your relationship with God a priority.',
+          "**Establish daily rhythms.** Make prayer and God's Word part of ordinary family life.",
+          '**Lead by example.** Let your children see your faith through your actions and decisions.',
+          "**Be intentional with your words.** Speak God's truth and goodness in everyday conversations.",
+          '**Raise a generation of conviction.** Teach your family to follow God faithfully, not only when it is convenient.',
+          'You do not have to change everything overnight. Start with one family meal, one prayer, or one intentional conversation about God.',
+          'The legacy you leave is not only what you give your children, but also the faith you demonstrate and pass on to them.',
+        ],
+        callout: 'You cannot pass down a passion you do not possess. You have to show the next generation what it looks like to live for God.',
+      },
+    ],
+    keyTakeaways: [
+      'God prepares our hearts for the next season, including the responsibility of managing His blessings.',
+      'Blessings without spiritual maturity can become a burden.',
+      "True success is knowing God's will and doing it.",
+      'You cannot pass on something you do not possess.',
+      'We must be people of conviction, not convenience.',
+      'The home is where faith is modeled and passed on.',
+      'Faith must be woven into everyday family rhythms, not limited to Sunday services.',
+      'Children learn not only from what we teach but also from what they see us practice.',
+      'A godly legacy reaches beyond our lifetime.',
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Key Text',
+        verse: 'Deuteronomy 6:12',
+        text: 'Then beware, lest you forget the Lord who brought you out of the land of Egypt, from the house of bondage.',
+      },
+      {
+        kicker: 'The Foundation',
+        verse: 'Deuteronomy 6:4–5',
+        text: 'Hear, O Israel: The Lord our God, the Lord is one! You shall love the Lord your God with all your heart, with all your soul, and with all your strength.',
+      },
+      {
+        kicker: 'The Foundation',
+        verse: 'Matthew 22:37',
+        text: "Jesus said to him, 'You shall love the Lord your God with all your heart, with all your soul, and with all your mind.'",
+      },
+      {
+        kicker: 'The Foundation',
+        verse: 'Proverbs 13:22',
+        text: "A good man leaves an inheritance to his children's children, but the wealth of the sinner is stored up for the righteous.",
+      },
+      {
+        kicker: 'The Rhythm',
+        verse: 'Deuteronomy 6:6–7',
+        text: 'And these words which I command you today shall be in your heart. You shall teach them diligently to your children, and shall talk of them when you sit in your house, when you walk by the way, when you lie down, and when you rise up.',
+      },
+      {
+        kicker: 'The Rhythm',
+        verse: 'Deuteronomy 6:8–9',
+        text: 'You shall bind them as a sign on your hand, and they shall be as frontlets between your eyes. You shall write them on the doorposts of your house and on your gates.',
+      },
+      {
+        kicker: 'The Rhythm',
+        verse: 'Ephesians 6:4',
+        text: 'And you, fathers, do not provoke your children to wrath, but bring them up in the training and admonition of the Lord.',
+      },
+      {
+        kicker: 'The Ripple Effect',
+        verse: 'Psalm 78:4',
+        text: 'We will not hide them from their children, telling to the generation to come the praises of the Lord, and His strength and His wonderful works that He has done.',
+      },
+      {
+        kicker: 'The Ripple Effect',
+        verse: 'Psalm 78:7',
+        text: 'That they may set their hope in God, and not forget the works of God, but keep His commandments.',
+      },
+      {
+        kicker: 'The Ripple Effect',
+        verse: '2 Timothy 1:5',
+        text: 'When I call to remembrance the genuine faith that is in you, which dwelt first in your grandmother Lois and your mother Eunice, and I am persuaded is in you also.',
       },
     ],
   },
