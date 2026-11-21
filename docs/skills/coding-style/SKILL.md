@@ -53,7 +53,7 @@ opens with a short header block, every non-obvious line says *why*, and each con
    `page.tsx` and `layout.tsx` stay Server Components unless they already aren't. *Why:* keeps metadata,
    static params and SEO on the server (`routing`).
 6. **Exports.** Named exports for components, hooks, stores, schemas and helpers, re-exported from the
-   folder's `index.ts` when the folder has one (`components/forms`, `components/landing`, `components/ui`,
+   folder's `index.ts` when the folder has one (`components/admin`, `components/forms`, `components/landing`, `components/ui`,
    `hooks`, `hooks/queries`, `hooks/mutations`, `stores`, `models`, `core`, `guards`). `page.tsx`,
    `layout.tsx` and `<Name>Client.tsx` use `export default function`. A component may add
    `export default X` beside the named export. *Why:* barrels give one import line per area.
@@ -82,7 +82,7 @@ opens with a short header block, every non-obvious line says *why*, and each con
 | `src/app/(protected)/church-campus-admin/**` | admin pages (behind `AuthGuard`) |
 | `src/app/(auth)/signin/page.tsx` | sign-in |
 | `src/app/api/**/route.ts` | route handlers (server only) |
-| `src/components/<area>/` | shared components: `forms`, `landing` (+ `about`, `connect`, `events`, `give`, `outreach`), `layout`, `cards`, `events`, `providers`, `ui` |
+| `src/components/<area>/` | shared components: `admin` (admin page parts), `forms`, `landing` (+ `about`, `connect`, `events`, `give`, `outreach`), `layout` (admin shell + `admin-navigation.ts`), `cards`, `events`, `providers`, `ui` |
 | `src/core/` | config, constants, crypto, messages, storage, date + string utils |
 | `src/data/` | static content + its docs (`ADDING_SERMONS.md`) |
 | `src/guards/` | `AuthGuard`, `RoleGuard`, `withAuth`, `withRole` |

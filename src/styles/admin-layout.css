@@ -1,21 +1,81 @@
 /**
  * AdminLayout styles
  *
- * All class names are prefixed with `admin-layout-` to avoid global collisions.
- * Layout constants:
- *   --admin-sidebar-width: 260px
- *   --admin-header-height: 64px
+ * The admin shell: tokens, header slot, sidebar slot (off-canvas on mobile),
+ * page area, breadcrumbs slot and footer. Class names are prefixed
+ * `admin-layout-` / `admin-footer-` to avoid global collisions.
+ *
+ * Theme: navy chrome + the site's warm gold (#d4a84b, same as the landing pages and
+ * .landing-btn-primary). See docs/skills/ui-ux/DESIGN.md "Admin surface".
  */
 
-.admin-layout {
-  --admin-sidebar-width: 260px;
+/* ─── Admin tokens ─────────────────────────────────────────────────────────────
+   Declared on the shell root AND on the portaled user menu (PrimeReact renders it
+   at <body>, outside .admin-layout), so every admin surface reads the same values. */
+.admin-layout,
+.admin-user-menu {
+  --admin-sidebar-width: 288px;
   --admin-header-height: 64px;
 
-  min-height: 100vh;
-  background: #f8f9fa;
+  /* gold — the SAME warm gold as the landing pages (one gold across the site) */
+  --admin-gold:         var(--color-primary, #d4a84b);
+  --admin-gold-dark:    var(--color-primary-dark, #b8923f);
+  /* gold for TEXT on light surfaces — same hue, deep enough for AA
+     (5.5:1 on white, 5.2:1 on the canvas, 5.1:1 on --admin-gold-soft); also the focus ring on light */
+  --admin-gold-ink:     #7f652d;
+  --admin-gold-soft:    rgba(212, 168, 75, 0.12);
+  --admin-gold-glow:    var(--gold-shadow-hover, rgba(212, 168, 75, 0.25));
+  --admin-gold-border:  rgba(212, 168, 75, 0.30);
+  /* Gold COMPONENTS (buttons, avatars, selected/hover icon tiles, badges): the landing
+     button gradient (.landing-btn-primary) with WHITE text and icons — owner's rule.
+     Known trade-off: white on this gold is 2.2–2.6:1, below AA; accepted to match the
+     landing CTAs (spec 003). Keep labels bold (≥ 600) and ≥ 14px. */
+  --admin-gold-fill:    linear-gradient(135deg, var(--color-primary, #d4a84b) 0%, #c9973f 100%);
+  --admin-gold-fill-hover: linear-gradient(135deg, #c9973f 0%, var(--color-primary, #d4a84b) 100%);
+  --admin-on-gold:      #ffffff;
+
+  /* dark chrome (header, drawer bar) */
+  --admin-chrome:       linear-gradient(135deg, #0a0a0f 0%, #0d1525 50%, #0d1a2d 100%);
+  --admin-chrome-edge:  #0d1525;
+  --admin-navy:         var(--color-navy, #1a2744);
+
+  /* light surfaces */
+  --admin-canvas:       #f8f9fa;
+  --admin-surface:      #ffffff;
+  --admin-border:       #e9ecef;
+  --admin-border-mid:   #dee2e6;
+  --admin-tile:         #f3f4f6; /* neutral icon tile */
+
+  /* text — dark and high-contrast on purpose. muted is the lightest colour allowed
+     for text (7.6:1 on white, 7.2:1 on the canvas); faint is for icons, chevrons
+     and dots only (4.8:1) */
+  --admin-text-heading: #000;
+  --admin-text-body:    #000;
+  --admin-text-muted:   #4b5563;
+  --admin-text-faint:   #6b7280;
+
+  /* elevation */
+  --admin-shadow-rest:  0 1px 2px rgba(16, 24, 40, 0.05), 0 4px 16px rgba(26, 39, 68, 0.06);
+  --admin-shadow-lift:  0 8px 24px rgba(26, 39, 68, 0.10), 0 3px 8px rgba(0, 0, 0, 0.06);
+  --admin-shadow-gold:  0 6px 20px rgba(212, 168, 75, 0.35);
+
+  /* shape */
+  --admin-radius-card:    14px;
+  --admin-radius-control: 8px;
+
+  /* motion (docs/skills/ui-ux/references/tokens.md "Motion") */
+  --admin-transition-fast:     0.2s ease;
+  --admin-transition-standard: 0.25s ease;
+  --admin-transition-elegant:  0.4s ease;
 }
 
-/* Header */
+.admin-layout {
+  min-height: 100vh;
+  background: var(--admin-canvas);
+  color: var(--admin-text-body);
+}
+
+/* ─── Header slot ───────────────────────────────────────────────────────────── */
 .admin-layout-header {
   position: fixed;
   top: 0;
@@ -25,15 +85,15 @@
   z-index: 100;
 }
 
-/* Overlay (mobile only) */
+/* ─── Overlay (mobile drawer scrim) ─────────────────────────────────────────── */
 .admin-layout-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(13, 21, 37, 0.55);
   z-index: 150;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
+  transition: opacity var(--admin-transition-standard), visibility var(--admin-transition-standard);
 }
 
 .admin-layout-overlay.is-visible {
@@ -41,7 +101,7 @@
   visibility: visible;
 }
 
-/* Sidebar */
+/* ─── Sidebar slot ──────────────────────────────────────────────────────────── */
 .admin-layout-sidebar {
   position: fixed;
   left: 0;
@@ -50,12 +110,15 @@
   top: var(--admin-header-height);
   z-index: 80;
   transform: translateX(-100%);
-  transition: transform 0.25s ease;
+  transition: transform var(--admin-transition-standard);
 }
 
+/* Mobile: a full-height drawer above the header and the scrim */
 .admin-layout-sidebar.is-mobile {
   top: 0;
+  width: min(86vw, 300px);
   z-index: 200;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
 }
 
 .admin-layout-sidebar.is-open {
@@ -64,23 +127,17 @@
 
 .admin-layout-sidebar-inner {
   height: 100%;
-  background: #ffffff;
-  border-right: 1px solid #e9ecef;
-  overflow-y: auto;
-  overflow-x: hidden;
+  background: var(--admin-surface);
+  border-right: 1px solid var(--admin-border);
+  overflow: hidden;
 }
 
-.admin-layout-sidebar.is-mobile .admin-layout-sidebar-inner {
-  padding-top: var(--admin-header-height);
-}
-
-/* Main */
+/* ─── Main column ───────────────────────────────────────────────────────────── */
 .admin-layout-main {
   min-height: 100vh;
   padding-top: var(--admin-header-height);
-  background: #f8f9fa;
-  transition: margin-left 0.25s ease;
   margin-left: 0;
+  transition: margin-left var(--admin-transition-standard);
 }
 
 .admin-layout-main.is-sidebar-visible {
@@ -93,17 +150,125 @@
   min-height: calc(100vh - var(--admin-header-height));
 }
 
-.admin-layout-breadcrumbs {
-  padding: 12px 24px;
-  background: #ffffff;
-  border-bottom: 1px solid #e9ecef;
-}
-
+/* Page area: a readable max width, centred in the space beside the sidebar */
 .admin-layout-page {
   flex: 1;
-  padding: 24px;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 32px 40px;
+}
+
+/* Breadcrumbs sit at the top of the page area (no separate white band) */
+.admin-layout-breadcrumbs {
+  margin-bottom: 14px;
 }
 
 .admin-layout-footer {
   margin-top: auto;
+}
+
+/* ─── Breadcrumbs ───────────────────────────────────────────────────────────── */
+.admin-breadcrumbs-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.admin-breadcrumbs-item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.admin-breadcrumbs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--admin-text-muted);
+  text-decoration: none;
+  transition: background var(--admin-transition-fast), color var(--admin-transition-fast);
+}
+
+.admin-breadcrumbs-link:hover {
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+}
+
+.admin-breadcrumbs-link:focus-visible {
+  outline: 2px solid var(--admin-gold-ink);
+  outline-offset: 1px;
+}
+
+.admin-breadcrumbs-link .pi {
+  font-size: 12px;
+}
+
+.admin-breadcrumbs-current {
+  padding: 4px 8px;
+  font-weight: 600;
+  color: var(--admin-text-heading);
+}
+
+.admin-breadcrumbs-separator {
+  font-size: 9px;
+  color: var(--admin-text-faint);
+}
+
+.admin-breadcrumbs-ellipsis {
+  padding: 0 6px;
+  color: var(--admin-text-muted);
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────────── */
+.admin-footer {
+  border-top: 1px solid var(--admin-border);
+  background: var(--admin-surface);
+}
+
+.admin-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--admin-text-muted);
+}
+
+.admin-footer-version {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .admin-layout-page {
+    padding: 18px 16px 32px;
+  }
+
+  .admin-footer-inner {
+    justify-content: center;
+    text-align: center;
+    padding: 14px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-layout-sidebar,
+  .admin-layout-main,
+  .admin-layout-overlay {
+    transition: none;
+  }
 }

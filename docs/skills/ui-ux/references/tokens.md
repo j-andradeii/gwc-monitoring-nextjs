@@ -71,13 +71,33 @@ Toasts don't use `--color-success`: the success toast is a darker `#15803d` so w
 | Where | Tokens |
 |---|---|
 | `components/forms/styles/form-input.css` `:root` | `--form-text-color: #000`, `--form-border-color: #6b7280` |
-| `styles/admin-layout.css` `.admin-layout` | `--admin-sidebar-width: 260px`, `--admin-header-height: 64px` |
-| `styles/admin-dashboard.css` `.admin-dashboard` | `--admin-gold #c0a067`, `--admin-gold-dark #a8894f`, `--admin-gold-soft/-glow/-border`, `--admin-canvas #f8f9fa`, `--admin-surface`, `--admin-border #e9ecef`, `--admin-text-*`, `--admin-navy` |
+| `styles/admin-layout.css` `.admin-layout`, `.admin-user-menu` | all admin tokens — see "Admin tokens" below |
 | `styles/sermon-detail.css` `.sermon-hero`, `styles/landing.css` `.hero-carousel-section` | `--hero-scrim: 14, 12, 16`, `--hero-gold: 212, 168, 75`, `--hero-ink`, `--hero-rule` (RGB triplets for `rgba(var(--x), a)`) |
 
-### Two golds
-Public = warm `#d4a84b`. Admin chrome = muted antique `#c0a067 → #a8894f` (hard-coded in `admin.css`, tokens in
-`admin-dashboard.css`). Don't mix them on one surface.
+### Admin tokens (`src/styles/admin-layout.css`)
+| Token | Value | Use |
+|---|---|---|
+| `--admin-gold` / `--admin-gold-dark` | `var(--color-primary)` `#d4a84b` / `var(--color-primary-dark)` `#b8923f` | the site gold: borders, rules, dots, glyphs on dark |
+| `--admin-gold-ink` | `#7f652d` | gold-coloured **text** and focus rings on light (5.5:1 white, 5.1:1 on gold-soft) |
+| `--admin-gold-fill` / `--admin-gold-fill-hover` | `linear-gradient(135deg, #d4a84b, #c9973f)` / reversed | gold components — same as `.landing-btn-primary` |
+| `--admin-on-gold` | `#ffffff` | text/glyphs on the fill — owner's rule; ≈ 2.2–2.6:1, bold CTA labels only |
+| `--admin-gold-soft` / `-glow` / `-border` | `#d4a84b` at 12% / `--gold-shadow-hover` (25%) / 30% | active fills, glows, hairlines |
+| `--admin-chrome` / `--admin-chrome-edge` | `linear-gradient(135deg, #0a0a0f, #0d1525, #0d1a2d)` / `#0d1525` | header, drawer bar, dashboard banner |
+| `--admin-navy` | `var(--color-navy)` | navy tiles |
+| `--admin-canvas` / `--admin-surface` / `--admin-tile` | `#f8f9fa` / `#ffffff` / `#f3f4f6` | page / panels / neutral icon tiles |
+| `--admin-border` / `--admin-border-mid` | `#e9ecef` / `#dee2e6` | hairlines / control borders |
+| `--admin-text-heading`, `--admin-text-body` | `#000` | headings, body |
+| `--admin-text-muted` | `#4b5563` | lightest text colour (7.6:1 white, 7.2:1 canvas) |
+| `--admin-text-faint` | `#6b7280` | icons, chevrons, dots only |
+| `--admin-shadow-rest` / `-lift` / `-gold` | `0 1px 2px rgba(16,24,40,.05), 0 4px 16px rgba(26,39,68,.06)` / `0 8px 24px rgba(26,39,68,.10), …` / `0 6px 20px rgba(212,168,75,.35)` | panels / hover / gold buttons |
+| `--admin-radius-card` / `--admin-radius-control` | `14px` / `8px` | panels and cards / controls |
+| `--admin-sidebar-width` / `--admin-header-height` | `288px` / `64px` | shell |
+| `--admin-transition-fast` / `-standard` / `-elegant` | `0.2s` / `0.25s` / `0.4s ease` | motion |
+
+### One gold
+The admin uses the same warm gold as the public pages (`--admin-gold` aliases `--color-primary`); the older muted
+"antique" admin gold (`#c0a067 → #a8894f`) was retired in spec 003 at the owner's request. Gold text on light
+surfaces in the admin uses `--admin-gold-ink` (`#7f652d`).
 
 ### Dark mode
 `@media (prefers-color-scheme: dark)` overrides only the neutrals: `--color-background #1A1A2E`,

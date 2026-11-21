@@ -170,6 +170,12 @@ Format: `- [ ] ID [FR-00n] description — path · verified by <test path | chec
   `handleSubmit(onSubmit, scrollToError)` (`forms`).
 - Admin routes sit under `(protected)` behind `AuthGuard`; the JWT lives in httpOnly cookies set by the API and
   is never read or stored by JS (`authentication`, `security`).
+- **Standing rule — stay on the current theme.** Every UI change, however "modern" or "fresh" the request,
+  reuses the existing theme: the surface's tokens (public `--color-*` / landing aliases, admin `--admin-*`), Inter +
+  Fraunces, the one site gold (`#d4a84b`, public and admin alike), radii, shadows and motion. No new palette, font or
+  visual language; a missing value becomes a token first (`ui-ux`, `docs/skills/ui-ux/DESIGN.md` "Standing rule").
+- Admin gold components (buttons, avatars, selected/hover tiles, badges) carry **white** text and icons on
+  `--admin-gold-fill`; admin text stays dark (`#000`, muted `#4b5563`) (`ui-ux` "Admin surface").
 - Colours come from `globals.css` tokens; every coloured surface sets background and text colour together
   (`ui-ux` — the single styling reference: `docs/skills/ui-ux/DESIGN.md` + `references/`).
 - Sermon content is the pastor's words only: no added, reworded or summarised text (`adding-sermons`).

@@ -1,79 +1,90 @@
 /**
  * Admin Header styles
  *
- * Scoped under `.admin-header-*` and `.admin-user-menu` to avoid global bleed.
+ * Navy chrome bar + the portaled user menu. Scoped under `.admin-header-*` and
+ * `.admin-user-menu`. Tokens (`--admin-*`) come from src/styles/admin-layout.css,
+ * which declares them on `.admin-layout` and on `.admin-user-menu`.
  */
 
 /* ---------- Header bar ---------- */
 
 .admin-header {
-  background: linear-gradient(135deg, #0a0a0f 0%, #0d1525 50%, #0d1a2d 100%);
-  width: 100%;
-  height: 64px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 100;
+  width: 100%;
+  height: var(--admin-header-height, 64px);
+  background: var(--admin-chrome);
+  border-bottom: 1px solid rgba(212, 168, 75, 0.18); /* gold hairline */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  color: var(--color-contrast-light, #ffffff);
 }
 
 .admin-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   height: 100%;
-  padding: 0 20px;
+  padding: 0 16px 0 12px;
 }
 
 .admin-header-left,
 .admin-header-right {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 .admin-header-left {
-  gap: 12px;
-}
-
-.admin-header-right {
   gap: 8px;
 }
 
-/* Hamburger button */
+/* Shared focus ring on the dark bar */
+.admin-header-menu-toggle:focus-visible,
+.admin-header-brand:focus-visible,
+.admin-header-user:focus-visible {
+  outline: 2px solid var(--admin-gold);
+  outline-offset: 2px;
+}
+
+/* Hamburger → X */
 .admin-header-menu-toggle {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: transparent;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  padding: 0;
   border: none;
+  border-radius: var(--admin-radius-control, 8px);
+  background: transparent;
   cursor: pointer;
-  padding: 10px;
-  transition: background 0.2s ease;
+  transition: background var(--admin-transition-fast);
 }
 
 .admin-header-menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .admin-header-menu-toggle .line {
   display: block;
   width: 20px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.7);
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s ease;
+  background: rgba(255, 255, 255, 0.75);
+  transition: transform 0.3s ease, opacity 0.3s ease, background var(--admin-transition-fast);
 }
 
 .admin-header-menu-toggle:hover .line {
-  background: #c0a067;
+  background: var(--admin-gold);
 }
 
 .admin-header-menu-toggle.is-open .line:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
-  background: #c0a067;
+  background: var(--admin-gold);
 }
 
 .admin-header-menu-toggle.is-open .line:nth-child(2) {
@@ -83,71 +94,63 @@
 
 .admin-header-menu-toggle.is-open .line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
-  background: #c0a067;
+  background: var(--admin-gold);
 }
 
-/* Logo */
-.admin-header-logo-link {
+/* Brand lockup */
+.admin-header-brand {
   display: flex;
   align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 4px 10px 4px 4px;
+  border-radius: 10px;
+  color: var(--color-contrast-light, #ffffff);
   text-decoration: none;
+  transition: background var(--admin-transition-fast);
+}
+
+.admin-header-brand:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .admin-header-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: linear-gradient(145deg, #c0a067 0%, #a8894f 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(192, 160, 103, 0.3);
-}
-
-/* Action buttons (search, bell) */
-.admin-header-action {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   width: 38px;
   height: 38px;
-  border-radius: 8px;
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.admin-header-action:hover {
+  flex-shrink: 0;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
+  border: 1px solid var(--admin-gold-border);
 }
 
-.admin-header-badge {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  min-width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  background: #ef4444;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
+.admin-header-logo img {
+  object-fit: contain;
+}
+
+.admin-header-wordmark {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 4px;
-  box-shadow: 0 0 0 2px #0d1525;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  line-height: 1.1;
 }
 
-.admin-header-divider {
-  width: 1px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 0 8px;
+.admin-header-wordmark-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  white-space: nowrap;
+}
+
+.admin-header-wordmark-kicker {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--admin-gold); /* 7.3:1 on the chrome */
+  white-space: nowrap;
 }
 
 /* User trigger */
@@ -155,64 +158,96 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 10px;
-  border-radius: 10px;
-  cursor: pointer;
+  min-width: 0;
+  min-height: 44px;
+  padding: 4px 10px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
   background: transparent;
-  border: none;
   color: inherit;
-  transition: background 0.2s ease;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--admin-transition-fast), border-color var(--admin-transition-fast);
 }
 
-.admin-header-user:hover,
-.admin-header-user:focus-visible {
+.admin-header-user:hover {
   background: rgba(255, 255, 255, 0.06);
-  outline: none;
+  border-color: var(--admin-gold-border);
 }
 
-.admin-header-user .p-avatar {
-  background: linear-gradient(145deg, #c0a067 0%, #a8894f 100%);
-  color: #ffffff;
-  font-weight: 600;
+/* Avatar: gold component → white initials on --admin-gold-fill (admin rule) */
+.admin-header-avatar.p-avatar {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
   font-size: 13px;
+  font-weight: 700;
 }
 
 .admin-header-user-info {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  min-width: 0;
   gap: 1px;
+  text-align: left;
 }
 
 .admin-header-user-name {
+  max-width: 180px;
+  overflow: hidden;
   font-size: 13px;
   font-weight: 600;
-  color: #ffffff;
   line-height: 1.2;
+  color: var(--color-contrast-light, #ffffff);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .admin-header-user-role {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: capitalize;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.68);
+  white-space: nowrap;
 }
 
 .admin-header-user-chevron {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-left: 4px;
-  transition: transform 0.2s ease;
+  color: rgba(255, 255, 255, 0.55);
 }
 
-/* ---------- User dropdown menu (scoped) ---------- */
+@media (max-width: 640px) {
+  .admin-header-inner {
+    padding: 0 10px 0 6px;
+  }
+
+  .admin-header-user {
+    padding: 4px;
+    border-color: transparent;
+  }
+
+  .admin-header-user-info,
+  .admin-header-user-chevron {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .admin-header-wordmark {
+    display: none;
+  }
+}
+
+/* ---------- User dropdown menu (portaled to <body>, scoped by class) ---------- */
 
 .admin-user-menu.p-menu {
+  min-width: 240px;
   margin-top: 8px;
-  min-width: 220px;
   padding: 6px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-card);
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
 }
 
@@ -223,31 +258,47 @@
   padding: 0;
 }
 
+/* Identity header (first item, a template — not interactive) */
+.admin-user-menu-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px 8px;
+}
+
+.admin-user-menu-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--admin-text-heading);
+}
+
+.admin-user-menu-meta {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--admin-text-muted);
+}
+
 .admin-user-menu .p-menuitem-content {
   padding: 0;
-  border-radius: 8px;
+  border-radius: var(--admin-radius-control);
   transition: background 0.15s ease;
 }
 
 .admin-user-menu .p-menuitem-content:hover {
-  background: rgba(192, 160, 103, 0.1);
+  background: var(--admin-gold-soft);
 }
 
 .admin-user-menu .p-menuitem-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #000;
+  min-height: 40px;
+  padding: 6px 12px;
+  border-radius: var(--admin-radius-control);
+  color: var(--admin-text-body);
   font-size: 13px;
-  font-weight: 500;
-  transition: color 0.15s ease;
-}
-
-.admin-user-menu .p-menuitem-link:hover {
-  color: #000;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .admin-user-menu .p-menuitem-icon {
@@ -256,32 +307,26 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 7px;
-  background: #f3f4f6;
-  color: #000;
-  font-size: 13px;
   margin: 0;
+  border-radius: 7px;
+  background: var(--admin-tile);
+  color: var(--admin-text-body);
+  font-size: 13px;
   transition: background 0.15s ease, color 0.15s ease;
-}
-
-.admin-user-menu .p-menuitem-content:hover .p-menuitem-icon {
-  background: rgba(192, 160, 103, 0.15);
-  color: #c0a067;
 }
 
 .admin-user-menu .p-menuitem-text {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Separator */
 .admin-user-menu .p-menu-separator,
 .admin-user-menu .p-menuitem-separator {
-  border-top: 1px solid #f1f3f5;
-  margin: 6px 4px;
+  margin: 4px;
+  border-top: 1px solid var(--admin-border);
 }
 
-/* Logout (last item) — danger accent */
+/* Sign out (last item) — danger accent */
 .admin-user-menu .p-menu-list > li:last-child .p-menuitem-link {
   color: #b91c1c;
 }
@@ -298,4 +343,13 @@
 .admin-user-menu .p-menu-list > li:last-child .p-menuitem-content:hover .p-menuitem-icon {
   background: #fecaca;
   color: #991b1b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-header-menu-toggle,
+  .admin-header-menu-toggle .line,
+  .admin-header-brand,
+  .admin-header-user {
+    transition: none;
+  }
 }

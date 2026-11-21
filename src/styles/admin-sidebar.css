@@ -1,0 +1,401 @@
+/**
+ * Admin Sidebar styles
+ *
+ * Classes prefixed `admin-sidebar-`. Tokens (`--admin-*`) come from
+ * src/styles/admin-layout.css. Contrast: gold components use --admin-gold-fill with
+ * white glyphs (--admin-on-gold); gold-coloured text uses --admin-gold-ink; focus
+ * rings on white use --admin-gold-ink (5.5:1).
+ */
+
+.admin-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--admin-surface);
+}
+
+/* ─── Mobile drawer title bar ──────────────────────────────────────────────── */
+.admin-sidebar-drawer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: var(--admin-header-height);
+  padding: 0 8px 0 16px;
+  background: var(--admin-chrome);
+  color: var(--color-contrast-light, #ffffff);
+}
+
+.admin-sidebar-drawer-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.admin-sidebar-drawer-kicker {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--admin-gold);
+}
+
+.admin-sidebar-close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: var(--admin-radius-control);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background var(--admin-transition-fast), color var(--admin-transition-fast);
+}
+
+.admin-sidebar-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-contrast-light, #ffffff);
+}
+
+.admin-sidebar-close:focus-visible {
+  outline: 2px solid var(--admin-gold);
+  outline-offset: 2px;
+}
+
+/* ─── Campus card ──────────────────────────────────────────────────────────── */
+.admin-sidebar-campus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin: 14px 12px 6px;
+  padding: 12px;
+  border: 1px solid var(--admin-gold-border);
+  border-radius: var(--admin-radius-card);
+  background: linear-gradient(135deg, rgba(212, 168, 75, 0.10) 0%, rgba(212, 168, 75, 0.03) 100%);
+}
+
+/* Navy tile, gold glyph (7.2:1) */
+.admin-sidebar-campus-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--admin-navy);
+  color: var(--admin-gold);
+  font-size: 15px;
+}
+
+.admin-sidebar-campus-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.admin-sidebar-campus-name {
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--admin-text-heading);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-sidebar-campus-meta {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--admin-text-body);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Menu body ────────────────────────────────────────────────────────────── */
+.admin-sidebar-body {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 4px 10px 12px;
+}
+
+.admin-sidebar-section + .admin-sidebar-section {
+  margin-top: 6px;
+}
+
+.admin-sidebar-section-label {
+  margin: 0;
+  padding: 12px 10px 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--admin-text-heading);
+}
+
+.admin-sidebar-list,
+.admin-sidebar-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Top-level item: link, group button, or "soon" span */
+.admin-sidebar-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: var(--admin-radius-control);
+  background: transparent;
+  color: var(--admin-text-body);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--admin-transition-fast), color var(--admin-transition-fast);
+}
+
+.admin-sidebar-item:not(.is-soon):hover {
+  background: rgba(26, 39, 68, 0.04);
+}
+
+.admin-sidebar-item:focus-visible,
+.admin-sidebar-subitem:focus-visible,
+.admin-sidebar-footer-link:focus-visible {
+  outline: 2px solid var(--admin-gold-ink);
+  outline-offset: -2px;
+}
+
+.admin-sidebar-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--admin-radius-control);
+  background: var(--admin-tile);
+  color: var(--admin-text-body);
+  font-size: 16px;
+  transition: background var(--admin-transition-fast), color var(--admin-transition-fast);
+}
+
+.admin-sidebar-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Current page */
+.admin-sidebar-item.is-active {
+  background: var(--admin-gold-soft);
+  font-weight: 600;
+}
+
+.admin-sidebar-item.is-active::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 3px;
+  height: 22px;
+  border-radius: 0 3px 3px 0;
+  background: var(--admin-gold);
+  transform: translateY(-50%);
+}
+
+/* Selected tile: gold component → white glyph on --admin-gold-fill (admin rule) */
+.admin-sidebar-item.is-active .admin-sidebar-icon {
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
+  box-shadow: 0 2px 8px var(--admin-gold-glow);
+}
+
+/* Group that holds the current page */
+.admin-sidebar-group.is-active-group {
+  font-weight: 600;
+}
+
+.admin-sidebar-group.is-active-group .admin-sidebar-icon {
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+}
+
+.admin-sidebar-chevron {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--admin-text-muted);
+  transform: rotate(-90deg);
+  transition: transform var(--admin-transition-standard);
+}
+
+.admin-sidebar-group[aria-expanded='true'] .admin-sidebar-chevron {
+  transform: rotate(0deg);
+}
+
+/* Collapsible children: animates height with grid rows, no max-height guess */
+.admin-sidebar-sublist-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--admin-transition-standard);
+}
+
+.admin-sidebar-sublist-wrap.is-open {
+  grid-template-rows: 1fr;
+}
+
+.admin-sidebar-sublist-wrap > .admin-sidebar-sublist {
+  min-height: 0;
+  overflow: hidden;
+  margin-left: 26px; /* aligns the guide line with the parent icon's centre */
+  padding-left: 8px;
+  border-left: 1px solid var(--admin-border);
+}
+
+.admin-sidebar-sublist-wrap.is-open > .admin-sidebar-sublist {
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.admin-sidebar-subitem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border-radius: var(--admin-radius-control);
+  color: var(--admin-text-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--admin-transition-fast), color var(--admin-transition-fast);
+}
+
+.admin-sidebar-subitem:not(.is-soon):hover {
+  background: rgba(26, 39, 68, 0.04);
+}
+
+.admin-sidebar-subitem-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--admin-text-muted);
+}
+
+.admin-sidebar-subitem.is-active {
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+  font-weight: 600;
+}
+
+.admin-sidebar-subitem.is-active .admin-sidebar-subitem-dot {
+  background: var(--admin-gold);
+  box-shadow: 0 0 0 3px var(--admin-gold-soft);
+}
+
+/* Not built yet */
+.admin-sidebar-item.is-soon,
+.admin-sidebar-subitem.is-soon {
+  color: var(--admin-text-body); /* stays dark — the "Soon" pill carries the state */
+  cursor: default;
+}
+
+.admin-sidebar-item.is-soon .admin-sidebar-icon {
+  background: var(--admin-canvas);
+  color: var(--admin-text-body);
+}
+
+.admin-sidebar-soon {
+  flex-shrink: 0;
+  padding: 2px 7px;
+  border: 1px solid var(--admin-border-mid);
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--admin-text-body);
+}
+
+.admin-sidebar-badge {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ─── Footer link ──────────────────────────────────────────────────────────── */
+.admin-sidebar-footer {
+  flex-shrink: 0;
+  padding: 10px;
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-sidebar-footer-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 8px 12px;
+  border-radius: var(--admin-radius-control);
+  color: var(--admin-text-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--admin-transition-fast), color var(--admin-transition-fast);
+}
+
+.admin-sidebar-footer-link:hover {
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+}
+
+.admin-sidebar-footer-arrow {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--admin-text-muted);
+}
+
+/* ─── Touch + motion ───────────────────────────────────────────────────────── */
+@media (hover: none) {
+  .admin-sidebar-item,
+  .admin-sidebar-subitem,
+  .admin-sidebar-footer-link {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-sidebar-item,
+  .admin-sidebar-icon,
+  .admin-sidebar-subitem,
+  .admin-sidebar-chevron,
+  .admin-sidebar-sublist-wrap,
+  .admin-sidebar-close,
+  .admin-sidebar-footer-link {
+    transition: none;
+  }
+}

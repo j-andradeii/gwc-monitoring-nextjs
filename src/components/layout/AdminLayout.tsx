@@ -1,3 +1,11 @@
+/**
+ * AdminLayout
+ *
+ * The admin shell: fixed navy header, sidebar (pinned on desktop, drawer on
+ * mobile), page area with breadcrumbs, and a slim footer. Styles live in
+ * src/styles/admin-layout.css (tokens shared by every admin surface).
+ */
+
 'use client';
 
 import React, { useEffect, useCallback } from 'react';
@@ -29,23 +37,34 @@ export function AdminLayout({
   const { isOpen, setIsOpen, close } = useSidebarStore();
   const { isLoading } = useLoadingStore();
 
+  // Pinned open on desktop, closed drawer on mobile — re-evaluated on resize.
   useEffect(() => {
     setIsOpen(!isMobile);
   }, [isMobile, setIsOpen]);
 
-  const handleOverlayClick = useCallback(() => {
-    if (isMobile && isOpen) close();
-  }, [isMobile, isOpen, close]);
-
   const sidebarVisible = isOpen && !isMobile;
   const overlayVisible = isMobile && isOpen;
+
+  const handleOverlayClick = useCallback(() => {
+    if (overlayVisible) close();
+  }, [overlayVisible, close]);
+
+  // Escape closes the mobile drawer (keyboard users have no scrim to click).
+  useEffect(() => {
+    if (!overlayVisible) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') close();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [overlayVisible, close]);
 
   return (
     <ToastProvider>
       <div className="admin-layout">
-        <header className="admin-layout-header">
+        <div className="admin-layout-header">
           <Header />
-        </header>
+        </div>
 
         <div
           className={`admin-layout-overlay${overlayVisible ? ' is-visible' : ''}`}
@@ -53,7 +72,9 @@ export function AdminLayout({
           aria-hidden="true"
         />
 
-        <aside
+        {/* `inert` keeps the off-screen sidebar out of the tab order */}
+        <div
+          id="admin-sidebar"
           className={[
             'admin-layout-sidebar',
             isMobile ? 'is-mobile' : '',
@@ -61,21 +82,23 @@ export function AdminLayout({
           ]
             .filter(Boolean)
             .join(' ')}
+          inert={!isOpen}
         >
           <div className="admin-layout-sidebar-inner">
             <Sidebar />
           </div>
-        </aside>
+        </div>
 
         <main className={`admin-layout-main${sidebarVisible ? ' is-sidebar-visible' : ''}`}>
           <div className="admin-layout-content">
-            {showBreadcrumbs && (
-              <div className="admin-layout-breadcrumbs">
-                <Breadcrumbs />
-              </div>
-            )}
-
-            <div className={`admin-layout-page ${className}`.trim()}>{children}</div>
+            <div className={`admin-layout-page ${className}`.trim()}>
+              {showBreadcrumbs && (
+                <div className="admin-layout-breadcrumbs">
+                  <Breadcrumbs />
+                </div>
+              )}
+              {children}
+            </div>
 
             {showFooter && (
               <div className="admin-layout-footer">

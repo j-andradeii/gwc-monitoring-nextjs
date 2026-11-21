@@ -23,6 +23,15 @@ export const toTitleCase = (str: string): string => {
   );
 };
 
+/**
+ * Turn an API enum value into a readable label for the UI,
+ * e.g. `SENIOR_PASTOR` → `Senior Pastor`, `YOUNG_PRO` → `Young Pro`.
+ */
+export const formatEnumLabel = (value?: string | null): string => {
+  if (!value) return '';
+  return toTitleCase(value.replace(/_/g, ' '));
+};
+
 // Functional utilities
 export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,

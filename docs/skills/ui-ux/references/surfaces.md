@@ -11,9 +11,10 @@ Each surface has its own stylesheet and class prefix. Stay inside the prefix whe
 | `src/styles/sermon-detail.css` | `(public)/layout.tsx` | `/sermon-notes/[slug]` reader + video lightbox |
 | `src/styles/vip-form.css` | `VipFormClient`, `SodEnrollmentClient`, `LifeclassEnrollmentClient`, `EventRegistrationSection`, `GivingConfirmationSection` | public forms |
 | `src/styles/signin.css` | `app/(auth)/signin/page.tsx` | sign-in |
-| `src/styles/admin-layout.css` | `components/layout/AdminLayout.tsx` | admin scaffold |
+| `src/styles/admin-layout.css` | `components/layout/AdminLayout.tsx` | admin tokens, scaffold, breadcrumbs, footer |
 | `src/styles/admin.css` | `components/layout/Header.tsx` | admin header + user menu |
-| `src/styles/admin-dashboard.css` | admin pages (`church-campus-admin/page.tsx`, `church-members/**`) | admin dashboard content |
+| `src/styles/admin-sidebar.css` | `components/layout/Sidebar.tsx` | admin sidebar + mobile drawer |
+| `src/styles/admin-dashboard.css` | `church-campus-admin/page.tsx`, `components/admin/*` | admin page content |
 | `src/components/forms/styles/form-input.css` | every `Form*` component | form fields |
 | `src/components/landing/styles/poster-hero.css` | `PosterHero.tsx` | poster hero |
 | `quill/dist/quill.snow.css` | `LyricFormatterClient.tsx` | lyric editor |
@@ -91,23 +92,51 @@ between SSR and client navigation. Use unique prefixes (`.sermon-reader-grid`, n
 - Upload: `.sod-upload-dropzone` (dashed gold 60%, gold 5% fill, 14px radius, gold-dark text), preview with
   Change / Remove, errors `.sod-radio-error` with `role="alert"`.
 
-## Admin (`admin-layout.css`, `admin.css`, `admin-dashboard.css`; prefix `admin-`)
-Dark chrome with **antique gold** (`#c0a067 → #a8894f`), compact and utilitarian.
-- **Scaffold** `.admin-layout` (`#f8f9fa` canvas, `--admin-sidebar-width 260px`, `--admin-header-height 64px`):
-  `.admin-layout-header` (fixed, `z-index: 100`), `.admin-layout-sidebar` (off-canvas `translateX(-100%)`,
-  `.is-open` slides in; `.is-mobile` overlays at `z-index: 200`), `.admin-layout-main` (padding-top header;
-  `.is-sidebar-visible` adds the sidebar margin), `.admin-layout-overlay` (black 50% scrim, `z-index: 150`),
-  `.admin-layout-breadcrumbs` (white, `#e9ecef` border), `.admin-layout-page` (`padding: 24px`).
-- **Header** `.admin-header`: `linear-gradient(135deg, #0a0a0f, #0d1525, #0d1a2d)`, 64px,
-  `0 2px 12px rgba(0,0,0,0.3)`. `.admin-header-logo` (40px antique-gold tile), `.admin-header-action` (38px,
-  white 70% → white), `.admin-header-badge` (red count), `.admin-header-menu-toggle` (hamburger → X, lines turn
-  antique gold).
-- **User menu** `.admin-user-menu.p-menu`: white, `0 12px 32px rgba(15,23,42,0.12)`; item icon tiles `#f3f4f6`
-  → antique-gold tint; last item (logout) `#b91c1c` text on `#fee2e2` tile.
-- **Dashboard content** `.admin-dashboard` root with `admin-dash-*` children: `.admin-dash-eyebrow` (12px / 800 /
-  2.5px, antique gold), `.admin-dash-title` (26px / 700), `.admin-dash-stats-grid` + `.admin-dash-stat-card`
-  (white, 12px radius, `--admin-border`, gold top bar on hover), `.admin-dash-btn-primary` (antique-gold
-  gradient) / `-btn-secondary`, `.admin-dash-actions-grid` / `-action-card`, `.admin-dash-empty-state`,
-  `.admin-dash-coming-soon`. New admin pages use these classes and the `--admin-*` tokens.
+## Admin (`admin-layout.css`, `admin.css`, `admin-sidebar.css`, `admin-dashboard.css`; prefix `admin-`)
+
+Navy chrome + the **site's warm gold** (`#d4a84b`, same as the landing pages), light canvas, compact and direct (rules: `DESIGN.md` "Admin surface"; refreshed
+in spec 003).
+
+- **Tokens** (`admin-layout.css`, on `.admin-layout` and `.admin-user-menu`): sizes (`--admin-sidebar-width 288px`,
+  `--admin-header-height 64px`), golds (`--admin-gold`, `-dark`, `-ink`, `-soft`, `-glow`, `-border`,
+  `--admin-gold-fill` / `-fill-hover` = landing button gradient, `--admin-on-gold` white), chrome (`--admin-chrome` gradient, `--admin-chrome-edge`, `--admin-navy`), surfaces
+  (`--admin-canvas`, `--admin-surface`, `--admin-border`, `--admin-border-mid`, `--admin-tile`), text
+  (`--admin-text-heading/-body #000`, `-muted #4b5563`, `-faint #6b7280` icons only), shadows (`-rest`, `-lift`,
+  `-gold`), radii (`--admin-radius-card 14px`, `--admin-radius-control 8px`), motion (`--admin-transition-*`).
+- **Scaffold** `.admin-layout`: `.admin-layout-header` (fixed), `.admin-layout-sidebar` (pinned on desktop; on
+  mobile `.is-mobile` drawer `min(86vw, 300px)` over a navy scrim `.admin-layout-overlay`; `inert` while closed,
+  Escape closes), `.admin-layout-main` (`.is-sidebar-visible` adds the sidebar margin), `.admin-layout-page`
+  (max 1240px, `28px 32px 40px`; `18px 16px 32px` ≤ 768px) with `.admin-layout-breadcrumbs` at its top.
+- **Breadcrumbs** `.admin-breadcrumbs-*`: muted links that tint gold on hover, bold current crumb, hidden when
+  the trail is one crumb.
+- **Header** `.admin-header` (`--admin-chrome`, gold hairline bottom border): `.admin-header-menu-toggle`
+  (44px hamburger → X), `.admin-header-brand` = `.admin-header-logo` (glass tile, gold border) +
+  `.admin-header-wordmark` ("Gateway Church" / gold "CAMPUS ADMIN"), `.admin-header-user` pill (white-on-gold-fill
+  `.admin-header-avatar`, name, formatted role; info hidden ≤ 640px).
+- **User menu** `.admin-user-menu.p-menu`: `.admin-user-menu-header` (name + role · campus), separator,
+  "Sign out" with the danger accent (`#b91c1c` on `#fee2e2`).
+- **Sidebar** `.admin-sidebar`: `.admin-sidebar-drawer-bar` (mobile only: chrome bar, "Campus Admin / Menu",
+  `.admin-sidebar-close`), `.admin-sidebar-campus` card (navy tile + gold glyph, campus name, church · role),
+  `.admin-sidebar-section-label` (11.5px, black), `.admin-sidebar-item` (15px, black — "Soon" items stay dark, the pill carries the state) (link / group `<button aria-expanded>` / `.is-soon` span),
+  `.is-active` (gold-soft fill, 3px gold bar, `--admin-gold-fill` icon tile with a white glyph), `.is-active-group`,
+  `.admin-sidebar-sublist-wrap` (grid-rows collapse, `inert` when closed) with `.admin-sidebar-subitem`
+  (14.5px, dot + label; active = gold-ink), `.admin-sidebar-soon` pill, `.admin-sidebar-footer-link` ("View website").
+  Data: `src/components/layout/admin-navigation.ts` (`ADMIN_NAV_SECTIONS`, `available`, `roles`); the group
+  holding the current page opens itself (`expandItem` in `useSidebarStore`).
+- **Page parts** (`src/components/admin`): `AdminPageHeader` → `.admin-dash-page-header` (`.admin-dash-eyebrow`
+  gold-ink, `.admin-dash-title` 28px/800, `.admin-dash-subtitle`, `.admin-dash-header-actions`);
+  `AdminComingSoon` → `.admin-dash-panel.admin-dash-coming-soon` ("In development" pill, copy, "Back to
+  dashboard"). Pages wrap content in `.admin-dashboard`.
+- **Dashboard** (`church-campus-admin/page.tsx`): `.admin-dash-hero` (navy chrome banner with gold + purple
+  glows, gold kicker = campus, 30px white greeting, date, primary button), `.admin-dash-stats-grid` of
+  `.admin-dash-stat-card` (read-only, 3px tone strip, tones `is-gold|is-navy|is-purple|is-burgundy`, "—" +
+  "Not connected yet"), `.admin-dash-grid` (main 1.7fr + side 1fr; one column ≤ 1100px) with
+  `.admin-dash-panel` / `.admin-dash-panel-header`: quick actions `.admin-dash-action-list` rows
+  (`a.admin-dash-action` with icon that fills gold on hover + arrow, or `.is-soon` + `.admin-dash-soon-pill`),
+  "Your account" (`.admin-dash-account`, `.admin-dash-details` dl), activity `.admin-dash-empty-state`.
+- **Buttons:** `.admin-dash-btn-primary` (`--admin-gold-fill`, white `--admin-on-gold` text, 700) and
+  `.admin-dash-btn-secondary` (white, border, gold-ink on hover).
+- **Footer** `.admin-footer`: one line — "© year Gateway Church · Campus Admin" and the version.
 - Legacy `.sidebar` / `.main-content` / `.header` utilities in `globals.css` (collapse to `margin-left: 0`
-  ≤ 1024px) and `.sidebar-container .section-label { color: #000 !important }` belong to the older sidebar.
+  ≤ 1024px) and `.sidebar-container .section-label { color: #000 !important }` belong to the older sidebar and are
+  unused by the admin shell.

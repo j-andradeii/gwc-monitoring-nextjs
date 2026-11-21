@@ -8,8 +8,23 @@ The recurring failures here come from **overriding PrimeReact's `lara-light-blue
 background but not the text/icon colour, or accepting lara's blue, cramped defaults. Follow these to avoid
 low-contrast, off-brand or cramped UI.
 
-> Tokens: `src/app/globals.css` `:root`. Public styles: `src/styles/landing.css` (page-scoped). `globals.css` is
+> Tokens: `src/app/globals.css` `:root` (admin: `src/styles/admin-layout.css`). Public styles: `src/styles/landing.css` (page-scoped). `globals.css` is
 > imported **after** the PrimeReact theme in `src/app/layout.tsx`, so its overrides win at equal specificity.
+
+## Standing rule
+
+**Stay on the current theme — always.** This holds for every UI task, including requests to make something
+"more modern", "cleaner" or "fresher":
+
+- Use the surface's existing tokens (public: `--color-*` + landing aliases; admin: `--admin-*`), Inter for UI and
+  Fraunces only for editorial emphasis, the one site gold (warm `#d4a84b`, public and admin alike), and
+  the radii, shadows and motion already in use (`references/tokens.md`).
+- Modernise with **layout, hierarchy, spacing, contrast, and fewer elements** — not with a new palette, font,
+  gradient family, icon set or component library.
+- A value that doesn't exist yet (a darker ink, a tile grey) is added as a token in the surface's token block, named
+  in that family, and documented here — never written inline.
+- When the existing theme fails a rule (e.g. contrast), fix it **within** the theme (a deeper ink of the same hue,
+  navy instead of white on gold), as spec 003 did for the admin.
 
 ## Design language
 
@@ -20,7 +35,7 @@ low-contrast, off-brand or cramped UI.
   reverent/editorial emphasis (sermon title `em`, callouts, scripture, big numerals).
 - **Tactile motion:** cards lift 8–12px with a warm gold glow or a gold bottom bar; buttons lift 2px.
 - **Two surfaces, one language:** public = cream + warm gold + glass; admin = dark navy chrome + muted
-  **antique gold** `#c0a067`. Don't mix the golds.
+  the **same warm gold** `#d4a84b`. One gold across the site — no second gold.
 
 ## Brand tokens (quick table)
 
@@ -48,7 +63,9 @@ BOTH its `background` AND its text/icon `color` together — don't set one and i
 
 - Aim for WCAG AA: ≥ 4.5:1 body text, ≥ 3:1 large/bold text.
 - **Dark** surface (navy, burgundy, purple, dark green) → **white** text and white icons.
-- **Gold** surface (`#d4a84b`) → **navy** (`#1a2744`) text and navy icons. White-on-gold is ≈ 1.9:1 — never.
+- **Gold** surface (`#d4a84b`, public) → **navy** (`#1a2744`) text and navy icons. White-on-gold is ≈ 1.9:1 — never.
+  Exception by owner's rule: gold *components* (CTAs, avatars, selected tiles) carry white, as the landing
+  `.landing-btn-primary` already does (see "Admin surface").
 - Mid-tone "light" tints (`--color-error-light` `#8e4a5a`, `--color-accent-light`) are not safe with dark or
   white text — don't use them as text backgrounds.
 - Gold as **text** on white: use `--color-primary-dark` or large bold text.
@@ -181,6 +198,34 @@ shadow (e.g. `.event-register-section` is cream, its `.vip-form-container` is bo
 `ScrollAnimationProvider` observes `.animate-on-scroll` elements once, on mount. Panels that mount later (tabs,
 content switchers) must reveal their cards on mount (e.g. add `.animate-visible` in a `requestAnimationFrame`),
 not by starting a new observer.
+
+## Admin surface
+
+The `(protected)` admin is its own surface of the same language: **navy chrome + the site's warm gold**, light canvas,
+compact and direct. Refreshed in spec 003; class map in `references/surfaces.md` "Admin".
+
+- **Tokens:** declared once on `.admin-layout` (and on `.admin-user-menu`, which PrimeReact portals to `<body>`) in
+  `src/styles/admin-layout.css`. Pages inherit them — never redeclare per page.
+- **Gold roles:** `--admin-gold` / `--admin-gold-dark` for borders, rules, dots and glyphs on dark;
+  `--admin-gold-ink` (`#7f652d`, same hue, 5.5:1) for gold-coloured **text** and focus rings on light surfaces.
+- **Rule — gold components carry white.** Every admin gold *component* (buttons, avatars, the selected sidebar
+  tile, hovered quick-action tiles, badges) uses `background: var(--admin-gold-fill)` — the landing button
+  gradient `#d4a84b → #c9973f` (`.landing-btn-primary`), hover `--admin-gold-fill-hover` — with
+  `color: var(--admin-on-gold)` (white), bold labels ≥ 14px. **Owner-accepted contrast exception:** white on this
+  gold is 2.2–2.6:1 (below AA), chosen to match the landing CTAs. Don't use it for body-size text or long labels.
+- **Text is dark:** headings and body `#000`; `--admin-text-muted` (`#4b5563`, 7.6:1) is the lightest text colour;
+  `--admin-text-faint` (`#6b7280`) is for icons, chevrons and dots only.
+- **Direct:** show only controls that work and data that is real. No placeholder counts, no buttons without an
+  action, no links to pages that don't exist — unbuilt items render as a muted row with a "Soon" pill (driven by
+  `available` in `src/components/layout/admin-navigation.ts`). Values that aren't connected show "—" with a plain
+  caption.
+- **Hierarchy:** a page starts with `AdminPageHeader` (gold-ink eyebrow, 28px/800 title, muted subtitle); the
+  dashboard opens with the navy `.admin-dash-hero` banner. Content sits in white panels (14px radius, hairline
+  border, soft shadow) with a header row; lists use rows with dividers rather than card grids.
+- **Interaction:** only interactive elements react to hover (read-only stat cards don't lift). Focus rings:
+  `--admin-gold` on dark, `--admin-gold-dark` on light (3.3:1). Touch targets ≥ 44px; the mobile sidebar is a
+  drawer with its own title bar, close button and Escape to close; the off-screen sidebar is `inert`.
+- **Colour per item:** stat tones are `is-gold`, `is-navy`, `is-purple`, `is-burgundy` only.
 
 ## Images
 
