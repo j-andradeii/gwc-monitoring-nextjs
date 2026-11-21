@@ -283,7 +283,7 @@ body {
 /* Toast — solid on-brand backgrounds with high-contrast text + icons.
    (The old rules set a mid-tone background but left lara's dark default text on
    it → unreadable. Status surfaces must pair a solid bg with explicit text color.
-   See DESIGN.md "Contrast" + "Status surfaces".) */
+   See docs/skills/ui-ux/DESIGN.md "Contrast" + "Status surfaces".) */
 .p-toast {
   opacity: 1;
 }

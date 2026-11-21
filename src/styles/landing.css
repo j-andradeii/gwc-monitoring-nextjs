@@ -15275,7 +15275,7 @@
    The page's community-outreach anchor: "what we do week to week".
    Icon cards (no photos) so the band never depends on blob images and the
    Gallery keeps the photography to itself. Light cream band — every surface
-   declares BOTH background and text colour (see DESIGN.md).
+   declares BOTH background and text colour (see docs/skills/ui-ux/DESIGN.md).
    ------------------------------------------- */
 .outreach-programs-section {
   background: var(--color-cream, #f5f0e6);
@@ -15349,7 +15349,7 @@
     0 18px 42px rgba(26, 39, 68, 0.18);
 }
 
-/* Gold surface → NAVY icon. White-on-gold fails contrast (DESIGN.md). */
+/* Gold surface → NAVY icon. White-on-gold fails contrast (docs/skills/ui-ux/DESIGN.md). */
 .outreach-program-icon-wrap {
   width: 52px;
   height: 52px;
@@ -19588,7 +19588,7 @@ a.gcs-upload-cue {
 
    Segmented control (2026-08): navy active segment inside a centered
    cream "track", replacing the previous pale gold-outline pill (too
-   washed out to read as selected) — see DESIGN_SYSTEM.md §3 contrast
+   washed out to read as selected) — see docs/skills/ui-ux/DESIGN.md "Contrast"
    rule. The fill moved gold -> navy (2026-08, later same month) because
    the requested white label text measured only 2.21:1 on gold (fails
    AA); navy is retained-as-ring (not fill) instead, and white-on-navy
@@ -19761,7 +19761,7 @@ a.gcs-upload-cue {
 
 /* ===========================================
    Ways to Give tabs — house white/cream band alternation
-   (DESIGN_SYSTEM.md §8 "Section Background Alternation").
+   (docs/skills/ui-ux/DESIGN.md "Section background alternation").
    Each panel's direct .landing-section children alternate
    odd = white, even = cream, starting white. `.contact-section`
    does not carry `.landing-section`, so it is excluded from this

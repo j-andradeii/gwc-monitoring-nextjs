@@ -10,7 +10,7 @@
  *
  * The markup is deliberately table-and-inline-styles: Gmail strips <head>
  * styles on some clients and Outlook ignores modern layout entirely. Colours
- * are the brand tokens from DESIGN.md — gold #d4a84b, navy #1a2744, cream
+ * are the brand tokens from docs/skills/ui-ux/DESIGN.md — gold #d4a84b, navy #1a2744, cream
  * #f5f0e6 — with the contrast rule enforced: navy on gold, white on navy,
  * never white on gold.
  */

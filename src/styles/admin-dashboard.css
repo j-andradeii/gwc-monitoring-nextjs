@@ -2,7 +2,7 @@
  * Admin Dashboard — scoped styles
  *
  * ALL rules scoped under `.admin-dashboard` root class.
- * Child classes prefixed `admin-dash-*` per admin-* prefixing convention (DESIGN_SYSTEM §16).
+ * Child classes prefixed `admin-dash-*` per admin-* prefixing convention (docs/skills/ui-ux/references/surfaces.md "Admin").
  *
  * Antique-gold language: #c0a067 / #a8894f — deliberately distinct from landing #d4a84b.
  * References global tokens (--color-navy, etc.) where appropriate.
@@ -34,7 +34,7 @@
   --admin-shadow-lift:  0 8px 24px rgba(26, 39, 68, 0.10), 0 3px 8px rgba(0, 0, 0, 0.06);
   --admin-shadow-gold:  0 8px 24px rgba(192, 160, 103, 0.18);
 
-  /* transition standards (DESIGN_SYSTEM §19) */
+  /* transition standards (docs/skills/ui-ux/references/tokens.md "Motion") */
   --admin-transition-fast:     0.2s ease;
   --admin-transition-standard: 0.25s ease;
   --admin-transition-elegant:  0.4s ease;
@@ -60,7 +60,7 @@
   gap: 4px;
 }
 
-/* DESIGN_SYSTEM §4 Section Label / Eyebrow: 11-12px, 2.5px tracking */
+/* docs/skills/ui-ux/references/tokens.md "Typography" Section Label / Eyebrow: 11-12px, 2.5px tracking */
 .admin-dash-eyebrow {
   font-size: 12px;
   font-weight: 800;
@@ -79,7 +79,7 @@
   letter-spacing: -0.3px;
 }
 
-/* DESIGN_SYSTEM §4 Body Copy: 15px */
+/* docs/skills/ui-ux/references/tokens.md "Typography" Body Copy: 15px */
 .admin-dash-subtitle {
   font-size: 15px;
   font-weight: 500;
@@ -189,7 +189,7 @@
               transform var(--admin-transition-elegant);
 }
 
-/* Gold top accent bar — scales in on hover (mirrors DESIGN_SYSTEM §7 .card::after pattern) */
+/* Gold top accent bar — scales in on hover (mirrors docs/skills/ui-ux/references/components.md "Cards" .card::after pattern) */
 .admin-dash-stat-card::after {
   content: '';
   position: absolute;
@@ -214,7 +214,7 @@
 }
 
 /* Icon tile — accent color driven via --accent CSS custom property set inline */
-/* DESIGN_SYSTEM §14 Stats Widget Card .stats-icon-container: 48px */
+/* docs/skills/ui-ux/references/components.md "Cards" Stats Widget Card .stats-icon-container: 48px */
 .admin-dash-stat-icon {
   width: 48px;
   height: 48px;
@@ -253,7 +253,7 @@
   text-overflow: ellipsis;
 }
 
-/* DESIGN_SYSTEM §14 Stats Widget Card .stats-value: 28px */
+/* docs/skills/ui-ux/references/components.md "Cards" Stats Widget Card .stats-value: 28px */
 .admin-dash-stat-value {
   font-size: 28px;
   font-weight: 700;
@@ -357,7 +357,7 @@
   background: rgba(192, 160, 103, 0.20);
 }
 
-/* DESIGN_SYSTEM §4 Body Copy: 15px */
+/* docs/skills/ui-ux/references/tokens.md "Typography" Body Copy: 15px */
 .admin-dash-action-label {
   font-size: 15px;
   font-weight: 600;
@@ -455,7 +455,7 @@
   margin-bottom: 4px;
 }
 
-/* DESIGN_SYSTEM §4 Step Title: 20px */
+/* docs/skills/ui-ux/references/tokens.md "Typography" Step Title: 20px */
 .admin-dash-coming-soon-title {
   font-size: 20px;
   font-weight: 700;
