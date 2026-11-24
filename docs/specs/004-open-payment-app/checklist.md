@@ -57,3 +57,37 @@ Format: `- [ ] ID [FR-00n] description — path · verified by <test path | chec
 
 ## Gap list
 None. M001–M007 are open for the owner (real phones and apps).
+
+### Run 2026-11-24 (follow-up) · Pre-run HEAD: `ff94102`
+Pre-run `git status --short`: ` M .github/workflows/deploy.yml`, ` M docs/specs/README.md`,
+`?? docs/specs/005-remove-ci-playwright-job/` (spec 005, not part of this run).
+
+#### Implementation
+- [x] T013 [FR-009, FR-010, FR-011] `deepLink`, intents for every Android app, iOS deep link + paused fallback — `src/lib/payment-app-link.ts` · verified by tsc + Playwright href check
+- [x] T014 [FR-009] GCash `deepLink`, BPI/BDO comments — `src/data/giveData.ts` · verified by reading
+- [x] T015 [FR-011] iOS click uses the deep link — `src/components/landing/give/OpenPaymentAppButton.tsx` · verified by tsc + Playwright (click doesn't follow the App Store href)
+- [x] T016 [FR-010, FR-011] skill note — `docs/skills/ui-ux/references/components.md` · verified by reading
+
+#### Verification
+- [x] V008 `pnpm run lint`, `npx tsc --noEmit`, `pnpm run build` exit 0 after the last edit
+- [x] V009 Playwright hrefs: Android GCash/BPI/BDO = intent URLs with Play Store fallback; iPhone BPI/BDO = App Store; iPhone GCash click is intercepted
+- [x] V010 `coding-style` / `ui-ux` checklists re-run on this run's diff (no UI change beyond the link)
+
+#### Manual checks
+- [ ] M008 [FR-010] Android, GCash installed: **Open GCash** opens GCash directly; not installed → Play Store
+- [ ] M009 [FR-010] Android, BPI/BDO installed: note whether **Open BPI** / **Open BDO** open the app or the Play Store page
+- [ ] M010 [FR-011] iPhone, GCash installed: **Open GCash** opens GCash (after Safari's "Open in GCash?" if shown) and does NOT also open the App Store; not installed → App Store app
+- [ ] M011 [FR-009] the GCash screen that opens is usable for Scan QR (if it isn't the home screen, try bare `gcash://` or Express Send `…/app/006300000300`)
+
+#### Evidence (follow-up, after the last edit)
+- V008 lint exit 0 (31 warnings, none in this run's files) · tsc exit 0 · build exit 0.
+- V009 production build on port 3200, share sheet stubbed. Android: GCash
+  `intent://com.mynt.gcash/app/006300000100#Intent;scheme=gcash;package=com.globe.gcash.android;S.browser_fallback_url=<Play Store>;end`,
+  BPI/BDO `intent://#Intent;scheme=https;package=<pkg>;S.browser_fallback_url=<Play Store>;end`, all same tab.
+  iPhone: all hrefs are App Store pages (new tab); GCash click is intercepted (URL unchanged, no new tab).
+- V010 no `any` / `@ts-ignore` / `console.log` / new hex in this run's `src` diff; no CSS change.
+
+#### Gap list (follow-up)
+- Process — this run's spec/checklist note was written after the code edits, not before — the owner's paste
+  arrived mid-run and the scope was settled while editing — none; recorded for the record.
+- M008–M011 open for the owner (real phones).

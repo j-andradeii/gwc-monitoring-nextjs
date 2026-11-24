@@ -190,4 +190,6 @@ uses it to mount `OpenPaymentAppButton` (`components/landing/give/`) in that car
 phone: `.gcs-open-app` strip with a navy pill `.gcs-open-app-btn` (`--color-navy` / `--color-on-navy`, 44px,
 uppercase 700) and a one-line hint. The footer wraps (`.ways-to-give-page .compact-qr { flex-wrap: wrap }`) so
 the strip takes its own row. If the strip would sit under the "QR code saved" toast it scrolls itself to the
-centre. Links come from `src/lib/payment-app-link.ts` (spec 004).
+centre. Links come from `src/lib/payment-app-link.ts` (spec 004): Android always uses an `intent://` URL with the
+Play Store as Chrome's fallback; iPhone tries the app's `deepLink` (GCash only) and falls back to the App Store,
+otherwise links straight to the App Store.

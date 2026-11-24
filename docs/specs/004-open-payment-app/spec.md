@@ -115,3 +115,25 @@ Issue #323, Option C, "Recommended design: a second button right after saving":
 - Added during the visual check: when the new strip would land under the "QR code saved" toast (bottom of the
   screen), it scrolls itself to the centre of the viewport (`OpenPaymentAppButton`, `TOAST_CLEARANCE_PX`). It
   serves FR-001 (the button must be visible) and changes no other page.
+
+### Run 2026-11-24 (follow-up: open the app directly)
+Request (verbatim): "when clicking the open gcash/bpi/bdo; why is it opening the app store; can you make it open
+the app directly but if not installed open appstore; same also for android or other device". The owner also
+pasted suggested links: Android `intent://#Intent;package=<pkg>;scheme=https;S.browser_fallback_url=<Play Store>;end`
+for BPI/BDO and App Store links for iOS.
+
+What changed, and why it supersedes FR-002, FR-003 and FR-004:
+- **FR-009** `PaymentApp` holds one `deepLink` (the app's own published link) instead of per-platform schemes.
+  GCash: `gcash://com.mynt.gcash/app/006300000100`, taken from GCash's published
+  `https://www.gcash.com/.well-known/apple-app-site-association` ("getting-started" redirect). BPI/BDO: none
+  published (BPI's site serves no app-link file; BDO's blocks automated requests; no scheme found in search).
+- **FR-010** Android: every channel gets an `intent://` URL with its package and the Play Store page as
+  `S.browser_fallback_url`; GCash carries its deep link, BPI/BDO use `scheme=https` (the owner's pasted form),
+  which opens the app only if it takes plain web links and otherwise lands on the Play Store. Same tab.
+- **FR-011** iPhone/iPad: GCash tries its deep link, then opens the App Store app (`itms-apps://`) if the page is
+  still visible after 1.5 s; the timer pauses while a system sheet blurs the page and resumes 0.6 s after focus
+  returns. BPI/BDO open the App Store page (an installed app shows **Open**), since iOS can't open an app without a
+  link the app registers.
+- Other devices: desktop has no app to open; mobile platforms other than Android/iOS still show no button.
+- Not adopted from the paste: the redirect page / smart-link service (the button already picks the link per
+  device in code).
