@@ -69,6 +69,9 @@
   /* New sanctuary-inspired colors */
   --color-navy: #1a2744;
   --color-navy-dark: #151e32;
+  /* Text and icons on a navy fill (≈ 14:1). Not themed for dark mode on
+     purpose: navy stays navy there, so its ink must stay white too. */
+  --color-on-navy: #ffffff;
   --color-purple: #4a3c6e;
   --color-burgundy: #6b2c3a;
   --color-cream: #f5f0e6;

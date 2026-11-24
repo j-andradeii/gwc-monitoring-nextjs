@@ -7651,6 +7651,9 @@
 
 .ways-to-give-page .compact-qr {
   background: #f8fafc;
+  /* Lets the "Open <app>" strip (spec 004) drop onto its own row below the
+     QR + Download row instead of squeezing in beside them. */
+  flex-wrap: wrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -17085,6 +17088,91 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ===========================================
+   "OPEN <APP>" STRIP  (spec 004, issue #323)
+   Rendered by `OpenPaymentAppButton` inside a ways-to-give card's QR footer,
+   only after that card's QR was saved on a phone. Same `gcs-` prefix and
+   `.give-channels-section` compounding as the receipt hint above, for the
+   same reasons: no shared `.compact-*` restyle, and enough weight to beat
+   `.landing-page a` painting the link gold.
+
+   Navy fill + white ink, not the channel colour: this is the card's primary
+   next step, and GCash blue with white text sits under 4.5:1 at this size.
+   =========================================== */
+.give-channels-section .gcs-open-app {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  /* Same hairline the base .compact-qr uses; --color-border flips dark in
+     dark mode while this card stays light. */
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  animation: gcsReceiptHintIn 0.3s ease-out both;
+}
+
+.give-channels-section .gcs-open-app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.give-channels-section .gcs-open-app-btn i {
+  color: var(--color-on-navy);
+  font-size: 13px;
+}
+
+.give-channels-section .gcs-open-app-btn:hover,
+.give-channels-section .gcs-open-app-btn:active {
+  background: var(--color-navy-dark);
+  color: var(--color-on-navy);
+}
+
+.give-channels-section .gcs-open-app-btn:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+.give-channels-section .gcs-open-app-hint {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (hover: hover) {
+  .give-channels-section .gcs-open-app-btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .give-channels-section .gcs-open-app {
+    animation: none;
+  }
+
+  .give-channels-section .gcs-open-app-btn,
+  .give-channels-section .gcs-open-app-btn:hover {
+    transform: none;
+    transition: none;
   }
 }
 

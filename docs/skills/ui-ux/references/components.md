@@ -182,3 +182,12 @@ Don't add an always-visible scrollbar. Horizontal carousels may hide theirs on p
 `Spinner`, `PageSpinner` (admin overlay via `useLoadingStore`), `InlineSpinner`, `ButtonSpinner`,
 `DownloadQRButton`, `Toast` / `ToastProvider`. Icons are PrimeIcons (`pi pi-*`; constants in
 `ICON_CONSTANTS`, `src/core/constants.ts`).
+
+### QR save → open the payment app (Ways to Give only)
+`DownloadQRButton` takes an optional `onSaved(result)` that fires only when the file really saved (`shared` /
+`downloaded`), never after a cancelled share sheet or failed fetch; other callers leave it unset. Ways to Give
+uses it to mount `OpenPaymentAppButton` (`components/landing/give/`) in that card's `.compact-qr` footer on a
+phone: `.gcs-open-app` strip with a navy pill `.gcs-open-app-btn` (`--color-navy` / `--color-on-navy`, 44px,
+uppercase 700) and a one-line hint. The footer wraps (`.ways-to-give-page .compact-qr { flex-wrap: wrap }`) so
+the strip takes its own row. If the strip would sit under the "QR code saved" toast it scrolls itself to the
+centre. Links come from `src/lib/payment-app-link.ts` (spec 004).

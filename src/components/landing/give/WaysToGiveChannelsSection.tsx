@@ -15,6 +15,9 @@
  *     opt-in — that is the entire reason this file exists.
  *   • A `copy` helper that reports success/failure, so the hint can never
  *     appear off the back of a rejected clipboard write.
+ *   • An "Open GCash / BPI / BDO" button in the QR area once that card's QR
+ *     has been saved on a phone (issue #323), so the giver goes straight from
+ *     saving the QR to scanning it in the app.
  *
  * MAINTENANCE: the card markup (`.compact-card`, `.compact-account-box`,
  * `.compact-instructions`, `.compact-qr`) is duplicated verbatim from
@@ -25,8 +28,10 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { givingChannels } from '@/data/giveData';
 import DownloadQRButton from '@/components/ui/DownloadQRButton';
+import type { ImageSaveResult } from '@/hooks/useDownloadImage';
 import { CONTACT_INFO } from '@/data/contact';
 import type { GiveKeywordInstruction } from './GiveChannelsSection';
+import { OpenPaymentAppButton } from './OpenPaymentAppButton';
 
 // Re-exported so this page's callers have a single import source; the type
 // itself stays defined once, in the original, so the two can't drift.
@@ -108,6 +113,12 @@ export const WaysToGiveChannelsSection: React.FC<WaysToGiveChannelsSectionProps>
    * whichever card was copied last, so there's never more than one on screen.
    */
   const [hintCardId, setHintCardId] = useState<string | null>(null);
+  /**
+   * Which card offers "Open <app>". Set only by a QR save that really landed
+   * on a phone — a desktop download has no app to open. Like the receipt hint
+   * it stays put and moves to whichever card was saved last.
+   */
+  const [openAppCardId, setOpenAppCardId] = useState<string | null>(null);
   const instanceKey = sectionId;
   const hasKeywords = keywords && keywords.length > 0;
 
@@ -120,6 +131,10 @@ export const WaysToGiveChannelsSection: React.FC<WaysToGiveChannelsSectionProps>
     },
     [copy]
   );
+
+  const handleQrSaved = useCallback((cardId: string, { mobile }: ImageSaveResult) => {
+    if (mobile) setOpenAppCardId(cardId);
+  }, []);
 
   /**
    * Scrolls to the giving-confirmation form. Shared by two links: the
@@ -265,6 +280,7 @@ export const WaysToGiveChannelsSection: React.FC<WaysToGiveChannelsSectionProps>
                         qrCodeUrl={channel.qrCode!}
                         filename={`${channel.name}-qrcode.jpg`}
                         color={channel.color}
+                        onSaved={(result) => handleQrSaved(cardId, result)}
                         className="compact-qr-download"
                         style={{
                           marginTop: 0,
@@ -279,6 +295,13 @@ export const WaysToGiveChannelsSection: React.FC<WaysToGiveChannelsSectionProps>
                       <i className="pi pi-qrcode"></i>
                       <span>Manual transfer</span>
                     </div>
+                  )}
+
+                  {/* The second half of "save the QR, then pay with it". Below
+                      the QR row rather than beside it: the row is already a
+                      QR image plus a button on a ~360px phone. */}
+                  {openAppCardId === cardId && channel.app && (
+                    <OpenPaymentAppButton app={channel.app} appName={channel.name} />
                   )}
                 </div>
               </div>

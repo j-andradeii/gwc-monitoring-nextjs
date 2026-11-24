@@ -38,7 +38,8 @@ Toasts don't use `--color-success`: the success toast is a darker `#15803d` so w
 | Token | Value | Use |
 |---|---|---|
 | `--color-navy` | `#1a2744` | canonical dark surface: footer, dark sections, badges |
-| `--color-navy-dark` | `#151e32` | gradient end |
+| `--color-navy-dark` | `#151e32` | gradient end; hover of navy buttons |
+| `--color-on-navy` | `#ffffff` | text and icons on a navy fill (≈ 14:1); not themed for dark mode (spec 004) |
 | `--color-purple` / `--color-burgundy` | `#4a3c6e` / `#6b2c3a` | aliases |
 | `--color-cream` | `#f5f0e6` | warm light band |
 | `--color-ivory` | `#faf8f3` | alternate section band (`.section-alternate-bg`) |
