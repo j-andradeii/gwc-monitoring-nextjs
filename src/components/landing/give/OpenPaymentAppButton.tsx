@@ -18,7 +18,7 @@ import React, { useEffect, useRef } from 'react';
 import { getMobilePlatform } from '@/lib/mobile-platform';
 import {
   getPaymentAppTarget,
-  openSchemeWithStoreFallback,
+  openDeepLinkWithStoreFallback,
   type PaymentApp,
 } from '@/lib/payment-app-link';
 
@@ -56,9 +56,10 @@ export const OpenPaymentAppButton: React.FC<OpenPaymentAppButtonProps> = ({ app,
   if (!target) return null;
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!target.iosSchemeUrl) return; // the href already does the job
+    // No deep link (BPI/BDO, Android): the href already does the job.
+    if (!target.iosDeepLink || !target.iosStoreFallbackUrl) return;
     event.preventDefault();
-    openSchemeWithStoreFallback(target.iosSchemeUrl, target.href);
+    openDeepLinkWithStoreFallback(target.iosDeepLink, target.iosStoreFallbackUrl);
   };
 
   return (

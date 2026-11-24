@@ -65,8 +65,8 @@ export interface GivingChannel {
   /**
    * The channel's mobile app. When set, Ways to Give shows an "Open <name>"
    * button once the QR has been saved on a phone (issue #323). Ids come from
-   * the apps' public store listings; see `src/lib/payment-app-link.ts` for why
-   * each scheme is opt-in.
+   * the apps' public store listings; `deepLink` only from the app's own
+   * published links (see `src/lib/payment-app-link.ts`).
    */
   app?: PaymentApp;
 }
@@ -84,10 +84,11 @@ export const givingChannels: GivingChannel[] = [
     app: {
       androidPackage: 'com.globe.gcash.android',
       iosAppStoreId: '520020791',
-      // Undocumented; on Android a miss just falls back to the Play Store page.
-      androidScheme: 'gcash',
-      // iosScheme stays unset until `gcash://` is seen opening GCash from
-      // Safari on a real iPhone (spec 004, M003) — a miss there is a Safari error.
+      // GCash's own link to its start screen, published in
+      // https://www.gcash.com/.well-known/apple-app-site-association
+      // ("Allow redirect for getting-started"). Express Send (send to a GCash
+      // number) is …/app/006300000300 in the same file.
+      deepLink: 'gcash://com.mynt.gcash/app/006300000100',
     },
     instructions: [
       'Open your GCash app',
@@ -105,7 +106,8 @@ export const givingChannels: GivingChannel[] = [
     icon: 'pi pi-building',
     color: '#A6192E',
     qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bpi.jpg',
-    // No confirmed scheme: the button opens the store page (shows "Open").
+    // No published deep link: Android tries the app's web-link handler and
+    // falls back to the Play Store; iPhone opens the App Store (shows "Open").
     app: { androidPackage: 'com.bpi.ng.app', iosAppStoreId: '6443950982' },
     instructions: [
       'Log in to BPI Online or Mobile App',
@@ -123,7 +125,8 @@ export const givingChannels: GivingChannel[] = [
     icon: 'pi pi-credit-card',
     color: '#003087',
     qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bdo.jpg',
-    // No confirmed scheme: the button opens the store page (shows "Open").
+    // No published deep link: Android tries the app's web-link handler and
+    // falls back to the Play Store; iPhone opens the App Store (shows "Open").
     app: { androidPackage: 'ph.com.bdo.retail', iosAppStoreId: '1551584630' },
     instructions: [
       'Log in to BDO Online or Mobile App',
