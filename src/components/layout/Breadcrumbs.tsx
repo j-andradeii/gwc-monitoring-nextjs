@@ -1,12 +1,14 @@
 /**
  * Breadcrumbs Component
  *
- * Modern breadcrumb navigation
+ * Admin breadcrumb trail, rendered at the top of the page area. Hidden when the
+ * trail is a single crumb (the dashboard), so it never takes space to say "Home".
+ * Styles: `.admin-breadcrumbs-*` in src/styles/admin-layout.css.
  */
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useBreadcrumbsStore, type BreadcrumbItem } from '@/stores/breadcrumbs.store';
 import { useBreadcrumbs } from '@/hooks';
@@ -22,78 +24,54 @@ export function Breadcrumbs({
   className = '',
   maxItems = 5,
 }: BreadcrumbsProps) {
-
-  const breadcrumbs = useBreadcrumbs();
+  // Builds the trail from the current path into the breadcrumbs store.
+  useBreadcrumbs();
   const { items: storeItems } = useBreadcrumbsStore();
   const items = propItems || storeItems;
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-
-  useEffect(()=>{ 
-    console.log("bredcrumbs", items);
-  }, [items]);
-
-  if (!items || items.length === 0) {
+  if (!items || items.length <= 1) {
     return null;
   }
 
-  let displayItems = items;
-  let showEllipsis = false;
-
-  if (items.length > maxItems) {
-    displayItems = [items[0], ...items.slice(items.length - (maxItems - 1))];
-    showEllipsis = true;
-  }
+  // Long trails keep the first crumb and the last (maxItems - 1).
+  const collapsed = items.length > maxItems;
+  const displayItems = collapsed
+    ? [items[0], ...items.slice(items.length - (maxItems - 1))]
+    : items;
 
   return (
-    <nav style={styles.nav} className={className} aria-label="Breadcrumb">
-      <ol style={styles.list}>
+    <nav className={`admin-breadcrumbs ${className}`.trim()} aria-label="Breadcrumb">
+      <ol className="admin-breadcrumbs-list">
         {displayItems.map((item, index) => {
           const isLast = index === displayItems.length - 1;
           const isFirst = index === 0;
-          const showEllipsisHere = showEllipsis && isFirst;
-          const isHovered = hoveredIndex === index;
 
           return (
             <React.Fragment key={item.url || item.label}>
-              <li style={styles.item}>
+              <li className="admin-breadcrumbs-item">
                 {item.url && !isLast ? (
-                  <Link
-                    href={item.url}
-                    style={{
-                      ...styles.link,
-                      ...(isHovered && styles.linkHover),
-                    }}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    {isFirst && <i className="pi pi-home" style={styles.homeIcon} />}
-                    {item.icon && !isFirst && <i className={item.icon} style={styles.itemIcon} />}
+                  <Link href={item.url} className="admin-breadcrumbs-link">
+                    {isFirst && <i className="pi pi-home" aria-hidden="true" />}
                     <span>{item.label}</span>
                   </Link>
                 ) : (
-                  <span style={styles.current}>
-                    {item.icon && <i className={item.icon} style={styles.itemIcon} />}
-                    <span>{item.label}</span>
+                  <span className="admin-breadcrumbs-current" aria-current="page">
+                    {item.label}
                   </span>
                 )}
               </li>
 
-              {!isLast && (
-                <li style={styles.separator} aria-hidden="true">
-                  <i className="pi pi-chevron-right" style={styles.separatorIcon} />
+              {collapsed && isFirst && (
+                <li className="admin-breadcrumbs-item" aria-hidden="true">
+                  <i className="pi pi-chevron-right admin-breadcrumbs-separator" />
+                  <span className="admin-breadcrumbs-ellipsis">…</span>
                 </li>
               )}
 
-              {showEllipsisHere && (
-                <>
-                  <li style={styles.ellipsis}>
-                    <span>...</span>
-                  </li>
-                  <li style={styles.separator} aria-hidden="true">
-                    <i className="pi pi-chevron-right" style={styles.separatorIcon} />
-                  </li>
-                </>
+              {!isLast && (
+                <li className="admin-breadcrumbs-item" aria-hidden="true">
+                  <i className="pi pi-chevron-right admin-breadcrumbs-separator" />
+                </li>
               )}
             </React.Fragment>
           );
@@ -102,75 +80,6 @@ export function Breadcrumbs({
     </nav>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  nav: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  list: {
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    gap: 0,
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-  },
-  item: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  link: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    padding: '6px 10px',
-    borderRadius: '6px',
-    textDecoration: 'none',
-    fontSize: '13px',
-    fontWeight: 500,
-    color: '#000',
-    transition: 'all 0.2s ease',
-  },
-  linkHover: {
-    background: 'rgba(192, 160, 103, 0.1)',
-    color: '#c0a067',
-  },
-  homeIcon: {
-    fontSize: '14px',
-    color: '#000',
-  },
-  itemIcon: {
-    fontSize: '12px',
-    color: '#000',
-  },
-  current: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    padding: '6px 10px',
-    fontSize: '13px',
-    fontWeight: 600,
-    color: '#000',
-  },
-  separator: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 4px',
-  },
-  separatorIcon: {
-    fontSize: '10px',
-    color: '#9ca3af',
-  },
-  ellipsis: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '6px 8px',
-    fontSize: '13px',
-    color: '#000',
-  },
-};
 
 /**
  * Page Header with Breadcrumbs

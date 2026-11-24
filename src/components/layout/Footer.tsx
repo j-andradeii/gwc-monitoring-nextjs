@@ -20,100 +20,15 @@ export interface FooterProps {
 export function Footer({ className = '', isAdmin = false }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
+  // Admin: one quiet line — no links to pages that don't exist yet.
+  // Styles: `.admin-footer-*` in src/styles/admin-layout.css.
   if (isAdmin) {
     return (
-      <footer className={`admin-footer ${className}`}>
-        <div className="footer-inner">
-          <div className="footer-left">
-            <span className="copyright">
-              &copy; {currentYear} Gateway Church. All rights reserved.
-            </span>
-          </div>
-          <div className="footer-center">
-            <Link href="/privacy" className="footer-link">Privacy Policy</Link>
-            <span className="divider">|</span>
-            <Link href="/terms" className="footer-link">Terms of Service</Link>
-            <span className="divider">|</span>
-            <Link href="/help" className="footer-link">Help Center</Link>
-          </div>
-          <div className="footer-right">
-            <span className="version">Version 1.0.0</span>
-          </div>
+      <footer className={`admin-footer ${className}`.trim()}>
+        <div className="admin-footer-inner">
+          <span>&copy; {currentYear} Gateway Church · Campus Admin</span>
+          <span className="admin-footer-version">Version 1.0.0</span>
         </div>
-
-        <style jsx>{`
-          .admin-footer {
-            background: #ffffff;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-            padding: 16px 24px;
-          }
-
-          .footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-          }
-
-          .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          }
-
-          .copyright {
-            font-size: 13px;
-            color: #6b7280;
-          }
-
-          .footer-center {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-          }
-
-          .footer-center :global(.footer-link) {
-            font-size: 13px;
-            color: #6b7280;
-            text-decoration: none;
-            transition: color 0.2s ease;
-          }
-
-          .footer-center :global(.footer-link:hover) {
-            color: var(--primary-gold-accent, #c0a067);
-          }
-
-          .divider {
-            color: #d1d5db;
-            font-size: 12px;
-          }
-
-          .footer-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-          }
-
-          .version {
-            font-size: 12px;
-            color: #9ca3af;
-            padding: 4px 10px;
-            background: #f3f4f6;
-            border-radius: 6px;
-          }
-
-          @media (max-width: 767px) {
-            .footer-inner {
-              flex-direction: column;
-              text-align: center;
-            }
-
-            .footer-center {
-              order: -1;
-            }
-          }
-        `}</style>
       </footer>
     );
   }

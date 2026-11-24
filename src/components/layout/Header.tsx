@@ -1,3 +1,11 @@
+/**
+ * Admin Header
+ *
+ * Navy chrome bar: sidebar toggle, brand lockup ("Gateway Church · Campus Admin")
+ * and the signed-in user's menu. Only controls that work are shown — search and
+ * notifications return when they have a backend. Styles: src/styles/admin.css.
+ */
+
 'use client';
 
 import React, { useRef } from 'react';
@@ -8,8 +16,8 @@ import { Menu } from 'primereact/menu';
 import { MenuItem } from 'primereact/menuitem';
 import { useAuth } from '@/hooks/useAuth';
 import { useSidebarStore } from '@/stores/sidebar.store';
-import { useResponsive } from '@/hooks/useResponsive';
 import { ROUTES } from '@/core/constants';
+import { formatEnumLabel } from '@/core/utils';
 import '@/styles/admin.css';
 
 export interface HeaderProps {
@@ -19,33 +27,32 @@ export interface HeaderProps {
 export function Header({ className = '' }: HeaderProps) {
   const menuRef = useRef<Menu>(null);
   const { user, logout } = useAuth();
-  const { isOpen, toggle, setIsOpen } = useSidebarStore();
-  const { isMobile } = useResponsive();
+  const { isOpen, toggle } = useSidebarStore();
+
+  const member = user?.member;
+  const userName = `${member?.first_name ?? ''} ${member?.last_name ?? ''}`.trim() || 'User';
+  const userInitials =
+    `${member?.first_name?.charAt(0) ?? ''}${member?.last_name?.charAt(0) ?? ''}`.toUpperCase() || 'U';
+  const userRole = formatEnumLabel(user?.church_campus_staff?.role);
+  const campusName =
+    user?.church_campus_staff?.church_campus?.name ||
+    user?.church_campus_staff?.church_campus?.church?.name ||
+    'Gateway Church';
 
   const userMenuItems: MenuItem[] = [
-    { label: 'Profile', icon: 'pi pi-user', command: () => {} },
-    { label: 'Settings', icon: 'pi pi-cog', command: () => {} },
+    {
+      template: () => (
+        <div className="admin-user-menu-header">
+          <span className="admin-user-menu-name">{userName}</span>
+          <span className="admin-user-menu-meta">
+            {[userRole, campusName].filter(Boolean).join(' · ')}
+          </span>
+        </div>
+      ),
+    },
     { separator: true },
-    { label: 'Logout', icon: 'pi pi-sign-out', command: logout },
+    { label: 'Sign out', icon: 'pi pi-sign-out', command: logout },
   ];
-
-  const userName = user?.member
-    ? `${user.member.first_name || ''} ${user.member.last_name || ''}`.trim() || 'User'
-    : 'User';
-
-  const userInitials = user?.member
-    ? `${user.member.first_name?.charAt(0) || ''}${user.member.last_name?.charAt(0) || ''}`.toUpperCase()
-    : 'U';
-
-  const userRole = user?.church_campus_staff?.role || '';
-
-  const handleSidebarToggle = () => {
-    if (isMobile) {
-      toggle();
-    } else {
-      setIsOpen(!isOpen);
-    }
-  };
 
   return (
     <header className={`admin-header ${className}`.trim()}>
@@ -53,64 +60,53 @@ export function Header({ className = '' }: HeaderProps) {
         <div className="admin-header-left">
           <button
             type="button"
-            onClick={handleSidebarToggle}
+            onClick={toggle}
             className={`admin-header-menu-toggle${isOpen ? ' is-open' : ''}`}
-            aria-label="Toggle sidebar"
+            aria-label={isOpen ? 'Hide navigation' : 'Show navigation'}
             aria-expanded={isOpen}
+            aria-controls="admin-sidebar"
           >
             <span className="line" />
             <span className="line" />
             <span className="line" />
           </button>
 
-          <Link href={ROUTES.DASHBOARD} className="admin-header-logo-link">
-            <div className="admin-header-logo">
+          <Link href={ROUTES.DASHBOARD} className="admin-header-brand" aria-label="Campus Admin dashboard">
+            <span className="admin-header-logo" aria-hidden="true">
               <Image
                 src="/assets/images/church-logo-white.png"
-                alt="Gateway Church"
-                width={32}
-                height={32}
+                alt=""
+                width={30}
+                height={17}
                 priority
-                style={{ objectFit: 'contain' }}
               />
-            </div>
+            </span>
+            <span className="admin-header-wordmark">
+              <span className="admin-header-wordmark-title">Gateway Church</span>
+              <span className="admin-header-wordmark-kicker">Campus Admin</span>
+            </span>
           </Link>
         </div>
 
         <div className="admin-header-right">
-          <button type="button" className="admin-header-action" aria-label="Search">
-            <i className="pi pi-search" style={{ fontSize: 16 }} />
-          </button>
-
-          <button type="button" className="admin-header-action" aria-label="Notifications">
-            <i className="pi pi-bell" style={{ fontSize: 16 }} />
-            <span className="admin-header-badge">3</span>
-          </button>
-
-          <div className="admin-header-divider" />
-
           <button
             type="button"
             className="admin-header-user"
             onClick={(e) => menuRef.current?.toggle(e)}
             aria-haspopup="menu"
-            aria-label="User menu"
+            aria-label={`Account menu for ${userName}`}
           >
             <Avatar
-              image={user?.member?.photo_url || undefined}
-              label={!user?.member?.photo_url ? userInitials : undefined}
-              size="normal"
+              image={member?.photo_url || undefined}
+              label={!member?.photo_url ? userInitials : undefined}
               shape="circle"
+              className="admin-header-avatar"
             />
-            {!isMobile && (
-              <>
-                <div className="admin-header-user-info">
-                  <span className="admin-header-user-name">{userName}</span>
-                  <span className="admin-header-user-role">{userRole}</span>
-                </div>
-                <i className="pi pi-chevron-down admin-header-user-chevron" />
-              </>
-            )}
+            <span className="admin-header-user-info">
+              <span className="admin-header-user-name">{userName}</span>
+              {userRole && <span className="admin-header-user-role">{userRole}</span>}
+            </span>
+            <i className="pi pi-chevron-down admin-header-user-chevron" aria-hidden="true" />
           </button>
 
           <Menu

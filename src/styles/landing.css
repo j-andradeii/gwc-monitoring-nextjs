@@ -7651,6 +7651,9 @@
 
 .ways-to-give-page .compact-qr {
   background: #f8fafc;
+  /* Lets the "Open <app>" strip (spec 004) drop onto its own row below the
+     QR + Download row instead of squeezing in beside them. */
+  flex-wrap: wrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -15275,7 +15278,7 @@
    The page's community-outreach anchor: "what we do week to week".
    Icon cards (no photos) so the band never depends on blob images and the
    Gallery keeps the photography to itself. Light cream band — every surface
-   declares BOTH background and text colour (see DESIGN.md).
+   declares BOTH background and text colour (see docs/skills/ui-ux/DESIGN.md).
    ------------------------------------------- */
 .outreach-programs-section {
   background: var(--color-cream, #f5f0e6);
@@ -15349,7 +15352,7 @@
     0 18px 42px rgba(26, 39, 68, 0.18);
 }
 
-/* Gold surface → NAVY icon. White-on-gold fails contrast (DESIGN.md). */
+/* Gold surface → NAVY icon. White-on-gold fails contrast (docs/skills/ui-ux/DESIGN.md). */
 .outreach-program-icon-wrap {
   width: 52px;
   height: 52px;
@@ -17085,6 +17088,91 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ===========================================
+   "OPEN <APP>" STRIP  (spec 004, issue #323)
+   Rendered by `OpenPaymentAppButton` inside a ways-to-give card's QR footer,
+   only after that card's QR was saved on a phone. Same `gcs-` prefix and
+   `.give-channels-section` compounding as the receipt hint above, for the
+   same reasons: no shared `.compact-*` restyle, and enough weight to beat
+   `.landing-page a` painting the link gold.
+
+   Navy fill + white ink, not the channel colour: this is the card's primary
+   next step, and GCash blue with white text sits under 4.5:1 at this size.
+   =========================================== */
+.give-channels-section .gcs-open-app {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  /* Same hairline the base .compact-qr uses; --color-border flips dark in
+     dark mode while this card stays light. */
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  animation: gcsReceiptHintIn 0.3s ease-out both;
+}
+
+.give-channels-section .gcs-open-app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.give-channels-section .gcs-open-app-btn i {
+  color: var(--color-on-navy);
+  font-size: 13px;
+}
+
+.give-channels-section .gcs-open-app-btn:hover,
+.give-channels-section .gcs-open-app-btn:active {
+  background: var(--color-navy-dark);
+  color: var(--color-on-navy);
+}
+
+.give-channels-section .gcs-open-app-btn:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+.give-channels-section .gcs-open-app-hint {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (hover: hover) {
+  .give-channels-section .gcs-open-app-btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .give-channels-section .gcs-open-app {
+    animation: none;
+  }
+
+  .give-channels-section .gcs-open-app-btn,
+  .give-channels-section .gcs-open-app-btn:hover {
+    transform: none;
+    transition: none;
   }
 }
 
@@ -19588,7 +19676,7 @@ a.gcs-upload-cue {
 
    Segmented control (2026-08): navy active segment inside a centered
    cream "track", replacing the previous pale gold-outline pill (too
-   washed out to read as selected) — see DESIGN_SYSTEM.md §3 contrast
+   washed out to read as selected) — see docs/skills/ui-ux/DESIGN.md "Contrast"
    rule. The fill moved gold -> navy (2026-08, later same month) because
    the requested white label text measured only 2.21:1 on gold (fails
    AA); navy is retained-as-ring (not fill) instead, and white-on-navy
@@ -19761,7 +19849,7 @@ a.gcs-upload-cue {
 
 /* ===========================================
    Ways to Give tabs — house white/cream band alternation
-   (DESIGN_SYSTEM.md §8 "Section Background Alternation").
+   (docs/skills/ui-ux/DESIGN.md "Section background alternation").
    Each panel's direct .landing-section children alternate
    odd = white, even = cream, starting white. `.contact-section`
    does not carry `.landing-section`, so it is excluded from this

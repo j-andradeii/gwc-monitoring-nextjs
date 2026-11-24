@@ -24,6 +24,8 @@ interface SidebarActions {
   closeMobile: () => void;
   close: () => void;
   toggleExpand: (item: string) => void;
+  /** Open a group; a no-op when already open (safe to call twice) */
+  expandItem: (item: string) => void;
 }
 
 type SidebarStore = SidebarState & SidebarActions;
@@ -53,6 +55,13 @@ export const useSidebarStore = create<SidebarStore>()(
       closeMobile: () => set({ isMobileOpen: false }),
 
       close: () => set({ isOpen: false, isMobileOpen: false }),
+
+      expandItem: (item) =>
+        set((state) =>
+          state.expandedItems.includes(item)
+            ? state
+            : { expandedItems: [...state.expandedItems, item] }
+        ),
 
       toggleExpand: (item) =>
         set((state) => ({

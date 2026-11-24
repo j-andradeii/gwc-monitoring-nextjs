@@ -1,44 +1,17 @@
 /**
- * Admin Dashboard — scoped styles
+ * Admin Dashboard — page content styles
  *
- * ALL rules scoped under `.admin-dashboard` root class.
- * Child classes prefixed `admin-dash-*` per admin-* prefixing convention (DESIGN_SYSTEM §16).
+ * Page root `.admin-dashboard`; children prefixed `admin-dash-*`
+ * (docs/skills/ui-ux/references/surfaces.md "Admin"). Tokens (`--admin-*`) are
+ * declared once on the shell in src/styles/admin-layout.css and inherited here.
  *
- * Antique-gold language: #c0a067 / #a8894f — deliberately distinct from landing #d4a84b.
- * References global tokens (--color-navy, etc.) where appropriate.
+ * Theme rules kept here: the site's one warm gold #d4a84b (same as the landing pages); gold
+ * components (--admin-gold-fill) carry WHITE text/icons; gold-coloured text on light
+ * surfaces uses --admin-gold-ink; muted
+ * (#6b7280) is the lightest text colour; only interactive cards react to hover.
  */
 
-/* ─── Local scoped tokens ─────────────────────────────────────────────────── */
-
 .admin-dashboard {
-  --admin-gold:         #c0a067;
-  --admin-gold-dark:    #a8894f;
-  --admin-gold-soft:    rgba(192, 160, 103, 0.12);
-  --admin-gold-glow:    rgba(192, 160, 103, 0.22);
-  --admin-gold-border:  rgba(192, 160, 103, 0.30);
-
-  --admin-canvas:       #f8f9fa;
-  --admin-surface:      #ffffff;
-  --admin-border:       #e9ecef;
-  --admin-border-mid:   #dee2e6;
-
-  --admin-text-heading: #000;
-  --admin-text-body:    #000;
-  --admin-text-muted:   #6b7280;
-  --admin-text-faint:   #9ca3af;
-
-  --admin-navy:         var(--color-navy, #1a2744);
-
-  /* card elevation: resting → lifted */
-  --admin-shadow-rest:  0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --admin-shadow-lift:  0 8px 24px rgba(26, 39, 68, 0.10), 0 3px 8px rgba(0, 0, 0, 0.06);
-  --admin-shadow-gold:  0 8px 24px rgba(192, 160, 103, 0.18);
-
-  /* transition standards (DESIGN_SYSTEM §19) */
-  --admin-transition-fast:     0.2s ease;
-  --admin-transition-standard: 0.25s ease;
-  --admin-transition-elegant:  0.4s ease;
-
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -48,7 +21,7 @@
 
 .admin-dash-page-header {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
@@ -58,33 +31,33 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
-/* DESIGN_SYSTEM §4 Section Label / Eyebrow: 11-12px, 2.5px tracking */
+/* Eyebrow: docs/skills/ui-ux/references/tokens.md "Typography" (11–12px, 2.5px tracking) */
 .admin-dash-eyebrow {
+  margin: 0 0 2px;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--admin-gold);
-  margin: 0 0 2px;
+  color: var(--admin-gold-ink);
 }
 
 .admin-dash-title {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--admin-text-heading);
   margin: 0;
-  line-height: 1.25;
-  letter-spacing: -0.3px;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  color: var(--admin-text-heading);
 }
 
-/* DESIGN_SYSTEM §4 Body Copy: 15px */
 .admin-dash-subtitle {
+  margin: 0;
   font-size: 15px;
   font-weight: 500;
   color: var(--admin-text-muted);
-  margin: 0;
 }
 
 .admin-dash-header-actions {
@@ -94,456 +67,615 @@
   flex-shrink: 0;
 }
 
-/* Secondary / ghost button (Export) */
+/* ─── Buttons ──────────────────────────────────────────────────────────────── */
+
+.admin-dash-btn-primary,
 .admin-dash-btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 15px;
-  border-radius: 8px;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 16px;
+  border-radius: var(--admin-radius-control);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow var(--admin-transition-standard),
+              border-color var(--admin-transition-standard),
+              color var(--admin-transition-standard),
+              transform var(--admin-transition-standard);
+}
+
+/* Gold component → white text on --admin-gold-fill (admin rule, AA across the gradient) */
+.admin-dash-btn-primary {
+  border: none;
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
+  box-shadow: 0 4px 15px var(--admin-gold-glow);
+}
+
+.admin-dash-btn-primary:hover {
+  background: var(--admin-gold-fill-hover);
+  box-shadow: var(--admin-shadow-gold);
+  transform: translateY(-1px);
+}
+
+.admin-dash-btn-secondary {
   border: 1px solid var(--admin-border-mid);
   background: var(--admin-surface);
   color: var(--admin-text-body);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  cursor: pointer;
-  text-decoration: none;
-  transition: border-color var(--admin-transition-standard),
-              color var(--admin-transition-standard),
-              box-shadow var(--admin-transition-standard),
-              transform var(--admin-transition-standard);
-  min-height: 38px;
 }
 
 .admin-dash-btn-secondary:hover {
   border-color: var(--admin-gold-border);
-  color: var(--admin-gold-dark);
+  color: var(--admin-gold-ink);
   box-shadow: var(--admin-shadow-rest);
   transform: translateY(-1px);
 }
 
+.admin-dash-btn-primary:focus-visible,
 .admin-dash-btn-secondary:focus-visible {
-  outline: 2px solid var(--admin-gold);
+  outline: 2px solid var(--admin-gold-ink);
   outline-offset: 2px;
-  border-color: var(--admin-gold-border);
 }
 
-/* Primary button (Add Member) — antique gold gradient */
-.admin-dash-btn-primary {
+/* ─── Welcome banner (dashboard) — navy chrome + the site's warm gold ───────── */
+
+.admin-dash-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 28px 32px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(212, 168, 75, 0.22);
+  border-radius: 18px;
+  background: var(--admin-chrome);
+  color: var(--color-contrast-light, #ffffff);
+  box-shadow: 0 12px 32px rgba(13, 21, 37, 0.18);
+}
+
+/* soft gold glow in the top-right corner (decoration only) */
+.admin-dash-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(212, 168, 75, 0.24) 0%, transparent 46%),
+    radial-gradient(circle at 0% 100%, rgba(74, 60, 110, 0.28) 0%, transparent 42%);
+  pointer-events: none;
+}
+
+.admin-dash-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.admin-dash-hero-kicker {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--admin-gold); /* 7.3:1 on the chrome */
+}
+
+.admin-dash-hero-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  color: var(--color-contrast-light, #ffffff);
+}
+
+.admin-dash-hero-subtitle {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 15px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(145deg, var(--admin-gold) 0%, var(--admin-gold-dark) 100%);
-  color: #ffffff;
-  font-family: inherit;
+  gap: 8px;
+  margin: 2px 0 0;
   font-size: 14px;
   font-weight: 600;
-  line-height: 1;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(192, 160, 103, 0.28);
-  transition: box-shadow var(--admin-transition-standard),
-              transform var(--admin-transition-standard),
-              filter var(--admin-transition-standard);
-  min-height: 38px;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.admin-dash-btn-primary:hover {
-  box-shadow: var(--admin-shadow-gold);
-  transform: translateY(-1px);
-  filter: brightness(1.04);
+.admin-dash-hero-subtitle .pi {
+  font-size: 13px;
+  color: var(--admin-gold);
 }
 
-.admin-dash-btn-primary:focus-visible {
-  outline: 2px solid var(--admin-gold);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--admin-gold-soft), 0 2px 8px rgba(192, 160, 103, 0.28);
+.admin-dash-hero-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
-/* ─── Stats grid ───────────────────────────────────────────────────────────── */
+.admin-dash-hero .admin-dash-btn-primary {
+  min-height: 44px;
+  padding: 11px 20px;
+}
+
+.admin-dash-hero .admin-dash-btn-primary:focus-visible {
+  outline-color: var(--admin-gold);
+}
+
+/* ─── Stats (read-only: no hover lift) ─────────────────────────────────────── */
 
 .admin-dash-stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
+
+/* Tone classes pick a theme ink — nothing off-palette */
+.admin-dash-stat-card.is-gold     { --accent: var(--admin-gold-ink); }
+.admin-dash-stat-card.is-navy     { --accent: var(--color-navy); }
+.admin-dash-stat-card.is-purple   { --accent: var(--color-secondary); }
+.admin-dash-stat-card.is-burgundy { --accent: var(--color-accent); }
 
 .admin-dash-stat-card {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 20px 18px;
-  background: var(--admin-surface);
-  border: 1px solid var(--admin-border);
-  border-radius: 12px;
-  box-shadow: var(--admin-shadow-rest);
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 18px 16px;
   overflow: hidden;
-  transition: box-shadow var(--admin-transition-elegant),
-              border-color var(--admin-transition-elegant),
-              transform var(--admin-transition-elegant);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-card);
+  background: var(--admin-surface);
+  box-shadow: var(--admin-shadow-rest);
 }
 
-/* Gold top accent bar — scales in on hover (mirrors DESIGN_SYSTEM §7 .card::after pattern) */
-.admin-dash-stat-card::after {
+/* Accent strip — colour identity, always visible */
+.admin-dash-stat-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  inset: 0 0 auto 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--admin-gold) 0%, var(--admin-gold-dark) 100%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--admin-transition-elegant);
+  background: var(--accent, var(--admin-gold-ink));
 }
 
-.admin-dash-stat-card:hover {
-  box-shadow: var(--admin-shadow-lift);
-  border-color: var(--admin-gold-border);
-  transform: translateY(-3px);
-}
-
-.admin-dash-stat-card:hover::after {
-  transform: scaleX(1);
-}
-
-/* Icon tile — accent color driven via --accent CSS custom property set inline */
-/* DESIGN_SYSTEM §14 Stats Widget Card .stats-icon-container: 48px */
-.admin-dash-stat-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+.admin-dash-stat-head {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.admin-dash-stat-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
-  /* background + color injected via inline style={{ '--accent': stat.accent }} */
-  background: color-mix(in srgb, var(--accent, #c0a067) 15%, transparent);
-  color: var(--accent, #c0a067);
-  transition: border-radius var(--admin-transition-elegant),
-              transform var(--admin-transition-elegant);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent, var(--admin-gold-ink)) 10%, transparent);
+  color: var(--accent, var(--admin-gold-ink));
+  font-size: 16px;
 }
 
-.admin-dash-stat-card:hover .admin-dash-stat-icon {
-  border-radius: 50%;
-  transform: rotate(-8deg) scale(1.06);
+.admin-dash-stat-label {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--admin-text-body);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.admin-dash-stat-body {
+.admin-dash-stat-value {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: var(--admin-text-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-dash-stat-caption {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--admin-text-muted);
+}
+
+/* ─── Two-column body: work on the left, context on the right ──────────────── */
+
+.admin-dash-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.admin-dash-side {
   display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ─── Panels ───────────────────────────────────────────────────────────────── */
+
+.admin-dash-panel {
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-card);
+  background: var(--admin-surface);
+  box-shadow: var(--admin-shadow-rest);
+  overflow: hidden;
+}
+
+.admin-dash-panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-dash-panel-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  color: var(--admin-text-heading);
+}
+
+.admin-dash-panel-hint {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--admin-text-muted);
+}
+
+/* ─── Quick actions (list rows) ────────────────────────────────────────────── */
+
+.admin-dash-action-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-dash-action-list > li + li {
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-dash-action {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  padding: 12px 20px;
+  color: var(--admin-text-body);
+  text-decoration: none;
+  transition: background var(--admin-transition-fast);
+}
+
+a.admin-dash-action:hover {
+  background: rgba(26, 39, 68, 0.03);
+}
+
+a.admin-dash-action:focus-visible {
+  outline: 2px solid var(--admin-gold-ink);
+  outline-offset: -2px;
+}
+
+.admin-dash-action-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+  font-size: 16px;
+  transition: background var(--admin-transition-fast), color var(--admin-transition-fast);
+}
+
+a.admin-dash-action:hover .admin-dash-action-icon {
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
+}
+
+.admin-dash-action-text {
+  display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 2px;
   min-width: 0;
 }
 
-.admin-dash-stat-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--admin-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* DESIGN_SYSTEM §14 Stats Widget Card .stats-value: 28px */
-.admin-dash-stat-value {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--admin-text-heading);
-  line-height: 1.15;
-  font-variant-numeric: tabular-nums;
-}
-
-.admin-dash-stat-trend {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--admin-text-faint);
-}
-
-/* ─── Generic section wrapper (quick actions, recent activity) ─────────────── */
-
-.admin-dash-section {
-  background: var(--admin-surface);
-  border: 1px solid var(--admin-border);
-  border-radius: 12px;
-  padding: 22px;
-}
-
-.admin-dash-section-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-
-.admin-dash-section-title {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--admin-text-heading);
-  margin: 0;
-  letter-spacing: -0.1px;
-}
-
-.admin-dash-section-hint {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--admin-text-faint);
-}
-
-/* ─── Quick action cards ───────────────────────────────────────────────────── */
-
-.admin-dash-actions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-}
-
-.admin-dash-action-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 16px;
-  border-radius: 10px;
-  border: 1px solid var(--admin-border);
-  background: #fafafa;
-  text-decoration: none;
-  transition: background var(--admin-transition-standard),
-              border-color var(--admin-transition-standard),
-              box-shadow var(--admin-transition-standard),
-              transform var(--admin-transition-standard);
-}
-
-.admin-dash-action-card:hover {
-  background: var(--admin-surface);
-  border-color: var(--admin-gold-border);
-  box-shadow: var(--admin-shadow-lift);
-  transform: translateY(-2px);
-}
-
-.admin-dash-action-card:focus-visible {
-  outline: 2px solid var(--admin-gold);
-  outline-offset: 2px;
-  border-color: var(--admin-gold-border);
-  box-shadow: 0 0 0 4px var(--admin-gold-soft);
-}
-
-.admin-dash-action-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: var(--admin-gold-soft);
-  color: var(--admin-gold-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 6px;
-  flex-shrink: 0;
-  transition: background var(--admin-transition-standard),
-              border-radius var(--admin-transition-standard);
-}
-
-.admin-dash-action-card:hover .admin-dash-action-icon {
-  background: rgba(192, 160, 103, 0.20);
-}
-
-/* DESIGN_SYSTEM §4 Body Copy: 15px */
 .admin-dash-action-label {
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
   color: var(--admin-text-heading);
-  line-height: 1.3;
 }
 
 .admin-dash-action-description {
   font-size: 13px;
   font-weight: 500;
   color: var(--admin-text-muted);
-  line-height: 1.5;
 }
 
-/* Trailing arrow — slides on hover */
 .admin-dash-action-arrow {
-  position: absolute;
-  top: 16px;
-  right: 14px;
-  color: var(--admin-gold);
+  flex-shrink: 0;
   font-size: 13px;
-  transition: transform var(--admin-transition-standard),
-              color var(--admin-transition-standard);
+  color: var(--admin-gold-ink);
+  transition: transform var(--admin-transition-fast);
 }
 
-.admin-dash-action-card:hover .admin-dash-action-arrow {
-  transform: translateX(4px);
-  color: var(--admin-gold-dark);
+a.admin-dash-action:hover .admin-dash-action-arrow {
+  transform: translateX(3px);
 }
 
-/* ─── Empty state (Recent Activity) ───────────────────────────────────────── */
+/* Not built yet: muted, not interactive */
+.admin-dash-action.is-soon .admin-dash-action-label {
+  color: var(--admin-text-muted);
+}
+
+.admin-dash-action.is-soon .admin-dash-action-icon {
+  background: var(--admin-tile);
+  color: var(--admin-text-muted);
+}
+
+.admin-dash-soon-pill {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border: 1px solid var(--admin-border-mid);
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--admin-text-muted);
+}
+
+/* ─── Account panel ────────────────────────────────────────────────────────── */
+
+.admin-dash-account {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+}
+
+/* Gold component → white initials on --admin-gold-fill */
+.admin-dash-account-avatar {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.admin-dash-account-name {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--admin-text-heading);
+}
+
+.admin-dash-account-role {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-dash-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 16px;
+  margin: 0;
+  padding: 16px 20px 18px;
+  border-top: 1px solid var(--admin-border);
+  font-size: 13.5px;
+}
+
+.admin-dash-details-row {
+  display: contents;
+}
+
+.admin-dash-details dt {
+  font-weight: 600;
+  color: var(--admin-text-muted);
+}
+
+.admin-dash-details dd {
+  margin: 0;
+  overflow: hidden;
+  font-weight: 600;
+  color: var(--admin-text-body);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Empty state (activity) ───────────────────────────────────────────────── */
 
 .admin-dash-empty-state {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 36px 16px 28px;
-  text-align: center;
-  color: var(--admin-text-faint);
+  gap: 14px;
+  padding: 18px 20px;
 }
 
-.admin-dash-empty-icon-tile {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  background: #f3f4f6;
+.admin-dash-empty-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
   border: 1px solid var(--admin-border-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--admin-text-faint);
-  font-size: 24px;
-  margin-bottom: 2px;
+  border-radius: 10px;
+  background: var(--admin-tile);
+  color: var(--admin-text-muted);
+  font-size: 17px;
 }
 
 .admin-dash-empty-title {
-  font-size: 16px;
+  margin: 0;
+  font-size: 14px;
   font-weight: 600;
   color: var(--admin-text-body);
-  margin: 0;
 }
 
 .admin-dash-empty-text {
-  font-size: 14px;
+  margin: 2px 0 0;
+  font-size: 13px;
   font-weight: 500;
+  line-height: 1.5;
   color: var(--admin-text-muted);
-  max-width: 300px;
-  line-height: 1.55;
-  margin: 0;
 }
 
-/* ─── Stub page — coming soon ─────────────────────────────────────────────── */
+/* ─── Coming-soon page panel ───────────────────────────────────────────────── */
 
 .admin-dash-coming-soon {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  padding: 48px 16px 40px;
+  padding: 48px 20px 44px;
   text-align: center;
 }
 
-.admin-dash-coming-soon-icon-tile {
-  width: 68px;
-  height: 68px;
-  border-radius: 14px;
-  background: var(--admin-gold-soft);
+.admin-dash-coming-soon-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
   border: 1px solid var(--admin-gold-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--admin-gold-dark);
-  font-size: 28px;
-  margin-bottom: 4px;
+  border-radius: 16px;
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+  font-size: 24px;
 }
 
-/* DESIGN_SYSTEM §4 Step Title: 20px */
 .admin-dash-coming-soon-title {
+  margin: 0;
   font-size: 20px;
   font-weight: 700;
-  color: var(--admin-text-heading);
-  margin: 0;
   letter-spacing: -0.2px;
+  color: var(--admin-text-heading);
 }
 
 .admin-dash-coming-soon-text {
+  max-width: 440px;
+  margin: 0 0 8px;
   font-size: 15px;
   font-weight: 500;
-  color: var(--admin-text-muted);
-  max-width: 320px;
   line-height: 1.6;
-  margin: 0;
+  color: var(--admin-text-muted);
 }
 
 /* ─── Responsive ───────────────────────────────────────────────────────────── */
 
-/* Tablet (≤1024px) */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .admin-dash-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .admin-dash-actions-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .admin-dash-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-/* Mobile (≤768px) */
 @media (max-width: 768px) {
+  .admin-dashboard {
+    gap: 20px;
+  }
+
+  .admin-dash-hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 22px 20px;
+    border-radius: 16px;
+  }
+
+  .admin-dash-hero-title {
+    font-size: 24px;
+  }
+
+  .admin-dash-hero-actions > * {
+    flex: 1;
+  }
+
   .admin-dash-page-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
-  .admin-dash-header-actions {
-    width: 100%;
-    flex-direction: row;
-    justify-content: flex-start;
+  .admin-dash-title {
+    font-size: 24px;
   }
 
-  .admin-dash-btn-primary,
-  .admin-dash-btn-secondary {
+  .admin-dash-header-actions > * {
     flex: 1;
-    justify-content: center;
-    min-height: 44px; /* touch target ≥44px */
+    min-height: 44px; /* touch target */
   }
 
   .admin-dash-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
+  .admin-dash-stat-card {
+    padding: 16px 14px 14px;
+  }
+
   .admin-dash-stat-value {
-    font-size: 22px;
+    font-size: 26px;
   }
 
-  .admin-dash-actions-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .admin-dash-action-card {
-    min-height: 44px; /* touch target */
+  .admin-dash-panel-header,
+  .admin-dash-action,
+  .admin-dash-account,
+  .admin-dash-details,
+  .admin-dash-empty-state {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
-/* Mobile small (≤480px) */
-@media (max-width: 480px) {
+@media (max-width: 420px) {
   .admin-dash-stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-/* ─── Reduced motion ──────────────────────────────────────────────────────── */
+/* ─── Touch + motion ───────────────────────────────────────────────────────── */
+
+@media (hover: none) {
+  .admin-dash-btn-primary:hover,
+  .admin-dash-btn-secondary:hover {
+    transform: none;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .admin-dash-stat-card,
-  .admin-dash-stat-card::after,
-  .admin-dash-stat-card .admin-dash-stat-icon,
-  .admin-dash-action-card,
-  .admin-dash-action-icon,
-  .admin-dash-action-arrow,
   .admin-dash-btn-primary,
-  .admin-dash-btn-secondary {
+  .admin-dash-btn-secondary,
+  .admin-dash-action,
+  .admin-dash-action-icon,
+  .admin-dash-action-arrow {
     transition: none !important;
     transform: none !important;
-    animation: none !important;
   }
 }

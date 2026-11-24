@@ -5,6 +5,8 @@ export { GiveScriptureList } from './GiveScriptureList';
 export { GiveChannelsSection } from './GiveChannelsSection';
 // Ways-to-Give-only fork of the above (adds the reveal-on-copy receipt hint).
 export { WaysToGiveChannelsSection } from './WaysToGiveChannelsSection';
+// "Open GCash / BPI / BDO" after a QR save on a phone (used by the fork above).
+export { OpenPaymentAppButton } from './OpenPaymentAppButton';
 export { GiveVideoTestimony } from './GiveVideoTestimony';
 export { GivingConfirmationSection } from './GivingConfirmationSection';
 // Mobile-only floating prompt pointing at the section above.

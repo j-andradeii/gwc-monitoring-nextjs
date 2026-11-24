@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Toast as PrimeToast } from 'primereact/toast';
-import { useDownloadImage } from '@/hooks/useDownloadImage';
+import { useDownloadImage, type ImageSaveResult } from '@/hooks/useDownloadImage';
 
 /**
  * PrimeReact's Toast defaults to `appendTo: 'self'`, i.e. it renders inside
@@ -20,6 +20,12 @@ interface DownloadQRButtonProps {
     color?: string;
     className?: string;
     style?: React.CSSProperties;
+    /**
+     * Fires only when the file genuinely landed (`shared` or `downloaded`) —
+     * never after a cancelled share sheet or a failed fetch. Ways to Give uses
+     * it to offer "Open GCash" next; every other caller leaves it unset.
+     */
+    onSaved?: (result: ImageSaveResult) => void;
 }
 
 /**
@@ -45,6 +51,7 @@ const DownloadQRButton: React.FC<DownloadQRButtonProps> = ({
     color = '#007DFE',
     className = '',
     style = {},
+    onSaved,
 }) => {
     const { downloadImage, isDownloading } = useDownloadImage();
     const [isHovered, setIsHovered] = React.useState(false);
@@ -54,12 +61,17 @@ const DownloadQRButton: React.FC<DownloadQRButtonProps> = ({
         e.preventDefault();
         if (isDownloading) return;
 
-        const { outcome, mobile } = await downloadImage(qrCodeUrl, filename);
+        const result = await downloadImage(qrCodeUrl, filename);
+        const { outcome, mobile } = result;
 
         // `dismissed` = share sheet cancelled, `failed` = the image only opened
         // in a new tab. Neither put a file on the device, so neither may claim
         // one did.
-        if (!mobile || outcome === 'dismissed' || outcome === 'failed') return;
+        if (outcome === 'dismissed' || outcome === 'failed') return;
+
+        onSaved?.(result);
+
+        if (!mobile) return;
 
         toastRef.current?.show({
             severity: 'success',

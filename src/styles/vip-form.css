@@ -1155,7 +1155,7 @@
 }
 
 /* Alternate (warm cream) background — this section follows the white
-   .event-detail-main, so it alternates per DESIGN_SYSTEM.md §8 to give the
+   .event-detail-main, so it alternates per docs/skills/ui-ux/DESIGN.md "Section background alternation" to give the
    page rhythm and let the white form card stand out. */
 .event-register-section {
     padding: 50px 0;
@@ -1180,7 +1180,7 @@
 }
 
 /* Card floats on the alternate background via elevation — NO border
-   (DESIGN_SYSTEM.md §8: cards on an alternate background use shadow, not a
+   (docs/skills/ui-ux/DESIGN.md "Section background alternation": cards on an alternate background use shadow, not a
    border). Layered ambient + soft gold glow matches the premium-glass-card feel. */
 .event-register-section .vip-form-container {
     border: none;
@@ -1872,7 +1872,7 @@
 
    Navy (not white) so it reads as a *different door* from the
    white form card below it, and so the cream section keeps its
-   light → dark → light alternation (DESIGN_SYSTEM.md §8/§9).
+   light → dark → light alternation (docs/skills/ui-ux/DESIGN.md "Section background alternation").
    Dark surface ⇒ white text + gold accents throughout.
    ------------------------------------------------------------ */
 
@@ -1999,10 +1999,10 @@
     box-shadow: 0 0 0 3px rgba(212, 168, 75, 0.4);
 }
 
-/* Gold + NAVY text — the canonical gold-surface rule (DESIGN.md). The old
+/* Gold + NAVY text — the canonical gold-surface rule (docs/skills/ui-ux/DESIGN.md). The old
    near-black fill would have disappeared into the navy panel. */
 /* No fixed height — vertical padding matches the input's 0.5rem so the pair
-   line up on the row's align-items (DESIGN.md button rule). */
+   line up on the row's align-items (docs/skills/ui-ux/DESIGN.md button rule). */
 .event-complete-continue {
     flex: 0 0 auto;
     display: inline-flex;
@@ -2051,7 +2051,7 @@
     line-height: 1.5;
 }
 
-/* Burgundy text can't sit directly on the navy panel (DESIGN.md: mid/dark tones
+/* Burgundy text can't sit directly on the navy panel (docs/skills/ui-ux/DESIGN.md: mid/dark tones
    on a dark surface). Give the message its own light chip so the error keeps
    its burgundy semantic at ~9:1 instead of being relit to an off-palette pink. */
 .event-complete-error {

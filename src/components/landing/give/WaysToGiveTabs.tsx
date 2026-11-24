@@ -135,7 +135,7 @@ function glideToLanding(targetId: string): () => void {
  * stay in the SSR HTML for SEO. This intentionally differs from
  * `ConnectTabs`, which conditionally mounts only the active panel.
  *
- * Tab-panel animation gotcha (see DESIGN_SYSTEM.md "Tab-panel animation
+ * Tab-panel animation gotcha (see docs/skills/ui-ux/DESIGN.md "Tab-panel animation
  * gotcha" + connect/NewLife.tsx): `ScrollAnimationProvider`'s
  * IntersectionObserver runs once on mount and unobserves each element after
  * its first intersection. Elements inside a `display:none` panel never
@@ -313,7 +313,7 @@ export const WaysToGiveTabs: React.FC<WaysToGiveTabsProps> = ({ detailsPanel, wh
         Both panels render always — visibility toggles via `hidden` only (SEO).
 
         `wtg-tab-panel--alternating` declares the house white/cream band rhythm
-        (DESIGN_SYSTEM.md §8 "Section Background Alternation": first section
+        (docs/skills/ui-ux/DESIGN.md "Section background alternation": first section
         white, then alternate) for each panel's direct `<section>` children.
         The alternation itself is painted in landing.css via CSS `nth-of-type`
         rather than by injecting classes into children here, because each

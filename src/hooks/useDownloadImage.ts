@@ -1,4 +1,6 @@
 import { useState, useCallback } from 'react';
+// Shared with the ways-to-give "Open app" button so both agree on the device.
+import { isMobileDevice } from '@/lib/mobile-platform';
 
 /**
  * How the image actually reached the user, so callers can confirm it honestly:
@@ -21,29 +23,6 @@ export interface ImageSaveResult {
    */
   mobile: boolean;
 }
-
-/**
- * Detect a real mobile / tablet device (touch phone, Android tablet, or iPad).
- * Desktop browsers — even ones that support the Web Share API (Safari/Edge on
- * macOS/Windows) — return false so they keep the normal file download.
- */
-const isMobileDevice = (): boolean => {
-  if (typeof navigator === 'undefined') return false;
-  const ua = navigator.userAgent || '';
-
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)) {
-    return true;
-  }
-
-  // iPadOS 13+ Safari reports a desktop ("Macintosh") UA — detect it via touch.
-  const isTouchMac =
-    /Macintosh/.test(ua) &&
-    typeof document !== 'undefined' &&
-    'ontouchend' in document &&
-    navigator.maxTouchPoints > 1;
-
-  return isTouchMac;
-};
 
 /** Classic blob/anchor download used on desktop (and as the mobile fallback). */
 const triggerAnchorDownload = (href: string, filename: string, newTab = false) => {

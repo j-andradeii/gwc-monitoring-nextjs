@@ -49,6 +49,8 @@ export const firstfruitsIntro =
   'to the Lord before anything else is spent. It is a prophetic act that sets the ' +
   'tone for the season ahead and invites God’s favor over everything that follows.';
 
+import type { PaymentApp } from '@/lib/payment-app-link';
+
 // Giving channel interface
 export interface GivingChannel {
   id: string;
@@ -60,6 +62,13 @@ export interface GivingChannel {
   instructions: string[];
   swiftCode?: string;
   qrCode?: string;
+  /**
+   * The channel's mobile app. When set, Ways to Give shows an "Open <name>"
+   * button once the QR has been saved on a phone (issue #323). Ids come from
+   * the apps' public store listings; see `src/lib/payment-app-link.ts` for why
+   * each scheme is opt-in.
+   */
+  app?: PaymentApp;
 }
 
 // Giving channels for Ways to Give
@@ -72,6 +81,14 @@ export const givingChannels: GivingChannel[] = [
     icon: 'pi pi-mobile',
     color: '#007DFE',
     qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/gcash.webp',
+    app: {
+      androidPackage: 'com.globe.gcash.android',
+      iosAppStoreId: '520020791',
+      // Undocumented; on Android a miss just falls back to the Play Store page.
+      androidScheme: 'gcash',
+      // iosScheme stays unset until `gcash://` is seen opening GCash from
+      // Safari on a real iPhone (spec 004, M003) — a miss there is a Safari error.
+    },
     instructions: [
       'Open your GCash app',
       'Tap "Send Money"',
@@ -88,6 +105,8 @@ export const givingChannels: GivingChannel[] = [
     icon: 'pi pi-building',
     color: '#A6192E',
     qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bpi.jpg',
+    // No confirmed scheme: the button opens the store page (shows "Open").
+    app: { androidPackage: 'com.bpi.ng.app', iosAppStoreId: '6443950982' },
     instructions: [
       'Log in to BPI Online or Mobile App',
       'Select "Transfer"',
@@ -104,6 +123,8 @@ export const givingChannels: GivingChannel[] = [
     icon: 'pi pi-credit-card',
     color: '#003087',
     qrCode: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/bdo.jpg',
+    // No confirmed scheme: the button opens the store page (shows "Open").
+    app: { androidPackage: 'ph.com.bdo.retail', iosAppStoreId: '1551584630' },
     instructions: [
       'Log in to BDO Online or Mobile App',
       'Select "Send Money"',

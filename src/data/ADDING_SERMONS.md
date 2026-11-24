@@ -18,6 +18,7 @@ gwc-monitoring-nextjs/src/data/sermons.ts
 interface Sermon {
   // Required fields
   id: string;
+  slug: string;
   title: string;
   speaker: string;
   date: string;
@@ -39,6 +40,7 @@ interface Sermon {
   isFeatured?: boolean;
   keyPoints?: string[];
   relatedSermons?: string[];
+  hideChurchName?: boolean;
 }
 ```
 
@@ -50,7 +52,8 @@ interface Sermon {
 
 | Field | Format | Example |
 |-------|--------|---------|
-| `id` | Unique string number | `'13'` (increment from last sermon) |
+| `id` | Unique string number | `'13'` (increment from last sermon; append the entry at the end of the array) |
+| `slug` | Unique kebab-case of the title | `'the-power-of-prayer'` (URL: `/sermon-notes/<slug>`) |
 | `title` | Title case | `'The Power of Prayer'` |
 | `speaker` | Full name with title | `'Ptr. Jim Baloran'` |
 | `date` | `YYYY-MM-DD` format | `'2026-02-08'` |
@@ -75,6 +78,7 @@ interface Sermon {
 | `isFeatured` | `true` only | Set on ONE sermon to feature it |
 | `keyPoints` | Array of strings | Main takeaways (legacy — prefer `keyTakeaways`) |
 | `relatedSermons` | Array of sermon IDs | `['1', '5', '8']` |
+| `hideChurchName` | `true` only | Guest / missionary speakers — drops the "· Gateway Church" suffix on the speaker card |
 
 ---
 
@@ -646,12 +650,11 @@ Before committing a new sermon:
 
 ## Current Series
 
-| Series Name | Description |
-|-------------|-------------|
-| Faith Foundation | Building a strong foundation of faith through biblical teaching and practical application. |
-| Covenant | Understanding the covenant relationship between God and His people. |
+Series names in `sermons.ts` (2026-11-21): `Faith Foundation`, `Covenant`, `Faithfulness`, `Vision`,
+`Worship`, `Life Series`, `Lifeclass Series`.
 
-When adding a new series, be consistent with `series` and `seriesDescription` across all sermons in that series.
+Copy `series` and `seriesDescription` verbatim from an existing sermon in that series (`getSermonsBySeries`).
+A new series name comes from the owner; keep it consistent across all sermons in that series.
 
 ---
 
