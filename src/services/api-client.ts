@@ -36,6 +36,11 @@ export interface FetchOptions extends Omit<RequestInit, 'body'> {
    * - 'api': external backend API (config.api.url)
    */
   target?: 'app' | 'api';
+  /**
+   * Where a failed session refresh sends the browser (default '/signin'). The platform admin portal passes
+   * '/platform-admin/signin' so its users land on their own sign-in page.
+   */
+  signInPath?: string;
 }
 
 interface RetryConfig {
@@ -165,7 +170,7 @@ const handleTokenRefresh = async (
   if (!success) {
     userStore.logout();
     if (typeof window !== 'undefined') {
-      window.location.href = '/signin';
+      window.location.href = retryConfig.options?.signInPath ?? '/signin';
     }
     throw {
       message: 'Session expired. Please login again.',
@@ -222,7 +227,7 @@ const makeRequest = async (
         const userStore = useUserStore.getState();
         userStore.logout();
         if (typeof window !== 'undefined') {
-          window.location.href = '/signin';
+          window.location.href = options?.signInPath ?? '/signin';
         }
       }
     }

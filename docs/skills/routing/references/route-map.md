@@ -24,6 +24,9 @@
 | `/ministries/serve` | `app/(public)/ministries/serve/page.tsx` | public | S | yes |
 | `/lyric-formatter` | `app/(public)/lyric-formatter/page.tsx` + `LyricFormatterClient.tsx` | public | C | no (tool) |
 | `/signin` | `app/(auth)/signin/page.tsx` | auth (noindex) | client page | no (robots disallow) |
+| `/platform-admin/signin` | `app/(auth)/platform-admin/signin/page.tsx` | auth (noindex) | client page | no (robots disallow) |
+| `/platform-admin` | `app/(protected)/platform-admin/page.tsx` (layout: `PlatformAdminGuard` + `PlatformAdminShell`) | protected (noindex) | A | no (robots disallow) |
+| `/platform-admin/tenants/[tenantId]` | `app/(protected)/platform-admin/tenants/[tenantId]/page.tsx` | protected | A | no |
 | `/church-campus-admin` | `app/(protected)/church-campus-admin/page.tsx` | protected (noindex, `AuthGuard`) | A | no (robots disallow) |
 | `/church-campus-admin/church-members` | `…/church-members/page.tsx` | protected | A | no |
 | `/church-campus-admin/church-members/men-network` | `…/men-network/layout.tsx` + `page.tsx` | protected | A | no |
@@ -50,7 +53,7 @@
 ## `ROUTES` (`src/core/constants.ts`)
 
 Existing pages: `HOME`, `SIGNIN`, `DASHBOARD` (`/church-campus-admin`), `CHURCH_MEMBERS`, `MEN_NETWORK`,
-`WOMEN_NETWORK`, `SERMON_NOTES`. Declared without a page (drift): `CHURCH_DETAIL`, `CHURCH_INFO`,
+`WOMEN_NETWORK`, `SERMON_NOTES`, `PLATFORM_ADMIN`, `PLATFORM_ADMIN_SIGNIN` (+ `platformAdminTenantRoute(id)`). Declared without a page (drift): `CHURCH_DETAIL`, `CHURCH_INFO`,
 `PASTORAL_STAFFS`, `CHURCH_CONFIG`, `CREATE_MEMBER`, `CHURCH_CAMPAIGNS`.
 
 ## Middleware

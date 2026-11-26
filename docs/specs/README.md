@@ -10,3 +10,4 @@ proven. The steps and templates are in `CLAUDE.md` ("Every task leaves a spec").
 | [003-admin-dashboard-refresh](003-admin-dashboard-refresh/spec.md) | Admin shell + dashboard refresh (clear, direct, theme-consistent); standing theme rule | none | Implemented with gaps | 2026-11-22 |
 | [004-open-payment-app](004-open-payment-app/spec.md) | Ways to Give: **Open GCash/BPI/BDO** button after saving a channel QR on a phone (issue Option C) | #323 | Implemented | 2026-11-24 |
 | [005-remove-ci-playwright-job](005-remove-ci-playwright-job/spec.md) | Deploy workflow: remove the Playwright test job so deploy runs on its own | none | Implemented | 2026-11-24 |
+| [006-platform-admin-portal](006-platform-admin-portal/spec.md) | Platform admin portal: own sign-in (platform admins only) + read-only tenant → church → campus directory | none | Awaiting verification | 2026-11-26 |

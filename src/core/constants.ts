@@ -68,7 +68,13 @@ export const ROUTES = {
   CREATE_MEMBER: '/church-campus-admin/church-members/create',
   CHURCH_CAMPAIGNS: '/church-campus-admin/church-campaigns',
   SERMON_NOTES: '/sermon-notes',
+  PLATFORM_ADMIN: '/platform-admin',
+  PLATFORM_ADMIN_SIGNIN: '/platform-admin/signin',
 } as const;
+
+/** Platform admin portal: one tenant's churches and campuses. */
+export const platformAdminTenantRoute = (tenantId: string) =>
+  `${ROUTES.PLATFORM_ADMIN}/tenants/${encodeURIComponent(tenantId)}`;
 
 // Pagination defaults
 export const PAGINATION = {

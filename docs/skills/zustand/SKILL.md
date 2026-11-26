@@ -1,8 +1,8 @@
 ---
 name: zustand
 description: |
-  Client state with Zustand 5 in gwc-monitoring-nextjs: the five stores (user, loading, sidebar,
-  breadcrumbs, connectFab), the State / Actions / Store type split, create<Store>()(persist(...)) with
+  Client state with Zustand 5 in gwc-monitoring-nextjs: the six stores (user, loading, sidebar,
+  breadcrumbs, connectFab, platformAdmin), the State / Actions / Store type split, create<Store>()(persist(...)) with
   createJSONStorage + partialize, exported selectors, getState() outside React, and one-shot "command"
   stores for sibling-to-sibling signals. Server data never goes in a store.
 
@@ -26,6 +26,7 @@ job (`api-client`). Local component state stays in `useState`.
 | `useSidebarStore` | `stores/sidebar.store.ts` | open / collapsed / mobile / expanded items | `sidebar-storage` → `isCollapsed` |
 | `useBreadcrumbsStore` | `stores/breadcrumbs.store.ts` | admin breadcrumb items + home | no |
 | `useConnectFabStore` | `stores/connectFab.store.ts` | one-shot request to open the Connect FAB on a tab | no |
+| `usePlatformAdminStore` | `stores/platform-admin.store.ts` | platform admin portal session flag (spec 006; no server data) | `platform-admin-storage` → `email`, `isAuthenticated` |
 
 ## Files in this skill
 

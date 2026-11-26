@@ -92,11 +92,11 @@ apiClient.get/post/put/patch/delete<T>(endpoint, [body], { target })
 
 | Path | What |
 |---|---|
-| `src/services/api-client.ts` | `apiClient` (`get`, `post`, `put`, `patch`, `delete`, `raw`), `ApiResponse<T>`, `ApiError`, `FetchOptions` (`target`, `skipEncryption`, `skipAuth`, `body`) |
+| `src/services/api-client.ts` | `apiClient` (`get`, `post`, `put`, `patch`, `delete`, `raw`), `ApiResponse<T>`, `ApiError`, `FetchOptions` (`target`, `skipEncryption`, `skipAuth`, `body`, `signInPath` — where a failed refresh sends the browser, default `/signin`) |
 | `src/lib/query-client.ts` | `queryClient` and its defaults |
 | `src/lib/query-keys.ts` | `QUERY_KEYS` |
 | `src/components/providers/QueryProvider.tsx` | `QueryClientProvider` + `ReactQueryDevtools`, mounted in `src/app/layout.tsx` |
-| `src/hooks/queries/` | `useMembers`, `useMember`, `useChurches`, `useChurchCampus`, `useChurchCampusStaffs` |
+| `src/hooks/queries/` | `useMembers`, `useMember`, `useChurches`, `useChurchCampus`, `useChurchCampusStaffs`, `usePlatformTenants` (portal; 403 → sign-out) |
 | `src/hooks/mutations/` | `useCreateMember`, `useCreateCellMember`, `useUpdateMember`, `useDeleteMember`, `useUpdateChurchCampus` |
 | `src/stores/loading.store.ts` | `useLoadingStore` (request counter) |
 | `src/components/ui/Toast.tsx` | `showSuccess`, `showError`, `showWarning`, `showInfo`, `ToastProvider` |

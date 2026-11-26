@@ -1,0 +1,404 @@
+/**
+ * Platform admin portal styles (/platform-admin)
+ *
+ * Builds on the admin surface: tokens from admin-layout.css (`.admin-layout`), header classes from admin.css and
+ * page parts from admin-dashboard.css. Only what the portal adds lives here, prefixed `platform-`.
+ * Theme: the admin's navy chrome + the one site gold; dark text (docs/skills/ui-ux/DESIGN.md "Admin surface").
+ */
+
+/* ─── Shell ─────────────────────────────────────────────────────────────────── */
+
+.platform-shell .platform-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+}
+
+.platform-main {
+  min-height: 100vh;
+  padding-top: var(--admin-header-height);
+}
+
+.platform-header-right {
+  gap: 12px;
+  min-width: 0;
+}
+
+.platform-header-email {
+  max-width: 260px;
+  overflow: hidden;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-contrast-light, #ffffff);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.platform-signout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--admin-gold-border);
+  border-radius: var(--admin-radius-control);
+  background: transparent;
+  color: var(--color-contrast-light, #ffffff);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--admin-transition-fast), border-color var(--admin-transition-fast);
+}
+
+.platform-signout:hover {
+  border-color: var(--admin-gold);
+  background: rgba(212, 168, 75, 0.14);
+}
+
+.platform-signout:focus-visible,
+.platform-tenant-row:focus-visible,
+.platform-back-link:focus-visible,
+.platform-search input:focus-visible {
+  outline: 2px solid var(--admin-gold);
+  outline-offset: 2px;
+}
+
+/* ─── Page ──────────────────────────────────────────────────────────────────── */
+
+.platform-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.platform-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.platform-back-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--admin-text-muted);
+  text-decoration: none;
+}
+
+.platform-back-link:hover {
+  color: var(--admin-gold-ink);
+}
+
+.platform-state-action {
+  margin-left: auto;
+}
+
+.platform-muted {
+  color: var(--admin-text-muted);
+}
+
+.platform-page code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--admin-tile);
+  color: var(--admin-text-body);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+/* ─── Search ────────────────────────────────────────────────────────────────── */
+
+.platform-panel-header {
+  align-items: center;
+}
+
+.platform-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 0 1 320px;
+  min-width: 0;
+}
+
+.platform-search .pi {
+  position: absolute;
+  left: 12px;
+  color: var(--admin-text-faint);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.platform-search input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px 10px 36px;
+  border: 1px solid var(--admin-border-mid);
+  border-radius: var(--admin-radius-control);
+  background: var(--admin-surface);
+  color: var(--admin-text-body);
+  font-family: inherit;
+  font-size: 16px; /* no iOS zoom */
+  font-weight: 500;
+}
+
+.platform-search input:focus {
+  border-color: var(--admin-gold);
+  box-shadow: 0 0 0 3px var(--admin-gold-soft);
+}
+
+/* ─── Tenant list ───────────────────────────────────────────────────────────── */
+
+.platform-tenant-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.platform-tenant-list li + li {
+  border-top: 1px solid var(--admin-border);
+}
+
+.platform-tenant-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  padding: 14px 20px;
+  color: var(--admin-text-body);
+  text-decoration: none;
+  transition: background var(--admin-transition-fast);
+}
+
+.platform-tenant-row:hover {
+  background: var(--admin-gold-soft);
+}
+
+.platform-tenant-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.platform-tenant-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.platform-tenant-name {
+  overflow: hidden;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--admin-text-heading);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.platform-tenant-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--admin-text-muted);
+}
+
+.platform-tenant-arrow {
+  color: var(--admin-text-faint);
+  font-size: 18px;
+}
+
+.platform-tenant-row:hover .platform-tenant-arrow {
+  color: var(--admin-gold-ink);
+}
+
+.platform-tenant-summary {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+/* ─── Status pill ───────────────────────────────────────────────────────────── */
+
+.platform-status {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.platform-status.is-active {
+  border-color: var(--color-success-light);
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--color-success-dark);
+}
+
+.platform-status.is-suspended {
+  border-color: var(--admin-gold-border);
+  background: var(--admin-gold-soft);
+  color: var(--admin-gold-ink);
+}
+
+.platform-status.is-archived {
+  border-color: var(--admin-border-mid);
+  background: var(--admin-tile);
+  color: var(--admin-text-muted);
+}
+
+/* ─── Churches and campuses ─────────────────────────────────────────────────── */
+
+.platform-church-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.platform-church .admin-dash-panel-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-church-glyph {
+  color: var(--admin-gold-ink);
+  font-size: 15px;
+}
+
+.platform-campus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 18px 20px 20px;
+  list-style: none;
+}
+
+.platform-campus {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--admin-border);
+  border-top: 3px solid var(--admin-gold);
+  border-radius: 12px;
+  background: var(--admin-surface);
+}
+
+.platform-campus-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.platform-campus-type {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--admin-gold-fill);
+  color: var(--admin-on-gold);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.platform-campus-ref {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--admin-text-muted);
+}
+
+.platform-campus-tagline {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--admin-text-heading);
+}
+
+.platform-campus-description {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--admin-text-body);
+}
+
+.platform-campus-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--admin-border);
+  font-size: 13px;
+}
+
+.platform-campus-details dt {
+  font-weight: 600;
+  color: var(--admin-text-muted);
+}
+
+.platform-campus-details dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+  color: var(--admin-text-body);
+}
+
+/* ─── Small screens ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .platform-header-email {
+    display: none;
+  }
+
+  .platform-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .platform-panel-header .platform-search {
+    flex: 1 1 100%;
+  }
+
+  .platform-tenant-row {
+    padding: 14px 16px;
+  }
+
+  .platform-campus-grid {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px;
+  }
+
+  .platform-state .admin-dash-empty-state {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .platform-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .platform-signout,
+  .platform-tenant-row {
+    transition: none;
+  }
+}

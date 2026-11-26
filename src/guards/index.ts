@@ -10,3 +10,5 @@ export {
 } from './AuthGuard';
 
 export type { AuthGuardProps } from './AuthGuard';
+
+export { PlatformAdminGuard } from './PlatformAdminGuard';

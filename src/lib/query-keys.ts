@@ -19,6 +19,9 @@ export const QUERY_KEYS = {
   // Auth
   self: () => ['self'],
 
+  // Platform admin portal (read-only directory)
+  platformTenants: () => ['platform', 'tenants'],
+
   // Lyrics (LRCLIB)
   lyricsSearch: (params: Record<string, string>) => ['lyrics', 'search', params],
   lyricsIdentify: (lyrics: string) => ['lyrics', 'identify', lyrics],

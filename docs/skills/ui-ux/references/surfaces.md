@@ -14,6 +14,7 @@ Each surface has its own stylesheet and class prefix. Stay inside the prefix whe
 | `src/styles/admin-layout.css` | `components/layout/AdminLayout.tsx` | admin tokens, scaffold, breadcrumbs, footer |
 | `src/styles/admin.css` | `components/layout/Header.tsx` | admin header + user menu |
 | `src/styles/admin-sidebar.css` | `components/layout/Sidebar.tsx` | admin sidebar + mobile drawer |
+| `src/styles/platform-admin.css` | `components/platform-admin/PlatformAdminShell.tsx` | platform admin portal (`platform-` prefix, on the admin tokens; spec 006) |
 | `src/styles/admin-dashboard.css` | `church-campus-admin/page.tsx`, `components/admin/*` | admin page content |
 | `src/components/forms/styles/form-input.css` | every `Form*` component | form fields |
 | `src/components/landing/styles/poster-hero.css` | `PosterHero.tsx` | poster hero |
@@ -140,3 +141,13 @@ in spec 003).
 - Legacy `.sidebar` / `.main-content` / `.header` utilities in `globals.css` (collapse to `margin-left: 0`
   ≤ 1024px) and `.sidebar-container .section-label { color: #000 !important }` belong to the older sidebar and are
   unused by the admin shell.
+
+## Platform admin portal (`platform-admin.css`, prefix `platform-`; spec 006)
+
+Same language as the admin: `.admin-layout` root (tokens), `.admin-header` chrome with wordmark kicker "Platform
+Admin", no sidebar. `.platform-header-email` (white, hidden ≤ 768px), `.platform-signout` (outline on chrome, gold
+border, 44px). Page parts reuse `AdminPageHeader`, `.admin-dash-stats-grid` (`.platform-stats`: 3 columns, 1 ≤ 420px),
+`.admin-dash-panel`, `.admin-dash-empty-state`. Portal-only: `.platform-search` (16px input, gold focus ring),
+`.platform-tenant-row` (gold-soft hover, `--admin-gold-fill` initial tile with white letter), `.platform-status`
+(`is-active` success tokens, `is-suspended` gold-soft + gold-ink, `is-archived` tile + muted), `.platform-campus`
+(3px gold top border; `.platform-campus-type` gold fill + white), `.platform-back-link`. Sign-in reuses `signin.css`.

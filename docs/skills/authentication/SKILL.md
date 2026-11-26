@@ -81,6 +81,7 @@ Header "Logout" ─▶ authService.logout: POST {api}/auth/logout (API clears co
 
 | Path | What |
 |---|---|
+| `src/services/platform-admin.service.ts`, `src/stores/platform-admin.store.ts`, `src/guards/PlatformAdminGuard.tsx`, `src/app/(auth)/platform-admin/signin/page.tsx` | platform admin portal session (spec 006; `references/auth-flow.md` "Platform admin portal") — separate from `useUserStore` |
 | `src/services/auth.service.ts` | `authenticate`, `getSelf`, `logout`, `isAuthenticated`, `getUserRole`, `hasRole`, `authService` |
 | `src/stores/user.store.ts` | `useUserStore` (persisted as `user-storage`), `SelfInformationDto`/`ChurchCampusStaffDto`/`MemberDto` (duplicated in `models`), selectors |
 | `src/hooks/useAuth.ts` | `useAuth`, `useRequireAuth`, `useRedirectIfAuthenticated` |

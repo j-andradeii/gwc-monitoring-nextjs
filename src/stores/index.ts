@@ -7,3 +7,4 @@ export * from './loading.store';
 export * from './breadcrumbs.store';
 export * from './sidebar.store';
 export * from './connectFab.store';
+export * from './platform-admin.store';

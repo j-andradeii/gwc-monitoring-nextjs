@@ -68,3 +68,22 @@ state) → `window.location.href = '/signin'`.
 `ChurchRole` (`models/enums`): `STAFF`, `MEMBER`, `PASTOR`, `SENIOR_PASTOR`, `PRIMARY`.
 `useAuth`: `isStaffOrAbove` = STAFF/PASTOR/SENIOR_PASTOR · `isPastorOrAbove` = PASTOR/SENIOR_PASTOR ·
 `isSeniorPastor` = SENIOR_PASTOR.
+
+## Platform admin portal (spec 006)
+
+A second, separate session flow for `/platform-admin` (platform admins of the API only):
+
+1. `/platform-admin/signin` clears `usePlatformAdminStore` on mount, validates with `loginSchema`.
+2. `platformAdminService.signIn`: `encrypt(password)` → `POST {api}/auth` → `GET {api}/platform/tenants`
+   (`PlatformAdminGuard` on the API). 200 → result cached under `QUERY_KEYS.platformTenants()`, store
+   `setSignedIn(email)` → `router.replace(ROUTES.PLATFORM_ADMIN)`. 403 (at login or on the check) → `POST
+   auth/logout`, store cleared, "This account does not have platform admin access."; anything else → the generic
+   "We could not sign you in…". `/self` is never called (a platform admin may have no church profile).
+3. `(protected)/platform-admin/layout.tsx`: `<PlatformAdminGuard>` (store flag, `useSyncExternalStore` for
+   hydration; none → `router.replace('/platform-admin/signin')`) + `<PlatformAdminShell>`.
+4. A 403 from `usePlatformTenants` later → `platformAdminService.signOut()`; a 401 → `apiClient` with
+   `signInPath: '/platform-admin/signin'`. Header "Sign out" → `signOut()` (logout API, store cleared, full
+   navigation to the portal sign-in).
+
+Storage key `platform-admin-storage` → `{ email, isAuthenticated }`. Both admins share the API's cookies: signing
+into one replaces the other's session in the same browser.

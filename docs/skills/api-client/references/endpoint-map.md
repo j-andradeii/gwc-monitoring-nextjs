@@ -59,3 +59,11 @@ No caller in `src/`: `app/api/inquiry/sod-enrollment/route.ts` (older SOD inquir
 | `self()` | `['self']` | reserved (`/self` goes through `auth.service`, not a query) |
 | `lyricsSearch(params)` | `['lyrics', 'search', params]` | `LyricFormatterClient` |
 | `lyricsIdentify(lyrics)` | `['lyrics', 'identify', lyrics]` | `LyricFormatterClient` |
+
+## Platform admin portal (spec 006)
+
+| Hook / call | Endpoint | Service route | Key |
+|---|---|---|---|
+| `usePlatformTenants`, `platformAdminService.fetchPlatformTenants` | `GET platform/tenants` (`target: 'api'`, `signInPath: '/platform-admin/signin'`) | `GET /api/v1/platform/tenants` (JWT + PlatformAdminGuard; service spec 020) | `QUERY_KEYS.platformTenants()` → `['platform', 'tenants']` |
+| `platformAdminService.signIn` | `POST auth`, then `GET platform/tenants` | `POST /api/v1/auth` | sets `platformTenants()` data |
+| `platformAdminService.signOut` | `POST auth/logout` | `POST /api/v1/auth/logout` | removes `platformTenants()` |
