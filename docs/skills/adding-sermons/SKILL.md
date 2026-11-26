@@ -42,7 +42,7 @@ entry; this skill is the short version, the rules that are easy to break, and th
 2. **Scripture text is the real NKJV text, looked up — never from the notes and never from memory.** Fetch each
    reference (WebSearch / a Bible site) and copy it; keep the order the sermon cites them. If a verse can't be
    verified, stop and say so (a gap line), don't approximate. *Why:* a misquoted verse is worse than a missing one.
-3. **`id` is the next number as a string** (one more than the highest `id`, currently `'45'`) and the entry is
+3. **`id` is the next number as a string** (one more than the highest `id`, currently `'46'`) and the entry is
    **appended at the end** of the array. **`slug`** is the kebab-case title, unique. *Why:* related-sermon links
    use ids; URLs use slugs; both must be unique.
 4. **Required fields:** `id`, `slug`, `title`, `speaker` (with title: `'Ptr. Jim Baloran'`), `date`
@@ -55,7 +55,7 @@ entry; this skill is the short version, the rules that are easy to break, and th
    embed URL (`src/lib/youtube.ts` does that), never invent one, one per sermon. *Why:* the hero thumbnail plays
    it in a lightbox and the page emits `VideoObject` JSON-LD.
 7. **Only one sermon has `isFeatured: true`.** Moving the flag means removing it from the current one (today:
-   id `'45'`). *Why:* `getFeaturedSermon` returns the first match.
+   id `'46'`). *Why:* `getFeaturedSermon` returns the first match.
 8. **Guest / missionary speakers get `hideChurchName: true`.** *Why:* drops the "· Gateway Church" suffix.
 9. **Modern Reader fields are opt-in and only from source structure**: `sections` (with `unnumbered: true` on
    Introduction / Context so teaching points start at `01`), `subItems` for lettered sub-points, `callout` only
