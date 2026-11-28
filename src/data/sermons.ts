@@ -11472,7 +11472,7 @@ Meet Him personally. Remain in His presence. Be transformed, and serve with purp
     duration: '45 min',
     series: 'Vision',
     seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
-    isFeatured: true,
+    isFeatured: false,
     excerpt: 'A lasting spiritual legacy is not built through occasional religious activities but through a life of consistent devotion to God.',
 
     description: `**BUILDING A GENERATIONAL LEGACY IN THE DAILY RHYTHMS OF HOME**
@@ -11813,6 +11813,249 @@ The legacy you leave is not only what you give your children, but also the faith
         kicker: 'The Ripple Effect',
         verse: '2 Timothy 1:5',
         text: 'When I call to remembrance the genuine faith that is in you, which dwelt first in your grandmother Lois and your mother Eunice, and I am persuaded is in you also.',
+      },
+    ],
+  },
+  {
+    id: '46',
+    slug: 'wanted-weavers-investors-and-dreamers',
+    title: 'Wanted: Weavers, Investors, and Dreamers',
+    speaker: 'Ptr. Jim Baloran',
+    speakerRole: 'senior pastor',
+    date: '2026-11-22',
+    duration: '45 min',
+    series: 'Vision',
+    seriesDescription: 'Building a strong foundation of faith through biblical teaching and practical application.',
+    isFeatured: true,
+    excerpt: 'Thanksgiving is not reserved for the moments when everything goes right. True gratitude is not determined by our circumstances but by what we know about God and what we believe He has promised.',
+
+    description: `**WANTED: WEAVERS, INVESTORS, AND DREAMERS**
+
+(Living with Gratitude, Purpose, and Eternity in View)
+
+Key Text: 2 Corinthians 4:13–18
+
+---
+
+**INTRODUCTION: A LIFE ANCHORED IN GRATITUDE**
+
+Thanksgiving is not reserved for the moments when everything goes right. True gratitude is not determined by our circumstances but by what we know about God and what we believe He has promised.
+
+In 2 Corinthians 4:13–18, Paul reminds us that even in the middle of hardship, we have reasons to remain thankful. Our faith looks beyond what is happening around us and holds on to the eternal promises of God.
+
+To remain spiritually vibrant and genuinely thankful, we are called to become **weavers, investors, and dreamers**—people who build through faith, invest in others, and live with eternity in view.
+
+Sometimes, we need to remind our own souls of God's truth. We must anchor our thanksgiving in what He has done, what He is doing, and what He has promised to do.
+
+---
+
+**1. WEAVERS: CRAFTING TOMORROW'S TAPESTRY THROUGH FAITH AND DELIVERANCE** (2 Corinthians 4:13–14)
+
+Paul declares that he believes and therefore speaks. His gratitude was rooted in faith, not in favorable circumstances.
+
+Like a weaver carefully putting threads together, every small act of faith, obedience, and thanksgiving becomes part of what God is doing in our lives.
+
+We must remember God's past faithfulness and deliverance. Our testimonies remind us of what He has brought us through and give us courage to trust Him for what lies ahead.
+
+The Holy Spirit was not given merely for us to have a good time or enjoy spiritual experiences. He empowers us for service and equips us for the harvest.
+
+When we focus only on our circumstances, gratitude becomes difficult. But when we remember God's faithfulness, we find reasons to remain thankful even in difficult seasons.
+
+Every act of faith is another thread in the story God is weaving through our lives.
+
+---
+
+**2. INVESTORS: POURING INTO ETERNAL SOULS FOR A HARVEST OF THANKSGIVING** (2 Corinthians 4:15)
+
+Paul reminds us that God's grace reaches more and more people, causing thanksgiving to overflow to the glory of God.
+
+This teaches us that our lives are not meant to revolve around ourselves. We are called to invest in people and recognize the eternal value of every soul.
+
+The church is like a fireplace—a place where people are gathered, strengthened, and kept spiritually alive. But what we receive within the church should also inspire us to reach and serve others.
+
+Investing in people means giving our time, encouragement, prayers, and resources to help others grow in their relationship with God.
+
+As grace reaches more lives, thanksgiving multiplies. Our greatest investment is not simply in what we accumulate but in the lives we influence for eternity.
+
+Invest in people, because every soul carries eternal worth.
+
+---
+
+**3. DREAMERS: ANCHORING PRESENT GRATITUDE IN UNSEEN ETERNITY** (2 Corinthians 4:16–18)
+
+Paul encourages us not to lose heart because although our outward selves are wasting away, our inner selves are being renewed day by day.
+
+Our lives are a countdown. We are reminded to live intentionally, knowing that our time on earth is limited. This does not mean living carelessly or fearfully, but making every day count for what truly matters.
+
+Paul teaches us to look beyond temporary troubles and fix our eyes on the eternal glory that is ahead. What we see is temporary, but what we cannot see is eternal.
+
+This means we must put our trust in God's unseen promises and allow eternity to reorder our priorities.
+
+We should live responsibly in the present while remaining responsive to eternity. Not everything that demands our attention today will matter forever.
+
+What is eternally useless should not become the priority of our lives.
+
+God is renewing us day by day, and that truth gives us hope to keep going, keep serving, and keep dreaming beyond our present circumstances.
+
+---
+
+**KEY TAKEAWAYS**
+
+- Thanksgiving is not reserved for the days when everything goes right.
+- True gratitude is anchored in faith, not circumstances.
+- We must remind our souls of God's Word and remember His past faithfulness.
+- The Holy Spirit empowers us for service and the harvest.
+- Every small act of faith and obedience contributes to the story God is weaving.
+- We are called to invest in people's lives because every soul has eternal worth.
+- The church is a place where we are strengthened so we can also strengthen others.
+- Our inner selves are being renewed by God day by day.
+- Life is a countdown; we must live intentionally and keep eternity in view.
+- Put your trust in God's promises, even when you cannot yet see them.
+
+"Anchor your thanksgiving in what God has done, what He is doing, and what He has promised."
+
+---
+
+**CALL TO ACTION:**
+
+This week, challenge yourself to live as a weaver, an investor, and a dreamer:
+
+- **Be a Weaver:** Choose faith over circumstances. Remember God's past deliverance and let your testimony strengthen your trust in Him.
+- **Be an Investor:** Intentionally invest in someone's life through encouragement, prayer, service, or sharing the Gospel.
+- **Be a Dreamer:** Look beyond temporary struggles and make decisions with eternity in mind.
+- **Renew Your Mind:** Remind your soul of God's promises through His Word, especially when gratitude feels difficult.
+- **Live Intentionally:** Treat each day as an opportunity to honor God and make a lasting difference.
+
+Do not allow temporary circumstances to steal your gratitude or distract you from your eternal purpose.
+
+Keep weaving through faith, keep investing in people, and keep dreaming with eternity in view.`,
+
+    tags: ['Thanksgiving', 'Gratitude', 'Faith', 'Eternity', 'Vision'],
+    image: 'https://gtxngthtpisigkys.public.blob.vercel-storage.com/sermon/wanted_dreamers_weavers_investors.webp',
+    scriptures: [
+      {
+        verse: '2 Corinthians 4:13–14',
+        text: 'And since we have the same spirit of faith, according to what is written, "I believed and therefore I spoke," we also believe and therefore speak, knowing that He who raised up the Lord Jesus will also raise us up with Jesus, and will present us with you.',
+      },
+      {
+        verse: '2 Corinthians 4:15',
+        text: 'For all things are for your sakes, that grace, having spread through the many, may cause thanksgiving to abound to the glory of God.',
+      },
+      {
+        verse: '2 Corinthians 4:16–18',
+        text: 'Therefore we do not lose heart. Even though our outward man is perishing, yet the inward man is being renewed day by day. For our light affliction, which is but for a moment, is working for us a far more exceeding and eternal weight of glory, while we do not look at the things which are seen, but at the things which are not seen. For the things which are seen are temporary, but the things which are not seen are eternal.',
+      },
+    ],
+    keyPoints: [
+      "Weavers: Crafting Tomorrow's Tapestry Through Faith and Deliverance",
+      'Investors: Pouring Into Eternal Souls for a Harvest of Thanksgiving',
+      'Dreamers: Anchoring Present Gratitude in Unseen Eternity',
+    ],
+    relatedSermons: ['45', '42'],
+    keyVerse: '2 Corinthians 4:13–18',
+    sections: [
+      {
+        id: 'sec-intro',
+        kicker: 'Introduction',
+        title: 'A Life Anchored in Gratitude',
+        unnumbered: true,
+        paragraphs: [
+          '*Living with Gratitude, Purpose, and Eternity in View*',
+          '**Key Text: 2 Corinthians 4:13–18**',
+          'Thanksgiving is not reserved for the moments when everything goes right. True gratitude is not determined by our circumstances but by what we know about God and what we believe He has promised.',
+          'In 2 Corinthians 4:13–18, Paul reminds us that even in the middle of hardship, we have reasons to remain thankful. Our faith looks beyond what is happening around us and holds on to the eternal promises of God.',
+          'To remain spiritually vibrant and genuinely thankful, we are called to become **weavers, investors, and dreamers**—people who build through faith, invest in others, and live with eternity in view.',
+          "Sometimes, we need to remind our own souls of God's truth. We must anchor our thanksgiving in what He has done, what He is doing, and what He has promised to do.",
+        ],
+      },
+      {
+        id: 'sec-weavers',
+        kicker: 'Weavers',
+        title: "Crafting Tomorrow's Tapestry Through Faith and Deliverance",
+        paragraphs: [
+          '**2 Corinthians 4:13–14**',
+          'Paul declares that he believes and therefore speaks. His gratitude was rooted in faith, not in favorable circumstances.',
+          'Like a weaver carefully putting threads together, every small act of faith, obedience, and thanksgiving becomes part of what God is doing in our lives.',
+          "We must remember God's past faithfulness and deliverance. Our testimonies remind us of what He has brought us through and give us courage to trust Him for what lies ahead.",
+          'The Holy Spirit was not given merely for us to have a good time or enjoy spiritual experiences. He empowers us for service and equips us for the harvest.',
+          "When we focus only on our circumstances, gratitude becomes difficult. But when we remember God's faithfulness, we find reasons to remain thankful even in difficult seasons.",
+        ],
+        callout: 'Every act of faith is another thread in the story God is weaving through our lives.',
+      },
+      {
+        id: 'sec-investors',
+        kicker: 'Investors',
+        title: 'Pouring Into Eternal Souls for a Harvest of Thanksgiving',
+        paragraphs: [
+          '**2 Corinthians 4:15**',
+          "Paul reminds us that God's grace reaches more and more people, causing thanksgiving to overflow to the glory of God.",
+          'This teaches us that our lives are not meant to revolve around ourselves. We are called to invest in people and recognize the eternal value of every soul.',
+          'The church is like a fireplace—a place where people are gathered, strengthened, and kept spiritually alive. But what we receive within the church should also inspire us to reach and serve others.',
+          'Investing in people means giving our time, encouragement, prayers, and resources to help others grow in their relationship with God.',
+          'As grace reaches more lives, thanksgiving multiplies. Our greatest investment is not simply in what we accumulate but in the lives we influence for eternity.',
+        ],
+        callout: 'Invest in people, because every soul carries eternal worth.',
+      },
+      {
+        id: 'sec-dreamers',
+        kicker: 'Dreamers',
+        title: 'Anchoring Present Gratitude in Unseen Eternity',
+        paragraphs: [
+          '**2 Corinthians 4:16–18**',
+          'Paul encourages us not to lose heart because although our outward selves are wasting away, our inner selves are being renewed day by day.',
+          'Our lives are a countdown. We are reminded to live intentionally, knowing that our time on earth is limited. This does not mean living carelessly or fearfully, but making every day count for what truly matters.',
+          'Paul teaches us to look beyond temporary troubles and fix our eyes on the eternal glory that is ahead. What we see is temporary, but what we cannot see is eternal.',
+          "This means we must put our trust in God's unseen promises and allow eternity to reorder our priorities.",
+          'We should live responsibly in the present while remaining responsive to eternity. Not everything that demands our attention today will matter forever.',
+          'God is renewing us day by day, and that truth gives us hope to keep going, keep serving, and keep dreaming beyond our present circumstances.',
+        ],
+        callout: 'What is eternally useless should not become the priority of our lives.',
+      },
+      {
+        id: 'sec-call-to-action',
+        kicker: 'Call to Action',
+        title: 'Call to Action',
+        unnumbered: true,
+        paragraphs: [
+          'This week, challenge yourself to live as a weaver, an investor, and a dreamer:',
+          "**Be a Weaver:** Choose faith over circumstances. Remember God's past deliverance and let your testimony strengthen your trust in Him.",
+          "**Be an Investor:** Intentionally invest in someone's life through encouragement, prayer, service, or sharing the Gospel.",
+          '**Be a Dreamer:** Look beyond temporary struggles and make decisions with eternity in mind.',
+          "**Renew Your Mind:** Remind your soul of God's promises through His Word, especially when gratitude feels difficult.",
+          '**Live Intentionally:** Treat each day as an opportunity to honor God and make a lasting difference.',
+          'Do not allow temporary circumstances to steal your gratitude or distract you from your eternal purpose.',
+          'Keep weaving through faith, keep investing in people, and keep dreaming with eternity in view.',
+        ],
+        callout: 'Anchor your thanksgiving in what God has done, what He is doing, and what He has promised.',
+      },
+    ],
+    keyTakeaways: [
+      'Thanksgiving is not reserved for the days when everything goes right.',
+      'True gratitude is anchored in faith, not circumstances.',
+      "We must remind our souls of God's Word and remember His past faithfulness.",
+      'The Holy Spirit empowers us for service and the harvest.',
+      'Every small act of faith and obedience contributes to the story God is weaving.',
+      "We are called to invest in people's lives because every soul has eternal worth.",
+      'The church is a place where we are strengthened so we can also strengthen others.',
+      'Our inner selves are being renewed by God day by day.',
+      'Life is a countdown; we must live intentionally and keep eternity in view.',
+      "Put your trust in God's promises, even when you cannot yet see them.",
+    ],
+    scriptureGroups: [
+      {
+        kicker: 'Weavers',
+        verse: '2 Corinthians 4:13–14',
+        text: 'And since we have the same spirit of faith, according to what is written, "I believed and therefore I spoke," we also believe and therefore speak, knowing that He who raised up the Lord Jesus will also raise us up with Jesus, and will present us with you.',
+      },
+      {
+        kicker: 'Investors',
+        verse: '2 Corinthians 4:15',
+        text: 'For all things are for your sakes, that grace, having spread through the many, may cause thanksgiving to abound to the glory of God.',
+      },
+      {
+        kicker: 'Dreamers',
+        verse: '2 Corinthians 4:16–18',
+        text: 'Therefore we do not lose heart. Even though our outward man is perishing, yet the inward man is being renewed day by day. For our light affliction, which is but for a moment, is working for us a far more exceeding and eternal weight of glory, while we do not look at the things which are seen, but at the things which are not seen. For the things which are seen are temporary, but the things which are not seen are eternal.',
       },
     ],
   },
