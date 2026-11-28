@@ -38,6 +38,10 @@ missing/invalid JWT: 401 `error: 'Unauthorized'`; refresh failures: 400 `Refresh
 4. `getSelf` → `GET {api}/self` → `storage.set('AUTHENTICATED_USER', …)` + `setUserInfo(data)` → `true`.
 5. `router.push(returnUrl)` where `returnUrl` is the `?returnUrl=` param only if it starts with `/` and not `//`.
 6. Failure → `authenticate` throws `Error(message)` → page shows "We could not sign you in…".
+7. 429 (6th attempt in a minute) → `authenticate` rethrows the `ApiError` (`status`, `retryAfter` from
+   `Retry-After`, which the API exposes through CORS) → page shows "Too many sign-in attempts. Please wait N
+   seconds…", counts down and disables the form; no readable header → `CONST.LOGIN_RETRY_FALLBACK_SECONDS` (60)
+   (spec 007).
 
 **Guarded page** (`guards/AuthGuard.tsx`)
 1. If store has no user but `AUTHENTICATED_USER` exists → hydrate the store from it.

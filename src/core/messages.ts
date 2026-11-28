@@ -19,6 +19,7 @@ export const Messages = {
   MESSAGE_EXPIREED_REFRESH_TOKEN: 'Your session has expired. Please login again.',
   MESSAGE_INVALID_CREDENTIALS: 'Invalid email or password.',
   MESSAGE_UNAUTHORIZED: 'You are not authorized to access this resource.',
+  MESSAGE_TOO_MANY_SIGNIN_ATTEMPTS: 'Too many sign-in attempts.',
 
   // Generic messages
   MESSAGE_GENERIC_ERROR: 'Something went wrong. Please try again.',

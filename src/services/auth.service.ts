@@ -5,10 +5,10 @@
  * Uses httpOnly cookies for token management (set by backend)
  */
 
-import { apiClient } from './api-client';
+import { apiClient, type ApiError } from './api-client';
 import { useUserStore } from '@/stores/user.store';
 import { encrypt } from '@/core/crypto';
-import { CONST } from '@/core/constants';
+import { CONST, HTTP_STATUS } from '@/core/constants';
 import { storage } from '@/core/local-storage';
 import { Messages } from '@/core/messages';
 import {
@@ -44,6 +44,11 @@ export const authenticate = async (
 
     return false;
   } catch (error) {
+    // Rate limited: keep status + retryAfter so the sign-in page can show how long to wait
+    if ((error as ApiError)?.status === HTTP_STATUS.TOO_MANY_REQUESTS) {
+      throw error;
+    }
+
     const errorMessage =
       (error as { message?: string })?.message || Messages.MESSAGE_INVALID_CREDENTIALS;
 

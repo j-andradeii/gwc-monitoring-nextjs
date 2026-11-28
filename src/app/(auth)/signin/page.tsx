@@ -6,7 +6,7 @@
 
 'use client';
 
-import React, { useState, Suspense } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,15 +19,37 @@ import { ToastProvider } from '@/components/ui/Toast';
 import { Spinner } from '@/components/ui/Spinner';
 import { useAuth, useRedirectIfAuthenticated } from '@/hooks/useAuth';
 import { loginSchema, type LoginFormData } from '@/models/schemas/auth.schema';
-import { ROUTES } from '@/core/constants';
+import { CONST, HTTP_STATUS, ROUTES } from '@/core/constants';
+import { Messages } from '@/core/messages';
+import type { ApiError } from '@/services/api-client';
 import '@/styles/landing.css';
 import '@/styles/signin.css';
+
+/** "1 second" / "42 seconds" for the rate-limit notice. */
+const formatWait = (seconds: number): string => `${seconds} second${seconds === 1 ? '' : 's'}`;
 
 function SigninForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login, isLoading } = useAuth();
   const [loginError, setLoginError] = useState<string | null>(null);
+  // 429 from the API: the wait it asked for (null = not waiting) and the live countdown
+  const [waitSeconds, setWaitSeconds] = useState<number | null>(null);
+  const [secondsLeft, setSecondsLeft] = useState(0);
+  const isWaiting = waitSeconds !== null;
+
+  // Counts down from an end time, not by decrementing, so a throttled background tab stays accurate.
+  // The clock is read here because render must stay pure.
+  useEffect(() => {
+    if (waitSeconds === null) return;
+    const retryUntil = Date.now() + waitSeconds * 1000;
+    const timer = window.setInterval(() => {
+      const left = Math.max(0, Math.ceil((retryUntil - Date.now()) / 1000));
+      setSecondsLeft(left);
+      if (left === 0) setWaitSeconds(null);
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [waitSeconds]);
 
   /**
    * SUBSCRIBES TO AUTH STATE CHANGES
@@ -56,7 +78,14 @@ function SigninForm() {
   } = methods;
   const scrollToError = useScrollToFirstError();
 
+  const startWait = (seconds: number) => {
+    setLoginError(null);
+    setSecondsLeft(seconds);
+    setWaitSeconds(seconds);
+  };
+
   const onSubmit = async (data: LoginFormData) => {
+    if (isWaiting) return;
     setLoginError(null);
 
     try {
@@ -67,7 +96,13 @@ function SigninForm() {
       } else {
         setLoginError('Invalid email or password. Please try again.');
       }
-    } catch {
+    } catch (error) {
+      const apiError = error as ApiError;
+      if (apiError?.status === HTTP_STATUS.TOO_MANY_REQUESTS) {
+        // No readable Retry-After (e.g. CORS didn't expose it) → the API's login throttle window
+        startWait(apiError.retryAfter ?? CONST.LOGIN_RETRY_FALLBACK_SECONDS);
+        return;
+      }
       setLoginError('We could not sign you in. Please check your details and try again.');
     }
   };
@@ -135,6 +170,19 @@ function SigninForm() {
             <p>Use your Gateway Church account to continue.</p>
           </div>
 
+          {isWaiting && (
+            <div className="signin-error" role="alert">
+              <i className="pi pi-clock" aria-hidden="true"></i>
+              {/* Announced once with the starting wait; the ticking copy is hidden so it isn't re-read every second */}
+              <span className="sr-only">
+                {Messages.MESSAGE_TOO_MANY_SIGNIN_ATTEMPTS} Please wait {formatWait(waitSeconds ?? 0)} before trying again.
+              </span>
+              <span aria-hidden="true">
+                {Messages.MESSAGE_TOO_MANY_SIGNIN_ATTEMPTS} Please wait {formatWait(secondsLeft)} before trying again.
+              </span>
+            </div>
+          )}
+
           {loginError && (
             <div className="signin-error" role="alert" aria-live="assertive">
               <i className="pi pi-exclamation-circle" aria-hidden="true"></i>
@@ -150,7 +198,7 @@ function SigninForm() {
                   label="Email"
                   placeholder="you@example.com"
                   showRequired
-                  displayDisabled={isSubmitting || isLoading}
+                  displayDisabled={isSubmitting || isLoading || isWaiting}
                 />
               </div>
 
@@ -160,7 +208,7 @@ function SigninForm() {
                   label="Password"
                   placeholder="Enter your password"
                   showRequired
-                  displayDisabled={isSubmitting || isLoading}
+                  displayDisabled={isSubmitting || isLoading || isWaiting}
                   feedback={false}
                 />
               </div>
@@ -178,9 +226,14 @@ function SigninForm() {
               <button
                 type="submit"
                 className="signin-submit landing-btn landing-btn-primary"
-                disabled={isSubmitting || isLoading}
+                disabled={isSubmitting || isLoading || isWaiting}
               >
-                {isSubmitting || isLoading ? (
+                {isWaiting ? (
+                  <>
+                    <i className="pi pi-clock" aria-hidden="true"></i>
+                    <span>Try again in {secondsLeft}s</span>
+                  </>
+                ) : isSubmitting || isLoading ? (
                   <>
                     <i className="pi pi-spin pi-spinner"></i>
                     <span>Signing in...</span>

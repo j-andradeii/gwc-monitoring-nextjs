@@ -24,6 +24,8 @@ export interface ApiError {
   status?: number;
   statusText?: string;
   errors?: Record<string, string[]>;
+  /** Seconds to wait before retrying, from the `Retry-After` header of a 429 (when the API exposes it). */
+  retryAfter?: number;
 }
 
 export interface FetchOptions extends Omit<RequestInit, 'body'> {
@@ -115,6 +117,21 @@ const buildHeaders = async (
 
 // --- Response Interceptor ---
 
+/**
+ * Reads `Retry-After` as whole seconds. RFC 9110 allows seconds or an HTTP date; the API's throttler sends
+ * seconds. Returns undefined when the header is missing or unreadable, e.g. when CORS doesn't expose it.
+ */
+const parseRetryAfter = (response: Response): number | undefined => {
+  const value = response.headers.get('Retry-After');
+  if (!value) return undefined;
+  const seconds = Number(value);
+  if (Number.isFinite(seconds) && seconds > 0) return Math.ceil(seconds);
+  const date = Date.parse(value);
+  if (Number.isNaN(date)) return undefined;
+  const fromDate = Math.ceil((date - Date.now()) / 1000);
+  return fromDate > 0 ? fromDate : undefined;
+};
+
 const handleSuccessResponse = (response: Response): Response => {
   return response;
 };
@@ -134,6 +151,7 @@ const handleErrorResponse = async (response: Response): Promise<ApiError> => {
     status: response.status,
     statusText: response.statusText,
     errors: (errorData as { errors?: Record<string, string[]> })?.errors,
+    retryAfter: response.status === 429 ? parseRetryAfter(response) : undefined,
   };
 
   return error;

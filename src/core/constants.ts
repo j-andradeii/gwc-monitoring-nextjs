@@ -39,6 +39,8 @@ export const CONST = {
   AUTHENTICATED_USER: 'AUTHENTICATED_USER',
   THEME: 'theme-preference',
   LANGUAGE: 'language-preference',
+  // Sign-in wait when a 429 has no readable Retry-After: the API's login throttle window (5 per 60 s)
+  LOGIN_RETRY_FALLBACK_SECONDS: 60,
 } as const;
 
 // HTTP status codes
@@ -50,6 +52,7 @@ export const HTTP_STATUS = {
   UNAUTHORIZED: 401,
   FORBIDDEN: 403,
   NOT_FOUND: 404,
+  TOO_MANY_REQUESTS: 429,
   INTERNAL_SERVER_ERROR: 500,
 } as const;
 
